@@ -1,0 +1,59 @@
+{
+  "@@locale": "en",
+  "appTitle": "The Legion",
+  "@appTitle": {
+    "description": "Application name shown in the task switcher and browser tab."
+  },
+
+  "commonRetry": "Retry",
+  "commonDismiss": "Dismiss",
+  "commonCancel": "Cancel",
+  "commonSave": "Save",
+  "commonLoading": "Loading",
+
+  "errorsNetwork": "No internet connection. Check your network and try again.",
+  "errorsServer": "Something went wrong on our side. Please try again.",
+  "errorsUnauthorized": "You are not authorized to continue.",
+  "errorsCache": "Local data could not be read or written.",
+  "errorsUnexpected": "Something unexpected happened. Please try again.",
+
+  "validationRequired": "This field is required.",
+  "validationInvalidEmail": "Enter a valid email address.",
+  "validationPasswordTooShort": "Password must be at least 8 characters.",
+  "validationInvalidCredentials": "Incorrect email or password.",
+  "validationInvalidRequest": "The submitted data is invalid.",
+
+  "sessionRestoring": "Restoring your session",
+
+  "loginTitle": "Welcome back",
+  "loginSubtitle": "Sign in to continue to The Legion.",
+  "loginEmailLabel": "Email",
+  "loginEmailHint": "you@example.com",
+  "loginPasswordLabel": "Password",
+  "loginShowPassword": "Show password",
+  "loginHidePassword": "Hide password",
+  "loginSubmit": "Sign in",
+  "loginSubmitting": "Signing in",
+  "loginNoAccount": "Don't have an account? Ask your administrator for access.",
+
+  "navOverview": "Overview",
+  "navProfile": "Profile",
+
+  "homeTitle": "Overview",
+  "homeFoundationTitle": "Foundation is ready",
+  "homeFoundationBody": "This screen is intentionally minimal. Add your first feature under lib/features/ following the pattern documented in ARCHITECTURE.md.",
+  "homeEnvironmentLabel": "Environment",
+  "homeApiBaseUrlLabel": "API base URL",
+  "homeNetworkLoggingLabel": "Network logging",
+  "homeViewportLabel": "Viewport",
+
+  "profileTitle": "Profile",
+  "profileSignedInAs": "Signed in as",
+  "profileMemberSince": "Member since",
+  "profileSignOut": "Sign out",
+  "profileNotAvailable": "Profile details are unavailable.",
+
+  "routeNotFoundTitle": "Page not found",
+  "routeNotFoundBody": "The page you requested does not exist or has moved.",
+  "routeErrorBackHome": "Back to overview"
+}
