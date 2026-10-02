@@ -11,6 +11,36 @@ import 'route_names.dart';
 import 'router_refresh_notifier.dart';
 import 'widgets/route_error_page.dart';
 
+/// Decides where [location] must redirect to, or `null` to stay.
+///
+/// Extracted from [createRouter] as a pure function so the authentication
+/// rules can be unit tested without a widget tree or a router instance.
+///
+/// | Session | Current location | Redirect |
+/// | --- | --- | --- |
+/// | unresolved | anything but `/` | `/` (splash) |
+/// | resolved, anonymous | anything but `/login` | `/login` |
+/// | resolved, authenticated | `/` or `/login` | `/home` |
+String? resolveRedirect({
+  required AuthGuard authGuard,
+  required String location,
+}) {
+  // Until the persisted session is restored, only the splash is reachable so
+  // protected screens never flash before authentication is known.
+  if (!authGuard.isSessionResolved) {
+    return location == Routes.splash ? null : Routes.splash;
+  }
+
+  if (!authGuard.isAuthenticated) {
+    // Anonymous: the splash has done its job, hand over to the login screen.
+    return location == Routes.login ? null : Routes.login;
+  }
+
+  // Authenticated: nothing left to do on the splash or the login screen.
+  final isEntryScreen = location == Routes.splash || location == Routes.login;
+  return isEntryScreen ? Routes.home : null;
+}
+
 /// Builds the application router.
 ///
 /// Handles authentication-aware redirects, deep links and web URLs. The
@@ -26,26 +56,8 @@ GoRouter createRouter({
     refreshListenable: RouterRefreshNotifier(authStateChanges),
     errorBuilder: (context, state) =>
         RouteErrorPage(location: state.uri.toString()),
-    redirect: (context, state) {
-      final location = state.matchedLocation;
-      final isPublic = Routes.publicPaths.contains(location);
-
-      // Until the stored session is restored, only the splash is reachable so
-      // protected screens never flash before authentication is known.
-      if (!authGuard.isSessionResolved) {
-        return location == Routes.splash ? null : Routes.splash;
-      }
-
-      if (!authGuard.isAuthenticated && !isPublic) {
-        return Routes.login;
-      }
-
-      if (authGuard.isAuthenticated && location == Routes.login) {
-        return Routes.home;
-      }
-
-      return null;
-    },
+    redirect: (context, state) =>
+        resolveRedirect(authGuard: authGuard, location: state.matchedLocation),
     routes: [
       GoRoute(
         path: Routes.splash,

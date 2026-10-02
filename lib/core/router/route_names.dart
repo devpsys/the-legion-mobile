@@ -15,10 +15,4 @@ abstract final class Routes {
   static const String loginName = 'login';
   static const String homeName = 'home';
   static const String profileName = 'profile';
-
-  /// Routes reachable without an authenticated session.
-  static const Set<String> publicPaths = {splash, login};
-
-  /// Routes that require an authenticated session.
-  static const Set<String> protectedPaths = {home, profile};
 }

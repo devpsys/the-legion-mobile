@@ -96,14 +96,22 @@ One type per layer, converted exactly once:
 ### Router ↔ state bridge
 
 `core/router/router_refresh_notifier.dart` adapts the cubit stream to GoRouter's
-`refreshListenable`, and the redirect logic in `core/router/app_router.dart`
-reads `AuthGuard`:
+`refreshListenable`, and `resolveRedirect` in `core/router/app_router.dart`
+encodes the rules (a pure function, unit tested in
+`test/core/router/app_router_test.dart`):
 
-```text
-session unknown      → redirect to /  (splash)
-!isAuthenticated     → redirect to /login
-isAuthenticated + /login → redirect to /home
-```
+| Session | Current location | Result |
+| --- | --- | --- |
+| unresolved | `/` | stay (splash) |
+| unresolved | anything else | → `/` (splash) |
+| resolved, anonymous | `/login` | stay |
+| resolved, anonymous | anything else (incl. `/`) | → `/login` |
+| resolved, authenticated | `/` or `/login` | → `/home` |
+| resolved, authenticated | app routes | stay |
+
+The splash is a *transitional* route: once the session resolves, it must hand
+over to `/login` or `/home`. Treating it as merely "public" leaves the app
+spinning on the splash forever.
 
 Deep links (`/home`, `/home/profile`, `/login`) therefore behave the same on
 Android, iOS and the web, including browser refresh and back gestures.
