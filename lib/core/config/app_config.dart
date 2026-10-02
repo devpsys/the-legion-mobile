@@ -18,6 +18,7 @@ class AppConfig extends Equatable {
     required this.apiBaseUrl,
     required this.networkTimeout,
     required this.enableNetworkLogging,
+    required this.useFakeDataSources,
   });
 
   /// Builds the configuration from the compile-time environment.
@@ -29,8 +30,23 @@ class AppConfig extends Equatable {
       networkTimeout: _networkTimeout,
       enableNetworkLogging:
           _enableNetworkLogging && environment.enableDeveloperTools,
+      // In-memory fakes are the default while the backend is still being
+      // built, but a production build always uses the real datasources unless
+      // the override is set explicitly.
+      useFakeDataSources: _fakeDataSourcesOverride.isEmpty
+          ? !environment.isProduction
+          : _parseBool(_fakeDataSourcesOverride),
     );
   }
+
+  static const String _fakeDataSourcesOverride = String.fromEnvironment(
+    'USE_FAKE_DATA_SOURCES',
+  );
+
+  static bool _parseBool(String value) => switch (value.trim().toLowerCase()) {
+    'true' || '1' || 'yes' => true,
+    _ => false,
+  };
 
   static const String _environmentName = String.fromEnvironment(
     'ENVIRONMENT',
@@ -74,11 +90,18 @@ class AppConfig extends Equatable {
   /// Whether request/response bodies may be written to the console.
   final bool enableNetworkLogging;
 
+  /// Whether features resolve to in-memory fakes instead of the real API and
+  /// on-disk storage.
+  ///
+  /// Temporary: remove once every feature talks to the production API.
+  final bool useFakeDataSources;
+
   @override
   List<Object?> get props => [
     environment,
     apiBaseUrl,
     networkTimeout,
     enableNetworkLogging,
+    useFakeDataSources,
   ];
 }

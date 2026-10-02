@@ -256,6 +256,14 @@ Guidelines:
 
 ## 13. Adding a feature
 
+> **Current phase:** the backend is not online. Start every feature as
+> **presentation only** (step 0) and complete steps 1–3 when the endpoints
+> exist. See "Working without an API" in the README for the fake switch.
+
+0. **Presentation first** — `presentation/{bloc,pages,widgets,mock}`. Fixtures
+   in `presentation/mock/<name>_fixtures.dart` are served by the cubit. This is
+   a legitimate temporary state, not a shortcut: page, widgets, state model,
+   theme usage and localization are final code.
 1. **Create the folder** `lib/features/<name>/{data,domain,presentation}` —
    only the sub-folders you actually need.
 2. **Domain first**: entities (immutable, `Equatable`), repository contract,
@@ -283,7 +291,8 @@ features/<name>/
 ├── data/
 │   ├── datasources/
 │   │   ├── remote/<name>_remote_data_source.dart
-│   │   └── local/<name>_local_data_source.dart
+│   │   ├── local/<name>_local_data_source.dart
+│   │   └── fake/                     # only while the API is pending
 │   ├── models/<entity>_model.dart
 │   └── repositories/<name>_repository_impl.dart
 ├── domain/
@@ -292,9 +301,27 @@ features/<name>/
 │   └── usecases/<verb>_<entity>.dart
 └── presentation/
     ├── bloc/<name>_cubit.dart · <name>_state.dart
+    ├── mock/<name>_fixtures.dart     # only while the API is pending
     ├── pages/<name>_page.dart
     └── widgets/
 ```
+
+### Test-data strategy (no API yet)
+
+Prefer fakes over mock-framework ceremony while the backend is pending:
+
+```text
+data/datasources/fake/
+├── fake_<name>_remote_data_source.dart      # simulates latency + failures
+└── in_memory_<name>_local_data_source.dart  # fields instead of Hive
+```
+
+A fake implements the **same datasource interface** as the real one, so the
+repository, use cases and cubit are production-identical; only the DI module
+chooses which implementation is bound (see `AppConfig.useFakeDataSources`).
+
+Once the API is online: delete `data/datasources/fake/`, drop the flag, and keep
+the fake tests — they still describe the expected contract.
 
 ---
 

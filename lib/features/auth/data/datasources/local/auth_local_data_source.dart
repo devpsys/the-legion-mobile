@@ -7,7 +7,10 @@ import '../../models/auth_tokens_model.dart';
 import '../../models/user_model.dart';
 
 /// Local source for the persisted session.
-abstract interface class AuthLocalDataSource {
+///
+/// Also acts as the session store for the networking layer
+/// ([AuthTokenProvider]), because whoever persists the tokens owns them.
+abstract interface class AuthLocalDataSource implements AuthTokenProvider {
   Future<UserModel?> readCachedUser();
 
   Future<void> cacheUser(UserModel user);
@@ -25,8 +28,7 @@ abstract interface class AuthLocalDataSource {
 /// Credentials go to [SecureStorageService] (never plain Hive); the cached
 /// profile is non-sensitive and lives in the Hive backed
 /// [KeyValueStore].
-class AuthLocalDataSourceImpl
-    implements AuthLocalDataSource, AuthTokenProvider {
+class AuthLocalDataSourceImpl implements AuthLocalDataSource {
   AuthLocalDataSourceImpl({
     required SecureStorageService secureStorage,
     required KeyValueStore cache,

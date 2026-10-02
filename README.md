@@ -85,6 +85,51 @@ hardcoded in a feature and no secret lives in the repository.
 | `API_BASE_URL` | `https://api.the-legion.example.com` | Production base URL |
 | `API_TIMEOUT_SECONDS` | `30` | Connect/send/receive timeout |
 | `ENABLE_NETWORK_LOGGING` | `true` | Request/response logging (forced off in production) |
+| `USE_FAKE_DATA_SOURCES` | `true` outside production | In-memory fakes instead of the real API/storage |
+
+### Working without an API (current phase)
+
+The backend is not online yet, so **new work happens in the presentation
+layer**. Two mechanisms keep the app fully runnable and demoable:
+
+**1. `USE_FAKE_DATA_SOURCES` — fakes for the existing auth flow**
+
+```text
+USE_FAKE_DATA_SOURCES=true   (default in development/staging)
+  AuthRemoteDataSource  → FakeAuthRemoteDataSource      (in-memory, simulated latency)
+  AuthLocalDataSource   → InMemoryAuthLocalDataSource  (in-memory session)
+USE_FAKE_DATA_SOURCES=false
+  AuthRemoteDataSource  → AuthRemoteDataSourceImpl      (Dio)
+  AuthLocalDataSource   → AuthLocalDataSourceImpl       (Hive + secure storage)
+```
+
+The repository, use cases, cubit and pages above the datasources are
+**identical in both modes**, so nothing in the UI needs rewriting when the API
+lands. Only `features/auth/di/auth_module.dart` picks the implementation.
+
+A **production build always uses the real datasources** unless the flag is set
+explicitly, so fakes cannot silently ship.
+
+Demo credentials in fake mode: **any email + password `legion123`**
+(`FakeAuthRemoteDataSource.defaultPassword`).
+
+**2. Fixtures in `presentation/mock/` for new screens**
+
+New features start as presentation only — no repository, no use case, no
+datasource:
+
+```text
+features/<name>/presentation/
+├── bloc/<name>_cubit.dart        # state transitions only
+├── mock/<name>_fixtures.dart     # const sample data for the UI
+├── pages/<name>_page.dart
+└── widgets/
+```
+
+The cubit serves fixtures locally; pages never call anything but the cubit.
+When the endpoint ships, the swap is: delete `mock/`, add the three
+`data/` + `domain/` folders per the checklist in
+[ARCHITECTURE.md](ARCHITECTURE.md), and have the cubit call the use case.
 
 ```bash
 flutter run \
