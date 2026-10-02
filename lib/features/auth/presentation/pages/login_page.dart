@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/error/failure_localization.dart';
-import '../../../../core/error/failures.dart';
-import '../../../../core/error/validation.dart';
 import '../../../../core/extensions/context_extensions.dart';
-import '../../../../core/l10n/gen/app_localizations.dart';
-import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
-import '../../../../core/widgets/app_mark.dart';
+import '../../../../core/widgets/message_feedback.dart';
 import '../bloc/auth_cubit.dart';
-import '../bloc/auth_state.dart';
-import '../widgets/auth_inputs.dart';
+import '../widgets/audit_protocol_notice.dart';
+import '../widgets/auth_footer.dart';
+import '../widgets/auth_header_banner.dart';
+import '../widgets/credential_card.dart';
+import '../widgets/secondary_action_deck.dart';
 
 /// Sign-in screen.
 ///
-/// Purely compositional: it reads [AuthState] and forwards user input to
-/// [AuthCubit]. No validation logic, no repository call.
+/// Layout follows
+/// `ui-designs/auth/_variants/sign_in_standard__sign_in_integrated_header_action_deck_layout/code.html`:
+/// institutional header banner, credential deck, secondary action deck and the
+/// statutory notice, with the footer docked to the bottom.
+///
+/// The page is purely compositional — it reads [AuthCubit] and forwards user
+/// input. No validation logic and no repository call live here.
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -29,6 +32,9 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _passwordFocus = FocusNode();
+
+  /// Presentation-only until the API defines the session policy.
+  bool _keepSignedIn = false;
 
   @override
   void dispose() {
@@ -46,177 +52,77 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  /// Destinations that ship with a later release.
+  void _notAvailable() {
+    context.showMessage(context.l10n.commonComingSoon);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final isWide =
-                constraints.maxWidth >= AppDimensions.expandedBreakpoint;
+        // The banner and footer stay docked; only the credential content
+        // scrolls, so the institutional identity remains visible at every
+        // screen size and with the software keyboard open.
+        child: Column(
+          children: [
+            const AuthHeaderBanner(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final isWide =
+                        constraints.maxWidth >=
+                        AppDimensions.expandedBreakpoint;
 
-            return SingleChildScrollView(
-              padding: EdgeInsets.symmetric(
-                horizontal: AppSpacing.lg,
-                // On tablets the form sits vertically centered.
-                vertical: isWide ? AppSpacing.xxl : AppSpacing.xl,
-              ),
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxWidth: AppDimensions.maxFormWidth,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const Center(child: AppMark()),
-                      AppSpacing.verticalGap(AppSpacing.xl),
-                      Text(
-                        context.l10n.loginTitle,
-                        style: context.textStyles.headlineMedium,
-                        textAlign: TextAlign.center,
-                      ),
-                      AppSpacing.verticalGap(AppSpacing.xs),
-                      Text(
-                        context.l10n.loginSubtitle,
-                        style: context.textStyles.bodyMedium?.copyWith(
-                          color: context.colors.onSurfaceVariant,
+                    return Center(
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: AppDimensions.maxFormWidth,
                         ),
-                        textAlign: TextAlign.center,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: AppSpacing.canvasGutter,
+                            vertical: isWide ? AppSpacing.xxl : AppSpacing.lg,
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              CredentialCard(
+                                emailController: _emailController,
+                                passwordController: _passwordController,
+                                passwordFocus: _passwordFocus,
+                                onSubmit: _submit,
+                                keepSignedIn: _keepSignedIn,
+                                onKeepSignedInChanged: (value) =>
+                                    setState(() => _keepSignedIn = value),
+                                onForgotPassword: _notAvailable,
+                              ),
+                              AppSpacing.verticalGap(AppSpacing.lg),
+                              SecondaryActionDeck(
+                                createAccountLabel:
+                                    context.l10n.loginActionCreateAccount,
+                                verifyLetterLabel:
+                                    context.l10n.loginActionVerifyLetter,
+                                onCreateAccount: _notAvailable,
+                                onVerifyLetter: _notAvailable,
+                              ),
+                              AppSpacing.verticalGap(AppSpacing.md),
+                              const AuditProtocolNotice(),
+                              AppSpacing.verticalGap(AppSpacing.lg),
+                              AuthFooter(language: AuthFooter.languages.first),
+                            ],
+                          ),
+                        ),
                       ),
-                      AppSpacing.verticalGap(AppSpacing.xl),
-                      _LoginForm(
-                        emailController: _emailController,
-                        passwordController: _passwordController,
-                        passwordFocus: _passwordFocus,
-                        onSubmit: _submit,
-                      ),
-                      AppSpacing.verticalGap(AppSpacing.lg),
-                      Text(
-                        context.l10n.loginNoAccount,
-                        style: context.textStyles.bodySmall,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-/// Form fields plus the failure banner driven by [AuthState].
-class _LoginForm extends StatelessWidget {
-  const _LoginForm({
-    required this.emailController,
-    required this.passwordController,
-    required this.passwordFocus,
-    required this.onSubmit,
-  });
-
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
-  final FocusNode passwordFocus;
-  final VoidCallback onSubmit;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AuthCubit, AuthState>(
-      builder: (context, state) {
-        final failure = state.failure;
-        final isBusy = state.status == AuthStatus.authenticating;
-        final l10n = context.l10n;
-
-        final emailError = _errorFor(failure, ValidationField.email, l10n);
-        final passwordError = _errorFor(
-          failure,
-          ValidationField.password,
-          l10n,
-        );
-        final hasBannerError = failure != null && emailError == null;
-
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            EmailTextField(
-              controller: emailController,
-              enabled: !isBusy,
-              errorText: emailError,
-              onSubmitted: (_) => passwordFocus.requestFocus(),
-            ),
-            AppSpacing.verticalGap(AppSpacing.md),
-            PasswordTextField(
-              controller: passwordController,
-              enabled: !isBusy,
-              errorText: passwordError,
-              onSubmitted: (_) => onSubmit(),
-            ),
-            if (hasBannerError) ...[
-              AppSpacing.verticalGap(AppSpacing.md),
-              _FailureBanner(message: failure.localize(l10n)),
-            ],
-            AppSpacing.verticalGap(AppSpacing.lg),
-            SubmitButton(
-              label: l10n.loginSubmit,
-              busyLabel: l10n.loginSubmitting,
-              isBusy: isBusy,
-              onPressed: onSubmit,
             ),
           ],
-        );
-      },
-    );
-  }
-
-  /// Shows a validation error only under the field it belongs to.
-  String? _errorFor(
-    Failure? failure,
-    ValidationField field,
-    AppLocalizations l10n,
-  ) {
-    if (failure is! ValidationFailure || failure.field != field) return null;
-    return failure.localize(l10n);
-  }
-}
-
-/// Inline banner for failures that are not tied to a single field.
-class _FailureBanner extends StatelessWidget {
-  const _FailureBanner({required this.message});
-
-  final String message;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.theme;
-    return Container(
-      padding: AppSpacing.card,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.errorContainer,
-        borderRadius: AppRadii.elementRadius,
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(
-            Icons.error_outline,
-            size: AppDimensions.iconSmall,
-            color: theme.colorScheme.onErrorContainer,
-          ),
-          AppSpacing.horizontalGap(AppSpacing.sm),
-          Expanded(
-            child: Text(
-              message,
-              style: theme.textTheme.bodySmall?.copyWith(
-                color: theme.colorScheme.onErrorContainer,
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

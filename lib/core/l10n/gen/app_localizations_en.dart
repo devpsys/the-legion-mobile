@@ -28,6 +28,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonLoading => 'Loading';
 
   @override
+  String get commonComingSoon =>
+      'This service goes live with the next release.';
+
+  @override
   String get errorsNetwork =>
       'No internet connection. Check your network and try again.';
 
@@ -65,19 +69,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sessionRestoring => 'Restoring your session';
 
   @override
-  String get loginTitle => 'Welcome back';
+  String get loginSsoBadge => 'SSO';
 
   @override
-  String get loginSubtitle => 'Sign in to continue to The Legion.';
+  String get loginHeaderSubtitle =>
+      'The Legion University — one sign-in for admissions, students, staff and administration.';
 
   @override
-  String get loginEmailLabel => 'Email';
+  String get loginCardTitle => 'Sign in';
 
   @override
-  String get loginEmailHint => 'you@example.com';
+  String get loginCardSubtitle => 'Use your institutional email and password.';
+
+  @override
+  String get loginEmailLabel => 'Institutional email';
+
+  @override
+  String get loginEmailHint => 'you@legion.edu.ng';
+
+  @override
+  String get loginEmailHelper =>
+      'Use your @legion.edu.ng address or applicant email.';
 
   @override
   String get loginPasswordLabel => 'Password';
+
+  @override
+  String get loginPasswordHint => 'Enter institutional password';
 
   @override
   String get loginShowPassword => 'Show password';
@@ -86,14 +104,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginHidePassword => 'Hide password';
 
   @override
+  String get loginRememberMe => 'Keep me signed in';
+
+  @override
+  String get loginForgotPassword => 'Forgot password?';
+
+  @override
   String get loginSubmit => 'Sign in';
 
   @override
   String get loginSubmitting => 'Signing in';
 
   @override
-  String get loginNoAccount =>
-      'Don\'t have an account? Ask your administrator for access.';
+  String get loginOrDivider => 'or institutional access';
+
+  @override
+  String get loginActionCreateAccount => 'Create an applicant account';
+
+  @override
+  String get loginActionVerifyLetter => 'Verify an admission letter';
+
+  @override
+  String get loginAuditTitle => 'Statutory Audit Protocol';
+
+  @override
+  String get loginAuditBody =>
+      'Unauthorized access attempts to academic records or financial portfolios are monitored and reported under statutory federal frameworks.';
+
+  @override
+  String get loginCopyright =>
+      'Secure Institutional Verification © The Legion University';
 
   @override
   String get navOverview => 'Overview';

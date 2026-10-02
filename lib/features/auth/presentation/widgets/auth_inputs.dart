@@ -4,18 +4,17 @@ import 'package:flutter/services.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
 
-/// Email input with built-in keyboard and autofill hints.
+/// Email input. The label and helper live in [FieldCompartment]; this widget
+/// owns only the field itself.
 class EmailTextField extends StatelessWidget {
   const EmailTextField({
     required this.controller,
-    this.errorText,
     this.onSubmitted,
     this.enabled = true,
     super.key,
   });
 
   final TextEditingController controller;
-  final String? errorText;
   final ValueChanged<String>? onSubmitted;
   final bool enabled;
 
@@ -31,11 +30,12 @@ class EmailTextField extends StatelessWidget {
       autocorrect: false,
       inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r'\s'))],
       decoration: InputDecoration(
-        labelText: context.l10n.loginEmailLabel,
         hintText: context.l10n.loginEmailHint,
-        prefixIcon: const Icon(Icons.mail_outline),
-        errorText: errorText,
-        errorMaxLines: 2,
+        suffixIcon: Icon(
+          Icons.mail_outline,
+          size: 20,
+          color: context.colors.outline,
+        ),
       ),
     );
   }
@@ -45,14 +45,12 @@ class EmailTextField extends StatelessWidget {
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
     required this.controller,
-    this.errorText,
     this.onSubmitted,
     this.enabled = true,
     super.key,
   });
 
   final TextEditingController controller;
-  final String? errorText;
   final ValueChanged<String>? onSubmitted;
   final bool enabled;
 
@@ -65,6 +63,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final outlineColor = context.colors.outline;
     return TextField(
       controller: widget.controller,
       enabled: widget.enabled,
@@ -76,10 +75,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       autocorrect: false,
       enableSuggestions: false,
       decoration: InputDecoration(
-        labelText: context.l10n.loginPasswordLabel,
-        prefixIcon: const Icon(Icons.lock_outline),
-        errorText: widget.errorText,
-        errorMaxLines: 2,
+        hintText: context.l10n.loginPasswordHint,
         suffixIcon: IconButton(
           onPressed: () => setState(() => _isObscured = !_isObscured),
           tooltip: _isObscured
@@ -89,14 +85,16 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             _isObscured
                 ? Icons.visibility_outlined
                 : Icons.visibility_off_outlined,
+            size: 20,
           ),
+          color: outlineColor,
         ),
       ),
     );
   }
 }
 
-/// Submit button that shows progress while a request is running.
+/// Primary action button with a trailing arrow, as in the design.
 class SubmitButton extends StatelessWidget {
   const SubmitButton({
     required this.label,
@@ -114,7 +112,7 @@ class SubmitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: AppSpacing.xs),
+      padding: const EdgeInsets.only(top: AppSpacing.sm),
       child: FilledButton(
         onPressed: isBusy ? null : onPressed,
         child: isBusy
@@ -129,7 +127,14 @@ class SubmitButton extends StatelessWidget {
                   Text(busyLabel),
                 ],
               )
-            : Text(label),
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(label),
+                  AppSpacing.horizontalGap(AppSpacing.sm),
+                  const Icon(Icons.arrow_forward, size: 18),
+                ],
+              ),
       ),
     );
   }

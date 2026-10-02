@@ -130,6 +130,12 @@ abstract class AppLocalizations {
   /// **'Loading'**
   String get commonLoading;
 
+  /// No description provided for @commonComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'This service goes live with the next release.'**
+  String get commonComingSoon;
+
   /// No description provided for @errorsNetwork.
   ///
   /// In en, this message translates to:
@@ -196,35 +202,59 @@ abstract class AppLocalizations {
   /// **'Restoring your session'**
   String get sessionRestoring;
 
-  /// No description provided for @loginTitle.
+  /// No description provided for @loginSsoBadge.
   ///
   /// In en, this message translates to:
-  /// **'Welcome back'**
-  String get loginTitle;
+  /// **'SSO'**
+  String get loginSsoBadge;
 
-  /// No description provided for @loginSubtitle.
+  /// No description provided for @loginHeaderSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Sign in to continue to The Legion.'**
-  String get loginSubtitle;
+  /// **'The Legion University — one sign-in for admissions, students, staff and administration.'**
+  String get loginHeaderSubtitle;
+
+  /// No description provided for @loginCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get loginCardTitle;
+
+  /// No description provided for @loginCardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your institutional email and password.'**
+  String get loginCardSubtitle;
 
   /// No description provided for @loginEmailLabel.
   ///
   /// In en, this message translates to:
-  /// **'Email'**
+  /// **'Institutional email'**
   String get loginEmailLabel;
 
   /// No description provided for @loginEmailHint.
   ///
   /// In en, this message translates to:
-  /// **'you@example.com'**
+  /// **'you@legion.edu.ng'**
   String get loginEmailHint;
+
+  /// No description provided for @loginEmailHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your @legion.edu.ng address or applicant email.'**
+  String get loginEmailHelper;
 
   /// No description provided for @loginPasswordLabel.
   ///
   /// In en, this message translates to:
   /// **'Password'**
   String get loginPasswordLabel;
+
+  /// No description provided for @loginPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter institutional password'**
+  String get loginPasswordHint;
 
   /// No description provided for @loginShowPassword.
   ///
@@ -238,6 +268,18 @@ abstract class AppLocalizations {
   /// **'Hide password'**
   String get loginHidePassword;
 
+  /// No description provided for @loginRememberMe.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep me signed in'**
+  String get loginRememberMe;
+
+  /// No description provided for @loginForgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get loginForgotPassword;
+
   /// No description provided for @loginSubmit.
   ///
   /// In en, this message translates to:
@@ -250,11 +292,41 @@ abstract class AppLocalizations {
   /// **'Signing in'**
   String get loginSubmitting;
 
-  /// No description provided for @loginNoAccount.
+  /// No description provided for @loginOrDivider.
   ///
   /// In en, this message translates to:
-  /// **'Don\'t have an account? Ask your administrator for access.'**
-  String get loginNoAccount;
+  /// **'or institutional access'**
+  String get loginOrDivider;
+
+  /// No description provided for @loginActionCreateAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an applicant account'**
+  String get loginActionCreateAccount;
+
+  /// No description provided for @loginActionVerifyLetter.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify an admission letter'**
+  String get loginActionVerifyLetter;
+
+  /// No description provided for @loginAuditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Statutory Audit Protocol'**
+  String get loginAuditTitle;
+
+  /// No description provided for @loginAuditBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Unauthorized access attempts to academic records or financial portfolios are monitored and reported under statutory federal frameworks.'**
+  String get loginAuditBody;
+
+  /// No description provided for @loginCopyright.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure Institutional Verification © The Legion University'**
+  String get loginCopyright;
 
   /// No description provided for @navOverview.
   ///

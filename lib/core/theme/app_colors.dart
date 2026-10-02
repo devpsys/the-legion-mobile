@@ -200,7 +200,11 @@ abstract final class AppColors {
       surfaceContainerHigh: subtle(brightness),
       surfaceContainerHighest: subtle(brightness),
       onSurfaceVariant: textMuted(brightness),
-      outline: stroke(brightness),
+      // Material splits these deliberately: `outline` is the medium-contrast
+      // role for icons and muted accents, `outlineVariant` the hairline used
+      // for borders and dividers. Mapping both to the stroke colour made every
+      // icon and muted label illegible.
+      outline: textMuted(brightness),
       outlineVariant: stroke(brightness),
 
       inverseSurface: isDark ? cardLight : canvasDark,

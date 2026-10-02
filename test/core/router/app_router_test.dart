@@ -199,7 +199,12 @@ void main() {
         await tester.pump();
 
         expect(find.text('Restoring your session'), findsNothing);
-        expect(find.text('Welcome back'), findsOneWidget);
+        // Credential deck and statutory notice from the sign-in design.
+        expect(
+          find.text('Use your institutional email and password.'),
+          findsOneWidget,
+        );
+        expect(find.text('Statutory Audit Protocol'), findsOneWidget);
       },
     );
 
