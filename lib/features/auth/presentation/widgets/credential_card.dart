@@ -13,6 +13,8 @@ import '../bloc/auth_cubit.dart';
 import '../bloc/auth_state.dart';
 import 'auth_inputs.dart';
 import 'field_compartment.dart';
+import 'rate_limit/locked_credential_summary.dart';
+import 'rate_limit/rate_limit_banner.dart';
 
 /// The credential deck: fields, options row and the primary action.
 ///
@@ -28,6 +30,7 @@ class CredentialCard extends StatelessWidget {
     this.keepSignedIn = false,
     this.onKeepSignedInChanged,
     this.onForgotPassword,
+    this.cooldownRemaining,
     super.key,
   });
 
@@ -40,6 +43,10 @@ class CredentialCard extends StatelessWidget {
   final bool keepSignedIn;
   final ValueChanged<bool>? onKeepSignedInChanged;
   final VoidCallback? onForgotPassword;
+
+  /// Non-null while sign-in is locked; swaps the form for the locked
+  /// presentation from the rate-limit design.
+  final Duration? cooldownRemaining;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +64,17 @@ class CredentialCard extends StatelessWidget {
             child: BlocBuilder<AuthCubit, AuthState>(
               builder: (context, state) {
                 final l10n = context.l10n;
+                final isLocked = cooldownRemaining != null;
+
+                if (isLocked) {
+                  return _LockedDeck(
+                    email: emailController.text,
+                    cooldownRemaining: cooldownRemaining!,
+                    progress: state.cooldownProgress,
+                    onSubmit: onSubmit,
+                  );
+                }
+
                 final failure = state.failure;
                 final isBusy = state.status == AuthStatus.authenticating;
 
@@ -125,6 +143,52 @@ class CredentialCard extends StatelessWidget {
       return null;
     }
     return failure.localize(l10n);
+  }
+}
+
+/// Locked presentation of the credential deck, from the rate-limit design:
+/// cooldown meter, read-only credentials and a disabled retry action.
+class _LockedDeck extends StatelessWidget {
+  const _LockedDeck({
+    required this.email,
+    required this.cooldownRemaining,
+    required this.progress,
+    required this.onSubmit,
+  });
+
+  final String email;
+  final Duration cooldownRemaining;
+  final double progress;
+  final VoidCallback onSubmit;
+
+  bool get _isCooldownElapsed => cooldownRemaining <= Duration.zero;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        CooldownProgressMeter(progress: progress),
+        AppSpacing.verticalGap(AppSpacing.md),
+        LockedCredentialSummary(email: email),
+        AppSpacing.verticalGap(AppSpacing.md),
+        FilledButton.icon(
+          onPressed: _isCooldownElapsed ? onSubmit : null,
+          icon: Icon(
+            _isCooldownElapsed ? Icons.refresh : Icons.history,
+            size: AppDimensions.iconSmall + 2,
+          ),
+          label: Text(
+            _isCooldownElapsed
+                ? l10n.rateLimitRetryActionReady
+                : '${l10n.rateLimitRetryAction} '
+                      '${RateLimitAlertBanner.formatRemaining(cooldownRemaining)}',
+          ),
+        ),
+      ],
+    );
   }
 }
 

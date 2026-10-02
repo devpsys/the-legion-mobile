@@ -328,6 +328,492 @@ abstract class AppLocalizations {
   /// **'Secure Institutional Verification © The Legion University'**
   String get loginCopyright;
 
+  /// No description provided for @rateLimitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many sign-in attempts'**
+  String get rateLimitTitle;
+
+  /// No description provided for @rateLimitRetryIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again in'**
+  String get rateLimitRetryIn;
+
+  /// No description provided for @rateLimitTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Security alert'**
+  String get rateLimitTag;
+
+  /// No description provided for @rateLimitFieldLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Field locked'**
+  String get rateLimitFieldLocked;
+
+  /// No description provided for @rateLimitRetryAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again in'**
+  String get rateLimitRetryAction;
+
+  /// No description provided for @rateLimitRetryActionReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Try sign in again'**
+  String get rateLimitRetryActionReady;
+
+  /// No description provided for @rateLimitLockoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional lockout'**
+  String get rateLimitLockoutTitle;
+
+  /// No description provided for @rateLimitLockoutCode.
+  ///
+  /// In en, this message translates to:
+  /// **'SEC-403'**
+  String get rateLimitLockoutCode;
+
+  /// No description provided for @rateLimitLockoutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account is temporarily locked after repeated failed sign-ins. Wait for the countdown or contact the registry to have it restored.'**
+  String get rateLimitLockoutBody;
+
+  /// No description provided for @rateLimitAdminRoute.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct administrative route'**
+  String get rateLimitAdminRoute;
+
+  /// No description provided for @rateLimitRegistryEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'registry@legion.edu.ng'**
+  String get rateLimitRegistryEmail;
+
+  /// No description provided for @rateLimitRegistryPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'+234 1 234 5678'**
+  String get rateLimitRegistryPhone;
+
+  /// No description provided for @rateLimitStatutoryRef.
+  ///
+  /// In en, this message translates to:
+  /// **'Statutory Regulation Ref: NG-EDU-VER-2024'**
+  String get rateLimitStatutoryRef;
+
+  /// No description provided for @recoveryPortalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Legion Sovereign Portal'**
+  String get recoveryPortalTitle;
+
+  /// No description provided for @recoverySovereignId.
+  ///
+  /// In en, this message translates to:
+  /// **'Legion Sovereign ID'**
+  String get recoverySovereignId;
+
+  /// No description provided for @recoverySecurityLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'SEC-L4'**
+  String get recoverySecurityLevel;
+
+  /// No description provided for @recoveryStepOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Step {current} of {total}'**
+  String recoveryStepOf(Object current, Object total);
+
+  /// No description provided for @recoveryRegistryAuthority.
+  ///
+  /// In en, this message translates to:
+  /// **'Legion Registry Authority'**
+  String get recoveryRegistryAuthority;
+
+  /// No description provided for @recoveryAccessDirectorate.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity & Access Directorate'**
+  String get recoveryAccessDirectorate;
+
+  /// No description provided for @recoveryVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified'**
+  String get recoveryVerified;
+
+  /// No description provided for @recoveryRequestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset your password'**
+  String get recoveryRequestTitle;
+
+  /// No description provided for @recoveryRequestSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your registered institutional email or candidate registration number to initiate identity verification.'**
+  String get recoveryRequestSubtitle;
+
+  /// No description provided for @recoveryIdentifierLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional email or ID'**
+  String get recoveryIdentifierLabel;
+
+  /// No description provided for @recoveryIdentifierHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. amaka.bello@legion.edu.ng or 23/CSC/0412'**
+  String get recoveryIdentifierHint;
+
+  /// No description provided for @recoveryIdentifierHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'For applicants, use the email registered on your application.'**
+  String get recoveryIdentifierHelper;
+
+  /// No description provided for @recoverySecurityProtocol.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional Security Protocol'**
+  String get recoverySecurityProtocol;
+
+  /// No description provided for @recoverySecurityProtocolBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A 6-digit one-time verification code will be dispatched to your recovery phone number and official inbox.'**
+  String get recoverySecurityProtocolBody;
+
+  /// No description provided for @recoverySendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Send recovery code'**
+  String get recoverySendCode;
+
+  /// No description provided for @recoveryRememberedPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Remembered your password? Sign in'**
+  String get recoveryRememberedPassword;
+
+  /// No description provided for @recoveryVerifyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify your identity'**
+  String get recoveryVerifyTitle;
+
+  /// No description provided for @recoveryVerifySent.
+  ///
+  /// In en, this message translates to:
+  /// **'We sent a 6-digit security code to'**
+  String get recoveryVerifySent;
+
+  /// No description provided for @recoveryVerifyAndSms.
+  ///
+  /// In en, this message translates to:
+  /// **'and SMS to'**
+  String get recoveryVerifyAndSms;
+
+  /// No description provided for @recoveryCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cryptographic authentication token'**
+  String get recoveryCodeLabel;
+
+  /// No description provided for @recoveryExpiresIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Code expires in'**
+  String get recoveryExpiresIn;
+
+  /// No description provided for @recoveryVerifyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify code'**
+  String get recoveryVerifyCode;
+
+  /// No description provided for @recoveryCodeInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'That code is not correct. {remaining} attempts remaining before your recovery is locked for 15 minutes.'**
+  String recoveryCodeInvalid(Object remaining);
+
+  /// No description provided for @recoveryCodeInvalidTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect code'**
+  String get recoveryCodeInvalidTitle;
+
+  /// No description provided for @recoveryCodeLockedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery temporarily locked'**
+  String get recoveryCodeLockedTitle;
+
+  /// No description provided for @recoveryCodeLockedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many incorrect codes. Recovery unlocks in {remaining}.'**
+  String recoveryCodeLockedBody(Object remaining);
+
+  /// No description provided for @recoveryAttemptsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Protect your account'**
+  String get recoveryAttemptsTitle;
+
+  /// No description provided for @recoveryAttemptsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'For your protection, {attempts} incorrect verification attempts will temporarily lock your credentials for {minutes} minutes.'**
+  String recoveryAttemptsBody(Object attempts, Object minutes);
+
+  /// No description provided for @recoveryStage.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication Stage {stage}'**
+  String recoveryStage(Object stage);
+
+  /// No description provided for @recoveryNoCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t receive the code?'**
+  String get recoveryNoCode;
+
+  /// No description provided for @recoveryResendCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend code'**
+  String get recoveryResendCode;
+
+  /// No description provided for @recoveryResendIn.
+  ///
+  /// In en, this message translates to:
+  /// **'(available in'**
+  String get recoveryResendIn;
+
+  /// No description provided for @recoveryDifferentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Try a different recovery method'**
+  String get recoveryDifferentMethod;
+
+  /// No description provided for @recoveryCancelAndReturn.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel and return to sign in'**
+  String get recoveryCancelAndReturn;
+
+  /// No description provided for @recoveryResetPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get recoveryResetPasswordTitle;
+
+  /// No description provided for @recoveryNewPasswordSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a new password that satisfies the institutional policy below.'**
+  String get recoveryNewPasswordSubtitle;
+
+  /// No description provided for @recoveryNewPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New password'**
+  String get recoveryNewPasswordLabel;
+
+  /// No description provided for @recoveryNewPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter new password'**
+  String get recoveryNewPasswordHint;
+
+  /// No description provided for @recoveryConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm new password'**
+  String get recoveryConfirmPassword;
+
+  /// No description provided for @recoveryConfirmPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat new password'**
+  String get recoveryConfirmPasswordHint;
+
+  /// No description provided for @recoveryPolicyRequirement.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional Policy Requirement'**
+  String get recoveryPolicyRequirement;
+
+  /// No description provided for @recoveryPolicyCompliant.
+  ///
+  /// In en, this message translates to:
+  /// **'Policy Compliant'**
+  String get recoveryPolicyCompliant;
+
+  /// No description provided for @recoveryStrengthCompliant.
+  ///
+  /// In en, this message translates to:
+  /// **'Policy Compliant'**
+  String get recoveryStrengthCompliant;
+
+  /// No description provided for @recoveryStrengthProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Policy {met} of {total}'**
+  String recoveryStrengthProgress(Object met, Object total);
+
+  /// No description provided for @recoveryRequirementLength.
+  ///
+  /// In en, this message translates to:
+  /// **'At least 8 characters'**
+  String get recoveryRequirementLength;
+
+  /// No description provided for @recoveryRequirementUppercase.
+  ///
+  /// In en, this message translates to:
+  /// **'Contains at least one uppercase letter'**
+  String get recoveryRequirementUppercase;
+
+  /// No description provided for @recoveryRequirementNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Contains at least one number'**
+  String get recoveryRequirementNumber;
+
+  /// No description provided for @recoveryRequirementSpecial.
+  ///
+  /// In en, this message translates to:
+  /// **'Contains at least one special character (!@#\$%^&*)'**
+  String get recoveryRequirementSpecial;
+
+  /// No description provided for @recoveryPasswordMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'The passwords do not match.'**
+  String get recoveryPasswordMismatch;
+
+  /// No description provided for @recoveryPasswordPolicyError.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a password that satisfies every institutional requirement.'**
+  String get recoveryPasswordPolicyError;
+
+  /// No description provided for @recoveryTerminateSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of all other active browser sessions and devices'**
+  String get recoveryTerminateSessions;
+
+  /// No description provided for @recoveryUpdatePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Update password'**
+  String get recoveryUpdatePassword;
+
+  /// No description provided for @recoveryImmediateEffect.
+  ///
+  /// In en, this message translates to:
+  /// **'Your new password will take effect immediately across all university portals, including Course Registration and Bursary.'**
+  String get recoveryImmediateEffect;
+
+  /// No description provided for @recoverySuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Password updated successfully'**
+  String get recoverySuccessTitle;
+
+  /// No description provided for @recoverySuccessBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your institutional security credentials have been updated{revocation}.'**
+  String recoverySuccessBody(Object revocation);
+
+  /// No description provided for @recoveryAuditSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Official Audit Summary'**
+  String get recoveryAuditSummary;
+
+  /// No description provided for @recoveryStatusCommitted.
+  ///
+  /// In en, this message translates to:
+  /// **'STATUS: COMMITTED'**
+  String get recoveryStatusCommitted;
+
+  /// No description provided for @recoveryAuditAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get recoveryAuditAccount;
+
+  /// No description provided for @recoveryAuditEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary Email'**
+  String get recoveryAuditEmail;
+
+  /// No description provided for @recoveryAuditTimestamp.
+  ///
+  /// In en, this message translates to:
+  /// **'Timestamp'**
+  String get recoveryAuditTimestamp;
+
+  /// No description provided for @recoveryAuditHash.
+  ///
+  /// In en, this message translates to:
+  /// **'Security Audit Hash'**
+  String get recoveryAuditHash;
+
+  /// No description provided for @recoveryAuditSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Sessions'**
+  String get recoveryAuditSessions;
+
+  /// No description provided for @recoverySessionsRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked on all other devices (1 device authorized)'**
+  String get recoverySessionsRevoked;
+
+  /// No description provided for @recoverySessionsKept.
+  ///
+  /// In en, this message translates to:
+  /// **'Other sessions remain active (1 device authorized)'**
+  String get recoverySessionsKept;
+
+  /// No description provided for @recoveryAdvisoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional Advisory Notice'**
+  String get recoveryAdvisoryTitle;
+
+  /// No description provided for @recoveryAdvisoryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A cryptographic notification has been logged to your university inbox. If you did not authorize this change, freeze your account immediately via the Emergency Registry Hotline ({hotline}).'**
+  String recoveryAdvisoryBody(Object hotline);
+
+  /// No description provided for @recoverySignInWithNewPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with new password'**
+  String get recoverySignInWithNewPassword;
+
+  /// No description provided for @recoveryAuditGuidelines.
+  ///
+  /// In en, this message translates to:
+  /// **'View security audit guidelines'**
+  String get recoveryAuditGuidelines;
+
   /// No description provided for @navOverview.
   ///
   /// In en, this message translates to:

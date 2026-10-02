@@ -16,6 +16,8 @@ import 'package:the_legion_mobile/features/auth/domain/usecases/login.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/logout.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
+import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_cubit.dart';
+import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_state.dart';
 
 /// Minimal stand-in for the cubit so the redirect rules can be checked without
 /// touching storage or the network.
@@ -137,6 +139,50 @@ void main() {
         isNull,
       );
     });
+
+    test('lets an anonymous visitor reach every recovery step', () {
+      // Regression: the recovery flow redirected straight back to /login, so
+      // tapping "Forgot password?" bounced the user out of the flow.
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: false,
+      );
+
+      for (final path in Routes.recoveryPaths) {
+        expect(
+          resolveRedirect(authGuard: guard, location: path),
+          isNull,
+          reason: '$path must be reachable while signed out',
+        );
+      }
+    });
+
+    test('bounces a signed-in visitor out of the recovery flow', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: true,
+      );
+
+      for (final path in Routes.recoveryPaths) {
+        expect(
+          resolveRedirect(authGuard: guard, location: path),
+          Routes.home,
+          reason: '$path is pointless once authenticated',
+        );
+      }
+    });
+
+    test('still bounces recovery deep links before the session resolves', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: false,
+        isAuthenticated: false,
+      );
+
+      expect(
+        resolveRedirect(authGuard: guard, location: Routes.forgotPassword),
+        Routes.splash,
+      );
+    });
   });
 
   group('cold start with the in-memory backend', () {
@@ -145,6 +191,7 @@ void main() {
     setUp(() {
       // `TheLegionApp` does this in `main()`; the pages under test resolve
       // their configuration from the same locator.
+      sl.registerFactory<PasswordRecoveryCubit>(PasswordRecoveryCubit.new);
       sl.registerSingleton<AppConfig>(
         const AppConfig(
           environment: Environment.development,
@@ -241,5 +288,56 @@ void main() {
       expect(find.text('ada@the-legion.dev'), findsWidgets);
       expect(find.text('Sign out'), findsOneWidget);
     });
+
+    testWidgets(
+      '"Forgot password?" opens the recovery flow and steps through it',
+      (tester) async {
+        await pumpApp(tester);
+        await tester.pump();
+        await tester.pump();
+
+        // Tapping the link must not bounce back to /login.
+        await tester.tap(find.text('Forgot password?'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Reset your password'), findsOneWidget);
+
+        await tester.enterText(find.byType(TextField), 'ada@the-legion.dev');
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Send recovery code'));
+        await tester.pumpAndSettle();
+
+        // Step 2 keeps its state across the navigation inside the flow shell.
+        expect(find.text('Verify your identity'), findsOneWidget);
+        // The masked destination is composed of spans, so match rich text.
+        // `ada@the-legion.dev` is shown as `a•••••a@the-legion.dev`.
+        expect(
+          find.textContaining('@the-legion.dev', findRichText: true),
+          findsOneWidget,
+        );
+
+        // The sixth digit submits automatically, so no extra tap is needed.
+        await tester.enterText(find.byType(TextField), RecoveryRules.demoCode);
+        await tester.pumpAndSettle();
+
+        expect(find.text('Reset Password'), findsOneWidget);
+
+        // The set-password step is taller than the test viewport.
+        await tester.ensureVisible(find.text('Update password'));
+        await tester.pumpAndSettle();
+        await tester.enterText(find.byType(TextField).first, 'Legion2024!');
+        await tester.enterText(find.byType(TextField).last, 'Legion2024!');
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Update password'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Password updated successfully'), findsOneWidget);
+
+        // Leaving the flow cancels it.
+        await tester.tap(find.text('Sign in with new password'));
+        await tester.pumpAndSettle();
+        expect(find.text('Reset your password'), findsNothing);
+      },
+    );
   });
 }

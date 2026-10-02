@@ -2,6 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:the_legion_mobile/core/error/failures.dart';
+import 'package:the_legion_mobile/features/auth/domain/entities/sign_in_attempts.dart';
 import 'package:the_legion_mobile/features/auth/domain/entities/user.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/login.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/logout.dart';
@@ -105,6 +106,8 @@ void main() {
         const AuthState(status: AuthStatus.authenticating),
         const AuthState.unauthenticated(
           failure: AuthFailure(message: 'bad credentials'),
+          // Rejected credentials count towards the lockout.
+          attempts: SignInAttempts(failedAttempts: 1),
         ),
       ],
     );

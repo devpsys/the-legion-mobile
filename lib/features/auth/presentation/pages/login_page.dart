@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
@@ -10,6 +12,8 @@ import '../widgets/audit_protocol_notice.dart';
 import '../widgets/auth_footer.dart';
 import '../widgets/auth_header_banner.dart';
 import '../widgets/credential_card.dart';
+import '../widgets/rate_limit/lockout_notice_card.dart';
+import '../widgets/rate_limit/rate_limit_banner.dart';
 import '../widgets/secondary_action_deck.dart';
 
 /// Sign-in screen.
@@ -59,6 +63,15 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    // Granular selectors: the countdown ticks every second without rebuilding
+    // the rest of the page.
+    final isLocked = context.select<AuthCubit, bool>(
+      (cubit) => cubit.state.isRateLimited,
+    );
+    final cooldown = context.select<AuthCubit, Duration>(
+      (cubit) => cubit.state.cooldownRemaining,
+    );
+
     return Scaffold(
       body: SafeArea(
         // The banner and footer stay docked; only the credential content
@@ -89,6 +102,10 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
+                              if (isLocked) ...[
+                                RateLimitAlertBanner(remaining: cooldown),
+                                AppSpacing.verticalGap(AppSpacing.md),
+                              ],
                               CredentialCard(
                                 emailController: _emailController,
                                 passwordController: _passwordController,
@@ -97,17 +114,25 @@ class _LoginPageState extends State<LoginPage> {
                                 keepSignedIn: _keepSignedIn,
                                 onKeepSignedInChanged: (value) =>
                                     setState(() => _keepSignedIn = value),
-                                onForgotPassword: _notAvailable,
+                                onForgotPassword: () =>
+                                    context.goNamed(Routes.forgotPasswordName),
+                                cooldownRemaining: isLocked ? cooldown : null,
                               ),
                               AppSpacing.verticalGap(AppSpacing.lg),
-                              SecondaryActionDeck(
-                                createAccountLabel:
-                                    context.l10n.loginActionCreateAccount,
-                                verifyLetterLabel:
-                                    context.l10n.loginActionVerifyLetter,
-                                onCreateAccount: _notAvailable,
-                                onVerifyLetter: _notAvailable,
-                              ),
+                              if (isLocked)
+                                LockoutNoticeCard(
+                                  onContactRegistry: _notAvailable,
+                                  onCallRegistry: _notAvailable,
+                                )
+                              else
+                                SecondaryActionDeck(
+                                  createAccountLabel:
+                                      context.l10n.loginActionCreateAccount,
+                                  verifyLetterLabel:
+                                      context.l10n.loginActionVerifyLetter,
+                                  onCreateAccount: _notAvailable,
+                                  onVerifyLetter: _notAvailable,
+                                ),
                               AppSpacing.verticalGap(AppSpacing.md),
                               const AuditProtocolNotice(),
                               AppSpacing.verticalGap(AppSpacing.lg),

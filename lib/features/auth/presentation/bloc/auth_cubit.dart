@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/router/auth_guard.dart';
 import '../../../../core/utils/app_logger.dart';
+import '../../domain/entities/sign_in_attempts.dart';
 import '../../domain/usecases/login.dart';
 import '../../domain/usecases/logout.dart';
 import '../../domain/usecases/restore_session.dart';
@@ -10,7 +13,7 @@ import 'auth_state.dart';
 
 /// Owns the session for the whole application.
 ///
-/// Registered as a singleton because both the router (`AuthGuard`) and every
+/// Registered as a singleton because both the router ([AuthGuard]) and every
 /// auth page observe it. It only talks to use cases — never to a repository or
 /// a datasource directly.
 class AuthCubit extends Cubit<AuthState> implements AuthGuard {
@@ -18,14 +21,24 @@ class AuthCubit extends Cubit<AuthState> implements AuthGuard {
     required LoginUseCase login,
     required LogoutUseCase logout,
     required RestoreSessionUseCase restoreSession,
+    DateTime Function()? now,
+    Duration cooldown = SignInAttempts.cooldown,
   }) : _login = login,
        _logout = logout,
        _restoreSession = restoreSession,
+       _now = now ?? DateTime.now,
+       _cooldown = cooldown,
        super(const AuthState.initial());
 
   final LoginUseCase _login;
   final LogoutUseCase _logout;
   final RestoreSessionUseCase _restoreSession;
+
+  /// Injectable clock and cooldown keep the lockout rule testable.
+  final DateTime Function() _now;
+  final Duration _cooldown;
+
+  Timer? _cooldownTimer;
 
   /// Restores a persisted session. Safe to call more than once.
   Future<void> bootstrap() async {
@@ -54,18 +67,30 @@ class AuthCubit extends Cubit<AuthState> implements AuthGuard {
   }
 
   /// Signs in. On success the router redirects to the protected area.
+  ///
+  /// Rejected credentials are counted by [SignInAttempts]; the fifth locks
+  /// sign-in until the cooldown elapses. Input the API never saw — validation
+  /// failures — does not count towards the limit.
   Future<void> signIn({required String email, required String password}) async {
+    if (state.isRateLimited) return;
+
     emit(state.copyWith(status: AuthStatus.authenticating, clearFailure: true));
     try {
       final user = await _login(email: email, password: password);
+      _cancelCooldown();
       emit(AuthState.authenticated(user));
+    } on AuthFailure catch (failure) {
+      _registerFailure(failure);
     } on Failure catch (failure) {
-      emit(AuthState.unauthenticated(failure: failure));
+      emit(
+        AuthState.unauthenticated(failure: failure, attempts: state.attempts),
+      );
     } catch (error, stackTrace) {
       AppLogger.instance.e('Sign in crashed', error, stackTrace);
       emit(
         AuthState.unauthenticated(
           failure: UnexpectedFailure(message: '$error'),
+          attempts: state.attempts,
         ),
       );
     }
@@ -73,6 +98,7 @@ class AuthCubit extends Cubit<AuthState> implements AuthGuard {
 
   /// Clears the session and returns to the login screen.
   Future<void> signOut() async {
+    _cancelCooldown();
     emit(state.copyWith(status: AuthStatus.signingOut, clearFailure: true));
     try {
       await _logout();
@@ -87,6 +113,52 @@ class AuthCubit extends Cubit<AuthState> implements AuthGuard {
         ),
       );
     }
+  }
+
+  /// Records a rejected credential and starts the lockout when exhausted.
+  void _registerFailure(AuthFailure failure) {
+    final now = _now();
+    final attempts = state.attempts.registerFailure(now, cooldown: _cooldown);
+
+    if (attempts.lockedUntil != null) {
+      emit(
+        AuthState(
+          status: AuthStatus.rateLimited,
+          failure: failure,
+          attempts: attempts,
+          cooldownRemaining: _cooldown,
+        ),
+      );
+      _startCooldownTicker();
+      return;
+    }
+
+    emit(AuthState.unauthenticated(failure: failure, attempts: attempts));
+  }
+
+  void _startCooldownTicker() {
+    _cancelCooldown();
+    _cooldownTimer = Timer.periodic(const Duration(seconds: 1), (_) {
+      final remaining = state.attempts.remainingCooldownAt(_now());
+      if (remaining <= Duration.zero) {
+        _cancelCooldown();
+        // Cooldown elapsed: the user gets a fresh allowance.
+        emit(const AuthState.unauthenticated());
+        return;
+      }
+      emit(state.copyWith(cooldownRemaining: remaining));
+    });
+  }
+
+  void _cancelCooldown() {
+    _cooldownTimer?.cancel();
+    _cooldownTimer = null;
+  }
+
+  @override
+  Future<void> close() {
+    _cancelCooldown();
+    return super.close();
   }
 
   // --- AuthGuard (core/router) -------------------------------------------

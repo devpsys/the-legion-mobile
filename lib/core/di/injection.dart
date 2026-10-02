@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 
 import '../../features/auth/di/auth_module.dart';
+import '../../features/password_recovery/di/password_recovery_module.dart';
 import '../config/app_config.dart';
 import 'network_module.dart';
 import 'router_module.dart';
@@ -26,6 +27,7 @@ Future<void> configureDependencies({AppConfig? config}) async {
   await registerStorageModule(sl);
   registerNetworkModule(sl);
   registerAuthModule(sl);
+  registerPasswordRecoveryModule(sl);
   registerRouterModule(sl);
   configureLogging(sl);
 }

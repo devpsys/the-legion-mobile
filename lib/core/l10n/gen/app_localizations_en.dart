@@ -136,6 +136,279 @@ class AppLocalizationsEn extends AppLocalizations {
       'Secure Institutional Verification © The Legion University';
 
   @override
+  String get rateLimitTitle => 'Too many sign-in attempts';
+
+  @override
+  String get rateLimitRetryIn => 'Try again in';
+
+  @override
+  String get rateLimitTag => 'Security alert';
+
+  @override
+  String get rateLimitFieldLocked => 'Field locked';
+
+  @override
+  String get rateLimitRetryAction => 'Try again in';
+
+  @override
+  String get rateLimitRetryActionReady => 'Try sign in again';
+
+  @override
+  String get rateLimitLockoutTitle => 'Institutional lockout';
+
+  @override
+  String get rateLimitLockoutCode => 'SEC-403';
+
+  @override
+  String get rateLimitLockoutBody =>
+      'Your account is temporarily locked after repeated failed sign-ins. Wait for the countdown or contact the registry to have it restored.';
+
+  @override
+  String get rateLimitAdminRoute => 'Direct administrative route';
+
+  @override
+  String get rateLimitRegistryEmail => 'registry@legion.edu.ng';
+
+  @override
+  String get rateLimitRegistryPhone => '+234 1 234 5678';
+
+  @override
+  String get rateLimitStatutoryRef =>
+      'Statutory Regulation Ref: NG-EDU-VER-2024';
+
+  @override
+  String get recoveryPortalTitle => 'Legion Sovereign Portal';
+
+  @override
+  String get recoverySovereignId => 'Legion Sovereign ID';
+
+  @override
+  String get recoverySecurityLevel => 'SEC-L4';
+
+  @override
+  String recoveryStepOf(Object current, Object total) {
+    return 'Step $current of $total';
+  }
+
+  @override
+  String get recoveryRegistryAuthority => 'Legion Registry Authority';
+
+  @override
+  String get recoveryAccessDirectorate => 'Identity & Access Directorate';
+
+  @override
+  String get recoveryVerified => 'Verified';
+
+  @override
+  String get recoveryRequestTitle => 'Reset your password';
+
+  @override
+  String get recoveryRequestSubtitle =>
+      'Enter your registered institutional email or candidate registration number to initiate identity verification.';
+
+  @override
+  String get recoveryIdentifierLabel => 'Institutional email or ID';
+
+  @override
+  String get recoveryIdentifierHint =>
+      'e.g. amaka.bello@legion.edu.ng or 23/CSC/0412';
+
+  @override
+  String get recoveryIdentifierHelper =>
+      'For applicants, use the email registered on your application.';
+
+  @override
+  String get recoverySecurityProtocol => 'Institutional Security Protocol';
+
+  @override
+  String get recoverySecurityProtocolBody =>
+      'A 6-digit one-time verification code will be dispatched to your recovery phone number and official inbox.';
+
+  @override
+  String get recoverySendCode => 'Send recovery code';
+
+  @override
+  String get recoveryRememberedPassword => 'Remembered your password? Sign in';
+
+  @override
+  String get recoveryVerifyTitle => 'Verify your identity';
+
+  @override
+  String get recoveryVerifySent => 'We sent a 6-digit security code to';
+
+  @override
+  String get recoveryVerifyAndSms => 'and SMS to';
+
+  @override
+  String get recoveryCodeLabel => 'Cryptographic authentication token';
+
+  @override
+  String get recoveryExpiresIn => 'Code expires in';
+
+  @override
+  String get recoveryVerifyCode => 'Verify code';
+
+  @override
+  String recoveryCodeInvalid(Object remaining) {
+    return 'That code is not correct. $remaining attempts remaining before your recovery is locked for 15 minutes.';
+  }
+
+  @override
+  String get recoveryCodeInvalidTitle => 'Incorrect code';
+
+  @override
+  String get recoveryCodeLockedTitle => 'Recovery temporarily locked';
+
+  @override
+  String recoveryCodeLockedBody(Object remaining) {
+    return 'Too many incorrect codes. Recovery unlocks in $remaining.';
+  }
+
+  @override
+  String get recoveryAttemptsTitle => 'Protect your account';
+
+  @override
+  String recoveryAttemptsBody(Object attempts, Object minutes) {
+    return 'For your protection, $attempts incorrect verification attempts will temporarily lock your credentials for $minutes minutes.';
+  }
+
+  @override
+  String recoveryStage(Object stage) {
+    return 'Authentication Stage $stage';
+  }
+
+  @override
+  String get recoveryNoCode => 'Didn\'t receive the code?';
+
+  @override
+  String get recoveryResendCode => 'Resend code';
+
+  @override
+  String get recoveryResendIn => '(available in';
+
+  @override
+  String get recoveryDifferentMethod => 'Try a different recovery method';
+
+  @override
+  String get recoveryCancelAndReturn => 'Cancel and return to sign in';
+
+  @override
+  String get recoveryResetPasswordTitle => 'Reset Password';
+
+  @override
+  String get recoveryNewPasswordSubtitle =>
+      'Choose a new password that satisfies the institutional policy below.';
+
+  @override
+  String get recoveryNewPasswordLabel => 'New password';
+
+  @override
+  String get recoveryNewPasswordHint => 'Enter new password';
+
+  @override
+  String get recoveryConfirmPassword => 'Confirm new password';
+
+  @override
+  String get recoveryConfirmPasswordHint => 'Repeat new password';
+
+  @override
+  String get recoveryPolicyRequirement => 'Institutional Policy Requirement';
+
+  @override
+  String get recoveryPolicyCompliant => 'Policy Compliant';
+
+  @override
+  String get recoveryStrengthCompliant => 'Policy Compliant';
+
+  @override
+  String recoveryStrengthProgress(Object met, Object total) {
+    return 'Policy $met of $total';
+  }
+
+  @override
+  String get recoveryRequirementLength => 'At least 8 characters';
+
+  @override
+  String get recoveryRequirementUppercase =>
+      'Contains at least one uppercase letter';
+
+  @override
+  String get recoveryRequirementNumber => 'Contains at least one number';
+
+  @override
+  String get recoveryRequirementSpecial =>
+      'Contains at least one special character (!@#\$%^&*)';
+
+  @override
+  String get recoveryPasswordMismatch => 'The passwords do not match.';
+
+  @override
+  String get recoveryPasswordPolicyError =>
+      'Choose a password that satisfies every institutional requirement.';
+
+  @override
+  String get recoveryTerminateSessions =>
+      'Sign out of all other active browser sessions and devices';
+
+  @override
+  String get recoveryUpdatePassword => 'Update password';
+
+  @override
+  String get recoveryImmediateEffect =>
+      'Your new password will take effect immediately across all university portals, including Course Registration and Bursary.';
+
+  @override
+  String get recoverySuccessTitle => 'Password updated successfully';
+
+  @override
+  String recoverySuccessBody(Object revocation) {
+    return 'Your institutional security credentials have been updated$revocation.';
+  }
+
+  @override
+  String get recoveryAuditSummary => 'Official Audit Summary';
+
+  @override
+  String get recoveryStatusCommitted => 'STATUS: COMMITTED';
+
+  @override
+  String get recoveryAuditAccount => 'Account';
+
+  @override
+  String get recoveryAuditEmail => 'Primary Email';
+
+  @override
+  String get recoveryAuditTimestamp => 'Timestamp';
+
+  @override
+  String get recoveryAuditHash => 'Security Audit Hash';
+
+  @override
+  String get recoveryAuditSessions => 'Active Sessions';
+
+  @override
+  String get recoverySessionsRevoked =>
+      'Revoked on all other devices (1 device authorized)';
+
+  @override
+  String get recoverySessionsKept =>
+      'Other sessions remain active (1 device authorized)';
+
+  @override
+  String get recoveryAdvisoryTitle => 'Institutional Advisory Notice';
+
+  @override
+  String recoveryAdvisoryBody(Object hotline) {
+    return 'A cryptographic notification has been logged to your university inbox. If you did not authorize this change, freeze your account immediately via the Emergency Registry Hotline ($hotline).';
+  }
+
+  @override
+  String get recoverySignInWithNewPassword => 'Sign in with new password';
+
+  @override
+  String get recoveryAuditGuidelines => 'View security audit guidelines';
+
+  @override
   String get navOverview => 'Overview';
 
   @override
