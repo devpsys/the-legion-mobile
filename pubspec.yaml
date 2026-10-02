@@ -45,6 +45,11 @@ flutter:
   uses-material-design: true
   generate: true
 
+  assets:
+    # Demo content: the portrait the fake backend serves as the student's
+    # avatar. Remove the entry with the fake datasources.
+    - assets/images/
+
   fonts:
     # "Institutional Sovereign" design system.
     - family: Inter

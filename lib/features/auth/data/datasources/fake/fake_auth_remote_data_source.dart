@@ -1,3 +1,4 @@
+import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/error/exceptions.dart';
 import '../../models/auth_tokens_model.dart';
 import '../../models/login_response_model.dart';
@@ -20,6 +21,7 @@ class FakeAuthRemoteDataSource implements AuthRemoteDataSource {
     this.acceptedPassword = defaultPassword,
     this.rejectedEmails = const <String>{},
     this.demoDisplayName = defaultDisplayName,
+    this.demoAvatarReference = AppAssets.studentAvatar,
   });
 
   /// Artificial round-trip time so loading states are actually visible.
@@ -29,6 +31,11 @@ class FakeAuthRemoteDataSource implements AuthRemoteDataSource {
   static const String defaultPassword = 'legion123';
 
   static const String defaultDisplayName = 'Ada Lovelace';
+
+  /// Portrait handed to the demo account: a bundled asset key, which is what
+  /// the real API will eventually answer with an `https` URL for. Set to
+  /// `null` to see the initials fallback instead.
+  final String? demoAvatarReference;
 
   /// Fixed timestamp keeps cached sessions deterministic.
   static final DateTime demoAccountCreatedAt = DateTime.utc(2024, 9, 1);
@@ -65,6 +72,7 @@ class FakeAuthRemoteDataSource implements AuthRemoteDataSource {
         id: demoUserId,
         email: email,
         displayName: demoDisplayName,
+        avatarUrl: demoAvatarReference,
         createdAt: demoAccountCreatedAt,
       ),
       tokens: AuthTokensModel(

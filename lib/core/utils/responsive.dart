@@ -67,6 +67,12 @@ abstract final class AppDimensions {
   /// Size of decorative icons that illustrate an empty or error state.
   static const double iconLarge = 40;
 
+  /// Widest the hub's term pill may grow inside the app bar. It sits beside
+  /// the leading button, the notification bell and the avatar, so it yields
+  /// rather than pushing them off a 390px phone; a longer localized session
+  /// name ellipsizes.
+  static const double termPillMaxWidth = 200;
+
   /// Reference viewport the designs were drawn at (390 × 844).
   static const double referenceWidth = 390;
   static const double referenceHeight = 844;

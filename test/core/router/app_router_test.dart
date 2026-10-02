@@ -274,12 +274,30 @@ void main() {
       await tester.pump();
       await tester.pump();
 
-      // Redirected out of /login into the authenticated shell.
-      expect(find.widgetWithText(AppBar, 'Overview'), findsOneWidget);
-      expect(find.text('Foundation is ready'), findsOneWidget);
+      // Redirected out of /login into the authenticated shell, which lands on
+      // the student hub built from the session's user.
+      expect(find.text('Pay your accommodation fee'), findsOneWidget);
+      expect(
+        find.textContaining(', Ada'),
+        findsOneWidget,
+        reason: 'greeting uses the session',
+      );
+      expect(find.text('300 Level · B.Sc. Computer Science'), findsOneWidget);
 
       // The session created by the fake backend reaches the profile tab.
-      await tester.tap(find.text('Profile'));
+      // Scoped to the shell's navigation chrome — a rail on wide viewports, a
+      // bar on phones — because the hub's account panel also links to
+      // "Profile".
+      await tester.tap(
+        find
+            .descendant(
+              of: find.byWidgetPredicate(
+                (widget) => widget is NavigationRail || widget is NavigationBar,
+              ),
+              matching: find.text('Profile'),
+            )
+            .first,
+      );
       await tester.pump();
       await tester.pump();
 
@@ -339,5 +357,52 @@ void main() {
         expect(find.text('Reset your password'), findsNothing);
       },
     );
+
+    testWidgets('phones get no tab bar on the hub, but keep it on the profile', (
+      tester,
+    ) async {
+      // Phone width: the shell shows a navigation bar rather than a rail, so
+      // this is the only viewport where the bar exists to be hidden.
+      tester.view
+        ..physicalSize = const Size(390, 844) * 2
+        ..devicePixelRatio = 2;
+      addTearDown(tester.view.reset);
+
+      await pumpApp(tester);
+      await tester.pump();
+      await tester.pump();
+
+      await tester.enterText(
+        find.byType(TextField).first,
+        'ada@the-legion.dev',
+      );
+      await tester.enterText(
+        find.byType(TextField).last,
+        FakeAuthRemoteDataSource.defaultPassword,
+      );
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pump();
+      await tester.pump();
+
+      // The hub owns the full canvas.
+      expect(find.byType(NavigationBar), findsNothing);
+      expect(find.text('Pay your accommodation fee'), findsOneWidget);
+
+      // Its own account panel is the way into the profile tab.
+      await tester.ensureVisible(find.text('Profile'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Profile'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Ada Lovelace'), findsOneWidget);
+
+      // ...and the profile tab keeps the bar, so neither branch is a dead end.
+      expect(find.byType(NavigationBar), findsOneWidget);
+      expect(
+        find.textContaining('Overview'),
+        findsWidgets,
+        reason: 'the bar can navigate back to the hub',
+      );
+    });
   });
 }

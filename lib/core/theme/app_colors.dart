@@ -22,6 +22,11 @@ abstract final class AppColors {
   /// Hover / pressed navy.
   static const Color navyPressed = Color(0xFF0B2F50);
 
+  /// Deep navy, the far end of the student hub's hero gradient. Kept as a token
+  /// so the one panel in the app that is allowed a gradient reads it from here
+  /// rather than from a literal.
+  static const Color navyDeep = Color(0xFF061F37);
+
   /// Honey gold: the premium attention anchor, and the primary action in dark
   /// mode (inverted so heavy navy does not sink into deep surfaces).
   static const Color honeyGold = Color(0xFFE6B841);

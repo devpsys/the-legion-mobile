@@ -829,20 +829,194 @@ abstract class AppLocalizations {
   /// No description provided for @homeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Overview'**
+  /// **'Hub'**
   String get homeTitle;
 
-  /// No description provided for @homeFoundationTitle.
+  /// No description provided for @homeHubTitle.
   ///
   /// In en, this message translates to:
-  /// **'Foundation is ready'**
-  String get homeFoundationTitle;
+  /// **'The Legion Hub'**
+  String get homeHubTitle;
 
-  /// No description provided for @homeFoundationBody.
+  /// No description provided for @homeMenuTooltip.
   ///
   /// In en, this message translates to:
-  /// **'This screen is intentionally minimal. Add your first feature under lib/features/ following the pattern documented in ARCHITECTURE.md.'**
-  String get homeFoundationBody;
+  /// **'Open navigation menu'**
+  String get homeMenuTooltip;
+
+  /// No description provided for @homeNotificationsTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get homeNotificationsTooltip;
+
+  /// No description provided for @homeGreetingMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get homeGreetingMorning;
+
+  /// No description provided for @homeGreetingAfternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get homeGreetingAfternoon;
+
+  /// No description provided for @homeGreetingEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get homeGreetingEvening;
+
+  /// No description provided for @homeCurrentTerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Term'**
+  String get homeCurrentTerm;
+
+  /// No description provided for @homeDaysLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'days left'**
+  String get homeDaysLeft;
+
+  /// No description provided for @homeTermInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Term in progress'**
+  String get homeTermInProgress;
+
+  /// No description provided for @homeTermEndsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Ends {date}'**
+  String homeTermEndsOn(Object date);
+
+  /// No description provided for @homeDoThisNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Do this next'**
+  String get homeDoThisNext;
+
+  /// No description provided for @homeSequentialFlow.
+  ///
+  /// In en, this message translates to:
+  /// **'Sequential priority flow'**
+  String get homeSequentialFlow;
+
+  /// No description provided for @homeStepActionable.
+  ///
+  /// In en, this message translates to:
+  /// **'Actionable'**
+  String get homeStepActionable;
+
+  /// No description provided for @homeStepBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked'**
+  String get homeStepBlocked;
+
+  /// No description provided for @homeStepWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get homeStepWaiting;
+
+  /// No description provided for @homeStepDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get homeStepDone;
+
+  /// No description provided for @homeDueOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String homeDueOn(Object date);
+
+  /// No description provided for @homeEverythingElse.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything else'**
+  String get homeEverythingElse;
+
+  /// No description provided for @homeModuleCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 Module} other{{count} Modules}}'**
+  String homeModuleCount(num count);
+
+  /// No description provided for @homeModuleRows.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 module} other{{count} modules}}'**
+  String homeModuleRows(num count);
+
+  /// No description provided for @homeAnnouncements.
+  ///
+  /// In en, this message translates to:
+  /// **'Announcements'**
+  String get homeAnnouncements;
+
+  /// No description provided for @homeSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get homeSeeAll;
+
+  /// No description provided for @homeReadMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Read more'**
+  String get homeReadMore;
+
+  /// No description provided for @homeCategoryUrgent.
+  ///
+  /// In en, this message translates to:
+  /// **'Urgent'**
+  String get homeCategoryUrgent;
+
+  /// No description provided for @homeCategoryNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Notice'**
+  String get homeCategoryNotice;
+
+  /// No description provided for @homeCategoryInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Information'**
+  String get homeCategoryInformation;
+
+  /// No description provided for @homeAccountServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Account & Services'**
+  String get homeAccountServices;
+
+  /// No description provided for @homeQuickActions.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Actions'**
+  String get homeQuickActions;
+
+  /// No description provided for @homeSignOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get homeSignOut;
+
+  /// No description provided for @homeSignOutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You will need your institutional matriculation email and portal password to sign back in.'**
+  String get homeSignOutBody;
+
+  /// No description provided for @homeDiagnosticsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Build diagnostics'**
+  String get homeDiagnosticsTitle;
 
   /// No description provided for @homeEnvironmentLabel.
   ///

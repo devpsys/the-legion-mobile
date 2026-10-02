@@ -415,14 +415,121 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navProfile => 'Profile';
 
   @override
-  String get homeTitle => 'Overview';
+  String get homeTitle => 'Hub';
 
   @override
-  String get homeFoundationTitle => 'Foundation is ready';
+  String get homeHubTitle => 'The Legion Hub';
 
   @override
-  String get homeFoundationBody =>
-      'This screen is intentionally minimal. Add your first feature under lib/features/ following the pattern documented in ARCHITECTURE.md.';
+  String get homeMenuTooltip => 'Open navigation menu';
+
+  @override
+  String get homeNotificationsTooltip => 'Notifications';
+
+  @override
+  String get homeGreetingMorning => 'Good morning';
+
+  @override
+  String get homeGreetingAfternoon => 'Good afternoon';
+
+  @override
+  String get homeGreetingEvening => 'Good evening';
+
+  @override
+  String get homeCurrentTerm => 'Current Term';
+
+  @override
+  String get homeDaysLeft => 'days left';
+
+  @override
+  String get homeTermInProgress => 'Term in progress';
+
+  @override
+  String homeTermEndsOn(Object date) {
+    return 'Ends $date';
+  }
+
+  @override
+  String get homeDoThisNext => 'Do this next';
+
+  @override
+  String get homeSequentialFlow => 'Sequential priority flow';
+
+  @override
+  String get homeStepActionable => 'Actionable';
+
+  @override
+  String get homeStepBlocked => 'Blocked';
+
+  @override
+  String get homeStepWaiting => 'Waiting';
+
+  @override
+  String get homeStepDone => 'Done';
+
+  @override
+  String homeDueOn(Object date) {
+    return 'Due $date';
+  }
+
+  @override
+  String get homeEverythingElse => 'Everything else';
+
+  @override
+  String homeModuleCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count Modules',
+      one: '1 Module',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String homeModuleRows(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count modules',
+      one: '1 module',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeAnnouncements => 'Announcements';
+
+  @override
+  String get homeSeeAll => 'See all';
+
+  @override
+  String get homeReadMore => 'Read more';
+
+  @override
+  String get homeCategoryUrgent => 'Urgent';
+
+  @override
+  String get homeCategoryNotice => 'Notice';
+
+  @override
+  String get homeCategoryInformation => 'Information';
+
+  @override
+  String get homeAccountServices => 'Account & Services';
+
+  @override
+  String get homeQuickActions => 'Quick Actions';
+
+  @override
+  String get homeSignOut => 'Sign out';
+
+  @override
+  String get homeSignOutBody =>
+      'You will need your institutional matriculation email and portal password to sign back in.';
+
+  @override
+  String get homeDiagnosticsTitle => 'Build diagnostics';
 
   @override
   String get homeEnvironmentLabel => 'Environment';

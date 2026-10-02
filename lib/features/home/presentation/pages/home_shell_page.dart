@@ -24,6 +24,10 @@ class HomeShellPage extends StatelessWidget {
 
     return AdaptiveScaffold(
       selectedIndex: navigationShell.currentIndex,
+      // The hub owns the full canvas on phones: it navigates through its own
+      // module directory, account panel and avatar rather than a tab bar.
+      showBottomNavigationBar:
+          navigationShell.currentIndex != HomeTab.overview.index,
       destinations: [
         for (final tab in _tabs)
           AdaptiveScaffoldDestination(

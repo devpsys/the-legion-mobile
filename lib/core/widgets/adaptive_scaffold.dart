@@ -16,6 +16,7 @@ class AdaptiveScaffold extends StatelessWidget {
     this.appBar,
     this.floatingActionButton,
     this.railLeading,
+    this.showBottomNavigationBar = true,
     super.key,
   });
 
@@ -28,6 +29,14 @@ class AdaptiveScaffold extends StatelessWidget {
 
   /// Optional widget pinned above the rail destinations on wide layouts.
   final Widget? railLeading;
+
+  /// Whether phones get the navigation bar below the body.
+  ///
+  /// The student hub turns it off: it navigates through its own module
+  /// directory, account panel and avatar, so the design's page owns the full
+  /// canvas. The rail on tablets and desktop is unaffected, which keeps the
+  /// other tabs reachable on wide windows.
+  final bool showBottomNavigationBar;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +69,7 @@ class AdaptiveScaffold extends StatelessWidget {
                 Expanded(child: body),
               ],
             ),
-      bottomNavigationBar: isCompact
+      bottomNavigationBar: isCompact && showBottomNavigationBar
           ? NavigationBar(
               selectedIndex: selectedIndex,
               onDestinationSelected: onDestinationSelected,
