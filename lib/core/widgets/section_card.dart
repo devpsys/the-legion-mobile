@@ -77,7 +77,7 @@ class ValueChip extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 labelWidget,
-                const SizedBox(height: AppSpacing.xxs),
+                const SizedBox(height: AppSpacing.xs),
                 valueWidget,
               ],
             )
@@ -108,7 +108,7 @@ class NoticeBox extends StatelessWidget {
       padding: AppSpacing.card,
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        borderRadius: AppRadii.card,
+        borderRadius: AppRadii.cardRadius,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

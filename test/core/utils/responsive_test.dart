@@ -10,11 +10,16 @@ void main() {
 
     test('maps large phones in landscape to medium', () {
       expect(resolveScreenSize(600), ScreenSize.medium);
+      expect(resolveScreenSize(900), ScreenSize.medium);
     });
 
-    test('maps tablets to expanded', () {
-      expect(resolveScreenSize(900), ScreenSize.expanded);
-      expect(resolveScreenSize(834), ScreenSize.medium);
+    test('maps tablets to expanded from the 1024px breakpoint', () {
+      expect(
+        resolveScreenSize(AppDimensions.expandedBreakpoint),
+        ScreenSize.expanded,
+      );
+      expect(resolveScreenSize(1200), ScreenSize.expanded);
+      expect(resolveScreenSize(1023), ScreenSize.medium);
     });
 
     test('maps desktop windows to large', () {

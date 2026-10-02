@@ -66,7 +66,7 @@ class AppMark extends StatelessWidget {
           height: size,
           decoration: BoxDecoration(
             color: theme.colorScheme.primary,
-            borderRadius: BorderRadius.circular(AppRadii.xl),
+            borderRadius: BorderRadius.circular(AppRadii.card),
           ),
           alignment: Alignment.center,
           child: Icon(

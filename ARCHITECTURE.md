@@ -172,16 +172,36 @@ Hive is only reached through `HiveKeyValueStore`; `HiveError` is converted to
 
 ---
 
-## 8. Design system
+## 8. Design system — "Institutional Sovereign"
+
+The design system in `lib/core/theme/` implements the **Institutional
+Sovereign** specification
+(`ui-designs/institutional_sovereign/DESIGN.md`), cross-checked against the
+Tailwind tokens in the exported `code.html` designs.
 
 | Token file | Contents |
 | --- | --- |
-| `core/theme/app_colors.dart` | brand/neutral/error tokens, light & dark schemes (add status tokens when a feature needs them) |
-| `core/theme/app_text_styles.dart` | type scale and weights |
-| `core/theme/app_spacing.dart` | spacing scale, page/card padding, gap helpers |
-| `core/theme/app_radii.dart` | corner radius scale |
-| `core/utils/responsive.dart` | `AppDimensions`: breakpoints and max widths |
+| `core/theme/app_colors.dart` | navy/gold brand, canvas→card→subtle surface ramp, hairline strokes, semantic status pairs, portal role accents, `ColorScheme` for light & dark |
+| `core/theme/app_text_styles.dart` | Inter scale (headline/title/body/label) + JetBrains Mono `code*` styles, `tabular()` helper |
+| `core/theme/app_spacing.dart` | 4px/8px scale (4/8/12/16/24/32/48), `canvasGutter` |
+| `core/theme/app_radii.dart` | `card` 20, `element` 10, `row` 16, `pill` 9999 |
+| `core/utils/responsive.dart` | `AppDimensions`: 44px controls, 390×844 reference viewport, breakpoints, max widths |
 | `core/theme/app_theme.dart` | `ThemeData` assembled from the tokens |
+
+Non-negotiable rules from the spec:
+
+1. **Inter** for prose, **JetBrains Mono** for identifiers, reference codes,
+   dates and currency. Fonts are bundled in `assets/fonts` (400/500/600/700).
+2. **No gradients, no glows, no emoji.** Elevation comes from 1px hairline
+   strokes (`AppColors.stroke`), never from diffuse shadows.
+3. **Sentence case** for all titles, actions and dialogs; all-caps only for
+   acronyms (JAMB, CGMA, NUC).
+4. **44px minimum** touch target and control height; data tables use
+   `AppTextStyles.tabular(...)` for column alignment.
+5. **44/20/10 geometry**: 44px controls, 20px cards and dialogs, 10px inputs
+   and buttons, fully-rounded status pills.
+6. **Dark mode inverts the primary action** to honey gold so heavy navy does
+   not sink into deep surfaces; navy becomes a light informational accent.
 
 Widgets read the ambient theme through `core/extensions/context_extensions.dart`:
 
@@ -190,19 +210,22 @@ context.theme · context.colors · context.textStyles · context.l10n
 context.screenSize · context.isCompact · context.viewport
 ```
 
-When a design specification arrives, update these files — do not introduce
+When the specification changes, update the token files — do not introduce
 one-off styles inside screens.
 
 ---
 
 ## 9. Responsive layout
 
+Breakpoints follow the design spec (mobile < 600px, tablet 600–1024px,
+desktop > 1024px with a 1280px centred frame):
+
 | Bucket | Width | Navigation | Content |
 | --- | --- | --- | --- |
-| `compact` | < 600 | `NavigationBar` | full width |
-| `medium` | 600–839 | `NavigationBar` | full width |
-| `expanded` | 840–1439 | `NavigationRail` | constrained by `ResponsiveContent` |
-| `large` | ≥ 1440 | `NavigationRail` | constrained, wide shell |
+| `compact` | < 600 | `NavigationBar` | 16px canvas gutter |
+| `medium` | 600–1023 | `NavigationBar` | 24px gutter, constrained |
+| `expanded` | 1024–1439 | `NavigationRail` | constrained by `ResponsiveContent` |
+| `large` | ≥ 1440 | `NavigationRail` | constrained to `AppDimensions.maxFrameWidth` |
 
 `AdaptiveScaffold` (core) renders one of the two navigation chromes, so phones,
 tablets and web share a single page implementation. Layout reacts to the

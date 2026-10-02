@@ -197,7 +197,7 @@ class _FailureBanner extends StatelessWidget {
       padding: AppSpacing.card,
       decoration: BoxDecoration(
         color: theme.colorScheme.errorContainer,
-        borderRadius: AppRadii.field,
+        borderRadius: AppRadii.elementRadius,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

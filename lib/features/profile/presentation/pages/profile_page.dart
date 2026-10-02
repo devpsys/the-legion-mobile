@@ -100,7 +100,7 @@ class _ProfileHeader extends StatelessWidget {
                   style: theme.textTheme.titleMedium,
                   overflow: TextOverflow.ellipsis,
                 ),
-                AppSpacing.verticalGap(AppSpacing.xxs),
+                AppSpacing.verticalGap(AppSpacing.xs),
                 Text(
                   user.email,
                   style: theme.textTheme.bodySmall?.copyWith(

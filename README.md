@@ -35,6 +35,26 @@ Check your toolchain with `flutter doctor`.
 
 ---
 
+## Design system
+
+The theme implements the **Institutional Sovereign** specification
+(`ui-designs/institutional_sovereign/DESIGN.md`, cross-checked against the
+Tailwind tokens in the exported `code.html` designs):
+
+* **Brand** — brand navy `#0F3F6B` for primary actions, honey gold `#E6B841`
+  as the premium attention anchor.
+* **Surfaces** — a canvas → card → subtle ramp separated by 1px hairline
+  strokes instead of shadows; dark mode inverts the primary action to gold.
+* **Type** — Inter (prose) and JetBrains Mono (identifiers, dates, currency),
+  bundled in `assets/fonts` at 400/500/600/700.
+* **Geometry** — 44px controls, 20px cards and dialogs, 10px inputs and
+  buttons, fully-rounded status pills, strict 4px/8px spacing scale.
+
+Tokens live in `lib/core/theme/` (`app_colors`, `app_text_styles`,
+`app_spacing`, `app_radii`, `app_theme`) plus `AppDimensions` in
+`core/utils/responsive.dart`. Never hardcode a colour, font size, spacing or
+radius in a widget — see [ARCHITECTURE.md](ARCHITECTURE.md#8-design-system--institutional-sovereign).
+
 ## Setup
 
 ```bash

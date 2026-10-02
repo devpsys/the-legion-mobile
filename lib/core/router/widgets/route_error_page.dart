@@ -55,7 +55,7 @@ class RouteErrorPage extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   color: theme.colorScheme.surface,
-                  borderRadius: AppRadii.field,
+                  borderRadius: AppRadii.elementRadius,
                 ),
                 child: TextButton.icon(
                   onPressed: () => context.goNamed(Routes.homeName),

@@ -35,30 +35,47 @@ ScreenSize resolveScreenSize(double width) {
 
 /// Layout tokens: maximum content widths, control sizes and breakpoints.
 ///
-/// Everything here is a design decision, which is why it lives in the design
-/// system instead of being repeated across widgets.
+/// Breakpoints follow the design spec: mobile < 600px, tablet 600–1024px,
+/// desktop > 1024px (12-column layout, 1280px centred frame).
 abstract final class AppDimensions {
   /// Widest a reading-oriented layout may grow on phones/tablets.
-  static const double maxContentWidth = 640;
+  static const double maxContentWidth = 720;
 
-  /// Widest a form or dashboard may grow on tablet/desktop.
+  /// Widest a form may grow on tablet/desktop.
   static const double maxFormWidth = 480;
 
-  /// Minimum interactive size recommended by the platform guidelines.
-  static const double minTapTarget = 48;
+  /// Centred desktop frame from the design spec.
+  static const double maxFrameWidth = 1280;
 
-  static const double buttonHeight = 48;
-  static const double dividerThickness = 1;
-  static const double iconSmall = 20;
+  /// Minimum touch target and control height across all densities (spec: 44).
+  static const double minTapTarget = 44;
+
+  static const double buttonHeight = 44;
+  static const double inputHeight = 44;
+  static const double badgeHeight = 24;
+  static const double checkboxSize = 20;
+
+  /// Uniform 1px perimeter stroke used instead of elevation.
+  static const double hairline = 1;
+
+  /// 2px focus ring per the spec.
+  static const double focusRingWidth = 2;
+
+  static const double iconSmall = 16;
+  static const double iconMedium = 20;
 
   /// Size of decorative icons that illustrate an empty or error state.
   static const double iconLarge = 40;
+
+  /// Reference viewport the designs were drawn at (390 × 844).
+  static const double referenceWidth = 390;
+  static const double referenceHeight = 844;
 
   /// Width (inclusive) at which the compact layout applies: phones.
   static const double mediumBreakpoint = 600;
 
   /// Width (inclusive) at which navigation moves to a rail: tablets.
-  static const double expandedBreakpoint = 840;
+  static const double expandedBreakpoint = 1024;
 
   /// Width (inclusive) above which the shell is width constrained.
   static const double largeBreakpoint = 1440;

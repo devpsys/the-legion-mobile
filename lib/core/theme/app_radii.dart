@@ -1,22 +1,43 @@
 import 'package:flutter/widgets.dart';
 
-/// Corner radius scale.
+/// Corner radius scale of the design system.
 ///
-/// Any new radius must be added here instead of inlining
-/// `BorderRadius.circular(...)` in a widget.
+/// Source: `DESIGN.md` (`rounded`) and the Tailwind `borderRadius` tokens in the
+/// exported designs: `card: 20px`, `row: 16px`, `elem: 10px`.
+///
+/// * Cards and dialogs use [card].
+/// * Inputs, buttons and select triggers use [element].
+/// * Badges, status pills and portal indicators use [pill].
 abstract final class AppRadii {
   static const double xs = 4;
-  static const double sm = 8;
-  static const double md = 12;
-  static const double lg = 16;
-  static const double xl = 24;
-  static const double pill = 999;
+  static const double element = 10;
+  static const double row = 16;
+  static const double card = 20;
 
-  static const BorderRadius card = BorderRadius.all(Radius.circular(lg));
-  static const BorderRadius field = BorderRadius.all(Radius.circular(md));
-  static const BorderRadius chip = BorderRadius.all(Radius.circular(pill));
+  /// Fully rounded geometry for pills and indicators.
+  static const double pill = 9999;
+
+  static const BorderRadius cardRadius = BorderRadius.all(
+    Radius.circular(card),
+  );
+  static const BorderRadius rowRadius = BorderRadius.all(Radius.circular(row));
+  static const BorderRadius elementRadius = BorderRadius.all(
+    Radius.circular(element),
+  );
+  static const BorderRadius chipRadius = BorderRadius.all(
+    Radius.circular(pill),
+  );
+  static const BorderRadius checkboxRadius = BorderRadius.all(
+    Radius.circular(xs),
+  );
+
+  /// 3px accent stripe on the left edge of a card (matriculation header).
+  static const BorderRadius accentStripeLeft = BorderRadius.only(
+    topLeft: Radius.circular(card),
+    bottomLeft: Radius.circular(card),
+  );
 
   static const BorderRadius topSheet = BorderRadius.vertical(
-    top: Radius.circular(xl),
+    top: Radius.circular(card),
   );
 }
