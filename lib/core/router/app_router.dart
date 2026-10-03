@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/admissions/presentation/bloc/admissions_cubit.dart';
 import '../../features/admissions/presentation/pages/admissions_overview_page.dart';
+import '../../features/admissions/presentation/pages/application_detail_page.dart';
 import '../../features/admissions/presentation/pages/applications_page.dart';
 import '../../features/admissions/presentation/pages/programmes_page.dart';
 import '../../features/admissions/presentation/widgets/admissions_shell.dart';
@@ -176,6 +177,16 @@ GoRouter createRouter({
             path: Routes.admissionsApplications,
             name: Routes.admissionsApplicationsName,
             builder: (context, state) => const ApplicationsPage(),
+          ),
+          // A stack step above the record, not a fourth tab: the design gives
+          // it its own back chevron and no tab bar, because a candidate
+          // reading a checklist is not moving between sections.
+          GoRoute(
+            path: Routes.admissionsApplicationDetailTemplate,
+            name: Routes.admissionsApplicationDetailName,
+            builder: (context, state) => ApplicationDetailPage(
+              applicationId: state.pathParameters['id'] ?? '',
+            ),
           ),
         ],
       ),

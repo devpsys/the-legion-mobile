@@ -109,7 +109,11 @@ void main() {
 
       expect(find.text('APP/2026/00042'), findsOneWidget);
       expect(find.text('Admission offered'), findsOneWidget);
-      expect(find.text('2026/2027 Undergraduate Admissions'), findsOneWidget);
+      expect(
+        find.text('2026/2027 Undergraduate Admissions'),
+        findsWidgets,
+        reason: 'the draft is filed in the same cycle, and says so',
+      );
       expect(find.text('B.Sc. Computer Science'), findsOneWidget);
       expect(
         find.text('Second choice: B.Sc. Data Science'),
@@ -156,7 +160,9 @@ void main() {
 
       expect(find.text('APP/2025/00918'), findsOneWidget);
       expect(find.text('Rejected'), findsOneWidget);
-      expect(find.text('B.A. English'), findsOneWidget);
+      // Twice: the draft is a reapplication to the programme this candidate
+      // was refused for last cycle, which is the story the record tells.
+      expect(find.text('B.A. English'), findsNWidgets(2));
       expect(find.text('Updated Sep 14, 2026'), findsOneWidget);
       expect(
         find.text('Admissions for this cycle closed on Feb 28, 2026.'),
@@ -206,8 +212,9 @@ void main() {
     testWidgets('is the one card without a tap-through', (tester) async {
       await pumpApplications(tester);
 
-      // Two chevrons: the offer and the rejection. The third card is finished.
-      expect(find.byIcon(Icons.chevron_right), findsNWidgets(2));
+      // Three chevrons: the offer, the draft and the rejection. The fourth
+      // card is finished.
+      expect(find.byIcon(Icons.chevron_right), findsNWidgets(3));
     });
   });
 
@@ -217,12 +224,34 @@ void main() {
     ) async {
       await pumpApplications(tester);
 
-      await tester.tap(find.text('B.A. English'));
+      // The rejection, addressed by its own reference: the draft is filed to
+      // the same programme, so the title alone names two cards.
+      await tester.tap(find.text('APP/2025/00918'));
       await tester.pumpAndSettle();
 
       expect(
         find.text('This service goes live with the next release.'),
         findsOneWidget,
+      );
+    });
+
+    testWidgets('takes the message away with the detail behind it', (
+      tester,
+    ) async {
+      // The gate is the map: a card whose detail has been removed is answered
+      // like every other card that has nowhere to go.
+      cubit.load();
+      cubit.emit(cubit.state.copyWith(applicationDetails: {}));
+
+      await pumpApplications(tester);
+
+      await tester.tap(find.text('APP/2026/00057'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text('This service goes live with the next release.'),
+        findsOneWidget,
+        reason: 'a card with no detail behind it must not lead to a 404',
       );
     });
   });
@@ -266,7 +295,7 @@ void main() {
       await pumpApplications(tester, dark: true);
 
       expect(tester.takeException(), isNull);
-      expect(find.byType(ApplicationListCard), findsNWidgets(3));
+      expect(find.byType(ApplicationListCard), findsNWidgets(4));
     });
 
     testWidgets('leaves the last card\'s action under no part of the FAB', (

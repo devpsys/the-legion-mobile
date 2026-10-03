@@ -29,6 +29,7 @@ class AdmissionsCubit extends Cubit<AdmissionsState> {
         candidate: AdmissionsFixtures.candidate,
         cycles: AdmissionsFixtures.cycles,
         applications: AdmissionsFixtures.applications,
+        applicationDetails: AdmissionsFixtures.applicationDetails,
         bulletins: AdmissionsFixtures.bulletins,
         programmes: ProgrammeFixtures.programmes,
         jambResultPending: AdmissionsFixtures.jambResultPending,

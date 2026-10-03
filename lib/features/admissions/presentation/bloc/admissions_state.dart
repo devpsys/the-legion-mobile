@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../models/admissions_models.dart';
+import '../models/application_detail_models.dart';
 import '../models/programme_models.dart';
 
 /// Stage of the candidate portal.
@@ -44,6 +45,7 @@ class AdmissionsState extends Equatable {
     this.candidate,
     this.cycles = const [],
     this.applications = const [],
+    this.applicationDetails = const {},
     this.bulletins = const [],
     this.programmes = const [],
     this.emailConfirmation = EmailConfirmationStatus.idle,
@@ -62,6 +64,16 @@ class AdmissionsState extends Equatable {
 
   final List<AdmissionCycle> cycles;
   final List<ApplicationSummary> applications;
+
+  /// The detail screen's content, keyed by [ApplicationSummary.id].
+  ///
+  /// Keyed rather than nested because the two are read apart: every card on
+  /// the record lists its summary, while only a record the candidate opened
+  /// needs a checklist. An application with no entry here has no detail screen
+  /// to open, which is how the portal keeps a card from leading somewhere it
+  /// could not fill.
+  final Map<String, ApplicationDetail> applicationDetails;
+
   final List<Bulletin> bulletins;
 
   /// The whole catalogue, closed programmes included.
@@ -88,6 +100,10 @@ class AdmissionsState extends Equatable {
 
   /// `true` once the candidate can be greeted.
   bool get hasCandidate => candidate != null;
+
+  /// The detail screen's content for [id], or `null` when there is none —
+  /// an unknown deep link, or a record whose detail has not been ported.
+  ApplicationDetail? detailFor(String id) => applicationDetails[id];
 
   /// The confirmation gate is only shown while it still blocks something.
   bool get needsEmailConfirmation =>
@@ -147,6 +163,7 @@ class AdmissionsState extends Equatable {
     CandidateProfile? candidate,
     List<AdmissionCycle>? cycles,
     List<ApplicationSummary>? applications,
+    Map<String, ApplicationDetail>? applicationDetails,
     List<Bulletin>? bulletins,
     List<Programme>? programmes,
     EmailConfirmationStatus? emailConfirmation,
@@ -164,6 +181,7 @@ class AdmissionsState extends Equatable {
       candidate: candidate ?? this.candidate,
       cycles: cycles ?? this.cycles,
       applications: applications ?? this.applications,
+      applicationDetails: applicationDetails ?? this.applicationDetails,
       bulletins: bulletins ?? this.bulletins,
       programmes: programmes ?? this.programmes,
       emailConfirmation: emailConfirmation ?? this.emailConfirmation,
@@ -187,6 +205,7 @@ class AdmissionsState extends Equatable {
     candidate,
     cycles,
     applications,
+    applicationDetails,
     bulletins,
     programmes,
     emailConfirmation,

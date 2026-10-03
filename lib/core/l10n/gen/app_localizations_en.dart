@@ -909,4 +909,183 @@ class AppLocalizationsEn extends AppLocalizations {
   String admissionsFacultyFilterNamed(Object count, Object faculty) {
     return '$faculty ($count)';
   }
+
+  @override
+  String get admissionsDetailTitle => 'Application';
+
+  @override
+  String get admissionsDetailCaption => 'Application detail';
+
+  @override
+  String get admissionsDetailBackTooltip => 'Back to my applications';
+
+  @override
+  String admissionsDetailSubmitBy(Object date, Object time) {
+    return 'Submit by $date, $time';
+  }
+
+  @override
+  String get admissionsDetailNotFound =>
+      'This application is no longer on your record.';
+
+  @override
+  String get admissionsChecklistTitle => 'Before you submit';
+
+  @override
+  String get admissionsChecklistSubtitle =>
+      'Complete each item, then come back to submit.';
+
+  @override
+  String get admissionsChecklistProgress => 'Progress';
+
+  @override
+  String admissionsChecklistProgressValue(Object done, Object total) {
+    return '$done of $total complete';
+  }
+
+  @override
+  String admissionsChecklistEmailDetail(Object email) {
+    return 'Open the confirmation link we emailed to $email.';
+  }
+
+  @override
+  String get admissionsNotTracked => 'Not tracked';
+
+  @override
+  String get admissionsChecklistResendEmail => 'Resend confirmation email';
+
+  @override
+  String get admissionsChecklistResendNote =>
+      'We send one every time you ask. Check your spam folder.';
+
+  @override
+  String get admissionsChecklistActionResend => 'Resend';
+
+  @override
+  String get admissionsChecklistActionComplete => 'Complete';
+
+  @override
+  String get admissionsChecklistActionClaim => 'Claim';
+
+  @override
+  String get admissionsChecklistActionUpload => 'Upload';
+
+  @override
+  String get admissionsChecklistActionInvite => 'Invite';
+
+  @override
+  String get admissionsChecklistActionCheck => 'Check';
+
+  @override
+  String get admissionsChoicesTitle => 'Programme choices';
+
+  @override
+  String get admissionsChoicesFirstLabel => 'First choice *';
+
+  @override
+  String get admissionsChoicesSecondLabel => 'Second choice';
+
+  @override
+  String get admissionsChoicesOptional => 'optional';
+
+  @override
+  String get admissionsChoicesNone => 'None';
+
+  @override
+  String get admissionsChoicesFee => 'Form fee for your first choice:';
+
+  @override
+  String get admissionsChoicesSave => 'Save choices';
+
+  @override
+  String get admissionsRefereesTitle => 'Referees';
+
+  @override
+  String get admissionsRefereesSubtitle =>
+      'At least 2 required. Each receives an emailed link to a short confidential form.';
+
+  @override
+  String get admissionsRefereeAwaiting => 'Awaiting';
+
+  @override
+  String get admissionsRefereeResend => 'Resend';
+
+  @override
+  String get admissionsRefereeRemoveTooltip => 'Remove referee';
+
+  @override
+  String get admissionsRefereeInviteTitle => 'Invite a referee';
+
+  @override
+  String get admissionsRefereeInviteSubtitle =>
+      'They get a link by email. They never see your application.';
+
+  @override
+  String get admissionsRefereeNameLabel => 'Name *';
+
+  @override
+  String get admissionsRefereeEmailLabel => 'Email *';
+
+  @override
+  String get admissionsRefereePhoneLabel => 'Phone (optional)';
+
+  @override
+  String get admissionsRefereeOccupationLabel => 'Occupation (optional)';
+
+  @override
+  String get admissionsRefereeNameHint => 'Dr/Prof Full Name';
+
+  @override
+  String get admissionsRefereeEmailHint => 'official.email@institution.edu.ng';
+
+  @override
+  String get admissionsRefereePhoneHint => '+234...';
+
+  @override
+  String get admissionsRefereeOccupationHint =>
+      'e.g. Senior Lecturer, ABU Zaria';
+
+  @override
+  String get admissionsRefereeSend => 'Send invitation';
+
+  @override
+  String get admissionsSubmitTitle => 'Submit';
+
+  @override
+  String get admissionsSubmitDeclaration =>
+      'I confirm that the information in my application and records is true and complete. I understand that false information will lead to my admission being withdrawn.';
+
+  @override
+  String get admissionsSubmitAction => 'Submit application';
+
+  @override
+  String admissionsSubmitBlocked(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Complete the checklist first. $count items are outstanding',
+      one: 'Complete the checklist first. 1 item is outstanding',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get admissionsSubmitNeedsDeclaration =>
+      'Tick the confirmation above to submit.';
+
+  @override
+  String get admissionsHistoryTitle => 'History';
+
+  @override
+  String get admissionsHistorySubtitle => 'Append-only activity log';
+
+  @override
+  String get admissionsWithdrawAction => 'Withdraw application';
+
+  @override
+  String get admissionsWithdrawTitle => 'Withdraw this application?';
+
+  @override
+  String get admissionsWithdrawBody =>
+      'The application is closed for good and cannot be reopened. You can start another while the cycle is still open.';
 }

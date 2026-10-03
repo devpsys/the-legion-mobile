@@ -21,6 +21,19 @@ abstract final class Routes {
   static const String admissionsProgrammes = '/admissions/programmes';
   static const String admissionsApplications = '/admissions/applications';
 
+  /// Path template of one application's detail screen; `:id` is the record's
+  /// own id. The concrete location is built with [admissionsApplicationDetail].
+  static const String admissionsApplicationDetailTemplate =
+      '/admissions/applications/:id';
+
+  /// The detail screen's location for one record, e.g.
+  /// `/admissions/applications/app-00057`.
+  ///
+  /// Derived from the template so the two cannot drift apart, and used for the
+  /// deep-link check that keeps the portal behind a session.
+  static String admissionsApplicationDetail(String id) =>
+      admissionsApplicationDetailTemplate.replaceFirst(':id', id);
+
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
   static const String loginName = 'login';
@@ -33,12 +46,20 @@ abstract final class Routes {
   static const String admissionsName = 'admissions';
   static const String admissionsProgrammesName = 'admissionsProgrammes';
   static const String admissionsApplicationsName = 'admissionsApplications';
+  static const String admissionsApplicationDetailName =
+      'admissionsApplicationDetail';
 
-  /// Every screen inside the candidate portal.
+  /// Every screen inside the candidate portal, as far as it is expressible as
+  /// a literal path.
   ///
-  /// The portal's back handling is written against these: `PopScope` decides
-  /// where back leads, so a new portal section has to be listed here or it
-  /// becomes a dead end.
+  /// The portal's back handling and the deep-link check are written against
+  /// these: `PopScope` decides where back leads, and `resolveRedirect` must
+  /// send an anonymous visitor to sign-in rather than into the portal, so a
+  /// new portal section has to be listed here or it becomes reachable without
+  /// a session. The application detail is a child of
+  /// [admissionsApplications] — its own location is built by
+  /// [admissionsApplicationDetail] and inherits that protection from the
+  /// prefix.
   static const Set<String> admissionsPaths = {
     admissions,
     admissionsProgrammes,

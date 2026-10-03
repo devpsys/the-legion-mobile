@@ -12,6 +12,8 @@ import 'package:the_legion_mobile/core/router/auth_guard.dart';
 import 'package:the_legion_mobile/core/router/route_names.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_shell.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_tab_bar.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/fake_auth_remote_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/in_memory_auth_local_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/repositories/auth_repository_impl.dart';
@@ -212,6 +214,36 @@ void main() {
       expect(
         resolveRedirect(authGuard: guard, location: Routes.forgotPassword),
         Routes.splash,
+      );
+    });
+  });
+
+  group('admissionsBackTarget', () {
+    test('leaves the portal through its front door', () {
+      expect(admissionsBackTarget(Routes.admissions), Routes.homeName);
+    });
+
+    test('unwinds the detail screen to the record it was opened from', () {
+      expect(
+        admissionsBackTarget(Routes.admissionsApplicationDetail('app-00057')),
+        Routes.admissionsApplicationsName,
+        reason: 'a step above the record must fall back one step, not two',
+      );
+    });
+
+    test('keeps the record itself out of the detail branch', () {
+      // The prefix test is written with a trailing slash precisely so this
+      // location is not mistaken for a child of itself.
+      expect(
+        admissionsBackTarget(Routes.admissionsApplications),
+        Routes.admissionsName,
+      );
+    });
+
+    test('sends every other section back to the overview', () {
+      expect(
+        admissionsBackTarget(Routes.admissionsProgrammes),
+        Routes.admissionsName,
       );
     });
   });
@@ -507,6 +539,50 @@ void main() {
 
       expect(find.text('Your applications'), findsOneWidget);
       expect(find.text('My applications'), findsNothing);
+    });
+
+    testWidgets('the draft opens its detail, and both ways back lead here', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Applications'));
+      await tester.pumpAndSettle();
+
+      // The draft, addressed by its reference: its title names two cards.
+      await tester.ensureVisible(find.text('APP/2026/00057'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('APP/2026/00057'));
+      await tester.pumpAndSettle();
+
+      // Its own chrome — a checklist, the record's title gone, and no tab bar:
+      // this is one file being read, not a section being visited.
+      expect(find.text('Before you submit'), findsOneWidget);
+      expect(find.text('3 of 9 complete'), findsOneWidget);
+      expect(find.text('My applications'), findsNothing);
+      expect(find.byType(AdmissionsTabBar), findsNothing);
+
+      // The system gesture unwinds one step, to the record.
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      expect(find.text('My applications'), findsOneWidget);
+
+      // ...and so does the chevron in the bar.
+      await tester.ensureVisible(find.text('APP/2026/00057'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('APP/2026/00057'));
+      await tester.pumpAndSettle();
+
+      expect(find.byIcon(Icons.chevron_left), findsOneWidget);
+      await tester.tap(find.byIcon(Icons.chevron_left));
+      await tester.pumpAndSettle();
+
+      expect(find.text('My applications'), findsOneWidget);
+      expect(find.text('Before you submit'), findsNothing);
     });
 
     testWidgets('the record leads on to the browser and to the hub', (

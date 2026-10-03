@@ -1587,6 +1587,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{faculty} ({count})'**
   String admissionsFacultyFilterNamed(Object count, Object faculty);
+
+  /// No description provided for @admissionsDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Application'**
+  String get admissionsDetailTitle;
+
+  /// No description provided for @admissionsDetailCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Application detail'**
+  String get admissionsDetailCaption;
+
+  /// No description provided for @admissionsDetailBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to my applications'**
+  String get admissionsDetailBackTooltip;
+
+  /// No description provided for @admissionsDetailSubmitBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit by {date}, {time}'**
+  String admissionsDetailSubmitBy(Object date, Object time);
+
+  /// No description provided for @admissionsDetailNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This application is no longer on your record.'**
+  String get admissionsDetailNotFound;
+
+  /// No description provided for @admissionsChecklistTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Before you submit'**
+  String get admissionsChecklistTitle;
+
+  /// No description provided for @admissionsChecklistSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete each item, then come back to submit.'**
+  String get admissionsChecklistSubtitle;
+
+  /// No description provided for @admissionsChecklistProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get admissionsChecklistProgress;
+
+  /// No description provided for @admissionsChecklistProgressValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{done} of {total} complete'**
+  String admissionsChecklistProgressValue(Object done, Object total);
+
+  /// No description provided for @admissionsChecklistEmailDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the confirmation link we emailed to {email}.'**
+  String admissionsChecklistEmailDetail(Object email);
+
+  /// No description provided for @admissionsNotTracked.
+  ///
+  /// In en, this message translates to:
+  /// **'Not tracked'**
+  String get admissionsNotTracked;
+
+  /// No description provided for @admissionsChecklistResendEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend confirmation email'**
+  String get admissionsChecklistResendEmail;
+
+  /// No description provided for @admissionsChecklistResendNote.
+  ///
+  /// In en, this message translates to:
+  /// **'We send one every time you ask. Check your spam folder.'**
+  String get admissionsChecklistResendNote;
+
+  /// No description provided for @admissionsChecklistActionResend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get admissionsChecklistActionResend;
+
+  /// No description provided for @admissionsChecklistActionComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete'**
+  String get admissionsChecklistActionComplete;
+
+  /// No description provided for @admissionsChecklistActionClaim.
+  ///
+  /// In en, this message translates to:
+  /// **'Claim'**
+  String get admissionsChecklistActionClaim;
+
+  /// No description provided for @admissionsChecklistActionUpload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload'**
+  String get admissionsChecklistActionUpload;
+
+  /// No description provided for @admissionsChecklistActionInvite.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite'**
+  String get admissionsChecklistActionInvite;
+
+  /// No description provided for @admissionsChecklistActionCheck.
+  ///
+  /// In en, this message translates to:
+  /// **'Check'**
+  String get admissionsChecklistActionCheck;
+
+  /// No description provided for @admissionsChoicesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme choices'**
+  String get admissionsChoicesTitle;
+
+  /// No description provided for @admissionsChoicesFirstLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'First choice *'**
+  String get admissionsChoicesFirstLabel;
+
+  /// No description provided for @admissionsChoicesSecondLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Second choice'**
+  String get admissionsChoicesSecondLabel;
+
+  /// No description provided for @admissionsChoicesOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'optional'**
+  String get admissionsChoicesOptional;
+
+  /// No description provided for @admissionsChoicesNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get admissionsChoicesNone;
+
+  /// No description provided for @admissionsChoicesFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Form fee for your first choice:'**
+  String get admissionsChoicesFee;
+
+  /// No description provided for @admissionsChoicesSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save choices'**
+  String get admissionsChoicesSave;
+
+  /// No description provided for @admissionsRefereesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Referees'**
+  String get admissionsRefereesTitle;
+
+  /// No description provided for @admissionsRefereesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'At least 2 required. Each receives an emailed link to a short confidential form.'**
+  String get admissionsRefereesSubtitle;
+
+  /// No description provided for @admissionsRefereeAwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting'**
+  String get admissionsRefereeAwaiting;
+
+  /// No description provided for @admissionsRefereeResend.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend'**
+  String get admissionsRefereeResend;
+
+  /// No description provided for @admissionsRefereeRemoveTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove referee'**
+  String get admissionsRefereeRemoveTooltip;
+
+  /// No description provided for @admissionsRefereeInviteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invite a referee'**
+  String get admissionsRefereeInviteTitle;
+
+  /// No description provided for @admissionsRefereeInviteSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'They get a link by email. They never see your application.'**
+  String get admissionsRefereeInviteSubtitle;
+
+  /// No description provided for @admissionsRefereeNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Name *'**
+  String get admissionsRefereeNameLabel;
+
+  /// No description provided for @admissionsRefereeEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email *'**
+  String get admissionsRefereeEmailLabel;
+
+  /// No description provided for @admissionsRefereePhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone (optional)'**
+  String get admissionsRefereePhoneLabel;
+
+  /// No description provided for @admissionsRefereeOccupationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Occupation (optional)'**
+  String get admissionsRefereeOccupationLabel;
+
+  /// No description provided for @admissionsRefereeNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Dr/Prof Full Name'**
+  String get admissionsRefereeNameHint;
+
+  /// No description provided for @admissionsRefereeEmailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'official.email@institution.edu.ng'**
+  String get admissionsRefereeEmailHint;
+
+  /// No description provided for @admissionsRefereePhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'+234...'**
+  String get admissionsRefereePhoneHint;
+
+  /// No description provided for @admissionsRefereeOccupationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Senior Lecturer, ABU Zaria'**
+  String get admissionsRefereeOccupationHint;
+
+  /// No description provided for @admissionsRefereeSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send invitation'**
+  String get admissionsRefereeSend;
+
+  /// No description provided for @admissionsSubmitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get admissionsSubmitTitle;
+
+  /// No description provided for @admissionsSubmitDeclaration.
+  ///
+  /// In en, this message translates to:
+  /// **'I confirm that the information in my application and records is true and complete. I understand that false information will lead to my admission being withdrawn.'**
+  String get admissionsSubmitDeclaration;
+
+  /// No description provided for @admissionsSubmitAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit application'**
+  String get admissionsSubmitAction;
+
+  /// No description provided for @admissionsSubmitBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{Complete the checklist first. 1 item is outstanding} other{Complete the checklist first. {count} items are outstanding}}'**
+  String admissionsSubmitBlocked(num count);
+
+  /// No description provided for @admissionsSubmitNeedsDeclaration.
+  ///
+  /// In en, this message translates to:
+  /// **'Tick the confirmation above to submit.'**
+  String get admissionsSubmitNeedsDeclaration;
+
+  /// No description provided for @admissionsHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get admissionsHistoryTitle;
+
+  /// No description provided for @admissionsHistorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Append-only activity log'**
+  String get admissionsHistorySubtitle;
+
+  /// No description provided for @admissionsWithdrawAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw application'**
+  String get admissionsWithdrawAction;
+
+  /// No description provided for @admissionsWithdrawTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw this application?'**
+  String get admissionsWithdrawTitle;
+
+  /// No description provided for @admissionsWithdrawBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The application is closed for good and cannot be reopened. You can start another while the cycle is still open.'**
+  String get admissionsWithdrawBody;
 }
 
 class _AppLocalizationsDelegate

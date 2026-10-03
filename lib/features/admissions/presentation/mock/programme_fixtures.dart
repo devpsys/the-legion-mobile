@@ -17,11 +17,15 @@ abstract final class ProgrammeFixtures {
   static const int formFeeMinorUnits = 750000;
 
   /// The programme's own deadline matches the cycle's.
-  static final DateTime cycleDeadline = DateTime(2027, 2, 28);
+  /// The cycle closes at the *end* of its last day, not at its start: the
+  /// detail screen quotes the hour ("Submit by Feb 28, 2027, 23:59"), and a
+  /// deadline stored as midnight would read 00:00 — twelve hours before the
+  /// portal actually shuts.
+  static final DateTime cycleDeadline = DateTime(2027, 2, 28, 23, 59);
 
   /// One day short of the cycle's own deadline, which is what earns the
   /// "ahead of the cycle" notice.
-  static final DateTime earlyDeadline = DateTime(2027, 2, 14);
+  static final DateTime earlyDeadline = DateTime(2027, 2, 14, 23, 59);
 
   /// When this programme stops accepting applications for the session.
   static final DateTime lawClosedOn = DateTime(2027, 1, 31);

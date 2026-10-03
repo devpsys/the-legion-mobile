@@ -54,10 +54,16 @@ class ApplicationsBody extends StatelessWidget {
                   child: ApplicationListCard(
                     application: application,
                     now: now,
-                    // The detail screen is not built yet. The message is
-                    // deliberate: a dead tap is worse than an admission that
-                    // it is not live in this release.
-                    onOpen: () => context.showMessage(l10n.commonComingSoon),
+                    // Only a record with a detail screen behind it opens
+                    // one: the offered, rejected and matriculated cards keep
+                    // the honest message until their designs are ported, so
+                    // no card leads somewhere it could not fill.
+                    onOpen: state.detailFor(application.id) != null
+                        ? () => context.goNamed(
+                            Routes.admissionsApplicationDetailName,
+                            pathParameters: {'id': application.id},
+                          )
+                        : () => context.showMessage(l10n.commonComingSoon),
                     onOpenPortal: () => context.goNamed(Routes.homeName),
                   ),
                 ),

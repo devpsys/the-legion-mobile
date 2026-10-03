@@ -1,4 +1,7 @@
+import '../../../../core/utils/money.dart';
 import '../models/admissions_models.dart';
+import '../models/application_detail_models.dart';
+import '../models/programme_models.dart';
 import 'programme_fixtures.dart';
 
 /// Sample content for the candidate admissions portal.
@@ -50,11 +53,12 @@ abstract final class AdmissionsFixtures {
   /// The applications on the candidate's record, newest first.
   ///
   /// Chosen to exercise every footer the `admissions_my_applications` design
-  /// gives a card: an outstanding offer with a response deadline, a rejection
-  /// from a cycle that has since closed, and a matriculation that hands over
-  /// to the student portal.
+  /// gives a card: an outstanding offer with a response deadline, an unopened
+  /// draft, a rejection from a cycle that has since closed, and a
+  /// matriculation that hands over to the student portal. Newest change first.
   static final List<ApplicationSummary> applications = [
     offeredApplication,
+    draftApplication,
     rejectedApplication,
     matriculatedApplication,
   ];
@@ -73,6 +77,27 @@ abstract final class AdmissionsFixtures {
     updatedOn: DateTime(2026, 10, 3, 12),
     cycleName: currentCycle.name,
     respondBy: DateTime(2027, 2, 28),
+  );
+
+  /// The application the candidate started and has not submitted — the record
+  /// the `application_detail` design draws: a nine-item checklist three parts
+  /// complete, four items genuinely missing, and two the bursary cannot
+  /// answer for at all.
+  ///
+  /// Filed against B.A. English, the programme he was refused last cycle, so
+  /// the draft reads as a reapplication rather than a second bite at the
+  /// Computer Science offer sitting beside it.
+  static final ApplicationSummary draftApplication = ApplicationSummary(
+    id: 'app-00057',
+    trackingCode: 'APP/2026/00057',
+    programmeName: ProgrammeFixtures.english.title,
+    department: ProgrammeFixtures.english.department,
+    status: ApplicationStatus.draft,
+    // "Application started", the first line of the activity log.
+    submittedOn: DateTime(2026, 9, 12),
+    // The screening note, the most recent line of it.
+    updatedOn: DateTime(2026, 9, 20),
+    cycleName: currentCycle.name,
   );
 
   /// A refusal from the cycle that has since closed, which is why it carries
@@ -114,6 +139,142 @@ abstract final class AdmissionsFixtures {
     cycleName: currentCycle.name,
     trackingCode: 'APP/2026/00014',
   );
+
+  // --- Application detail -------------------------------------------------
+
+  /// The readiness checklist of [draftApplication].
+  ///
+  /// Three green ticks, four known gaps and two the bursary cannot answer —
+  /// the shape the `application_detail` designs are drawn around, and the
+  /// reason submit stays disabled: 4 items are outstanding, while the two
+  /// amber ones do not count against the candidate at all.
+  static final ApplicationDetail draftDetail = ApplicationDetail(
+    application: draftApplication,
+    cycleId: currentCycle.id,
+    firstChoiceProgrammeId: ProgrammeFixtures.english.id,
+    checklist: [
+      ChecklistItem(
+        id: 'verified-email',
+        state: RequirementState.notMet,
+        title: 'Verified email address',
+        // Interpolated rather than written twice: the address on screen has to
+        // be the one on the candidate's record.
+        detail: 'Open the confirmation link we emailed to ${candidate.email}.',
+        action: ChecklistAction.resendEmail,
+      ),
+      ChecklistItem(
+        id: 'personal-details',
+        state: RequirementState.notMet,
+        title: 'Personal details',
+        detail: 'Add your date of birth, gender, country, contact address.',
+        action: ChecklistAction.completePersonalDetails,
+      ),
+      ChecklistItem(
+        id: 'olevel-results',
+        state: RequirementState.met,
+        title: "O'level results",
+        detail: '1 sitting added.',
+      ),
+      ChecklistItem(
+        id: 'jamb-caps',
+        state: RequirementState.notTracked,
+        title: 'JAMB result from CAPS',
+        detail: 'Claim the JAMB result the university received from CAPS.',
+        action: ChecklistAction.claimJamb,
+      ),
+      ChecklistItem(
+        id: 'birth-certificate',
+        state: RequirementState.met,
+        title: 'Birth certificate',
+        detail: 'Uploaded.',
+      ),
+      ChecklistItem(
+        id: 'waec-neco',
+        state: RequirementState.met,
+        title: 'WAEC/NECO result',
+        detail: 'Uploaded.',
+      ),
+      ChecklistItem(
+        id: 'passport',
+        state: RequirementState.notMet,
+        title: 'Passport photograph',
+        detail: 'Upload it under Documents.',
+        action: ChecklistAction.uploadDocument,
+      ),
+      ChecklistItem(
+        id: 'referees',
+        state: RequirementState.notMet,
+        title: 'Referees',
+        detail: '1 of 2 invited | 0 responded.',
+        action: ChecklistAction.inviteReferee,
+      ),
+      ChecklistItem(
+        id: 'form-fee',
+        state: RequirementState.notTracked,
+        title: 'Application form fee',
+        // The fee this application owes, quoted from the filed first choice so
+        // it cannot drift from the catalogue. The browser quotes the same fee
+        // for the same programme.
+        detail:
+            '${formatNaira(ProgrammeFixtures.english.formFeeMinorUnits)}. '
+            'Online payment opens when the bursary goes live; you can submit '
+            'meanwhile.',
+        action: ChecklistAction.checkPayment,
+      ),
+    ],
+    referees: [
+      Referee(
+        id: 'referee-0001',
+        name: 'Dr Amina Yusuf',
+        email: 'amina.yusuf@uniabuja.edu.ng',
+        role: 'Senior Lecturer, Department of Computer Science, ABU Zaria',
+        status: RefereeStatus.awaiting,
+      ),
+    ],
+    // Newest first, which is how the log reads.
+    history: [
+      ApplicationHistoryEvent(
+        id: 'event-0005',
+        kind: ApplicationHistoryKind.screeningNote,
+        occurredOn: DateTime(2026, 9, 20),
+        title: 'Screening note',
+        note: 'Awaiting your WAEC/NECO result to be verified.',
+      ),
+      ApplicationHistoryEvent(
+        id: 'event-0004',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 18),
+        title: 'Birth certificate uploaded',
+      ),
+      ApplicationHistoryEvent(
+        id: 'event-0003',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 18),
+        title: 'Referee invited: Dr Amina Yusuf',
+      ),
+      ApplicationHistoryEvent(
+        id: 'event-0002',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 14),
+        title: 'First choice set to B.A. English',
+      ),
+      ApplicationHistoryEvent(
+        id: 'event-0001',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 12),
+        title: 'Application started',
+      ),
+    ],
+  );
+
+  /// Every detail the portal can open, keyed by application id.
+  ///
+  /// Only the draft has one today: the offered, rejected and matriculated
+  /// records have designs of their own that are not ported yet, so their cards
+  /// do not offer a detail screen they could not fill.
+  static final Map<String, ApplicationDetail> applicationDetails = {
+    draftDetail.application.id: draftDetail,
+  };
 
   // --- JAMB ---------------------------------------------------------------
 
