@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/admissions/presentation/bloc/admissions_cubit.dart';
 import '../../features/admissions/presentation/pages/admissions_overview_page.dart';
+import '../../features/admissions/presentation/pages/programmes_page.dart';
+import '../../features/admissions/presentation/widgets/admissions_shell.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
 import '../../features/home/presentation/pages/home_overview_page.dart';
@@ -143,16 +145,32 @@ GoRouter createRouter({
       ),
       // The candidate portal owns its own navigation chrome — a candidate is
       // not a student yet — so it sits outside the student shell rather than as
-      // another tab inside it. It is a top-level route, not a child of a
-      // `ShellRoute`, so its back handling lives in the root navigator (see
-      // `HomeShellPage` for why that matters).
-      GoRoute(
-        path: Routes.admissions,
-        name: Routes.admissionsName,
-        builder: (context, state) => BlocProvider<AdmissionsCubit>(
-          create: (context) => sl<AdmissionsCubit>(),
-          child: const AdmissionsOverviewPage(),
+      // another tab inside it.
+      //
+      // One cubit across both sections: the catalogue is large, the chosen
+      // cycle is a decision the candidate made on one screen and expects to
+      // still hold on the other, and the tab bar is the only navigation between
+      // them. Back is handled once, by `AdmissionsShell`, in the root navigator.
+      ShellRoute(
+        builder: (context, state, child) => AdmissionsShell(
+          location: state.matchedLocation,
+          child: BlocProvider<AdmissionsCubit>(
+            create: (context) => sl<AdmissionsCubit>(),
+            child: child,
+          ),
         ),
+        routes: [
+          GoRoute(
+            path: Routes.admissions,
+            name: Routes.admissionsName,
+            builder: (context, state) => const AdmissionsOverviewPage(),
+          ),
+          GoRoute(
+            path: Routes.admissionsProgrammes,
+            name: Routes.admissionsProgrammesName,
+            builder: (context, state) => const ProgrammesPage(),
+          ),
+        ],
       ),
     ],
   );

@@ -5,7 +5,10 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
+import '../../../../core/widgets/app_mark.dart';
 import '../../../../core/widgets/notification_bell.dart';
+import '../../../auth/domain/entities/user.dart';
+import '../../../auth/presentation/widgets/user_avatar.dart';
 
 /// Fixed top bar of the candidate portal.
 ///
@@ -14,18 +17,23 @@ import '../../../../core/widgets/notification_bell.dart';
 class AdmissionsTaskBar extends StatelessWidget implements PreferredSizeWidget {
   const AdmissionsTaskBar({
     required this.cycleLabel,
-    required this.onBack,
+    required this.user,
     required this.onNotifications,
+    required this.onAvatarTap,
     super.key,
   });
 
   /// Compact cycle label, e.g. `2026/2027 Cycle`.
   final String cycleLabel;
 
-  /// Returns to the student hub.
-  final VoidCallback onBack;
+  /// The signed-in candidate, shown as the avatar. `null` while the session
+  /// is being restored, in which case no avatar is drawn.
+  final User? user;
 
   final VoidCallback onNotifications;
+
+  /// Opens the candidate's profile.
+  final VoidCallback onAvatarTap;
 
   @override
   Size get preferredSize => const Size.fromHeight(barHeight);
@@ -47,20 +55,38 @@ class AdmissionsTaskBar extends StatelessWidget implements PreferredSizeWidget {
       shape: Border(
         bottom: BorderSide(color: theme.colorScheme.outlineVariant),
       ),
-      // A back affordance rather than the design's hamburger: the portal is
-      // reached from the hub, and the hub is where a candidate returns to.
-      leading: IconButton(
-        onPressed: onBack,
-        tooltip: l10n.admissionsBackTooltip,
-        icon: const Icon(Icons.arrow_back),
-      ),
+      // The product mark rather than a back button: back is the system
+      // gesture, and the portal's own tab bar is the navigation between its
+      // sections. Decorative, so it is not a tap target.
+      automaticallyImplyLeading: false,
+      leading: const Center(child: AppMark(size: AppDimensions.avatarSmall)),
       centerTitle: true,
       title: CyclePill(label: cycleLabel),
       actions: [
         // The shared bell: the same count and the same sheet as the hub's,
         // because both read one notification centre.
         NotificationBell(onPressed: onNotifications),
-        AppSpacing.horizontalGap(AppSpacing.sm),
+        AppSpacing.horizontalGap(AppSpacing.xs),
+        if (user case final user?)
+          Padding(
+            padding: const EdgeInsets.only(right: AppSpacing.md),
+            child: Semantics(
+              button: true,
+              label: l10n.navProfile,
+              child: InkResponse(
+                onTap: onAvatarTap,
+                customBorder: const CircleBorder(),
+                child: ExcludeSemantics(
+                  child: UserAvatar(
+                    user: user,
+                    size: AppDimensions.avatarSmall,
+                  ),
+                ),
+              ),
+            ),
+          )
+        else
+          AppSpacing.horizontalGap(AppSpacing.sm),
       ],
     );
   }

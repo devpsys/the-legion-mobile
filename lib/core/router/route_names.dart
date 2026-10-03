@@ -18,6 +18,7 @@ abstract final class Routes {
 
   // Candidate admissions portal
   static const String admissions = '/admissions';
+  static const String admissionsProgrammes = '/admissions/programmes';
 
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
@@ -29,6 +30,14 @@ abstract final class Routes {
   static const String setNewPasswordName = 'setNewPassword';
   static const String recoverySuccessName = 'recoverySuccess';
   static const String admissionsName = 'admissions';
+  static const String admissionsProgrammesName = 'admissionsProgrammes';
+
+  /// Every screen inside the candidate portal.
+  ///
+  /// The portal's back handling is written against these: `PopScope` decides
+  /// where back leads, so a new portal section has to be listed here or it
+  /// becomes a dead end.
+  static const Set<String> admissionsPaths = {admissions, admissionsProgrammes};
 
   /// Reachable only while signed out — recovery is pointless once
   /// authenticated, so the redirect sends those deep links to the app shell.

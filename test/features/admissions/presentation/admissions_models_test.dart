@@ -53,9 +53,11 @@ void main() {
   group('AdmissionCycle', () {
     final cycle = AdmissionCycle(
       id: 'ug-2026',
+      name: '2026/2027 Undergraduate Admissions',
       label: '2026/2027 Cycle',
       opensOn: DateTime(2026, 6),
       closesOn: DateTime(2027, 2, 28),
+      formFeeMinorUnits: 750000,
     );
 
     test('is open inside its window', () {

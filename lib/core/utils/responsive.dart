@@ -144,6 +144,12 @@ abstract final class AppDimensions {
   /// Height of the candidate portal's tab bar.
   static const double admissionsBarHeight = 64;
 
+  /// Height of a horizontal filter-chip strip.
+  ///
+  /// One tap target tall: the strip is a control row, not a line of text, so
+  /// the pills need room to be pressed as well as to be read.
+  static const double filterChipRowHeight = 44;
+
   /// Widest the cycle pill may grow in the candidate portal's app bar; it sits
   /// between the menu button and the bell, so a longer cycle name ellipsizes.
   static const double cyclePillMaxWidth = 180;

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../models/admissions_models.dart';
+import '../models/programme_models.dart';
 
 /// Stage of the candidate portal.
 enum AdmissionsStatus {
@@ -44,10 +45,14 @@ class AdmissionsState extends Equatable {
     this.cycles = const [],
     this.applications = const [],
     this.bulletins = const [],
+    this.programmes = const [],
     this.emailConfirmation = EmailConfirmationStatus.idle,
     this.isEmailBannerDismissed = false,
     this.jambResultPending = false,
     this.failureMessage,
+    this.programmeQuery = '',
+    this.selectedFaculty,
+    this.selectedCycleId,
   });
 
   final AdmissionsStatus status;
@@ -59,6 +64,9 @@ class AdmissionsState extends Equatable {
   final List<ApplicationSummary> applications;
   final List<Bulletin> bulletins;
 
+  /// The whole catalogue, closed programmes included.
+  final List<Programme> programmes;
+
   final EmailConfirmationStatus emailConfirmation;
 
   /// The banner is a gate, not a nag: a candidate may hide it for this session.
@@ -67,6 +75,16 @@ class AdmissionsState extends Equatable {
   final bool jambResultPending;
 
   final String? failureMessage;
+
+  /// Free text typed into the browser's search field.
+  final String programmeQuery;
+
+  /// `null` means "all faculties", which is why it is nullable rather than
+  /// defaulting to the first one.
+  final Faculty? selectedFaculty;
+
+  /// The cycle the browser is showing; `null` until one is chosen.
+  final String? selectedCycleId;
 
   /// `true` once the candidate can be greeted.
   bool get hasCandidate => candidate != null;
@@ -92,17 +110,54 @@ class AdmissionsState extends Equatable {
   List<AdmissionCycle> openCyclesAt(DateTime now) =>
       cycles.where((cycle) => cycle.isOpenAt(now)).toList();
 
+  /// The cycle the browser is showing, or `null` before one is chosen.
+  AdmissionCycle? get selectedCycle => cycleById(selectedCycleId);
+
+  AdmissionCycle? cycleById(String? id) {
+    if (id == null) return null;
+    for (final cycle in cycles) {
+      if (cycle.id == id) return cycle;
+    }
+    return null;
+  }
+
+  /// Programmes matching the search box and the faculty chip.
+  ///
+  /// Filtering rather than searching: a closed programme stays in the result,
+  /// because hiding it would answer a question the candidate did not ask.
+  List<Programme> get visibleProgrammes => programmes.where((programme) {
+    if (selectedFaculty != null && programme.faculty != selectedFaculty) {
+      return false;
+    }
+    return programme.matches(programmeQuery);
+  }).toList();
+
+  /// Programmes per faculty, in [Faculty] order.
+  ///
+  /// Every faculty is kept, including one with nothing in it: "Engineering (0)"
+  /// is the honest answer, and a chip that appears and disappears as the
+  /// catalogue changes makes the filter feel unreliable.
+  Map<Faculty, int> get programmeCounts => {
+    for (final faculty in Faculty.values)
+      faculty: programmes.where((p) => p.faculty == faculty).length,
+  };
+
   AdmissionsState copyWith({
     AdmissionsStatus? status,
     CandidateProfile? candidate,
     List<AdmissionCycle>? cycles,
     List<ApplicationSummary>? applications,
     List<Bulletin>? bulletins,
+    List<Programme>? programmes,
     EmailConfirmationStatus? emailConfirmation,
     bool? isEmailBannerDismissed,
     bool? jambResultPending,
     String? failureMessage,
     bool clearFailure = false,
+    String? programmeQuery,
+    Faculty? selectedFaculty,
+    bool clearFaculty = false,
+    String? selectedCycleId,
   }) {
     return AdmissionsState(
       status: status ?? this.status,
@@ -110,6 +165,7 @@ class AdmissionsState extends Equatable {
       cycles: cycles ?? this.cycles,
       applications: applications ?? this.applications,
       bulletins: bulletins ?? this.bulletins,
+      programmes: programmes ?? this.programmes,
       emailConfirmation: emailConfirmation ?? this.emailConfirmation,
       isEmailBannerDismissed:
           isEmailBannerDismissed ?? this.isEmailBannerDismissed,
@@ -117,6 +173,11 @@ class AdmissionsState extends Equatable {
       failureMessage: clearFailure
           ? null
           : (failureMessage ?? this.failureMessage),
+      programmeQuery: programmeQuery ?? this.programmeQuery,
+      selectedFaculty: clearFaculty
+          ? null
+          : (selectedFaculty ?? this.selectedFaculty),
+      selectedCycleId: selectedCycleId ?? this.selectedCycleId,
     );
   }
 
@@ -127,9 +188,13 @@ class AdmissionsState extends Equatable {
     cycles,
     applications,
     bulletins,
+    programmes,
     emailConfirmation,
     isEmailBannerDismissed,
     jambResultPending,
     failureMessage,
+    programmeQuery,
+    selectedFaculty,
+    selectedCycleId,
   ];
 }

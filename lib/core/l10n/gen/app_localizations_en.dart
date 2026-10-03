@@ -575,26 +575,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get admissionsTitle => 'Admissions';
 
   @override
-  String admissionsCycleChip(Object cycle) {
-    return '$cycle';
-  }
-
-  @override
-  String get admissionsMenuTooltip => 'Open navigation menu';
-
-  @override
-  String get admissionsNotificationsTooltip => 'Notifications';
-
-  @override
   String get admissionsApplicantLabel => 'Applicant';
 
   @override
   String admissionsGreeting(Object greeting, Object name) {
     return '$greeting, $name';
   }
-
-  @override
-  String get admissionsConfirmEmailTitle => 'Confirm your email address';
 
   @override
   String admissionsConfirmEmailBody(Object email) {
@@ -717,4 +703,153 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get admissionsBackTooltip => 'Back to the hub';
+
+  @override
+  String get admissionsProgrammesTitle => 'Programmes';
+
+  @override
+  String admissionsProgrammesAvailable(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count available',
+      one: '1 available',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get admissionsProgrammesSubtitle =>
+      'Explore degree programmes and check your eligibility before applying.';
+
+  @override
+  String get admissionsProgrammesSearchHint =>
+      'Search programmes, faculties or course codes…';
+
+  @override
+  String admissionsProgrammesNoResults(Object query) {
+    return 'No programme matches “$query”. Try a course code, a faculty, or clear the search.';
+  }
+
+  @override
+  String admissionsProgrammesNoResultsFaculty(Object faculty) {
+    return 'There is no programme in $faculty in this cycle.';
+  }
+
+  @override
+  String get admissionsProgrammesNoResultsAll =>
+      'There is no programme in this cycle.';
+
+  @override
+  String get admissionsProgrammesSwitchCycle => 'Switch cycle';
+
+  @override
+  String get admissionsProgrammesCyclePickerTitle => 'Admissions cycles';
+
+  @override
+  String get admissionsProgrammesCyclePickerBody =>
+      'Choose the cycle you want to see deadlines and fees for.';
+
+  @override
+  String admissionsProgrammesCycleCloses(Object date) {
+    return 'Closes $date';
+  }
+
+  @override
+  String admissionsProgrammesCycleClosed(Object date) {
+    return 'Closed $date';
+  }
+
+  @override
+  String get admissionsProgrammeFormFee => 'Form fee';
+
+  @override
+  String admissionsProgrammeDuration(num years) {
+    String _temp0 = intl.Intl.pluralLogic(
+      years,
+      locale: localeName,
+      other: '$years years',
+      one: '1 year',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String admissionsProgrammeClosedOn(Object date) {
+    return 'Closed on $date';
+  }
+
+  @override
+  String admissionsProgrammeDeadlineAhead(Object date) {
+    return 'Applications close $date, ahead of the cycle';
+  }
+
+  @override
+  String get admissionsProgrammeAdmissionsActive => 'Admissions active';
+
+  @override
+  String admissionsProgrammeClosesIn(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count days',
+      one: '1 day',
+    );
+    return 'Closes in $_temp0';
+  }
+
+  @override
+  String get admissionsProgrammeArchived => 'Archived session';
+
+  @override
+  String get admissionsProgrammeApply => 'View programme & apply';
+
+  @override
+  String get admissionsProgrammeViewDetails => 'View details';
+
+  @override
+  String get admissionsVerdictEligible => 'You meet the requirements';
+
+  @override
+  String get admissionsVerdictNeedsChecking =>
+      'Some requirements need checking';
+
+  @override
+  String get admissionsVerdictNotEligible =>
+      'You don’t yet meet the requirements';
+
+  @override
+  String get admissionsVerdictClosed => 'Applications have closed';
+
+  @override
+  String get admissionsVerdictClosedSummary =>
+      'Applications closed for the current session. The quota is full.';
+
+  @override
+  String get admissionsFacultyScience => 'Science';
+
+  @override
+  String get admissionsFacultyArts => 'Arts';
+
+  @override
+  String get admissionsFacultyLaw => 'Law';
+
+  @override
+  String get admissionsFacultyEngineering => 'Engineering';
+
+  @override
+  String admissionsFacultyFilterAll(Object count) {
+    return 'All faculties ($count)';
+  }
+
+  @override
+  String get admissionsStudyModeUndergraduate => 'Full-time undergraduate';
+
+  @override
+  String get admissionsStudyModeDirectEntry => 'Direct Entry / Full-time';
+
+  @override
+  String admissionsFacultyFilterNamed(Object count, Object faculty) {
+    return '$faculty ($count)';
+  }
 }

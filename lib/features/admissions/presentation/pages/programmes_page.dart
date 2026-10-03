@@ -13,28 +13,31 @@ import '../bloc/admissions_cubit.dart';
 import '../bloc/admissions_state.dart';
 import '../widgets/admissions_tab_bar.dart';
 import '../widgets/admissions_task_bar.dart';
-import '../widgets/overview_body.dart';
+import '../widgets/programmes_body.dart';
 
-/// The candidate's admissions overview: who they are, what is blocking them,
-/// and what the university has told them.
+/// The programme browser: what the university teaches, and whether this
+/// candidate may apply to it.
 ///
-/// Composition only. Content comes from `presentation/mock/` because the
-/// admissions endpoints are pending, so every tap here either routes to a
-/// screen that exists or says it is not live yet.
-class AdmissionsOverviewPage extends StatefulWidget {
-  const AdmissionsOverviewPage({this.now, super.key});
+/// Composition only, like the overview. It shares the portal's cubit, so the
+/// cycle chosen here is still chosen when the candidate goes back, and the
+/// catalogue survives the round trip instead of being refetched on every tab
+/// tap.
+class ProgrammesPage extends StatefulWidget {
+  const ProgrammesPage({this.now, super.key});
 
-  /// Injected so the greeting and the open-cycle count are deterministic.
+  /// Injected so the countdown and the open/closed reading are deterministic.
   final DateTime? now;
 
   @override
-  AdmissionsOverviewPageState createState() => AdmissionsOverviewPageState();
+  ProgrammesPageState createState() => ProgrammesPageState();
 }
 
-class AdmissionsOverviewPageState extends State<AdmissionsOverviewPage> {
+class ProgrammesPageState extends State<ProgrammesPage> {
   @override
   void initState() {
     super.initState();
+    // Idempotent: the overview has usually loaded the portal already, and
+    // going back to it must not throw the catalogue away.
     context.read<AdmissionsCubit>().load();
   }
 
@@ -57,13 +60,13 @@ class AdmissionsOverviewPageState extends State<AdmissionsOverviewPage> {
             AdmissionsStatus.initial ||
             AdmissionsStatus.loading => const LoadingView(),
             AdmissionsStatus.failure => EmptyView(message: l10n.errorsServer),
-            AdmissionsStatus.ready => OverviewBody(
+            AdmissionsStatus.ready => ProgrammesBody(
               state: state,
               now: widget.now ?? DateTime.now(),
             ),
           },
           bottomNavigationBar: AdmissionsTabBar(
-            selectedIndex: 0,
+            selectedIndex: 1,
             jambBadge: state.jambResultPending,
             onDestinationSelected: (index) =>
                 selectAdmissionsTab(context, index),

@@ -156,7 +156,7 @@ class AdmissionsTab extends StatelessWidget {
 
   IconData get _icon => switch (destination) {
     AdmissionsDestination.overview =>
-      isSelected ? Icons.dashboard : Icons.dashboard_outlined,
+      isSelected ? Icons.home : Icons.home_outlined,
     AdmissionsDestination.programmes =>
       isSelected ? Icons.school : Icons.school_outlined,
     AdmissionsDestination.applications =>
@@ -175,10 +175,20 @@ class AdmissionsTab extends StatelessWidget {
 
 /// Navigates the portal's tabs, sending anything not yet built to the
 /// "coming soon" message rather than a dead link.
+///
+/// `goNamed` rather than `push`: the four tabs are siblings, so tapping one
+/// repeatedly must replace the section rather than stack ten copies of it. Each
+/// page compensates by declaring where back leads.
 void selectAdmissionsTab(BuildContext context, int index) {
-  if (AdmissionsDestination.values[index] == AdmissionsDestination.overview) {
-    context.goNamed(Routes.admissionsName);
-    return;
+  switch (AdmissionsDestination.values[index]) {
+    case AdmissionsDestination.overview:
+      context.goNamed(Routes.admissionsName);
+    case AdmissionsDestination.programmes:
+      context.goNamed(Routes.admissionsProgrammesName);
+    // Not built yet. The message is deliberate: a dead link is worse than an
+    // admission that it is not live in this release.
+    case AdmissionsDestination.applications:
+    case AdmissionsDestination.jamb:
+      context.showMessage(context.l10n.commonComingSoon);
   }
-  context.showMessage(context.l10n.commonComingSoon);
 }

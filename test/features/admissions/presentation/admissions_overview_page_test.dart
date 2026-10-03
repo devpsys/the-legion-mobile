@@ -1,3 +1,5 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -18,15 +20,24 @@ import 'package:the_legion_mobile/features/admissions/presentation/widgets/appli
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/email_confirmation_banner.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/jamb_claim_card.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/overview_body.dart';
+import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
+import '../../../helpers/signed_in_auth_cubit.dart';
 
 void main() {
   late AdmissionsCubit cubit;
+  late AuthCubit auth;
 
   /// 1 October 2026, mid-afternoon: two cycles open, afternoon greeting.
   final now = DateTime(2026, 10, 1, 14, 20);
 
-  setUp(() => cubit = AdmissionsCubit());
-  tearDown(() => cubit.close());
+  setUp(() async {
+    cubit = AdmissionsCubit();
+    auth = await signedInAuthCubit();
+  });
+  tearDown(() async {
+    await cubit.close();
+    await auth.close();
+  });
 
   Future<void> pumpPage(
     WidgetTester tester, {
@@ -42,6 +53,7 @@ void main() {
       MultiBlocProvider(
         providers: [
           BlocProvider<AdmissionsCubit>.value(value: cubit),
+          BlocProvider<AuthCubit>.value(value: auth),
           // The bell reads the session's notification centre, which the app
           // provides above the router.
           BlocProvider<NotificationCubit>.value(

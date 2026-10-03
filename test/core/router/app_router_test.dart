@@ -111,6 +111,34 @@ void main() {
       );
     });
 
+    test('protects every portal screen from an anonymous user', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: false,
+      );
+
+      // Over the whole set, so a new portal section cannot be added as a deep
+      // link that anyone can reach without signing in.
+      for (final path in Routes.admissionsPaths) {
+        expect(
+          resolveRedirect(authGuard: guard, location: path),
+          Routes.login,
+          reason: '$path is inside the portal and must need a session',
+        );
+      }
+    });
+
+    test('keeps a signed-in visitor on every portal screen', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: true,
+      );
+
+      for (final path in Routes.admissionsPaths) {
+        expect(resolveRedirect(authGuard: guard, location: path), isNull);
+      }
+    });
+
     test(
       'sends an authenticated user from the splash and login to the app',
       () {
@@ -353,14 +381,17 @@ void main() {
       await tester.tap(find.text('Admissions'));
       await tester.pumpAndSettle();
 
-      expect(find.text('Good afternoon, Musa'), findsOneWidget);
+      // The portal's own chrome, not the greeting: the greeting follows the
+      // wall clock, so asserting it made this test fail every evening.
+      expect(find.text('Your applications'), findsOneWidget);
 
-      // The bar's back affordance returns to the hub.
-      await tester.tap(find.byIcon(Icons.arrow_back));
+      // The bar carries no back arrow: the system gesture is the way out.
+      expect(find.byIcon(Icons.arrow_back), findsNothing);
+      await tester.binding.handlePopRoute();
       await tester.pumpAndSettle();
 
       expect(find.text('Pay your accommodation fee'), findsOneWidget);
-      expect(find.text('Good afternoon, Musa'), findsNothing);
+      expect(find.text('Your applications'), findsNothing);
     });
 
     testWidgets('the system back gesture leaves the portal for the hub', (
@@ -373,18 +404,80 @@ void main() {
       await tester.tap(find.text('Admissions'));
       await tester.pumpAndSettle();
 
-      // Several navigators are mounted (the shell, the shell route); pop the
-      // one the portal sits in, which is the last.
-      final navigator = tester.state<NavigatorState>(
-        find.byType(Navigator).last,
-      );
-      navigator.maybePop();
+      await tester.binding.handlePopRoute();
       await tester.pumpAndSettle();
 
       expect(
         find.text('Pay your accommodation fee'),
         findsOneWidget,
         reason: 'the portal is pushed on the hub, so back unwinds to it',
+      );
+    });
+
+    testWidgets('the Programmes tab opens the browser and back returns here', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Admissions'));
+      await tester.pumpAndSettle();
+
+      // Overview -> Programmes, through the portal's own tab bar.
+      await tester.tap(find.text('Programmes'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text(
+          'Explore degree programmes and check your eligibility before applying.',
+        ),
+        findsOneWidget,
+        reason: 'the browser, not the overview',
+      );
+      expect(find.text('B.Sc. Computer Science'), findsOneWidget);
+
+      // Back unwinds to the overview rather than leaving the portal: the
+      // candidate asked a question here and may have another.
+      expect(find.byIcon(Icons.arrow_back), findsNothing);
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+
+      expect(find.text('Your applications'), findsOneWidget);
+      expect(
+        find.text(
+          'Explore degree programmes and check your eligibility before applying.',
+        ),
+        findsNothing,
+      );
+    });
+
+    testWidgets('the Overview tab comes back from the browser', (tester) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Admissions'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Programmes'));
+      await tester.pumpAndSettle();
+      expect(
+        find.text(
+          'Explore degree programmes and check your eligibility before applying.',
+        ),
+        findsOneWidget,
+      );
+
+      await tester.tap(find.text('Overview'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Your applications'), findsOneWidget);
+      expect(
+        find.text(
+          'Explore degree programmes and check your eligibility before applying.',
+        ),
+        findsNothing,
       );
     });
 

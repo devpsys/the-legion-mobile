@@ -1102,24 +1102,6 @@ abstract class AppLocalizations {
   /// **'Admissions'**
   String get admissionsTitle;
 
-  /// No description provided for @admissionsCycleChip.
-  ///
-  /// In en, this message translates to:
-  /// **'{cycle}'**
-  String admissionsCycleChip(Object cycle);
-
-  /// No description provided for @admissionsMenuTooltip.
-  ///
-  /// In en, this message translates to:
-  /// **'Open navigation menu'**
-  String get admissionsMenuTooltip;
-
-  /// No description provided for @admissionsNotificationsTooltip.
-  ///
-  /// In en, this message translates to:
-  /// **'Notifications'**
-  String get admissionsNotificationsTooltip;
-
   /// No description provided for @admissionsApplicantLabel.
   ///
   /// In en, this message translates to:
@@ -1131,12 +1113,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{greeting}, {name}'**
   String admissionsGreeting(Object greeting, Object name);
-
-  /// No description provided for @admissionsConfirmEmailTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm your email address'**
-  String get admissionsConfirmEmailTitle;
 
   /// No description provided for @admissionsConfirmEmailBody.
   ///
@@ -1341,6 +1317,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to the hub'**
   String get admissionsBackTooltip;
+
+  /// No description provided for @admissionsProgrammesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Programmes'**
+  String get admissionsProgrammesTitle;
+
+  /// No description provided for @admissionsProgrammesAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 available} other{{count} available}}'**
+  String admissionsProgrammesAvailable(num count);
+
+  /// No description provided for @admissionsProgrammesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore degree programmes and check your eligibility before applying.'**
+  String get admissionsProgrammesSubtitle;
+
+  /// No description provided for @admissionsProgrammesSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search programmes, faculties or course codes…'**
+  String get admissionsProgrammesSearchHint;
+
+  /// No description provided for @admissionsProgrammesNoResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No programme matches “{query}”. Try a course code, a faculty, or clear the search.'**
+  String admissionsProgrammesNoResults(Object query);
+
+  /// No description provided for @admissionsProgrammesNoResultsFaculty.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no programme in {faculty} in this cycle.'**
+  String admissionsProgrammesNoResultsFaculty(Object faculty);
+
+  /// No description provided for @admissionsProgrammesNoResultsAll.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no programme in this cycle.'**
+  String get admissionsProgrammesNoResultsAll;
+
+  /// No description provided for @admissionsProgrammesSwitchCycle.
+  ///
+  /// In en, this message translates to:
+  /// **'Switch cycle'**
+  String get admissionsProgrammesSwitchCycle;
+
+  /// No description provided for @admissionsProgrammesCyclePickerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Admissions cycles'**
+  String get admissionsProgrammesCyclePickerTitle;
+
+  /// No description provided for @admissionsProgrammesCyclePickerBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the cycle you want to see deadlines and fees for.'**
+  String get admissionsProgrammesCyclePickerBody;
+
+  /// No description provided for @admissionsProgrammesCycleCloses.
+  ///
+  /// In en, this message translates to:
+  /// **'Closes {date}'**
+  String admissionsProgrammesCycleCloses(Object date);
+
+  /// No description provided for @admissionsProgrammesCycleClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed {date}'**
+  String admissionsProgrammesCycleClosed(Object date);
+
+  /// No description provided for @admissionsProgrammeFormFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Form fee'**
+  String get admissionsProgrammeFormFee;
+
+  /// No description provided for @admissionsProgrammeDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'{years, plural, =1{1 year} other{{years} years}}'**
+  String admissionsProgrammeDuration(num years);
+
+  /// No description provided for @admissionsProgrammeClosedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed on {date}'**
+  String admissionsProgrammeClosedOn(Object date);
+
+  /// No description provided for @admissionsProgrammeDeadlineAhead.
+  ///
+  /// In en, this message translates to:
+  /// **'Applications close {date}, ahead of the cycle'**
+  String admissionsProgrammeDeadlineAhead(Object date);
+
+  /// No description provided for @admissionsProgrammeAdmissionsActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Admissions active'**
+  String get admissionsProgrammeAdmissionsActive;
+
+  /// No description provided for @admissionsProgrammeClosesIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Closes in {count, plural, =1{1 day} other{{count} days}}'**
+  String admissionsProgrammeClosesIn(num count);
+
+  /// No description provided for @admissionsProgrammeArchived.
+  ///
+  /// In en, this message translates to:
+  /// **'Archived session'**
+  String get admissionsProgrammeArchived;
+
+  /// No description provided for @admissionsProgrammeApply.
+  ///
+  /// In en, this message translates to:
+  /// **'View programme & apply'**
+  String get admissionsProgrammeApply;
+
+  /// No description provided for @admissionsProgrammeViewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View details'**
+  String get admissionsProgrammeViewDetails;
+
+  /// No description provided for @admissionsVerdictEligible.
+  ///
+  /// In en, this message translates to:
+  /// **'You meet the requirements'**
+  String get admissionsVerdictEligible;
+
+  /// No description provided for @admissionsVerdictNeedsChecking.
+  ///
+  /// In en, this message translates to:
+  /// **'Some requirements need checking'**
+  String get admissionsVerdictNeedsChecking;
+
+  /// No description provided for @admissionsVerdictNotEligible.
+  ///
+  /// In en, this message translates to:
+  /// **'You don’t yet meet the requirements'**
+  String get admissionsVerdictNotEligible;
+
+  /// No description provided for @admissionsVerdictClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Applications have closed'**
+  String get admissionsVerdictClosed;
+
+  /// No description provided for @admissionsVerdictClosedSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Applications closed for the current session. The quota is full.'**
+  String get admissionsVerdictClosedSummary;
+
+  /// No description provided for @admissionsFacultyScience.
+  ///
+  /// In en, this message translates to:
+  /// **'Science'**
+  String get admissionsFacultyScience;
+
+  /// No description provided for @admissionsFacultyArts.
+  ///
+  /// In en, this message translates to:
+  /// **'Arts'**
+  String get admissionsFacultyArts;
+
+  /// No description provided for @admissionsFacultyLaw.
+  ///
+  /// In en, this message translates to:
+  /// **'Law'**
+  String get admissionsFacultyLaw;
+
+  /// No description provided for @admissionsFacultyEngineering.
+  ///
+  /// In en, this message translates to:
+  /// **'Engineering'**
+  String get admissionsFacultyEngineering;
+
+  /// No description provided for @admissionsFacultyFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All faculties ({count})'**
+  String admissionsFacultyFilterAll(Object count);
+
+  /// No description provided for @admissionsStudyModeUndergraduate.
+  ///
+  /// In en, this message translates to:
+  /// **'Full-time undergraduate'**
+  String get admissionsStudyModeUndergraduate;
+
+  /// No description provided for @admissionsStudyModeDirectEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct Entry / Full-time'**
+  String get admissionsStudyModeDirectEntry;
+
+  /// No description provided for @admissionsFacultyFilterNamed.
+  ///
+  /// In en, this message translates to:
+  /// **'{faculty} ({count})'**
+  String admissionsFacultyFilterNamed(Object count, Object faculty);
 }
 
 class _AppLocalizationsDelegate

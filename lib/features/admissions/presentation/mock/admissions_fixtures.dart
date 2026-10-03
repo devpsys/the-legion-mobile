@@ -1,4 +1,5 @@
 import '../models/admissions_models.dart';
+import 'programme_fixtures.dart';
 
 /// Sample content for the candidate admissions portal.
 ///
@@ -19,18 +20,22 @@ abstract final class AdmissionsFixtures {
 
   /// The cycle named in the header chip.
   static final AdmissionCycle currentCycle = AdmissionCycle(
-    id: 'undergraduate-2026',
+    id: ProgrammeFixtures.defaultCycleId,
+    name: '2026/2027 Undergraduate Admissions',
     label: '2026/2027 Cycle',
     opensOn: DateTime(2026, 6),
-    closesOn: DateTime(2027, 2, 28),
+    closesOn: ProgrammeFixtures.cycleDeadline,
+    formFeeMinorUnits: ProgrammeFixtures.formFeeMinorUnits,
   );
 
   /// A second open cycle, which is what makes the empty state say "2".
   static final AdmissionCycle postgraduateCycle = AdmissionCycle(
     id: 'postgraduate-2026',
-    label: '2026/2027 Postgraduate Cycle',
+    name: '2026/2027 Postgraduate Admissions',
+    label: '2026/2027 PG Cycle',
     opensOn: DateTime(2026, 8),
     closesOn: DateTime(2027, 1, 31),
+    formFeeMinorUnits: 125000,
   );
 
   /// Every cycle the portal knows about, newest first.

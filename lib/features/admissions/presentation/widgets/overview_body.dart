@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
@@ -64,7 +66,9 @@ class OverviewBody extends StatelessWidget {
               applications: state.applications,
               openCycleCount: state.openCyclesAt(now).length,
               onApply: () => context.showMessage(l10n.commonComingSoon),
-              onBrowse: () => context.showMessage(l10n.commonComingSoon),
+              // Real, unlike Apply: the browser exists, and an empty list whose
+              // only exit says "coming soon" strands the candidate.
+              onBrowse: () => context.goNamed(Routes.admissionsProgrammesName),
             ),
             if (state.jambResultPending) ...[
               AppSpacing.verticalGap(AppSpacing.md),

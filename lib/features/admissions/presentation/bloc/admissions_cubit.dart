@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../mock/admissions_fixtures.dart';
+import '../mock/programme_fixtures.dart';
+import '../models/programme_models.dart';
 import 'admissions_state.dart';
 
 /// Drives the candidate admissions portal.
@@ -28,9 +30,39 @@ class AdmissionsCubit extends Cubit<AdmissionsState> {
         cycles: AdmissionsFixtures.cycles,
         applications: AdmissionsFixtures.applications,
         bulletins: AdmissionsFixtures.bulletins,
+        programmes: ProgrammeFixtures.programmes,
         jambResultPending: AdmissionsFixtures.jambResultPending,
+        selectedCycleId: ProgrammeFixtures.defaultCycleId,
       ),
     );
+  }
+
+  /// Narrows the catalogue by free text.
+  ///
+  /// Held here rather than in the search field so the count in the header, the
+  /// filter chips and the list cannot disagree about what is on screen.
+  void searchProgrammes(String query) {
+    if (state.programmeQuery == query) return;
+    emit(state.copyWith(programmeQuery: query));
+  }
+
+  /// Picks a faculty, or passes `null` for every faculty.
+  void selectFaculty(Faculty? faculty) {
+    if (state.selectedFaculty == faculty) return;
+    emit(
+      state.copyWith(selectedFaculty: faculty, clearFaculty: faculty == null),
+    );
+  }
+
+  /// Switches the cycle the browser is quoted against.
+  ///
+  /// The programme list itself is not refetched: the catalogue endpoint is not
+  /// built, and pretending a cycle switch changes it would be showing a
+  /// candidate a list the server has not confirmed for that cycle.
+  void selectCycle(String cycleId) {
+    if (state.selectedCycleId == cycleId) return;
+    if (state.cycleById(cycleId) == null) return;
+    emit(state.copyWith(selectedCycleId: cycleId));
   }
 
   /// Requests a fresh confirmation link.

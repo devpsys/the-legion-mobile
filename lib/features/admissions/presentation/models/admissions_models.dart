@@ -12,6 +12,7 @@ library;
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/theme/app_tone.dart';
+import '../../../../core/utils/durations.dart';
 
 /// Lifecycle of an application, as the candidate sees it.
 ///
@@ -135,18 +136,30 @@ class Bulletin extends Equatable {
 class AdmissionCycle extends Equatable {
   const AdmissionCycle({
     required this.id,
+    required this.name,
     required this.label,
     required this.opensOn,
     required this.closesOn,
+    required this.formFeeMinorUnits,
   });
 
   final String id;
 
-  /// e.g. `2026/2027 Cycle`.
+  /// Full name of the cycle, e.g. `2026/2027 Undergraduate Admissions`.
+  ///
+  /// Separate from [label] because the two are drawn in very different rooms:
+  /// the notice on Programmes has a whole line for it, while the app bar chip
+  /// is capped at 180px and has to ellipsize.
+  final String name;
+
+  /// Compact name for the app bar chip, e.g. `2026/2027 Cycle`.
   final String label;
 
   final DateTime opensOn;
   final DateTime closesOn;
+
+  /// The cycle's application form fee, in kobo. See `core/utils/money.dart`.
+  final int formFeeMinorUnits;
 
   /// `true` while [now] is inside the window. A closed cycle is still shown —
   /// hiding it would tell a candidate the programme does not exist.
@@ -154,13 +167,17 @@ class AdmissionCycle extends Equatable {
       !now.isBefore(opensOn) && now.isBefore(closesOn);
 
   /// Days until the cycle closes; never negative.
-  int daysUntilClose(DateTime now) {
-    final remaining = closesOn.difference(now).inHours;
-    return remaining <= 0 ? 0 : (remaining / 24).ceil();
-  }
+  int daysUntilClose(DateTime now) => daysUntil(now, closesOn);
 
   @override
-  List<Object?> get props => [id, label, opensOn, closesOn];
+  List<Object?> get props => [
+    id,
+    name,
+    label,
+    opensOn,
+    closesOn,
+    formFeeMinorUnits,
+  ];
 }
 
 /// What the candidate portal needs to know about the person signed in.
