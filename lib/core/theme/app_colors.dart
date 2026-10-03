@@ -229,8 +229,11 @@ abstract final class AppColors {
       onSecondary: isDark ? onGoldDark : onGoldLight,
       secondaryContainer: isDark ? honeyGoldPressed : honeyGold,
       onSecondaryContainer: isDark ? onGoldDark : onGoldLight,
-      tertiary: navyInkDark,
-      onTertiary: textPrimaryLight,
+      // The link / informational accent: navy on light surfaces, its pale
+      // counterpart on dark ones. The pale blue is only legible on dark — on a
+      // white card it is about 1.7:1 — so it must not be used in light mode.
+      tertiary: isDark ? navyInkDark : navy,
+      onTertiary: isDark ? textPrimaryLight : Colors.white,
       tertiaryContainer: brandTintSurfaceLight,
       onTertiaryContainer: navy,
 
