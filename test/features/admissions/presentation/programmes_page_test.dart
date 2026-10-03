@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -19,6 +17,7 @@ import 'package:the_legion_mobile/features/admissions/presentation/widgets/progr
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/programme_card_actions.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/programme_deadline_notice.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
+
 import '../../../helpers/signed_in_auth_cubit.dart';
 
 void main() {

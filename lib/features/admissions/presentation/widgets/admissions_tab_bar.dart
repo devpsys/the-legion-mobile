@@ -173,8 +173,8 @@ class AdmissionsTab extends StatelessWidget {
   };
 }
 
-/// Navigates the portal's tabs, sending anything not yet built to the
-/// "coming soon" message rather than a dead link.
+/// Navigates the portal's tabs, sending the one section that is not built yet
+/// to the "coming soon" message rather than a dead link.
 ///
 /// `goNamed` rather than `push`: the four tabs are siblings, so tapping one
 /// repeatedly must replace the section rather than stack ten copies of it. Each
@@ -185,9 +185,10 @@ void selectAdmissionsTab(BuildContext context, int index) {
       context.goNamed(Routes.admissionsName);
     case AdmissionsDestination.programmes:
       context.goNamed(Routes.admissionsProgrammesName);
+    case AdmissionsDestination.applications:
+      context.goNamed(Routes.admissionsApplicationsName);
     // Not built yet. The message is deliberate: a dead link is worse than an
     // admission that it is not live in this release.
-    case AdmissionsDestination.applications:
     case AdmissionsDestination.jamb:
       context.showMessage(context.l10n.commonComingSoon);
   }

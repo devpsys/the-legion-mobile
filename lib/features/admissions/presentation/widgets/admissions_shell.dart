@@ -12,9 +12,10 @@ import '../../../../core/router/route_names.dart';
 /// route settling) — after which the system closes the app instead.
 ///
 /// The portal is reached by `goNamed`, which replaces the stack, so nothing is
-/// beneath it to pop to: back is a destination. Programmes unwinds to the
-/// overview rather than the hub — the candidate asked a question there and may
-/// have another — and every other section leaves for the hub.
+/// beneath it to pop to: back is a destination. A section other than the
+/// overview unwinds to it rather than to the hub — the candidate asked a
+/// question there and may have another — and the overview itself leaves for
+/// the hub.
 class AdmissionsShell extends StatelessWidget {
   const AdmissionsShell({
     required this.location,

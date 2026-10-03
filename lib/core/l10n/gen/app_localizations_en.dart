@@ -621,6 +621,63 @@ class AppLocalizationsEn extends AppLocalizations {
   String get admissionsBrowseProgrammes => 'Browse programmes';
 
   @override
+  String get admissionsApplicationsTitle => 'My applications';
+
+  @override
+  String get admissionsNewApplication => 'New application';
+
+  @override
+  String admissionsSecondChoice(Object programme) {
+    return 'Second choice: $programme';
+  }
+
+  @override
+  String admissionsRespondBy(Object date) {
+    return 'Respond by $date';
+  }
+
+  @override
+  String admissionsUpdatedOn(Object date) {
+    return 'Updated $date';
+  }
+
+  @override
+  String get admissionsMatriculation => 'Matriculation';
+
+  @override
+  String get admissionsOpenStudentPortal => 'Open the student portal';
+
+  @override
+  String admissionsCycleClosedNote(Object date) {
+    return 'Admissions for this cycle closed on $date.';
+  }
+
+  @override
+  String get admissionsAgeJustNow => 'Just now';
+
+  @override
+  String admissionsAgeMinutes(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count minutes ago',
+      one: '1 minute ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String admissionsAgeHours(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count hours ago',
+      one: '1 hour ago',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get admissionsJambTag => 'JAMB CAPS Import';
 
   @override

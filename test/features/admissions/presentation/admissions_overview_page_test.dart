@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -21,6 +19,7 @@ import 'package:the_legion_mobile/features/admissions/presentation/widgets/email
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/jamb_claim_card.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/overview_body.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
+
 import '../../../helpers/signed_in_auth_cubit.dart';
 
 void main() {
@@ -160,6 +159,12 @@ void main() {
 
   group('applications', () {
     testWidgets('offers Apply and explains the empty state', (tester) async {
+      // The fixture carries the candidate's three applications; the empty
+      // state is what the section shows when there are none, so the list is
+      // cleared to reach it.
+      cubit.load();
+      cubit.emit(cubit.state.copyWith(applications: []));
+
       await pumpPage(tester);
 
       expect(find.byType(ApplicationsSection), findsOneWidget);
@@ -176,6 +181,9 @@ void main() {
 
     testWidgets('uses the singular when one cycle is open', (tester) async {
       // 10 February: the postgraduate cycle has closed, the undergraduate has not.
+      cubit.load();
+      cubit.emit(cubit.state.copyWith(applications: []));
+
       await pumpPage(tester, at: DateTime(2027, 2, 10));
 
       expect(
@@ -184,7 +192,23 @@ void main() {
       );
     });
 
-    testWidgets('lists an application once one exists', (tester) async {
+    testWidgets('lists every application on the record', (tester) async {
+      await pumpPage(tester);
+
+      expect(
+        find.byType(ApplicationSummaryCard),
+        findsNWidgets(3),
+        reason: 'the overview is a summary of the same record the tab lists',
+      );
+      expect(find.text('Admission offered'), findsOneWidget);
+      expect(find.text('Rejected'), findsOneWidget);
+      expect(find.text('Matriculated'), findsOneWidget);
+      expect(find.byType(ApplicationsEmptyState), findsNothing);
+    });
+
+    testWidgets('carries the reference each card is filed under', (
+      tester,
+    ) async {
       cubit.load();
       cubit.emit(
         cubit.state.copyWith(
@@ -196,8 +220,7 @@ void main() {
 
       expect(find.byType(ApplicationSummaryCard), findsOneWidget);
       expect(find.text('Under review'), findsOneWidget);
-      expect(find.text('ADM-2026-00014'), findsOneWidget);
-      expect(find.byType(ApplicationsEmptyState), findsNothing);
+      expect(find.text('APP/2026/00014'), findsOneWidget);
     });
   });
 

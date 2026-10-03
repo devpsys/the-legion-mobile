@@ -47,10 +47,60 @@ abstract final class AdmissionsFixtures {
 
   // --- Applications -------------------------------------------------------
 
-  /// No applications, which is the state the design shows. The README lists
-  /// "with an application in progress" as a variant still to be designed, so
-  /// the fixture deliberately does not invent one.
-  static const List<ApplicationSummary> applications = [];
+  /// The applications on the candidate's record, newest first.
+  ///
+  /// Chosen to exercise every footer the `admissions_my_applications` design
+  /// gives a card: an outstanding offer with a response deadline, a rejection
+  /// from a cycle that has since closed, and a matriculation that hands over
+  /// to the student portal.
+  static final List<ApplicationSummary> applications = [
+    offeredApplication,
+    rejectedApplication,
+    matriculatedApplication,
+  ];
+
+  /// The offer waiting on the current cycle — the one with a deadline on it.
+  static final ApplicationSummary offeredApplication = ApplicationSummary(
+    id: 'app-00042',
+    trackingCode: 'APP/2026/00042',
+    programmeName: 'B.Sc. Computer Science',
+    department: 'Department of Computer Science',
+    secondChoiceName: 'B.Sc. Data Science',
+    status: ApplicationStatus.offered,
+    submittedOn: DateTime(2026, 9, 12),
+    // Midday, so a test that reads the screen in the afternoon of the same
+    // day sees the "3 hours ago" stamp the design draws.
+    updatedOn: DateTime(2026, 10, 3, 12),
+    cycleName: currentCycle.name,
+    respondBy: DateTime(2027, 2, 28),
+  );
+
+  /// A refusal from the cycle that has since closed, which is why it carries
+  /// the line printed underneath the card.
+  static final ApplicationSummary rejectedApplication = ApplicationSummary(
+    id: 'app-00918',
+    trackingCode: 'APP/2025/00918',
+    programmeName: 'B.A. English',
+    department: 'Department of English',
+    status: ApplicationStatus.rejected,
+    submittedOn: DateTime(2025, 9, 1),
+    updatedOn: DateTime(2026, 9, 14),
+    cycleName: '2025/2026 Undergraduate Admissions',
+    cycleClosedOn: DateTime(2026, 2, 28),
+  );
+
+  /// The one that ended in a matriculation: the bridge to the student portal.
+  static final ApplicationSummary matriculatedApplication = ApplicationSummary(
+    id: 'app-00377',
+    trackingCode: 'APP/2024/00377',
+    programmeName: 'B.Sc. Accounting',
+    department: 'Department of Accounting',
+    status: ApplicationStatus.matriculated,
+    submittedOn: DateTime(2024, 8, 20),
+    updatedOn: DateTime(2025, 9, 16),
+    cycleName: '2024/2025 Undergraduate Admissions',
+    matricNumber: '25/ACC/0087',
+  );
 
   /// A sample summary for the list widget and its tests, not shipped on the
   /// overview.
@@ -60,7 +110,9 @@ abstract final class AdmissionsFixtures {
     department: 'Department of Computer Science',
     status: ApplicationStatus.underReview,
     submittedOn: DateTime(2026, 9, 12),
-    trackingCode: 'ADM-2026-00014',
+    updatedOn: DateTime(2026, 9, 15),
+    cycleName: currentCycle.name,
+    trackingCode: 'APP/2026/00014',
   );
 
   // --- JAMB ---------------------------------------------------------------

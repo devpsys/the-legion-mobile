@@ -481,6 +481,75 @@ void main() {
       );
     });
 
+    testWidgets('the Applications tab opens the record and back returns here', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Admissions'));
+      await tester.pumpAndSettle();
+
+      // Overview -> Applications, through the portal's own tab bar.
+      await tester.tap(find.text('Applications'));
+      await tester.pumpAndSettle();
+
+      // The screen is named after the record, not after its section.
+      expect(find.text('My applications'), findsOneWidget);
+      expect(find.text('APP/2026/00042'), findsOneWidget);
+      expect(find.text('Your applications'), findsNothing);
+
+      // Back unwinds to the overview rather than leaving the portal.
+      expect(find.byIcon(Icons.arrow_back), findsNothing);
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+
+      expect(find.text('Your applications'), findsOneWidget);
+      expect(find.text('My applications'), findsNothing);
+    });
+
+    testWidgets('the record leads on to the browser and to the hub', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Applications'));
+      await tester.pumpAndSettle();
+
+      // Applying is done by choosing a programme, so the CTA goes there.
+      await tester.tap(find.text('New application'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text(
+          'Explore degree programmes and check your eligibility before applying.',
+        ),
+        findsOneWidget,
+        reason: 'the browser, not a dead end',
+      );
+
+      // Back to the record, and out through the card that has somewhere to go.
+      await tester.tap(find.text('Applications'));
+      await tester.pumpAndSettle();
+      expect(find.text('My applications'), findsOneWidget);
+
+      await tester.ensureVisible(find.text('Open the student portal'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Open the student portal'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text('Pay your accommodation fee'),
+        findsOneWidget,
+        reason: 'a matriculated candidate is a student now',
+      );
+    });
+
     testWidgets(
       '"Forgot password?" opens the recovery flow and steps through it',
       (tester) async {

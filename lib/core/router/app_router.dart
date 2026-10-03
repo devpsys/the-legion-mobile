@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/admissions/presentation/bloc/admissions_cubit.dart';
 import '../../features/admissions/presentation/pages/admissions_overview_page.dart';
+import '../../features/admissions/presentation/pages/applications_page.dart';
 import '../../features/admissions/presentation/pages/programmes_page.dart';
 import '../../features/admissions/presentation/widgets/admissions_shell.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
@@ -147,10 +148,11 @@ GoRouter createRouter({
       // not a student yet — so it sits outside the student shell rather than as
       // another tab inside it.
       //
-      // One cubit across both sections: the catalogue is large, the chosen
-      // cycle is a decision the candidate made on one screen and expects to
-      // still hold on the other, and the tab bar is the only navigation between
-      // them. Back is handled once, by `AdmissionsShell`, in the root navigator.
+      // One cubit across all three sections: the catalogue is large, the
+      // chosen cycle is a decision the candidate made on one screen and
+      // expects to still hold on the others, and the tab bar is the only
+      // navigation between them. Back is handled once, by `AdmissionsShell`,
+      // in the root navigator.
       ShellRoute(
         builder: (context, state, child) => AdmissionsShell(
           location: state.matchedLocation,
@@ -169,6 +171,11 @@ GoRouter createRouter({
             path: Routes.admissionsProgrammes,
             name: Routes.admissionsProgrammesName,
             builder: (context, state) => const ProgrammesPage(),
+          ),
+          GoRoute(
+            path: Routes.admissionsApplications,
+            name: Routes.admissionsApplicationsName,
+            builder: (context, state) => const ApplicationsPage(),
           ),
         ],
       ),

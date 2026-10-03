@@ -1168,6 +1168,72 @@ abstract class AppLocalizations {
   /// **'Browse programmes'**
   String get admissionsBrowseProgrammes;
 
+  /// No description provided for @admissionsApplicationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My applications'**
+  String get admissionsApplicationsTitle;
+
+  /// No description provided for @admissionsNewApplication.
+  ///
+  /// In en, this message translates to:
+  /// **'New application'**
+  String get admissionsNewApplication;
+
+  /// No description provided for @admissionsSecondChoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Second choice: {programme}'**
+  String admissionsSecondChoice(Object programme);
+
+  /// No description provided for @admissionsRespondBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Respond by {date}'**
+  String admissionsRespondBy(Object date);
+
+  /// No description provided for @admissionsUpdatedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Updated {date}'**
+  String admissionsUpdatedOn(Object date);
+
+  /// No description provided for @admissionsMatriculation.
+  ///
+  /// In en, this message translates to:
+  /// **'Matriculation'**
+  String get admissionsMatriculation;
+
+  /// No description provided for @admissionsOpenStudentPortal.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the student portal'**
+  String get admissionsOpenStudentPortal;
+
+  /// No description provided for @admissionsCycleClosedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Admissions for this cycle closed on {date}.'**
+  String admissionsCycleClosedNote(Object date);
+
+  /// No description provided for @admissionsAgeJustNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Just now'**
+  String get admissionsAgeJustNow;
+
+  /// No description provided for @admissionsAgeMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 minute ago} other{{count} minutes ago}}'**
+  String admissionsAgeMinutes(num count);
+
+  /// No description provided for @admissionsAgeHours.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 hour ago} other{{count} hours ago}}'**
+  String admissionsAgeHours(num count);
+
   /// No description provided for @admissionsJambTag.
   ///
   /// In en, this message translates to:

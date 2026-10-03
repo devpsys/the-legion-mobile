@@ -55,6 +55,12 @@ extension ApplicationStatusTone on ApplicationStatus {
 }
 
 /// One application in the candidate's list.
+///
+/// Two screens read it. The overview prints a compact summary of the row; the
+/// Applications tab draws the full card the `admissions_my_applications`
+/// design gives it — reference, cycle, choices, and whatever the status means
+/// for what happens next — which is why the record carries dates and numbers
+/// the compact card never shows.
 class ApplicationSummary extends Equatable {
   const ApplicationSummary({
     required this.id,
@@ -62,7 +68,13 @@ class ApplicationSummary extends Equatable {
     required this.department,
     required this.status,
     required this.submittedOn,
+    required this.cycleName,
+    required this.updatedOn,
     this.trackingCode,
+    this.secondChoiceName,
+    this.respondBy,
+    this.matricNumber,
+    this.cycleClosedOn,
   });
 
   final String id;
@@ -74,8 +86,37 @@ class ApplicationSummary extends Equatable {
   final ApplicationStatus status;
   final DateTime submittedOn;
 
-  /// Short reference printed on correspondence, e.g. `ADM-2026-00014`.
+  /// The cycle it was filed in, e.g. `2026/2027 Undergraduate Admissions`.
+  ///
+  /// Carried rather than looked up: an applicant's history spans cycles that
+  /// are no longer open, and `cycles` only lists what the portal can still
+  /// quote a deadline and a fee for.
+  final String cycleName;
+
+  /// When the application last changed — the date the card's footer prints.
+  final DateTime updatedOn;
+
+  /// Short reference printed on correspondence, e.g. `APP/2026/00042`.
   final String? trackingCode;
+
+  /// The programme the candidate named as a second choice, when the cycle
+  /// records one.
+  final String? secondChoiceName;
+
+  /// The deadline on an outstanding offer: the candidate answers before it or
+  /// the offer lapses. `null` once the offer is off the table, and for every
+  /// status that never carried one.
+  final DateTime? respondBy;
+
+  /// Set only once the candidate has matriculated; the card then prints the
+  /// number and links to the student portal instead of offering a tap-through
+  /// to an application that is finished.
+  final String? matricNumber;
+
+  /// When the cycle behind a terminal decision closed, printed *below* the
+  /// card. A rejection with no reason attached reads as a verdict on the
+  /// candidate; the cycle closing is a fact about the calendar.
+  final DateTime? cycleClosedOn;
 
   @override
   List<Object?> get props => [
@@ -84,7 +125,13 @@ class ApplicationSummary extends Equatable {
     department,
     status,
     submittedOn,
+    cycleName,
+    updatedOn,
     trackingCode,
+    secondChoiceName,
+    respondBy,
+    matricNumber,
+    cycleClosedOn,
   ];
 }
 
