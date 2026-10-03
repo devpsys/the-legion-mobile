@@ -6,6 +6,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/adaptive_scaffold.dart';
 import '../../../../core/widgets/app_mark.dart';
+import '../../../../core/widgets/confirm_exit.dart';
 
 /// Adaptive navigation shell hosting the authenticated area.
 ///
@@ -23,12 +24,19 @@ class HomeShellPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return AdaptiveScaffold(
+    final isOverview = navigationShell.currentIndex == HomeTab.overview.index;
+
+    // Back is guarded here, on the shell, and not inside a branch's page. The
+    // shell is a page of the root navigator, and that navigator is the one that
+    // reports to Android whether the app handles back. A guard inside a branch
+    // reports through the nested navigator instead, and the root navigator
+    // overwrites it with "nothing to handle" whenever its own history changes
+    // (a sheet closing, a route settling) — leaving the system to close the app.
+    final scaffold = AdaptiveScaffold(
       selectedIndex: navigationShell.currentIndex,
       // The hub owns the full canvas on phones: it navigates through its own
       // module directory, account panel and avatar rather than a tab bar.
-      showBottomNavigationBar:
-          navigationShell.currentIndex != HomeTab.overview.index,
+      showBottomNavigationBar: !isOverview,
       destinations: [
         for (final tab in _tabs)
           AdaptiveScaffoldDestination(
@@ -50,6 +58,18 @@ class HomeShellPage extends StatelessWidget {
         child: AppMark(size: AppDimensions.iconLarge),
       ),
       body: navigationShell,
+    );
+
+    // The hub is the root of the authenticated stack, so back there asks to
+    // exit; any other tab returns to the hub first.
+    if (isOverview) return ConfirmExit(child: scaffold);
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (didPop) return;
+        navigationShell.goBranch(HomeTab.overview.index);
+      },
+      child: scaffold,
     );
   }
 }

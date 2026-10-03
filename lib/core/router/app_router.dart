@@ -15,7 +15,6 @@ import '../../features/password_recovery/presentation/pages/set_new_password_pag
 import '../../features/password_recovery/presentation/pages/verify_recovery_code_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../di/injection.dart';
-import '../widgets/confirm_exit.dart';
 import 'auth_guard.dart';
 import 'route_names.dart';
 import 'router_refresh_notifier.dart';
@@ -127,10 +126,7 @@ GoRouter createRouter({
               GoRoute(
                 path: Routes.home,
                 name: Routes.homeName,
-                // The hub is the root of the authenticated stack, so back here
-                // asks to exit rather than throwing the user out silently.
-                builder: (context, state) =>
-                    const ConfirmExit(child: HomeOverviewPage()),
+                builder: (context, state) => const HomeOverviewPage(),
               ),
             ],
           ),
@@ -147,19 +143,16 @@ GoRouter createRouter({
       ),
       // The candidate portal owns its own navigation chrome — a candidate is
       // not a student yet — so it sits outside the student shell rather than as
-      // another tab inside it.
-      ShellRoute(
-        builder: (context, state, child) => BlocProvider<AdmissionsCubit>(
+      // another tab inside it. It is a top-level route, not a child of a
+      // `ShellRoute`, so its back handling lives in the root navigator (see
+      // `HomeShellPage` for why that matters).
+      GoRoute(
+        path: Routes.admissions,
+        name: Routes.admissionsName,
+        builder: (context, state) => BlocProvider<AdmissionsCubit>(
           create: (context) => sl<AdmissionsCubit>(),
-          child: child,
+          child: const AdmissionsOverviewPage(),
         ),
-        routes: [
-          GoRoute(
-            path: Routes.admissions,
-            name: Routes.admissionsName,
-            builder: (context, state) => const AdmissionsOverviewPage(),
-          ),
-        ],
       ),
     ],
   );
