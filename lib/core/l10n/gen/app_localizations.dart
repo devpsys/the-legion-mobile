@@ -136,6 +136,24 @@ abstract class AppLocalizations {
   /// **'This service goes live with the next release.'**
   String get commonComingSoon;
 
+  /// No description provided for @commonGreetingMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good morning'**
+  String get commonGreetingMorning;
+
+  /// No description provided for @commonGreetingAfternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good afternoon'**
+  String get commonGreetingAfternoon;
+
+  /// No description provided for @commonGreetingEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Good evening'**
+  String get commonGreetingEvening;
+
   /// No description provided for @errorsNetwork.
   ///
   /// In en, this message translates to:
@@ -856,24 +874,6 @@ abstract class AppLocalizations {
   /// **'Notifications'**
   String get homeNotificationsTooltip;
 
-  /// No description provided for @homeGreetingMorning.
-  ///
-  /// In en, this message translates to:
-  /// **'Good morning'**
-  String get homeGreetingMorning;
-
-  /// No description provided for @homeGreetingAfternoon.
-  ///
-  /// In en, this message translates to:
-  /// **'Good afternoon'**
-  String get homeGreetingAfternoon;
-
-  /// No description provided for @homeGreetingEvening.
-  ///
-  /// In en, this message translates to:
-  /// **'Good evening'**
-  String get homeGreetingEvening;
-
   /// No description provided for @homeCurrentTerm.
   ///
   /// In en, this message translates to:
@@ -1095,6 +1095,252 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Back to overview'**
   String get routeErrorBackHome;
+
+  /// No description provided for @admissionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Admissions'**
+  String get admissionsTitle;
+
+  /// No description provided for @admissionsCycleChip.
+  ///
+  /// In en, this message translates to:
+  /// **'{cycle}'**
+  String admissionsCycleChip(Object cycle);
+
+  /// No description provided for @admissionsMenuTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Open navigation menu'**
+  String get admissionsMenuTooltip;
+
+  /// No description provided for @admissionsNotificationsTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get admissionsNotificationsTooltip;
+
+  /// No description provided for @admissionsApplicantLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Applicant'**
+  String get admissionsApplicantLabel;
+
+  /// No description provided for @admissionsGreeting.
+  ///
+  /// In en, this message translates to:
+  /// **'{greeting}, {name}'**
+  String admissionsGreeting(Object greeting, Object name);
+
+  /// No description provided for @admissionsConfirmEmailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your email address'**
+  String get admissionsConfirmEmailTitle;
+
+  /// No description provided for @admissionsConfirmEmailBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your email address ({email}) to submit applications and claim a JAMB result.'**
+  String admissionsConfirmEmailBody(Object email);
+
+  /// No description provided for @admissionsConfirmEmailSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmation link sent. Check your inbox.'**
+  String get admissionsConfirmEmailSent;
+
+  /// No description provided for @admissionsResendLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend link'**
+  String get admissionsResendLink;
+
+  /// No description provided for @admissionsResendingLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Sending…'**
+  String get admissionsResendingLink;
+
+  /// No description provided for @admissionsYourApplications.
+  ///
+  /// In en, this message translates to:
+  /// **'Your applications'**
+  String get admissionsYourApplications;
+
+  /// No description provided for @admissionsApply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get admissionsApply;
+
+  /// No description provided for @admissionsNoApplicationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No applications yet'**
+  String get admissionsNoApplicationsTitle;
+
+  /// No description provided for @admissionsNoApplicationsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 admission cycle is open. Browse programmes to apply.} other{{count} admission cycles are open. Browse programmes to apply.}}'**
+  String admissionsNoApplicationsBody(num count);
+
+  /// No description provided for @admissionsBrowseProgrammes.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse programmes'**
+  String get admissionsBrowseProgrammes;
+
+  /// No description provided for @admissionsJambTag.
+  ///
+  /// In en, this message translates to:
+  /// **'JAMB CAPS Import'**
+  String get admissionsJambTag;
+
+  /// No description provided for @admissionsJambTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You chose us in JAMB'**
+  String get admissionsJambTitle;
+
+  /// No description provided for @admissionsJambBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your result is waiting. Claim it to add it to your records and start an application.'**
+  String get admissionsJambBody;
+
+  /// No description provided for @admissionsClaimResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Claim your result'**
+  String get admissionsClaimResult;
+
+  /// No description provided for @admissionsAnnouncements.
+  ///
+  /// In en, this message translates to:
+  /// **'Announcements'**
+  String get admissionsAnnouncements;
+
+  /// No description provided for @admissionsSeeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'See all'**
+  String get admissionsSeeAll;
+
+  /// No description provided for @admissionsReadMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Read more'**
+  String get admissionsReadMore;
+
+  /// No description provided for @admissionsStatusDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get admissionsStatusDraft;
+
+  /// No description provided for @admissionsStatusSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get admissionsStatusSubmitted;
+
+  /// No description provided for @admissionsStatusUnderReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Under review'**
+  String get admissionsStatusUnderReview;
+
+  /// No description provided for @admissionsStatusOffered.
+  ///
+  /// In en, this message translates to:
+  /// **'Admission offered'**
+  String get admissionsStatusOffered;
+
+  /// No description provided for @admissionsStatusAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer accepted'**
+  String get admissionsStatusAccepted;
+
+  /// No description provided for @admissionsStatusDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer declined'**
+  String get admissionsStatusDeclined;
+
+  /// No description provided for @admissionsStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get admissionsStatusRejected;
+
+  /// No description provided for @admissionsStatusWithdrawn.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn'**
+  String get admissionsStatusWithdrawn;
+
+  /// No description provided for @admissionsStatusExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer expired'**
+  String get admissionsStatusExpired;
+
+  /// No description provided for @admissionsStatusMatriculated.
+  ///
+  /// In en, this message translates to:
+  /// **'Matriculated'**
+  String get admissionsStatusMatriculated;
+
+  /// No description provided for @admissionsTabOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview'**
+  String get admissionsTabOverview;
+
+  /// No description provided for @admissionsTabProgrammes.
+  ///
+  /// In en, this message translates to:
+  /// **'Programmes'**
+  String get admissionsTabProgrammes;
+
+  /// No description provided for @admissionsTabApplications.
+  ///
+  /// In en, this message translates to:
+  /// **'Applications'**
+  String get admissionsTabApplications;
+
+  /// No description provided for @admissionsTabJamb.
+  ///
+  /// In en, this message translates to:
+  /// **'JAMB'**
+  String get admissionsTabJamb;
+
+  /// No description provided for @homeUnreadCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 unread} other{{count} unread}}'**
+  String homeUnreadCount(num count);
+
+  /// No description provided for @homeNoNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'You are all caught up.'**
+  String get homeNoNotifications;
+
+  /// No description provided for @homeBackAgainToExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Press back again to exit'**
+  String get homeBackAgainToExit;
+
+  /// No description provided for @admissionsBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the hub'**
+  String get admissionsBackTooltip;
 }
 
 class _AppLocalizationsDelegate

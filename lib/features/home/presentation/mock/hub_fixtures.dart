@@ -91,6 +91,7 @@ abstract final class HubFixtures {
           id: 'admissions',
           label: 'Admissions',
           icon: Icons.description_outlined,
+          routeName: Routes.admissionsName,
         ),
         PortalModule(
           id: 'learning',
@@ -199,9 +200,6 @@ abstract final class HubFixtures {
           'institutional matriculation ID.',
     ),
   ];
-
-  /// Badged on the header bell.
-  static int get unreadAnnouncements => announcements.length;
 
   // --- Account panel ------------------------------------------------------
 

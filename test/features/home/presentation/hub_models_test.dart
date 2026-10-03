@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:the_legion_mobile/core/theme/app_tone.dart';
 import 'package:the_legion_mobile/features/home/presentation/mock/hub_fixtures.dart';
 import 'package:the_legion_mobile/features/home/presentation/models/hub_models.dart';
 
@@ -60,16 +61,16 @@ void main() {
 
   group('tone mapping', () {
     test('each timeline state keeps its own colour family', () {
-      expect(TimelineStepState.actionable.tone, HubTone.warning);
-      expect(TimelineStepState.blocked.tone, HubTone.danger);
-      expect(TimelineStepState.waiting.tone, HubTone.info);
-      expect(TimelineStepState.done.tone, HubTone.success);
+      expect(TimelineStepState.actionable.tone, AppTone.warning);
+      expect(TimelineStepState.blocked.tone, AppTone.danger);
+      expect(TimelineStepState.waiting.tone, AppTone.info);
+      expect(TimelineStepState.done.tone, AppTone.success);
     });
 
     test('bulletin categories map to urgency, notice and information', () {
-      expect(AnnouncementCategory.urgent.tone, HubTone.danger);
-      expect(AnnouncementCategory.notice.tone, HubTone.warning);
-      expect(AnnouncementCategory.information.tone, HubTone.info);
+      expect(AnnouncementCategory.urgent.tone, AppTone.danger);
+      expect(AnnouncementCategory.notice.tone, AppTone.warning);
+      expect(AnnouncementCategory.information.tone, AppTone.info);
     });
   });
 

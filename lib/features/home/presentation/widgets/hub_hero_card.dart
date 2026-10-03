@@ -2,40 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
-import '../../../../core/l10n/gen/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/greeting_period.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../auth/domain/entities/user.dart';
 import '../../../auth/presentation/widgets/user_avatar.dart';
 import '../models/hub_models.dart';
-
-/// Time of day the greeting belongs to.
-///
-/// Kept as an enum so the clock decides the period and the localized strings
-/// stay in the ARB, and so the boundaries are unit testable without a
-/// widget tree.
-enum GreetingPeriod {
-  morning,
-  afternoon,
-  evening;
-
-  /// Morning before noon, afternoon until 17:00, evening after that.
-  static GreetingPeriod forHour(int hour) {
-    if (hour < 12) return GreetingPeriod.morning;
-    if (hour < 17) return GreetingPeriod.afternoon;
-    return GreetingPeriod.evening;
-  }
-
-  /// Localized greeting for the period.
-  String localize(AppLocalizations l10n) => switch (this) {
-    GreetingPeriod.morning => l10n.homeGreetingMorning,
-    GreetingPeriod.afternoon => l10n.homeGreetingAfternoon,
-    GreetingPeriod.evening => l10n.homeGreetingEvening,
-  };
-}
 
 /// Hero of the hub: who the student is, and how much of the term is left.
 ///
@@ -64,7 +39,7 @@ class HubHeroCard extends StatelessWidget {
     final theme = context.theme;
     final l10n = context.l10n;
     final firstName = user.displayName.split(' ').first;
-    final greeting = GreetingPeriod.forHour(now.hour).localize(l10n);
+    final greeting = GreetingPeriod.forTime(now).localize(l10n);
 
     return Container(
       width: double.infinity,

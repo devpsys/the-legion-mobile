@@ -8,11 +8,13 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
+import '../../../../core/widgets/notification_bell.dart';
 import '../../../../core/widgets/responsive_content.dart';
 import '../../../auth/domain/entities/user.dart';
 import '../../../auth/presentation/bloc/auth_cubit.dart';
 import '../../../auth/presentation/widgets/user_avatar.dart';
 import '../mock/hub_fixtures.dart';
+import '../models/hub_models.dart';
 import 'account_services_panel.dart';
 import 'announcement_board.dart';
 import 'hub_drawer.dart';
@@ -20,7 +22,6 @@ import 'hub_header.dart';
 import 'hub_hero_card.dart';
 import 'module_directory.dart';
 import 'next_step_timeline.dart';
-import 'notifications_sheet.dart';
 import 'sign_out_sheet.dart';
 
 /// The hub's screen: fixed task bar, drawer, and the scrolling sections.
@@ -41,12 +42,8 @@ class HubScaffold extends StatelessWidget {
       backgroundColor: AppColors.canvas(context.colors.brightness),
       appBar: HubHeader(
         termLabel: '${term.session} · ${term.semesterShort}',
-        unreadCount: HubFixtures.unreadAnnouncements,
         avatar: UserAvatar(user: user, size: AppDimensions.avatarSmall),
-        onNotifications: () => NotificationsSheet.show(
-          context,
-          announcements: HubFixtures.announcements,
-        ),
+        onNotifications: () => showNotificationsSheet(context),
         onAvatarTap: () => context.goNamed(Routes.profileName),
       ),
       drawer: HubDrawer(
@@ -80,10 +77,7 @@ class HubScaffold extends StatelessWidget {
               AppSpacing.verticalGap(AppSpacing.xl),
               AnnouncementBoard(
                 announcements: HubFixtures.announcements,
-                onSeeAll: () => NotificationsSheet.show(
-                  context,
-                  announcements: HubFixtures.announcements,
-                ),
+                onSeeAll: () => showNotificationsSheet(context),
                 onAnnouncementTap: (_) =>
                     context.showMessage(context.l10n.commonComingSoon),
               ),
@@ -112,6 +106,12 @@ class HubScaffold extends StatelessWidget {
   }
 
   /// Portals and timeline steps share one handler until each has a route.
-  void _onModuleTap(BuildContext context, Object target) =>
-      context.showMessage(context.l10n.commonComingSoon);
+  void _onModuleTap(BuildContext context, Object target) {
+    // A portal that names a route is a screen; the rest are not built yet.
+    if (target is PortalModule && target.routeName != null) {
+      context.goNamed(target.routeName!);
+      return;
+    }
+    context.showMessage(context.l10n.commonComingSoon);
+  }
 }

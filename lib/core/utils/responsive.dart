@@ -129,6 +129,26 @@ abstract final class AppDimensions {
   static const double codeFieldHeight = 48;
 
   /// Height of the primary and secondary actions in a bottom sheet.
+  /// Height of a compact inline button, e.g. a section's "Apply".
+  static const double buttonCompact = 36;
+
+  /// Height of a navigation tab's icon.
+  static const double iconTab = 22;
+
+  /// Width of the underline beneath the active navigation tab.
+  static const double tabIndicator = 24;
+
+  /// Thickness of that underline.
+  static const double tabIndicatorHeight = 2.5;
+
+  /// Height of the candidate portal's tab bar.
+  static const double admissionsBarHeight = 64;
+
+  /// Widest the cycle pill may grow in the candidate portal's app bar; it sits
+  /// between the menu button and the bell, so a longer cycle name ellipsizes.
+  static const double cyclePillMaxWidth = 180;
+
+  /// Height of a bottom sheet's primary and secondary actions.
   static const double sheetActionHeight = 48;
 
   /// Drag handle of a bottom sheet.
@@ -137,6 +157,10 @@ abstract final class AppDimensions {
 
   /// Largest share of the viewport a bottom sheet may cover.
   static const double sheetMaxHeightFactor = 0.6;
+
+  /// Widest a line of body copy before it stops growing, so an empty state's
+  /// paragraph stays readable instead of spanning the canvas.
+  static const double copyMeasure = 260;
 
   /// Widest a piece of chrome (splash mark, sign-in brand) may grow.
   static const double chromeMaxWidth = 320;

@@ -5,10 +5,13 @@ import 'package:the_legion_mobile/core/config/app_config.dart';
 import 'package:the_legion_mobile/core/config/environment.dart';
 import 'package:the_legion_mobile/core/di/injection.dart';
 import 'package:the_legion_mobile/core/l10n/gen/app_localizations.dart';
+import 'package:the_legion_mobile/core/notifications/notification_cubit.dart';
+import 'package:the_legion_mobile/core/notifications/notification_fixtures.dart';
 import 'package:the_legion_mobile/core/router/app_router.dart';
 import 'package:the_legion_mobile/core/router/auth_guard.dart';
 import 'package:the_legion_mobile/core/router/route_names.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/fake_auth_remote_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/in_memory_auth_local_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/repositories/auth_repository_impl.dart';
@@ -192,6 +195,7 @@ void main() {
       // `TheLegionApp` does this in `main()`; the pages under test resolve
       // their configuration from the same locator.
       sl.registerFactory<PasswordRecoveryCubit>(PasswordRecoveryCubit.new);
+      sl.registerFactory<AdmissionsCubit>(AdmissionsCubit.new);
       sl.registerSingleton<AppConfig>(
         const AppConfig(
           environment: Environment.development,
@@ -226,8 +230,15 @@ void main() {
       addTearDown(router.dispose);
 
       await tester.pumpWidget(
-        BlocProvider<AuthCubit>.value(
-          value: cubit,
+        MultiBlocProvider(
+          providers: [
+            BlocProvider<AuthCubit>.value(value: cubit),
+            // The app provides the session's notification centre above the
+            // router; the bells in both hubs read it.
+            BlocProvider<NotificationCubit>.value(
+              value: NotificationCubit(entries: NotificationFixtures.entries),
+            ),
+          ],
           child: MaterialApp.router(
             theme: AppTheme.light,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -305,6 +316,76 @@ void main() {
       // Shown in the header and in the "Signed in as" card.
       expect(find.text('ada@the-legion.dev'), findsWidgets);
       expect(find.text('Sign out'), findsOneWidget);
+    });
+
+    /// Signs in through the UI and lands on the hub.
+    Future<void> signInAndReachHub(WidgetTester tester) async {
+      tester.view
+        ..physicalSize = const Size(390, 844) * 2
+        ..devicePixelRatio = 2;
+      addTearDown(tester.view.reset);
+
+      await pumpApp(tester);
+      await tester.pump();
+      await tester.pump();
+
+      await tester.enterText(
+        find.byType(TextField).first,
+        'ada@the-legion.dev',
+      );
+      await tester.enterText(
+        find.byType(TextField).last,
+        FakeAuthRemoteDataSource.defaultPassword,
+      );
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pump();
+      await tester.pump();
+    }
+
+    testWidgets('leaving the admissions portal lands back on the hub', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      // Hub -> Admissions, the way the directory row leads there.
+      await tester.ensureVisible(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Admissions'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Good afternoon, Musa'), findsOneWidget);
+
+      // The bar's back affordance returns to the hub.
+      await tester.tap(find.byIcon(Icons.arrow_back));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Pay your accommodation fee'), findsOneWidget);
+      expect(find.text('Good afternoon, Musa'), findsNothing);
+    });
+
+    testWidgets('the system back gesture leaves the portal for the hub', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Admissions'));
+      await tester.pumpAndSettle();
+
+      // Several navigators are mounted (the shell, the shell route); pop the
+      // one the portal sits in, which is the last.
+      final navigator = tester.state<NavigatorState>(
+        find.byType(Navigator).last,
+      );
+      navigator.maybePop();
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text('Pay your accommodation fee'),
+        findsOneWidget,
+        reason: 'the portal is pushed on the hub, so back unwinds to it',
+      );
     });
 
     testWidgets(

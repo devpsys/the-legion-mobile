@@ -16,6 +16,9 @@ abstract final class Routes {
   static const String setNewPassword = '/forgot-password/new-password';
   static const String recoverySuccess = '/forgot-password/success';
 
+  // Candidate admissions portal
+  static const String admissions = '/admissions';
+
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
   static const String loginName = 'login';
@@ -25,6 +28,7 @@ abstract final class Routes {
   static const String verifyRecoveryCodeName = 'verifyRecoveryCode';
   static const String setNewPasswordName = 'setNewPassword';
   static const String recoverySuccessName = 'recoverySuccess';
+  static const String admissionsName = 'admissions';
 
   /// Reachable only while signed out — recovery is pointless once
   /// authenticated, so the redirect sends those deep links to the app shell.

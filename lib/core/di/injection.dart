@@ -1,9 +1,11 @@
 import 'package:get_it/get_it.dart';
 
+import '../../features/admissions/di/admissions_module.dart';
 import '../../features/auth/di/auth_module.dart';
 import '../../features/password_recovery/di/password_recovery_module.dart';
 import '../config/app_config.dart';
 import 'network_module.dart';
+import 'notifications_module.dart';
 import 'router_module.dart';
 import 'storage_module.dart';
 
@@ -26,7 +28,9 @@ Future<void> configureDependencies({AppConfig? config}) async {
   sl.registerSingleton<AppConfig>(appConfig);
   await registerStorageModule(sl);
   registerNetworkModule(sl);
+  registerNotificationsModule(sl);
   registerAuthModule(sl);
+  registerAdmissionsModule(sl);
   registerPasswordRecoveryModule(sl);
   registerRouterModule(sl);
   configureLogging(sl);

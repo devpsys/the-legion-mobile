@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/admissions/presentation/bloc/admissions_cubit.dart';
+import '../../features/admissions/presentation/pages/admissions_overview_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
 import '../../features/home/presentation/pages/home_overview_page.dart';
@@ -13,6 +15,7 @@ import '../../features/password_recovery/presentation/pages/set_new_password_pag
 import '../../features/password_recovery/presentation/pages/verify_recovery_code_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../di/injection.dart';
+import '../widgets/confirm_exit.dart';
 import 'auth_guard.dart';
 import 'route_names.dart';
 import 'router_refresh_notifier.dart';
@@ -124,7 +127,10 @@ GoRouter createRouter({
               GoRoute(
                 path: Routes.home,
                 name: Routes.homeName,
-                builder: (context, state) => const HomeOverviewPage(),
+                // The hub is the root of the authenticated stack, so back here
+                // asks to exit rather than throwing the user out silently.
+                builder: (context, state) =>
+                    const ConfirmExit(child: HomeOverviewPage()),
               ),
             ],
           ),
@@ -136,6 +142,22 @@ GoRouter createRouter({
                 builder: (context, state) => const ProfilePage(),
               ),
             ],
+          ),
+        ],
+      ),
+      // The candidate portal owns its own navigation chrome — a candidate is
+      // not a student yet — so it sits outside the student shell rather than as
+      // another tab inside it.
+      ShellRoute(
+        builder: (context, state, child) => BlocProvider<AdmissionsCubit>(
+          create: (context) => sl<AdmissionsCubit>(),
+          child: child,
+        ),
+        routes: [
+          GoRoute(
+            path: Routes.admissions,
+            name: Routes.admissionsName,
+            builder: (context, state) => const AdmissionsOverviewPage(),
           ),
         ],
       ),

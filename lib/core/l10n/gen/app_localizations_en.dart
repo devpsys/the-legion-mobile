@@ -32,6 +32,15 @@ class AppLocalizationsEn extends AppLocalizations {
       'This service goes live with the next release.';
 
   @override
+  String get commonGreetingMorning => 'Good morning';
+
+  @override
+  String get commonGreetingAfternoon => 'Good afternoon';
+
+  @override
+  String get commonGreetingEvening => 'Good evening';
+
+  @override
   String get errorsNetwork =>
       'No internet connection. Check your network and try again.';
 
@@ -430,15 +439,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeNotificationsTooltip => 'Notifications';
 
   @override
-  String get homeGreetingMorning => 'Good morning';
-
-  @override
-  String get homeGreetingAfternoon => 'Good afternoon';
-
-  @override
-  String get homeGreetingEvening => 'Good evening';
-
-  @override
   String get homeCurrentTerm => 'Current Term';
 
   @override
@@ -570,4 +570,151 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get routeErrorBackHome => 'Back to overview';
+
+  @override
+  String get admissionsTitle => 'Admissions';
+
+  @override
+  String admissionsCycleChip(Object cycle) {
+    return '$cycle';
+  }
+
+  @override
+  String get admissionsMenuTooltip => 'Open navigation menu';
+
+  @override
+  String get admissionsNotificationsTooltip => 'Notifications';
+
+  @override
+  String get admissionsApplicantLabel => 'Applicant';
+
+  @override
+  String admissionsGreeting(Object greeting, Object name) {
+    return '$greeting, $name';
+  }
+
+  @override
+  String get admissionsConfirmEmailTitle => 'Confirm your email address';
+
+  @override
+  String admissionsConfirmEmailBody(Object email) {
+    return 'Confirm your email address ($email) to submit applications and claim a JAMB result.';
+  }
+
+  @override
+  String get admissionsConfirmEmailSent =>
+      'Confirmation link sent. Check your inbox.';
+
+  @override
+  String get admissionsResendLink => 'Resend link';
+
+  @override
+  String get admissionsResendingLink => 'Sending…';
+
+  @override
+  String get admissionsYourApplications => 'Your applications';
+
+  @override
+  String get admissionsApply => 'Apply';
+
+  @override
+  String get admissionsNoApplicationsTitle => 'No applications yet';
+
+  @override
+  String admissionsNoApplicationsBody(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count admission cycles are open. Browse programmes to apply.',
+      one: '1 admission cycle is open. Browse programmes to apply.',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get admissionsBrowseProgrammes => 'Browse programmes';
+
+  @override
+  String get admissionsJambTag => 'JAMB CAPS Import';
+
+  @override
+  String get admissionsJambTitle => 'You chose us in JAMB';
+
+  @override
+  String get admissionsJambBody =>
+      'Your result is waiting. Claim it to add it to your records and start an application.';
+
+  @override
+  String get admissionsClaimResult => 'Claim your result';
+
+  @override
+  String get admissionsAnnouncements => 'Announcements';
+
+  @override
+  String get admissionsSeeAll => 'See all';
+
+  @override
+  String get admissionsReadMore => 'Read more';
+
+  @override
+  String get admissionsStatusDraft => 'Draft';
+
+  @override
+  String get admissionsStatusSubmitted => 'Submitted';
+
+  @override
+  String get admissionsStatusUnderReview => 'Under review';
+
+  @override
+  String get admissionsStatusOffered => 'Admission offered';
+
+  @override
+  String get admissionsStatusAccepted => 'Offer accepted';
+
+  @override
+  String get admissionsStatusDeclined => 'Offer declined';
+
+  @override
+  String get admissionsStatusRejected => 'Rejected';
+
+  @override
+  String get admissionsStatusWithdrawn => 'Withdrawn';
+
+  @override
+  String get admissionsStatusExpired => 'Offer expired';
+
+  @override
+  String get admissionsStatusMatriculated => 'Matriculated';
+
+  @override
+  String get admissionsTabOverview => 'Overview';
+
+  @override
+  String get admissionsTabProgrammes => 'Programmes';
+
+  @override
+  String get admissionsTabApplications => 'Applications';
+
+  @override
+  String get admissionsTabJamb => 'JAMB';
+
+  @override
+  String homeUnreadCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count unread',
+      one: '1 unread',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homeNoNotifications => 'You are all caught up.';
+
+  @override
+  String get homeBackAgainToExit => 'Press back again to exit';
+
+  @override
+  String get admissionsBackTooltip => 'Back to the hub';
 }

@@ -1,0 +1,191 @@
+/// View models of the candidate admissions portal.
+///
+/// These describe what the screens render, not what an API returns: the
+/// admissions endpoints are still pending and the feature is fed from
+/// `presentation/mock/`. When they land, replace these with domain entities
+/// and delete the mock file.
+///
+/// Models carry no `Color` and no localized string — tone and status map to
+/// presentation, copy to the ARB.
+library;
+
+import 'package:equatable/equatable.dart';
+
+import '../../../../core/theme/app_tone.dart';
+
+/// Lifecycle of an application, as the candidate sees it.
+///
+/// The enum values are the API's; the *labels* are what a person reads, and
+/// they differ from the values in two places the README calls out: an `offered`
+/// application reads "Admission offered", and an `expired` offer is amber, not
+/// red, because the candidate did nothing wrong.
+enum ApplicationStatus {
+  draft,
+  submitted,
+  underReview,
+  offered,
+  accepted,
+  declined,
+  rejected,
+  withdrawn,
+  expired,
+  matriculated,
+}
+
+/// Semantic tone of an [ApplicationStatus].
+extension ApplicationStatusTone on ApplicationStatus {
+  AppTone get tone => switch (this) {
+    ApplicationStatus.draft => AppTone.neutral,
+    ApplicationStatus.submitted => AppTone.info,
+    ApplicationStatus.underReview => AppTone.info,
+    ApplicationStatus.offered => AppTone.warning,
+    ApplicationStatus.accepted => AppTone.success,
+    ApplicationStatus.matriculated => AppTone.success,
+    ApplicationStatus.declined => AppTone.danger,
+    ApplicationStatus.rejected => AppTone.danger,
+    ApplicationStatus.withdrawn => AppTone.danger,
+    // Amber: the deadline passed, not the candidate's doing.
+    ApplicationStatus.expired => AppTone.warning,
+  };
+
+  /// `true` while the application can still be acted on.
+  bool get isOpen =>
+      this == ApplicationStatus.draft || this == ApplicationStatus.submitted;
+}
+
+/// One application in the candidate's list.
+class ApplicationSummary extends Equatable {
+  const ApplicationSummary({
+    required this.id,
+    required this.programmeName,
+    required this.department,
+    required this.status,
+    required this.submittedOn,
+    this.trackingCode,
+  });
+
+  final String id;
+
+  /// e.g. `B.Sc. Computer Science`.
+  final String programmeName;
+
+  final String department;
+  final ApplicationStatus status;
+  final DateTime submittedOn;
+
+  /// Short reference printed on correspondence, e.g. `ADM-2026-00014`.
+  final String? trackingCode;
+
+  @override
+  List<Object?> get props => [
+    id,
+    programmeName,
+    department,
+    status,
+    submittedOn,
+    trackingCode,
+  ];
+}
+
+/// Editorial weight of a bulletin on the candidate board.
+enum BulletinCategory {
+  /// A deadline or requirement change.
+  information,
+
+  /// Something completed, usually in the university's favour.
+  success,
+
+  /// An action the candidate must take.
+  warning,
+}
+
+/// Semantic tone of a [BulletinCategory].
+extension BulletinCategoryTone on BulletinCategory {
+  AppTone get tone => switch (this) {
+    BulletinCategory.information => AppTone.info,
+    BulletinCategory.success => AppTone.success,
+    BulletinCategory.warning => AppTone.warning,
+  };
+}
+
+/// A bulletin on the candidate's announcement board.
+class Bulletin extends Equatable {
+  const Bulletin({
+    required this.id,
+    required this.category,
+    required this.publishedLabel,
+    required this.title,
+    required this.body,
+  });
+
+  final String id;
+  final BulletinCategory category;
+
+  /// Relative timestamp, e.g. `2 days ago`.
+  final String publishedLabel;
+
+  final String title;
+  final String body;
+
+  @override
+  List<Object?> get props => [id, category, publishedLabel, title, body];
+}
+
+/// An admissions cycle the candidate can apply to.
+class AdmissionCycle extends Equatable {
+  const AdmissionCycle({
+    required this.id,
+    required this.label,
+    required this.opensOn,
+    required this.closesOn,
+  });
+
+  final String id;
+
+  /// e.g. `2026/2027 Cycle`.
+  final String label;
+
+  final DateTime opensOn;
+  final DateTime closesOn;
+
+  /// `true` while [now] is inside the window. A closed cycle is still shown —
+  /// hiding it would tell a candidate the programme does not exist.
+  bool isOpenAt(DateTime now) =>
+      !now.isBefore(opensOn) && now.isBefore(closesOn);
+
+  /// Days until the cycle closes; never negative.
+  int daysUntilClose(DateTime now) {
+    final remaining = closesOn.difference(now).inHours;
+    return remaining <= 0 ? 0 : (remaining / 24).ceil();
+  }
+
+  @override
+  List<Object?> get props => [id, label, opensOn, closesOn];
+}
+
+/// What the candidate portal needs to know about the person signed in.
+///
+/// Deliberately narrower than `User`: a candidate's identity is an email that
+/// may not be confirmed yet, which is what gates the whole module.
+class CandidateProfile extends Equatable {
+  const CandidateProfile({
+    required this.displayName,
+    required this.email,
+    required this.isEmailConfirmed,
+  });
+
+  final String displayName;
+  final String email;
+
+  /// Unconfirmed email blocks applying and claiming a JAMB result.
+  final bool isEmailConfirmed;
+
+  /// First name, for the greeting.
+  String get firstName {
+    final words = displayName.split(RegExp(r'\s+'));
+    return words.isEmpty ? displayName : words.first;
+  }
+
+  @override
+  List<Object?> get props => [displayName, email, isEmailConfirmed];
+}

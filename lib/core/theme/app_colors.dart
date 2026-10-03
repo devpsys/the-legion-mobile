@@ -117,6 +117,11 @@ abstract final class AppColors {
 
   static const Color infoTextLight = Color(0xFF165998);
   static const Color infoSurfaceLight = Color(0xFFE2EDF9);
+
+  /// Hairline border for a card already filled with [infoSurfaceLight] — the
+  /// container is too pale to carry a visible 1px stroke of its own.
+  static const Color infoBorderLight = Color(0xFFBDD7F2);
+  static const Color infoBorderDark = Color(0xFF2A4A6B);
   static const Color infoTextDark = Color(0xFF71B3F4);
   static const Color infoSurfaceDark = Color(0xFF14293D);
 
@@ -189,6 +194,16 @@ abstract final class AppColors {
 
   static Color dangerSurface(Brightness brightness) =>
       brightness == Brightness.dark ? dangerSurfaceDark : dangerSurfaceLight;
+
+  /// Hairline for a card filled with an informational surface.
+  static Color infoBorder(Brightness brightness) =>
+      brightness == Brightness.dark ? infoBorderDark : infoBorderLight;
+
+  /// Hairline for a card filled with an amber surface.
+  static Color warningBorder(Brightness brightness) =>
+      brightness == Brightness.dark
+      ? Color(0xFF5A4520)
+      : const Color(0xFFF5E2B3);
 
   // --- ColorScheme --------------------------------------------------------
 

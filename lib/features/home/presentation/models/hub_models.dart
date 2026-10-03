@@ -12,6 +12,8 @@ library;
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_tone.dart';
+
 /// Academic term the hub reports progress for.
 ///
 /// Progress and the remaining day count are derived from [startsOn] / [endsOn]
@@ -96,19 +98,13 @@ enum TimelineStepState {
   done,
 }
 
-/// Tonal family a hub element is drawn from.
-///
-/// Resolved to real colours in the widget layer (`hub_tone_colors.dart`), so
-/// the models stay free of `Color` and of brightness concerns.
-enum HubTone { warning, danger, info, success, neutral }
-
 /// Semantic tone of a timeline step, derived from [TimelineStepState].
 extension TimelineStepTone on TimelineStepState {
-  HubTone get tone => switch (this) {
-    TimelineStepState.actionable => HubTone.warning,
-    TimelineStepState.blocked => HubTone.danger,
-    TimelineStepState.waiting => HubTone.info,
-    TimelineStepState.done => HubTone.success,
+  AppTone get tone => switch (this) {
+    TimelineStepState.actionable => AppTone.warning,
+    TimelineStepState.blocked => AppTone.danger,
+    TimelineStepState.waiting => AppTone.info,
+    TimelineStepState.done => AppTone.success,
   };
 }
 
@@ -178,14 +174,19 @@ class PortalModule extends Equatable {
     required this.id,
     required this.label,
     required this.icon,
+    this.routeName,
   });
 
   final String id;
   final String label;
   final IconData icon;
 
+  /// Named route to open. `null` for portals that are still a row in the
+  /// directory rather than a screen.
+  final String? routeName;
+
   @override
-  List<Object?> get props => [id, label, icon];
+  List<Object?> get props => [id, label, icon, routeName];
 }
 
 /// A themed group of portals, e.g. "Campus Life & Facilities".
@@ -213,10 +214,10 @@ enum AnnouncementCategory { urgent, notice, information }
 
 /// Semantic tone of a bulletin, mirroring its category.
 extension AnnouncementCategoryTone on AnnouncementCategory {
-  HubTone get tone => switch (this) {
-    AnnouncementCategory.urgent => HubTone.danger,
-    AnnouncementCategory.notice => HubTone.warning,
-    AnnouncementCategory.information => HubTone.info,
+  AppTone get tone => switch (this) {
+    AnnouncementCategory.urgent => AppTone.danger,
+    AnnouncementCategory.notice => AppTone.warning,
+    AnnouncementCategory.information => AppTone.info,
   };
 }
 

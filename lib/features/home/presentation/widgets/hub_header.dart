@@ -5,6 +5,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
+import '../../../../core/widgets/notification_bell.dart';
 
 /// Fixed top bar of the landing hub.
 ///
@@ -14,7 +15,6 @@ import '../../../../core/utils/responsive.dart';
 class HubHeader extends StatelessWidget implements PreferredSizeWidget {
   const HubHeader({
     required this.termLabel,
-    required this.unreadCount,
     required this.avatar,
     required this.onNotifications,
     this.onMenu,
@@ -24,9 +24,6 @@ class HubHeader extends StatelessWidget implements PreferredSizeWidget {
 
   /// Compact term pill, e.g. `2025/2026 · 2nd Sem`.
   final String termLabel;
-
-  /// Unread announcements, badged on the bell.
-  final int unreadCount;
 
   final Widget avatar;
 
@@ -81,11 +78,7 @@ class HubHeader extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         TermPill(label: termLabel),
         AppSpacing.horizontalGap(AppSpacing.sm),
-        NotificationBell(
-          count: unreadCount,
-          tooltip: l10n.homeNotificationsTooltip,
-          onPressed: onNotifications,
-        ),
+        NotificationBell(onPressed: onNotifications),
         AppSpacing.horizontalGap(AppSpacing.xs),
         Padding(
           padding: const EdgeInsets.only(right: AppSpacing.md),
@@ -142,38 +135,6 @@ class TermPill extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-/// Notification bell with an unread badge.
-class NotificationBell extends StatelessWidget {
-  const NotificationBell({
-    required this.count,
-    required this.tooltip,
-    required this.onPressed,
-    super.key,
-  });
-
-  final int count;
-  final String tooltip;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.theme;
-    final badgeLabel = count > 9 ? '9+' : '$count';
-
-    return IconButton(
-      onPressed: onPressed,
-      tooltip: tooltip,
-      icon: Badge(
-        isLabelVisible: count > 0,
-        label: Text(badgeLabel),
-        backgroundColor: theme.colorScheme.error,
-        textColor: theme.colorScheme.onError,
-        child: const Icon(Icons.notifications_outlined),
       ),
     );
   }

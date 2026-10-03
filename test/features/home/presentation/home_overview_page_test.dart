@@ -5,7 +5,10 @@ import 'package:the_legion_mobile/core/config/app_config.dart';
 import 'package:the_legion_mobile/core/config/environment.dart';
 import 'package:the_legion_mobile/core/di/injection.dart';
 import 'package:the_legion_mobile/core/l10n/gen/app_localizations.dart';
+import 'package:the_legion_mobile/core/notifications/notification_cubit.dart';
+import 'package:the_legion_mobile/core/notifications/notification_fixtures.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
+import 'package:the_legion_mobile/core/utils/greeting_period.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/fake_auth_remote_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/in_memory_auth_local_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/repositories/auth_repository_impl.dart';
@@ -18,7 +21,6 @@ import 'package:the_legion_mobile/features/home/presentation/mock/hub_fixtures.d
 import 'package:the_legion_mobile/features/home/presentation/pages/home_overview_page.dart';
 import 'package:the_legion_mobile/features/home/presentation/widgets/account_services_panel.dart';
 import 'package:the_legion_mobile/features/home/presentation/widgets/announcement_board.dart';
-import 'package:the_legion_mobile/features/home/presentation/widgets/hub_hero_card.dart';
 import 'package:the_legion_mobile/features/home/presentation/widgets/next_step_timeline.dart';
 
 void main() {
@@ -70,8 +72,15 @@ void main() {
     addTearDown(tester.view.reset);
 
     await tester.pumpWidget(
-      BlocProvider<AuthCubit>.value(
-        value: cubit,
+      MultiBlocProvider(
+        providers: [
+          BlocProvider<AuthCubit>.value(value: cubit),
+          // The bell reads the session's notification centre, which the app
+          // provides above the router.
+          BlocProvider<NotificationCubit>.value(
+            value: NotificationCubit(entries: NotificationFixtures.entries),
+          ),
+        ],
         child: MaterialApp(
           theme: AppTheme.light,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -147,7 +156,14 @@ void main() {
       final outstanding = HubFixtures.nextSteps
           .where((step) => step.state.name != 'done')
           .length;
-      expect(find.text('$outstanding'), findsOneWidget);
+      // Scoped to the timeline: the notification badge shows a count too.
+      expect(
+        find.descendant(
+          of: find.byType(NextStepTimeline),
+          matching: find.text('$outstanding'),
+        ),
+        findsOneWidget,
+      );
     });
 
     testWidgets('amounts in a step detail are set in the mono face', (

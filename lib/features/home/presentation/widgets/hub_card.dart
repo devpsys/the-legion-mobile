@@ -4,9 +4,8 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/theme/app_tone.dart';
 import '../../../../core/utils/responsive.dart';
-import '../models/hub_models.dart';
-import 'hub_tone_colors.dart';
 
 /// Section wrapper of the hub: a hairline-stroked card on the canvas.
 ///
@@ -124,7 +123,7 @@ class HubTag extends StatelessWidget {
   });
 
   final String label;
-  final HubTone tone;
+  final AppTone tone;
 
   /// Uses the mono face, for reference codes rather than words.
   final bool isMono;
