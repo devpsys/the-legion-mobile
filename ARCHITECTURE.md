@@ -185,7 +185,7 @@ Tailwind tokens in the exported `code.html` designs.
 | `core/theme/app_text_styles.dart` | Inter scale (headline/title/body/label) + JetBrains Mono `code*` styles, `tabular()` helper |
 | `core/theme/app_spacing.dart` | 4px/8px scale (4/8/12/16/24/32/48), `canvasGutter` |
 | `core/theme/app_radii.dart` | `card` 20, `element` 10, `row` 16, `pill` 9999 |
-| `core/utils/responsive.dart` | `AppDimensions`: 44px controls, 390×844 reference viewport, breakpoints, max widths |
+| `core/utils/responsive.dart` | `AppDimensions`: 44px controls, 390×844 reference viewport, breakpoints, max widths, the icon scale, and every surface size a widget needs (`iconTile`, `rowHeight`, `accentStripe`, `sheetHandleWidth`, …) |
 | `core/theme/app_theme.dart` | `ThemeData` assembled from the tokens |
 
 Non-negotiable rules from the spec:
@@ -267,10 +267,8 @@ test/
 │   ├── extensions/
 │   ├── utils/
 │   └── widgets/      # widget tests with an injected MediaQuery
-└── features/auth/
-    ├── data/         # repository + mocked datasources (mocktail)
-    ├── domain/       # use case validation, no Flutter needed
-    └── presentation/ # cubit transitions (bloc_test)
+├── features/<name>/  # mirrors lib/features/<name>/
+└── policies/         # architecture rules the analyzer cannot express (§15)
 ```
 
 Guidelines:
@@ -282,6 +280,8 @@ Guidelines:
   `any()`.
 * `core/di` is not exercised by unit tests: tests construct the object under
   test directly, which is exactly why dependencies are injected.
+* `test/policies/` runs with the rest of the suite, so §15 is not a document
+  nobody reads — a styling or placement slip fails `flutter test`.
 
 ---
 
@@ -309,10 +309,16 @@ Guidelines:
 6. **Route**: add paths to `core/router/route_names.dart` and the route to
    `core/router/app_router.dart`; navigate with `context.goNamed(...)`.
 7. **Strings**: add keys to `app_en.arb`, then `flutter gen-l10n`.
-8. **Styling**: use the tokens; add new tokens to `core/theme` only when the
-   value is reused or is a genuine design decision.
-9. **Tests**: use case, repository, cubit — mirroring `features/auth` in
-   `test/`.
+8. **Styling**: read the tokens — never a literal colour, string or dimension.
+   Add a new token to `core/theme` or `AppDimensions` when the value is reused
+   or is a genuine design decision. See §15 for the rules the policy test
+   enforces.
+9. **Widget placement**: every widget is a public class in
+   `presentation/widgets/<name>.dart`. A page file may declare only the page
+   itself and compose widgets from there.
+10. **Tests**: use case, repository, cubit — mirroring `features/auth` in
+    `test/`. `flutter test` runs the policy suite too, so a styling or
+    placement slip fails before it reaches review.
 
 ### Copy/paste starting point
 
@@ -333,8 +339,9 @@ features/<name>/
 └── presentation/
     ├── bloc/<name>_cubit.dart · <name>_state.dart
     ├── mock/<name>_fixtures.dart     # only while the API is pending
-    ├── pages/<name>_page.dart
-    └── widgets/
+    ├── models/<view_model>.dart      # presentation view models
+    ├── pages/<name>_page.dart        # one file per screen; composes widgets
+    └── widgets/<widget>.dart         # public widget classes only (§15)
 ```
 
 ### Test-data strategy (no API yet)
@@ -369,3 +376,54 @@ the fake tests — they still describe the expected contract.
 | `if (Platform.isAndroid)` inside a widget | layout should be driven by the viewport |
 | `Dio()` inside a datasource | duplicate networking configuration and lost interceptors |
 | Global `models/`, `services/`, `screens/` folders | no ownership; scales badly |
+| `class _PrivateWidget extends StatelessWidget` | cannot be reused or tested directly |
+| `Colors.red` / `Color(0xFF0000)` in a feature | a design decision made twice; belongs in `AppColors` |
+| `Text('Sign out')` / `label: '…'` in a widget | untranslatable copy; belongs in `app_en.arb` |
+| `width: 36`, `padding: EdgeInsets.all(14)` | a layout decision made twice; belongs in the token scales |
+| A widget declared in a `pages/` file | pages compose widgets; widgets live in `widgets/` |
+
+---
+
+## 15. Coding policies (enforced)
+
+The last five rows of the table above are **rules with an automated guard**.
+`test/policies/architecture_policies_test.dart` scans `lib/` and fails
+`flutter test` on a violation, so review never has to catch them by eye.
+
+| # | Rule | Enforced by |
+| --- | --- | --- |
+| 1 | **Private widgets are not allowed.** Every `StatelessWidget` / `StatefulWidget` is public. | `policy 1` |
+| 2 | **Hardcoded colours are not allowed.** No `Color(0x…)` or `Colors.*` outside `lib/core/theme/`; read `AppColors` or `context.colors`. | `policy 2` |
+| 3 | **Hardcoded strings are not allowed.** No quoted literal assigned to a copy-named field or parameter (`title`, `label`, `subtitle`, `message`, `tooltip`, `hintText`, …) anywhere in `presentation/`; read `context.l10n`. | `policy 3` |
+| 4 | **Hardcoded spacing, padding, widths and heights are not allowed.** No numeric literal for those properties in `presentation/` — neither as a named argument (`width: 24`) nor inside a geometry constructor (`EdgeInsets.all(16)`, `SizedBox(height: 20)`, `BorderRadius.circular(10)`); read `AppSpacing`, `AppRadii`, `AppDimensions` or the text scale. | `policy 4` |
+| 5 | **Widgets live in their feature's `widgets/` folder.** Only a `*_page.dart` may declare a widget outside `pages/`. | `policy 5` |
+
+### Why private widgets are banned
+
+A private widget can only be used by the file that declares it, so it cannot be
+reused by a second screen and cannot be pumped directly in a test. Promoting a
+private class to public is also what surfaces duplication: `RecoveryTaskBar`
+started life as a private copy inside one page and became shared only once a
+second page needed it.
+
+### Why the exemption lists are narrow
+
+Policies 3 and 4 are scoped to the same files: `presentation/pages/`,
+`presentation/widgets/` and any other file that builds UI. `bloc/`, `mock/` and
+`models/` are exempt because they hold *content, state and maths* — an
+announcement headline, a term date, a countdown, `Failure(message: '$error')`
+for a developer log — and hardcoding those is correct and intended. What the
+rules forbid is a **UI decision** being made outside the design system. `core/`
+is out of scope for the same reason: nothing in it reaches the user.
+
+The detectors are proven against both a violating and a compliant snippet in the
+`self-check` group, because a regex that silently stops matching reports zero
+violations forever — indistinguishable from a codebase that obeys the rule.
+
+### Adding a rule
+
+Extend `test/policies/architecture_policies_test.dart` with a `find*` function
+and a `test` that calls it over `lib/`, then add the rule to the table. Prove
+the detector with a `self-check` case: a regex that silently matches nothing
+reports zero violations forever, which reads exactly like a codebase that is
+compliant.

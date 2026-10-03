@@ -77,6 +77,33 @@ abstract final class AppColors {
   static const Color textPrimaryDark = Color(0xFFE8EBEE);
   static const Color textMutedDark = Color(0xFF98A3AE);
 
+  // --- Neutrals -----------------------------------------------------------
+  /// Fully transparent. Widgets read this instead of `Colors.transparent` so no
+  /// colour literal has to escape into feature code.
+  static const Color transparent = Color(0x00000000);
+
+  // --- Text and glass on the navy hero ------------------------------------
+  // The student hub's hero is the one panel that inverts to navy, so its text
+  // and translucent surfaces need tokens of their own.
+
+  /// Body text and glyphs on [navy].
+  static const Color onNavy = Color(0xFFFFFFFF);
+
+  /// Supporting text on [navy] — secondary lines.
+  static const Color onNavyMuted = Color(0xB3FFFFFF);
+
+  /// Footnotes on [navy] — timestamps and captions.
+  static const Color onNavySubtle = Color(0x99FFFFFF);
+
+  /// Translucent panel on [navy]: the hero's term metric.
+  static const Color navyGlass = Color(0x1AFFFFFF);
+
+  /// Hairline on top of [navyGlass].
+  static const Color navyGlassStroke = Color(0x29FFFFFF);
+
+  /// Recessed track on [navy] — the unfilled part of a progress bar.
+  static const Color navyRecess = Color(0x40000000);
+
   // --- Semantic status pairs (text on container) -------------------------
   static const Color successTextLight = Color(0xFF15793A);
   static const Color successSurfaceLight = Color(0xFFDFF6E8);

@@ -60,7 +60,7 @@ class AccountServicesPanel extends StatelessWidget {
             color: theme.colorScheme.outlineVariant,
           ),
           AppSpacing.verticalGap(AppSpacing.md),
-          _UtilityGrid(utilities: utilities, onUtilityTap: onUtilityTap),
+          UtilityGrid(utilities: utilities, onUtilityTap: onUtilityTap),
           AppSpacing.verticalGap(AppSpacing.md),
           Divider(
             height: AppDimensions.hairline,
@@ -73,12 +73,12 @@ class AccountServicesPanel extends StatelessWidget {
               foregroundColor: AppColors.dangerText(theme.brightness),
               backgroundColor: AppColors.dangerSurface(theme.brightness)
                   .withValues(alpha: 0.5),
-              side: const BorderSide(color: Colors.transparent),
+              side: const BorderSide(color: AppColors.transparent),
               shape: const RoundedRectangleBorder(
                 borderRadius: AppRadii.elementRadius,
               ),
             ),
-            icon: const Icon(Icons.logout, size: 19),
+            icon: const Icon(Icons.logout, size: AppDimensions.iconDense),
             label: Text(context.l10n.homeSignOut),
           ),
         ],
@@ -88,8 +88,8 @@ class AccountServicesPanel extends StatelessWidget {
 }
 
 /// Two-column grid of utility chips, as in the design.
-class _UtilityGrid extends StatelessWidget {
-  const _UtilityGrid({required this.utilities, this.onUtilityTap});
+class UtilityGrid extends StatelessWidget {
+  const UtilityGrid({required this.utilities, this.onUtilityTap, super.key});
 
   final List<AccountUtility> utilities;
   final void Function(AccountUtility utility)? onUtilityTap;
@@ -100,7 +100,7 @@ class _UtilityGrid extends StatelessWidget {
       builder: (context, constraints) {
         // Widest layout gets three columns so the shortcuts do not stretch.
         final columns = context.screenSize.isAtLeastExpanded ? 3 : 2;
-        const spacing = AppSpacing.sm + 2;
+        const spacing = AppSpacing.md;
 
         return Wrap(
           spacing: spacing,
@@ -110,7 +110,7 @@ class _UtilityGrid extends StatelessWidget {
               SizedBox(
                 width:
                     (constraints.maxWidth - spacing * (columns - 1)) / columns,
-                child: _UtilityChip(
+                child: UtilityChip(
                   utility: utility,
                   onTap: onUtilityTap == null
                       ? null
@@ -125,8 +125,8 @@ class _UtilityGrid extends StatelessWidget {
 }
 
 /// One shortcut chip: 44px tall, icon plus label.
-class _UtilityChip extends StatelessWidget {
-  const _UtilityChip({required this.utility, this.onTap});
+class UtilityChip extends StatelessWidget {
+  const UtilityChip({required this.utility, this.onTap, super.key});
 
   final AccountUtility utility;
   final VoidCallback? onTap;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 
@@ -36,24 +38,26 @@ class RecoveryTaskBar extends StatelessWidget {
   final bool isDocked;
 
   static final Widget defaultLeading = Container(
-    width: 24,
-    height: 24,
-    decoration: BoxDecoration(
-      color: Color(0xFF0F3F6B),
-      borderRadius: BorderRadius.all(Radius.circular(6)),
+    width: AppDimensions.marker,
+    height: AppDimensions.marker,
+    decoration: const BoxDecoration(
+      color: AppColors.navy,
+      borderRadius: AppRadii.elementRadius,
     ),
     alignment: Alignment.center,
-    child: Icon(
+    child: const Icon(
       Icons.account_balance_outlined,
-      size: 14,
-      color: Color(0xFFFFFFFF),
+      size: AppDimensions.iconMicro,
+      color: AppColors.onNavy,
     ),
   );
 
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final height = isDocked ? 56.0 : AppDimensions.minTapTarget + 8;
+    final height = isDocked
+        ? AppDimensions.rowHeight
+        : AppDimensions.minTapTarget + AppSpacing.sm;
 
     return Container(
       decoration: BoxDecoration(

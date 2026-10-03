@@ -5,15 +5,15 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_spacing.dart';
-import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
 import '../bloc/password_recovery_cubit.dart';
 import '../bloc/password_recovery_state.dart';
-import '../mock/password_recovery_fixtures.dart';
 import '../widgets/otp_code_field.dart';
 import '../widgets/recovery_task_bar.dart';
 import '../widgets/recovery_widgets.dart';
+import '../widgets/resend_row.dart';
+import '../widgets/stage_row.dart';
 
 /// Step 2 — verify the dispatched code.
 ///
@@ -22,10 +22,10 @@ class VerifyRecoveryCodePage extends StatefulWidget {
   const VerifyRecoveryCodePage({super.key});
 
   @override
-  State<VerifyRecoveryCodePage> createState() => _VerifyRecoveryCodePageState();
+  VerifyRecoveryCodePageState createState() => VerifyRecoveryCodePageState();
 }
 
-class _VerifyRecoveryCodePageState extends State<VerifyRecoveryCodePage> {
+class VerifyRecoveryCodePageState extends State<VerifyRecoveryCodePage> {
   late final TextEditingController _codeController;
 
   @override
@@ -91,7 +91,7 @@ class _VerifyRecoveryCodePageState extends State<VerifyRecoveryCodePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              _StageRow(attempts: state.attemptedCodes),
+                              const StageRow(),
                               AppSpacing.verticalGap(AppSpacing.lg),
                               Text(
                                 context.l10n.recoveryVerifyTitle,
@@ -176,7 +176,7 @@ class _VerifyRecoveryCodePageState extends State<VerifyRecoveryCodePage> {
                                 },
                               ),
                               AppSpacing.verticalGap(AppSpacing.md),
-                              _ResendRow(
+                              ResendRow(
                                 state: state,
                                 onResend: cubit.resendCode,
                               ),
@@ -197,13 +197,19 @@ class _VerifyRecoveryCodePageState extends State<VerifyRecoveryCodePage> {
                                         !state.isCodeComplete
                                     ? null
                                     : _submit,
-                                icon: const Icon(Icons.arrow_forward, size: 18),
+                                icon: const Icon(
+                                  Icons.arrow_forward,
+                                  size: AppDimensions.iconDense,
+                                ),
                                 label: Text(context.l10n.recoveryVerifyCode),
                               ),
                               AppSpacing.verticalGap(AppSpacing.sm),
                               OutlinedButton.icon(
                                 onPressed: cubit.useDifferentMethod,
-                                icon: const Icon(Icons.key_outlined, size: 18),
+                                icon: const Icon(
+                                  Icons.key_outlined,
+                                  size: AppDimensions.iconDense,
+                                ),
                                 label: Text(
                                   context.l10n.recoveryDifferentMethod,
                                 ),
@@ -228,93 +234,6 @@ class _VerifyRecoveryCodePageState extends State<VerifyRecoveryCodePage> {
           );
         },
       ),
-    );
-  }
-}
-
-/// Stage indicator and session reference from the design's card header.
-class _StageRow extends StatelessWidget {
-  const _StageRow({required this.attempts});
-
-  final int attempts;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-            color: context.colors.secondary,
-            shape: BoxShape.circle,
-          ),
-        ),
-        AppSpacing.horizontalGap(AppSpacing.sm),
-        Expanded(
-          child: Text(
-            context.l10n.recoveryStage(2),
-            style: context.textStyles.labelSmall?.copyWith(
-              color: context.colors.onSurfaceVariant,
-              letterSpacing: 0.8,
-            ),
-          ),
-        ),
-        Text(
-          RecoveryFixtures.sessionReference,
-          style: AppTextStyles.codeSmall.copyWith(
-            color: context.colors.outline,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-/// Resend affordance with its cooldown.
-class _ResendRow extends StatelessWidget {
-  const _ResendRow({required this.state, required this.onResend});
-
-  final PasswordRecoveryState state;
-  final VoidCallback onResend;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.theme;
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Flexible(
-          child: Text(
-            context.l10n.recoveryNoCode,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.outline,
-            ),
-          ),
-        ),
-        AppSpacing.horizontalGap(AppSpacing.xs),
-        if (state.canResend)
-          TextButton(
-            onPressed: onResend,
-            style: TextButton.styleFrom(
-              minimumSize: const Size(0, AppDimensions.minTapTarget),
-              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
-            ),
-            child: Text(context.l10n.recoveryResendCode),
-          )
-        else
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
-            child: Text(
-              '${context.l10n.recoveryResendIn} '
-              '${RecoveryCountdownBadge.format(state.resendAvailableIn)}',
-              style: AppTextStyles.codeSmall.copyWith(
-                color: theme.colorScheme.outline,
-              ),
-            ),
-          ),
-      ],
     );
   }
 }

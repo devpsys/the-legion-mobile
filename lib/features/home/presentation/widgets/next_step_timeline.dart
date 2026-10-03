@@ -39,7 +39,7 @@ class NextStepTimeline extends StatelessWidget {
           trailing: HubCountPill(count: outstanding),
         ),
         AppSpacing.verticalGap(AppSpacing.md),
-        _TimelineRail(steps: steps, onStepTap: onStepTap),
+        TimelineRail(steps: steps, onStepTap: onStepTap),
       ],
     );
   }
@@ -51,23 +51,23 @@ class NextStepTimeline extends StatelessWidget {
 /// behind the card and the node marker sits on it. Segmenting it per row —
 /// rather than as one tall line — is what keeps markers aligned with cards
 /// whose heights differ.
-class _TimelineRail extends StatelessWidget {
-  const _TimelineRail({required this.steps, this.onStepTap});
+class TimelineRail extends StatelessWidget {
+  const TimelineRail({required this.steps, this.onStepTap, super.key});
 
   final List<TimelineStep> steps;
   final void Function(TimelineStep step)? onStepTap;
 
   /// Diameter of a rail node marker.
-  static const double _nodeDiameter = 24;
+  static const double _nodeDiameter = AppDimensions.marker;
 
   /// Vertical offset of the marker from the top of a card, aligned with the
   /// centre of the card's icon tile.
-  static const double _nodeTop = AppSpacing.md + 8;
+  static const double _nodeTop = AppSpacing.md + AppSpacing.sm;
 
   @override
   Widget build(BuildContext context) {
     final lineColor = context.colors.outlineVariant;
-    final lineInset = _nodeDiameter / 2 - 1;
+    final lineInset = _nodeDiameter / 2 - AppDimensions.hairline;
     final cardInset = _nodeDiameter + AppSpacing.sm;
     final lastIndex = steps.length - 1;
 
@@ -91,7 +91,10 @@ class _TimelineRail extends StatelessWidget {
                     height: index == lastIndex
                         ? _nodeTop + _nodeDiameter / 2
                         : null,
-                    child: Container(width: 2, color: lineColor),
+                    child: Container(
+                      width: AppDimensions.hairline * 2,
+                      color: lineColor,
+                    ),
                   ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +113,7 @@ class _TimelineRail extends StatelessWidget {
                 Positioned(
                   left: 0,
                   top: _nodeTop,
-                  child: _TimelineNode(
+                  child: TimelineNode(
                     step: steps[index],
                     diameter: _nodeDiameter,
                   ),
@@ -125,8 +128,8 @@ class _TimelineRail extends StatelessWidget {
 
 /// Marker on the rail: a solid dot for actionable work, a lock when blocked,
 /// an hourglass while waiting on the institution, a check once cleared.
-class _TimelineNode extends StatelessWidget {
-  const _TimelineNode({required this.step, required this.diameter});
+class TimelineNode extends StatelessWidget {
+  const TimelineNode({required this.step, required this.diameter, super.key});
 
   final TimelineStep step;
   final double diameter;
@@ -149,27 +152,34 @@ class _TimelineNode extends StatelessWidget {
       decoration: BoxDecoration(
         color: tone.surface(theme.brightness),
         shape: BoxShape.circle,
-        border: Border.all(color: theme.colorScheme.surface, width: 2),
+        border: Border.all(
+          color: theme.colorScheme.surface,
+          width: AppDimensions.hairline * 2,
+        ),
       ),
       alignment: Alignment.center,
       // The design marks actionable work with a filled pip rather than a
       // glyph, so the eye goes to the only step that can be taken now.
       child: step.state == TimelineStepState.actionable
           ? Container(
-              width: 8,
-              height: 8,
+              width: AppDimensions.indicator,
+              height: AppDimensions.indicator,
               decoration: BoxDecoration(
                 color: tone.foreground(theme.brightness),
                 shape: BoxShape.circle,
               ),
             )
-          : Icon(_icon, size: 14, color: tone.foreground(theme.brightness)),
+          : Icon(
+              _icon,
+              size: AppDimensions.iconMicro,
+              color: tone.foreground(theme.brightness),
+            ),
     );
   }
 }
 
 /// Width of a step card's status stripe.
-const double _accentWidth = 4;
+const double _accentWidth = AppDimensions.accentStripe;
 
 /// One step: a status-coloured card with a leading icon tile and a trailing tag.
 class TimelineStepCard extends StatelessWidget {
@@ -216,8 +226,8 @@ class TimelineStepCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 36,
-                      height: 36,
+                      width: AppDimensions.iconTile,
+                      height: AppDimensions.iconTile,
                       decoration: BoxDecoration(
                         color: tone.surface(theme.brightness),
                         borderRadius: AppRadii.elementRadius,
@@ -225,7 +235,7 @@ class TimelineStepCard extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Icon(
                         step.icon,
-                        size: 19,
+                        size: AppDimensions.iconDense,
                         color: tone.foreground(theme.brightness),
                       ),
                     ),
@@ -237,14 +247,12 @@ class TimelineStepCard extends StatelessWidget {
                         children: [
                           Text(
                             step.title,
-                            style: theme.textTheme.titleMedium?.copyWith(
-                              fontSize: 15,
-                            ),
+                            style: theme.textTheme.titleMedium,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                           AppSpacing.verticalGap(AppSpacing.xs),
-                          _StepDetail(step: step),
+                          StepDetail(step: step),
                         ],
                       ),
                     ),
@@ -290,14 +298,14 @@ class TimelineStepCard extends StatelessWidget {
 }
 
 /// Detail line of a step, with amounts set in the mono face.
-class _StepDetail extends StatelessWidget {
-  const _StepDetail({required this.step});
+class StepDetail extends StatelessWidget {
+  const StepDetail({required this.step, super.key});
 
   final TimelineStep step;
 
   @override
   Widget build(BuildContext context) {
-    final base = context.textStyles.bodySmall?.copyWith(fontSize: 13);
+    final base = context.textStyles.bodySmall;
 
     return Text.rich(
       TextSpan(
@@ -307,7 +315,6 @@ class _StepDetail extends StatelessWidget {
               text: run.text,
               style: run.isEmphasised
                   ? AppTextStyles.codeSmall.copyWith(
-                      fontSize: 12,
                       color: context.colors.onSurface,
                       fontWeight: AppTextStyles.semiBold,
                     )

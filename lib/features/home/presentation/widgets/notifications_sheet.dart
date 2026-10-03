@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/responsive.dart';
 import '../models/hub_models.dart';
 import 'hub_tone_colors.dart';
 
@@ -24,7 +26,7 @@ class NotificationsSheet extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       showDragHandle: false,
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.transparent,
       builder: (context) => NotificationsSheet(announcements: announcements),
     );
   }
@@ -37,7 +39,9 @@ class NotificationsSheet extends StatelessWidget {
       top: false,
       child: ConstrainedBox(
         constraints: BoxConstraints(
-          maxHeight: MediaQuery.sizeOf(context).height * 0.6,
+          maxHeight:
+              MediaQuery.sizeOf(context).height *
+              AppDimensions.sheetMaxHeightFactor,
         ),
         child: Container(
           decoration: BoxDecoration(
@@ -51,8 +55,8 @@ class NotificationsSheet extends StatelessWidget {
               const SizedBox(height: AppSpacing.md),
               Center(
                 child: Container(
-                  width: 40,
-                  height: 6,
+                  width: AppDimensions.sheetHandleWidth,
+                  height: AppDimensions.sheetHandleHeight,
                   decoration: BoxDecoration(
                     color: theme.colorScheme.outlineVariant,
                     borderRadius: AppRadii.chipRadius,
@@ -84,7 +88,7 @@ class NotificationsSheet extends StatelessWidget {
                   separatorBuilder: (context, index) =>
                       AppSpacing.verticalGap(AppSpacing.sm),
                   itemBuilder: (context, index) =>
-                      _NotificationRow(announcement: announcements[index]),
+                      NotificationRow(announcement: announcements[index]),
                 ),
               ),
             ],
@@ -96,8 +100,8 @@ class NotificationsSheet extends StatelessWidget {
 }
 
 /// One unread row: category dot, headline and timestamp.
-class _NotificationRow extends StatelessWidget {
-  const _NotificationRow({required this.announcement});
+class NotificationRow extends StatelessWidget {
+  const NotificationRow({required this.announcement, super.key});
 
   final Announcement announcement;
 
@@ -117,9 +121,9 @@ class _NotificationRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 8,
-            height: 8,
-            margin: const EdgeInsets.only(top: 6),
+            width: AppDimensions.indicator,
+            height: AppDimensions.indicator,
+            margin: const EdgeInsets.only(top: AppSpacing.md),
             decoration: BoxDecoration(
               color: tone.foreground(brightness),
               shape: BoxShape.circle,

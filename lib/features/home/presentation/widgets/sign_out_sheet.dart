@@ -4,6 +4,8 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/responsive.dart';
 
 /// Confirmation sheet for signing out.
 ///
@@ -24,7 +26,7 @@ class SignOutSheet extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       showDragHandle: false,
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.transparent,
       builder: (context) => SignOutSheet(onConfirm: onConfirm),
     );
   }
@@ -54,8 +56,8 @@ class SignOutSheet extends StatelessWidget {
           children: [
             Center(
               child: Container(
-                width: 40,
-                height: 6,
+                width: AppDimensions.sheetHandleWidth,
+                height: AppDimensions.sheetHandleHeight,
                 decoration: BoxDecoration(
                   color: theme.colorScheme.outlineVariant,
                   borderRadius: AppRadii.chipRadius,
@@ -66,14 +68,18 @@ class SignOutSheet extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  width: 40,
-                  height: 40,
+                  width: AppDimensions.monogramSize,
+                  height: AppDimensions.monogramSize,
                   decoration: BoxDecoration(
                     color: AppColors.dangerSurface(theme.brightness),
                     shape: BoxShape.circle,
                   ),
                   alignment: Alignment.center,
-                  child: Icon(Icons.logout, size: 22, color: danger),
+                  child: Icon(
+                    Icons.logout,
+                    size: AppDimensions.iconHero,
+                    color: danger,
+                  ),
                 ),
                 AppSpacing.horizontalGap(AppSpacing.md),
                 Expanded(
@@ -89,7 +95,7 @@ class SignOutSheet extends StatelessWidget {
               l10n.homeSignOutBody,
               style: theme.textTheme.bodyMedium?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,
-                height: 1.45,
+                height: AppTextStyles.relaxedLineHeight,
               ),
             ),
             AppSpacing.verticalGap(AppSpacing.xl),
@@ -101,7 +107,9 @@ class SignOutSheet extends StatelessWidget {
               style: FilledButton.styleFrom(
                 backgroundColor: danger,
                 foregroundColor: theme.colorScheme.onError,
-                minimumSize: const Size.fromHeight(48),
+                minimumSize: const Size.fromHeight(
+                  AppDimensions.sheetActionHeight,
+                ),
                 shape: const RoundedRectangleBorder(
                   borderRadius: AppRadii.elementRadius,
                 ),
@@ -114,7 +122,9 @@ class SignOutSheet extends StatelessWidget {
               style: OutlinedButton.styleFrom(
                 foregroundColor: theme.colorScheme.onSurface,
                 backgroundColor: theme.colorScheme.surfaceContainerHigh,
-                minimumSize: const Size.fromHeight(48),
+                minimumSize: const Size.fromHeight(
+                  AppDimensions.sheetActionHeight,
+                ),
                 shape: const RoundedRectangleBorder(
                   borderRadius: AppRadii.elementRadius,
                 ),

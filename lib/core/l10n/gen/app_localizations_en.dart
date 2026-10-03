@@ -194,6 +194,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get recoveryRegistryAuthority => 'Legion Registry Authority';
 
   @override
+  String get recoveryRegistryMonogram => 'LR';
+
+  @override
   String get recoveryAccessDirectorate => 'Identity & Access Directorate';
 
   @override

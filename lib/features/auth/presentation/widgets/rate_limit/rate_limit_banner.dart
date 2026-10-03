@@ -47,8 +47,8 @@ class RateLimitAlertBanner extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 32,
-            height: 32,
+            width: AppDimensions.iconTileSmall,
+            height: AppDimensions.iconTileSmall,
             decoration: BoxDecoration(
               color: theme.colorScheme.secondary.withValues(alpha: 0.25),
               shape: BoxShape.circle,
@@ -131,7 +131,7 @@ class CooldownProgressMeter extends StatelessWidget {
       borderRadius: AppRadii.chipRadius,
       child: LinearProgressIndicator(
         value: progress,
-        minHeight: 6,
+        minHeight: AppDimensions.meterHeight,
         backgroundColor: theme.colorScheme.surfaceContainerHighest,
         valueColor: AlwaysStoppedAnimation(
           AppColors.warningText(theme.brightness),

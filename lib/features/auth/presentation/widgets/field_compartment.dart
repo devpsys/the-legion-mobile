@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
 
 /// Label above an input field.
 ///
@@ -42,7 +43,7 @@ class FieldHelper extends StatelessWidget {
                       color: theme.colorScheme.error,
                     )
                   : theme.textTheme.bodySmall)
-              ?.copyWith(height: 1.3),
+              ?.copyWith(height: AppTextStyles.denseLineHeight),
     );
   }
 }

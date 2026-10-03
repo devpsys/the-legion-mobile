@@ -4,17 +4,18 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/router/route_names.dart';
-import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
 import '../bloc/password_recovery_cubit.dart';
 import '../bloc/password_recovery_state.dart';
 import '../mock/password_recovery_fixtures.dart';
+import '../widgets/password_field.dart';
 import '../widgets/password_requirements_list.dart';
 import '../widgets/password_strength_meter.dart';
 import '../widgets/recovery_task_bar.dart';
 import '../widgets/recovery_widgets.dart';
+import '../widgets/terminate_sessions_tile.dart';
 
 /// Step 3 — choose and confirm a new password.
 ///
@@ -23,10 +24,10 @@ class SetNewPasswordPage extends StatefulWidget {
   const SetNewPasswordPage({super.key});
 
   @override
-  State<SetNewPasswordPage> createState() => _SetNewPasswordPageState();
+  SetNewPasswordPageState createState() => SetNewPasswordPageState();
 }
 
-class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
+class SetNewPasswordPageState extends State<SetNewPasswordPage> {
   final _passwordController = TextEditingController();
   final _confirmController = TextEditingController();
   final _confirmFocus = FocusNode();
@@ -96,7 +97,7 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
                               ),
                             ),
                             AppSpacing.verticalGap(AppSpacing.lg),
-                            _PasswordField(
+                            PasswordField(
                               label: context.l10n.recoveryNewPasswordLabel,
                               hint: context.l10n.recoveryNewPasswordHint,
                               controller: _passwordController,
@@ -119,7 +120,7 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
                               reference: RecoveryFixtures.policyReference,
                             ),
                             AppSpacing.verticalGap(AppSpacing.lg),
-                            _PasswordField(
+                            PasswordField(
                               label:
                                   '${context.l10n.recoveryConfirmPassword} *',
                               hint: context.l10n.recoveryConfirmPasswordHint,
@@ -135,7 +136,7 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
                                   : null,
                             ),
                             AppSpacing.verticalGap(AppSpacing.md),
-                            _TerminateSessionsTile(
+                            TerminateSessionsTile(
                               value: state.terminateOtherSessions,
                               enabled: !state.isBusy,
                               onChanged: cubit.terminateOtherSessionsChanged,
@@ -143,7 +144,10 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
                             AppSpacing.verticalGap(AppSpacing.lg),
                             FilledButton.icon(
                               onPressed: state.isBusy ? null : _submit,
-                              icon: const Icon(Icons.lock_reset, size: 18),
+                              icon: const Icon(
+                                Icons.lock_reset,
+                                size: AppDimensions.iconDense,
+                              ),
                               label: Text(context.l10n.recoveryUpdatePassword),
                             ),
                             AppSpacing.verticalGap(AppSpacing.md),
@@ -171,120 +175,6 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
           ),
         );
       },
-    );
-  }
-}
-
-class _PasswordField extends StatefulWidget {
-  const _PasswordField({
-    required this.label,
-    required this.hint,
-    required this.controller,
-    required this.enabled,
-    required this.onChanged,
-    required this.textInputAction,
-    required this.onSubmitted,
-    this.errorText,
-  });
-
-  final String label;
-  final String hint;
-  final TextEditingController controller;
-  final bool enabled;
-  final ValueChanged<String> onChanged;
-  final TextInputAction textInputAction;
-  final ValueChanged<String> onSubmitted;
-  final String? errorText;
-
-  @override
-  State<_PasswordField> createState() => _PasswordFieldState();
-}
-
-class _PasswordFieldState extends State<_PasswordField> {
-  bool _isObscured = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          widget.label,
-          style: context.textStyles.labelMedium?.copyWith(
-            color: context.colors.primary,
-          ),
-        ),
-        AppSpacing.verticalGap(AppSpacing.xs),
-        TextField(
-          controller: widget.controller,
-          enabled: widget.enabled,
-          onChanged: widget.onChanged,
-          onSubmitted: widget.onSubmitted,
-          obscureText: _isObscured,
-          textInputAction: widget.textInputAction,
-          autocorrect: false,
-          enableSuggestions: false,
-          decoration: InputDecoration(
-            hintText: widget.hint,
-            errorText: widget.errorText,
-            suffixIcon: IconButton(
-              onPressed: () => setState(() => _isObscured = !_isObscured),
-              tooltip: _isObscured
-                  ? context.l10n.loginShowPassword
-                  : context.l10n.loginHidePassword,
-              icon: Icon(
-                _isObscured
-                    ? Icons.visibility_outlined
-                    : Icons.visibility_off_outlined,
-                size: 20,
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _TerminateSessionsTile extends StatelessWidget {
-  const _TerminateSessionsTile({
-    required this.value,
-    required this.enabled,
-    required this.onChanged,
-  });
-
-  final bool value;
-  final bool enabled;
-  final ValueChanged<bool> onChanged;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppSpacing.md),
-      decoration: BoxDecoration(
-        color: context.colors.surfaceContainerHigh,
-        borderRadius: AppRadii.elementRadius,
-        border: Border.all(color: context.colors.outlineVariant),
-      ),
-      child: Row(
-        children: [
-          SizedBox.square(
-            dimension: AppDimensions.checkboxSize,
-            child: Checkbox(
-              value: value,
-              onChanged: enabled ? (v) => onChanged(v ?? false) : null,
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            ),
-          ),
-          AppSpacing.horizontalGap(AppSpacing.md),
-          Expanded(
-            child: Text(
-              context.l10n.recoveryTerminateSessions,
-              style: context.textStyles.bodySmall,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

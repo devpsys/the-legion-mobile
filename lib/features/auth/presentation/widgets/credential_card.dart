@@ -55,7 +55,7 @@ class CredentialCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _CardHeader(
+          CardHeader(
             title: context.l10n.loginCardTitle,
             subtitle: context.l10n.loginCardSubtitle,
           ),
@@ -67,7 +67,7 @@ class CredentialCard extends StatelessWidget {
                 final isLocked = cooldownRemaining != null;
 
                 if (isLocked) {
-                  return _LockedDeck(
+                  return LockedDeck(
                     email: emailController.text,
                     cooldownRemaining: cooldownRemaining!,
                     progress: state.cooldownProgress,
@@ -107,10 +107,10 @@ class CredentialCard extends StatelessWidget {
                     ),
                     if (failure != null && emailError == null) ...[
                       AppSpacing.verticalGap(AppSpacing.md),
-                      _FailureBanner(message: failure.localize(l10n)),
+                      FailureBanner(message: failure.localize(l10n)),
                     ],
                     AppSpacing.verticalGap(AppSpacing.lg),
-                    _OptionsRow(
+                    OptionsRow(
                       keepSignedIn: keepSignedIn,
                       onKeepSignedInChanged: onKeepSignedInChanged,
                       onForgotPassword: onForgotPassword,
@@ -148,12 +148,13 @@ class CredentialCard extends StatelessWidget {
 
 /// Locked presentation of the credential deck, from the rate-limit design:
 /// cooldown meter, read-only credentials and a disabled retry action.
-class _LockedDeck extends StatelessWidget {
-  const _LockedDeck({
+class LockedDeck extends StatelessWidget {
+  const LockedDeck({
     required this.email,
     required this.cooldownRemaining,
     required this.progress,
     required this.onSubmit,
+    super.key,
   });
 
   final String email;
@@ -193,8 +194,8 @@ class _LockedDeck extends StatelessWidget {
 }
 
 /// Tinted sub-header row: title, subtitle and a leading icon chip.
-class _CardHeader extends StatelessWidget {
-  const _CardHeader({required this.title, required this.subtitle});
+class CardHeader extends StatelessWidget {
+  const CardHeader({required this.title, required this.subtitle, super.key});
 
   final String title;
   final String subtitle;
@@ -234,8 +235,8 @@ class _CardHeader extends StatelessWidget {
           ),
           AppSpacing.horizontalGap(AppSpacing.md),
           Container(
-            width: 36,
-            height: 36,
+            width: AppDimensions.iconTile,
+            height: AppDimensions.iconTile,
             decoration: BoxDecoration(
               color: theme.colorScheme.surfaceContainerHighest,
               shape: BoxShape.circle,
@@ -253,11 +254,12 @@ class _CardHeader extends StatelessWidget {
 }
 
 /// "Keep me signed in" checkbox plus the password reset link.
-class _OptionsRow extends StatelessWidget {
-  const _OptionsRow({
+class OptionsRow extends StatelessWidget {
+  const OptionsRow({
     required this.keepSignedIn,
     this.onKeepSignedInChanged,
     this.onForgotPassword,
+    super.key,
   });
 
   final bool keepSignedIn;
@@ -321,8 +323,8 @@ class _OptionsRow extends StatelessWidget {
 }
 
 /// Inline banner for failures that are not tied to a single field.
-class _FailureBanner extends StatelessWidget {
-  const _FailureBanner({required this.message});
+class FailureBanner extends StatelessWidget {
+  const FailureBanner({required this.message, super.key});
 
   final String message;
 
@@ -338,7 +340,11 @@ class _FailureBanner extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.error_outline, size: 18, color: theme.colorScheme.error),
+          Icon(
+            Icons.error_outline,
+            size: AppDimensions.iconDense,
+            color: theme.colorScheme.error,
+          ),
           AppSpacing.horizontalGap(AppSpacing.sm),
           Expanded(
             child: Text(

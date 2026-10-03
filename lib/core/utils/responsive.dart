@@ -61,11 +61,85 @@ abstract final class AppDimensions {
   /// 2px focus ring per the spec.
   static const double focusRingWidth = 2;
 
+  // --- Icon scale ---------------------------------------------------------
+  // Glyph sizes across the app. Widgets read these instead of spelling out a
+  // number next to `Icon(size: …)`.
+
+  /// 12px — dense rows and inline status glyphs.
+  static const double iconMicro = 12;
+
   static const double iconSmall = 16;
+
+  /// 18px — the default size of Material Symbols in the designs.
+  static const double iconDense = 18;
+
   static const double iconMedium = 20;
+
+  /// 22px — sheet and notice headers.
+  static const double iconHero = 22;
+
+  /// 30px — the success glyph inside a status mark.
+  static const double iconDisplay = 30;
 
   /// Size of decorative icons that illustrate an empty or error state.
   static const double iconLarge = 40;
+
+  // --- Surfaces and marks -------------------------------------------------
+
+  /// Side of the square icon tile on a card (timeline step, credential row).
+  static const double iconTile = 36;
+
+  /// Side of the compact icon tile on a directory row.
+  static const double iconTileSmall = 32;
+
+  /// Diameter of a marker on a vertical rail or timeline.
+  static const double marker = 24;
+
+  /// Side of a small round indicator (status pip, unread bullet).
+  static const double indicator = 8;
+
+  /// Width of the status stripe down the left edge of a card.
+  static const double accentStripe = 4;
+
+  /// Width of the wider category stripe on a bulletin.
+  static const double accentStripeWide = 5;
+
+  /// Height of a progress track, meter or rail segment.
+  static const double trackHeight = 8;
+
+  /// Height of the thin strength/cooldown meter.
+  static const double meterHeight = 4;
+
+  /// Height of a directory or list row.
+  static const double rowHeight = 56;
+
+  /// Side of a round monogram or crest container.
+  static const double monogramSize = 40;
+
+  /// Side of the large status mark on a confirmation screen.
+  static const double statusMark = 64;
+
+  /// Side of a hero avatar carrying an online marker.
+  static const double avatarLarge = 56;
+
+  /// Side of an avatar in an app bar or list header.
+  static const double avatarSmall = 32;
+
+  /// Height of a one-time-code digit box.
+  static const double codeFieldHeight = 48;
+
+  /// Height of the primary and secondary actions in a bottom sheet.
+  static const double sheetActionHeight = 48;
+
+  /// Drag handle of a bottom sheet.
+  static const double sheetHandleWidth = 40;
+  static const double sheetHandleHeight = 6;
+
+  /// Largest share of the viewport a bottom sheet may cover.
+  static const double sheetMaxHeightFactor = 0.6;
+
+  /// Widest a piece of chrome (splash mark, sign-in brand) may grow.
+  static const double chromeMaxWidth = 320;
 
   /// Widest the hub's term pill may grow inside the app bar. It sits beside
   /// the leading button, the notification bell and the avatar, so it yields

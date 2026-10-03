@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
@@ -57,7 +58,7 @@ class HubHeader extends StatelessWidget implements PreferredSizeWidget {
       // designs add a backdrop blur; that is left to the platform's own window
       // compositing rather than a per-frame filter on low-end devices.
       backgroundColor: theme.colorScheme.surface.withValues(alpha: 0.94),
-      surfaceTintColor: Colors.transparent,
+      surfaceTintColor: AppColors.transparent,
       shape: Border(
         bottom: BorderSide(color: theme.colorScheme.outlineVariant),
       ),
@@ -126,7 +127,7 @@ class TermPill extends StatelessWidget {
         children: [
           Icon(
             Icons.calendar_today_outlined,
-            size: 15,
+            size: AppDimensions.iconSmall,
             color: theme.colorScheme.onSurfaceVariant,
           ),
           AppSpacing.horizontalGap(AppSpacing.sm),

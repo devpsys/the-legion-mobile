@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/responsive.dart';
 
 /// Email input. The label and helper live in [FieldCompartment]; this widget
 /// owns only the field itself.
@@ -33,7 +34,7 @@ class EmailTextField extends StatelessWidget {
         hintText: context.l10n.loginEmailHint,
         suffixIcon: Icon(
           Icons.mail_outline,
-          size: 20,
+          size: AppDimensions.iconMedium,
           color: context.colors.outline,
         ),
       ),
@@ -55,10 +56,10 @@ class PasswordTextField extends StatefulWidget {
   final bool enabled;
 
   @override
-  State<PasswordTextField> createState() => _PasswordTextFieldState();
+  PasswordTextFieldState createState() => PasswordTextFieldState();
 }
 
-class _PasswordTextFieldState extends State<PasswordTextField> {
+class PasswordTextFieldState extends State<PasswordTextField> {
   bool _isObscured = true;
 
   @override
@@ -85,7 +86,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             _isObscured
                 ? Icons.visibility_outlined
                 : Icons.visibility_off_outlined,
-            size: 20,
+            size: AppDimensions.iconMedium,
           ),
           color: outlineColor,
         ),
@@ -121,7 +122,9 @@ class SubmitButton extends StatelessWidget {
                 children: [
                   const SizedBox.square(
                     dimension: 18,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+                    child: CircularProgressIndicator(
+                      strokeWidth: AppDimensions.hairline * 2,
+                    ),
                   ),
                   AppSpacing.horizontalGap(AppSpacing.sm),
                   Text(busyLabel),
@@ -132,7 +135,10 @@ class SubmitButton extends StatelessWidget {
                 children: [
                   Text(label),
                   AppSpacing.horizontalGap(AppSpacing.sm),
-                  const Icon(Icons.arrow_forward, size: 18),
+                  const Icon(
+                    Icons.arrow_forward,
+                    size: AppDimensions.iconDense,
+                  ),
                 ],
               ),
       ),

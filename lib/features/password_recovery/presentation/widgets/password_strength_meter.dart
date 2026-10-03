@@ -4,6 +4,7 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/responsive.dart';
 
 /// Password strength meter from the `set_new_password` design.
 ///
@@ -48,7 +49,7 @@ class PasswordStrengthMeter extends StatelessWidget {
           borderRadius: AppRadii.chipRadius,
           child: LinearProgressIndicator(
             value: strength,
-            minHeight: 4,
+            minHeight: AppDimensions.meterHeight,
             backgroundColor: theme.colorScheme.surfaceContainerHighest,
             valueColor: AlwaysStoppedAnimation(color),
           ),

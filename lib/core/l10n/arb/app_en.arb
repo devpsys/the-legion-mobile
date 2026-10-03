@@ -67,6 +67,7 @@
   "recoverySecurityLevel": "SEC-L4",
   "recoveryStepOf": "Step {current} of {total}",
   "recoveryRegistryAuthority": "Legion Registry Authority",
+  "recoveryRegistryMonogram": "LR",
   "recoveryAccessDirectorate": "Identity & Access Directorate",
   "recoveryVerified": "Verified",
   "recoveryRequestTitle": "Reset your password",

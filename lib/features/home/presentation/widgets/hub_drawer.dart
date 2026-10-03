@@ -5,6 +5,8 @@ import '../../../../core/config/app_config.dart';
 import '../../../../core/di/injection.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/section_card.dart';
 import '../../../auth/domain/entities/user.dart';
 import '../../../auth/presentation/widgets/user_avatar.dart';
@@ -42,7 +44,7 @@ class HubDrawer extends StatelessWidget {
           children: [
             Row(
               children: [
-                UserAvatar(user: user, size: 40),
+                UserAvatar(user: user, size: AppDimensions.monogramSize),
                 AppSpacing.horizontalGap(AppSpacing.md),
                 Expanded(
                   child: Column(
@@ -71,7 +73,7 @@ class HubDrawer extends StatelessWidget {
                 cluster.label.toUpperCase(),
                 style: theme.textTheme.labelSmall?.copyWith(
                   color: theme.colorScheme.primary,
-                  letterSpacing: 0.8,
+                  letterSpacing: AppTextStyles.trackingCaps,
                 ),
               ),
               AppSpacing.verticalGap(AppSpacing.sm),
@@ -82,13 +84,13 @@ class HubDrawer extends StatelessWidget {
                   minVerticalPadding: 0,
                   leading: Icon(
                     module.icon,
-                    size: 20,
+                    size: AppDimensions.iconMedium,
                     color: theme.colorScheme.onSurfaceVariant,
                   ),
                   title: Text(module.label, style: theme.textTheme.bodyMedium),
                   trailing: Icon(
                     Icons.chevron_right,
-                    size: 18,
+                    size: AppDimensions.iconDense,
                     color: theme.colorScheme.outline,
                   ),
                   onTap: onModuleTap == null
@@ -102,7 +104,7 @@ class HubDrawer extends StatelessWidget {
             ],
             // The hub replaced the old "foundation is ready" card that printed
             // the active configuration, so it lives here in debug builds only.
-            if (kDebugMode) const _BuildDiagnostics(),
+            if (kDebugMode) const BuildDiagnostics(),
           ],
         ),
       ),
@@ -111,8 +113,8 @@ class HubDrawer extends StatelessWidget {
 }
 
 /// `--dart-define` values of the running build.
-class _BuildDiagnostics extends StatelessWidget {
-  const _BuildDiagnostics();
+class BuildDiagnostics extends StatelessWidget {
+  const BuildDiagnostics({super.key});
 
   @override
   Widget build(BuildContext context) {

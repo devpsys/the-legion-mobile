@@ -5,6 +5,7 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/responsive.dart';
 
 /// Audit summary shown after a completed recovery.
 ///
@@ -52,7 +53,7 @@ class RecoveryAuditCard extends StatelessWidget {
               children: [
                 Icon(
                   Icons.receipt_long_outlined,
-                  size: 22,
+                  size: AppDimensions.iconHero,
                   color: theme.colorScheme.primary,
                 ),
                 AppSpacing.horizontalGap(AppSpacing.sm),
@@ -61,7 +62,7 @@ class RecoveryAuditCard extends StatelessWidget {
                     context.l10n.recoveryAuditSummary,
                     style: theme.textTheme.labelMedium?.copyWith(
                       color: theme.colorScheme.primary,
-                      letterSpacing: 0.8,
+                      letterSpacing: AppTextStyles.trackingCaps,
                     ),
                   ),
                 ),
@@ -69,7 +70,7 @@ class RecoveryAuditCard extends StatelessWidget {
                   context.l10n.recoveryStatusCommitted,
                   style: AppTextStyles.codeSmall.copyWith(
                     color: theme.colorScheme.outline,
-                    letterSpacing: 0.6,
+                    letterSpacing: AppTextStyles.trackingCaps,
                   ),
                 ),
               ],
@@ -79,16 +80,16 @@ class RecoveryAuditCard extends StatelessWidget {
             padding: AppSpacing.card,
             child: Column(
               children: [
-                _AuditRow(
+                AuditRow(
                   label: context.l10n.recoveryAuditAccount,
                   value: '$accountName ($registrationNumber)',
                 ),
-                _AuditRow(label: context.l10n.recoveryAuditEmail, value: email),
-                _AuditRow(
+                AuditRow(label: context.l10n.recoveryAuditEmail, value: email),
+                AuditRow(
                   label: context.l10n.recoveryAuditTimestamp,
                   value: timestamp,
                 ),
-                _AuditRow(
+                AuditRow(
                   label: context.l10n.recoveryAuditHash,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
@@ -106,19 +107,19 @@ class RecoveryAuditCard extends StatelessWidget {
                       auditHash,
                       style: AppTextStyles.codeSmall.copyWith(
                         color: theme.colorScheme.primary,
-                        letterSpacing: 0.8,
+                        letterSpacing: AppTextStyles.trackingCaps,
                       ),
                     ),
                   ),
                 ),
-                _AuditRow(
+                AuditRow(
                   label: context.l10n.recoveryAuditSessions,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Icon(
                         Icons.circle,
-                        size: 8,
+                        size: AppDimensions.indicator,
                         color: AppColors.successText(theme.brightness),
                       ),
                       AppSpacing.horizontalGap(AppSpacing.sm),
@@ -142,8 +143,8 @@ class RecoveryAuditCard extends StatelessWidget {
 }
 
 /// Label/value row that stacks on phones and aligns on wider layouts.
-class _AuditRow extends StatelessWidget {
-  const _AuditRow({required this.label, this.value, this.child});
+class AuditRow extends StatelessWidget {
+  const AuditRow({required this.label, this.value, this.child, super.key});
 
   final String label;
   final String? value;

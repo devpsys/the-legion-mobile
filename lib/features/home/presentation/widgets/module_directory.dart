@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
@@ -85,7 +86,7 @@ class ClusterCard extends StatelessWidget {
                     cluster.label.toUpperCase(),
                     style: theme.textTheme.labelSmall?.copyWith(
                       color: theme.colorScheme.primary,
-                      letterSpacing: 0.8,
+                      letterSpacing: AppTextStyles.trackingCaps,
                     ),
                   ),
                 ),
@@ -99,7 +100,7 @@ class ClusterCard extends StatelessWidget {
             ),
           ),
           for (var index = 0; index < cluster.modules.length; index++)
-            _ModuleRow(
+            ModuleRow(
               module: cluster.modules[index],
               // Hairline separators rather than spacing, as in the designs.
               showDivider: index > 0,
@@ -114,11 +115,12 @@ class ClusterCard extends StatelessWidget {
 }
 
 /// A single portal row: icon tile, label and chevron on a 56px target.
-class _ModuleRow extends StatelessWidget {
-  const _ModuleRow({
+class ModuleRow extends StatelessWidget {
+  const ModuleRow({
     required this.module,
     required this.showDivider,
     this.onTap,
+    super.key,
   });
 
   final PortalModule module;
@@ -128,7 +130,7 @@ class _ModuleRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    const rowHeight = 56.0;
+    const rowHeight = AppDimensions.rowHeight;
 
     return Column(
       children: [
@@ -138,7 +140,7 @@ class _ModuleRow extends StatelessWidget {
             color: theme.colorScheme.outlineVariant,
           ),
         Material(
-          color: Colors.transparent,
+          color: AppColors.transparent,
           child: InkWell(
             onTap: onTap,
             child: ConstrainedBox(
@@ -148,8 +150,8 @@ class _ModuleRow extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      width: 32,
-                      height: 32,
+                      width: AppDimensions.iconTileSmall,
+                      height: AppDimensions.iconTileSmall,
                       decoration: BoxDecoration(
                         color: theme.colorScheme.surfaceContainerHigh,
                         borderRadius: AppRadii.elementRadius,
@@ -157,16 +159,16 @@ class _ModuleRow extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Icon(
                         module.icon,
-                        size: AppDimensions.iconMedium - 2,
+                        size: AppDimensions.iconMedium,
                         color: theme.colorScheme.onSurfaceVariant,
                       ),
                     ),
-                    AppSpacing.horizontalGap(AppSpacing.md + 2),
+                    AppSpacing.horizontalGap(AppSpacing.lg),
                     Expanded(
                       child: Text(
                         module.label,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          fontSize: 14.5,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontWeight: AppTextStyles.semiBold,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

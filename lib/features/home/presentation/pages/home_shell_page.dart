@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/adaptive_scaffold.dart';
 import '../../../../core/widgets/app_mark.dart';
 
@@ -46,7 +47,7 @@ class HomeShellPage extends StatelessWidget {
       ),
       railLeading: const Padding(
         padding: EdgeInsets.symmetric(vertical: AppSpacing.md),
-        child: AppMark(size: 40),
+        child: AppMark(size: AppDimensions.iconLarge),
       ),
       body: navigationShell,
     );

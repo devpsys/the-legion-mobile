@@ -8,10 +8,9 @@ import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/responsive_content.dart';
 import '../../../../core/widgets/section_card.dart';
 import '../../../../core/widgets/state_views.dart';
-import '../../../auth/domain/entities/user.dart';
 import '../../../auth/presentation/bloc/auth_cubit.dart';
 import '../../../auth/presentation/bloc/auth_state.dart';
-import '../../../auth/presentation/widgets/user_avatar.dart';
+import '../widgets/profile_header.dart';
 
 /// Profile tab of the authenticated area.
 ///
@@ -39,7 +38,7 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _ProfileHeader(user: user),
+                  ProfileHeader(user: user),
                   AppSpacing.verticalGap(AppSpacing.md),
                   SectionCard(
                     icon: Icons.badge_outlined,
@@ -71,47 +70,6 @@ class ProfilePage extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class _ProfileHeader extends StatelessWidget {
-  const _ProfileHeader({required this.user});
-
-  final User user;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = context.theme;
-    return SectionCard(
-      icon: Icons.person_outline,
-      title: context.l10n.profileTitle,
-      child: Row(
-        children: [
-          UserAvatar(user: user, size: 56),
-          AppSpacing.horizontalGap(AppSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  user.displayName,
-                  style: theme.textTheme.titleMedium,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                AppSpacing.verticalGap(AppSpacing.xs),
-                Text(
-                  user.email,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

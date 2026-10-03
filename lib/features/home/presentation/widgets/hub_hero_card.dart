@@ -70,7 +70,7 @@ class HubHeroCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(AppSpacing.xl),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppRadii.card + 4),
+        borderRadius: AppRadii.cardRadius,
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -91,28 +91,28 @@ class HubHeroCard extends StatelessWidget {
                       DateFormat('EEEE, d MMMM y', l10n.localeName).format(now),
                       style: theme.textTheme.labelSmall?.copyWith(
                         color: AppColors.honeyGold,
-                        letterSpacing: 1,
+                        letterSpacing: AppTextStyles.trackingCapsWide,
                       ),
                     ),
                     AppSpacing.verticalGap(AppSpacing.xs),
                     Text(
                       '$greeting, $firstName',
                       style: theme.textTheme.headlineMedium?.copyWith(
-                        color: Colors.white,
+                        color: AppColors.onNavy,
                       ),
                     ),
                     AppSpacing.verticalGap(AppSpacing.xs),
                     Text(
                       standing.summary,
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: Colors.white70,
+                        color: AppColors.onNavyMuted,
                       ),
                     ),
                   ],
                 ),
               ),
               AppSpacing.horizontalGap(AppSpacing.md),
-              _HeroAvatar(user: user),
+              HeroAvatar(user: user),
             ],
           ),
           AppSpacing.verticalGap(AppSpacing.xl),
@@ -139,11 +139,11 @@ class TermMetricPanel extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(AppSpacing.md + 2),
+      padding: const EdgeInsets.all(AppSpacing.lg),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.10),
+        color: AppColors.navyGlass,
         borderRadius: AppRadii.rowRadius,
-        border: Border.all(color: Colors.white.withValues(alpha: 0.16)),
+        border: Border.all(color: AppColors.navyGlassStroke),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,8 +154,8 @@ class TermMetricPanel extends StatelessWidget {
               // repeating animation never settles, which would hang every
               // widget test that pumps this screen.
               Container(
-                width: 8,
-                height: 8,
+                width: AppDimensions.indicator,
+                height: AppDimensions.indicator,
                 decoration: const BoxDecoration(
                   color: AppColors.honeyGold,
                   shape: BoxShape.circle,
@@ -176,7 +176,7 @@ class TermMetricPanel extends StatelessWidget {
                     Text(
                       '${term.session} · ${term.semesterLong}',
                       style: AppTextStyles.codeMedium.copyWith(
-                        color: Colors.white,
+                        color: AppColors.onNavy,
                         fontWeight: AppTextStyles.semiBold,
                       ),
                     ),
@@ -187,7 +187,7 @@ class TermMetricPanel extends StatelessWidget {
               Text(
                 '$daysLeft',
                 style: AppTextStyles.codeMedium.copyWith(
-                  color: Colors.white,
+                  color: AppColors.onNavy,
                   fontWeight: AppTextStyles.bold,
                 ),
               ),
@@ -195,13 +195,13 @@ class TermMetricPanel extends StatelessWidget {
               Text(
                 l10n.homeDaysLeft,
                 style: theme.textTheme.labelSmall?.copyWith(
-                  color: Colors.white70,
+                  color: AppColors.onNavyMuted,
                 ),
               ),
             ],
           ),
           AppSpacing.verticalGap(AppSpacing.md),
-          _TermProgressTrack(progress: term.progressAt(now)),
+          TermProgressTrack(progress: term.progressAt(now)),
           AppSpacing.verticalGap(AppSpacing.sm),
           Row(
             children: [
@@ -209,14 +209,14 @@ class TermMetricPanel extends StatelessWidget {
                 child: Text(
                   l10n.homeTermInProgress,
                   style: theme.textTheme.labelSmall?.copyWith(
-                    color: Colors.white60,
+                    color: AppColors.onNavySubtle,
                   ),
                 ),
               ),
               Text(
                 l10n.homeTermEndsOn(endsOn),
                 style: theme.textTheme.labelSmall?.copyWith(
-                  color: Colors.white60,
+                  color: AppColors.onNavySubtle,
                 ),
               ),
             ],
@@ -228,8 +228,8 @@ class TermMetricPanel extends StatelessWidget {
 }
 
 /// Horizontal term track, filled gold the way the design shows progress.
-class _TermProgressTrack extends StatelessWidget {
-  const _TermProgressTrack({required this.progress});
+class TermProgressTrack extends StatelessWidget {
+  const TermProgressTrack({required this.progress, super.key});
 
   final double progress;
 
@@ -239,25 +239,24 @@ class _TermProgressTrack extends StatelessWidget {
       borderRadius: AppRadii.chipRadius,
       child: LinearProgressIndicator(
         value: progress,
-        minHeight: 8,
-        backgroundColor: Colors.black.withValues(alpha: 0.25),
+        minHeight: AppDimensions.trackHeight,
+        backgroundColor: AppColors.navyRecess,
         valueColor: const AlwaysStoppedAnimation(AppColors.honeyGold),
       ),
     );
   }
 }
 
-/// Side of the hero's avatar.
-const double _avatarSize = 56;
-
 /// Avatar with the design's online marker.
-class _HeroAvatar extends StatelessWidget {
-  const _HeroAvatar({required this.user});
+class HeroAvatar extends StatelessWidget {
+  const HeroAvatar({required this.user, super.key});
 
   final User user;
 
   @override
   Widget build(BuildContext context) {
+    // The hero keeps its navy gradient in both brightnesses, so the light
+    // success token is the one that reads on top of it.
     final online = AppColors.successTextLight;
 
     return Stack(
@@ -265,8 +264,8 @@ class _HeroAvatar extends StatelessWidget {
       children: [
         UserAvatar(
           user: user,
-          size: _avatarSize,
-          borderRadius: BorderRadius.circular(AppRadii.element + 2),
+          size: AppDimensions.avatarLarge,
+          borderRadius: AppRadii.elementRadius,
           border: Border.all(
             color: AppColors.honeyGold.withValues(alpha: 0.7),
             width: AppDimensions.hairline + 1,
@@ -276,12 +275,15 @@ class _HeroAvatar extends StatelessWidget {
           right: -2,
           bottom: -2,
           child: Container(
-            width: 16,
-            height: 16,
+            width: AppDimensions.indicator * 2,
+            height: AppDimensions.indicator * 2,
             decoration: BoxDecoration(
               color: online,
               shape: BoxShape.circle,
-              border: Border.all(color: AppColors.navyDeep, width: 2),
+              border: Border.all(
+                color: AppColors.navyDeep,
+                width: AppDimensions.focusRingWidth,
+              ),
             ),
           ),
         ),

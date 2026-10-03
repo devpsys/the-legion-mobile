@@ -69,7 +69,7 @@ class HubSectionHeading extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final labelStyle = theme.textTheme.labelSmall?.copyWith(
-      letterSpacing: 1.2,
+      letterSpacing: AppTextStyles.trackingCapsWide,
       color: theme.colorScheme.onSurfaceVariant,
     );
 
@@ -136,7 +136,7 @@ class HubTag extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.sm + 2,
+        horizontal: AppSpacing.md,
         vertical: AppSpacing.xs,
       ),
       decoration: BoxDecoration(

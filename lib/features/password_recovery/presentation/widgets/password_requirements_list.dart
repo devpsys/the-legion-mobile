@@ -65,7 +65,7 @@ class PasswordRequirementsList extends StatelessWidget {
           for (final requirement in requirements)
             Padding(
               padding: const EdgeInsets.only(bottom: AppSpacing.xs),
-              child: _RequirementRow(requirement: requirement),
+              child: RequirementRow(requirement: requirement),
             ),
           AppSpacing.verticalGap(AppSpacing.xs),
           Text(
@@ -80,8 +80,8 @@ class PasswordRequirementsList extends StatelessWidget {
   }
 }
 
-class _RequirementRow extends StatelessWidget {
-  const _RequirementRow({required this.requirement});
+class RequirementRow extends StatelessWidget {
+  const RequirementRow({required this.requirement, super.key});
 
   final PasswordRequirement requirement;
 

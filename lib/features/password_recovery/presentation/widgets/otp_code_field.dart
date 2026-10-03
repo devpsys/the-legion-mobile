@@ -5,6 +5,7 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/responsive.dart';
 
 /// Segmented six-digit code input.
 ///
@@ -28,10 +29,10 @@ class OtpCodeField extends StatefulWidget {
   final bool hasError;
 
   @override
-  State<OtpCodeField> createState() => _OtpCodeFieldState();
+  OtpCodeFieldState createState() => OtpCodeFieldState();
 }
 
-class _OtpCodeFieldState extends State<OtpCodeField> {
+class OtpCodeFieldState extends State<OtpCodeField> {
   final FocusNode _focusNode = FocusNode();
 
   @override
@@ -97,7 +98,7 @@ class _OtpCodeFieldState extends State<OtpCodeField> {
                 for (var index = 0; index < widget.length; index++) ...[
                   if (index > 0) AppSpacing.horizontalGap(AppSpacing.sm),
                   Expanded(
-                    child: _DigitBox(
+                    child: DigitBox(
                       digit: index < value.length ? value[index] : null,
                       isFocused: _focusNode.hasFocus && index == value.length,
                       borderColor: widget.hasError
@@ -118,12 +119,13 @@ class _OtpCodeFieldState extends State<OtpCodeField> {
   }
 }
 
-class _DigitBox extends StatelessWidget {
-  const _DigitBox({
+class DigitBox extends StatelessWidget {
+  const DigitBox({
     required this.digit,
     required this.isFocused,
     required this.borderColor,
     required this.isFilled,
+    super.key,
   });
 
   final String? digit;
@@ -137,7 +139,7 @@ class _DigitBox extends StatelessWidget {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 150),
-      height: 48,
+      height: AppDimensions.codeFieldHeight,
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
         borderRadius: AppRadii.elementRadius,
@@ -147,15 +149,13 @@ class _DigitBox extends StatelessWidget {
       child: digit != null
           ? Text(
               digit!,
-              style: AppTextStyles.codeMedium.copyWith(
-                fontSize: 18,
-                fontWeight: AppTextStyles.bold,
+              style: AppTextStyles.codeDisplay.copyWith(
                 color: theme.colorScheme.primary,
               ),
             )
           : Icon(
               Icons.circle,
-              size: 6,
+              size: AppDimensions.indicator,
               color: theme.colorScheme.outlineVariant,
             ),
     );

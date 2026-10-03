@@ -50,7 +50,7 @@ class AuthHeaderBanner extends StatelessWidget {
                     borderRadius: AppRadii.elementRadius,
                     border: Border.all(color: theme.colorScheme.outlineVariant),
                   ),
-                  child: crest ?? const _DefaultCrest(),
+                  child: crest ?? const DefaultCrest(),
                 ),
                 AppSpacing.horizontalGap(AppSpacing.md),
                 Expanded(
@@ -70,7 +70,7 @@ class AuthHeaderBanner extends StatelessWidget {
                             ),
                           ),
                           AppSpacing.horizontalGap(AppSpacing.sm),
-                          _SsoBadge(label: context.l10n.loginSsoBadge),
+                          SsoBadge(label: context.l10n.loginSsoBadge),
                         ],
                       ),
                       AppSpacing.verticalGap(AppSpacing.xs),
@@ -95,8 +95,8 @@ class AuthHeaderBanner extends StatelessWidget {
 }
 
 /// Translucent SSO badge, set in the mono style from the design.
-class _SsoBadge extends StatelessWidget {
-  const _SsoBadge({required this.label});
+class SsoBadge extends StatelessWidget {
+  const SsoBadge({required this.label, super.key});
 
   final String label;
 
@@ -125,8 +125,8 @@ class _SsoBadge extends StatelessWidget {
 }
 
 /// Placeholder crest glyph; replace with the university crest asset.
-class _DefaultCrest extends StatelessWidget {
-  const _DefaultCrest();
+class DefaultCrest extends StatelessWidget {
+  const DefaultCrest({super.key});
 
   @override
   Widget build(BuildContext context) {

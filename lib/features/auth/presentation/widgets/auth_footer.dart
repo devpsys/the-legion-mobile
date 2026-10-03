@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 
@@ -43,10 +44,7 @@ class AuthFooter extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 for (final option in languages)
-                  _LanguageOption(
-                    label: option,
-                    isSelected: option == language,
-                  ),
+                  LanguageOption(label: option, isSelected: option == language),
               ],
             ),
           ),
@@ -64,8 +62,12 @@ class AuthFooter extends StatelessWidget {
   }
 }
 
-class _LanguageOption extends StatelessWidget {
-  const _LanguageOption({required this.label, required this.isSelected});
+class LanguageOption extends StatelessWidget {
+  const LanguageOption({
+    required this.label,
+    required this.isSelected,
+    super.key,
+  });
 
   final String label;
   final bool isSelected;
@@ -79,7 +81,7 @@ class _LanguageOption extends StatelessWidget {
         vertical: AppSpacing.xs,
       ),
       decoration: BoxDecoration(
-        color: isSelected ? theme.colorScheme.surface : Colors.transparent,
+        color: isSelected ? theme.colorScheme.surface : AppColors.transparent,
         borderRadius: AppRadii.chipRadius,
       ),
       child: Text(

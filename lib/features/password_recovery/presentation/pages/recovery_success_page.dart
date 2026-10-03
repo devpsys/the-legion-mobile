@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
@@ -15,6 +14,8 @@ import '../mock/password_recovery_fixtures.dart';
 import '../widgets/recovery_audit_card.dart';
 import '../widgets/recovery_task_bar.dart';
 import '../widgets/recovery_widgets.dart';
+import '../widgets/registry_monogram.dart';
+import '../widgets/success_mark.dart';
 
 /// Step 4 — audit summary of the completed recovery.
 ///
@@ -26,6 +27,7 @@ class RecoverySuccessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = context.watch<PasswordRecoveryCubit>().state;
     final identifier = state.identifier;
+    final l10n = context.l10n;
 
     return Scaffold(
       body: Column(
@@ -35,7 +37,7 @@ class RecoverySuccessPage extends StatelessWidget {
             title: context.l10n.recoveryRegistryAuthority,
             subtitle: context.l10n.recoveryAccessDirectorate,
             isDocked: true,
-            leading: const _RegistryMonogram(),
+            leading: const RegistryMonogram(),
             trailing: RecoveryStatusChip(
               label: context.l10n.recoveryVerified,
               icon: Icons.verified_outlined,
@@ -55,7 +57,7 @@ class RecoverySuccessPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        const _SuccessMark(),
+                        const SuccessMark(),
                         AppSpacing.verticalGap(AppSpacing.lg),
                         Text(
                           context.l10n.recoverySuccessTitle,
@@ -80,7 +82,7 @@ class RecoverySuccessPage extends StatelessWidget {
                           email: identifier.isEmpty
                               ? RecoveryFixtures.accountName
                               : identifier,
-                          timestamp: DateFormat.yMMMMd('en')
+                          timestamp: DateFormat.yMMMMd(l10n.localeName)
                               .add_jm()
                               .format(DateTime.now()),
                           auditHash: RecoveryFixtures.auditReference,
@@ -99,7 +101,10 @@ class RecoverySuccessPage extends StatelessWidget {
                         AppSpacing.verticalGap(AppSpacing.lg),
                         FilledButton.icon(
                           onPressed: () => context.goNamed(Routes.loginName),
-                          icon: const Icon(Icons.arrow_forward, size: 18),
+                          icon: const Icon(
+                            Icons.arrow_forward,
+                            size: AppDimensions.iconDense,
+                          ),
                           label: Text(
                             context.l10n.recoverySignInWithNewPassword,
                           ),
@@ -119,61 +124,6 @@ class RecoverySuccessPage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-/// Registry monogram from the success design's task bar.
-class _RegistryMonogram extends StatelessWidget {
-  const _RegistryMonogram();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 32,
-      height: 32,
-      decoration: BoxDecoration(
-        color: context.colors.primary,
-        borderRadius: AppRadii.elementRadius,
-      ),
-      alignment: Alignment.center,
-      child: Text(
-        'LR',
-        style: context.textStyles.labelSmall?.copyWith(
-          color: context.colors.onPrimary,
-          letterSpacing: 1,
-        ),
-      ),
-    );
-  }
-}
-
-/// Success glyph: filled circle on a tinted ring.
-class _SuccessMark extends StatelessWidget {
-  const _SuccessMark();
-
-  @override
-  Widget build(BuildContext context) {
-    final success = AppColors.successText(context.colors.brightness);
-    final surface = AppColors.successSurface(context.colors.brightness);
-
-    return Center(
-      child: Container(
-        width: 64,
-        height: 64,
-        decoration: BoxDecoration(color: surface, shape: BoxShape.circle),
-        child: Container(
-          margin: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: success.withValues(alpha: 0.35),
-              width: 2,
-            ),
-          ),
-          child: Icon(Icons.check, size: 30, color: success),
-        ),
       ),
     );
   }

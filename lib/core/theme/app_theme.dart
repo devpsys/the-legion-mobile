@@ -45,7 +45,7 @@ abstract final class AppTheme {
       appBarTheme: AppBarTheme(
         backgroundColor: AppColors.card(brightness),
         foregroundColor: AppColors.textPrimary(brightness),
-        surfaceTintColor: Colors.transparent,
+        surfaceTintColor: AppColors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: false,
@@ -56,7 +56,7 @@ abstract final class AppTheme {
       cardTheme: CardThemeData(
         elevation: 0,
         color: AppColors.card(brightness),
-        surfaceTintColor: Colors.transparent,
+        surfaceTintColor: AppColors.transparent,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: AppRadii.cardRadius,
@@ -141,7 +141,7 @@ abstract final class AppTheme {
       navigationBarTheme: NavigationBarThemeData(
         height: AppDimensions.minTapTarget + AppSpacing.xl,
         backgroundColor: AppColors.card(brightness),
-        surfaceTintColor: Colors.transparent,
+        surfaceTintColor: AppColors.transparent,
         indicatorColor: AppColors.brandTintSurfaceLight.withValues(
           alpha: isDark ? 0.24 : 1,
         ),
@@ -198,14 +198,14 @@ abstract final class AppTheme {
 
       dialogTheme: DialogThemeData(
         backgroundColor: AppColors.card(brightness),
-        surfaceTintColor: Colors.transparent,
+        surfaceTintColor: AppColors.transparent,
         elevation: 0,
         shape: const RoundedRectangleBorder(borderRadius: AppRadii.cardRadius),
       ),
 
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: AppColors.card(brightness),
-        surfaceTintColor: Colors.transparent,
+        surfaceTintColor: AppColors.transparent,
         elevation: 0,
         shape: const RoundedRectangleBorder(borderRadius: AppRadii.topSheet),
       ),
@@ -233,7 +233,7 @@ abstract final class AppTheme {
         fillColor: WidgetStateProperty.resolveWith(
           (states) => states.contains(WidgetState.selected)
               ? AppColors.primaryAction(brightness)
-              : Colors.transparent,
+              : AppColors.transparent,
         ),
       ),
 

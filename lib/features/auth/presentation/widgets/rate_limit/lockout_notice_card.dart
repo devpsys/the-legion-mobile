@@ -42,8 +42,8 @@ class LockoutNoticeCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: 40,
-                height: 40,
+                width: AppDimensions.monogramSize,
+                height: AppDimensions.monogramSize,
                 decoration: BoxDecoration(
                   color: dangerSurface,
                   borderRadius: AppRadii.elementRadius,
@@ -113,7 +113,7 @@ class LockoutNoticeCard extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.account_balance_outlined,
-                      size: 14,
+                      size: AppDimensions.iconDense,
                       color: theme.colorScheme.onSurfaceVariant,
                     ),
                     AppSpacing.horizontalGap(AppSpacing.xs),
@@ -134,7 +134,7 @@ class LockoutNoticeCard extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      child: _ContactTile(
+                      child: ContactTile(
                         icon: Icons.mail_outline,
                         label: context.l10n.rateLimitRegistryEmail,
                         onTap: onContactRegistry,
@@ -142,7 +142,7 @@ class LockoutNoticeCard extends StatelessWidget {
                     ),
                     AppSpacing.horizontalGap(AppSpacing.sm),
                     Expanded(
-                      child: _ContactTile(
+                      child: ContactTile(
                         icon: Icons.call_outlined,
                         label: context.l10n.rateLimitRegistryPhone,
                         onTap: onCallRegistry,
@@ -158,7 +158,7 @@ class LockoutNoticeCard extends StatelessWidget {
             children: [
               Icon(
                 Icons.policy_outlined,
-                size: 13,
+                size: AppDimensions.iconDense,
                 color: theme.colorScheme.outline,
               ),
               AppSpacing.horizontalGap(AppSpacing.xs),
@@ -180,8 +180,13 @@ class LockoutNoticeCard extends StatelessWidget {
   }
 }
 
-class _ContactTile extends StatelessWidget {
-  const _ContactTile({required this.icon, required this.label, this.onTap});
+class ContactTile extends StatelessWidget {
+  const ContactTile({
+    required this.icon,
+    required this.label,
+    this.onTap,
+    super.key,
+  });
 
   final IconData icon;
   final String label;
@@ -209,7 +214,11 @@ class _ContactTile extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(icon, size: 16, color: theme.colorScheme.outline),
+                Icon(
+                  icon,
+                  size: AppDimensions.iconSmall,
+                  color: theme.colorScheme.outline,
+                ),
                 AppSpacing.horizontalGap(AppSpacing.sm),
                 Expanded(
                   child: Text(

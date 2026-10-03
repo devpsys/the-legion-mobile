@@ -436,6 +436,12 @@ abstract class AppLocalizations {
   /// **'Legion Registry Authority'**
   String get recoveryRegistryAuthority;
 
+  /// No description provided for @recoveryRegistryMonogram.
+  ///
+  /// In en, this message translates to:
+  /// **'LR'**
+  String get recoveryRegistryMonogram;
+
   /// No description provided for @recoveryAccessDirectorate.
   ///
   /// In en, this message translates to:

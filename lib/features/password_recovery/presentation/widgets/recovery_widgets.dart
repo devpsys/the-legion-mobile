@@ -44,7 +44,7 @@ class RecoveryStatusChip extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (icon != null) ...[
-            Icon(icon, size: AppDimensions.iconSmall - 4, color: tone),
+            Icon(icon, size: AppDimensions.iconMicro, color: tone),
             AppSpacing.horizontalGap(AppSpacing.xs),
           ],
           Text(
@@ -91,7 +91,7 @@ class RecoveryNotice extends StatelessWidget {
         children: [
           Icon(
             icon,
-            size: AppDimensions.iconSmall + 4,
+            size: AppDimensions.iconMedium,
             color: theme.colorScheme.primary,
           ),
           AppSpacing.horizontalGap(AppSpacing.md),
@@ -109,7 +109,9 @@ class RecoveryNotice extends StatelessWidget {
                 AppSpacing.verticalGap(AppSpacing.xs),
                 Text(
                   body,
-                  style: theme.textTheme.bodySmall?.copyWith(height: 1.45),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    height: AppTextStyles.relaxedLineHeight,
+                  ),
                 ),
               ],
             ),
@@ -166,7 +168,7 @@ class RecoveryCountdownBadge extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: AppDimensions.iconSmall, color: color),
+          Icon(icon, size: AppDimensions.iconMicro, color: color),
           AppSpacing.horizontalGap(AppSpacing.sm),
           Text(
             '$label ${format(remaining)}',

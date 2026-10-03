@@ -34,7 +34,7 @@ class LockedCredentialSummary extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: Column(
         children: [
-          _LockedRow(
+          LockedRow(
             icon: Icons.badge_outlined,
             label: context.l10n.loginEmailLabel,
             value: email,
@@ -42,8 +42,11 @@ class LockedCredentialSummary extends StatelessWidget {
               fontWeight: AppTextStyles.semiBold,
             ),
           ),
-          Divider(height: 1, color: theme.colorScheme.outlineVariant),
-          _LockedRow(
+          Divider(
+            height: AppDimensions.hairline,
+            color: theme.colorScheme.outlineVariant,
+          ),
+          LockedRow(
             icon: Icons.key_outlined,
             label: context.l10n.loginPasswordLabel,
             value: maskedPassphrase,
@@ -58,12 +61,13 @@ class LockedCredentialSummary extends StatelessWidget {
   }
 }
 
-class _LockedRow extends StatelessWidget {
-  const _LockedRow({
+class LockedRow extends StatelessWidget {
+  const LockedRow({
     required this.icon,
     required this.label,
     required this.value,
     required this.valueStyle,
+    super.key,
   });
 
   final IconData icon;
@@ -107,7 +111,7 @@ class _LockedRow extends StatelessWidget {
             ),
           ),
           AppSpacing.horizontalGap(AppSpacing.sm),
-          _FieldLockedPill(),
+          FieldLockedPill(),
         ],
       ),
     );
@@ -115,7 +119,9 @@ class _LockedRow extends StatelessWidget {
 }
 
 /// "Field Locked" tag from the design.
-class _FieldLockedPill extends StatelessWidget {
+class FieldLockedPill extends StatelessWidget {
+  const FieldLockedPill({super.key});
+
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
@@ -133,7 +139,11 @@ class _FieldLockedPill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.lock_outline, size: 12, color: theme.colorScheme.outline),
+          Icon(
+            Icons.lock_outline,
+            size: AppDimensions.iconMicro,
+            color: theme.colorScheme.outline,
+          ),
           AppSpacing.horizontalGap(AppSpacing.xs),
           Text(
             context.l10n.rateLimitFieldLocked,

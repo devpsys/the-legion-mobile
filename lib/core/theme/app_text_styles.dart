@@ -41,6 +41,25 @@ abstract final class AppTextStyles {
   static const double codeMediumSize = 13;
   static const double codeSmallSize = 11;
 
+  /// 18px — the digits of a one-time code.
+  static const double codeDisplaySize = 18;
+
+  // --- Line heights -------------------------------------------------------
+
+  /// Relaxed leading for running prose (notices, announcements, sheets).
+  static const double relaxedLineHeight = 1.45;
+
+  /// Tight leading for dense rows and captions.
+  static const double denseLineHeight = 1.3;
+
+  // --- Tracking -----------------------------------------------------------
+
+  /// Letter spacing for spaced-caps section labels.
+  static const double trackingCaps = 0.8;
+
+  /// Letter spacing for the widest tracked labels (screen section headings).
+  static const double trackingCapsWide = 1.2;
+
   static const FontWeight regular = FontWeight.w400;
   static const FontWeight medium = FontWeight.w500;
   static const FontWeight semiBold = FontWeight.w600;
@@ -55,6 +74,7 @@ abstract final class AppTextStyles {
   static const double _lh18 = 18;
   static const double _lh16 = 16;
   static const double _lh14 = 14;
+  static const double _lh26 = 26;
 
   /// The themed [TextTheme] for [scheme].
   static TextTheme textTheme(ColorScheme scheme) {
@@ -166,6 +186,15 @@ abstract final class AppTextStyles {
     fontSize: codeSmallSize,
     fontWeight: medium,
     height: _lh14 / codeSmallSize,
+  );
+
+  /// code-lg — 18/26, w600 — the digits of a one-time code.
+  static TextStyle get codeDisplay => const TextStyle(
+    fontFamily: monoFontFamily,
+    fontFamilyFallback: monoFontFamilyFallback,
+    fontSize: codeDisplaySize,
+    fontWeight: semiBold,
+    height: _lh26 / codeDisplaySize,
   );
 
   /// Table/ledger cells: tabular figures with lining numerals so columns and

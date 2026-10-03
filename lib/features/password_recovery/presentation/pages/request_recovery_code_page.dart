@@ -9,8 +9,10 @@ import '../../../../core/utils/responsive.dart';
 import '../bloc/password_recovery_cubit.dart';
 import '../bloc/password_recovery_state.dart';
 import '../mock/password_recovery_fixtures.dart';
+import '../widgets/identifier_field.dart';
 import '../widgets/recovery_task_bar.dart';
 import '../widgets/recovery_widgets.dart';
+import '../widgets/reference_row.dart';
 
 /// Step 1 — request a recovery code.
 ///
@@ -19,11 +21,10 @@ class RequestRecoveryCodePage extends StatefulWidget {
   const RequestRecoveryCodePage({super.key});
 
   @override
-  State<RequestRecoveryCodePage> createState() =>
-      _RequestRecoveryCodePageState();
+  RequestRecoveryCodePageState createState() => RequestRecoveryCodePageState();
 }
 
-class _RequestRecoveryCodePageState extends State<RequestRecoveryCodePage> {
+class RequestRecoveryCodePageState extends State<RequestRecoveryCodePage> {
   final _identifierController = TextEditingController();
 
   @override
@@ -72,7 +73,7 @@ class _RequestRecoveryCodePageState extends State<RequestRecoveryCodePage> {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
-                                  _ReferenceRow(
+                                  ReferenceRow(
                                     protocol:
                                         RecoveryFixtures.protocolReference,
                                     reference:
@@ -96,7 +97,7 @@ class _RequestRecoveryCodePageState extends State<RequestRecoveryCodePage> {
                                         ),
                                   ),
                                   AppSpacing.verticalGap(AppSpacing.lg),
-                                  _IdentifierField(
+                                  IdentifierField(
                                     controller: _identifierController,
                                     enabled: !state.isBusy,
                                     errorText: state.errorMessage,
@@ -122,7 +123,7 @@ class _RequestRecoveryCodePageState extends State<RequestRecoveryCodePage> {
                                               : _submit),
                                     icon: const Icon(
                                       Icons.arrow_forward,
-                                      size: 18,
+                                      size: AppDimensions.iconDense,
                                     ),
                                     label: Text(context.l10n.recoverySendCode),
                                   ),
@@ -132,7 +133,7 @@ class _RequestRecoveryCodePageState extends State<RequestRecoveryCodePage> {
                                         context.goNamed(Routes.loginName),
                                     icon: const Icon(
                                       Icons.chevron_right,
-                                      size: 18,
+                                      size: AppDimensions.iconDense,
                                     ),
                                     label: Text(
                                       context.l10n.recoveryRememberedPassword,
@@ -150,87 +151,6 @@ class _RequestRecoveryCodePageState extends State<RequestRecoveryCodePage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-/// Protocol badge and registry reference from the design's card header.
-///
-/// A [Wrap] rather than a [Row] so the reference drops onto its own line on
-/// narrow phones instead of overflowing.
-class _ReferenceRow extends StatelessWidget {
-  const _ReferenceRow({required this.protocol, required this.reference});
-
-  final String protocol;
-  final String reference;
-
-  @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      alignment: WrapAlignment.spaceBetween,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      spacing: AppSpacing.sm,
-      runSpacing: AppSpacing.xs,
-      children: [
-        RecoveryStatusChip(label: protocol, icon: Icons.verified_user_outlined),
-        Text(
-          reference,
-          style: context.textStyles.labelSmall?.copyWith(
-            color: context.colors.onSurfaceVariant,
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _IdentifierField extends StatelessWidget {
-  const _IdentifierField({
-    required this.controller,
-    required this.enabled,
-    required this.onChanged,
-    required this.onSubmitted,
-    this.errorText,
-  });
-
-  final TextEditingController controller;
-  final bool enabled;
-  final ValueChanged<String> onChanged;
-  final ValueChanged<String> onSubmitted;
-  final String? errorText;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '${context.l10n.recoveryIdentifierLabel} *',
-          style: context.textStyles.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        AppSpacing.verticalGap(AppSpacing.xs),
-        TextField(
-          controller: controller,
-          enabled: enabled,
-          onChanged: onChanged,
-          onSubmitted: onSubmitted,
-          textInputAction: TextInputAction.done,
-          keyboardType: TextInputType.emailAddress,
-          autocorrect: false,
-          decoration: InputDecoration(
-            hintText: context.l10n.recoveryIdentifierHint,
-            suffixIcon: const Icon(Icons.badge_outlined, size: 20),
-            errorText: errorText,
-          ),
-        ),
-        AppSpacing.verticalGap(AppSpacing.xs),
-        Text(
-          context.l10n.recoveryIdentifierHelper,
-          style: context.textStyles.bodySmall,
-        ),
-      ],
     );
   }
 }

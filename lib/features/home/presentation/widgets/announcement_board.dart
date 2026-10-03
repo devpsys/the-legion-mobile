@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/responsive.dart';
 import '../models/hub_models.dart';
 import 'hub_card.dart';
@@ -114,9 +115,7 @@ class AnnouncementCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           announcement.publishedLabel,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            fontSize: 12,
-                          ),
+                          style: theme.textTheme.bodySmall,
                           textAlign: TextAlign.end,
                         ),
                       ),
@@ -134,7 +133,7 @@ class AnnouncementCard extends StatelessWidget {
                     announcement.body,
                     style: theme.textTheme.bodyMedium?.copyWith(
                       color: theme.colorScheme.onSurfaceVariant,
-                      height: 1.45,
+                      height: AppTextStyles.relaxedLineHeight,
                     ),
                   ),
                   AppSpacing.verticalGap(AppSpacing.sm),
@@ -149,7 +148,10 @@ class AnnouncementCard extends StatelessWidget {
                         ),
                         foregroundColor: theme.colorScheme.tertiary,
                       ),
-                      icon: const Icon(Icons.arrow_forward, size: 16),
+                      icon: const Icon(
+                        Icons.arrow_forward,
+                        size: AppDimensions.iconSmall,
+                      ),
                       label: Text(context.l10n.homeReadMore),
                     ),
                   ),
@@ -163,7 +165,7 @@ class AnnouncementCard extends StatelessWidget {
   }
 
   /// Width of a bulletin's category stripe.
-  static const double _accentWidth = 5;
+  static const double _accentWidth = AppDimensions.accentStripeWide;
 
   String _categoryLabel(BuildContext context) {
     final l10n = context.l10n;

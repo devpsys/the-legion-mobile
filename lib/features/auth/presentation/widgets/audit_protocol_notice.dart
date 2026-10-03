@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/responsive.dart';
 
 /// Statutory notice shown beneath the sign-in deck.
@@ -46,7 +47,9 @@ class AuditProtocolNotice extends StatelessWidget {
                 AppSpacing.verticalGap(AppSpacing.xs),
                 Text(
                   context.l10n.loginAuditBody,
-                  style: theme.textTheme.bodySmall?.copyWith(height: 1.45),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    height: AppTextStyles.relaxedLineHeight,
+                  ),
                 ),
               ],
             ),

@@ -264,10 +264,8 @@ test/
 │   ├── extensions/  # String helpers
 │   ├── utils/       # breakpoints
 │   └── widgets/     # shared widgets
-└── features/auth/
-    ├── data/        # repository with mocked datasources
-    ├── domain/      # use case validation
-    └── presentation/# cubit transitions with bloc_test
+├── features/<name>/ # mirrors lib/features/<name>/
+└── policies/        # coding-policy enforcement (architecture_policies_test)
 ```
 
 ---
@@ -277,7 +275,7 @@ test/
 ```bash
 dart format .
 flutter analyze   # must report "No issues found!"
-flutter test
+flutter test      # includes the coding-policy suite
 ```
 
 ---
@@ -300,14 +298,35 @@ flutter test
 
 ## Project rules (do not break)
 
+Every rule below is enforced by `test/policies/architecture_policies_test.dart`,
+which runs as part of `flutter test`. See ARCHITECTURE.md §15 for the rationale.
+
+**Architecture**
+
 1. One state-management solution: BLoC/Cubit only.
 2. Domain never imports Flutter, Dio, Hive or BLoC.
 3. Presentation never touches Dio, Hive or a datasource.
-4. No hardcoded API URLs — inject `AppConfig`.
-5. No hardcoded colors, typography, spacing or radii — use the design system in
-   `core/theme`.
-6. No hardcoded user-facing strings — use `context.l10n`.
-7. No `print`/`debugPrint` — use `AppLogger`.
-8. Never log passwords, tokens or secrets (`redactPayload` exists for this).
-9. Resolve dependencies through `sl`; do not `new` infrastructure in widgets.
-10. Create a use case only when it carries a rule or a meaningful operation.
+4. Resolve dependencies through `sl`; do not `new` infrastructure in widgets.
+5. No hardcoded API URLs — resolve them from the injected `AppConfig`.
+
+**Design system**
+
+6. No hardcoded colors, typography, spacing, padding, widths or heights — read
+   `AppColors`, `AppTextStyles`, `AppSpacing`, `AppRadii` and `AppDimensions`.
+   Color literals may only appear in `lib/core/theme/`.
+7. No hardcoded user-facing strings — use `context.l10n`. Fixture content under
+   `presentation/{mock,models,bloc}/` is exempt: it is data and state, not UI
+   chrome.
+
+**Structure**
+
+8. Widgets are **public** classes in their feature's `presentation/widgets/`
+   folder. No `class _Private extends StatelessWidget`, and no widget declared
+   in a `pages/` file — a page composes widgets, it does not define them.
+
+**Correctness and safety**
+
+9. No `print`/`debugPrint` — use `AppLogger`.
+10. Never log passwords, tokens or secrets (`redactPayload` exists for this).
+11. No `Platform.isAndroid`-style checks in widgets — branch on the viewport.
+12. Create a use case only when it carries a rule or a meaningful operation.
