@@ -13,9 +13,11 @@ import 'package:the_legion_mobile/core/router/route_names.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admission_verification_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/bloc/jamb_claim_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/admission_letter_document.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_shell.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_tab_bar.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_task_bar.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/fake_auth_remote_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/in_memory_auth_local_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/repositories/auth_repository_impl.dart';
@@ -320,6 +322,10 @@ void main() {
         admissionsBackTarget(Routes.admissionsProgrammes),
         Routes.admissionsName,
       );
+      expect(
+        admissionsBackTarget(Routes.admissionsJamb),
+        Routes.admissionsName,
+      );
     });
 
     test('unwinds the letter to the detail it was opened from', () {
@@ -373,6 +379,7 @@ void main() {
       // their configuration from the same locator.
       sl.registerFactory<PasswordRecoveryCubit>(PasswordRecoveryCubit.new);
       sl.registerFactory<AdmissionsCubit>(AdmissionsCubit.new);
+      sl.registerFactory<JambClaimCubit>(JambClaimCubit.new);
       sl.registerFactory<AdmissionVerificationCubit>(
         AdmissionVerificationCubit.new,
       );
@@ -705,6 +712,122 @@ void main() {
       expect(find.text('My applications'), findsOneWidget);
       expect(find.text('Before you submit'), findsNothing);
     });
+
+    testWidgets(
+      'the JAMB tab opens the claim under the portal\'s bar, and back is the overview',
+      (tester) async {
+        await signInAndReachHub(tester);
+
+        await tester.ensureVisible(find.text('Admissions'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Admissions'));
+        await tester.pumpAndSettle();
+
+        // The fourth tab is live: the claim screen, under the same bar and
+        // over the same tab bar as the other three.
+        await tester.tap(find.text('JAMB'));
+        await tester.pumpAndSettle();
+        expect(find.text('Claim your JAMB result'), findsOneWidget);
+        expect(find.byType(AdmissionsTaskBar), findsOneWidget);
+        expect(find.text('2026/2027 Cycle'), findsOneWidget);
+        expect(find.byType(AdmissionsTabBar), findsOneWidget);
+        expect(find.text('You chose us in JAMB'), findsNothing);
+
+        // The system gesture unwinds to the overview.
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        expect(find.text('You chose us in JAMB'), findsOneWidget);
+
+        // The overview's own claim card leads to the same screen.
+        await tester.ensureVisible(find.text('Claim your result'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Claim your result'));
+        await tester.pumpAndSettle();
+        expect(find.text('Claim your JAMB result'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'claiming the result through the UI clears the claim everywhere',
+      (tester) async {
+        await signInAndReachHub(tester);
+
+        await tester.ensureVisible(find.text('Admissions'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Admissions'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('JAMB'));
+        await tester.pumpAndSettle();
+
+        final fields = find.byType(TextField);
+        await tester.enterText(fields.at(0), '202630112233AB');
+        await tester.enterText(fields.at(1), 'Ibrahim');
+        await tester.pumpAndSettle();
+
+        // The birthday goes in through the picker's keyboard mode.
+        await tester.ensureVisible(fields.at(2));
+        await tester.pumpAndSettle();
+        await tester.tap(fields.at(2));
+        await tester.pumpAndSettle();
+        expect(find.byType(DatePickerDialog), findsOneWidget);
+        await tester.tap(find.byIcon(Icons.edit_outlined));
+        await tester.pumpAndSettle();
+        await tester.enterText(
+          find.descendant(
+            of: find.byType(DatePickerDialog),
+            matching: find.byType(TextField),
+          ),
+          '05/02/2008',
+        );
+        await tester.tap(find.text('OK'));
+        await tester.pumpAndSettle();
+        expect(find.text('02 / 05 / 2008'), findsOneWidget);
+
+        await tester.ensureVisible(find.text('Find my result'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Find my result'));
+        await tester.pumpAndSettle();
+        expect(find.text('Record found'), findsOneWidget);
+
+        await tester.ensureVisible(find.text('Confirm and link result'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Confirm and link result'));
+        await tester.pumpAndSettle();
+        expect(find.text('Linked'), findsOneWidget);
+
+        // The overview no longer asks: the card is gone and the tab unbadged.
+        await tester.tap(find.text('Overview'));
+        await tester.pumpAndSettle();
+        expect(find.text('You chose us in JAMB'), findsNothing);
+        final jambTab = tester.widget<AdmissionsTab>(
+          find
+              .ancestor(
+                of: find.text('JAMB'),
+                matching: find.byType(AdmissionsTab),
+              )
+              .first,
+        );
+        expect(jambTab.hasBadge, isFalse);
+
+        // ...and the draft's checklist row is ticked.
+        await tester.tap(find.text('Applications'));
+        await tester.pumpAndSettle();
+        await tester.ensureVisible(find.text('APP/2026/00057'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('APP/2026/00057'));
+        await tester.pumpAndSettle();
+        expect(find.text('4 of 9 complete'), findsOneWidget);
+        expect(find.textContaining('2026 UTME, aggregate 312'), findsOneWidget);
+
+        // Coming back to the tab shows the record, not the form.
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('JAMB'));
+        await tester.pumpAndSettle();
+        expect(find.text('Linked'), findsOneWidget);
+        expect(find.text('Find my result'), findsNothing);
+      },
+    );
 
     testWidgets('the record leads on to the browser and to the hub', (
       tester,

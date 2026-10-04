@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import '../models/admissions_models.dart';
 import '../models/application_detail_models.dart';
+import '../models/jamb_models.dart';
 import '../models/programme_models.dart';
 
 /// Stage of the candidate portal.
@@ -51,6 +52,8 @@ class AdmissionsState extends Equatable {
     this.emailConfirmation = EmailConfirmationStatus.idle,
     this.isEmailBannerDismissed = false,
     this.jambResultPending = false,
+    this.jambLinkApplicationId,
+    this.linkedJambResult,
     this.failureMessage,
     this.programmeQuery = '',
     this.selectedFaculty,
@@ -84,7 +87,15 @@ class AdmissionsState extends Equatable {
   /// The banner is a gate, not a nag: a candidate may hide it for this session.
   final bool isEmailBannerDismissed;
 
+  /// `true` while the import holds a result the candidate has not claimed.
   final bool jambResultPending;
+
+  /// The application a claimed result is linked to; `null` until the record
+  /// loads.
+  final String? jambLinkApplicationId;
+
+  /// The result once the candidate has claimed it; `null` before.
+  final JambResult? linkedJambResult;
 
   final String? failureMessage;
 
@@ -104,6 +115,20 @@ class AdmissionsState extends Equatable {
   /// The detail screen's content for [id], or `null` when there is none —
   /// an unknown deep link, or a record whose detail has not been ported.
   ApplicationDetail? detailFor(String id) => applicationDetails[id];
+
+  /// `true` once the JAMB result is on the record.
+  bool get hasLinkedJambResult => linkedJambResult != null;
+
+  /// The application a claimed result binds to, or `null` when the record
+  /// does not carry it.
+  ApplicationSummary? get jambLinkApplication {
+    final id = jambLinkApplicationId;
+    if (id == null) return null;
+    for (final application in applications) {
+      if (application.id == id) return application;
+    }
+    return null;
+  }
 
   /// The confirmation gate is only shown while it still blocks something.
   bool get needsEmailConfirmation =>
@@ -169,6 +194,8 @@ class AdmissionsState extends Equatable {
     EmailConfirmationStatus? emailConfirmation,
     bool? isEmailBannerDismissed,
     bool? jambResultPending,
+    String? jambLinkApplicationId,
+    JambResult? linkedJambResult,
     String? failureMessage,
     bool clearFailure = false,
     String? programmeQuery,
@@ -188,6 +215,9 @@ class AdmissionsState extends Equatable {
       isEmailBannerDismissed:
           isEmailBannerDismissed ?? this.isEmailBannerDismissed,
       jambResultPending: jambResultPending ?? this.jambResultPending,
+      jambLinkApplicationId:
+          jambLinkApplicationId ?? this.jambLinkApplicationId,
+      linkedJambResult: linkedJambResult ?? this.linkedJambResult,
       failureMessage: clearFailure
           ? null
           : (failureMessage ?? this.failureMessage),
@@ -211,6 +241,8 @@ class AdmissionsState extends Equatable {
     emailConfirmation,
     isEmailBannerDismissed,
     jambResultPending,
+    jambLinkApplicationId,
+    linkedJambResult,
     failureMessage,
     programmeQuery,
     selectedFaculty,

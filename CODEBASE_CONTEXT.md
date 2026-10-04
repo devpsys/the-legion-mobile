@@ -184,11 +184,13 @@ candidate portal.
 | Student hub | Mocked | Timeline, directory, announcements from `HubFixtures`. Only Admissions and Profile navigate. |
 | Profile | Partially implemented | Session email, name, sign-out. Not a designed profile product. |
 | Notifications | Mocked | `NotificationCubit` singleton fed by `NotificationFixtures`. Mark-read is in memory. |
-| Admissions overview, programmes, applications | Mocked | Cubit + fixtures. Search, faculty, and cycle selection are local. Apply, claim JAMB, bulletins, and the JAMB tab are `commonComingSoon`. |
+| Admissions overview, programmes, applications | Mocked | Cubit + fixtures. Search, faculty, and cycle selection are local. Apply and bulletins are `commonComingSoon`; the claim card and the JAMB tab open the claim screen. |
+| JAMB claim (`/admissions/jamb`) | Mocked | `JambClaimCubit` matches the typed facts against `AdmissionsFixtures.jambImport`; `AdmissionsCubit.linkJambResult` puts the match on the record, clears the badge and ticks the draft's checklist row. Help link is coming soon. |
 | Application detail (draft) | Mocked | Checklist, choices, referees, submit, withdraw sheet render. Saves, invites, submit, and withdraw report coming soon. |
 | Offer, rejection, expired, withdrawn, matriculated | Mocked, uncommitted | Working tree only (not on `main`). UI is wired; accept, decline, letters, and help desk are coming soon. Navigation to programmes and `/home` is real. |
 | Submitted, under review, accepted, declined detail | UI only | History card only. `ApplicationOutcomeSections` says those designs do not exist yet. |
-| JAMB claim, referee form, public verification, admission letter | Not implemented | Designs exist locally. Overview has a claim card that is not live. |
+| Admission letter, public verification (`/verify/admission`) | Mocked | Letter drawn from the record's `AdmissionLetter`; verification looks codes up in `AdmissionsFixtures.verificationRegister`, no session. |
+| Referee form | Not implemented | Design exists locally. |
 | Fees and payments, results, timetable, other hub modules | Not implemented | Fees designs exist locally under `ui-designs/fees/`. No Dart feature. |
 | Bursary officer | Not implemented | Not designed in this checkout. |
 

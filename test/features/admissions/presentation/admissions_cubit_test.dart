@@ -1,6 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_state.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/mock/admissions_fixtures.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/models/application_detail_models.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/models/jamb_models.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/models/programme_models.dart';
 
 void main() {
   late AdmissionsCubit cubit;
@@ -115,6 +119,88 @@ void main() {
         isFalse,
         reason: 'settles at once',
       );
+    });
+  });
+
+  group('the JAMB result', () {
+    setUp(load);
+
+    final result = AdmissionsFixtures.jambResult;
+
+    ChecklistItem jambRow() => cubit.state
+        .detailFor(AdmissionsFixtures.draftApplication.id)!
+        .checklist
+        .singleWhere((item) => item.id == 'jamb-caps');
+
+    test('is pending, and bound for the draft, once loaded', () {
+      expect(cubit.state.jambResultPending, isTrue);
+      expect(cubit.state.hasLinkedJambResult, isFalse);
+      expect(
+        cubit.state.jambLinkApplication?.trackingCode,
+        'APP/2026/00057',
+        reason: 'the draft is the record still waiting on a score',
+      );
+      expect(jambRow().state, RequirementState.notTracked);
+      expect(jambRow().action, ChecklistAction.claimJamb);
+    });
+
+    test('linking puts it on the record and clears what was pending', () {
+      cubit.linkJambResult(result);
+
+      expect(cubit.state.linkedJambResult, result);
+      expect(cubit.state.hasLinkedJambResult, isTrue);
+      expect(
+        cubit.state.jambResultPending,
+        isFalse,
+        reason: 'the badge and the overview card have nothing left to say',
+      );
+    });
+
+    test('linking ticks the checklist row that was waiting on it', () {
+      cubit.linkJambResult(result);
+
+      final row = jambRow();
+      expect(row.state, RequirementState.met);
+      expect(row.action, ChecklistAction.none);
+      expect(row.title, 'JAMB result from CAPS', reason: 'same row, now met');
+      expect(row.detail, contains('312'));
+
+      // The rest of the checklist is untouched.
+      final detail = cubit.state.detailFor(
+        AdmissionsFixtures.draftApplication.id,
+      )!;
+      expect(detail.checklist, hasLength(9));
+      expect(detail.completedCount, 4);
+      expect(detail.outstandingCount, 4);
+    });
+
+    test('cannot be linked twice', () {
+      cubit.linkJambResult(result);
+      final linked = cubit.state;
+
+      cubit.linkJambResult(
+        JambResult(
+          registrationNumber: '000000000000ZZ',
+          candidateName: 'Somebody Else',
+          surname: 'Else',
+          dateOfBirth: DateTime(2007),
+          examinationYear: 2025,
+          aggregateScore: 200,
+          subjects: const [],
+        ),
+      );
+
+      expect(cubit.state, linked, reason: 'the screen says it is permanent');
+    });
+
+    test('leaves the other records alone', () {
+      final before = cubit.state.applicationDetails;
+      cubit.linkJambResult(result);
+
+      for (final id in before.keys) {
+        if (id == AdmissionsFixtures.draftApplication.id) continue;
+        expect(cubit.state.applicationDetails[id], before[id]);
+      }
     });
   });
 

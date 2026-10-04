@@ -38,4 +38,13 @@ extension AppToneColors on AppTone {
 
   /// Accent stroke for the left edge of a card.
   Color accent(Brightness brightness) => foreground(brightness);
+
+  /// Hairline around a callout filled with [surface].
+  Color border(Brightness brightness) => switch (this) {
+    AppTone.warning => AppColors.warningBorder(brightness),
+    AppTone.danger => AppColors.dangerBorder(brightness),
+    AppTone.info => AppColors.infoBorder(brightness),
+    AppTone.success => AppColors.successBorder(brightness),
+    AppTone.neutral => AppColors.stroke(brightness),
+  };
 }

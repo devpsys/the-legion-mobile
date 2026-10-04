@@ -1585,4 +1585,114 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get admissionsVerifySignIn => 'Sign in to the portal';
+
+  @override
+  String get admissionsJambEyebrow => 'CAPS result import';
+
+  @override
+  String get admissionsJambHeading => 'Claim your JAMB result';
+
+  @override
+  String get admissionsJambIntro =>
+      'The Legion University receives official examination results directly from the Joint Admissions and Matriculation Board (JAMB) Central Admissions Processing System (CAPS). Match your record to link your score to your application.';
+
+  @override
+  String get admissionsJambRegistrationLabel => 'JAMB registration number';
+
+  @override
+  String get admissionsJambRegistrationHint => 'e.g. 202630112233AB';
+
+  @override
+  String get admissionsJambRegistrationHelper =>
+      '12-digit number followed by 2 letters, as printed on your JAMB slip.';
+
+  @override
+  String get admissionsJambSurnameLabel => 'Surname';
+
+  @override
+  String get admissionsJambSurnameHint => 'As on your JAMB slip';
+
+  @override
+  String get admissionsJambSurnameHelper =>
+      'Must match exactly as registered with JAMB.';
+
+  @override
+  String get admissionsJambDateOfBirthLabel => 'Date of birth';
+
+  @override
+  String get admissionsJambDateOfBirthHint => 'DD / MM / YYYY';
+
+  @override
+  String get admissionsJambDateOfBirthHelper =>
+      'Used to verify you are the legitimate candidate.';
+
+  @override
+  String get admissionsJambDateOfBirthPickerTitle => 'Your date of birth';
+
+  @override
+  String get admissionsJambPermanentWarning =>
+      'Check your registration number carefully. Linking a JAMB result is permanent and cannot be undone from the portal.';
+
+  @override
+  String get admissionsJambFindAction => 'Find my result';
+
+  @override
+  String get admissionsJambMatching => 'Checking CAPS';
+
+  @override
+  String get admissionsJambConfirmAction => 'Confirm and link result';
+
+  @override
+  String get admissionsJambHelpLink =>
+      'Need help claiming? Contact admissions registry';
+
+  @override
+  String get admissionsJambRecordEyebrow => 'Verification status';
+
+  @override
+  String get admissionsJambRecordTitle => 'Official CAPS record';
+
+  @override
+  String get admissionsJambRecordFound => 'Record found';
+
+  @override
+  String get admissionsJambRecordLinked => 'Linked';
+
+  @override
+  String get admissionsJambCandidate => 'Candidate';
+
+  @override
+  String get admissionsJambExaminationYear => 'Examination year';
+
+  @override
+  String admissionsJambExaminationValue(Object year) {
+    return '$year UTME';
+  }
+
+  @override
+  String get admissionsJambAggregate => 'Aggregate score';
+
+  @override
+  String get admissionsJambSubjects => 'Subject breakdown';
+
+  @override
+  String admissionsJambBindingNotice(Object reference) {
+    return 'This record will be permanently linked to $reference.';
+  }
+
+  @override
+  String admissionsJambLinkedNotice(Object reference) {
+    return 'This record is permanently linked to $reference.';
+  }
+
+  @override
+  String get admissionsJambLinkedMessage =>
+      'Your JAMB result is now on your record.';
+
+  @override
+  String get admissionsJambNotFoundTitle => 'No record matches these details';
+
+  @override
+  String get admissionsJambNotFoundBody =>
+      'Check the registration number, surname and date of birth against your JAMB slip and try again. If they are right and it still does not match, CAPS has not sent us your result yet.';
 }

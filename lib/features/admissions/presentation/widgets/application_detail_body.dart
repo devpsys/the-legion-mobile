@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
@@ -217,13 +219,14 @@ class ApplicationDetailBodyState extends State<ApplicationDetailBody> {
         _resendConfirmation();
       case ChecklistAction.inviteReferee:
         _bringIntoView(_inviteFormKey);
+      // The claim has its own tab; the row is a shortcut to it.
+      case ChecklistAction.claimJamb:
+        context.goNamed(Routes.admissionsJambName);
       // Everything with no screen behind it yet reports that, so a tap never
       // lands in silence.
       case ChecklistAction.none:
         _notLiveYet();
       case ChecklistAction.completePersonalDetails:
-        _notLiveYet();
-      case ChecklistAction.claimJamb:
         _notLiveYet();
       case ChecklistAction.uploadDocument:
         _notLiveYet();

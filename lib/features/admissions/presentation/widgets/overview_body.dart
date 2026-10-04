@@ -73,7 +73,7 @@ class OverviewBody extends StatelessWidget {
             if (state.jambResultPending) ...[
               AppSpacing.verticalGap(AppSpacing.md),
               JambClaimCard(
-                onClaim: () => context.showMessage(l10n.commonComingSoon),
+                onClaim: () => context.goNamed(Routes.admissionsJambName),
               ),
             ],
             AppSpacing.verticalGap(AppSpacing.md),

@@ -21,6 +21,9 @@ abstract final class Routes {
   static const String admissionsProgrammes = '/admissions/programmes';
   static const String admissionsApplications = '/admissions/applications';
 
+  /// The portal's fourth tab: claiming the JAMB result CAPS sent.
+  static const String admissionsJamb = '/admissions/jamb';
+
   /// Path template of one application's detail screen; `:id` is the record's
   /// own id. The concrete location is built with [admissionsApplicationDetail].
   static const String admissionsApplicationDetailTemplate =
@@ -69,6 +72,7 @@ abstract final class Routes {
   static const String admissionsName = 'admissions';
   static const String admissionsProgrammesName = 'admissionsProgrammes';
   static const String admissionsApplicationsName = 'admissionsApplications';
+  static const String admissionsJambName = 'admissionsJamb';
   static const String admissionsApplicationDetailName =
       'admissionsApplicationDetail';
   static const String admissionsAdmissionLetterName =
@@ -91,6 +95,7 @@ abstract final class Routes {
     admissions,
     admissionsProgrammes,
     admissionsApplications,
+    admissionsJamb,
   };
 
   /// Reachable only while signed out — recovery is pointless once

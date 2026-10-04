@@ -2750,6 +2750,198 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign in to the portal'**
   String get admissionsVerifySignIn;
+
+  /// No description provided for @admissionsJambEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'CAPS result import'**
+  String get admissionsJambEyebrow;
+
+  /// No description provided for @admissionsJambHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Claim your JAMB result'**
+  String get admissionsJambHeading;
+
+  /// No description provided for @admissionsJambIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'The Legion University receives official examination results directly from the Joint Admissions and Matriculation Board (JAMB) Central Admissions Processing System (CAPS). Match your record to link your score to your application.'**
+  String get admissionsJambIntro;
+
+  /// No description provided for @admissionsJambRegistrationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'JAMB registration number'**
+  String get admissionsJambRegistrationLabel;
+
+  /// No description provided for @admissionsJambRegistrationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 202630112233AB'**
+  String get admissionsJambRegistrationHint;
+
+  /// No description provided for @admissionsJambRegistrationHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'12-digit number followed by 2 letters, as printed on your JAMB slip.'**
+  String get admissionsJambRegistrationHelper;
+
+  /// No description provided for @admissionsJambSurnameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Surname'**
+  String get admissionsJambSurnameLabel;
+
+  /// No description provided for @admissionsJambSurnameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'As on your JAMB slip'**
+  String get admissionsJambSurnameHint;
+
+  /// No description provided for @admissionsJambSurnameHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'Must match exactly as registered with JAMB.'**
+  String get admissionsJambSurnameHelper;
+
+  /// No description provided for @admissionsJambDateOfBirthLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of birth'**
+  String get admissionsJambDateOfBirthLabel;
+
+  /// No description provided for @admissionsJambDateOfBirthHint.
+  ///
+  /// In en, this message translates to:
+  /// **'DD / MM / YYYY'**
+  String get admissionsJambDateOfBirthHint;
+
+  /// No description provided for @admissionsJambDateOfBirthHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'Used to verify you are the legitimate candidate.'**
+  String get admissionsJambDateOfBirthHelper;
+
+  /// No description provided for @admissionsJambDateOfBirthPickerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your date of birth'**
+  String get admissionsJambDateOfBirthPickerTitle;
+
+  /// No description provided for @admissionsJambPermanentWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your registration number carefully. Linking a JAMB result is permanent and cannot be undone from the portal.'**
+  String get admissionsJambPermanentWarning;
+
+  /// No description provided for @admissionsJambFindAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Find my result'**
+  String get admissionsJambFindAction;
+
+  /// No description provided for @admissionsJambMatching.
+  ///
+  /// In en, this message translates to:
+  /// **'Checking CAPS'**
+  String get admissionsJambMatching;
+
+  /// No description provided for @admissionsJambConfirmAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm and link result'**
+  String get admissionsJambConfirmAction;
+
+  /// No description provided for @admissionsJambHelpLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Need help claiming? Contact admissions registry'**
+  String get admissionsJambHelpLink;
+
+  /// No description provided for @admissionsJambRecordEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification status'**
+  String get admissionsJambRecordEyebrow;
+
+  /// No description provided for @admissionsJambRecordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Official CAPS record'**
+  String get admissionsJambRecordTitle;
+
+  /// No description provided for @admissionsJambRecordFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Record found'**
+  String get admissionsJambRecordFound;
+
+  /// No description provided for @admissionsJambRecordLinked.
+  ///
+  /// In en, this message translates to:
+  /// **'Linked'**
+  String get admissionsJambRecordLinked;
+
+  /// No description provided for @admissionsJambCandidate.
+  ///
+  /// In en, this message translates to:
+  /// **'Candidate'**
+  String get admissionsJambCandidate;
+
+  /// No description provided for @admissionsJambExaminationYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Examination year'**
+  String get admissionsJambExaminationYear;
+
+  /// No description provided for @admissionsJambExaminationValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{year} UTME'**
+  String admissionsJambExaminationValue(Object year);
+
+  /// No description provided for @admissionsJambAggregate.
+  ///
+  /// In en, this message translates to:
+  /// **'Aggregate score'**
+  String get admissionsJambAggregate;
+
+  /// No description provided for @admissionsJambSubjects.
+  ///
+  /// In en, this message translates to:
+  /// **'Subject breakdown'**
+  String get admissionsJambSubjects;
+
+  /// No description provided for @admissionsJambBindingNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'This record will be permanently linked to {reference}.'**
+  String admissionsJambBindingNotice(Object reference);
+
+  /// No description provided for @admissionsJambLinkedNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'This record is permanently linked to {reference}.'**
+  String admissionsJambLinkedNotice(Object reference);
+
+  /// No description provided for @admissionsJambLinkedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your JAMB result is now on your record.'**
+  String get admissionsJambLinkedMessage;
+
+  /// No description provided for @admissionsJambNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No record matches these details'**
+  String get admissionsJambNotFoundTitle;
+
+  /// No description provided for @admissionsJambNotFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the registration number, surname and date of birth against your JAMB slip and try again. If they are right and it still does not match, CAPS has not sent us your result yet.'**
+  String get admissionsJambNotFoundBody;
 }
 
 class _AppLocalizationsDelegate

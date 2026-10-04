@@ -31,4 +31,8 @@ abstract final class AppDateFormats {
 
   /// `09:00` — a 24-hour time, printed beside a date.
   static DateFormat time(String locale) => DateFormat.Hm(locale);
+
+  /// `02 / 05 / 2008` — a date in a form field, digit by digit, the way a
+  /// candidate reads it off a slip.
+  static DateFormat field(String locale) => DateFormat('dd / MM / y', locale);
 }

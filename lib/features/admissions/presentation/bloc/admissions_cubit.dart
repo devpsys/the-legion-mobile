@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../mock/admissions_fixtures.dart';
 import '../mock/programme_fixtures.dart';
+import '../models/application_detail_models.dart';
+import '../models/jamb_models.dart';
 import '../models/programme_models.dart';
 import 'admissions_state.dart';
 
@@ -33,9 +35,67 @@ class AdmissionsCubit extends Cubit<AdmissionsState> {
         bulletins: AdmissionsFixtures.bulletins,
         programmes: ProgrammeFixtures.programmes,
         jambResultPending: AdmissionsFixtures.jambResultPending,
+        jambLinkApplicationId: AdmissionsFixtures.jambLinkApplicationId,
         selectedCycleId: ProgrammeFixtures.defaultCycleId,
       ),
     );
+  }
+
+  /// Puts a matched JAMB result on the record, for good.
+  ///
+  /// The claim screen matches; this links. Once linked the import has nothing
+  /// pending, so the tab's badge and the overview's claim card go, and the
+  /// checklist row that was waiting on the score is ticked — the one row the
+  /// portal can complete without a form behind it. A second link is ignored:
+  /// the screen says it cannot be undone, and the cubit keeps that true.
+  void linkJambResult(JambResult result) {
+    if (state.hasLinkedJambResult) return;
+
+    emit(
+      state.copyWith(
+        linkedJambResult: result,
+        jambResultPending: false,
+        applicationDetails: _withJambClaimed(result),
+        clearFailure: true,
+      ),
+    );
+  }
+
+  /// The details with every `claimJamb` row marked met.
+  Map<String, ApplicationDetail> _withJambClaimed(JambResult result) {
+    final id = state.jambLinkApplicationId;
+    final detail = id == null ? null : state.applicationDetails[id];
+    if (detail == null) return state.applicationDetails;
+
+    final checklist = [
+      for (final item in detail.checklist)
+        if (item.action == ChecklistAction.claimJamb)
+          ChecklistItem(
+            id: item.id,
+            state: RequirementState.met,
+            title: item.title,
+            detail: AdmissionsFixtures.jambLinkedChecklistDetail(result),
+          )
+        else
+          item,
+    ];
+    return {
+      ...state.applicationDetails,
+      id!: ApplicationDetail(
+        application: detail.application,
+        cycleId: detail.cycleId,
+        firstChoiceProgrammeId: detail.firstChoiceProgrammeId,
+        secondChoiceProgrammeId: detail.secondChoiceProgrammeId,
+        history: detail.history,
+        checklist: checklist,
+        referees: detail.referees,
+        offer: detail.offer,
+        letter: detail.letter,
+        rejection: detail.rejection,
+        expiredOn: detail.expiredOn,
+        withdrawal: detail.withdrawal,
+      ),
+    };
   }
 
   /// Narrows the catalogue by free text.

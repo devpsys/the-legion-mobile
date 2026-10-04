@@ -1,6 +1,7 @@
 import '../../../../core/utils/money.dart';
 import '../models/admissions_models.dart';
 import '../models/application_detail_models.dart';
+import '../models/jamb_models.dart';
 import '../models/programme_models.dart';
 import 'programme_fixtures.dart';
 
@@ -630,7 +631,44 @@ abstract final class AdmissionsFixtures {
   /// A result imported from CAPS, waiting to be claimed.
   static const bool jambResultPending = true;
 
-  static const String jambCandidateScore = '248';
+  /// The candidate's own UTME result, as CAPS sent it — the record the
+  /// `claim_jamb_result` design draws once the three facts match.
+  static final JambResult jambResult = JambResult(
+    registrationNumber: '202630112233AB',
+    candidateName: candidate.displayName,
+    surname: 'Ibrahim',
+    dateOfBirth: DateTime(2008, 5, 2),
+    examinationYear: 2026,
+    aggregateScore: 312,
+    subjects: const [
+      JambSubjectScore(subject: 'English', score: 74),
+      JambSubjectScore(subject: 'Mathematics', score: 82),
+      JambSubjectScore(subject: 'Physics', score: 78),
+      JambSubjectScore(subject: 'Chemistry', score: 78),
+    ],
+  );
+
+  /// Every result the import holds for this candidate — one, in the mock.
+  static final List<JambResult> jambImport = [jambResult];
+
+  /// The import's answer for [request], or `null` when nothing matches.
+  static JambResult? matchJambResult(JambClaimRequest request) {
+    for (final result in jambImport) {
+      if (result.matches(request)) return result;
+    }
+    return null;
+  }
+
+  /// The application a claimed result is linked to: the draft, whose
+  /// checklist is waiting on it. The design's binding notice names the
+  /// outstanding offer instead, but an offer already made has no use for a
+  /// score; the record that does is the one still being assembled.
+  static final String jambLinkApplicationId = draftApplication.id;
+
+  /// The checklist row's detail once the result is linked.
+  static String jambLinkedChecklistDetail(JambResult result) =>
+      '${result.examinationYear} UTME, aggregate ${result.aggregateScore}. '
+      'Linked from CAPS.';
 
   // --- Bulletins ----------------------------------------------------------
 

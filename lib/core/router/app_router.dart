@@ -4,10 +4,12 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/admissions/presentation/bloc/admission_verification_cubit.dart';
 import '../../features/admissions/presentation/bloc/admissions_cubit.dart';
+import '../../features/admissions/presentation/bloc/jamb_claim_cubit.dart';
 import '../../features/admissions/presentation/pages/admission_letter_page.dart';
 import '../../features/admissions/presentation/pages/admissions_overview_page.dart';
 import '../../features/admissions/presentation/pages/application_detail_page.dart';
 import '../../features/admissions/presentation/pages/applications_page.dart';
+import '../../features/admissions/presentation/pages/jamb_claim_page.dart';
 import '../../features/admissions/presentation/pages/programmes_page.dart';
 import '../../features/admissions/presentation/pages/verify_admission_page.dart';
 import '../../features/admissions/presentation/widgets/admissions_shell.dart';
@@ -208,6 +210,17 @@ GoRouter createRouter({
             path: Routes.admissionsApplications,
             name: Routes.admissionsApplicationsName,
             builder: (context, state) => const ApplicationsPage(),
+          ),
+          // The fourth tab. Its own cubit per visit for the form — a half-typed
+          // number is not worth keeping across tabs — while the result, once
+          // linked, lives on the portal's cubit with the rest of the record.
+          GoRoute(
+            path: Routes.admissionsJamb,
+            name: Routes.admissionsJambName,
+            builder: (context, state) => BlocProvider<JambClaimCubit>(
+              create: (context) => sl<JambClaimCubit>(),
+              child: const JambClaimPage(),
+            ),
           ),
           // A stack step above the record, not a fourth tab: the design gives
           // it its own back chevron and no tab bar, because a candidate
