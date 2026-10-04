@@ -69,6 +69,31 @@ void main() {
 
       // Banner is flush with the top of the body, footer with the bottom.
       expect(tester.getTopLeft(find.byType(AuthHeaderBanner)).dy, 0);
+      expect(
+        tester.getBottomLeft(find.byType(AuthFooter)).dy,
+        tester.getSize(find.byType(Scaffold)).height,
+      );
+    });
+
+    testWidgets('keeps the footer docked while the content scrolls', (
+      tester,
+    ) async {
+      await pumpLogin(tester);
+
+      final footer = find.byType(AuthFooter);
+      final before = tester.getTopLeft(footer);
+
+      await tester.drag(
+        find.byType(SingleChildScrollView),
+        const Offset(0, -320),
+      );
+      await tester.pumpAndSettle();
+
+      expect(
+        tester.getTopLeft(footer),
+        before,
+        reason: 'the footer is docked below the scrolling content',
+      );
     });
 
     testWidgets('keeps the header banner fixed while the content scrolls', (
