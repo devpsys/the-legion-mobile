@@ -38,7 +38,36 @@ extension FacultySearchTerms on Faculty {
 /// An enum rather than free text because it is a closed vocabulary the
 /// certificate is printed against, and because the design pairs it with the
 /// duration in one metadata row.
-enum StudyMode { undergraduateFullTime, directEntryFullTime }
+enum StudyMode { undergraduateFullTime, directEntryFullTime, diplomaFullTime }
+
+/// The category a programme admits under.
+///
+/// The portal allows one live application per category in a session: a
+/// candidate may hold an undergraduate application and a postgraduate one at
+/// the same time, but not two undergraduate ones. The category is the
+/// programme's, not the cycle's, so the rule survives a cycle that admits to
+/// more than one.
+enum ProgrammeCategory { diploma, undergraduate, postgraduate }
+
+/// Whether a programme's card may offer to start an application.
+///
+/// Three answers rather than a flag because two of them read differently on
+/// the card: a programme the candidate cannot apply to says so through its
+/// own standing (closed, not eligible), while one they have already applied
+/// to in this category needs the strip to say *that*, or the missing button
+/// looks like a defect.
+enum ApplyAvailability {
+  /// An application can be started.
+  available,
+
+  /// The candidate already holds a live application of this category in the
+  /// session the browser is showing.
+  alreadyApplied,
+
+  /// The programme or the cycle has stopped taking applications, or a known
+  /// requirement is not met.
+  unavailable,
+}
 
 /// Where a candidate stands against one admission requirement.
 ///
@@ -107,6 +136,7 @@ class Programme extends Equatable {
     required this.title,
     required this.department,
     required this.faculty,
+    required this.category,
     required this.durationYears,
     required this.studyMode,
     required this.formFeeMinorUnits,
@@ -128,6 +158,10 @@ class Programme extends Equatable {
   final String department;
 
   final Faculty faculty;
+
+  /// What the programme admits under; see [ProgrammeCategory].
+  final ProgrammeCategory category;
+
   final int durationYears;
   final StudyMode studyMode;
 
@@ -169,6 +203,13 @@ class Programme extends Equatable {
   bool get canApply =>
       !isClosed && !requirements.any((r) => r.state.blocksSubmission);
 
+  /// `true` while [now] is inside the programme's own window.
+  ///
+  /// The same reading as `AdmissionCycle.isOpenAt`: the deadline is the
+  /// moment the window shuts, so a programme closing at 23:59 is open at
+  /// 23:58 and not at 23:59.
+  bool isOpenAt(DateTime now) => !isClosed && now.isBefore(closesOn);
+
   /// The prose under the evaluation headline: every requirement's own sentence.
   String get evaluationSummary => requirements.map((r) => r.detail).join(' ');
 
@@ -194,6 +235,7 @@ class Programme extends Equatable {
     title,
     department,
     faculty,
+    category,
     durationYears,
     studyMode,
     formFeeMinorUnits,

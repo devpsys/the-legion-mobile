@@ -60,6 +60,7 @@ void main() {
         title: 'Test',
         department: 'Test',
         faculty: Faculty.law,
+        category: ProgrammeCategory.undergraduate,
         durationYears: 3,
         studyMode: StudyMode.undergraduateFullTime,
         formFeeMinorUnits: 0,
@@ -129,6 +130,24 @@ void main() {
         ProgrammeFixtures.accounting.daysUntilClose(DateTime(2028)),
         0,
         reason: 'a passed deadline reads as zero, not as a negative count',
+      );
+    });
+
+    test('a programme is open until the moment its deadline passes', () {
+      expect(ProgrammeFixtures.english.isOpenAt(designDay), isTrue);
+      expect(
+        ProgrammeFixtures.english.isOpenAt(DateTime(2027, 2, 14, 23, 58)),
+        isTrue,
+      );
+      expect(
+        ProgrammeFixtures.english.isOpenAt(ProgrammeFixtures.earlyDeadline),
+        isFalse,
+        reason: 'the deadline is the moment the window shuts',
+      );
+      expect(
+        ProgrammeFixtures.law.isOpenAt(DateTime(2026, 12)),
+        isFalse,
+        reason: 'a closed programme is closed whatever the date',
       );
     });
 
@@ -210,6 +229,18 @@ void main() {
         ProgrammeFixtures.programmes.any((programme) => programme.isClosed),
         isTrue,
       );
+    });
+
+    test('carries one programme outside the undergraduate category', () {
+      // The candidate holds undergraduate applications this session, so the
+      // diploma is the one card that can still offer to start one.
+      final diplomas = ProgrammeFixtures.programmes.where(
+        (programme) => programme.category == ProgrammeCategory.diploma,
+      );
+
+      expect(diplomas.single, ProgrammeFixtures.diplomaInLaw);
+      expect(ProgrammeFixtures.diplomaInLaw.canApply, isTrue);
+      expect(ProgrammeFixtures.diplomaInLaw.isOpenAt(designDay), isTrue);
     });
   });
 }

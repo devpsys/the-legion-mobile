@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/l10n/gen/app_localizations.dart';
+import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
@@ -10,6 +12,7 @@ import '../../../../core/widgets/responsive_content.dart';
 import '../../../../core/widgets/state_views.dart';
 import '../bloc/admissions_cubit.dart';
 import '../bloc/admissions_state.dart';
+import '../models/programme_models.dart';
 import 'cycle_notice.dart';
 import 'cycle_picker_sheet.dart';
 import 'faculty_filter_chips.dart';
@@ -78,7 +81,8 @@ class ProgrammesBody extends StatelessWidget {
                     programme: programme,
                     now: now,
                     cycleClosesOn: cycle?.closesOn ?? programme.closesOn,
-                    onApply: () => context.showMessage(l10n.commonComingSoon),
+                    availability: state.applyAvailabilityFor(programme, now),
+                    onApply: () => _apply(context, programme),
                     onViewDetails: () =>
                         context.showMessage(l10n.commonComingSoon),
                   ),
@@ -87,6 +91,23 @@ class ProgrammesBody extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  /// Opens a draft to [programme] and takes the candidate straight to it.
+  ///
+  /// The cubit answers `null` when the record no longer allows it — a card
+  /// drawn before the record changed — and then there is nothing to go to;
+  /// the rebuild that follows takes the button away.
+  void _apply(BuildContext context, Programme programme) {
+    final id = context.read<AdmissionsCubit>().startApplication(
+      programme.id,
+      now: now,
+    );
+    if (id == null) return;
+    context.goNamed(
+      Routes.admissionsApplicationDetailName,
+      pathParameters: {'id': id},
     );
   }
 

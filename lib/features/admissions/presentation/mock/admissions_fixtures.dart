@@ -30,6 +30,7 @@ abstract final class AdmissionsFixtures {
     id: ProgrammeFixtures.defaultCycleId,
     name: '2026/2027 Undergraduate Admissions',
     label: '2026/2027 Cycle',
+    session: currentSession,
     opensOn: DateTime(2026, 6),
     closesOn: ProgrammeFixtures.cycleDeadline,
     formFeeMinorUnits: ProgrammeFixtures.formFeeMinorUnits,
@@ -40,6 +41,7 @@ abstract final class AdmissionsFixtures {
     id: 'postgraduate-2026',
     name: '2026/2027 Postgraduate Admissions',
     label: '2026/2027 PG Cycle',
+    session: currentSession,
     opensOn: DateTime(2026, 8),
     closesOn: DateTime(2027, 1, 31),
     formFeeMinorUnits: 125000,
@@ -77,6 +79,7 @@ abstract final class AdmissionsFixtures {
     trackingCode: 'APP/2026/00042',
     programmeName: 'B.Sc. Computer Science',
     department: 'Department of Computer Science',
+    category: ProgrammeCategory.undergraduate,
     secondChoiceName: 'B.Sc. Data Science',
     status: ApplicationStatus.offered,
     submittedOn: DateTime(2026, 9, 12),
@@ -101,6 +104,7 @@ abstract final class AdmissionsFixtures {
     trackingCode: 'APP/2026/00057',
     programmeName: ProgrammeFixtures.english.title,
     department: ProgrammeFixtures.english.department,
+    category: ProgrammeFixtures.english.category,
     status: ApplicationStatus.draft,
     // "Application started", the first line of the activity log.
     submittedOn: DateTime(2026, 9, 12),
@@ -117,6 +121,7 @@ abstract final class AdmissionsFixtures {
     trackingCode: 'APP/2025/00918',
     programmeName: 'B.A. English',
     department: 'Department of English',
+    category: ProgrammeCategory.undergraduate,
     status: ApplicationStatus.rejected,
     // The time of day is part of the record: the decision notice prints it.
     submittedOn: DateTime(2025, 9, 1, 14, 22),
@@ -132,6 +137,7 @@ abstract final class AdmissionsFixtures {
     trackingCode: 'APP/2025/00611',
     programmeName: ProgrammeFixtures.law.title,
     department: ProgrammeFixtures.law.department,
+    category: ProgrammeFixtures.law.category,
     status: ApplicationStatus.expired,
     submittedOn: DateTime(2025, 10, 2),
     updatedOn: DateTime(2026, 2, 28, 23, 59),
@@ -146,6 +152,7 @@ abstract final class AdmissionsFixtures {
     trackingCode: 'APP/2026/00733',
     programmeName: ProgrammeFixtures.dataScience.title,
     department: ProgrammeFixtures.dataScience.department,
+    category: ProgrammeFixtures.dataScience.category,
     status: ApplicationStatus.withdrawn,
     submittedOn: DateTime(2026, 9, 2),
     updatedOn: DateTime(2026, 9, 14),
@@ -159,6 +166,7 @@ abstract final class AdmissionsFixtures {
     trackingCode: 'APP/2024/00377',
     programmeName: 'B.Sc. Accounting',
     department: 'Department of Accounting',
+    category: ProgrammeCategory.undergraduate,
     status: ApplicationStatus.matriculated,
     submittedOn: DateTime(2024, 8, 20),
     updatedOn: DateTime(2025, 9, 16),
@@ -173,6 +181,7 @@ abstract final class AdmissionsFixtures {
     id: 'app-00014',
     programmeName: 'B.Sc. Computer Science',
     department: 'Department of Computer Science',
+    category: ProgrammeCategory.undergraduate,
     status: ApplicationStatus.underReview,
     submittedOn: DateTime(2026, 9, 12),
     updatedOn: DateTime(2026, 9, 15),
@@ -183,86 +192,123 @@ abstract final class AdmissionsFixtures {
 
   // --- Application detail -------------------------------------------------
 
-  /// The readiness checklist of [draftApplication].
+  /// How many referees an application names.
+  static const int refereesRequired = 2;
+
+  /// The checklist row for referees, as the record counts them.
+  static String refereesDetail({
+    required int invited,
+    required int responded,
+  }) => '$invited of $refereesRequired invited | $responded responded.';
+
+  /// The readiness checklist of an application to [firstChoice].
+  ///
+  /// Most of it is the candidate's standing, not the application's — the
+  /// address he has not confirmed, the documents he has uploaded — which is
+  /// why a draft opened today starts with the same ticks and gaps as the one
+  /// he opened in September. The two rows that belong to the application
+  /// itself are the referees, counted by [refereesDetail], and the form fee,
+  /// quoted from the first choice. The JAMB row is met once a result is on
+  /// the record, whichever draft asks.
   ///
   /// Three green ticks, four known gaps and two the bursary cannot answer —
   /// the shape the `application_detail` designs are drawn around, and the
   /// reason submit stays disabled: 4 items are outstanding, while the two
   /// amber ones do not count against the candidate at all.
-  static final ApplicationDetail draftDetail = ApplicationDetail(
-    application: draftApplication,
-    cycleId: currentCycle.id,
-    firstChoiceProgrammeId: ProgrammeFixtures.english.id,
-    checklist: [
-      ChecklistItem(
-        id: 'verified-email',
-        state: RequirementState.notMet,
-        title: 'Verified email address',
-        // Interpolated rather than written twice: the address on screen has to
-        // be the one on the candidate's record.
-        detail: 'Open the confirmation link we emailed to ${candidate.email}.',
-        action: ChecklistAction.resendEmail,
-      ),
-      ChecklistItem(
-        id: 'personal-details',
-        state: RequirementState.notMet,
-        title: 'Personal details',
-        detail: 'Add your date of birth, gender, country, contact address.',
-        action: ChecklistAction.completePersonalDetails,
-      ),
-      ChecklistItem(
-        id: 'olevel-results',
-        state: RequirementState.met,
-        title: "O'level results",
-        detail: '1 sitting added.',
-      ),
+  static List<ChecklistItem> candidateChecklist({
+    required Programme firstChoice,
+    required String refereesDetail,
+    JambResult? linkedJambResult,
+  }) => [
+    ChecklistItem(
+      id: 'verified-email',
+      state: RequirementState.notMet,
+      title: 'Verified email address',
+      // Interpolated rather than written twice: the address on screen has to
+      // be the one on the candidate's record.
+      detail: 'Open the confirmation link we emailed to ${candidate.email}.',
+      action: ChecklistAction.resendEmail,
+    ),
+    ChecklistItem(
+      id: 'personal-details',
+      state: RequirementState.notMet,
+      title: 'Personal details',
+      detail: 'Add your date of birth, gender, country, contact address.',
+      action: ChecklistAction.completePersonalDetails,
+    ),
+    ChecklistItem(
+      id: 'olevel-results',
+      state: RequirementState.met,
+      title: "O'level results",
+      detail: '1 sitting added.',
+    ),
+    if (linkedJambResult == null)
       ChecklistItem(
         id: 'jamb-caps',
         state: RequirementState.notTracked,
         title: 'JAMB result from CAPS',
         detail: 'Claim the JAMB result the university received from CAPS.',
         action: ChecklistAction.claimJamb,
-      ),
+      )
+    else
       ChecklistItem(
-        id: 'birth-certificate',
+        id: 'jamb-caps',
         state: RequirementState.met,
-        title: 'Birth certificate',
-        detail: 'Uploaded.',
+        title: 'JAMB result from CAPS',
+        detail: jambLinkedChecklistDetail(linkedJambResult),
       ),
-      ChecklistItem(
-        id: 'waec-neco',
-        state: RequirementState.met,
-        title: 'WAEC/NECO result',
-        detail: 'Uploaded.',
-      ),
-      ChecklistItem(
-        id: 'passport',
-        state: RequirementState.notMet,
-        title: 'Passport photograph',
-        detail: 'Upload it under Documents.',
-        action: ChecklistAction.uploadDocument,
-      ),
-      ChecklistItem(
-        id: 'referees',
-        state: RequirementState.notMet,
-        title: 'Referees',
-        detail: '1 of 2 invited | 0 responded.',
-        action: ChecklistAction.inviteReferee,
-      ),
-      ChecklistItem(
-        id: 'form-fee',
-        state: RequirementState.notTracked,
-        title: 'Application form fee',
-        // The fee this application owes, quoted from the filed first choice so
-        // it cannot drift from the catalogue. The browser quotes the same fee
-        // for the same programme.
-        detail:
-            '${formatNaira(ProgrammeFixtures.english.formFeeMinorUnits)}. '
-            'Online payment opens when the bursary goes live; you can submit '
-            'meanwhile.',
-        action: ChecklistAction.checkPayment,
-      ),
-    ],
+    ChecklistItem(
+      id: 'birth-certificate',
+      state: RequirementState.met,
+      title: 'Birth certificate',
+      detail: 'Uploaded.',
+    ),
+    ChecklistItem(
+      id: 'waec-neco',
+      state: RequirementState.met,
+      title: 'WAEC/NECO result',
+      detail: 'Uploaded.',
+    ),
+    ChecklistItem(
+      id: 'passport',
+      state: RequirementState.notMet,
+      title: 'Passport photograph',
+      detail: 'Upload it under Documents.',
+      action: ChecklistAction.uploadDocument,
+    ),
+    ChecklistItem(
+      id: 'referees',
+      state: RequirementState.notMet,
+      title: 'Referees',
+      detail: refereesDetail,
+      action: ChecklistAction.inviteReferee,
+    ),
+    ChecklistItem(
+      id: 'form-fee',
+      state: RequirementState.notTracked,
+      title: 'Application form fee',
+      // The fee this application owes, quoted from the filed first choice so
+      // it cannot drift from the catalogue. The browser quotes the same fee
+      // for the same programme.
+      detail:
+          '${formatNaira(firstChoice.formFeeMinorUnits)}. '
+          'Online payment opens when the bursary goes live; you can submit '
+          'meanwhile.',
+      action: ChecklistAction.checkPayment,
+    ),
+  ];
+
+  /// The draft the `application_detail` designs draw: the checklist above,
+  /// one referee invited of the two, and a log that has been running since
+  /// September.
+  static final ApplicationDetail draftDetail = ApplicationDetail(
+    application: draftApplication,
+    cycleId: currentCycle.id,
+    firstChoiceProgrammeId: ProgrammeFixtures.english.id,
+    checklist: candidateChecklist(
+      firstChoice: ProgrammeFixtures.english,
+      refereesDetail: refereesDetail(invited: 1, responded: 0),
+    ),
     referees: [
       Referee(
         id: 'referee-0001',
@@ -592,6 +638,79 @@ abstract final class AdmissionsFixtures {
     ])
       detail.application.id: detail,
   };
+
+  // --- Starting an application --------------------------------------------
+
+  /// Width of the serial in an id and a reference, e.g. `00057`.
+  static const int serialWidth = 5;
+
+  /// The serial the registry would issue next: one above the highest on the
+  /// record, whatever year it was filed in — a reference is never reused.
+  static int nextSerial(Iterable<ApplicationSummary> existing) {
+    var highest = 0;
+    for (final application in existing) {
+      final digits = RegExp(r'\d+$').firstMatch(application.id)?.group(0);
+      final serial = digits == null ? null : int.tryParse(digits);
+      if (serial != null && serial > highest) highest = serial;
+    }
+    return highest + 1;
+  }
+
+  /// A draft to [programme] under [cycle], as the registry would open one:
+  /// the next reference, the candidate's standing on every checklist row,
+  /// nobody invited yet, and a log that starts today.
+  ///
+  /// The reference carries the year the cycle opened, which is how the
+  /// existing ones read (`APP/2026/…` for the 2026/2027 session), and the
+  /// draft starts at the top of the record because the record is newest first.
+  static ApplicationDetail startDraft({
+    required Programme programme,
+    required AdmissionCycle cycle,
+    required DateTime startedOn,
+    required Iterable<ApplicationSummary> existing,
+    JambResult? linkedJambResult,
+  }) {
+    final serial = nextSerial(existing).toString().padLeft(serialWidth, '0');
+    final id = 'app-$serial';
+    final application = ApplicationSummary(
+      id: id,
+      trackingCode: 'APP/${cycle.opensOn.year}/$serial',
+      programmeName: programme.title,
+      department: programme.department,
+      category: programme.category,
+      status: ApplicationStatus.draft,
+      submittedOn: startedOn,
+      updatedOn: startedOn,
+      cycleName: cycle.name,
+      cycleSession: cycle.session,
+    );
+
+    return ApplicationDetail(
+      application: application,
+      cycleId: cycle.id,
+      firstChoiceProgrammeId: programme.id,
+      checklist: candidateChecklist(
+        firstChoice: programme,
+        refereesDetail: refereesDetail(invited: 0, responded: 0),
+        linkedJambResult: linkedJambResult,
+      ),
+      // Newest first, like every log: the choice was made at the start.
+      history: [
+        ApplicationHistoryEvent(
+          id: '$id-event-0002',
+          kind: ApplicationHistoryKind.activity,
+          occurredOn: startedOn,
+          title: 'First choice set to ${programme.title}',
+        ),
+        ApplicationHistoryEvent(
+          id: '$id-event-0001',
+          kind: ApplicationHistoryKind.activity,
+          occurredOn: startedOn,
+          title: 'Application started',
+        ),
+      ],
+    );
+  }
 
   // --- Public verification ------------------------------------------------
 

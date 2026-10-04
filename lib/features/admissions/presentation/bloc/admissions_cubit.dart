@@ -41,13 +41,51 @@ class AdmissionsCubit extends Cubit<AdmissionsState> {
     );
   }
 
+  /// Opens a draft application to [programmeId] under the cycle the browser
+  /// is showing, and returns its id — or `null` when the portal would refuse.
+  ///
+  /// The refusal mirrors the card: no "Apply" is offered where this returns
+  /// `null`, and the check is repeated here so a tap on a card drawn a moment
+  /// before the record changed cannot open a second draft in the same
+  /// category. The draft goes to the top of the record, which is newest
+  /// first, with the detail screen's content already behind it.
+  String? startApplication(String programmeId, {required DateTime now}) {
+    final programme = state.programmeById(programmeId);
+    final cycle = state.selectedCycle;
+    if (programme == null || cycle == null) return null;
+    if (state.applyAvailabilityFor(programme, now) !=
+        ApplyAvailability.available) {
+      return null;
+    }
+
+    final draft = AdmissionsFixtures.startDraft(
+      programme: programme,
+      cycle: cycle,
+      startedOn: now,
+      existing: state.applications,
+      linkedJambResult: state.linkedJambResult,
+    );
+    emit(
+      state.copyWith(
+        applications: [draft.application, ...state.applications],
+        applicationDetails: {
+          ...state.applicationDetails,
+          draft.application.id: draft,
+        },
+        clearFailure: true,
+      ),
+    );
+    return draft.application.id;
+  }
+
   /// Puts a matched JAMB result on the record, for good.
   ///
   /// The claim screen matches; this links. Once linked the import has nothing
-  /// pending, so the tab's badge and the overview's claim card go, and the
+  /// pending, so the tab's badge and the overview's claim card go, and every
   /// checklist row that was waiting on the score is ticked — the one row the
-  /// portal can complete without a form behind it. A second link is ignored:
-  /// the screen says it cannot be undone, and the cubit keeps that true.
+  /// portal can complete without a form behind it, on whichever draft asks
+  /// for it. A second link is ignored: the screen says it cannot be undone,
+  /// and the cubit keeps that true.
   void linkJambResult(JambResult result) {
     if (state.hasLinkedJambResult) return;
 
@@ -62,11 +100,26 @@ class AdmissionsCubit extends Cubit<AdmissionsState> {
   }
 
   /// The details with every `claimJamb` row marked met.
+  ///
+  /// A record without such a row is returned as it was, so the identity of
+  /// an untouched detail survives the link.
   Map<String, ApplicationDetail> _withJambClaimed(JambResult result) {
-    final id = state.jambLinkApplicationId;
-    final detail = id == null ? null : state.applicationDetails[id];
-    if (detail == null) return state.applicationDetails;
+    return {
+      for (final MapEntry(key: id, value: detail)
+          in state.applicationDetails.entries)
+        id:
+            detail.checklist.any(
+              (item) => item.action == ChecklistAction.claimJamb,
+            )
+            ? _withJambRowMet(detail, result)
+            : detail,
+    };
+  }
 
+  ApplicationDetail _withJambRowMet(
+    ApplicationDetail detail,
+    JambResult result,
+  ) {
     final checklist = [
       for (final item in detail.checklist)
         if (item.action == ChecklistAction.claimJamb)
@@ -79,23 +132,20 @@ class AdmissionsCubit extends Cubit<AdmissionsState> {
         else
           item,
     ];
-    return {
-      ...state.applicationDetails,
-      id!: ApplicationDetail(
-        application: detail.application,
-        cycleId: detail.cycleId,
-        firstChoiceProgrammeId: detail.firstChoiceProgrammeId,
-        secondChoiceProgrammeId: detail.secondChoiceProgrammeId,
-        history: detail.history,
-        checklist: checklist,
-        referees: detail.referees,
-        offer: detail.offer,
-        letter: detail.letter,
-        rejection: detail.rejection,
-        expiredOn: detail.expiredOn,
-        withdrawal: detail.withdrawal,
-      ),
-    };
+    return ApplicationDetail(
+      application: detail.application,
+      cycleId: detail.cycleId,
+      firstChoiceProgrammeId: detail.firstChoiceProgrammeId,
+      secondChoiceProgrammeId: detail.secondChoiceProgrammeId,
+      history: detail.history,
+      checklist: checklist,
+      referees: detail.referees,
+      offer: detail.offer,
+      letter: detail.letter,
+      rejection: detail.rejection,
+      expiredOn: detail.expiredOn,
+      withdrawal: detail.withdrawal,
+    );
   }
 
   /// Narrows the catalogue by free text.

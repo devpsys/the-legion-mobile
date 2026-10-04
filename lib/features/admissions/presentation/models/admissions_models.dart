@@ -13,6 +13,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/theme/app_tone.dart';
 import '../../../../core/utils/durations.dart';
+import 'programme_models.dart';
 
 /// Lifecycle of an application, as the candidate sees it.
 ///
@@ -52,6 +53,24 @@ extension ApplicationStatusTone on ApplicationStatus {
   /// `true` while the application can still be acted on.
   bool get isOpen =>
       this == ApplicationStatus.draft || this == ApplicationStatus.submitted;
+
+  /// `true` while the application holds a claim on a place: being assembled,
+  /// awaiting a decision, or carrying an offer the candidate has not let go
+  /// of. This is what stops a second application in the same category — a
+  /// refusal, a withdrawal, a lapse and a declined offer have all released
+  /// the cycle, and a matriculation has finished with it.
+  bool get isActive => switch (this) {
+    ApplicationStatus.draft ||
+    ApplicationStatus.submitted ||
+    ApplicationStatus.underReview ||
+    ApplicationStatus.offered ||
+    ApplicationStatus.accepted => true,
+    ApplicationStatus.declined ||
+    ApplicationStatus.rejected ||
+    ApplicationStatus.withdrawn ||
+    ApplicationStatus.expired ||
+    ApplicationStatus.matriculated => false,
+  };
 }
 
 /// One application in the candidate's list.
@@ -66,6 +85,7 @@ class ApplicationSummary extends Equatable {
     required this.id,
     required this.programmeName,
     required this.department,
+    required this.category,
     required this.status,
     required this.submittedOn,
     required this.cycleName,
@@ -84,6 +104,12 @@ class ApplicationSummary extends Equatable {
   final String programmeName;
 
   final String department;
+
+  /// The category of the programme applied to. Carried on the application
+  /// rather than looked up: the rule of one live application per category
+  /// has to hold for a record whose programme is no longer in the catalogue.
+  final ProgrammeCategory category;
+
   final ApplicationStatus status;
   final DateTime submittedOn;
 
@@ -128,6 +154,7 @@ class ApplicationSummary extends Equatable {
     id,
     programmeName,
     department,
+    category,
     status,
     submittedOn,
     cycleName,
@@ -191,6 +218,7 @@ class AdmissionCycle extends Equatable {
     required this.id,
     required this.name,
     required this.label,
+    required this.session,
     required this.opensOn,
     required this.closesOn,
     required this.formFeeMinorUnits,
@@ -207,6 +235,11 @@ class AdmissionCycle extends Equatable {
 
   /// Compact name for the app bar chip, e.g. `2026/2027 Cycle`.
   final String label;
+
+  /// The academic session admitted to, e.g. `2026/2027` — what an
+  /// application's [ApplicationSummary.cycleSession] is compared against when
+  /// the portal asks whether the candidate has already applied this session.
+  final String session;
 
   final DateTime opensOn;
   final DateTime closesOn;
@@ -227,6 +260,7 @@ class AdmissionCycle extends Equatable {
     id,
     name,
     label,
+    session,
     opensOn,
     closesOn,
     formFeeMinorUnits,

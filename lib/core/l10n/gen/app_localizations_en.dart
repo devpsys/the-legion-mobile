@@ -955,7 +955,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get admissionsProgrammeArchived => 'Archived session';
 
   @override
-  String get admissionsProgrammeApply => 'View programme & apply';
+  String get admissionsProgrammeAlreadyApplied => 'Already applied this cycle';
+
+  @override
+  String get admissionsProgrammeApply => 'Apply';
 
   @override
   String get admissionsProgrammeViewDetails => 'View details';
@@ -1000,6 +1003,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get admissionsStudyModeDirectEntry => 'Direct Entry / Full-time';
+
+  @override
+  String get admissionsStudyModeDiploma => 'Full-time diploma';
 
   @override
   String admissionsFacultyFilterNamed(Object count, Object faculty) {

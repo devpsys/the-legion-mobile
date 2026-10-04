@@ -115,6 +115,7 @@ void main() {
       id: detail.application.id,
       programmeName: detail.application.programmeName,
       department: detail.application.department,
+      category: detail.application.category,
       status: status,
       submittedOn: detail.application.submittedOn,
       cycleName: detail.application.cycleName,

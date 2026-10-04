@@ -268,7 +268,8 @@
   "admissionsProgrammeAdmissionsActive": "Admissions active",
   "admissionsProgrammeClosesIn": "Closes in {count, plural, =1{1 day} other{{count} days}}",
   "admissionsProgrammeArchived": "Archived session",
-  "admissionsProgrammeApply": "View programme & apply",
+  "admissionsProgrammeAlreadyApplied": "Already applied this cycle",
+  "admissionsProgrammeApply": "Apply",
   "admissionsProgrammeViewDetails": "View details",
   "admissionsVerdictEligible": "You meet the requirements",
   "admissionsVerdictNeedsChecking": "Some requirements need checking",
@@ -282,6 +283,7 @@
   "admissionsFacultyFilterAll": "All faculties ({count})",
   "admissionsStudyModeUndergraduate": "Full-time undergraduate",
   "admissionsStudyModeDirectEntry": "Direct Entry / Full-time",
+  "admissionsStudyModeDiploma": "Full-time diploma",
   "admissionsFacultyFilterNamed": "{faculty} ({count})",
 
   "admissionsDetailTitle": "Application",

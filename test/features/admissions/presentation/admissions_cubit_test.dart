@@ -2,6 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_state.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/mock/admissions_fixtures.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/mock/programme_fixtures.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/models/admissions_models.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/models/application_detail_models.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/models/jamb_models.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/models/programme_models.dart';
@@ -13,6 +15,16 @@ void main() {
   tearDown(() => cubit.close());
 
   void load() => cubit.load();
+
+  /// 4 February 2027, the day the Programmes design was drawn on: both cycles
+  /// have opened, the postgraduate one has already closed.
+  final designDay = DateTime(2027, 2, 4);
+
+  /// The JAMB row of the draft [id].
+  ChecklistItem jambRowOf(String id) => cubit.state
+      .detailFor(id)!
+      .checklist
+      .singleWhere((item) => item.id == 'jamb-caps');
 
   group('loading', () {
     test('starts empty', () {
@@ -127,10 +139,8 @@ void main() {
 
     final result = AdmissionsFixtures.jambResult;
 
-    ChecklistItem jambRow() => cubit.state
-        .detailFor(AdmissionsFixtures.draftApplication.id)!
-        .checklist
-        .singleWhere((item) => item.id == 'jamb-caps');
+    ChecklistItem jambRow() =>
+        jambRowOf(AdmissionsFixtures.draftApplication.id);
 
     test('is pending, and bound for the draft, once loaded', () {
       expect(cubit.state.jambResultPending, isTrue);
@@ -201,6 +211,281 @@ void main() {
         if (id == AdmissionsFixtures.draftApplication.id) continue;
         expect(cubit.state.applicationDetails[id], before[id]);
       }
+    });
+  });
+
+  group('whether a programme can be applied to', () {
+    setUp(load);
+
+    ApplyAvailability availabilityOf(Programme programme, [DateTime? at]) =>
+        cubit.state.applyAvailabilityFor(programme, at ?? designDay);
+
+    test('the undergraduate cards are spoken for this session', () {
+      // An offer on Computer Science and a draft on English are both live,
+      // so every undergraduate programme is one application too many.
+      for (final programme in [
+        ProgrammeFixtures.computerScience,
+        ProgrammeFixtures.accounting,
+        ProgrammeFixtures.english,
+      ]) {
+        expect(
+          availabilityOf(programme),
+          ApplyAvailability.alreadyApplied,
+          reason: programme.code,
+        );
+      }
+    });
+
+    test('the diploma is the one card still offering an application', () {
+      expect(
+        availabilityOf(ProgrammeFixtures.diplomaInLaw),
+        ApplyAvailability.available,
+        reason: 'nothing on the record is a diploma application',
+      );
+    });
+
+    test('a closed programme is closed before it is already applied to', () {
+      expect(
+        availabilityOf(ProgrammeFixtures.law),
+        ApplyAvailability.unavailable,
+        reason: 'the strip says "Archived session", not "Already applied"',
+      );
+    });
+
+    test('a record with nothing live in the category frees the cards', () {
+      // Withdrawn, refused, lapsed and matriculated have all let go of the
+      // session; none of them is a second application.
+      cubit.emit(
+        cubit.state.copyWith(
+          applications: [
+            AdmissionsFixtures.withdrawnApplication,
+            AdmissionsFixtures.rejectedApplication,
+            AdmissionsFixtures.expiredApplication,
+            AdmissionsFixtures.matriculatedApplication,
+          ],
+        ),
+      );
+
+      expect(
+        availabilityOf(ProgrammeFixtures.computerScience),
+        ApplyAvailability.available,
+      );
+      expect(
+        availabilityOf(ProgrammeFixtures.law),
+        ApplyAvailability.unavailable,
+        reason: 'still closed',
+      );
+    });
+
+    test('an application in another session does not count', () {
+      cubit.emit(
+        cubit.state.copyWith(
+          applications: [
+            // The refusal is undergraduate, but from 2025/2026.
+            AdmissionsFixtures.rejectedApplication,
+            // A live undergraduate application, filed last session.
+            ApplicationSummary(
+              id: 'app-00900',
+              programmeName: 'B.Sc. Accounting',
+              department: 'Department of Accounting',
+              category: ProgrammeCategory.undergraduate,
+              status: ApplicationStatus.offered,
+              submittedOn: DateTime(2025, 9),
+              updatedOn: DateTime(2026, 1),
+              cycleName: '2025/2026 Undergraduate Admissions',
+              cycleSession: '2025/2026',
+            ),
+          ],
+        ),
+      );
+
+      expect(
+        availabilityOf(ProgrammeFixtures.computerScience),
+        ApplyAvailability.available,
+      );
+    });
+
+    test('nothing is offered under a cycle that has closed', () {
+      // The postgraduate cycle shut on 31 January.
+      cubit.selectCycle(AdmissionsFixtures.postgraduateCycle.id);
+
+      expect(
+        availabilityOf(ProgrammeFixtures.diplomaInLaw),
+        ApplyAvailability.unavailable,
+      );
+    });
+
+    test('nothing is offered once the undergraduate cycle has closed', () {
+      expect(
+        availabilityOf(ProgrammeFixtures.diplomaInLaw, DateTime(2027, 3)),
+        ApplyAvailability.unavailable,
+      );
+    });
+
+    test('a programme whose own window has shut is not offered', () {
+      cubit.emit(cubit.state.copyWith(applications: const []));
+      // 20 February: English closed on the 14th, the cycle runs to the 28th.
+      final late = DateTime(2027, 2, 20);
+
+      expect(
+        availabilityOf(ProgrammeFixtures.english, late),
+        ApplyAvailability.unavailable,
+      );
+      expect(
+        availabilityOf(ProgrammeFixtures.computerScience, late),
+        ApplyAvailability.available,
+      );
+    });
+
+    test('nothing is offered before a cycle is chosen', () {
+      expect(
+        const AdmissionsState().applyAvailabilityFor(
+          ProgrammeFixtures.diplomaInLaw,
+          designDay,
+        ),
+        ApplyAvailability.unavailable,
+        reason: 'there is nothing to file the application under',
+      );
+    });
+  });
+
+  group('starting an application', () {
+    setUp(load);
+
+    final diploma = ProgrammeFixtures.diplomaInLaw;
+
+    test('opens a draft at the top of the record', () {
+      final id = cubit.startApplication(diploma.id, now: designDay);
+
+      expect(id, 'app-00919', reason: 'one above the highest serial, 00918');
+      final application = cubit.state.applications.first;
+      expect(application.id, id);
+      expect(application.trackingCode, 'APP/2026/00919');
+      expect(application.status, ApplicationStatus.draft);
+      expect(application.programmeName, 'Diploma in Law');
+      expect(application.department, 'Department of Law');
+      expect(application.category, ProgrammeCategory.diploma);
+      expect(application.cycleName, '2026/2027 Undergraduate Admissions');
+      expect(application.cycleSession, '2026/2027');
+      expect(application.submittedOn, designDay);
+      expect(application.updatedOn, designDay);
+      expect(cubit.state.applications, hasLength(7));
+    });
+
+    test('puts the detail screen\'s content behind the draft', () {
+      final id = cubit.startApplication(diploma.id, now: designDay)!;
+
+      final detail = cubit.state.detailFor(id)!;
+      expect(detail.application.id, id);
+      expect(detail.cycleId, AdmissionsFixtures.currentCycle.id);
+      expect(detail.firstChoiceProgrammeId, diploma.id);
+      expect(detail.secondChoiceProgrammeId, isNull);
+      expect(detail.referees, isEmpty);
+      expect(detail.offer, isNull);
+
+      // The candidate's own standing, with the two rows that belong to the
+      // application reset: nobody invited, the diploma's own fee.
+      expect(detail.checklist, hasLength(9));
+      expect(detail.completedCount, 3);
+      expect(detail.outstandingCount, 4);
+      final referees = detail.checklist.singleWhere((i) => i.id == 'referees');
+      expect(referees.detail, '0 of 2 invited | 0 responded.');
+      final fee = detail.checklist.singleWhere((i) => i.id == 'form-fee');
+      expect(fee.detail, startsWith('₦5,000.00'));
+
+      expect(detail.history.map((event) => event.title), [
+        'First choice set to Diploma in Law',
+        'Application started',
+      ]);
+      expect(
+        detail.history.map((event) => event.occurredOn),
+        everyElement(designDay),
+      );
+    });
+
+    test('a second application in the category is refused', () {
+      cubit.startApplication(diploma.id, now: designDay);
+      final after = cubit.state;
+
+      expect(
+        cubit.state.applyAvailabilityFor(diploma, designDay),
+        ApplyAvailability.alreadyApplied,
+        reason: 'the card loses its button the moment the draft exists',
+      );
+      expect(cubit.startApplication(diploma.id, now: designDay), isNull);
+      expect(cubit.state, after);
+    });
+
+    test('refuses what the card would not offer', () {
+      final before = cubit.state;
+
+      expect(
+        cubit.startApplication(
+          ProgrammeFixtures.computerScience.id,
+          now: designDay,
+        ),
+        isNull,
+        reason: 'already applied',
+      );
+      expect(
+        cubit.startApplication(ProgrammeFixtures.law.id, now: designDay),
+        isNull,
+        reason: 'closed',
+      );
+      expect(
+        cubit.startApplication(diploma.id, now: DateTime(2027, 3)),
+        isNull,
+        reason: 'the cycle has closed',
+      );
+      expect(
+        cubit.startApplication('nursing', now: designDay),
+        isNull,
+        reason: 'not in the catalogue',
+      );
+      expect(cubit.state, before, reason: 'a refusal changes nothing');
+    });
+
+    test('a draft opened after the JAMB result is linked starts with it', () {
+      cubit.linkJambResult(AdmissionsFixtures.jambResult);
+
+      final id = cubit.startApplication(diploma.id, now: designDay)!;
+
+      final row = jambRowOf(id);
+      expect(row.state, RequirementState.met);
+      expect(row.action, ChecklistAction.none);
+      expect(row.detail, contains('312'));
+      expect(cubit.state.detailFor(id)!.completedCount, 4);
+    });
+
+    test('a draft opened before the link is ticked by it too', () {
+      final id = cubit.startApplication(diploma.id, now: designDay)!;
+      expect(jambRowOf(id).state, RequirementState.notTracked);
+
+      cubit.linkJambResult(AdmissionsFixtures.jambResult);
+
+      expect(jambRowOf(id).state, RequirementState.met);
+      expect(
+        jambRowOf(AdmissionsFixtures.draftApplication.id).state,
+        RequirementState.met,
+        reason: 'one result, on every draft that was waiting for it',
+      );
+    });
+
+    test('the draft is an application like any other on the record', () {
+      cubit.startApplication(diploma.id, now: designDay);
+
+      expect(
+        cubit.state.hasActiveApplication(
+          category: ProgrammeCategory.diploma,
+          session: '2026/2027',
+        ),
+        isTrue,
+      );
+      expect(
+        cubit.state.jambLinkApplication?.id,
+        AdmissionsFixtures.draftApplication.id,
+        reason: 'the result still binds to the draft that was waiting on it',
+      );
     });
   });
 

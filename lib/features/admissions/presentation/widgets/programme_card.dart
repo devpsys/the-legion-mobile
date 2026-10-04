@@ -19,6 +19,7 @@ class ProgrammeCard extends StatelessWidget {
     required this.programme,
     required this.now,
     required this.cycleClosesOn,
+    required this.availability,
     required this.onApply,
     required this.onViewDetails,
     super.key,
@@ -33,6 +34,11 @@ class ProgrammeCard extends StatelessWidget {
   /// it. Without this a candidate reads the cycle's date off the notice above
   /// and assumes it applies here.
   final DateTime cycleClosesOn;
+
+  /// Whether the card may offer to start an application. Decided by the
+  /// portal's state, not here: it depends on the candidate's record and the
+  /// cycle, neither of which a card knows.
+  final ApplyAvailability availability;
 
   final VoidCallback onApply;
   final VoidCallback onViewDetails;
@@ -82,6 +88,7 @@ class ProgrammeCard extends StatelessWidget {
           ProgrammeCardActions(
             programme: programme,
             now: now,
+            availability: availability,
             onApply: onApply,
             onViewDetails: onViewDetails,
           ),

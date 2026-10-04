@@ -26,6 +26,7 @@ class ProgrammeCardActions extends StatelessWidget {
   const ProgrammeCardActions({
     required this.programme,
     required this.now,
+    required this.availability,
     required this.onApply,
     required this.onViewDetails,
     super.key,
@@ -36,15 +37,25 @@ class ProgrammeCardActions extends StatelessWidget {
   /// Injected so "closes in 10 days" is deterministic.
   final DateTime now;
 
+  /// Whether an application may be started; see [ApplyAvailability].
+  final ApplyAvailability availability;
+
   final VoidCallback onApply;
   final VoidCallback onViewDetails;
+
+  /// `true` when the strip says the candidate has already applied.
+  bool get _hasApplied => availability == ApplyAvailability.alreadyApplied;
 
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
     final l10n = context.l10n;
+    // Urgency is for somebody who can still act on it: a card the candidate
+    // has already applied past says so instead of counting down.
     final isClosingSoon =
-        !programme.isClosed && programme.daysUntilClose(now) <= closingSoonDays;
+        !programme.isClosed &&
+        !_hasApplied &&
+        programme.daysUntilClose(now) <= closingSoonDays;
 
     return Container(
       width: double.infinity,
@@ -74,7 +85,7 @@ class ProgrammeCardActions extends StatelessWidget {
           ),
           AppSpacing.horizontalGap(AppSpacing.md),
           ProgrammeAction(
-            programme: programme,
+            availability: availability,
             onApply: onApply,
             onViewDetails: onViewDetails,
           ),
@@ -83,8 +94,15 @@ class ProgrammeCardActions extends StatelessWidget {
     );
   }
 
+  /// The programme's standing, or the candidate's where that is the reason
+  /// the card offers nothing to start.
+  ///
+  /// A closed programme is closed for everybody, so that comes first; after
+  /// it, an application the candidate already holds outranks a countdown
+  /// they can do nothing about.
   String _standingLabel(AppLocalizations l10n) {
     if (programme.isClosed) return l10n.admissionsProgrammeArchived;
+    if (_hasApplied) return l10n.admissionsProgrammeAlreadyApplied;
 
     final days = programme.daysUntilClose(now);
     return days <= closingSoonDays
@@ -100,13 +118,16 @@ class ProgrammeCardActions extends StatelessWidget {
 /// something new" and "read about a past session" are not the same offer.
 class ProgrammeAction extends StatelessWidget {
   const ProgrammeAction({
-    required this.programme,
+    required this.availability,
     required this.onApply,
     required this.onViewDetails,
     super.key,
   });
 
-  final Programme programme;
+  /// "Apply" only while [ApplyAvailability.available]; the other two answers
+  /// both leave the card with the outward-pointing details action.
+  final ApplyAvailability availability;
+
   final VoidCallback onApply;
   final VoidCallback onViewDetails;
 
@@ -114,7 +135,7 @@ class ProgrammeAction extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
     final l10n = context.l10n;
-    final isOpen = programme.canApply;
+    final isOpen = availability == ApplyAvailability.available;
 
     final label = Text(
       isOpen

@@ -10,6 +10,7 @@ import '../models/programme_models.dart';
 String studyModeLabel(AppLocalizations l10n, StudyMode mode) => switch (mode) {
   StudyMode.undergraduateFullTime => l10n.admissionsStudyModeUndergraduate,
   StudyMode.directEntryFullTime => l10n.admissionsStudyModeDirectEntry,
+  StudyMode.diplomaFullTime => l10n.admissionsStudyModeDiploma,
 };
 
 /// Duration and study mode, on a hairline-framed row.

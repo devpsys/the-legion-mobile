@@ -6,6 +6,7 @@ import 'package:the_legion_mobile/core/notifications/notification_cubit.dart';
 import 'package:the_legion_mobile/core/notifications/notification_fixtures.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/mock/programme_fixtures.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/models/application_detail_models.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/models/programme_models.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/pages/application_detail_page.dart';
@@ -486,6 +487,42 @@ void main() {
         find.text('This service goes live with the next release.'),
         findsOneWidget,
       );
+    });
+  });
+
+  group('a draft just opened from the browser', () {
+    /// The design day: the cycle and the diploma are both open.
+    final designDay = DateTime(2027, 2, 4);
+
+    testWidgets('is a full record the moment it exists', (tester) async {
+      cubit.load();
+      final id = cubit.startApplication(
+        ProgrammeFixtures.diplomaInLaw.id,
+        now: designDay,
+      )!;
+
+      await pumpDetail(tester, applicationId: id);
+
+      // The bar and the header name it like any record...
+      expect(find.text('APP/2026/00919'), findsNWidgets(2));
+      expect(find.text('Draft'), findsOneWidget);
+      expect(find.text('2026/2027 Undergraduate Admissions'), findsOneWidget);
+      // ...against the deadline it is actually filed under: the diploma
+      // closes with the cycle.
+      expect(find.text('Submit by 28 Feb 2027, 23:59'), findsOneWidget);
+
+      // The checklist is the candidate's standing, with nothing of another
+      // application's on it.
+      expect(find.text('3 of 9 complete'), findsOneWidget);
+      expect(find.text('0 of 2 invited | 0 responded.'), findsOneWidget);
+      expect(find.textContaining('₦5,000.00'), findsWidgets);
+      expect(find.text('Dr Amina Yusuf'), findsNothing);
+
+      // The choice made on the card is the first choice here, and the log
+      // says so.
+      expect(find.text('Diploma in Law'), findsWidgets);
+      expect(find.text('First choice set to Diploma in Law'), findsOneWidget);
+      expect(find.text('Application started'), findsOneWidget);
     });
   });
 

@@ -162,6 +162,51 @@ class AdmissionsState extends Equatable {
     return null;
   }
 
+  /// The catalogue entry for [id], or `null` when the catalogue has none.
+  Programme? programmeById(String id) {
+    for (final programme in programmes) {
+      if (programme.id == id) return programme;
+    }
+    return null;
+  }
+
+  /// `true` when the candidate holds a live application of [category] in
+  /// [session] — the one-per-category rule's own question.
+  bool hasActiveApplication({
+    required ProgrammeCategory category,
+    required String session,
+  }) => applications.any(
+    (application) =>
+        application.status.isActive &&
+        application.category == category &&
+        application.cycleSession == session,
+  );
+
+  /// Whether the browser may offer to start an application to [programme],
+  /// quoted against the cycle it is showing.
+  ///
+  /// Nothing is offered without a cycle to file under, for a programme that
+  /// has closed or is not eligible, or once the programme's own window or
+  /// the cycle's has shut. A programme that could be applied to but for an
+  /// application the candidate already holds in its category this session
+  /// is reported apart, so the card can say so.
+  ApplyAvailability applyAvailabilityFor(Programme programme, DateTime now) {
+    final cycle = selectedCycle;
+    if (cycle == null) return ApplyAvailability.unavailable;
+    if (!programme.canApply ||
+        !programme.isOpenAt(now) ||
+        !cycle.isOpenAt(now)) {
+      return ApplyAvailability.unavailable;
+    }
+    if (hasActiveApplication(
+      category: programme.category,
+      session: cycle.session,
+    )) {
+      return ApplyAvailability.alreadyApplied;
+    }
+    return ApplyAvailability.available;
+  }
+
   /// Programmes matching the search box and the faculty chip.
   ///
   /// Filtering rather than searching: a closed programme stays in the result,

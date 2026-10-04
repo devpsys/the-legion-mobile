@@ -1678,10 +1678,16 @@ abstract class AppLocalizations {
   /// **'Archived session'**
   String get admissionsProgrammeArchived;
 
+  /// No description provided for @admissionsProgrammeAlreadyApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Already applied this cycle'**
+  String get admissionsProgrammeAlreadyApplied;
+
   /// No description provided for @admissionsProgrammeApply.
   ///
   /// In en, this message translates to:
-  /// **'View programme & apply'**
+  /// **'Apply'**
   String get admissionsProgrammeApply;
 
   /// No description provided for @admissionsProgrammeViewDetails.
@@ -1761,6 +1767,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Direct Entry / Full-time'**
   String get admissionsStudyModeDirectEntry;
+
+  /// No description provided for @admissionsStudyModeDiploma.
+  ///
+  /// In en, this message translates to:
+  /// **'Full-time diploma'**
+  String get admissionsStudyModeDiploma;
 
   /// No description provided for @admissionsFacultyFilterNamed.
   ///

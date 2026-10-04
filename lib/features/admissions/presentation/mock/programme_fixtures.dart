@@ -8,7 +8,9 @@ import '../models/programme_models.dart';
 ///
 /// The set is chosen to exercise every state the card has to tell apart — a
 /// fully eligible programme, two that need checking because a result has not
-/// been verified, and one that has closed for the session.
+/// been verified, one that has closed for the session, and a diploma in a
+/// category the candidate has not applied to, so one card still offers to
+/// start an application while his undergraduate ones do not.
 abstract final class ProgrammeFixtures {
   /// The cycle the browser opens on, matching the overview's chip.
   static const String defaultCycleId = 'undergraduate-2026';
@@ -36,6 +38,7 @@ abstract final class ProgrammeFixtures {
     title: 'B.Sc. Computer Science',
     department: 'Department of Computer Science',
     faculty: Faculty.science,
+    category: ProgrammeCategory.undergraduate,
     durationYears: 5,
     studyMode: StudyMode.undergraduateFullTime,
     formFeeMinorUnits: formFeeMinorUnits,
@@ -64,6 +67,7 @@ abstract final class ProgrammeFixtures {
     title: 'B.Sc. Data Science',
     department: 'Department of Computer Science',
     faculty: Faculty.science,
+    category: ProgrammeCategory.undergraduate,
     durationYears: 4,
     studyMode: StudyMode.undergraduateFullTime,
     formFeeMinorUnits: formFeeMinorUnits,
@@ -90,6 +94,7 @@ abstract final class ProgrammeFixtures {
     title: 'B.Sc. Accounting',
     department: 'Department of Accounting',
     faculty: Faculty.science,
+    category: ProgrammeCategory.undergraduate,
     durationYears: 4,
     studyMode: StudyMode.undergraduateFullTime,
     formFeeMinorUnits: formFeeMinorUnits,
@@ -114,6 +119,7 @@ abstract final class ProgrammeFixtures {
     title: 'B.A. English',
     department: 'Department of English',
     faculty: Faculty.arts,
+    category: ProgrammeCategory.undergraduate,
     durationYears: 3,
     studyMode: StudyMode.directEntryFullTime,
     formFeeMinorUnits: 600000,
@@ -137,6 +143,7 @@ abstract final class ProgrammeFixtures {
     title: 'B.Sc. Law',
     department: 'Department of Law',
     faculty: Faculty.law,
+    category: ProgrammeCategory.undergraduate,
     durationYears: 5,
     studyMode: StudyMode.undergraduateFullTime,
     formFeeMinorUnits: formFeeMinorUnits,
@@ -148,6 +155,40 @@ abstract final class ProgrammeFixtures {
         id: 'quota',
         state: RequirementState.notMet,
         detail: 'The quota for this session is full.',
+      ),
+    ],
+  );
+
+  /// The one programme outside the undergraduate category.
+  ///
+  /// The candidate's record holds an undergraduate offer and an undergraduate
+  /// draft for this session, which under the one-per-category rule leaves
+  /// every undergraduate card without an "Apply". This is the card that keeps
+  /// it — and so the one path through the mock to starting an application.
+  static final Programme diplomaInLaw = Programme(
+    id: 'dil',
+    code: 'DIL',
+    title: 'Diploma in Law',
+    department: 'Department of Law',
+    faculty: Faculty.law,
+    category: ProgrammeCategory.diploma,
+    durationYears: 2,
+    studyMode: StudyMode.diplomaFullTime,
+    // ₦5,000.00: a diploma form costs less than a degree form.
+    formFeeMinorUnits: 500000,
+    closesOn: cycleDeadline,
+    requirements: [
+      ProgrammeRequirement(
+        id: 'minimum-age',
+        state: RequirementState.met,
+        detail: 'Minimum age of 16 at entry ✓',
+      ),
+      ProgrammeRequirement(
+        id: 'olevel-passes',
+        state: RequirementState.notTracked,
+        detail:
+            "Requires four O'level passes including English. WAEC results "
+            'are pending verification.',
       ),
     ],
   );
@@ -165,5 +206,6 @@ abstract final class ProgrammeFixtures {
     accounting,
     english,
     law,
+    diplomaInLaw,
   ];
 }
