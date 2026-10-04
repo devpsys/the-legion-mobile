@@ -124,6 +124,24 @@ abstract final class AppDimensions {
   /// Side of a round monogram or crest container.
   static const double monogramSize = 40;
 
+  /// Side of the square crest tile on a letterhead or a public brand block.
+  static const double crestTile = 44;
+
+  /// Side of the QR mark printed on a letter, its frame included.
+  static const double qrTile = 88;
+
+  /// Height of the hand-signed line above a signatory's name.
+  static const double signatureHeight = 46;
+
+  /// Widest a signatory's block may grow; a signature line is short.
+  static const double signatureBlockWidth = 240;
+
+  /// The heavier of the two strokes in a letterhead's double rule.
+  static const double ruleHeavy = 2;
+
+  /// Full height of that double rule: a heavy stroke, a gap, a hairline.
+  static const double doubleRule = 3;
+
   /// Side of the large status mark on a confirmation screen.
   static const double statusMark = 64;
 

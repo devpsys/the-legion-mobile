@@ -249,6 +249,145 @@ class OfferTerms extends Equatable {
   ];
 }
 
+/// Somebody who signs an admission letter.
+class LetterSignatory extends Equatable {
+  const LetterSignatory({
+    required this.signature,
+    required this.name,
+    required this.title,
+    this.onBehalfOf,
+  });
+
+  /// The hand-signed form, e.g. `I. Garba` — what sits above the rule.
+  final String signature;
+
+  /// The printed name under it, honorific included, e.g. `Prof Ibrahim Garba`.
+  final String name;
+
+  /// The office, e.g. `Vice-Chancellor`.
+  final String title;
+
+  /// Whom the signatory signs for, when the letter says so, e.g. `for The
+  /// Legion University`. `null` for a signatory signing in their own office.
+  final String? onBehalfOf;
+
+  @override
+  List<Object?> get props => [signature, name, title, onBehalfOf];
+}
+
+/// The admission letter as the registry issued it.
+///
+/// Self-contained rather than read off [OfferTerms]: a letter is a document
+/// with a date and a code, and once issued it does not change when the record
+/// does. A matriculated student still holds the letter that offered the place,
+/// and the terms it printed are the terms it keeps.
+class AdmissionLetter extends Equatable {
+  const AdmissionLetter({
+    required this.issuedOn,
+    required this.verificationCode,
+    required this.verificationUrl,
+    required this.addressLines,
+    required this.terms,
+    required this.signatories,
+  });
+
+  /// The date printed under the reference.
+  final DateTime issuedOn;
+
+  /// The code printed at the foot, e.g. `7KQ2M9XW4HPA`, which anybody can
+  /// check at [verificationUrl].
+  final String verificationCode;
+
+  /// Where the letter can be verified, as printed, e.g.
+  /// `thelegion.edu.ng/verify/admission`.
+  final String verificationUrl;
+
+  /// The addressee's postal address, one line per entry, under their name.
+  final List<String> addressLines;
+
+  /// The offer the letter sets out: level, session, fees and the deadline.
+  final OfferTerms terms;
+
+  /// Who signed it, in the order they appear.
+  final List<LetterSignatory> signatories;
+
+  @override
+  List<Object?> get props => [
+    issuedOn,
+    verificationCode,
+    verificationUrl,
+    addressLines,
+    terms,
+    signatories,
+  ];
+}
+
+/// How many characters a verification code has, as printed on a letter.
+const int verificationCodeLength = 12;
+
+/// A verification code as the register keys it: upper case, with the spaces
+/// and hyphens somebody copying from paper tends to add taken out.
+String normaliseVerificationCode(String raw) =>
+    raw.replaceAll(RegExp(r'[\s-]'), '').toUpperCase();
+
+/// `true` when [raw] has the shape of a code the register could answer.
+bool isCompleteVerificationCode(String raw) =>
+    normaliseVerificationCode(raw).length == verificationCodeLength;
+
+/// What a verification code resolves to: exactly what the letter prints.
+///
+/// For somebody who is not the candidate — a landlord, an employer — so it
+/// carries no phone number, no email, no address, no date of birth and no
+/// photograph. The module README calls any of those a privacy leak, and the
+/// model makes the leak impossible to draw by not having a field for it.
+class AdmissionVerificationResult extends Equatable {
+  const AdmissionVerificationResult({
+    required this.candidateName,
+    required this.programmeName,
+    required this.department,
+    required this.level,
+    required this.session,
+    required this.status,
+    required this.issuedOn,
+    this.matricNumber,
+  });
+
+  final String candidateName;
+
+  /// e.g. `B.Sc. Computer Science`.
+  final String programmeName;
+
+  /// e.g. `Department of Computer Science`.
+  final String department;
+
+  /// The entry level, e.g. `100`.
+  final int level;
+
+  /// The academic session, e.g. `2026/2027`.
+  final String session;
+
+  /// How the admission stands: offered, accepted, matriculated.
+  final ApplicationStatus status;
+
+  /// When the letter was issued.
+  final DateTime issuedOn;
+
+  /// Printed once the candidate has matriculated; `null` before.
+  final String? matricNumber;
+
+  @override
+  List<Object?> get props => [
+    candidateName,
+    programmeName,
+    department,
+    level,
+    session,
+    status,
+    issuedOn,
+    matricNumber,
+  ];
+}
+
 /// What a rejection audit measures.
 ///
 /// An enum rather than a label so the wording lives in the ARB and a second
@@ -388,6 +527,7 @@ class ApplicationDetail extends Equatable {
     this.referees = const [],
     this.secondChoiceProgrammeId,
     this.offer,
+    this.letter,
     this.rejection,
     this.expiredOn,
     this.withdrawal,
@@ -417,6 +557,11 @@ class ApplicationDetail extends Equatable {
 
   /// Offered: the terms the candidate is answering.
   final OfferTerms? offer;
+
+  /// Offered, accepted and matriculated: the letter the registry issued,
+  /// which the candidate can read, save and have verified. `null` for a
+  /// record that never carried an offer.
+  final AdmissionLetter? letter;
 
   /// Rejected: the committee's written decision.
   final RejectionNotice? rejection;
@@ -455,6 +600,7 @@ class ApplicationDetail extends Equatable {
     referees,
     history,
     offer,
+    letter,
     rejection,
     expiredOn,
     withdrawal,

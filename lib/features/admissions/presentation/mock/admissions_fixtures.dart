@@ -307,6 +307,73 @@ abstract final class AdmissionsFixtures {
     ],
   );
 
+  // --- Letters ------------------------------------------------------------
+
+  /// Where every letter says it can be checked, as printed at its foot.
+  static const String verificationUrl = 'thelegion.edu.ng/verify/admission';
+
+  /// The two offices that sign an admission letter.
+  static const List<LetterSignatory> letterSignatories = [
+    LetterSignatory(
+      signature: 'Amina Yusuf',
+      name: 'Dr Amina Yusuf',
+      title: 'Registrar',
+    ),
+    LetterSignatory(
+      signature: 'I. Garba',
+      name: 'Prof Ibrahim Garba',
+      title: 'Vice-Chancellor',
+      onBehalfOf: 'for The Legion University',
+    ),
+  ];
+
+  /// The candidate's postal address, as the letter is addressed.
+  static const List<String> candidateAddress = [
+    'Plot 14, Gwarinpa Estate',
+    'Federal Capital Territory, Abuja',
+  ];
+
+  /// The terms of the outstanding offer — shared by the card that answers
+  /// them and the letter that sets them out, so the two cannot disagree.
+  static final OfferTerms offeredTerms = OfferTerms(
+    level: 100,
+    session: currentSession,
+    // Quoted from the filed first choice so the fee on the offer cannot
+    // drift from the one the browser quotes for the same programme.
+    formFeeMinorUnits: ProgrammeFixtures.computerScience.formFeeMinorUnits,
+    formFeePaidOn: DateTime(2026, 9, 12),
+    acceptanceFeeMinorUnits: 500000,
+    acceptBy: DateTime(2027, 2, 28, 23, 59),
+  );
+
+  /// The letter behind [offeredDetail], issued the day the offer was made.
+  static final AdmissionLetter offeredLetter = AdmissionLetter(
+    issuedOn: DateTime(2026, 10),
+    verificationCode: '7KQ2M9XW4HPA',
+    verificationUrl: verificationUrl,
+    addressLines: candidateAddress,
+    terms: offeredTerms,
+    signatories: letterSignatories,
+  );
+
+  /// The letter that offered the place [matriculatedDetail] took up — a year
+  /// older, and still the document the student is asked to produce.
+  static final AdmissionLetter matriculatedLetter = AdmissionLetter(
+    issuedOn: DateTime(2025, 8, 20),
+    verificationCode: 'P3HD7VQ2TM8K',
+    verificationUrl: verificationUrl,
+    addressLines: candidateAddress,
+    terms: OfferTerms(
+      level: 100,
+      session: '2025/2026',
+      formFeeMinorUnits: ProgrammeFixtures.accounting.formFeeMinorUnits,
+      formFeePaidOn: DateTime(2024, 8, 20),
+      acceptanceFeeMinorUnits: 500000,
+      acceptBy: DateTime(2025, 9, 1, 23, 59),
+    ),
+    signatories: letterSignatories,
+  );
+
   /// The offer the detail screen answers: the terms, and nothing else on
   /// the page to compete with the date.
   static final ApplicationDetail offeredDetail = ApplicationDetail(
@@ -314,16 +381,8 @@ abstract final class AdmissionsFixtures {
     cycleId: currentCycle.id,
     firstChoiceProgrammeId: ProgrammeFixtures.computerScience.id,
     secondChoiceProgrammeId: ProgrammeFixtures.dataScience.id,
-    offer: OfferTerms(
-      level: 100,
-      session: '2026/2027',
-      // Quoted from the filed first choice so the fee on the offer cannot
-      // drift from the one the browser quotes for the same programme.
-      formFeeMinorUnits: ProgrammeFixtures.computerScience.formFeeMinorUnits,
-      formFeePaidOn: DateTime(2026, 9, 12),
-      acceptanceFeeMinorUnits: 500000,
-      acceptBy: DateTime(2027, 2, 28, 23, 59),
-    ),
+    offer: offeredTerms,
+    letter: offeredLetter,
     history: [
       ApplicationHistoryEvent(
         id: 'offer-event-0004',
@@ -432,6 +491,7 @@ abstract final class AdmissionsFixtures {
     application: matriculatedApplication,
     cycleId: 'undergraduate-2024',
     firstChoiceProgrammeId: ProgrammeFixtures.accounting.id,
+    letter: matriculatedLetter,
     history: [
       ApplicationHistoryEvent(
         id: 'matric-event-0004',
@@ -531,6 +591,39 @@ abstract final class AdmissionsFixtures {
     ])
       detail.application.id: detail,
   };
+
+  // --- Public verification ------------------------------------------------
+
+  /// What the registry answers for each verification code it has issued:
+  /// the letter's own facts and nothing the letter does not print.
+  ///
+  /// Keyed by the code as printed. The lookup normalises case and spacing,
+  /// so a code typed from a photocopy still resolves.
+  static final Map<String, AdmissionVerificationResult> verificationRegister = {
+    offeredLetter.verificationCode: AdmissionVerificationResult(
+      candidateName: candidate.displayName,
+      programmeName: offeredApplication.programmeName,
+      department: offeredApplication.department,
+      level: offeredTerms.level,
+      session: offeredTerms.session,
+      status: ApplicationStatus.offered,
+      issuedOn: offeredLetter.issuedOn,
+    ),
+    matriculatedLetter.verificationCode: AdmissionVerificationResult(
+      candidateName: candidate.displayName,
+      programmeName: matriculatedApplication.programmeName,
+      department: matriculatedApplication.department,
+      level: matriculatedLetter.terms.level,
+      session: matriculatedLetter.terms.session,
+      status: ApplicationStatus.matriculated,
+      issuedOn: matriculatedLetter.issuedOn,
+      matricNumber: matriculatedApplication.matricNumber,
+    ),
+  };
+
+  /// The register's answer for [code], or `null` for a code it never issued.
+  static AdmissionVerificationResult? verify(String code) =>
+      verificationRegister[normaliseVerificationCode(code)];
 
   // --- JAMB ---------------------------------------------------------------
 

@@ -131,7 +131,11 @@ class LoginPageState extends State<LoginPage> {
                                   verifyLetterLabel:
                                       context.l10n.loginActionVerifyLetter,
                                   onCreateAccount: _notAvailable,
-                                  onVerifyLetter: _notAvailable,
+                                  // Public: whoever holds a letter may check
+                                  // it without an account.
+                                  onVerifyLetter: () => context.goNamed(
+                                    Routes.verifyAdmissionName,
+                                  ),
                                 ),
                               AppSpacing.verticalGap(AppSpacing.md),
                               const AuditProtocolNotice(),

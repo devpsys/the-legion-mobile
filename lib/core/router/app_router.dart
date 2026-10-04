@@ -2,11 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/admissions/presentation/bloc/admission_verification_cubit.dart';
 import '../../features/admissions/presentation/bloc/admissions_cubit.dart';
+import '../../features/admissions/presentation/pages/admission_letter_page.dart';
 import '../../features/admissions/presentation/pages/admissions_overview_page.dart';
 import '../../features/admissions/presentation/pages/application_detail_page.dart';
 import '../../features/admissions/presentation/pages/applications_page.dart';
 import '../../features/admissions/presentation/pages/programmes_page.dart';
+import '../../features/admissions/presentation/pages/verify_admission_page.dart';
 import '../../features/admissions/presentation/widgets/admissions_shell.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
@@ -32,8 +35,11 @@ import 'widgets/route_error_page.dart';
 /// | Session | Current location | Redirect |
 /// | --- | --- | --- |
 /// | unresolved | anything but `/` | `/` (splash) |
-/// | resolved, anonymous | anything but `/login` and the recovery flow | `/login` |
+/// | resolved, anonymous | anything but `/login`, the recovery flow and the public screens | `/login` |
 /// | resolved, authenticated | `/`, `/login` or the recovery flow | `/home` |
+///
+/// The public screens (`Routes.publicPaths`) are left alone in both resolved
+/// states: letter verification is for whoever holds the letter.
 String? resolveRedirect({
   required AuthGuard authGuard,
   required String location,
@@ -45,11 +51,13 @@ String? resolveRedirect({
   }
 
   if (!authGuard.isAuthenticated) {
-    // Anonymous: the splash has done its job. Sign-in and the recovery flow
-    // are the only reachable screens — recovery is exactly what a signed-out
-    // visitor needs, so it must not bounce back to sign-in.
+    // Anonymous: the splash has done its job. Sign-in, the recovery flow and
+    // the public screens are the only reachable ones — recovery is exactly
+    // what a signed-out visitor needs, so it must not bounce back to sign-in.
     final isPublicScreen =
-        location == Routes.login || Routes.recoveryPaths.contains(location);
+        location == Routes.login ||
+        Routes.recoveryPaths.contains(location) ||
+        Routes.publicPaths.contains(location);
     return isPublicScreen ? null : Routes.login;
   }
 
@@ -89,6 +97,21 @@ GoRouter createRouter({
         path: Routes.login,
         name: Routes.loginName,
         builder: (context, state) => const LoginPage(),
+      ),
+      // Public verification of an admission letter. Outside every shell: the
+      // person holding the letter is not a candidate and has no portal to be
+      // inside of. Its own cubit per visit, so one check never shows the
+      // next visitor the last one's result.
+      GoRoute(
+        path: Routes.verifyAdmission,
+        name: Routes.verifyAdmissionName,
+        builder: (context, state) => BlocProvider<AdmissionVerificationCubit>(
+          create: (context) => sl<AdmissionVerificationCubit>(),
+          child: VerifyAdmissionPage(
+            initialCode:
+                state.uri.queryParameters[Routes.verifyAdmissionCodeParam],
+          ),
+        ),
       ),
       // One cubit for the whole recovery flow: the identifier, the masked
       // destinations and the attempt counters survive step changes, and a new
@@ -185,6 +208,16 @@ GoRouter createRouter({
             path: Routes.admissionsApplicationDetailTemplate,
             name: Routes.admissionsApplicationDetailName,
             builder: (context, state) => ApplicationDetailPage(
+              applicationId: state.pathParameters['id'] ?? '',
+            ),
+          ),
+          // The letter: one more step above the record. It reads the same
+          // cubit as the detail, so the document and the card that opened it
+          // are drawn from one record.
+          GoRoute(
+            path: Routes.admissionsAdmissionLetterTemplate,
+            name: Routes.admissionsAdmissionLetterName,
+            builder: (context, state) => AdmissionLetterPage(
               applicationId: state.pathParameters['id'] ?? '',
             ),
           ),

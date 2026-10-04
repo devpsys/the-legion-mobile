@@ -52,6 +52,14 @@ abstract final class AppTextStyles {
   /// Tight leading for dense rows and captions.
   static const double denseLineHeight = 1.3;
 
+  /// Open leading for a formal document's running text — a letter is read
+  /// once, slowly, and set like print.
+  static const double documentLineHeight = 1.65;
+
+  /// Spaced tracking for a reference code set as a word — `0.08em` at the mono
+  /// sizes the designs print codes at.
+  static const double trackingCode = 1.04;
+
   // --- Tracking -----------------------------------------------------------
 
   /// Letter spacing for spaced-caps section labels.

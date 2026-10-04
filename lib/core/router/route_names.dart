@@ -34,6 +34,25 @@ abstract final class Routes {
   static String admissionsApplicationDetail(String id) =>
       admissionsApplicationDetailTemplate.replaceFirst(':id', id);
 
+  /// Path template of the admission letter, a step above the detail: the
+  /// document the offer and the matriculation both link to.
+  static const String admissionsAdmissionLetterTemplate =
+      '$admissionsApplicationDetailTemplate/letter';
+
+  /// The letter's location for one record, e.g.
+  /// `/admissions/applications/app-00042/letter`.
+  static String admissionsAdmissionLetter(String id) =>
+      admissionsAdmissionLetterTemplate.replaceFirst(':id', id);
+
+  /// Public verification of an admission letter — for whoever is handed one.
+  ///
+  /// Outside every shell: no session, no tab bar, no bell. A code may arrive
+  /// in the query (`?code=…`), which is what the letter's QR mark encodes.
+  static const String verifyAdmission = '/verify/admission';
+
+  /// Name of the query parameter [verifyAdmission] reads a code from.
+  static const String verifyAdmissionCodeParam = 'code';
+
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
   static const String loginName = 'login';
@@ -48,6 +67,9 @@ abstract final class Routes {
   static const String admissionsApplicationsName = 'admissionsApplications';
   static const String admissionsApplicationDetailName =
       'admissionsApplicationDetail';
+  static const String admissionsAdmissionLetterName =
+      'admissionsAdmissionLetter';
+  static const String verifyAdmissionName = 'verifyAdmission';
 
   /// Every screen inside the candidate portal, as far as it is expressible as
   /// a literal path.
@@ -74,4 +96,11 @@ abstract final class Routes {
     setNewPassword,
     recoverySuccess,
   };
+
+  /// Reachable by anyone, signed in or not.
+  ///
+  /// Distinct from [recoveryPaths]: verification is for a person who may
+  /// never have an account, and a student scanning their own letter should
+  /// not be bounced to the hub for having one.
+  static const Set<String> publicPaths = {verifyAdmission};
 }

@@ -2295,6 +2295,281 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You are welcome to apply again in the next cycle, and your records and documents stay on your account.'**
   String get admissionsClosedRejectedNote;
+
+  /// No description provided for @admissionsLetterCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Admission letter'**
+  String get admissionsLetterCaption;
+
+  /// No description provided for @admissionsLetterBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the application'**
+  String get admissionsLetterBackTooltip;
+
+  /// No description provided for @admissionsLetterSavePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Save PDF'**
+  String get admissionsLetterSavePdf;
+
+  /// No description provided for @admissionsLetterShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get admissionsLetterShare;
+
+  /// No description provided for @admissionsLetterCopyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get admissionsLetterCopyCode;
+
+  /// No description provided for @admissionsLetterCodeCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code copied'**
+  String get admissionsLetterCodeCopied;
+
+  /// No description provided for @admissionsLetterKeepNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep this letter. It is the document a landlord or employer will ask to see.'**
+  String get admissionsLetterKeepNote;
+
+  /// No description provided for @admissionsLetterNotIssued.
+  ///
+  /// In en, this message translates to:
+  /// **'No letter has been issued for this application.'**
+  String get admissionsLetterNotIssued;
+
+  /// No description provided for @admissionsLetterUniversity.
+  ///
+  /// In en, this message translates to:
+  /// **'The Legion University'**
+  String get admissionsLetterUniversity;
+
+  /// No description provided for @admissionsLetterOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Office of the Registrar | Admissions'**
+  String get admissionsLetterOffice;
+
+  /// No description provided for @admissionsLetterRef.
+  ///
+  /// In en, this message translates to:
+  /// **'Ref:'**
+  String get admissionsLetterRef;
+
+  /// No description provided for @admissionsLetterDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date:'**
+  String get admissionsLetterDate;
+
+  /// No description provided for @admissionsLetterScanToVerify.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan to verify'**
+  String get admissionsLetterScanToVerify;
+
+  /// No description provided for @admissionsLetterHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer of provisional admission: {session} session'**
+  String admissionsLetterHeadline(Object session);
+
+  /// No description provided for @admissionsLetterBody.
+  ///
+  /// In en, this message translates to:
+  /// **'I am pleased to inform you that you have been offered provisional admission to study for the award of {programme} in the {department}, Faculty of {faculty}, entering at {level} Level, for the {session} academic session.'**
+  String admissionsLetterBody(
+    Object department,
+    Object faculty,
+    Object level,
+    Object programme,
+    Object session,
+  );
+
+  /// No description provided for @admissionsLetterBodyNoFaculty.
+  ///
+  /// In en, this message translates to:
+  /// **'I am pleased to inform you that you have been offered provisional admission to study for the award of {programme} in the {department}, entering at {level} Level, for the {session} academic session.'**
+  String admissionsLetterBodyNoFaculty(
+    Object department,
+    Object level,
+    Object programme,
+    Object session,
+  );
+
+  /// No description provided for @admissionsLetterConditionsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'This offer is subject to the following conditions:'**
+  String get admissionsLetterConditionsIntro;
+
+  /// No description provided for @admissionsLetterConditionNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'{index}.'**
+  String admissionsLetterConditionNumber(Object index);
+
+  /// No description provided for @admissionsLetterConditionAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'You accept the offer on the admissions portal by {date}.'**
+  String admissionsLetterConditionAccept(Object date);
+
+  /// No description provided for @admissionsLetterConditionFee.
+  ///
+  /// In en, this message translates to:
+  /// **'You pay the acceptance fee of {fee}.'**
+  String admissionsLetterConditionFee(Object fee);
+
+  /// No description provided for @admissionsLetterConditionCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'The originals of your credentials are verified at registration. The offer will be withdrawn if any information you supplied proves false.'**
+  String get admissionsLetterConditionCredentials;
+
+  /// No description provided for @admissionsLetterConditionRules.
+  ///
+  /// In en, this message translates to:
+  /// **'You meet the requirements for {programme} and abide by the rules and regulations of the university.'**
+  String admissionsLetterConditionRules(Object programme);
+
+  /// No description provided for @admissionsLetterClosing.
+  ///
+  /// In en, this message translates to:
+  /// **'Please accept my congratulations.'**
+  String get admissionsLetterClosing;
+
+  /// No description provided for @admissionsLetterVerifyPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify this letter at'**
+  String get admissionsLetterVerifyPrefix;
+
+  /// No description provided for @admissionsLetterVerifyWithCode.
+  ///
+  /// In en, this message translates to:
+  /// **'with code'**
+  String get admissionsLetterVerifyWithCode;
+
+  /// No description provided for @admissionsLetterVerifySuffix.
+  ///
+  /// In en, this message translates to:
+  /// **', or scan the QR code.'**
+  String get admissionsLetterVerifySuffix;
+
+  /// No description provided for @admissionsVerifyBrandCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Admissions verification'**
+  String get admissionsVerifyBrandCaption;
+
+  /// No description provided for @admissionsVerifyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify an admission'**
+  String get admissionsVerifyTitle;
+
+  /// No description provided for @admissionsVerifySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the verification code printed at the foot of the admission letter.'**
+  String get admissionsVerifySubtitle;
+
+  /// No description provided for @admissionsVerifyCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code'**
+  String get admissionsVerifyCodeLabel;
+
+  /// No description provided for @admissionsVerifyCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 7KQ2M9XW4HPA'**
+  String get admissionsVerifyCodeHint;
+
+  /// No description provided for @admissionsVerifyAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get admissionsVerifyAction;
+
+  /// No description provided for @admissionsVerifyGenuine.
+  ///
+  /// In en, this message translates to:
+  /// **'Genuine admission'**
+  String get admissionsVerifyGenuine;
+
+  /// No description provided for @admissionsVerifyName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get admissionsVerifyName;
+
+  /// No description provided for @admissionsVerifyProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme'**
+  String get admissionsVerifyProgramme;
+
+  /// No description provided for @admissionsVerifyLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get admissionsVerifyLevel;
+
+  /// No description provided for @admissionsVerifySession.
+  ///
+  /// In en, this message translates to:
+  /// **'Session'**
+  String get admissionsVerifySession;
+
+  /// No description provided for @admissionsVerifyStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get admissionsVerifyStatus;
+
+  /// No description provided for @admissionsVerifyMatricNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Matric number'**
+  String get admissionsVerifyMatricNumber;
+
+  /// No description provided for @admissionsVerifyIssuedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Offered on'**
+  String get admissionsVerifyIssuedOn;
+
+  /// No description provided for @admissionsVerifyNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No admission matches this code'**
+  String get admissionsVerifyNotFoundTitle;
+
+  /// No description provided for @admissionsVerifyNotFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the code at the foot of the letter and try again. If it still does not match, the letter was not issued by the university.'**
+  String get admissionsVerifyNotFoundBody;
+
+  /// No description provided for @admissionsVerifyPrivacyNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This page shows only what is printed on the letter.'**
+  String get admissionsVerifyPrivacyNote;
+
+  /// No description provided for @admissionsVerifySignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to the portal'**
+  String get admissionsVerifySignIn;
 }
 
 class _AppLocalizationsDelegate

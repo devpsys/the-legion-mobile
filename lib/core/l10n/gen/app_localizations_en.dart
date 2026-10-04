@@ -1325,4 +1325,168 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get admissionsClosedRejectedNote =>
       'You are welcome to apply again in the next cycle, and your records and documents stay on your account.';
+
+  @override
+  String get admissionsLetterCaption => 'Admission letter';
+
+  @override
+  String get admissionsLetterBackTooltip => 'Back to the application';
+
+  @override
+  String get admissionsLetterSavePdf => 'Save PDF';
+
+  @override
+  String get admissionsLetterShare => 'Share';
+
+  @override
+  String get admissionsLetterCopyCode => 'Copy';
+
+  @override
+  String get admissionsLetterCodeCopied => 'Verification code copied';
+
+  @override
+  String get admissionsLetterKeepNote =>
+      'Keep this letter. It is the document a landlord or employer will ask to see.';
+
+  @override
+  String get admissionsLetterNotIssued =>
+      'No letter has been issued for this application.';
+
+  @override
+  String get admissionsLetterUniversity => 'The Legion University';
+
+  @override
+  String get admissionsLetterOffice => 'Office of the Registrar | Admissions';
+
+  @override
+  String get admissionsLetterRef => 'Ref:';
+
+  @override
+  String get admissionsLetterDate => 'Date:';
+
+  @override
+  String get admissionsLetterScanToVerify => 'Scan to verify';
+
+  @override
+  String admissionsLetterHeadline(Object session) {
+    return 'Offer of provisional admission: $session session';
+  }
+
+  @override
+  String admissionsLetterBody(
+    Object department,
+    Object faculty,
+    Object level,
+    Object programme,
+    Object session,
+  ) {
+    return 'I am pleased to inform you that you have been offered provisional admission to study for the award of $programme in the $department, Faculty of $faculty, entering at $level Level, for the $session academic session.';
+  }
+
+  @override
+  String admissionsLetterBodyNoFaculty(
+    Object department,
+    Object level,
+    Object programme,
+    Object session,
+  ) {
+    return 'I am pleased to inform you that you have been offered provisional admission to study for the award of $programme in the $department, entering at $level Level, for the $session academic session.';
+  }
+
+  @override
+  String get admissionsLetterConditionsIntro =>
+      'This offer is subject to the following conditions:';
+
+  @override
+  String admissionsLetterConditionNumber(Object index) {
+    return '$index.';
+  }
+
+  @override
+  String admissionsLetterConditionAccept(Object date) {
+    return 'You accept the offer on the admissions portal by $date.';
+  }
+
+  @override
+  String admissionsLetterConditionFee(Object fee) {
+    return 'You pay the acceptance fee of $fee.';
+  }
+
+  @override
+  String get admissionsLetterConditionCredentials =>
+      'The originals of your credentials are verified at registration. The offer will be withdrawn if any information you supplied proves false.';
+
+  @override
+  String admissionsLetterConditionRules(Object programme) {
+    return 'You meet the requirements for $programme and abide by the rules and regulations of the university.';
+  }
+
+  @override
+  String get admissionsLetterClosing => 'Please accept my congratulations.';
+
+  @override
+  String get admissionsLetterVerifyPrefix => 'Verify this letter at';
+
+  @override
+  String get admissionsLetterVerifyWithCode => 'with code';
+
+  @override
+  String get admissionsLetterVerifySuffix => ', or scan the QR code.';
+
+  @override
+  String get admissionsVerifyBrandCaption => 'Admissions verification';
+
+  @override
+  String get admissionsVerifyTitle => 'Verify an admission';
+
+  @override
+  String get admissionsVerifySubtitle =>
+      'Enter the verification code printed at the foot of the admission letter.';
+
+  @override
+  String get admissionsVerifyCodeLabel => 'Verification code';
+
+  @override
+  String get admissionsVerifyCodeHint => 'e.g. 7KQ2M9XW4HPA';
+
+  @override
+  String get admissionsVerifyAction => 'Verify';
+
+  @override
+  String get admissionsVerifyGenuine => 'Genuine admission';
+
+  @override
+  String get admissionsVerifyName => 'Name';
+
+  @override
+  String get admissionsVerifyProgramme => 'Programme';
+
+  @override
+  String get admissionsVerifyLevel => 'Level';
+
+  @override
+  String get admissionsVerifySession => 'Session';
+
+  @override
+  String get admissionsVerifyStatus => 'Status';
+
+  @override
+  String get admissionsVerifyMatricNumber => 'Matric number';
+
+  @override
+  String get admissionsVerifyIssuedOn => 'Offered on';
+
+  @override
+  String get admissionsVerifyNotFoundTitle => 'No admission matches this code';
+
+  @override
+  String get admissionsVerifyNotFoundBody =>
+      'Check the code at the foot of the letter and try again. If it still does not match, the letter was not issued by the university.';
+
+  @override
+  String get admissionsVerifyPrivacyNote =>
+      'This page shows only what is printed on the letter.';
+
+  @override
+  String get admissionsVerifySignIn => 'Sign in to the portal';
 }

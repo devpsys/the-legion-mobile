@@ -83,7 +83,7 @@ class ApplicationOutcomeSections extends StatelessWidget {
             detail: detail,
             offer: offer,
             programme: programme,
-            onReadLetter: () => _notLiveYet(context),
+            onReadLetter: () => _openLetter(context, application.id),
             onAccept: () => _notLiveYet(context),
             onDecline: () => _notLiveYet(context),
           ),
@@ -140,7 +140,10 @@ class ApplicationOutcomeSections extends StatelessWidget {
               matricNumber: matricNumber,
               // The student portal is the hub the candidate came from.
               onOpenPortal: () => context.goNamed(Routes.homeName),
-              onDownloadLetter: () => _notLiveYet(context),
+              // The letter screen is where the document is read and saved
+              // from, so "download" opens it rather than fetching a file
+              // blind.
+              onDownloadLetter: () => _openLetter(context, application.id),
             ),
           history,
         ];
@@ -173,6 +176,14 @@ class ApplicationOutcomeSections extends StatelessWidget {
   /// application" and "browse programmes" lead to the browser.
   void _browseProgrammes(BuildContext context) =>
       context.goNamed(Routes.admissionsProgrammesName);
+
+  /// The admission letter for this record — the offer reads it before
+  /// answering, the matriculated student comes back for a copy.
+  void _openLetter(BuildContext context, String applicationId) =>
+      context.goNamed(
+        Routes.admissionsAdmissionLetterName,
+        pathParameters: {'id': applicationId},
+      );
 
   /// Everything with no service behind it yet reports that, so a tap never
   /// lands in silence.

@@ -77,6 +77,38 @@ abstract final class AppColors {
   static const Color textPrimaryDark = Color(0xFFE8EBEE);
   static const Color textMutedDark = Color(0xFF98A3AE);
 
+  // --- Paper: the printed document -----------------------------------------
+  // An admission letter is a document, not a screen: it is white with dark
+  // ink in both themes, the way the PDF it stands in for will be, so what a
+  // candidate sees on the phone is what a landlord is handed on paper.
+
+  /// The sheet itself.
+  static const Color paper = Color(0xFFFFFFFF);
+
+  /// Headline ink: names, references, the signatories.
+  static const Color ink = Color(0xFF111111);
+
+  /// Running text on [paper].
+  static const Color inkBody = Color(0xFF222222);
+
+  /// Captions and labels on [paper].
+  static const Color inkMuted = Color(0xFF555555);
+
+  /// Footnotes on [paper].
+  static const Color inkSubtle = Color(0xFF777777);
+
+  /// The letterhead's navy — the crest's own, a shade deeper than [navy].
+  static const Color inkBrand = Color(0xFF0B2F55);
+
+  /// Perimeter of the sheet and of the QR tile.
+  static const Color paperStroke = Color(0xFFD5DCE4);
+
+  /// The rule above the footer.
+  static const Color paperRule = Color(0xFFCCCCCC);
+
+  /// The recessed chip the verification code sits in.
+  static const Color paperInset = Color(0xFFF2F5F7);
+
   // --- Neutrals -----------------------------------------------------------
   /// Fully transparent. Widgets read this instead of `Colors.transparent` so no
   /// colour literal has to escape into feature code.

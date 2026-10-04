@@ -35,7 +35,10 @@ class AdmissionsShell extends StatelessWidget {
       canPop: false,
       onPopInvokedWithResult: (didPop, _) {
         if (didPop) return;
-        context.goNamed(admissionsBackTarget(location));
+        context.goNamed(
+          admissionsBackTarget(location),
+          pathParameters: admissionsBackPathParameters(location),
+        );
       },
       child: child,
     );
@@ -51,6 +54,12 @@ String admissionsBackTarget(String location) {
   // The portal's front door: back here leaves it for the hub.
   if (location == Routes.admissions) return Routes.homeName;
 
+  // The letter sits above the detail, so it unwinds to the detail — one step,
+  // not two.
+  if (admissionLetterApplicationId(location) != null) {
+    return Routes.admissionsApplicationDetailName;
+  }
+
   // The detail lives *under* the record's path, so it unwinds to the record.
   // Matching the prefix with its trailing slash keeps `/admissions/applications`
   // — the tab itself — out of this branch.
@@ -59,4 +68,21 @@ String admissionsBackTarget(String location) {
   }
 
   return Routes.admissionsName;
+}
+
+/// The path parameters that go with [admissionsBackTarget] — the record's id
+/// when back leads to a detail, nothing otherwise.
+Map<String, String> admissionsBackPathParameters(String location) {
+  final id = admissionLetterApplicationId(location);
+  return id == null ? const {} : {'id': id};
+}
+
+/// The record's id when [location] is an admission letter, else `null`.
+///
+/// Matched against the template rather than by splitting on slashes, so a
+/// change to the letter's path changes this in one place.
+String? admissionLetterApplicationId(String location) {
+  final template = RegExp.escape(Routes.admissionsAdmissionLetterTemplate)
+      .replaceFirst(':id', '([^/]+)');
+  return RegExp('^$template\$').firstMatch(location)?.group(1);
 }

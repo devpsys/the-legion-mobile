@@ -25,13 +25,22 @@ class ApplicationDetailTopBar extends StatelessWidget
     required this.user,
     required this.onNotifications,
     required this.onAvatarTap,
+    this.caption,
+    this.backTooltip,
     super.key,
   });
 
   /// The record's tracking code, or `null` while it is still loading.
   final String? reference;
 
-  /// Unwinds to the record this screen was opened from.
+  /// What this screen is called, under the reference. The detail's own
+  /// caption when omitted; the letter names itself.
+  final String? caption;
+
+  /// Where back leads, for the chevron's tooltip. The detail's when omitted.
+  final String? backTooltip;
+
+  /// Unwinds to the screen this one was opened from.
   final VoidCallback onBack;
 
   /// The signed-in candidate; `null` while the session is being restored.
@@ -62,7 +71,7 @@ class ApplicationDetailTopBar extends StatelessWidget
       automaticallyImplyLeading: false,
       leading: IconButton(
         onPressed: onBack,
-        tooltip: l10n.admissionsDetailBackTooltip,
+        tooltip: backTooltip ?? l10n.admissionsDetailBackTooltip,
         icon: Icon(
           Icons.chevron_left,
           size: AppDimensions.iconMedium,
@@ -70,7 +79,10 @@ class ApplicationDetailTopBar extends StatelessWidget
         ),
       ),
       centerTitle: true,
-      title: ApplicationDetailTitle(reference: reference),
+      title: ApplicationDetailTitle(
+        reference: reference,
+        caption: caption ?? l10n.admissionsDetailCaption,
+      ),
       actions: [
         // The shared bell: one notification centre for the hub and the portal.
         NotificationBell(onPressed: onNotifications),
@@ -107,15 +119,21 @@ class ApplicationDetailTopBar extends StatelessWidget
 /// same trap `CyclePill` is bounded to avoid). The column instead takes the
 /// width the bar hands it and ellipsizes into it.
 class ApplicationDetailTitle extends StatelessWidget {
-  const ApplicationDetailTitle({required this.reference, super.key});
+  const ApplicationDetailTitle({
+    required this.reference,
+    required this.caption,
+    super.key,
+  });
 
   /// `null` while the record loads, in which case the caption stands alone.
   final String? reference;
 
+  /// The screen's name, in spaced capitals under the reference.
+  final String caption;
+
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
-    final l10n = context.l10n;
     final reference = this.reference;
 
     return Column(
@@ -135,7 +153,7 @@ class ApplicationDetailTitle extends StatelessWidget {
           AppSpacing.verticalGap(AppSpacing.xs),
         ],
         Text(
-          l10n.admissionsDetailCaption.toUpperCase(),
+          caption.toUpperCase(),
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: theme.textTheme.labelSmall?.copyWith(

@@ -11,7 +11,9 @@ import 'package:the_legion_mobile/core/router/app_router.dart';
 import 'package:the_legion_mobile/core/router/auth_guard.dart';
 import 'package:the_legion_mobile/core/router/route_names.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/bloc/admission_verification_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/widgets/admission_letter_document.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_shell.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_tab_bar.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/fake_auth_remote_data_source.dart';
@@ -216,6 +218,52 @@ void main() {
         Routes.splash,
       );
     });
+
+    test('lets anyone, signed in or not, verify an admission letter', () {
+      // The person holding a letter is a landlord or an employer, who has no
+      // account; and a student scanning their own letter has one.
+      for (final isAuthenticated in [false, true]) {
+        final guard = _FakeAuthGuard(
+          isSessionResolved: true,
+          isAuthenticated: isAuthenticated,
+        );
+        expect(
+          resolveRedirect(authGuard: guard, location: Routes.verifyAdmission),
+          isNull,
+          reason:
+              'verification must be public (authenticated: $isAuthenticated)',
+        );
+      }
+    });
+
+    test('holds verification at the splash until the session resolves', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: false,
+        isAuthenticated: false,
+      );
+
+      expect(
+        resolveRedirect(authGuard: guard, location: Routes.verifyAdmission),
+        Routes.splash,
+      );
+    });
+
+    test('protects the admission letter itself from an anonymous user', () {
+      // The letter carries the candidate's address: public verification shows
+      // what the letter prints, the letter screen shows the letter.
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: false,
+      );
+
+      expect(
+        resolveRedirect(
+          authGuard: guard,
+          location: Routes.admissionsAdmissionLetter('app-00042'),
+        ),
+        Routes.login,
+      );
+    });
   });
 
   group('admissionsBackTarget', () {
@@ -246,6 +294,48 @@ void main() {
         Routes.admissionsName,
       );
     });
+
+    test('unwinds the letter to the detail it was opened from', () {
+      final location = Routes.admissionsAdmissionLetter('app-00042');
+
+      expect(
+        admissionsBackTarget(location),
+        Routes.admissionsApplicationDetailName,
+        reason: 'the letter is one step above the detail, not two',
+      );
+      expect(admissionsBackPathParameters(location), {'id': 'app-00042'});
+    });
+
+    test('passes no path parameters where back needs none', () {
+      expect(
+        admissionsBackPathParameters(
+          Routes.admissionsApplicationDetail('app-00042'),
+        ),
+        isEmpty,
+      );
+      expect(admissionsBackPathParameters(Routes.admissions), isEmpty);
+    });
+
+    test('reads the record id out of a letter location, and only there', () {
+      expect(
+        admissionLetterApplicationId(
+          Routes.admissionsAdmissionLetter('app-00042'),
+        ),
+        'app-00042',
+      );
+      expect(
+        admissionLetterApplicationId(
+          Routes.admissionsApplicationDetail('app-00042'),
+        ),
+        isNull,
+      );
+      expect(
+        admissionLetterApplicationId(
+          '${Routes.admissionsAdmissionLetter('app-00042')}/extra',
+        ),
+        isNull,
+      );
+    });
   });
 
   group('cold start with the in-memory backend', () {
@@ -256,6 +346,9 @@ void main() {
       // their configuration from the same locator.
       sl.registerFactory<PasswordRecoveryCubit>(PasswordRecoveryCubit.new);
       sl.registerFactory<AdmissionsCubit>(AdmissionsCubit.new);
+      sl.registerFactory<AdmissionVerificationCubit>(
+        AdmissionVerificationCubit.new,
+      );
       sl.registerSingleton<AppConfig>(
         const AppConfig(
           environment: Environment.development,
@@ -714,6 +807,114 @@ void main() {
       await tester.tap(find.text('Return to my applications'));
       await tester.pumpAndSettle();
       expect(find.text('My applications'), findsOneWidget);
+    });
+
+    testWidgets('an offer opens its letter, and back returns to the offer', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await openApplication(tester, 'APP/2026/00042');
+      expect(find.text('Accept offer'), findsOneWidget);
+
+      await tester.tap(find.text('Admission letter'));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(AdmissionLetterDocument), findsOneWidget);
+      expect(find.byType(AdmissionsTabBar), findsNothing);
+      expect(
+        find.text('OFFER OF PROVISIONAL ADMISSION: 2026/2027 SESSION'),
+        findsOneWidget,
+      );
+
+      // The system gesture unwinds one step, to the detail — not to the list.
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      expect(find.text('Accept offer'), findsOneWidget);
+      expect(find.byType(AdmissionLetterDocument), findsNothing);
+
+      // The second way in, below the deadline, leads to the same letter; the
+      // bar's chevron is the way back.
+      await tester.ensureVisible(find.text('Read the admission letter first'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Read the admission letter first'));
+      await tester.pumpAndSettle();
+      expect(find.byType(AdmissionLetterDocument), findsOneWidget);
+
+      await tester.tap(find.byTooltip('Back to the application'));
+      await tester.pumpAndSettle();
+      expect(find.text('Accept offer'), findsOneWidget);
+    });
+
+    testWidgets('a matriculation leads to the letter that admitted it', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await openApplication(tester, 'APP/2024/00377');
+      await tester.ensureVisible(find.text('Download your admission letter'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Download your admission letter'));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(AdmissionLetterDocument), findsOneWidget);
+      expect(
+        find.text('OFFER OF PROVISIONAL ADMISSION: 2025/2026 SESSION'),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('the sign-in screen leads to public verification and back', (
+      tester,
+    ) async {
+      tester.view
+        ..physicalSize = const Size(390, 844) * 2
+        ..devicePixelRatio = 2;
+      addTearDown(tester.view.reset);
+
+      await pumpApp(tester);
+      await tester.pump();
+      await tester.pump();
+
+      await tester.ensureVisible(find.text('Verify an admission letter'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Verify an admission letter'));
+      await tester.pumpAndSettle();
+
+      // Public: reached without a session, and without the app's chrome.
+      expect(find.text('Verify an admission'), findsOneWidget);
+      expect(find.byType(AppBar), findsNothing);
+
+      await tester.enterText(find.byType(TextField), '7kq2 m9xw 4hpa');
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Verify'));
+      await tester.pumpAndSettle();
+      expect(find.text('Genuine admission'), findsOneWidget);
+
+      await tester.ensureVisible(find.text('Sign in to the portal'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Sign in to the portal'));
+      await tester.pumpAndSettle();
+      expect(find.text('Verify an admission letter'), findsOneWidget);
+    });
+
+    testWidgets('the system back gesture leaves verification for sign-in', (
+      tester,
+    ) async {
+      await pumpApp(tester);
+      await tester.pump();
+      await tester.pump();
+
+      await tester.ensureVisible(find.text('Verify an admission letter'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Verify an admission letter'));
+      await tester.pumpAndSettle();
+      expect(find.text('Verify an admission'), findsOneWidget);
+
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      expect(find.text('Verify an admission'), findsNothing);
+      expect(find.text('Verify an admission letter'), findsOneWidget);
     });
 
     testWidgets(

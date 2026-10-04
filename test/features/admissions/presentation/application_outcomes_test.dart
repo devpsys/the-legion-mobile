@@ -197,12 +197,8 @@ void main() {
       expect(find.byType(ApplicationHistoryCard), findsNothing);
     });
 
-    for (final action in [
-      'Accept offer',
-      'Decline offer',
-      'Read the admission letter first',
-      'Admission letter',
-    ]) {
+    // The two letter buttons navigate, which the router test exercises.
+    for (final action in ['Accept offer', 'Decline offer']) {
       testWidgets('says "$action" is not live yet', (tester) async {
         await pumpDetail(tester, offeredId);
 
@@ -458,15 +454,6 @@ void main() {
       expect(find.text('Download your admission letter'), findsOneWidget);
       expect(find.byType(ApplicationHistoryCard), findsOneWidget);
       expect(find.text('Withdraw application'), findsNothing);
-    });
-
-    testWidgets('says the letter is not live yet', (tester) async {
-      await pumpDetail(tester, matriculatedId);
-
-      await tester.tap(find.text('Download your admission letter'));
-      await tester.pumpAndSettle();
-
-      expect(find.text(comingSoon), findsOneWidget);
     });
 
     testWidgets('sets the number in success green on the badge', (
