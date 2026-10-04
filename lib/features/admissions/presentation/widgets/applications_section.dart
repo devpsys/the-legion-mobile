@@ -57,8 +57,12 @@ class ApplicationsSection extends StatelessWidget {
               onBrowse: onBrowse,
             )
           else
-            for (final application in applications)
+            for (final (index, application) in applications.indexed) ...[
+              // A gap between cards, not after the last: the section's own
+              // padding closes it.
+              if (index > 0) AppSpacing.verticalGap(AppSpacing.md),
               ApplicationSummaryCard(application: application),
+            ],
         ],
       ),
     );

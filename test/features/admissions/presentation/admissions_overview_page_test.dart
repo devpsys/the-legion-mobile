@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:the_legion_mobile/core/l10n/gen/app_localizations.dart';
 import 'package:the_legion_mobile/core/notifications/notification_cubit.dart';
 import 'package:the_legion_mobile/core/notifications/notification_fixtures.dart';
+import 'package:the_legion_mobile/core/theme/app_spacing.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/mock/admissions_fixtures.dart';
@@ -209,6 +210,21 @@ void main() {
       expect(find.text('Offer expired'), findsOneWidget);
       expect(find.text('Matriculated'), findsOneWidget);
       expect(find.byType(ApplicationsEmptyState), findsNothing);
+    });
+
+    testWidgets('keeps a gap between one card and the next', (tester) async {
+      await pumpPage(tester);
+
+      final cards = find.byType(ApplicationSummaryCard);
+      for (var i = 1; i < 6; i++) {
+        final above = tester.getBottomLeft(cards.at(i - 1)).dy;
+        final below = tester.getTopLeft(cards.at(i)).dy;
+        expect(
+          below - above,
+          AppSpacing.md,
+          reason: 'cards $i and ${i + 1} must not touch',
+        );
+      }
     });
 
     testWidgets('carries the reference each card is filed under', (
