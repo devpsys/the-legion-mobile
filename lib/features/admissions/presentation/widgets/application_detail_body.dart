@@ -8,27 +8,32 @@ import '../../../../core/widgets/message_feedback.dart';
 import '../../../../core/widgets/responsive_content.dart';
 import '../bloc/admissions_cubit.dart';
 import '../bloc/admissions_state.dart';
+import '../models/admissions_models.dart';
 import '../models/application_detail_models.dart';
+import '../models/programme_models.dart';
 import 'application_checklist_card.dart';
 import 'application_choices_card.dart';
 import 'application_detail_header.dart';
 import 'application_history_card.dart';
+import 'application_outcome_sections.dart';
 import 'application_submit_card.dart';
 import 'application_withdraw_action.dart';
 import 'referee_invite_form.dart';
 import 'referees_card.dart';
 import 'withdraw_application_sheet.dart';
 
-/// The loaded record: header, checklist, choices, referees, submit, log.
+/// The loaded record: a form while it is a draft, a record once it is not.
 ///
-/// A `StatefulWidget` because this screen is the one place in the portal where
+/// A `StatefulWidget` because the draft is the one place in the portal where
 /// the candidate is *changing* something — two choices, a declaration — and
-/// none of it belongs in the shared cubit until it is saved. The record itself
+/// none of it belongs in the shared cubit until it is saved. Every other status
+/// is read-only and is drawn by [ApplicationOutcomeSections]. The record itself
 /// stays a parameter: this widget renders one application, never edits it.
 class ApplicationDetailBody extends StatefulWidget {
   const ApplicationDetailBody({
     required this.state,
     required this.detail,
+    this.now,
     super.key,
   });
 
@@ -37,14 +42,18 @@ class ApplicationDetailBody extends StatefulWidget {
 
   final ApplicationDetail detail;
 
+  /// Injected so "is a cycle open?" is deterministic in tests. Defaults to the
+  /// device clock.
+  final DateTime? now;
+
   @override
   ApplicationDetailBodyState createState() => ApplicationDetailBodyState();
 }
 
 /// State of [ApplicationDetailBody].
 ///
-/// Public only because private widget classes are banned — the state itself
-/// carries no behaviour a caller could use.
+/// Public only because private widget classes are banned — the state carries
+/// the draft's unsaved choices and declaration, nothing a caller could use.
 class ApplicationDetailBodyState extends State<ApplicationDetailBody> {
   /// The choices as the candidate is leaving them: local until saved, because
   /// a dropdown that writes to the record on every tap makes a half-thought
@@ -70,6 +79,9 @@ class ApplicationDetailBodyState extends State<ApplicationDetailBody> {
   Widget build(BuildContext context) {
     final state = widget.state;
     final detail = widget.detail;
+    final status = detail.application.status;
+    final isDraft = status == ApplicationStatus.draft;
+
     // Closed programmes are on the record but not on the menu: a candidate
     // cannot choose a programme that stopped taking applications, while the
     // catalogue still lists it so the reason is readable elsewhere.
@@ -85,57 +97,95 @@ class ApplicationDetailBodyState extends State<ApplicationDetailBody> {
           mainAxisSize: MainAxisSize.min,
           children: [
             AppSpacing.verticalGap(AppSpacing.lg),
-            ApplicationDetailHeader(
-              application: detail.application,
-              submitBy: _submitBy(),
-            ),
-            AppSpacing.verticalGap(AppSpacing.lg),
-            ApplicationChecklistCard(
-              detail: detail,
-              // The gate, not the banner: the overview's copy can be dismissed
-              // for the session, and a candidate who hides a nag there must
-              // not lose the only way to answer it here.
-              showResendAction: state.candidate?.isEmailConfirmed == false,
-              isResending: state.isSendingEmailLink,
-              onResend: _resendConfirmation,
-              onAction: _handleChecklistAction,
-            ),
-            AppSpacing.verticalGap(AppSpacing.lg),
-            ApplicationChoicesCard(
-              options: openProgrammes,
-              firstChoiceId: _firstChoiceId,
-              secondChoiceId: _secondChoiceId,
-              onFirstChoiceChanged: (id) => setState(() => _firstChoiceId = id),
-              onSecondChoiceChanged: (id) =>
-                  setState(() => _secondChoiceId = id),
-              // Nothing writes to the record yet, so saving says so rather
-              // than moving a choice nobody received.
-              onSave: _notLiveYet,
-            ),
-            AppSpacing.verticalGap(AppSpacing.lg),
-            RefereesCard(
-              referees: detail.referees,
-              formKey: _inviteFormKey,
-              onResend: (_) => _notLiveYet(),
-              onRemove: (_) => _notLiveYet(),
-              onSendInvitation: _notLiveYet,
-            ),
-            AppSpacing.verticalGap(AppSpacing.lg),
-            ApplicationSubmitCard(
-              detail: detail,
-              isDeclarationAccepted: _isDeclarationAccepted,
-              onDeclarationChanged: (value) =>
-                  setState(() => _isDeclarationAccepted = value),
-              onSubmit: _notLiveYet,
-            ),
-            AppSpacing.verticalGap(AppSpacing.lg),
-            ApplicationHistoryCard(events: detail.history),
-            AppSpacing.verticalGap(AppSpacing.lg),
-            ApplicationWithdrawAction(onWithdraw: _confirmWithdraw),
+            // A refusal, a lapse, a withdrawal and a matriculation each open
+            // with a headline of their own, and a second one above it would
+            // say the same thing twice.
+            if (!_hasOwnHeadline(status)) ...[
+              ApplicationDetailHeader(
+                application: detail.application,
+                // A countdown is only true of a draft: an offer has a deadline
+                // of its own, and quoting the cycle's under it would give the
+                // candidate two dates to miss.
+                submitBy: isDraft ? _submitBy() : null,
+              ),
+              AppSpacing.verticalGap(AppSpacing.lg),
+            ],
+            if (isDraft)
+              _buildDraftSections(detail, state, openProgrammes)
+            else
+              ApplicationOutcomeSections(
+                detail: detail,
+                state: state,
+                now: widget.now ?? DateTime.now(),
+              ),
             AppSpacing.verticalGap(AppSpacing.xl),
           ],
         ),
       ),
+    );
+  }
+
+  /// Statuses whose card opens with its own headline.
+  bool _hasOwnHeadline(ApplicationStatus status) => switch (status) {
+    ApplicationStatus.rejected ||
+    ApplicationStatus.expired ||
+    ApplicationStatus.withdrawn ||
+    ApplicationStatus.matriculated => true,
+    ApplicationStatus.draft ||
+    ApplicationStatus.submitted ||
+    ApplicationStatus.underReview ||
+    ApplicationStatus.offered ||
+    ApplicationStatus.accepted ||
+    ApplicationStatus.declined => false,
+  };
+
+  /// The draft: checklist, choices, referees, submit, history, withdraw.
+  Widget _buildDraftSections(
+    ApplicationDetail detail,
+    AdmissionsState state,
+    List<Programme> openProgrammes,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ApplicationChecklistCard(
+          detail: detail,
+          showResendAction: state.candidate?.isEmailConfirmed == false,
+          isResending: state.isSendingEmailLink,
+          onResend: _resendConfirmation,
+          onAction: _handleChecklistAction,
+        ),
+        AppSpacing.verticalGap(AppSpacing.lg),
+        ApplicationChoicesCard(
+          options: openProgrammes,
+          firstChoiceId: _firstChoiceId,
+          secondChoiceId: _secondChoiceId,
+          onFirstChoiceChanged: (id) => setState(() => _firstChoiceId = id),
+          onSecondChoiceChanged: (id) => setState(() => _secondChoiceId = id),
+          onSave: _notLiveYet,
+        ),
+        AppSpacing.verticalGap(AppSpacing.lg),
+        RefereesCard(
+          referees: detail.referees,
+          formKey: _inviteFormKey,
+          onResend: (_) => _notLiveYet(),
+          onRemove: (_) => _notLiveYet(),
+          onSendInvitation: _notLiveYet,
+        ),
+        AppSpacing.verticalGap(AppSpacing.lg),
+        ApplicationSubmitCard(
+          detail: detail,
+          isDeclarationAccepted: _isDeclarationAccepted,
+          onDeclarationChanged: (value) =>
+              setState(() => _isDeclarationAccepted = value),
+          onSubmit: _notLiveYet,
+        ),
+        AppSpacing.verticalGap(AppSpacing.lg),
+        ApplicationHistoryCard(events: detail.history),
+        AppSpacing.verticalGap(AppSpacing.lg),
+        ApplicationWithdrawAction(onWithdraw: _confirmWithdraw),
+      ],
     );
   }
 

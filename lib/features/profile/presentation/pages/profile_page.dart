@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/responsive_content.dart';
 import '../../../../core/widgets/section_card.dart';
@@ -18,8 +18,6 @@ import '../widgets/profile_header.dart';
 /// already owns, so it needs neither its own repository nor use cases.
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
-
-  static final DateFormat _dateFormat = DateFormat.yMMMd();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,9 @@ class ProfilePage extends StatelessWidget {
                         if (user.createdAt != null)
                           ValueChip(
                             label: context.l10n.profileMemberSince,
-                            value: _dateFormat.format(user.createdAt!),
+                            value: AppDateFormats.medium(
+                              context.l10n.localeName,
+                            ).format(user.createdAt!),
                           ),
                       ],
                     ),

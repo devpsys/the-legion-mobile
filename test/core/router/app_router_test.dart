@@ -626,6 +626,96 @@ void main() {
       );
     });
 
+    /// Opens the Applications tab and the record filed under [reference].
+    Future<void> openApplication(WidgetTester tester, String reference) async {
+      await tester.ensureVisible(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Admissions'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Applications'));
+      await tester.pumpAndSettle();
+
+      await tester.ensureVisible(find.text(reference));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(reference));
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('a matriculation opens the student portal from its detail', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await openApplication(tester, 'APP/2024/00377');
+      expect(find.text("You're matriculated"), findsOneWidget);
+
+      await tester.tap(find.text('Open the student portal'));
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text('Pay your accommodation fee'),
+        findsOneWidget,
+        reason: 'the student portal is the hub the candidate came from',
+      );
+    });
+
+    testWidgets('a lapsed offer and a withdrawal both lead to the browser', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+      const browser =
+          'Explore degree programmes and check your eligibility before applying.';
+
+      await openApplication(tester, 'APP/2025/00611');
+      expect(
+        find.text('The offer of B.Sc. Law expired on 28 February 2026.'),
+        findsOneWidget,
+      );
+      await tester.tap(find.text('Browse programmes'));
+      await tester.pumpAndSettle();
+      expect(find.text(browser), findsOneWidget);
+
+      await tester.tap(find.text('Applications'));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('APP/2026/00733'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('APP/2026/00733'));
+      await tester.pumpAndSettle();
+      expect(find.text('Application withdrawn'), findsWidgets);
+
+      await tester.tap(find.text('Start a new application'));
+      await tester.pumpAndSettle();
+      expect(find.text(browser), findsOneWidget);
+    });
+
+    testWidgets('a refusal leads back to the record, by gesture or by link', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await openApplication(tester, 'APP/2025/00918');
+      expect(
+        find.text('Official admissions committee finding'),
+        findsOneWidget,
+      );
+      expect(find.byType(AdmissionsTabBar), findsNothing);
+
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      expect(find.text('My applications'), findsOneWidget);
+
+      await tester.ensureVisible(find.text('APP/2025/00918'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('APP/2025/00918'));
+      await tester.pumpAndSettle();
+
+      await tester.ensureVisible(find.text('Return to my applications'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Return to my applications'));
+      await tester.pumpAndSettle();
+      expect(find.text('My applications'), findsOneWidget);
+    });
+
     testWidgets(
       '"Forgot password?" opens the recovery flow and steps through it',
       (tester) async {

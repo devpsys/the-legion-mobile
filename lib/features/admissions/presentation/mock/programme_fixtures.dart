@@ -58,6 +58,32 @@ abstract final class ProgrammeFixtures {
     ],
   );
 
+  static final Programme dataScience = Programme(
+    id: 'dsc',
+    code: 'DSC',
+    title: 'B.Sc. Data Science',
+    department: 'Department of Computer Science',
+    faculty: Faculty.science,
+    durationYears: 4,
+    studyMode: StudyMode.undergraduateFullTime,
+    formFeeMinorUnits: formFeeMinorUnits,
+    closesOn: cycleDeadline,
+    requirements: [
+      ProgrammeRequirement(
+        id: 'utme-aggregate',
+        state: RequirementState.met,
+        detail: 'Minimum UTME aggregate of 240 — your score is 312 ✓',
+      ),
+      ProgrammeRequirement(
+        id: 'olevel-credits',
+        state: RequirementState.notTracked,
+        detail:
+            "Requires five O'level credits including Mathematics and English. "
+            'WAEC results are pending verification.',
+      ),
+    ],
+  );
+
   static final Programme accounting = Programme(
     id: 'acc',
     code: 'ACC',

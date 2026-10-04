@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
 import '../bloc/password_recovery_cubit.dart';
@@ -82,9 +82,9 @@ class RecoverySuccessPage extends StatelessWidget {
                           email: identifier.isEmpty
                               ? RecoveryFixtures.accountName
                               : identifier,
-                          timestamp: DateFormat.yMMMMd(l10n.localeName)
-                              .add_jm()
-                              .format(DateTime.now()),
+                          timestamp: AppDateFormats.longDateTime(
+                            l10n.localeName,
+                          ).format(DateTime.now()),
                           auditHash: RecoveryFixtures.auditReference,
                           sessionsSummary: state.terminateOtherSessions
                               ? context.l10n.recoverySessionsRevoked

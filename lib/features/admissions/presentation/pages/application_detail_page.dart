@@ -20,10 +20,17 @@ import '../widgets/application_detail_top_bar.dart';
 /// chevron and no tab bar, because a candidate reading a checklist is not
 /// moving between sections — they are reading one file.
 class ApplicationDetailPage extends StatefulWidget {
-  const ApplicationDetailPage({required this.applicationId, super.key});
+  const ApplicationDetailPage({
+    required this.applicationId,
+    this.now,
+    super.key,
+  });
 
   /// The record's id as it appears in the path, e.g. `app-00057`.
   final String applicationId;
+
+  /// Injected so the open-cycle reading is deterministic.
+  final DateTime? now;
 
   @override
   ApplicationDetailPageState createState() => ApplicationDetailPageState();
@@ -77,7 +84,11 @@ class ApplicationDetailPageState extends State<ApplicationDetailPage> {
               AdmissionsStatus.ready =>
                 detail == null
                     ? EmptyView(message: l10n.admissionsDetailNotFound)
-                    : ApplicationDetailBody(state: state, detail: detail),
+                    : ApplicationDetailBody(
+                        state: state,
+                        detail: detail,
+                        now: widget.now,
+                      ),
             },
           ),
         );

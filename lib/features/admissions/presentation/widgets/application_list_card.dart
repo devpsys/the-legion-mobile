@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/dates.dart';
 import '../models/admissions_models.dart';
 import 'application_card_footer.dart';
 import 'status_tag.dart';
@@ -35,9 +35,9 @@ class ApplicationListCard extends StatelessWidget {
   /// Injected so the footer's age stamp is deterministic.
   final DateTime now;
 
-  /// Opens the application's detail. Not offered on a matriculated
-  /// application: the design gives it no chevron, and there is no detail
-  /// screen behind a decision that is already carried out.
+  /// Opens the application's detail. A matriculated card opens it too, though
+  /// the design draws it no chevron: its footer is the way into the student
+  /// portal, and the card itself is the way back to the record.
   final VoidCallback onOpen;
 
   /// Leaves the portal for the student portal, from a matriculated card.
@@ -58,9 +58,7 @@ class ApplicationListCard extends StatelessWidget {
         StripedCard(
           tone: application.status.tone,
           isRaised: true,
-          // A matriculated application leads to the portal instead of to a
-          // detail screen, so it carries no tap-through of its own.
-          onTap: application.matricNumber == null ? onOpen : null,
+          onTap: onOpen,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
@@ -129,7 +127,7 @@ class ApplicationListCard extends StatelessWidget {
             ),
             child: Text(
               l10n.admissionsCycleClosedNote(
-                DateFormat.yMMMd(l10n.localeName).format(cycleClosedOn),
+                AppDateFormats.medium(l10n.localeName).format(cycleClosedOn),
               ),
               style: theme.textTheme.labelMedium?.copyWith(
                 color: theme.colorScheme.onSurfaceVariant,

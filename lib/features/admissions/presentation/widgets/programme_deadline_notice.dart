@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/responsive.dart';
 
 /// Amber warning that a programme closes before the cycle does.
@@ -48,7 +48,7 @@ class ProgrammeDeadlineNotice extends StatelessWidget {
           Expanded(
             child: Text(
               l10n.admissionsProgrammeDeadlineAhead(
-                DateFormat.yMMMd(l10n.localeName).format(deadline),
+                AppDateFormats.medium(l10n.localeName).format(deadline),
               ),
               style: theme.textTheme.labelSmall?.copyWith(
                 color: theme.colorScheme.error,

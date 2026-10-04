@@ -205,20 +205,192 @@ class ApplicationHistoryEvent extends Equatable {
   List<Object?> get props => [id, kind, occurredOn, title, note];
 }
 
+/// The terms of an outstanding offer: what the candidate is being given, what
+/// it costs, and the date it stops being theirs.
+///
+/// Money is in kobo, like everywhere else — see `core/utils/money.dart`.
+class OfferTerms extends Equatable {
+  const OfferTerms({
+    required this.level,
+    required this.session,
+    required this.formFeeMinorUnits,
+    required this.formFeePaidOn,
+    required this.acceptanceFeeMinorUnits,
+    required this.acceptBy,
+  });
+
+  /// The entry level, e.g. `100`.
+  final int level;
+
+  /// The academic session the place is for, e.g. `2026/2027`.
+  final String session;
+
+  /// What the candidate already paid to apply.
+  final int formFeeMinorUnits;
+
+  /// When that fee was paid, for the "paid on" note beside it.
+  final DateTime formFeePaidOn;
+
+  /// What the candidate pays *after* accepting; nothing is owed before.
+  final int acceptanceFeeMinorUnits;
+
+  /// The last moment the offer can be accepted. After it the place goes to
+  /// somebody else.
+  final DateTime acceptBy;
+
+  @override
+  List<Object?> get props => [
+    level,
+    session,
+    formFeeMinorUnits,
+    formFeePaidOn,
+    acceptanceFeeMinorUnits,
+    acceptBy,
+  ];
+}
+
+/// What a rejection audit measures.
+///
+/// An enum rather than a label so the wording lives in the ARB and a second
+/// language needs no fixture change.
+enum RejectionCriterionKind { utme, olevelEnglish, directEntry }
+
+/// How the candidate fared on one [RejectionCriterionKind].
+enum RejectionOutcome { met, belowCutoff, deficit, incomplete }
+
+/// Semantic tone of a [RejectionOutcome].
+extension RejectionOutcomeTone on RejectionOutcome {
+  AppTone get tone => switch (this) {
+    RejectionOutcome.met => AppTone.success,
+    RejectionOutcome.belowCutoff => AppTone.danger,
+    RejectionOutcome.deficit => AppTone.danger,
+    RejectionOutcome.incomplete => AppTone.danger,
+  };
+}
+
+/// One line of the audit a rejection prints: what was measured, against what.
+class RejectionCriterion extends Equatable {
+  const RejectionCriterion({
+    required this.kind,
+    required this.outcome,
+    this.submitted,
+    this.required,
+    this.progress,
+    this.note,
+  });
+
+  final RejectionCriterionKind kind;
+  final RejectionOutcome outcome;
+
+  /// What the candidate put forward, in the unit the committee reads it in,
+  /// e.g. `242 / 400` or `Grade C5`. `null` for a criterion with no figure.
+  final String? submitted;
+
+  /// What the department requires, in the same unit.
+  final String? required;
+
+  /// `0..1`, for a measure that is a score on a scale. `null` draws no bar.
+  final double? progress;
+
+  /// The committee's own sentence, for a criterion that is not a number.
+  final String? note;
+
+  @override
+  List<Object?> get props => [
+    kind,
+    outcome,
+    submitted,
+    required,
+    progress,
+    note,
+  ];
+}
+
+/// One question the registry answers under a decision.
+class AdmissionFaq extends Equatable {
+  const AdmissionFaq({required this.question, required this.answer});
+
+  final String question;
+  final String answer;
+
+  @override
+  List<Object?> get props => [question, answer];
+}
+
+/// The committee's written decision on a refused application.
+///
+/// Content rather than copy: the determination, the figures and the answers are
+/// the university's words about one candidate, so they come from the record the
+/// way a referee's title does.
+class RejectionNotice extends Equatable {
+  const RejectionNotice({
+    required this.decidedOn,
+    required this.determination,
+    required this.criteria,
+    required this.verificationHash,
+    this.faqs = const [],
+  });
+
+  /// When the decision was pronounced.
+  final DateTime decidedOn;
+
+  /// The primary reason, in the committee's words.
+  final String determination;
+
+  final List<RejectionCriterion> criteria;
+
+  /// Digest of the signed notice, quoted so a copy can be checked against it.
+  final String verificationHash;
+
+  final List<AdmissionFaq> faqs;
+
+  @override
+  List<Object?> get props => [
+    decidedOn,
+    determination,
+    criteria,
+    verificationHash,
+    faqs,
+  ];
+}
+
+/// The candidate's own withdrawal.
+class WithdrawalRecord extends Equatable {
+  const WithdrawalRecord({required this.withdrawnOn, this.reason});
+
+  final DateTime withdrawnOn;
+
+  /// What the candidate said when they withdrew; `null` when they said nothing.
+  final String? reason;
+
+  @override
+  List<Object?> get props => [withdrawnOn, reason];
+}
+
 /// Everything the detail screen draws for one application.
 ///
 /// Separate from [ApplicationSummary]: the list reads the summary on every
 /// card, while the checklist, the referees and the log belong to a record the
 /// candidate has actually opened.
+///
+/// One model for every status, with the part that belongs to a status set only
+/// for it: a draft carries a checklist and referees, an offer carries
+/// [offer], a refusal carries [rejection]. The screen reads
+/// `application.status` to decide what to draw and the matching field to fill
+/// it, so a status can never be drawn with another status's content.
 class ApplicationDetail extends Equatable {
   const ApplicationDetail({
     required this.application,
     required this.cycleId,
     required this.firstChoiceProgrammeId,
-    required this.checklist,
-    required this.referees,
     required this.history,
+    this.checklist = const [],
+    this.referees = const [],
     this.secondChoiceProgrammeId,
+    this.offer,
+    this.rejection,
+    this.expiredOn,
+    this.withdrawal,
   });
 
   final ApplicationSummary application;
@@ -234,9 +406,26 @@ class ApplicationDetail extends Equatable {
   /// `null` while the candidate has picked only one.
   final String? secondChoiceProgrammeId;
 
-  final List<ChecklistItem> checklist;
-  final List<Referee> referees;
+  /// Every status: the append-only activity log, newest first.
   final List<ApplicationHistoryEvent> history;
+
+  /// Draft: the readiness checklist.
+  final List<ChecklistItem> checklist;
+
+  /// Draft: the referees invited so far.
+  final List<Referee> referees;
+
+  /// Offered: the terms the candidate is answering.
+  final OfferTerms? offer;
+
+  /// Rejected: the committee's written decision.
+  final RejectionNotice? rejection;
+
+  /// Expired: when the offer lapsed.
+  final DateTime? expiredOn;
+
+  /// Withdrawn: when, and why.
+  final WithdrawalRecord? withdrawal;
 
   /// Items with a green tick.
   ///
@@ -265,5 +454,9 @@ class ApplicationDetail extends Equatable {
     checklist,
     referees,
     history,
+    offer,
+    rejection,
+    expiredOn,
+    withdrawal,
   ];
 }

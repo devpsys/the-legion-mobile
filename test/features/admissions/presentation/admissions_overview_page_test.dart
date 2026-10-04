@@ -197,7 +197,7 @@ void main() {
 
       expect(
         find.byType(ApplicationSummaryCard),
-        findsNWidgets(4),
+        findsNWidgets(6),
         reason: 'the overview is a summary of the same record the tab lists',
       );
       expect(find.text('Admission offered'), findsOneWidget);
@@ -205,6 +205,8 @@ void main() {
       // one that has been answered.
       expect(find.text('Draft'), findsOneWidget);
       expect(find.text('Rejected'), findsOneWidget);
+      expect(find.text('Withdrawn'), findsOneWidget);
+      expect(find.text('Offer expired'), findsOneWidget);
       expect(find.text('Matriculated'), findsOneWidget);
       expect(find.byType(ApplicationsEmptyState), findsNothing);
     });

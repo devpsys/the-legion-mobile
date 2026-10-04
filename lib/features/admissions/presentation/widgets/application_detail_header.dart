@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/theme/app_tone.dart';
+import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/responsive.dart';
 import '../models/admissions_models.dart';
 import 'status_tag.dart';
@@ -42,35 +42,41 @@ class ApplicationDetailHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
+        // Wrapped rather than a row: a reference is quoted aloud over the
+        // phone, so it drops under the title on a narrow screen instead of
+        // being cut short with an ellipsis.
+        Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: AppSpacing.sm,
+          runSpacing: AppSpacing.xs,
           children: [
-            Flexible(
-              child: Text(
-                l10n.admissionsDetailTitle,
-                style: theme.textTheme.headlineSmall?.copyWith(
-                  fontWeight: AppTextStyles.bold,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+            Text(
+              l10n.admissionsDetailTitle,
+              style: theme.textTheme.headlineSmall?.copyWith(
+                fontWeight: AppTextStyles.bold,
               ),
             ),
-            if (trackingCode != null) ...[
-              AppSpacing.horizontalGap(AppSpacing.sm),
-              Flexible(child: ApplicationReferenceChip(code: trackingCode)),
-            ],
+            if (trackingCode != null)
+              ApplicationReferenceChip(code: trackingCode),
+          ],
+        ),
+        AppSpacing.verticalGap(AppSpacing.sm),
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                application.cycleName,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+            ),
             AppSpacing.horizontalGap(AppSpacing.sm),
             StatusTag(
               label: applicationStatusLabel(l10n, application.status),
               tone: application.status.tone,
             ),
           ],
-        ),
-        AppSpacing.verticalGap(AppSpacing.sm),
-        Text(
-          application.cycleName,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
-          ),
         ),
         if (submitBy != null) ...[
           AppSpacing.verticalGap(AppSpacing.sm),
@@ -85,8 +91,8 @@ class ApplicationDetailHeader extends StatelessWidget {
               Flexible(
                 child: Text(
                   l10n.admissionsDetailSubmitBy(
-                    DateFormat.yMMMd(l10n.localeName).format(submitBy),
-                    DateFormat.Hm(l10n.localeName).format(submitBy),
+                    AppDateFormats.medium(l10n.localeName).format(submitBy),
+                    AppDateFormats.time(l10n.localeName).format(submitBy),
                   ),
                   style: theme.textTheme.labelLarge?.copyWith(
                     color: AppTone.warning.foreground(theme.brightness),

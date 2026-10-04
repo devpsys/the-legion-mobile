@@ -1077,7 +1077,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get admissionsHistoryTitle => 'History';
 
   @override
-  String get admissionsHistorySubtitle => 'Append-only activity log';
+  String get admissionsHistorySubtitle => 'Append-only record';
 
   @override
   String get admissionsWithdrawAction => 'Withdraw application';
@@ -1088,4 +1088,241 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get admissionsWithdrawBody =>
       'The application is closed for good and cannot be reopened. You can start another while the cycle is still open.';
+
+  @override
+  String admissionsDepartmentInFaculty(Object department, Object faculty) {
+    return '$department, Faculty of $faculty';
+  }
+
+  @override
+  String admissionsFacultyAndMode(Object faculty, Object mode) {
+    return 'Faculty of $faculty • $mode';
+  }
+
+  @override
+  String get admissionsOfferLetter => 'Admission letter';
+
+  @override
+  String get admissionsOfferEyebrow => 'Admission offered';
+
+  @override
+  String get admissionsOfferLevel => 'Level';
+
+  @override
+  String admissionsOfferLevelValue(Object level) {
+    return '$level Level';
+  }
+
+  @override
+  String get admissionsOfferSession => 'Session';
+
+  @override
+  String get admissionsOfferFormFee => 'Form fee';
+
+  @override
+  String admissionsOfferFormFeePaid(Object date) {
+    return '(paid $date)';
+  }
+
+  @override
+  String get admissionsOfferAcceptanceFee => 'Acceptance fee';
+
+  @override
+  String get admissionsOfferAcceptanceFeeDue => '(due after you accept)';
+
+  @override
+  String admissionsOfferAcceptBy(Object date) {
+    return 'Accept by $date';
+  }
+
+  @override
+  String get admissionsOfferAcceptByNote =>
+      'After that date the offer lapses and the place is offered to somebody else.';
+
+  @override
+  String admissionsOfferCondition(Object fee) {
+    return 'You accept on this page. You then pay the acceptance fee of $fee under Payments. The registry then issues your matric number.';
+  }
+
+  @override
+  String get admissionsOfferAccept => 'Accept offer';
+
+  @override
+  String get admissionsOfferReadLetter => 'Read the admission letter first';
+
+  @override
+  String get admissionsOfferDecline => 'Decline offer';
+
+  @override
+  String get admissionsDecisionContext => 'Candidate portal • Final decision';
+
+  @override
+  String admissionsDecisionCycleChip(Object session) {
+    return 'Cycle $session';
+  }
+
+  @override
+  String get admissionsDecisionUnsuccessful => 'Admission unsuccessful';
+
+  @override
+  String get admissionsDecisionProgrammeApplied => 'Programme applied';
+
+  @override
+  String get admissionsDecisionReference => 'Reference';
+
+  @override
+  String get admissionsDecisionSubmittedOn => 'Submitted';
+
+  @override
+  String get admissionsDecisionDecidedOn => 'Decision date';
+
+  @override
+  String admissionsDecisionDateTime(Object date, Object time) {
+    return '$date • $time';
+  }
+
+  @override
+  String get admissionsDecisionFindingTitle =>
+      'Official admissions committee finding';
+
+  @override
+  String admissionsDecisionFindingBody(Object cycle) {
+    return 'The Central Admissions Committee of The Legion, having evaluated all verified credentials for the $cycle exercise, regrets to communicate that your application has not been recommended for matriculation.';
+  }
+
+  @override
+  String get admissionsDecisionDeterminationLabel => 'Primary determination';
+
+  @override
+  String get admissionsAuditTitle => 'Departmental metric audit';
+
+  @override
+  String get admissionsAuditCaption => 'Statutory minimums';
+
+  @override
+  String get admissionsAuditSubmitted => 'Submitted';
+
+  @override
+  String get admissionsAuditRequired => 'Required';
+
+  @override
+  String get admissionsCriterionUtme => 'UTME composite score';
+
+  @override
+  String get admissionsCriterionOlevelEnglish => 'O\'level English literature';
+
+  @override
+  String get admissionsCriterionDirectEntry => 'Direct entry accreditation';
+
+  @override
+  String get admissionsOutcomeMet => 'Met';
+
+  @override
+  String get admissionsOutcomeBelowCutoff => 'Below cutoff';
+
+  @override
+  String get admissionsOutcomeDeficit => 'Deficit';
+
+  @override
+  String get admissionsOutcomeIncomplete => 'Incomplete';
+
+  @override
+  String get admissionsAttestationEyebrow => 'Attestation and record';
+
+  @override
+  String get admissionsAttestationOffice => 'Office of the Registrar';
+
+  @override
+  String get admissionsAttestationDirectorate =>
+      'Admissions Directorate • The Legion';
+
+  @override
+  String get admissionsAttestationHash => 'Verification hash';
+
+  @override
+  String get admissionsAttestationImmutable => 'Immutable';
+
+  @override
+  String admissionsAttestationConclusive(Object cycle) {
+    return 'Decisions pronounced by the Central Admissions Board are conclusive for the specified academic year. Re-evaluation within the $cycle exercise is closed.';
+  }
+
+  @override
+  String get admissionsNextCycleHeadline => 'Applications are open';
+
+  @override
+  String get admissionsNextCycleBody =>
+      'You may submit a fresh profile for the forthcoming academic session, explore alternative departments, or address credential requirements.';
+
+  @override
+  String get admissionsStartNewApplication => 'Start a new application';
+
+  @override
+  String get admissionsDownloadDecisionNotice =>
+      'Download the decision notice (PDF)';
+
+  @override
+  String get admissionsInquiriesTitle => 'Administrative inquiries';
+
+  @override
+  String get admissionsReturnToApplications => 'Return to my applications';
+
+  @override
+  String get admissionsHelpDesk => 'Admissions help desk';
+
+  @override
+  String get admissionsMatriculatedTitle => 'You\'re matriculated';
+
+  @override
+  String get admissionsMatriculatedUse =>
+      'Use it in all correspondence with the university.';
+
+  @override
+  String get admissionsMatriculatedComplete =>
+      'Your admission is complete. Your student portal is open.';
+
+  @override
+  String get admissionsMatriculatedDownloadLetter =>
+      'Download your admission letter';
+
+  @override
+  String get admissionsExpiredTitle => 'Offer expired';
+
+  @override
+  String admissionsExpiredBody(Object date, Object programme) {
+    return 'The offer of $programme expired on $date.';
+  }
+
+  @override
+  String get admissionsExpiredNote =>
+      'The place has been offered to somebody else. Your application and records stay on your account, and you can apply again in the next cycle.';
+
+  @override
+  String get admissionsWithdrawnTitle => 'Application withdrawn';
+
+  @override
+  String admissionsWithdrawnBody(Object date) {
+    return 'You withdrew this application on $date.';
+  }
+
+  @override
+  String admissionsWithdrawnReason(Object reason) {
+    return '“Reason: $reason”';
+  }
+
+  @override
+  String get admissionsWithdrawnNote =>
+      'You can start a new application in any open cycle.';
+
+  @override
+  String get admissionsClosedRejectedTitle => 'Application not successful';
+
+  @override
+  String admissionsClosedRejectedBody(Object programme) {
+    return 'Your application to $programme was not successful in this round.';
+  }
+
+  @override
+  String get admissionsClosedRejectedNote =>
+      'You are welcome to apply again in the next cycle, and your records and documents stay on your account.';
 }

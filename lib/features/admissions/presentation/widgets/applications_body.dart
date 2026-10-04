@@ -55,9 +55,8 @@ class ApplicationsBody extends StatelessWidget {
                     application: application,
                     now: now,
                     // Only a record with a detail screen behind it opens
-                    // one: the offered, rejected and matriculated cards keep
-                    // the honest message until their designs are ported, so
-                    // no card leads somewhere it could not fill.
+                    // one: a status with no design yet keeps the honest
+                    // message, so no card leads somewhere it could not fill.
                     onOpen: state.detailFor(application.id) != null
                         ? () => context.goNamed(
                             Routes.admissionsApplicationDetailName,

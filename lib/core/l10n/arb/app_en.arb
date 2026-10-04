@@ -306,9 +306,86 @@
   "admissionsSubmitNeedsDeclaration": "Tick the confirmation above to submit.",
 
   "admissionsHistoryTitle": "History",
-  "admissionsHistorySubtitle": "Append-only activity log",
+  "admissionsHistorySubtitle": "Append-only record",
 
   "admissionsWithdrawAction": "Withdraw application",
   "admissionsWithdrawTitle": "Withdraw this application?",
-  "admissionsWithdrawBody": "The application is closed for good and cannot be reopened. You can start another while the cycle is still open."
+  "admissionsWithdrawBody": "The application is closed for good and cannot be reopened. You can start another while the cycle is still open.",
+
+  "admissionsDepartmentInFaculty": "{department}, Faculty of {faculty}",
+  "admissionsFacultyAndMode": "Faculty of {faculty} \u2022 {mode}",
+
+  "admissionsOfferLetter": "Admission letter",
+  "admissionsOfferEyebrow": "Admission offered",
+  "admissionsOfferLevel": "Level",
+  "admissionsOfferLevelValue": "{level} Level",
+  "admissionsOfferSession": "Session",
+  "admissionsOfferFormFee": "Form fee",
+  "admissionsOfferFormFeePaid": "(paid {date})",
+  "admissionsOfferAcceptanceFee": "Acceptance fee",
+  "admissionsOfferAcceptanceFeeDue": "(due after you accept)",
+  "admissionsOfferAcceptBy": "Accept by {date}",
+  "admissionsOfferAcceptByNote": "After that date the offer lapses and the place is offered to somebody else.",
+  "admissionsOfferCondition": "You accept on this page. You then pay the acceptance fee of {fee} under Payments. The registry then issues your matric number.",
+  "admissionsOfferAccept": "Accept offer",
+  "admissionsOfferReadLetter": "Read the admission letter first",
+  "admissionsOfferDecline": "Decline offer",
+
+  "admissionsDecisionContext": "Candidate portal \u2022 Final decision",
+  "admissionsDecisionCycleChip": "Cycle {session}",
+  "admissionsDecisionUnsuccessful": "Admission unsuccessful",
+  "admissionsDecisionProgrammeApplied": "Programme applied",
+  "admissionsDecisionReference": "Reference",
+  "admissionsDecisionSubmittedOn": "Submitted",
+  "admissionsDecisionDecidedOn": "Decision date",
+  "admissionsDecisionDateTime": "{date} \u2022 {time}",
+  "admissionsDecisionFindingTitle": "Official admissions committee finding",
+  "admissionsDecisionFindingBody": "The Central Admissions Committee of The Legion, having evaluated all verified credentials for the {cycle} exercise, regrets to communicate that your application has not been recommended for matriculation.",
+  "admissionsDecisionDeterminationLabel": "Primary determination",
+
+  "admissionsAuditTitle": "Departmental metric audit",
+  "admissionsAuditCaption": "Statutory minimums",
+  "admissionsAuditSubmitted": "Submitted",
+  "admissionsAuditRequired": "Required",
+  "admissionsCriterionUtme": "UTME composite score",
+  "admissionsCriterionOlevelEnglish": "O'level English literature",
+  "admissionsCriterionDirectEntry": "Direct entry accreditation",
+  "admissionsOutcomeMet": "Met",
+  "admissionsOutcomeBelowCutoff": "Below cutoff",
+  "admissionsOutcomeDeficit": "Deficit",
+  "admissionsOutcomeIncomplete": "Incomplete",
+
+  "admissionsAttestationEyebrow": "Attestation and record",
+  "admissionsAttestationOffice": "Office of the Registrar",
+  "admissionsAttestationDirectorate": "Admissions Directorate \u2022 The Legion",
+  "admissionsAttestationHash": "Verification hash",
+  "admissionsAttestationImmutable": "Immutable",
+  "admissionsAttestationConclusive": "Decisions pronounced by the Central Admissions Board are conclusive for the specified academic year. Re-evaluation within the {cycle} exercise is closed.",
+
+  "admissionsNextCycleHeadline": "Applications are open",
+  "admissionsNextCycleBody": "You may submit a fresh profile for the forthcoming academic session, explore alternative departments, or address credential requirements.",
+  "admissionsStartNewApplication": "Start a new application",
+  "admissionsDownloadDecisionNotice": "Download the decision notice (PDF)",
+
+  "admissionsInquiriesTitle": "Administrative inquiries",
+  "admissionsReturnToApplications": "Return to my applications",
+  "admissionsHelpDesk": "Admissions help desk",
+
+  "admissionsMatriculatedTitle": "You're matriculated",
+  "admissionsMatriculatedUse": "Use it in all correspondence with the university.",
+  "admissionsMatriculatedComplete": "Your admission is complete. Your student portal is open.",
+  "admissionsMatriculatedDownloadLetter": "Download your admission letter",
+
+  "admissionsExpiredTitle": "Offer expired",
+  "admissionsExpiredBody": "The offer of {programme} expired on {date}.",
+  "admissionsExpiredNote": "The place has been offered to somebody else. Your application and records stay on your account, and you can apply again in the next cycle.",
+
+  "admissionsWithdrawnTitle": "Application withdrawn",
+  "admissionsWithdrawnBody": "You withdrew this application on {date}.",
+  "admissionsWithdrawnReason": "\u201cReason: {reason}\u201d",
+  "admissionsWithdrawnNote": "You can start a new application in any open cycle.",
+
+  "admissionsClosedRejectedTitle": "Application not successful",
+  "admissionsClosedRejectedBody": "Your application to {programme} was not successful in this round.",
+  "admissionsClosedRejectedNote": "You are welcome to apply again in the next cycle, and your records and documents stay on your account."
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/dates.dart';
 import '../models/admissions_models.dart';
 import 'status_tag.dart';
 import 'striped_card.dart';
@@ -52,7 +52,7 @@ class ApplicationSummaryCard extends StatelessWidget {
                 ),
                 AppSpacing.verticalGap(AppSpacing.sm),
                 Text(
-                  DateFormat.yMMMd(l10n.localeName)
+                  AppDateFormats.medium(l10n.localeName)
                       .format(application.submittedOn),
                   style: AppTextStyles.codeSmall.copyWith(
                     color: theme.colorScheme.onSurfaceVariant,

@@ -11,6 +11,10 @@ import 'package:flutter/widgets.dart';
 abstract final class AppRadii {
   static const double xs = 4;
   static const double element = 10;
+
+  /// Recessed block inside a card — a deadline notice, a determination, a
+  /// criterion row (`rounded-xl` in the exported designs).
+  static const double block = 12;
   static const double row = 16;
   static const double card = 20;
 
@@ -21,6 +25,13 @@ abstract final class AppRadii {
     Radius.circular(card),
   );
   static const BorderRadius rowRadius = BorderRadius.all(Radius.circular(row));
+  static const BorderRadius blockRadius = BorderRadius.all(
+    Radius.circular(block),
+  );
+
+  /// Barely rounded tag — the square-ish chip the designs use for a cycle
+  /// or a reference, as opposed to a status pill.
+  static const BorderRadius tagRadius = BorderRadius.all(Radius.circular(xs));
   static const BorderRadius elementRadius = BorderRadius.all(
     Radius.circular(element),
   );

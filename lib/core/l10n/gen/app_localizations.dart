@@ -1879,7 +1879,7 @@ abstract class AppLocalizations {
   /// No description provided for @admissionsHistorySubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Append-only activity log'**
+  /// **'Append-only record'**
   String get admissionsHistorySubtitle;
 
   /// No description provided for @admissionsWithdrawAction.
@@ -1899,6 +1899,402 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The application is closed for good and cannot be reopened. You can start another while the cycle is still open.'**
   String get admissionsWithdrawBody;
+
+  /// No description provided for @admissionsDepartmentInFaculty.
+  ///
+  /// In en, this message translates to:
+  /// **'{department}, Faculty of {faculty}'**
+  String admissionsDepartmentInFaculty(Object department, Object faculty);
+
+  /// No description provided for @admissionsFacultyAndMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Faculty of {faculty} • {mode}'**
+  String admissionsFacultyAndMode(Object faculty, Object mode);
+
+  /// No description provided for @admissionsOfferLetter.
+  ///
+  /// In en, this message translates to:
+  /// **'Admission letter'**
+  String get admissionsOfferLetter;
+
+  /// No description provided for @admissionsOfferEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Admission offered'**
+  String get admissionsOfferEyebrow;
+
+  /// No description provided for @admissionsOfferLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get admissionsOfferLevel;
+
+  /// No description provided for @admissionsOfferLevelValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{level} Level'**
+  String admissionsOfferLevelValue(Object level);
+
+  /// No description provided for @admissionsOfferSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Session'**
+  String get admissionsOfferSession;
+
+  /// No description provided for @admissionsOfferFormFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Form fee'**
+  String get admissionsOfferFormFee;
+
+  /// No description provided for @admissionsOfferFormFeePaid.
+  ///
+  /// In en, this message translates to:
+  /// **'(paid {date})'**
+  String admissionsOfferFormFeePaid(Object date);
+
+  /// No description provided for @admissionsOfferAcceptanceFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Acceptance fee'**
+  String get admissionsOfferAcceptanceFee;
+
+  /// No description provided for @admissionsOfferAcceptanceFeeDue.
+  ///
+  /// In en, this message translates to:
+  /// **'(due after you accept)'**
+  String get admissionsOfferAcceptanceFeeDue;
+
+  /// No description provided for @admissionsOfferAcceptBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept by {date}'**
+  String admissionsOfferAcceptBy(Object date);
+
+  /// No description provided for @admissionsOfferAcceptByNote.
+  ///
+  /// In en, this message translates to:
+  /// **'After that date the offer lapses and the place is offered to somebody else.'**
+  String get admissionsOfferAcceptByNote;
+
+  /// No description provided for @admissionsOfferCondition.
+  ///
+  /// In en, this message translates to:
+  /// **'You accept on this page. You then pay the acceptance fee of {fee} under Payments. The registry then issues your matric number.'**
+  String admissionsOfferCondition(Object fee);
+
+  /// No description provided for @admissionsOfferAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept offer'**
+  String get admissionsOfferAccept;
+
+  /// No description provided for @admissionsOfferReadLetter.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the admission letter first'**
+  String get admissionsOfferReadLetter;
+
+  /// No description provided for @admissionsOfferDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline offer'**
+  String get admissionsOfferDecline;
+
+  /// No description provided for @admissionsDecisionContext.
+  ///
+  /// In en, this message translates to:
+  /// **'Candidate portal • Final decision'**
+  String get admissionsDecisionContext;
+
+  /// No description provided for @admissionsDecisionCycleChip.
+  ///
+  /// In en, this message translates to:
+  /// **'Cycle {session}'**
+  String admissionsDecisionCycleChip(Object session);
+
+  /// No description provided for @admissionsDecisionUnsuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Admission unsuccessful'**
+  String get admissionsDecisionUnsuccessful;
+
+  /// No description provided for @admissionsDecisionProgrammeApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme applied'**
+  String get admissionsDecisionProgrammeApplied;
+
+  /// No description provided for @admissionsDecisionReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference'**
+  String get admissionsDecisionReference;
+
+  /// No description provided for @admissionsDecisionSubmittedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get admissionsDecisionSubmittedOn;
+
+  /// No description provided for @admissionsDecisionDecidedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision date'**
+  String get admissionsDecisionDecidedOn;
+
+  /// No description provided for @admissionsDecisionDateTime.
+  ///
+  /// In en, this message translates to:
+  /// **'{date} • {time}'**
+  String admissionsDecisionDateTime(Object date, Object time);
+
+  /// No description provided for @admissionsDecisionFindingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Official admissions committee finding'**
+  String get admissionsDecisionFindingTitle;
+
+  /// No description provided for @admissionsDecisionFindingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The Central Admissions Committee of The Legion, having evaluated all verified credentials for the {cycle} exercise, regrets to communicate that your application has not been recommended for matriculation.'**
+  String admissionsDecisionFindingBody(Object cycle);
+
+  /// No description provided for @admissionsDecisionDeterminationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Primary determination'**
+  String get admissionsDecisionDeterminationLabel;
+
+  /// No description provided for @admissionsAuditTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Departmental metric audit'**
+  String get admissionsAuditTitle;
+
+  /// No description provided for @admissionsAuditCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Statutory minimums'**
+  String get admissionsAuditCaption;
+
+  /// No description provided for @admissionsAuditSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get admissionsAuditSubmitted;
+
+  /// No description provided for @admissionsAuditRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Required'**
+  String get admissionsAuditRequired;
+
+  /// No description provided for @admissionsCriterionUtme.
+  ///
+  /// In en, this message translates to:
+  /// **'UTME composite score'**
+  String get admissionsCriterionUtme;
+
+  /// No description provided for @admissionsCriterionOlevelEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'O\'level English literature'**
+  String get admissionsCriterionOlevelEnglish;
+
+  /// No description provided for @admissionsCriterionDirectEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct entry accreditation'**
+  String get admissionsCriterionDirectEntry;
+
+  /// No description provided for @admissionsOutcomeMet.
+  ///
+  /// In en, this message translates to:
+  /// **'Met'**
+  String get admissionsOutcomeMet;
+
+  /// No description provided for @admissionsOutcomeBelowCutoff.
+  ///
+  /// In en, this message translates to:
+  /// **'Below cutoff'**
+  String get admissionsOutcomeBelowCutoff;
+
+  /// No description provided for @admissionsOutcomeDeficit.
+  ///
+  /// In en, this message translates to:
+  /// **'Deficit'**
+  String get admissionsOutcomeDeficit;
+
+  /// No description provided for @admissionsOutcomeIncomplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Incomplete'**
+  String get admissionsOutcomeIncomplete;
+
+  /// No description provided for @admissionsAttestationEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Attestation and record'**
+  String get admissionsAttestationEyebrow;
+
+  /// No description provided for @admissionsAttestationOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Office of the Registrar'**
+  String get admissionsAttestationOffice;
+
+  /// No description provided for @admissionsAttestationDirectorate.
+  ///
+  /// In en, this message translates to:
+  /// **'Admissions Directorate • The Legion'**
+  String get admissionsAttestationDirectorate;
+
+  /// No description provided for @admissionsAttestationHash.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification hash'**
+  String get admissionsAttestationHash;
+
+  /// No description provided for @admissionsAttestationImmutable.
+  ///
+  /// In en, this message translates to:
+  /// **'Immutable'**
+  String get admissionsAttestationImmutable;
+
+  /// No description provided for @admissionsAttestationConclusive.
+  ///
+  /// In en, this message translates to:
+  /// **'Decisions pronounced by the Central Admissions Board are conclusive for the specified academic year. Re-evaluation within the {cycle} exercise is closed.'**
+  String admissionsAttestationConclusive(Object cycle);
+
+  /// No description provided for @admissionsNextCycleHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Applications are open'**
+  String get admissionsNextCycleHeadline;
+
+  /// No description provided for @admissionsNextCycleBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You may submit a fresh profile for the forthcoming academic session, explore alternative departments, or address credential requirements.'**
+  String get admissionsNextCycleBody;
+
+  /// No description provided for @admissionsStartNewApplication.
+  ///
+  /// In en, this message translates to:
+  /// **'Start a new application'**
+  String get admissionsStartNewApplication;
+
+  /// No description provided for @admissionsDownloadDecisionNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Download the decision notice (PDF)'**
+  String get admissionsDownloadDecisionNotice;
+
+  /// No description provided for @admissionsInquiriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Administrative inquiries'**
+  String get admissionsInquiriesTitle;
+
+  /// No description provided for @admissionsReturnToApplications.
+  ///
+  /// In en, this message translates to:
+  /// **'Return to my applications'**
+  String get admissionsReturnToApplications;
+
+  /// No description provided for @admissionsHelpDesk.
+  ///
+  /// In en, this message translates to:
+  /// **'Admissions help desk'**
+  String get admissionsHelpDesk;
+
+  /// No description provided for @admissionsMatriculatedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re matriculated'**
+  String get admissionsMatriculatedTitle;
+
+  /// No description provided for @admissionsMatriculatedUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Use it in all correspondence with the university.'**
+  String get admissionsMatriculatedUse;
+
+  /// No description provided for @admissionsMatriculatedComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Your admission is complete. Your student portal is open.'**
+  String get admissionsMatriculatedComplete;
+
+  /// No description provided for @admissionsMatriculatedDownloadLetter.
+  ///
+  /// In en, this message translates to:
+  /// **'Download your admission letter'**
+  String get admissionsMatriculatedDownloadLetter;
+
+  /// No description provided for @admissionsExpiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer expired'**
+  String get admissionsExpiredTitle;
+
+  /// No description provided for @admissionsExpiredBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The offer of {programme} expired on {date}.'**
+  String admissionsExpiredBody(Object date, Object programme);
+
+  /// No description provided for @admissionsExpiredNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The place has been offered to somebody else. Your application and records stay on your account, and you can apply again in the next cycle.'**
+  String get admissionsExpiredNote;
+
+  /// No description provided for @admissionsWithdrawnTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Application withdrawn'**
+  String get admissionsWithdrawnTitle;
+
+  /// No description provided for @admissionsWithdrawnBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You withdrew this application on {date}.'**
+  String admissionsWithdrawnBody(Object date);
+
+  /// No description provided for @admissionsWithdrawnReason.
+  ///
+  /// In en, this message translates to:
+  /// **'“Reason: {reason}”'**
+  String admissionsWithdrawnReason(Object reason);
+
+  /// No description provided for @admissionsWithdrawnNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You can start a new application in any open cycle.'**
+  String get admissionsWithdrawnNote;
+
+  /// No description provided for @admissionsClosedRejectedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Application not successful'**
+  String get admissionsClosedRejectedTitle;
+
+  /// No description provided for @admissionsClosedRejectedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your application to {programme} was not successful in this round.'**
+  String admissionsClosedRejectedBody(Object programme);
+
+  /// No description provided for @admissionsClosedRejectedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You are welcome to apply again in the next cycle, and your records and documents stay on your account.'**
+  String get admissionsClosedRejectedNote;
 }
 
 class _AppLocalizationsDelegate

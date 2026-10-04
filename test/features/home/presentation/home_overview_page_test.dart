@@ -142,7 +142,7 @@ void main() {
       expect(find.text('Upload your passport photo'), findsOneWidget);
       expect(find.text('First term fees paid'), findsOneWidget);
 
-      expect(find.text('Due Oct 3'), findsOneWidget);
+      expect(find.text('Due 3 Oct'), findsOneWidget);
       expect(find.text('Blocked'), findsNWidgets(2));
       expect(find.text('Waiting'), findsOneWidget);
       expect(find.text('Done'), findsOneWidget);

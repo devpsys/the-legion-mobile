@@ -205,6 +205,22 @@ abstract final class AppColors {
       ? Color(0xFF5A4520)
       : const Color(0xFFF5E2B3);
 
+  /// Hairline for a card filled with a green surface, and the stroke of a
+  /// success-toned outline. The designs draw it as the success text at 30%
+  /// over the card; these are that blend, flattened so it never stacks.
+  static Color successBorder(Brightness brightness) =>
+      brightness == Brightness.dark
+      ? const Color(0xFF275242)
+      : const Color(0xFFB9D7C4);
+
+  /// Stroke of a danger-toned outline — the decline button's border. The
+  /// designs draw it as the danger text at 40% over the card; these are that
+  /// blend, so the opacity is decided here and not in a widget.
+  static Color dangerBorder(Brightness brightness) =>
+      brightness == Brightness.dark
+      ? const Color(0xFF6A3C42)
+      : const Color(0xFFE3A5A5);
+
   // --- ColorScheme --------------------------------------------------------
 
   static ColorScheme get lightScheme => _scheme(Brightness.light);

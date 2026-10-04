@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/greeting_period.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../auth/domain/entities/user.dart';
@@ -63,7 +63,7 @@ class HubHeroCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      DateFormat('EEEE, d MMMM y', l10n.localeName).format(now),
+                      AppDateFormats.full(l10n.localeName).format(now),
                       style: theme.textTheme.labelSmall?.copyWith(
                         color: AppColors.honeyGold,
                         letterSpacing: AppTextStyles.trackingCapsWide,
@@ -110,7 +110,7 @@ class TermMetricPanel extends StatelessWidget {
     final theme = context.theme;
     final l10n = context.l10n;
     final daysLeft = term.daysRemainingAt(now);
-    final endsOn = DateFormat.MMMd(l10n.localeName).format(term.endsOn);
+    final endsOn = AppDateFormats.short(l10n.localeName).format(term.endsOn);
 
     return Container(
       width: double.infinity,

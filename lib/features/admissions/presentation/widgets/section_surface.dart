@@ -9,9 +9,18 @@ import '../../../../core/theme/app_spacing.dart';
 /// One widget for the whole feature, so the border, radius and padding are
 /// decided once rather than per section.
 class HubSectionSurface extends StatelessWidget {
-  const HubSectionSurface({required this.child, super.key});
+  const HubSectionSurface({
+    required this.child,
+    this.padding = AppSpacing.card,
+    super.key,
+  });
 
   final Widget child;
+
+  /// Interior padding. Sections use the card default; a card that is the
+  /// whole screen's statement — a closed state, a matriculation — breathes
+  /// more, with [AppSpacing.sheet].
+  final EdgeInsets padding;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +28,7 @@ class HubSectionSurface extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: AppSpacing.card,
+      padding: padding,
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
         borderRadius: AppRadii.cardRadius,

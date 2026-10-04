@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/l10n/gen/app_localizations.dart';
@@ -7,6 +6,7 @@ import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/theme/app_tone.dart';
+import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/responsive.dart';
 import '../models/admissions_models.dart';
 
@@ -139,7 +139,7 @@ class ApplicationCardFooter extends StatelessWidget {
               Flexible(
                 child: Text(
                   l10n.admissionsRespondBy(
-                    DateFormat.yMMMd(l10n.localeName).format(respondBy),
+                    AppDateFormats.medium(l10n.localeName).format(respondBy),
                   ),
                   style: theme.textTheme.labelMedium?.copyWith(
                     color: tone.foreground(theme.brightness),
@@ -188,7 +188,8 @@ class ApplicationCardFooter extends StatelessWidget {
         Flexible(
           child: Text(
             l10n.admissionsUpdatedOn(
-              DateFormat.yMMMd(l10n.localeName).format(application.updatedOn),
+              AppDateFormats.medium(l10n.localeName)
+                  .format(application.updatedOn),
             ),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
@@ -228,6 +229,6 @@ String applicationUpdateLabel(
   }
 
   return l10n.admissionsUpdatedOn(
-    DateFormat.yMMMd(l10n.localeName).format(updatedOn),
+    AppDateFormats.medium(l10n.localeName).format(updatedOn),
   );
 }

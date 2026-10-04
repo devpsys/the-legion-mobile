@@ -99,7 +99,7 @@ void main() {
       // The filed first choice closes a fortnight before the cycle does, so
       // quoting the cycle's date here would promise time the portal will not
       // give him.
-      expect(find.text('Submit by Feb 14, 2027, 23:59'), findsOneWidget);
+      expect(find.text('Submit by 14 Feb 2027, 23:59'), findsOneWidget);
     });
 
     testWidgets('carries the portal\'s chrome and no tab bar', (tester) async {
@@ -412,7 +412,7 @@ void main() {
       await pumpDetail(tester);
 
       expect(find.text('History'), findsOneWidget);
-      expect(find.text('Append-only activity log'), findsOneWidget);
+      expect(find.text('Append-only record'), findsOneWidget);
       expect(find.text('Screening note'), findsOneWidget);
       expect(
         find.text('Awaiting your WAEC/NECO result to be verified.'),
@@ -421,8 +421,8 @@ void main() {
       expect(find.text('Application started'), findsOneWidget);
       expect(find.text('Referee invited: Dr Amina Yusuf'), findsOneWidget);
       // Two events landed on the 18th; the date is printed on both lines.
-      expect(find.text('Sep 18'), findsNWidgets(2));
-      expect(find.text('Sep 20'), findsOneWidget);
+      expect(find.text('18 Sep'), findsNWidgets(2));
+      expect(find.text('20 Sep'), findsOneWidget);
     });
   });
 

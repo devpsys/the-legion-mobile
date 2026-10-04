@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/theme/app_tone.dart';
+import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/responsive.dart';
 import '../models/application_detail_models.dart';
 import 'section_surface.dart';
@@ -31,12 +31,16 @@ class ApplicationHistoryCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: [
-          SectionHeader(title: l10n.admissionsHistoryTitle),
-          AppSpacing.verticalGap(AppSpacing.xs),
-          Text(
-            l10n.admissionsHistorySubtitle,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
+          // "Append-only record" trails the title as a caption on a ledger
+          // does: it describes the log's nature, not its contents.
+          SectionHeader(
+            title: l10n.admissionsHistoryTitle,
+            action: Text(
+              l10n.admissionsHistorySubtitle,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+                fontWeight: AppTextStyles.medium,
+              ),
             ),
           ),
           AppSpacing.verticalGap(AppSpacing.lg),
@@ -70,7 +74,8 @@ class ApplicationHistoryRow extends StatelessWidget {
     final l10n = context.l10n;
     final tone = event.kind.tone;
     final dotColor = tone.foreground(theme.brightness);
-    final dateFormatter = DateFormat.MMMd(l10n.localeName);
+    final dateFormatter = AppDateFormats.short(l10n.localeName);
+    final isNote = event.kind == ApplicationHistoryKind.screeningNote;
 
     // The rail is painted rather than laid out. This row sits inside a scroll
     // view, where the height is unbounded, and a `Row` stretched to fill a
@@ -85,9 +90,9 @@ class ApplicationHistoryRow extends StatelessWidget {
         // covers the tail.
         if (!isLast)
           Positioned(
-            top: AppSpacing.xs + AppDimensions.indicator,
+            top: AppSpacing.xs + AppDimensions.timelineDot,
             bottom: -AppSpacing.xs,
-            left: (AppDimensions.indicator - AppDimensions.hairline) / 2,
+            left: (AppDimensions.timelineDot - AppDimensions.hairline) / 2,
             width: AppDimensions.hairline,
             child: ColoredBox(color: theme.colorScheme.outlineVariant),
           ),
@@ -95,8 +100,8 @@ class ApplicationHistoryRow extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: AppDimensions.indicator,
-              height: AppDimensions.indicator,
+              width: AppDimensions.timelineDot,
+              height: AppDimensions.timelineDot,
               margin: const EdgeInsets.only(top: AppSpacing.xs),
               decoration: BoxDecoration(
                 color: dotColor,
@@ -113,32 +118,29 @@ class ApplicationHistoryRow extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    // What happened leads; when it happened sits at the
+                    // right edge, where every row's date lines up into a
+                    // column a reader can run a finger down.
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       textBaseline: TextBaseline.alphabetic,
                       children: [
-                        Text(
-                          dateFormatter.format(event.occurredOn),
-                          style: AppTextStyles.codeSmall.copyWith(
-                            color: theme.colorScheme.onSurfaceVariant,
-                          ),
-                        ),
-                        AppSpacing.horizontalGap(AppSpacing.sm),
                         Expanded(
                           child: Text(
                             event.title,
                             style: theme.textTheme.bodyMedium?.copyWith(
-                              color:
-                                  event.kind ==
-                                      ApplicationHistoryKind.screeningNote
+                              color: isNote
                                   ? dotColor
                                   : theme.colorScheme.onSurface,
-                              fontWeight:
-                                  event.kind ==
-                                      ApplicationHistoryKind.screeningNote
-                                  ? AppTextStyles.semiBold
-                                  : AppTextStyles.regular,
+                              fontWeight: AppTextStyles.semiBold,
                             ),
+                          ),
+                        ),
+                        AppSpacing.horizontalGap(AppSpacing.sm),
+                        Text(
+                          dateFormatter.format(event.occurredOn),
+                          style: AppTextStyles.codeSmall.copyWith(
+                            color: theme.colorScheme.onSurfaceVariant,
                           ),
                         ),
                       ],

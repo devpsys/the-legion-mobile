@@ -69,6 +69,7 @@ class ApplicationSummary extends Equatable {
     required this.status,
     required this.submittedOn,
     required this.cycleName,
+    required this.cycleSession,
     required this.updatedOn,
     this.trackingCode,
     this.secondChoiceName,
@@ -92,6 +93,10 @@ class ApplicationSummary extends Equatable {
   /// are no longer open, and `cycles` only lists what the portal can still
   /// quote a deadline and a fee for.
   final String cycleName;
+
+  /// The academic session of that cycle, e.g. `2026/2027`: the short form a
+  /// chip prints where [cycleName] would wrap.
+  final String cycleSession;
 
   /// When the application last changed — the date the card's footer prints.
   final DateTime updatedOn;
@@ -126,6 +131,7 @@ class ApplicationSummary extends Equatable {
     status,
     submittedOn,
     cycleName,
+    cycleSession,
     updatedOn,
     trackingCode,
     secondChoiceName,

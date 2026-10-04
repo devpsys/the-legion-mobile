@@ -5,6 +5,7 @@ import '../../../../core/l10n/gen/app_localizations.dart';
 import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_tone.dart';
+import '../../../../core/utils/responsive.dart';
 import '../models/admissions_models.dart';
 
 /// Coloured pill carrying an application status or a bulletin category.
@@ -17,6 +18,7 @@ class StatusTag extends StatelessWidget {
     required this.label,
     required this.tone,
     this.isUppercase = false,
+    this.icon,
     super.key,
   });
 
@@ -27,9 +29,15 @@ class StatusTag extends StatelessWidget {
   /// report a status. Application statuses stay in sentence case.
   final bool isUppercase;
 
+  /// A glyph before the label, for the one verdict a colour alone should not
+  /// have to carry. Most tags go without.
+  final IconData? icon;
+
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;
+    final foreground = tone.foreground(theme.brightness);
+    final icon = this.icon;
 
     return Container(
       padding: const EdgeInsets.symmetric(
@@ -40,11 +48,18 @@ class StatusTag extends StatelessWidget {
         color: tone.surface(theme.brightness),
         borderRadius: AppRadii.chipRadius,
       ),
-      child: Text(
-        isUppercase ? label.toUpperCase() : label,
-        style: theme.textTheme.labelSmall?.copyWith(
-          color: tone.foreground(theme.brightness),
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, size: AppDimensions.iconMicro, color: foreground),
+            AppSpacing.horizontalGap(AppSpacing.xs),
+          ],
+          Text(
+            isUppercase ? label.toUpperCase() : label,
+            style: theme.textTheme.labelSmall?.copyWith(color: foreground),
+          ),
+        ],
       ),
     );
   }

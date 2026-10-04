@@ -98,8 +98,16 @@ abstract final class AppDimensions {
   /// Side of a small round indicator (status pip, unread bullet).
   static const double indicator = 8;
 
+  /// Side of the dot on an activity log's rail. A touch larger than
+  /// [indicator] so it reads as a point on a line rather than a bullet.
+  static const double timelineDot = 10;
+
   /// Width of the status stripe down the left edge of a card.
   static const double accentStripe = 4;
+
+  /// Height of the accent band across the top edge of a card (the offer's
+  /// gold edge). Thinner than the vertical stripe, as the designs draw it.
+  static const double accentStripeTop = 3;
 
   /// Width of the wider category stripe on a bulletin.
   static const double accentStripeWide = 5;
@@ -118,6 +126,10 @@ abstract final class AppDimensions {
 
   /// Side of the large status mark on a confirmation screen.
   static const double statusMark = 64;
+
+  /// Side of the round badge that heads a closed-state card: the glyph that
+  /// says how an application ended before any sentence does.
+  static const double statusBadge = 48;
 
   /// Side of a hero avatar carrying an online marker.
   static const double avatarLarge = 56;
@@ -156,6 +168,11 @@ abstract final class AppDimensions {
 
   /// Height of a bottom sheet's primary and secondary actions.
   static const double sheetActionHeight = 48;
+
+  /// Height of a filled call-to-action on a decision card — accept an offer,
+  /// open the student portal. The designs draw these at 48 while the outlined
+  /// companion beside them stays at [buttonHeight].
+  static const double primaryActionHeight = 48;
 
   /// Drag handle of a bottom sheet.
   static const double sheetHandleWidth = 40;

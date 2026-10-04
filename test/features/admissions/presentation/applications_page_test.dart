@@ -128,7 +128,7 @@ void main() {
     ) async {
       await pumpApplications(tester);
 
-      expect(find.text('Respond by Feb 28, 2027'), findsOneWidget);
+      expect(find.text('Respond by 28 Feb 2027'), findsOneWidget);
       expect(find.byIcon(Icons.schedule_outlined), findsOneWidget);
       expect(
         find.text('3 hours ago'),
@@ -144,11 +144,11 @@ void main() {
       await pumpApplications(tester, at: DateTime(2026, 10, 10, 15));
 
       expect(
-        find.text('Updated Oct 3, 2026'),
+        find.text('Updated 3 Oct 2026'),
         findsOneWidget,
         reason: '"168 hours ago" is arithmetic the candidate did not ask for',
       );
-      expect(find.text('Respond by Feb 28, 2027'), findsOneWidget);
+      expect(find.text('Respond by 28 Feb 2027'), findsOneWidget);
     });
   });
 
@@ -163,10 +163,23 @@ void main() {
       // Twice: the draft is a reapplication to the programme this candidate
       // was refused for last cycle, which is the story the record tells.
       expect(find.text('B.A. English'), findsNWidgets(2));
-      expect(find.text('Updated Sep 14, 2026'), findsOneWidget);
+      // Read inside the rejection's own card: the withdrawal was recorded the
+      // same day, and the lapsed offer sits in the same closed cycle.
+      final rejection = find.ancestor(
+        of: find.text('APP/2025/00918'),
+        matching: find.byType(ApplicationListCard),
+      );
       expect(
-        find.text('Admissions for this cycle closed on Feb 28, 2026.'),
+        find.descendant(
+          of: rejection,
+          matching: find.text('Updated 14 Sep 2026'),
+        ),
         findsOneWidget,
+      );
+      expect(
+        find.text('Admissions for this cycle closed on 28 Feb 2026.'),
+        findsNWidgets(2),
+        reason: 'the refusal and the lapsed offer share the closed cycle',
       );
     });
 
@@ -179,7 +192,7 @@ void main() {
       // on the surface reads as a verdict on the candidate.
       expect(
         find.ancestor(
-          of: find.text('Admissions for this cycle closed on Feb 28, 2026.'),
+          of: find.text('Admissions for this cycle closed on 28 Feb 2026.'),
           matching: find.byType(StripedCard),
         ),
         findsNothing,
@@ -188,7 +201,7 @@ void main() {
   });
 
   group('the matriculated application', () {
-    testWidgets('hands over to the student portal instead of a detail', (
+    testWidgets('hands over to the student portal instead of a chevron', (
       tester,
     ) async {
       await pumpApplications(tester);
@@ -209,12 +222,12 @@ void main() {
       );
     });
 
-    testWidgets('is the one card without a tap-through', (tester) async {
+    testWidgets('is the one card without a chevron', (tester) async {
       await pumpApplications(tester);
 
-      // Three chevrons: the offer, the draft and the rejection. The fourth
-      // card is finished.
-      expect(find.byIcon(Icons.chevron_right), findsNWidgets(3));
+      // Five chevrons: every record that is still going somewhere. The sixth
+      // card is finished, and its footer leaves the portal instead.
+      expect(find.byIcon(Icons.chevron_right), findsNWidgets(5));
     });
   });
 
@@ -222,10 +235,22 @@ void main() {
     testWidgets('says the detail screen is not live in this release', (
       tester,
     ) async {
+      // The rejection loses its detail, so it is answered like a record whose
+      // screen has not been ported.
+      cubit.load();
+      cubit.emit(
+        cubit.state.copyWith(
+          applicationDetails: {
+            for (final entry in cubit.state.applicationDetails.entries)
+              if (entry.key != 'app-00918') entry.key: entry.value,
+          },
+        ),
+      );
+
       await pumpApplications(tester);
 
-      // The rejection, addressed by its own reference: the draft is filed to
-      // the same programme, so the title alone names two cards.
+      // Addressed by its own reference: the draft is filed to the same
+      // programme, so the title alone names two cards.
       await tester.tap(find.text('APP/2025/00918'));
       await tester.pumpAndSettle();
 
@@ -295,7 +320,7 @@ void main() {
       await pumpApplications(tester, dark: true);
 
       expect(tester.takeException(), isNull);
-      expect(find.byType(ApplicationListCard), findsNWidgets(4));
+      expect(find.byType(ApplicationListCard), findsNWidgets(6));
     });
 
     testWidgets('leaves the last card\'s action under no part of the FAB', (

@@ -21,6 +21,9 @@ abstract final class AdmissionsFixtures {
 
   // --- Cycles -------------------------------------------------------------
 
+  /// The academic session of [currentCycle], as an application quotes it.
+  static const String currentSession = '2026/2027';
+
   /// The cycle named in the header chip.
   static final AdmissionCycle currentCycle = AdmissionCycle(
     id: ProgrammeFixtures.defaultCycleId,
@@ -53,13 +56,17 @@ abstract final class AdmissionsFixtures {
   /// The applications on the candidate's record, newest first.
   ///
   /// Chosen to exercise every footer the `admissions_my_applications` design
-  /// gives a card: an outstanding offer with a response deadline, an unopened
-  /// draft, a rejection from a cycle that has since closed, and a
-  /// matriculation that hands over to the student portal. Newest change first.
+  /// gives a card, and every ending the application detail screen draws: an
+  /// outstanding offer with a response deadline, an unopened draft, a
+  /// withdrawal, a rejection and a lapsed offer from cycles that have since
+  /// closed, and a matriculation that hands over to the student portal. Newest
+  /// change first.
   static final List<ApplicationSummary> applications = [
     offeredApplication,
     draftApplication,
+    withdrawnApplication,
     rejectedApplication,
+    expiredApplication,
     matriculatedApplication,
   ];
 
@@ -76,7 +83,8 @@ abstract final class AdmissionsFixtures {
     // day sees the "3 hours ago" stamp the design draws.
     updatedOn: DateTime(2026, 10, 3, 12),
     cycleName: currentCycle.name,
-    respondBy: DateTime(2027, 2, 28),
+    cycleSession: currentSession,
+    respondBy: DateTime(2027, 2, 28, 23, 59),
   );
 
   /// The application the candidate started and has not submitted — the record
@@ -98,6 +106,7 @@ abstract final class AdmissionsFixtures {
     // The screening note, the most recent line of it.
     updatedOn: DateTime(2026, 9, 20),
     cycleName: currentCycle.name,
+    cycleSession: currentSession,
   );
 
   /// A refusal from the cycle that has since closed, which is why it carries
@@ -108,10 +117,39 @@ abstract final class AdmissionsFixtures {
     programmeName: 'B.A. English',
     department: 'Department of English',
     status: ApplicationStatus.rejected,
-    submittedOn: DateTime(2025, 9, 1),
+    // The time of day is part of the record: the decision notice prints it.
+    submittedOn: DateTime(2025, 9, 1, 14, 22),
     updatedOn: DateTime(2026, 9, 14),
     cycleName: '2025/2026 Undergraduate Admissions',
+    cycleSession: '2025/2026',
     cycleClosedOn: DateTime(2026, 2, 28),
+  );
+
+  /// An offer the candidate left unanswered until the deadline passed.
+  static final ApplicationSummary expiredApplication = ApplicationSummary(
+    id: 'app-00611',
+    trackingCode: 'APP/2025/00611',
+    programmeName: ProgrammeFixtures.law.title,
+    department: ProgrammeFixtures.law.department,
+    status: ApplicationStatus.expired,
+    submittedOn: DateTime(2025, 10, 2),
+    updatedOn: DateTime(2026, 2, 28, 23, 59),
+    cycleName: '2025/2026 Undergraduate Admissions',
+    cycleSession: '2025/2026',
+    cycleClosedOn: DateTime(2026, 2, 28),
+  );
+
+  /// An application the candidate withdrew of their own accord.
+  static final ApplicationSummary withdrawnApplication = ApplicationSummary(
+    id: 'app-00733',
+    trackingCode: 'APP/2026/00733',
+    programmeName: ProgrammeFixtures.dataScience.title,
+    department: ProgrammeFixtures.dataScience.department,
+    status: ApplicationStatus.withdrawn,
+    submittedOn: DateTime(2026, 9, 2),
+    updatedOn: DateTime(2026, 9, 14),
+    cycleName: currentCycle.name,
+    cycleSession: currentSession,
   );
 
   /// The one that ended in a matriculation: the bridge to the student portal.
@@ -124,6 +162,7 @@ abstract final class AdmissionsFixtures {
     submittedOn: DateTime(2024, 8, 20),
     updatedOn: DateTime(2025, 9, 16),
     cycleName: '2024/2025 Undergraduate Admissions',
+    cycleSession: '2024/2025',
     matricNumber: '25/ACC/0087',
   );
 
@@ -137,6 +176,7 @@ abstract final class AdmissionsFixtures {
     submittedOn: DateTime(2026, 9, 12),
     updatedOn: DateTime(2026, 9, 15),
     cycleName: currentCycle.name,
+    cycleSession: currentSession,
     trackingCode: 'APP/2026/00014',
   );
 
@@ -267,13 +307,229 @@ abstract final class AdmissionsFixtures {
     ],
   );
 
+  /// The offer the detail screen answers: the terms, and nothing else on
+  /// the page to compete with the date.
+  static final ApplicationDetail offeredDetail = ApplicationDetail(
+    application: offeredApplication,
+    cycleId: currentCycle.id,
+    firstChoiceProgrammeId: ProgrammeFixtures.computerScience.id,
+    secondChoiceProgrammeId: ProgrammeFixtures.dataScience.id,
+    offer: OfferTerms(
+      level: 100,
+      session: '2026/2027',
+      // Quoted from the filed first choice so the fee on the offer cannot
+      // drift from the one the browser quotes for the same programme.
+      formFeeMinorUnits: ProgrammeFixtures.computerScience.formFeeMinorUnits,
+      formFeePaidOn: DateTime(2026, 9, 12),
+      acceptanceFeeMinorUnits: 500000,
+      acceptBy: DateTime(2027, 2, 28, 23, 59),
+    ),
+    history: [
+      ApplicationHistoryEvent(
+        id: 'offer-event-0004',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 10, 3),
+        title: 'Admission offered',
+      ),
+      ApplicationHistoryEvent(
+        id: 'offer-event-0003',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 18),
+        title: 'Birth certificate uploaded',
+      ),
+      ApplicationHistoryEvent(
+        id: 'offer-event-0002',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 18),
+        title: 'Referee invited: Dr Amina Yusuf',
+      ),
+      ApplicationHistoryEvent(
+        id: 'offer-event-0001',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 12),
+        title: 'Application started',
+      ),
+    ],
+  );
+
+  /// The refusal, with the committee's reasons: a figure per criterion rather
+  /// than a verdict, so the decision reads as something that can be answered.
+  static final ApplicationDetail rejectedDetail = ApplicationDetail(
+    application: rejectedApplication,
+    cycleId: 'undergraduate-2025',
+    firstChoiceProgrammeId: ProgrammeFixtures.english.id,
+    rejection: RejectionNotice(
+      decidedOn: DateTime(2026, 9, 14, 9),
+      determination:
+          'Quota capacity exhausted for Department of English; verified '
+          'academic composite score remains below the statutory departmental '
+          'merit threshold of 260.',
+      criteria: const [
+        RejectionCriterion(
+          kind: RejectionCriterionKind.utme,
+          outcome: RejectionOutcome.belowCutoff,
+          submitted: '242 / 400',
+          required: '260',
+          progress: 242 / 400,
+        ),
+        RejectionCriterion(
+          kind: RejectionCriterionKind.olevelEnglish,
+          outcome: RejectionOutcome.deficit,
+          submitted: 'Grade C5',
+          required: 'Grade B3',
+        ),
+        RejectionCriterion(
+          kind: RejectionCriterionKind.directEntry,
+          outcome: RejectionOutcome.incomplete,
+          note:
+              'Transcript lacked mandatory Registrar endorsement stamp at the '
+              'closure of evaluation cycle (28 February 2026).',
+        ),
+      ],
+      verificationHash: 'SHA256:7b91c...00918e2a',
+      faqs: const [
+        AdmissionFaq(
+          question: 'Direct entry transcript retrieval',
+          answer:
+              'Physical transcripts submitted for the 2025/2026 cycle remain '
+              'archived with the Bursary & Records Division. Candidate can '
+              'request electronic re-indexing for the 2026/2027 cycle without '
+              'paying full courier fees.',
+        ),
+        AdmissionFaq(
+          question: 'Eligible alternative programmes',
+          answer:
+              'With a UTME score of 242, candidate falls within the threshold '
+              'for B.A. History & Strategic Studies (Cutoff: 230) and B.A. '
+              'Philosophy (Cutoff: 225) in subsequent cycles.',
+        ),
+      ],
+    ),
+    history: [
+      ApplicationHistoryEvent(
+        id: 'rejected-event-0003',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 14),
+        title: 'Decision: not successful',
+      ),
+      ApplicationHistoryEvent(
+        id: 'rejected-event-0002',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2025, 9, 1),
+        title: 'Application submitted',
+      ),
+      ApplicationHistoryEvent(
+        id: 'rejected-event-0001',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2025, 8, 20),
+        title: 'Application started',
+      ),
+    ],
+  );
+
+  /// The ending: a matric number, and the door to the student portal.
+  static final ApplicationDetail matriculatedDetail = ApplicationDetail(
+    application: matriculatedApplication,
+    cycleId: 'undergraduate-2024',
+    firstChoiceProgrammeId: ProgrammeFixtures.accounting.id,
+    history: [
+      ApplicationHistoryEvent(
+        id: 'matric-event-0004',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2025, 9, 16),
+        title: 'Matriculated: student portal opened',
+      ),
+      ApplicationHistoryEvent(
+        id: 'matric-event-0003',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2025, 9, 1),
+        title: 'Offer accepted',
+      ),
+      ApplicationHistoryEvent(
+        id: 'matric-event-0002',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2025, 8, 20),
+        title: 'Admission offered',
+      ),
+      ApplicationHistoryEvent(
+        id: 'matric-event-0001',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2024, 8, 20),
+        title: 'Application submitted',
+      ),
+    ],
+  );
+
+  /// An offer that was never answered: amber, not red, because the deadline
+  /// passed and nothing the candidate did was wrong.
+  static final ApplicationDetail expiredDetail = ApplicationDetail(
+    application: expiredApplication,
+    cycleId: 'undergraduate-2025',
+    firstChoiceProgrammeId: ProgrammeFixtures.law.id,
+    expiredOn: DateTime(2026, 2, 28, 23, 59),
+    history: [
+      ApplicationHistoryEvent(
+        id: 'expired-event-0003',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 2, 28),
+        title: 'Offer expired',
+      ),
+      ApplicationHistoryEvent(
+        id: 'expired-event-0002',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 1, 20),
+        title: 'Admission offered',
+      ),
+      ApplicationHistoryEvent(
+        id: 'expired-event-0001',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2025, 10, 2),
+        title: 'Application submitted',
+      ),
+    ],
+  );
+
+  /// A withdrawal, with the reason the candidate gave quoted back to them.
+  static final ApplicationDetail withdrawnDetail = ApplicationDetail(
+    application: withdrawnApplication,
+    cycleId: currentCycle.id,
+    firstChoiceProgrammeId: ProgrammeFixtures.dataScience.id,
+    withdrawal: WithdrawalRecord(
+      withdrawnOn: DateTime(2026, 9, 14),
+      reason: 'I accepted a place at another university.',
+    ),
+    history: [
+      ApplicationHistoryEvent(
+        id: 'withdrawn-event-0002',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 14),
+        title: 'Application withdrawn',
+      ),
+      ApplicationHistoryEvent(
+        id: 'withdrawn-event-0001',
+        kind: ApplicationHistoryKind.activity,
+        occurredOn: DateTime(2026, 9, 2),
+        title: 'Application started',
+      ),
+    ],
+  );
+
   /// Every detail the portal can open, keyed by application id.
   ///
-  /// Only the draft has one today: the offered, rejected and matriculated
-  /// records have designs of their own that are not ported yet, so their cards
-  /// do not offer a detail screen they could not fill.
+  /// Every status the designs draw has one. The statuses between draft and
+  /// offer (submitted, under review) and the offer's own answers (accepted,
+  /// declined) are not drawn yet, so no record carries them and no card offers
+  /// a detail screen it could not fill.
   static final Map<String, ApplicationDetail> applicationDetails = {
-    draftDetail.application.id: draftDetail,
+    for (final detail in [
+      offeredDetail,
+      draftDetail,
+      withdrawnDetail,
+      rejectedDetail,
+      expiredDetail,
+      matriculatedDetail,
+    ])
+      detail.application.id: detail,
   };
 
   // --- JAMB ---------------------------------------------------------------

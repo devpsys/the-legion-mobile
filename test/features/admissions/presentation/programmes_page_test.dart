@@ -133,7 +133,7 @@ void main() {
 
       expect(find.byType(CycleNotice), findsOneWidget);
       expect(find.text('2026/2027 Undergraduate Admissions'), findsOneWidget);
-      expect(find.text('Closes Feb 28, 2027'), findsOneWidget);
+      expect(find.text('Closes 28 Feb 2027'), findsOneWidget);
       expect(
         find.text('₦7,500.00'),
         findsNWidgets(4),
@@ -155,7 +155,7 @@ void main() {
 
       expect(find.byType(CyclePickerSheet), findsNothing);
       expect(
-        find.text('Closed Jan 31, 2027'),
+        find.text('Closed 31 Jan 2027'),
         findsOneWidget,
         reason:
             'the postgraduate cycle had already closed on 31 January, so the '
@@ -343,7 +343,7 @@ void main() {
       expect(find.text('Applications have closed'), findsOneWidget);
       expect(find.text('Archived session'), findsOneWidget);
       expect(find.text('View details'), findsOneWidget);
-      expect(find.text('Closed on Jan 31, 2027'), findsOneWidget);
+      expect(find.text('Closed on 31 Jan 2027'), findsOneWidget);
     });
   });
 
@@ -361,7 +361,7 @@ void main() {
             'already carries a "Closed on" tag',
       );
       expect(
-        find.text('Applications close Feb 14, 2027, ahead of the cycle'),
+        find.text('Applications close 14 Feb 2027, ahead of the cycle'),
         findsOneWidget,
       );
     });
