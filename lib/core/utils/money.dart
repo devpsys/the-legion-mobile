@@ -25,3 +25,29 @@ String formatNaira(int minorUnits) {
 
   return '${isNegative ? '-' : ''}$nairaSymbol$naira.$kobo';
 }
+
+/// [formatNaira] without the symbol — `66,000.00` — for a field whose
+/// decoration already shows the `₦`, so the figure is not written twice.
+String formatNairaFigure(int minorUnits) =>
+    formatNaira(minorUnits).replaceFirst(nairaSymbol, '');
+
+/// The shape of an amount a person types: digits, optional thousands commas,
+/// and at most two decimals.
+final RegExp _typedAmount = RegExp(r'^\d+(?:\.\d{0,2})?$');
+
+/// Reads a typed naira amount back into minor units (kobo), or `null` when
+/// the text is not an amount.
+///
+/// The inverse of [formatNaira] for a payment field: `₦25,000.00`, `25000`,
+/// `25,000.5` and ` 25000.50 ` all read as `2500050`. Anything with a third
+/// decimal, a sign, or letters is refused rather than guessed at — a payment
+/// screen must never charge a figure the student did not type.
+int? parseNaira(String raw) {
+  final text = raw.replaceAll(nairaSymbol, '').replaceAll(',', '').trim();
+  if (text.isEmpty || !_typedAmount.hasMatch(text)) return null;
+
+  final parts = text.split('.');
+  final naira = int.parse(parts.first);
+  final kobo = parts.length == 1 ? 0 : int.parse(parts[1].padRight(2, '0'));
+  return naira * 100 + kobo;
+}

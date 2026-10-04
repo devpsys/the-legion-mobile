@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// A sentence with some of its words set in a second style — the programme a
-/// letter offers, the date it must be answered by.
+/// letter offers, the matriculation number in a student's byline.
 ///
 /// The sentence arrives already localised and already filled in, and the
 /// values to emphasise are passed beside it; the widget finds each one in the

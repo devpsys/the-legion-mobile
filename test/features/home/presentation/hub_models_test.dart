@@ -101,13 +101,12 @@ void main() {
       }
     });
 
-    test('only the profile shortcut points at a real route', () {
+    test('only the profile and payments shortcuts point at real routes', () {
       final routed = HubFixtures.accountUtilities.where(
         (utility) => utility.routeName != null,
       );
 
-      expect(routed, hasLength(1));
-      expect(routed.single.id, 'profile');
+      expect(routed.map((utility) => utility.id), ['profile', 'payments']);
     });
   });
 }

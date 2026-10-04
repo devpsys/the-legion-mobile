@@ -9,8 +9,8 @@ import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/money.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/brand_crest_tile.dart';
+import '../../../../core/widgets/emphasised_text.dart';
 import '../models/application_detail_models.dart';
-import 'emphasised_text.dart';
 import 'verification_qr_mark.dart';
 
 /// The admission letter as a sheet of paper on the screen.

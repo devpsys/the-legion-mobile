@@ -10,6 +10,34 @@ abstract final class Routes {
   static const String home = '/home';
   static const String profile = '/home/profile';
 
+  /// The student's fees: a tab of the student shell, like the profile.
+  static const String fees = '/home/fees';
+
+  /// The checkout's own segment under [fees]; the router nests it there so
+  /// the tab's navigator stacks the two and back pops to the tab.
+  static const String feesCheckoutSegment = 'checkout';
+
+  /// The checkout, a stack step above the fees tab. Which open invoices it
+  /// is for travels in the query under [feesCheckoutInvoicesParam]; none
+  /// named means all of them.
+  static const String feesCheckout = '$fees/$feesCheckoutSegment';
+
+  /// Name of the query parameter [feesCheckout] reads invoice ids from, as a
+  /// comma-separated list.
+  static const String feesCheckoutInvoicesParam = 'invoices';
+
+  /// The query value naming [ids] for [feesCheckout].
+  static String feesCheckoutInvoicesQuery(Iterable<String> ids) =>
+      ids.join(',');
+
+  /// The ids a [feesCheckout] query value names; empty for a missing or
+  /// blank value.
+  static List<String> feesCheckoutInvoicesFrom(String? query) => [
+    if (query != null)
+      for (final id in query.split(','))
+        if (id.trim().isNotEmpty) id.trim(),
+  ];
+
   // Account recovery flow
   static const String forgotPassword = '/forgot-password';
   static const String verifyRecoveryCode = '/forgot-password/verify';
@@ -65,6 +93,8 @@ abstract final class Routes {
   static const String loginName = 'login';
   static const String homeName = 'home';
   static const String profileName = 'profile';
+  static const String feesName = 'fees';
+  static const String feesCheckoutName = 'feesCheckout';
   static const String forgotPasswordName = 'forgotPassword';
   static const String verifyRecoveryCodeName = 'verifyRecoveryCode';
   static const String setNewPasswordName = 'setNewPassword';
@@ -97,6 +127,15 @@ abstract final class Routes {
     admissionsApplications,
     admissionsJamb,
   };
+
+  /// Screens of the student shell that own the whole canvas on phones: no
+  /// tab bar under them.
+  ///
+  /// The hub navigates through its own directory and account panel, and the
+  /// checkout is a task with its own back chevron — a student choosing how
+  /// to pay is not moving between sections. Every other screen in the shell
+  /// keeps the bar.
+  static const Set<String> fullCanvasPaths = {home, feesCheckout};
 
   /// Reachable only while signed out — recovery is pointless once
   /// authenticated, so the redirect sends those deep links to the app shell.

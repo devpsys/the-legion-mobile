@@ -520,6 +520,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navOverview => 'Overview';
 
   @override
+  String get navFees => 'Fees';
+
+  @override
   String get navProfile => 'Profile';
 
   @override
@@ -1701,4 +1704,321 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get admissionsJambNotFoundBody =>
       'Check the registration number, surname and date of birth against your JAMB slip and try again. If they are right and it still does not match, CAPS has not sent us your result yet.';
+
+  @override
+  String get feesInstitution => 'The Legion University';
+
+  @override
+  String get feesBackTooltip => 'Back to the hub';
+
+  @override
+  String get feesEyebrow => 'Bursary & Financial Services';
+
+  @override
+  String get feesTitle => 'Student fees';
+
+  @override
+  String feesStudentLine(Object level, Object matricNumber, Object name) {
+    return '$name · $matricNumber · $level';
+  }
+
+  @override
+  String feesLevel(Object level) {
+    return '$level Level';
+  }
+
+  @override
+  String get feesOutstandingLabel => 'Total outstanding balance';
+
+  @override
+  String feesDueOn(Object date) {
+    return 'Due $date';
+  }
+
+  @override
+  String get feesNothingOutstanding => 'Nothing is owed on your account.';
+
+  @override
+  String feesPayOutstanding(Object amount) {
+    return 'Pay outstanding ($amount)';
+  }
+
+  @override
+  String get feesPaymentChannelsNote =>
+      'Bank transfer, card and Remita RRR are supported, with instant bursary clearance.';
+
+  @override
+  String feesInvoicesHeading(Object session) {
+    return '$session invoices';
+  }
+
+  @override
+  String feesPendingCount(num count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count pending',
+      one: '1 pending',
+      zero: 'All settled',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get feesNoInvoices => 'No invoices have been raised for this session.';
+
+  @override
+  String get feesStatusUnpaid => 'Unpaid';
+
+  @override
+  String get feesStatusPartPaid => 'Part paid';
+
+  @override
+  String get feesStatusSettled => 'Settled';
+
+  @override
+  String get feesStatusCancelled => 'Cancelled';
+
+  @override
+  String get feesTotalBilled => 'Total billed';
+
+  @override
+  String get feesAmountCleared => 'Amount cleared';
+
+  @override
+  String get feesRemainingBalance => 'Remaining balance';
+
+  @override
+  String get feesPaymentProgress => 'Payment progress';
+
+  @override
+  String feesPercent(Object percent) {
+    return '$percent%';
+  }
+
+  @override
+  String feesPayBalance(Object amount) {
+    return 'Pay $amount';
+  }
+
+  @override
+  String feesPayAmount(Object amount) {
+    return 'Pay $amount';
+  }
+
+  @override
+  String get feesBreakdown => 'Breakdown';
+
+  @override
+  String get feesAmount => 'Amount';
+
+  @override
+  String get feesHistoryHeading => 'Payment history & receipts';
+
+  @override
+  String get feesViewAll => 'View all';
+
+  @override
+  String get feesNoPayments => 'No payments have been recorded yet.';
+
+  @override
+  String get feesPaymentSuccessful => 'Successful';
+
+  @override
+  String get feesPaymentPending => 'Awaiting confirmation';
+
+  @override
+  String feesPaymentLine(Object channel, Object date) {
+    return '$date · $channel';
+  }
+
+  @override
+  String get feesChannelCard => 'Card';
+
+  @override
+  String get feesChannelRemitaRrr => 'Remita RRR';
+
+  @override
+  String feesChannelWithReference(Object channel, Object reference) {
+    return '$channel $reference';
+  }
+
+  @override
+  String get feesReceiptPdf => 'Receipt PDF';
+
+  @override
+  String get feesBursaryNoticeTitle => 'Institutional bursary notice:';
+
+  @override
+  String get feesBursaryNoticeBody =>
+      'All official payments must be validated with an official university bursary receipt bearing a cryptographic QR code. Cash payments to staff are strictly prohibited.';
+
+  @override
+  String get feesCheckoutTitle => 'Make payment';
+
+  @override
+  String get feesCheckoutSubtitle =>
+      'Official bursary payment gateway · The Legion University';
+
+  @override
+  String get feesCheckoutBackTooltip => 'Back to your fees';
+
+  @override
+  String get feesSecure => 'Secure';
+
+  @override
+  String get feesPaymentDetails => 'Payment details';
+
+  @override
+  String feesTerm(Object session) {
+    return 'Term: $session';
+  }
+
+  @override
+  String get feesInvoiceReference => 'Invoice reference';
+
+  @override
+  String get feesDescription => 'Description';
+
+  @override
+  String get feesGatewayCharge => 'Gateway processing charge (statutory)';
+
+  @override
+  String get feesGatewayChargeInfo =>
+      'A statutory charge collected by the payment gateway, not by the university.';
+
+  @override
+  String get feesTotalPayable => 'Total amount payable';
+
+  @override
+  String get feesTotalPayableNote =>
+      'Includes statutory automated clearing fees';
+
+  @override
+  String get feesSelectAmount => 'Select payment amount';
+
+  @override
+  String get feesPayFull => 'Pay full balance';
+
+  @override
+  String get feesPayFullDetail =>
+      'Clears your course enrolment hold immediately';
+
+  @override
+  String get feesPayInstalment => 'Pay a custom instalment';
+
+  @override
+  String feesMinimumInstalment(Object amount) {
+    return 'Minimum permitted instalment: $amount';
+  }
+
+  @override
+  String get feesSpecifiedAmount => 'Specified payment amount';
+
+  @override
+  String get feesInstalmentMissing => 'Enter the amount you want to pay.';
+
+  @override
+  String feesInstalmentBelowMinimum(Object amount) {
+    return 'Enter at least $amount.';
+  }
+
+  @override
+  String feesInstalmentAboveBalance(Object amount) {
+    return 'Enter no more than $amount, the balance owed.';
+  }
+
+  @override
+  String get feesPaymentMethod => 'Payment method';
+
+  @override
+  String get feesVerifiedIntegrations => 'Verified integrations';
+
+  @override
+  String get feesMethodGateway => 'Card & instant bank transfer';
+
+  @override
+  String get feesMethodGatewayDetail =>
+      'Remita & Interswitch secure gateway. Automated clearance within 60 seconds.';
+
+  @override
+  String get feesMethodInstant => 'Instant';
+
+  @override
+  String get feesMethodBankBranch => 'Bank branch via RRR invoice';
+
+  @override
+  String get feesMethodBankBranchClearing => '1–24h clearing';
+
+  @override
+  String get feesMethodBankBranchDetail =>
+      'Pay at any commercial bank branch across Nigeria using your active reference.';
+
+  @override
+  String feesRrrLabel(Object reference) {
+    return 'RRR: $reference';
+  }
+
+  @override
+  String get feesCopy => 'Copy';
+
+  @override
+  String get feesReferenceCopied => 'Reference copied.';
+
+  @override
+  String get feesMethodVirtualAccount =>
+      'NIP dedicated student virtual account';
+
+  @override
+  String feesMethodVirtualAccountDetail(Object matricNumber) {
+    return 'Single-use account generated specifically for matric $matricNumber.';
+  }
+
+  @override
+  String get feesChipDebitCard => 'Debit card';
+
+  @override
+  String get feesChipUssd => 'USSD';
+
+  @override
+  String get feesChipDirectDebit => 'Direct debit';
+
+  @override
+  String get feesPayerVerification => 'Payer verification';
+
+  @override
+  String get feesVerifiedRecord => 'Verified record';
+
+  @override
+  String get feesStudentName => 'Student name';
+
+  @override
+  String get feesMatricNumber => 'Matriculation number';
+
+  @override
+  String get feesDepartment => 'Academic department';
+
+  @override
+  String feesDepartmentValue(Object department, Object level) {
+    return '$department ($level)';
+  }
+
+  @override
+  String get feesEmail => 'Institutional email';
+
+  @override
+  String get feesProceed => 'Proceed to pay';
+
+  @override
+  String feesProceedToPay(Object amount) {
+    return 'Proceed to pay $amount';
+  }
+
+  @override
+  String get feesProceedNote =>
+      'Encrypted 256-bit TLS connection. Your payment updates your student portal and unlocks course registration immediately.';
+
+  @override
+  String get feesCheckoutNothingToPay =>
+      'There is nothing to pay on these invoices.';
 }

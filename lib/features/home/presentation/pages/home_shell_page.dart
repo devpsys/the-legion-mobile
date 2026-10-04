@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/adaptive_scaffold.dart';
@@ -14,11 +15,20 @@ import '../../../../core/widgets/confirm_exit.dart';
 /// every tab's navigation stack — required for Android back gestures and
 /// direct links to a tab's sub-route.
 class HomeShellPage extends StatelessWidget {
-  const HomeShellPage({required this.navigationShell, super.key});
+  const HomeShellPage({
+    required this.navigationShell,
+    required this.location,
+    super.key,
+  });
 
   final StatefulNavigationShell navigationShell;
 
-  static const List<HomeTab> _tabs = [HomeTab.overview, HomeTab.profile];
+  /// The matched location, so the shell can tell a tab's root from a step
+  /// above it: the checkout sits in the fees branch but owns the canvas.
+  final String location;
+
+  /// The branches, in the order the router declares them.
+  static const List<HomeTab> _tabs = HomeTab.values;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +44,16 @@ class HomeShellPage extends StatelessWidget {
     // (a sheet closing, a route settling) — leaving the system to close the app.
     final scaffold = AdaptiveScaffold(
       selectedIndex: navigationShell.currentIndex,
-      // The hub owns the full canvas on phones: it navigates through its own
-      // module directory, account panel and avatar rather than a tab bar.
-      showBottomNavigationBar: !isOverview,
+      // The hub and the checkout own the full canvas on phones: the hub
+      // navigates through its own module directory, account panel and avatar
+      // rather than a tab bar, and the checkout is a task with a back chevron.
+      showBottomNavigationBar: !Routes.fullCanvasPaths.contains(location),
       destinations: [
         for (final tab in _tabs)
           AdaptiveScaffoldDestination(
             label: switch (tab) {
               HomeTab.overview => l10n.navOverview,
+              HomeTab.fees => l10n.navFees,
               HomeTab.profile => l10n.navProfile,
             },
             icon: tab.icon,
@@ -75,8 +87,15 @@ class HomeShellPage extends StatelessWidget {
 }
 
 /// Navigation branches of the authenticated area.
+///
+/// Declaration order is branch order: the router's `StatefulShellBranch` list
+/// and the shell's tab bar are both read from it.
 enum HomeTab {
   overview(icon: Icons.dashboard_outlined, selectedIcon: Icons.dashboard),
+  fees(
+    icon: Icons.account_balance_wallet_outlined,
+    selectedIcon: Icons.account_balance_wallet,
+  ),
   profile(icon: Icons.person_outline, selectedIcon: Icons.person);
 
   const HomeTab({required this.icon, required this.selectedIcon});

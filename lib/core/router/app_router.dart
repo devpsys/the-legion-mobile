@@ -16,6 +16,10 @@ import '../../features/admissions/presentation/widgets/admissions_shell.dart';
 import '../../features/auth/presentation/pages/create_account_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
+import '../../features/fees/presentation/bloc/fee_checkout_cubit.dart';
+import '../../features/fees/presentation/bloc/fees_cubit.dart';
+import '../../features/fees/presentation/pages/fee_checkout_page.dart';
+import '../../features/fees/presentation/pages/fees_page.dart';
 import '../../features/home/presentation/pages/home_overview_page.dart';
 import '../../features/home/presentation/pages/home_shell_page.dart';
 import '../../features/password_recovery/presentation/bloc/password_recovery_cubit.dart';
@@ -154,9 +158,17 @@ GoRouter createRouter({
           ),
         ],
       ),
+      // Branch order is `HomeTab` order: the shell reads its tabs from the
+      // enum and the router must agree.
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            HomeShellPage(navigationShell: navigationShell),
+        // The URI's path, not `matchedLocation`: a shell match keeps the
+        // location it was matched with, so after the checkout is popped off
+        // the fees branch it would still read as the checkout and the tab
+        // bar would stay hidden. The URI is recomputed on every pop.
+        builder: (context, state, navigationShell) => HomeShellPage(
+          navigationShell: navigationShell,
+          location: state.uri.path,
+        ),
         branches: [
           StatefulShellBranch(
             routes: [
@@ -164,6 +176,47 @@ GoRouter createRouter({
                 path: Routes.home,
                 name: Routes.homeName,
                 builder: (context, state) => const HomeOverviewPage(),
+              ),
+            ],
+          ),
+          // The fees tab and the checkout above it share one cubit: the
+          // checkout pays the invoices the tab lists, so both must read one
+          // ledger. The shell route scopes it to the branch, where the
+          // indexed stack keeps it alive across tab switches.
+          StatefulShellBranch(
+            routes: [
+              ShellRoute(
+                builder: (context, state, child) => BlocProvider<FeesCubit>(
+                  create: (context) => sl<FeesCubit>(),
+                  child: child,
+                ),
+                routes: [
+                  GoRoute(
+                    path: Routes.fees,
+                    name: Routes.feesName,
+                    builder: (context, state) => const FeesPage(),
+                    routes: [
+                      // Nested, so the branch's navigator stacks it on the
+                      // tab and back pops to it. Its own cubit per visit for
+                      // the choices — a half-typed instalment is not worth
+                      // keeping — while the ledger stays on the branch.
+                      GoRoute(
+                        path: Routes.feesCheckoutSegment,
+                        name: Routes.feesCheckoutName,
+                        builder: (context, state) =>
+                            BlocProvider<FeeCheckoutCubit>(
+                              create: (context) => sl<FeeCheckoutCubit>(),
+                              child: FeeCheckoutPage(
+                                invoiceIds: Routes.feesCheckoutInvoicesFrom(
+                                  state.uri.queryParameters[Routes
+                                      .feesCheckoutInvoicesParam],
+                                ),
+                              ),
+                            ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

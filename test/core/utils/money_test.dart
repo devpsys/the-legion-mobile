@@ -37,4 +37,42 @@ void main() {
       expect(formatNaira(-750000), '-₦7,500.00');
     });
   });
+
+  group('formatNairaFigure', () {
+    test('is the amount without its symbol, for a decorated field', () {
+      expect(formatNairaFigure(6600000), '66,000.00');
+      expect(formatNairaFigure(0), '0.00');
+    });
+  });
+
+  group('parseNaira', () {
+    test('reads a typed amount back into kobo', () {
+      expect(parseNaira('25000'), 2500000);
+      expect(parseNaira('25,000'), 2500000);
+      expect(parseNaira('25,000.00'), 2500000);
+      expect(parseNaira('₦25,000.50'), 2500050);
+      expect(parseNaira(' 25000.5 '), 2500050);
+    });
+
+    test('round-trips what formatNairaFigure writes', () {
+      for (final kobo in [0, 5, 35000, 6600000, 16500000]) {
+        expect(parseNaira(formatNairaFigure(kobo)), kobo);
+        expect(parseNaira(formatNaira(kobo)), kobo);
+      }
+    });
+
+    test('keeps a lone point from meaning anything', () {
+      expect(parseNaira('25000.'), 2500000);
+      expect(parseNaira('.50'), isNull);
+    });
+
+    test('refuses what is not an amount rather than guessing', () {
+      expect(parseNaira(''), isNull);
+      expect(parseNaira('   '), isNull);
+      expect(parseNaira('abc'), isNull);
+      expect(parseNaira('-25000'), isNull);
+      expect(parseNaira('25000.123'), isNull, reason: 'a third decimal');
+      expect(parseNaira('25.000,00'), isNull, reason: 'continental format');
+    });
+  });
 }

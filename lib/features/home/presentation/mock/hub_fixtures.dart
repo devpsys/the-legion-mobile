@@ -133,6 +133,7 @@ abstract final class HubFixtures {
           id: 'fees',
           label: 'Fees & Payments',
           icon: Icons.account_balance_wallet_outlined,
+          routeName: Routes.feesName,
         ),
         PortalModule(
           id: 'affairs',
@@ -203,7 +204,7 @@ abstract final class HubFixtures {
 
   // --- Account panel ------------------------------------------------------
 
-  /// `profile` is the only shortcut wired to a real route today.
+  /// `profile` and `payments` are the shortcuts wired to real routes today.
   static const List<AccountUtility> accountUtilities = [
     AccountUtility(
       id: 'profile',
@@ -225,6 +226,7 @@ abstract final class HubFixtures {
       id: 'payments',
       label: 'Payments',
       icon: Icons.credit_card_outlined,
+      routeName: Routes.feesName,
     ),
     AccountUtility(
       id: 'notifications',

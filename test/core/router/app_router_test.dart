@@ -28,6 +28,8 @@ import 'package:the_legion_mobile/features/auth/domain/usecases/register.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:the_legion_mobile/features/auth/presentation/widgets/registration_card.dart';
+import 'package:the_legion_mobile/features/fees/presentation/bloc/fee_checkout_cubit.dart';
+import 'package:the_legion_mobile/features/fees/presentation/bloc/fees_cubit.dart';
 import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_cubit.dart';
 import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_state.dart';
 
@@ -278,6 +280,32 @@ void main() {
       );
     });
 
+    test('protects the fees tab and the checkout from an anonymous user', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: false,
+      );
+
+      for (final path in [Routes.fees, Routes.feesCheckout]) {
+        expect(
+          resolveRedirect(authGuard: guard, location: path),
+          Routes.login,
+          reason: '$path is inside the student shell and must need a session',
+        );
+      }
+    });
+
+    test('keeps a signed-in student on the fees tab and the checkout', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: true,
+      );
+
+      for (final path in [Routes.fees, Routes.feesCheckout]) {
+        expect(resolveRedirect(authGuard: guard, location: path), isNull);
+      }
+    });
+
     test('protects the admission letter itself from an anonymous user', () {
       // The letter carries the candidate's address: public verification shows
       // what the letter prints, the letter screen shows the letter.
@@ -372,6 +400,38 @@ void main() {
     });
   });
 
+  group('the fees routes', () {
+    test('nest the checkout under the tab', () {
+      expect(
+        Routes.feesCheckout,
+        '${Routes.fees}/${Routes.feesCheckoutSegment}',
+      );
+      expect(Routes.fees, startsWith('${Routes.home}/'));
+    });
+
+    test('carry the invoices to pay in the query, and read them back', () {
+      expect(Routes.feesCheckoutInvoicesQuery(['a', 'b']), 'a,b');
+      expect(Routes.feesCheckoutInvoicesQuery(const []), isEmpty);
+
+      expect(Routes.feesCheckoutInvoicesFrom('a,b'), ['a', 'b']);
+      expect(Routes.feesCheckoutInvoicesFrom(' a , ,b '), ['a', 'b']);
+      expect(Routes.feesCheckoutInvoicesFrom(''), isEmpty);
+      expect(Routes.feesCheckoutInvoicesFrom(null), isEmpty);
+    });
+
+    test(
+      'give the hub and the checkout the whole canvas, and nothing else',
+      () {
+        expect(
+          Routes.fullCanvasPaths,
+          containsAll([Routes.home, Routes.feesCheckout]),
+        );
+        expect(Routes.fullCanvasPaths, isNot(contains(Routes.fees)));
+        expect(Routes.fullCanvasPaths, isNot(contains(Routes.profile)));
+      },
+    );
+  });
+
   group('cold start with the in-memory backend', () {
     late AuthCubit cubit;
 
@@ -381,6 +441,8 @@ void main() {
       sl.registerFactory<PasswordRecoveryCubit>(PasswordRecoveryCubit.new);
       sl.registerFactory<AdmissionsCubit>(AdmissionsCubit.new);
       sl.registerFactory<JambClaimCubit>(JambClaimCubit.new);
+      sl.registerFactory<FeesCubit>(FeesCubit.new);
+      sl.registerFactory<FeeCheckoutCubit>(FeeCheckoutCubit.new);
       sl.registerFactory<AdmissionVerificationCubit>(
         AdmissionVerificationCubit.new,
       );
@@ -1215,6 +1277,119 @@ void main() {
         expect(find.text('Reset your password'), findsNothing);
       },
     );
+
+    /// The shell's own tab bar, as opposed to a label elsewhere on the page.
+    Finder tabBarText(String label) => find.descendant(
+      of: find.byType(NavigationBar),
+      matching: find.text(label),
+    );
+
+    testWidgets('the directory opens the fees tab, and the checkout owns the '
+        'canvas above it', (tester) async {
+      await signInAndReachHub(tester);
+
+      // Hub -> Fees, the way the directory row leads there.
+      await tester.ensureVisible(find.text('Fees & Payments'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Fees & Payments'));
+      await tester.pumpAndSettle();
+
+      // A tab of the shell: the bar is there, with Fees selected.
+      expect(find.text('Student fees'), findsOneWidget);
+      expect(find.byType(NavigationBar), findsOneWidget);
+      expect(tabBarText('Fees'), findsOneWidget);
+      expect(
+        tester.widget<NavigationBar>(find.byType(NavigationBar)).selectedIndex,
+        1,
+      );
+
+      // Fees -> checkout, through the hero. A task: no tab bar under it.
+      await tester.ensureVisible(
+        find.text('Pay outstanding balance (₦66,000.00)'),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Pay outstanding balance (₦66,000.00)'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Make payment'), findsOneWidget);
+      expect(find.text('Proceed to pay ₦66,350.00'), findsOneWidget);
+      expect(find.byType(NavigationBar), findsNothing);
+      expect(find.text('Student fees'), findsNothing);
+
+      // The system gesture unwinds one step, to the tab...
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      expect(find.text('Student fees'), findsOneWidget);
+      expect(find.byType(NavigationBar), findsOneWidget);
+      expect(find.text('Make payment'), findsNothing);
+
+      // ...and one more to the hub.
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      expect(find.text('Pay your accommodation fee'), findsOneWidget);
+      expect(find.byType(NavigationBar), findsNothing);
+    });
+
+    testWidgets('a card pays its own invoice, and the chevron comes back', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Fees & Payments'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Fees & Payments'));
+      await tester.pumpAndSettle();
+
+      await tester.ensureVisible(find.text('Pay ₦16,000.00'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Pay ₦16,000.00'));
+      await tester.pumpAndSettle();
+
+      // Only the levy is on the till.
+      expect(find.text('INV-2026-09104'), findsOneWidget);
+      expect(find.text('INV-2026-08821'), findsNothing);
+      expect(find.text('Proceed to pay ₦16,350.00'), findsOneWidget);
+
+      await tester.tap(find.byTooltip('Back to your fees'));
+      await tester.pumpAndSettle();
+      expect(find.text('Student fees'), findsOneWidget);
+    });
+
+    testWidgets('the fees tab and the profile tab reach each other through '
+        'the bar', (tester) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Fees & Payments'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Fees & Payments'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(tabBarText('Profile'));
+      await tester.pumpAndSettle();
+      expect(find.text('Ada Lovelace'), findsOneWidget);
+
+      await tester.tap(tabBarText('Fees'));
+      await tester.pumpAndSettle();
+      expect(find.text('Student fees'), findsOneWidget);
+
+      // The bar's own back to the hub.
+      await tester.tap(find.byTooltip('Back to the hub'));
+      await tester.pumpAndSettle();
+      expect(find.text('Pay your accommodation fee'), findsOneWidget);
+    });
+
+    testWidgets('the account panel\'s Payments shortcut opens the fees tab', (
+      tester,
+    ) async {
+      await signInAndReachHub(tester);
+
+      await tester.ensureVisible(find.text('Payments'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Payments'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Student fees'), findsOneWidget);
+    });
 
     testWidgets('phones get no tab bar on the hub, but keep it on the profile', (
       tester,

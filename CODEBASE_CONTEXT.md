@@ -9,8 +9,9 @@ review, including uncommitted admissions-outcome work that is not on `main`.
 
 The Legion is a multi-platform university portal (Android, iOS, Web). The
 app today covers sign-in, account recovery, a student landing hub, a thin
-profile tab, and a candidate admissions portal. Fees, registration, two-factor
-sign-in, and most hub modules are not built.
+profile tab, a candidate admissions portal, and the first two student fees
+screens (the fees tab and its checkout). Registration, two-factor sign-in,
+and most hub modules are not built.
 
 | Concern | Choice |
 | --- | --- |
@@ -44,7 +45,8 @@ lib/
     ├── password_recovery/       # domain policy + presentation; no data layer
     ├── home/                    # presentation only; fixtures read in the scaffold
     ├── profile/                 # presentation only; renders AuthCubit.user
-    └── admissions/              # presentation only; cubit serves fixtures
+    ├── admissions/              # presentation only; cubit serves fixtures
+    └── fees/                    # presentation only; cubit serves a fixture ledger
 ```
 
 `main` calls `configureDependencies()` then `runApp(TheLegionApp)`.
@@ -145,6 +147,8 @@ Representative files:
 | Domain rule without a repository | `lib/features/password_recovery/domain/entities/password_policy.dart` |
 | Router + auth redirect | `lib/core/router/app_router.dart` (`resolveRedirect`) |
 | Shared chrome | `lib/core/widgets/adaptive_scaffold.dart`, `notification_bell.dart` |
+| Shared building blocks | `lib/core/widgets/status_tag.dart`, `surface_card.dart` (`SurfaceCard`, `SectionHeader`), `labelled_value_row.dart`, `emphasised_text.dart`; admissions re-exports the ones it used to own |
+| Selection-only checkout cubit | `lib/features/fees/presentation/bloc/fee_checkout_cubit.dart` (figures derived in the state) |
 
 Home is the older fixture style: `HubScaffold` reads `HubFixtures` directly
 and has no cubit. Do not copy that for new features. ARCHITECTURE.md §13 says
@@ -161,7 +165,8 @@ intentional local UI state.
 | `/` | splash, then redirect | unresolved session |
 | `/login` | sign-in | anonymous |
 | `/forgot-password` … `/success` | recovery, one cubit via `ShellRoute` | anonymous only |
-| `/home`, `/home/profile` | student shell (`StatefulShellRoute`) | authenticated |
+| `/home`, `/home/fees`, `/home/profile` | student shell (`StatefulShellRoute`), one branch per `HomeTab` | authenticated |
+| `/home/fees/checkout?invoices=a,b` | checkout, nested under the fees branch; `FeesCubit` shared through a branch `ShellRoute`, `FeeCheckoutCubit` per visit | authenticated |
 | `/admissions`, `/programmes`, `/applications`, `/applications/:id` | candidate portal, one `AdmissionsCubit` | authenticated |
 
 `resolveRedirect` sends unresolved sessions to splash, anonymous users to
@@ -169,6 +174,12 @@ login (recovery stays public), and authenticated users off splash, login, and
 recovery onto `/home`. New portal paths must be covered by `Routes` or they
 bypass the session check. Back for the portal is `AdmissionsShell` /
 `admissionsBackTarget`, not a nested `PopScope`.
+
+The student shell hides its tab bar on `Routes.fullCanvasPaths` (the hub and
+the checkout). It reads the location from `state.uri.path`, not
+`state.matchedLocation`: a shell match keeps the location it was matched with,
+so after a nested route is popped `matchedLocation` is stale. The checkout is
+the only nested route in the shell today; `HomeTab` order is branch order.
 
 There is no role model. Any signed-in user can open the student hub and the
 candidate portal.
@@ -181,7 +192,7 @@ candidate portal.
 | Remember me, create account, verify letter, registry contact | UI only | Buttons show `commonComingSoon`. |
 | Two-factor, email confirmation flows | Not implemented | Designed under `ui-designs/auth/`, no screens. |
 | Password recovery | Mocked | Four screens, real `PasswordPolicy`, fake code in `RecoveryRules`. No datasource. |
-| Student hub | Mocked | Timeline, directory, announcements from `HubFixtures`. Only Admissions and Profile navigate. |
+| Student hub | Mocked | Timeline, directory, announcements from `HubFixtures`. Only Admissions, Fees & Payments, Profile and the Payments shortcut navigate. |
 | Profile | Partially implemented | Session email, name, sign-out. Not a designed profile product. |
 | Notifications | Mocked | `NotificationCubit` singleton fed by `NotificationFixtures`. Mark-read is in memory. |
 | Admissions overview, programmes, applications | Mocked | Cubit + fixtures. Search, faculty, and cycle selection are local. A programme card offers "Apply" only while the cycle and the programme are open and the candidate has no live application of that `ProgrammeCategory` in the session (`AdmissionsState.applyAvailabilityFor`); tapping it has `AdmissionsCubit.startApplication` open a draft from `AdmissionsFixtures.startDraft` and goes to its detail. View details and bulletins are `commonComingSoon`; the claim card and the JAMB tab open the claim screen. |
@@ -191,7 +202,9 @@ candidate portal.
 | Submitted, under review, accepted, declined detail | UI only | History card only. `ApplicationOutcomeSections` says those designs do not exist yet. |
 | Admission letter, public verification (`/verify/admission`) | Mocked | Letter drawn from the record's `AdmissionLetter`; verification looks codes up in `AdmissionsFixtures.verificationRegister`, no session. |
 | Referee form | Not implemented | Design exists locally. |
-| Fees and payments, results, timetable, other hub modules | Not implemented | Fees designs exist locally under `ui-designs/fees/`. No Dart feature. |
+| Fees tab (`/home/fees`) | Mocked | `FeesCubit` serves `FeesFixtures.ledger` (injectable). Outstanding total, due date and the breakdown strip are derived in `FeesState` from the open invoices; invoice cards show a ledger + bar when part paid, one figure when unpaid; status labels follow the bursary vocabulary (Unpaid / Part paid / Settled / Cancelled, Successful / Awaiting confirmation). Every "pay" opens the checkout with the invoice ids in the query. Breakdown, View all and Receipt PDF are `commonComingSoon`. |
+| Fee checkout (`/home/fees/checkout`) | Mocked | `FeeCheckoutCubit.start` copies the open invoices and `PaymentTerms` from the fees state; full balance or a typed instalment (`parseNaira`, minimum / balance checks), three methods, copy of the RRR, read-only payer card. "Proceed to pay" is `commonComingSoon`: nothing says money moved until a gateway does. Gateway return, receipts, wallet and the remaining `ui-designs/fees/` screens are not built. |
+| Results, timetable, other hub modules | Not implemented | No Dart feature. |
 | Bursary officer | Not implemented | Not designed in this checkout. |
 
 Demo auth credentials are documented in README.md under "Working without an

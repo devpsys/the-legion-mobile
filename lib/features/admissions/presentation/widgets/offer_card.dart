@@ -9,10 +9,10 @@ import '../../../../core/theme/app_tone.dart';
 import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/money.dart';
 import '../../../../core/utils/responsive.dart';
+import '../../../../core/widgets/labelled_value_row.dart';
 import '../models/application_detail_models.dart';
 import '../models/programme_models.dart';
 import 'faculty_filter_chips.dart';
-import 'labelled_value_row.dart';
 
 /// The offer: what the candidate is being given, what it costs, and the date
 /// it stops being theirs.

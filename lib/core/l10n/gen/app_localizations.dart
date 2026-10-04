@@ -1024,6 +1024,12 @@ abstract class AppLocalizations {
   /// **'Overview'**
   String get navOverview;
 
+  /// No description provided for @navFees.
+  ///
+  /// In en, this message translates to:
+  /// **'Fees'**
+  String get navFees;
+
   /// No description provided for @navProfile.
   ///
   /// In en, this message translates to:
@@ -2954,6 +2960,528 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Check the registration number, surname and date of birth against your JAMB slip and try again. If they are right and it still does not match, CAPS has not sent us your result yet.'**
   String get admissionsJambNotFoundBody;
+
+  /// No description provided for @feesInstitution.
+  ///
+  /// In en, this message translates to:
+  /// **'The Legion University'**
+  String get feesInstitution;
+
+  /// No description provided for @feesBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the hub'**
+  String get feesBackTooltip;
+
+  /// No description provided for @feesEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'Bursary & Financial Services'**
+  String get feesEyebrow;
+
+  /// No description provided for @feesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student fees'**
+  String get feesTitle;
+
+  /// No description provided for @feesStudentLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} · {matricNumber} · {level}'**
+  String feesStudentLine(Object level, Object matricNumber, Object name);
+
+  /// No description provided for @feesLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'{level} Level'**
+  String feesLevel(Object level);
+
+  /// No description provided for @feesOutstandingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Total outstanding balance'**
+  String get feesOutstandingLabel;
+
+  /// No description provided for @feesDueOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Due {date}'**
+  String feesDueOn(Object date);
+
+  /// No description provided for @feesNothingOutstanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is owed on your account.'**
+  String get feesNothingOutstanding;
+
+  /// No description provided for @feesPayOutstanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay outstanding ({amount})'**
+  String feesPayOutstanding(Object amount);
+
+  /// No description provided for @feesPaymentChannelsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank transfer, card and Remita RRR are supported, with instant bursary clearance.'**
+  String get feesPaymentChannelsNote;
+
+  /// No description provided for @feesInvoicesHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'{session} invoices'**
+  String feesInvoicesHeading(Object session);
+
+  /// No description provided for @feesPendingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{All settled} =1{1 pending} other{{count} pending}}'**
+  String feesPendingCount(num count);
+
+  /// No description provided for @feesNoInvoices.
+  ///
+  /// In en, this message translates to:
+  /// **'No invoices have been raised for this session.'**
+  String get feesNoInvoices;
+
+  /// No description provided for @feesStatusUnpaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid'**
+  String get feesStatusUnpaid;
+
+  /// No description provided for @feesStatusPartPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Part paid'**
+  String get feesStatusPartPaid;
+
+  /// No description provided for @feesStatusSettled.
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get feesStatusSettled;
+
+  /// No description provided for @feesStatusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get feesStatusCancelled;
+
+  /// No description provided for @feesTotalBilled.
+  ///
+  /// In en, this message translates to:
+  /// **'Total billed'**
+  String get feesTotalBilled;
+
+  /// No description provided for @feesAmountCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount cleared'**
+  String get feesAmountCleared;
+
+  /// No description provided for @feesRemainingBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Remaining balance'**
+  String get feesRemainingBalance;
+
+  /// No description provided for @feesPaymentProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment progress'**
+  String get feesPaymentProgress;
+
+  /// No description provided for @feesPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String feesPercent(Object percent);
+
+  /// No description provided for @feesPayBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount}'**
+  String feesPayBalance(Object amount);
+
+  /// No description provided for @feesPayAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount}'**
+  String feesPayAmount(Object amount);
+
+  /// No description provided for @feesBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Breakdown'**
+  String get feesBreakdown;
+
+  /// No description provided for @feesAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount'**
+  String get feesAmount;
+
+  /// No description provided for @feesHistoryHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment history & receipts'**
+  String get feesHistoryHeading;
+
+  /// No description provided for @feesViewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View all'**
+  String get feesViewAll;
+
+  /// No description provided for @feesNoPayments.
+  ///
+  /// In en, this message translates to:
+  /// **'No payments have been recorded yet.'**
+  String get feesNoPayments;
+
+  /// No description provided for @feesPaymentSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Successful'**
+  String get feesPaymentSuccessful;
+
+  /// No description provided for @feesPaymentPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting confirmation'**
+  String get feesPaymentPending;
+
+  /// No description provided for @feesPaymentLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{date} · {channel}'**
+  String feesPaymentLine(Object channel, Object date);
+
+  /// No description provided for @feesChannelCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Card'**
+  String get feesChannelCard;
+
+  /// No description provided for @feesChannelRemitaRrr.
+  ///
+  /// In en, this message translates to:
+  /// **'Remita RRR'**
+  String get feesChannelRemitaRrr;
+
+  /// No description provided for @feesChannelWithReference.
+  ///
+  /// In en, this message translates to:
+  /// **'{channel} {reference}'**
+  String feesChannelWithReference(Object channel, Object reference);
+
+  /// No description provided for @feesReceiptPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt PDF'**
+  String get feesReceiptPdf;
+
+  /// No description provided for @feesBursaryNoticeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional bursary notice:'**
+  String get feesBursaryNoticeTitle;
+
+  /// No description provided for @feesBursaryNoticeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'All official payments must be validated with an official university bursary receipt bearing a cryptographic QR code. Cash payments to staff are strictly prohibited.'**
+  String get feesBursaryNoticeBody;
+
+  /// No description provided for @feesCheckoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Make payment'**
+  String get feesCheckoutTitle;
+
+  /// No description provided for @feesCheckoutSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Official bursary payment gateway · The Legion University'**
+  String get feesCheckoutSubtitle;
+
+  /// No description provided for @feesCheckoutBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to your fees'**
+  String get feesCheckoutBackTooltip;
+
+  /// No description provided for @feesSecure.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure'**
+  String get feesSecure;
+
+  /// No description provided for @feesPaymentDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment details'**
+  String get feesPaymentDetails;
+
+  /// No description provided for @feesTerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Term: {session}'**
+  String feesTerm(Object session);
+
+  /// No description provided for @feesInvoiceReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice reference'**
+  String get feesInvoiceReference;
+
+  /// No description provided for @feesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get feesDescription;
+
+  /// No description provided for @feesGatewayCharge.
+  ///
+  /// In en, this message translates to:
+  /// **'Gateway processing charge (statutory)'**
+  String get feesGatewayCharge;
+
+  /// No description provided for @feesGatewayChargeInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'A statutory charge collected by the payment gateway, not by the university.'**
+  String get feesGatewayChargeInfo;
+
+  /// No description provided for @feesTotalPayable.
+  ///
+  /// In en, this message translates to:
+  /// **'Total amount payable'**
+  String get feesTotalPayable;
+
+  /// No description provided for @feesTotalPayableNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Includes statutory automated clearing fees'**
+  String get feesTotalPayableNote;
+
+  /// No description provided for @feesSelectAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Select payment amount'**
+  String get feesSelectAmount;
+
+  /// No description provided for @feesPayFull.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay full balance'**
+  String get feesPayFull;
+
+  /// No description provided for @feesPayFullDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Clears your course enrolment hold immediately'**
+  String get feesPayFullDetail;
+
+  /// No description provided for @feesPayInstalment.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay a custom instalment'**
+  String get feesPayInstalment;
+
+  /// No description provided for @feesMinimumInstalment.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum permitted instalment: {amount}'**
+  String feesMinimumInstalment(Object amount);
+
+  /// No description provided for @feesSpecifiedAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Specified payment amount'**
+  String get feesSpecifiedAmount;
+
+  /// No description provided for @feesInstalmentMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the amount you want to pay.'**
+  String get feesInstalmentMissing;
+
+  /// No description provided for @feesInstalmentBelowMinimum.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter at least {amount}.'**
+  String feesInstalmentBelowMinimum(Object amount);
+
+  /// No description provided for @feesInstalmentAboveBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter no more than {amount}, the balance owed.'**
+  String feesInstalmentAboveBalance(Object amount);
+
+  /// No description provided for @feesPaymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment method'**
+  String get feesPaymentMethod;
+
+  /// No description provided for @feesVerifiedIntegrations.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified integrations'**
+  String get feesVerifiedIntegrations;
+
+  /// No description provided for @feesMethodGateway.
+  ///
+  /// In en, this message translates to:
+  /// **'Card & instant bank transfer'**
+  String get feesMethodGateway;
+
+  /// No description provided for @feesMethodGatewayDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Remita & Interswitch secure gateway. Automated clearance within 60 seconds.'**
+  String get feesMethodGatewayDetail;
+
+  /// No description provided for @feesMethodInstant.
+  ///
+  /// In en, this message translates to:
+  /// **'Instant'**
+  String get feesMethodInstant;
+
+  /// No description provided for @feesMethodBankBranch.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank branch via RRR invoice'**
+  String get feesMethodBankBranch;
+
+  /// No description provided for @feesMethodBankBranchClearing.
+  ///
+  /// In en, this message translates to:
+  /// **'1–24h clearing'**
+  String get feesMethodBankBranchClearing;
+
+  /// No description provided for @feesMethodBankBranchDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay at any commercial bank branch across Nigeria using your active reference.'**
+  String get feesMethodBankBranchDetail;
+
+  /// No description provided for @feesRrrLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'RRR: {reference}'**
+  String feesRrrLabel(Object reference);
+
+  /// No description provided for @feesCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get feesCopy;
+
+  /// No description provided for @feesReferenceCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference copied.'**
+  String get feesReferenceCopied;
+
+  /// No description provided for @feesMethodVirtualAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'NIP dedicated student virtual account'**
+  String get feesMethodVirtualAccount;
+
+  /// No description provided for @feesMethodVirtualAccountDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Single-use account generated specifically for matric {matricNumber}.'**
+  String feesMethodVirtualAccountDetail(Object matricNumber);
+
+  /// No description provided for @feesChipDebitCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Debit card'**
+  String get feesChipDebitCard;
+
+  /// No description provided for @feesChipUssd.
+  ///
+  /// In en, this message translates to:
+  /// **'USSD'**
+  String get feesChipUssd;
+
+  /// No description provided for @feesChipDirectDebit.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct debit'**
+  String get feesChipDirectDebit;
+
+  /// No description provided for @feesPayerVerification.
+  ///
+  /// In en, this message translates to:
+  /// **'Payer verification'**
+  String get feesPayerVerification;
+
+  /// No description provided for @feesVerifiedRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified record'**
+  String get feesVerifiedRecord;
+
+  /// No description provided for @feesStudentName.
+  ///
+  /// In en, this message translates to:
+  /// **'Student name'**
+  String get feesStudentName;
+
+  /// No description provided for @feesMatricNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Matriculation number'**
+  String get feesMatricNumber;
+
+  /// No description provided for @feesDepartment.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic department'**
+  String get feesDepartment;
+
+  /// No description provided for @feesDepartmentValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{department} ({level})'**
+  String feesDepartmentValue(Object department, Object level);
+
+  /// No description provided for @feesEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional email'**
+  String get feesEmail;
+
+  /// No description provided for @feesProceed.
+  ///
+  /// In en, this message translates to:
+  /// **'Proceed to pay'**
+  String get feesProceed;
+
+  /// No description provided for @feesProceedToPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Proceed to pay {amount}'**
+  String feesProceedToPay(Object amount);
+
+  /// No description provided for @feesProceedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypted 256-bit TLS connection. Your payment updates your student portal and unlocks course registration immediately.'**
+  String get feesProceedNote;
+
+  /// No description provided for @feesCheckoutNothingToPay.
+  ///
+  /// In en, this message translates to:
+  /// **'There is nothing to pay on these invoices.'**
+  String get feesCheckoutNothingToPay;
 }
 
 class _AppLocalizationsDelegate

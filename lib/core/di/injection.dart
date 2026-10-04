@@ -2,6 +2,7 @@ import 'package:get_it/get_it.dart';
 
 import '../../features/admissions/di/admissions_module.dart';
 import '../../features/auth/di/auth_module.dart';
+import '../../features/fees/di/fees_module.dart';
 import '../../features/password_recovery/di/password_recovery_module.dart';
 import '../config/app_config.dart';
 import 'network_module.dart';
@@ -31,6 +32,7 @@ Future<void> configureDependencies({AppConfig? config}) async {
   registerNotificationsModule(sl);
   registerAuthModule(sl);
   registerAdmissionsModule(sl);
+  registerFeesModule(sl);
   registerPasswordRecoveryModule(sl);
   registerRouterModule(sl);
   configureLogging(sl);
