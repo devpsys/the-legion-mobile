@@ -1,3 +1,4 @@
+import '../entities/registration.dart';
 import '../entities/user.dart';
 
 /// Contract implemented by `data/repositories/auth_repository_impl.dart`.
@@ -9,6 +10,13 @@ abstract interface class AuthRepository {
   ///
   /// Throws a `Failure` (validation, auth, network or server).
   Future<User> login({required String email, required String password});
+
+  /// Opens an applicant account and persists the session it starts with —
+  /// a new applicant is signed in, not sent back to the door.
+  ///
+  /// Throws a `Failure`; an address already on the register arrives as a
+  /// `ValidationFailure` on the email field.
+  Future<User> register(Registration registration);
 
   /// Returns the user of the persisted session, or `null` when there is no
   /// usable session (not signed in, expired token, missing cache).

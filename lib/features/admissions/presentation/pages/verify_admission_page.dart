@@ -8,9 +8,9 @@ import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/responsive.dart';
+import '../../../../core/widgets/brand_block.dart';
 import '../bloc/admission_verification_cubit.dart';
 import '../bloc/admission_verification_state.dart';
-import '../widgets/public_brand_block.dart';
 import '../widgets/verification_code_field.dart';
 import '../widgets/verification_result_card.dart';
 
@@ -102,7 +102,7 @@ class VerifyAdmissionPageState extends State<VerifyAdmissionPage> {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              PublicBrandBlock(
+                              BrandBlock(
                                 caption: l10n.admissionsVerifyBrandCaption,
                               ),
                               AppSpacing.verticalGap(AppSpacing.xl),

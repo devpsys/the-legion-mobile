@@ -44,6 +44,10 @@ abstract final class Routes {
   static String admissionsAdmissionLetter(String id) =>
       admissionsAdmissionLetterTemplate.replaceFirst(':id', id);
 
+  /// Opening an applicant account. Signed-out only, like the recovery flow:
+  /// somebody with a session has an account.
+  static const String createAccount = '/create-account';
+
   /// Public verification of an admission letter — for whoever is handed one.
   ///
   /// Outside every shell: no session, no tab bar, no bell. A code may arrive
@@ -70,6 +74,7 @@ abstract final class Routes {
   static const String admissionsAdmissionLetterName =
       'admissionsAdmissionLetter';
   static const String verifyAdmissionName = 'verifyAdmission';
+  static const String createAccountName = 'createAccount';
 
   /// Every screen inside the candidate portal, as far as it is expressible as
   /// a literal path.
@@ -95,6 +100,15 @@ abstract final class Routes {
     verifyRecoveryCode,
     setNewPassword,
     recoverySuccess,
+  };
+
+  /// The doors into the app: sign-in and the screens beside it that only a
+  /// signed-out visitor has a use for. An authenticated session is sent on
+  /// to the hub from any of them.
+  static const Set<String> entryPaths = {
+    login,
+    createAccount,
+    ...recoveryPaths,
   };
 
   /// Reachable by anyone, signed in or not.

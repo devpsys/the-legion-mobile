@@ -8,8 +8,8 @@ import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/money.dart';
 import '../../../../core/utils/responsive.dart';
+import '../../../../core/widgets/brand_crest_tile.dart';
 import '../models/application_detail_models.dart';
-import 'brand_crest_tile.dart';
 import 'emphasised_text.dart';
 import 'verification_qr_mark.dart';
 

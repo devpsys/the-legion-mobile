@@ -3,6 +3,7 @@ import 'package:the_legion_mobile/features/auth/data/datasources/fake/in_memory_
 import 'package:the_legion_mobile/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/login.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/logout.dart';
+import 'package:the_legion_mobile/features/auth/domain/usecases/register.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
 
@@ -18,6 +19,7 @@ Future<AuthCubit> signedInAuthCubit() async {
   final cubit = AuthCubit(
     login: LoginUseCase(repository),
     logout: LogoutUseCase(repository),
+    register: RegisterUseCase(repository),
     restoreSession: RestoreSessionUseCase(repository),
   );
   await cubit.signIn(

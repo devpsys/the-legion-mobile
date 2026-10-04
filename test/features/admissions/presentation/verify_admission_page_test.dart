@@ -4,10 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:the_legion_mobile/core/l10n/gen/app_localizations.dart';
 import 'package:the_legion_mobile/core/theme/app_text_styles.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
+import 'package:the_legion_mobile/core/widgets/brand_crest_tile.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admission_verification_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/mock/admissions_fixtures.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/pages/verify_admission_page.dart';
-import 'package:the_legion_mobile/features/admissions/presentation/widgets/brand_crest_tile.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/status_tag.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/verification_result_card.dart';
 

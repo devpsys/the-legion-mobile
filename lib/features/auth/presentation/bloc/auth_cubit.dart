@@ -8,6 +8,7 @@ import '../../../../core/utils/app_logger.dart';
 import '../../domain/entities/sign_in_attempts.dart';
 import '../../domain/usecases/login.dart';
 import '../../domain/usecases/logout.dart';
+import '../../domain/usecases/register.dart';
 import '../../domain/usecases/restore_session.dart';
 import 'auth_state.dart';
 
@@ -20,11 +21,13 @@ class AuthCubit extends Cubit<AuthState> implements AuthGuard {
   AuthCubit({
     required LoginUseCase login,
     required LogoutUseCase logout,
+    required RegisterUseCase register,
     required RestoreSessionUseCase restoreSession,
     DateTime Function()? now,
     Duration cooldown = SignInAttempts.cooldown,
   }) : _login = login,
        _logout = logout,
+       _register = register,
        _restoreSession = restoreSession,
        _now = now ?? DateTime.now,
        _cooldown = cooldown,
@@ -32,6 +35,7 @@ class AuthCubit extends Cubit<AuthState> implements AuthGuard {
 
   final LoginUseCase _login;
   final LogoutUseCase _logout;
+  final RegisterUseCase _register;
   final RestoreSessionUseCase _restoreSession;
 
   /// Injectable clock and cooldown keep the lockout rule testable.
@@ -94,6 +98,61 @@ class AuthCubit extends Cubit<AuthState> implements AuthGuard {
         ),
       );
     }
+  }
+
+  /// Opens an applicant account and signs the applicant in. On success the
+  /// router redirects to the protected area, as after [signIn].
+  ///
+  /// Nothing here counts towards the sign-in limit: a rejected registration
+  /// is a form problem, not a guessed password. The streak already on the
+  /// state is carried through untouched.
+  Future<void> register({
+    required String firstName,
+    required String surname,
+    required String email,
+    required String password,
+    required String confirmPassword,
+    String otherNames = '',
+    String phone = '',
+  }) async {
+    if (state.isBusy || state.isRateLimited) return;
+
+    emit(state.copyWith(status: AuthStatus.registering, clearFailure: true));
+    try {
+      final user = await _register(
+        firstName: firstName,
+        surname: surname,
+        otherNames: otherNames,
+        email: email,
+        phone: phone,
+        password: password,
+        confirmPassword: confirmPassword,
+      );
+      _cancelCooldown();
+      emit(AuthState.authenticated(user));
+    } on Failure catch (failure) {
+      emit(
+        AuthState.unauthenticated(failure: failure, attempts: state.attempts),
+      );
+    } catch (error, stackTrace) {
+      AppLogger.instance.e('Registration crashed', error, stackTrace);
+      emit(
+        AuthState.unauthenticated(
+          failure: UnexpectedFailure(message: '$error'),
+          attempts: state.attempts,
+        ),
+      );
+    }
+  }
+
+  /// Drops the last failure without touching anything else.
+  ///
+  /// Sign-in and registration share this state, so a screen that is entered
+  /// with the other screen's failure still on it clears it first — a wrong
+  /// password is not something to show under a blank registration form.
+  void clearFailure() {
+    if (state.failure == null) return;
+    emit(state.copyWith(clearFailure: true));
   }
 
   /// Clears the session and returns to the login screen.

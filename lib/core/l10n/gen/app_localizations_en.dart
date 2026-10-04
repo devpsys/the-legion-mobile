@@ -69,6 +69,20 @@ class AppLocalizationsEn extends AppLocalizations {
       'Password must be at least 8 characters.';
 
   @override
+  String get validationPasswordNeedsLettersAndNumbers =>
+      'Use both letters and numbers in your password.';
+
+  @override
+  String get validationPasswordMismatch => 'The passwords do not match.';
+
+  @override
+  String get validationInvalidPhone => 'Enter a valid phone number.';
+
+  @override
+  String get validationEmailAlreadyRegistered =>
+      'An account already exists for this email address. Sign in instead.';
+
+  @override
   String get validationInvalidCredentials => 'Incorrect email or password.';
 
   @override
@@ -143,6 +157,88 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get loginCopyright =>
       'Secure Institutional Verification © The Legion University';
+
+  @override
+  String get createAccountBackTooltip => 'Back to sign in';
+
+  @override
+  String get createAccountBrandCaption => 'The Legion University Admissions';
+
+  @override
+  String get createAccountTitle => 'Create an applicant account';
+
+  @override
+  String get createAccountSubtitle =>
+      'Apply for admission, claim your JAMB result and track your offer. Students and staff get their accounts from the university.';
+
+  @override
+  String get fieldRequiredMarker => '*';
+
+  @override
+  String createAccountOptionalLabel(Object label) {
+    return '$label (optional)';
+  }
+
+  @override
+  String get createAccountFirstName => 'First name';
+
+  @override
+  String get createAccountFirstNameHint => 'e.g. Oluwaseun';
+
+  @override
+  String get createAccountSurname => 'Surname';
+
+  @override
+  String get createAccountSurnameHint => 'e.g. Adeyemi';
+
+  @override
+  String get createAccountOtherNames => 'Other names';
+
+  @override
+  String get createAccountOtherNamesHint => 'e.g. Michael';
+
+  @override
+  String get createAccountEmail => 'Email address';
+
+  @override
+  String get createAccountEmailHint => 'candidate@example.com';
+
+  @override
+  String get createAccountEmailHelper => 'We\'ll send a link to confirm it.';
+
+  @override
+  String get createAccountPhone => 'Phone number';
+
+  @override
+  String get createAccountPhoneHint => '+234 803 123 4567';
+
+  @override
+  String get createAccountPassword => 'Password';
+
+  @override
+  String get createAccountPasswordHint => 'Enter password';
+
+  @override
+  String get createAccountPasswordHelper =>
+      '8 or more characters, with letters and numbers.';
+
+  @override
+  String get createAccountConfirmPassword => 'Confirm password';
+
+  @override
+  String get createAccountConfirmPasswordHint => 'Repeat password';
+
+  @override
+  String get createAccountSubmit => 'Create account';
+
+  @override
+  String get createAccountSubmitting => 'Creating account';
+
+  @override
+  String get createAccountHaveAccount => 'Already have an account?';
+
+  @override
+  String get createAccountSignIn => 'Sign in';
 
   @override
   String get rateLimitTitle => 'Too many sign-in attempts';

@@ -1,5 +1,7 @@
 import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/error/exceptions.dart';
+import '../../../../../core/error/validation.dart';
+import '../../../domain/entities/registration.dart';
 import '../../models/auth_tokens_model.dart';
 import '../../models/login_response_model.dart';
 import '../../models/user_model.dart';
@@ -15,14 +17,23 @@ import '../remote/auth_remote_data_source.dart';
 /// Demo credentials: **any** email address with the password
 /// [acceptedPassword] (`legion123`). Add addresses to [rejectedEmails] to
 /// exercise the error and rate-limit screens while designing them.
+///
+/// Registration opens an account for any address not already on the
+/// register — [takenEmails], plus whatever this instance has registered since
+/// it was created — and signs the new applicant straight in.
 class FakeAuthRemoteDataSource implements AuthRemoteDataSource {
   FakeAuthRemoteDataSource({
     this.latency = defaultLatency,
     this.acceptedPassword = defaultPassword,
     this.rejectedEmails = const <String>{},
+    Set<String> takenEmails = defaultTakenEmails,
     this.demoDisplayName = defaultDisplayName,
     this.demoAvatarReference = AppAssets.studentAvatar,
-  });
+  }) : _register = {for (final email in takenEmails) email.toLowerCase()};
+
+  /// Addresses that already have an account, so the "already registered"
+  /// path can be exercised: the demo student's own.
+  static const Set<String> defaultTakenEmails = {'ada@the-legion.dev'};
 
   /// Artificial round-trip time so loading states are actually visible.
   static const Duration defaultLatency = Duration(milliseconds: 600);
@@ -45,19 +56,27 @@ class FakeAuthRemoteDataSource implements AuthRemoteDataSource {
   /// Lifetime handed to the fake tokens.
   static const Duration sessionLifetime = Duration(hours: 8);
 
+  /// Prefix of the ids handed to accounts opened through [register].
+  static const String applicantIdPrefix = 'usr_applicant_';
+
   final Duration latency;
   final String acceptedPassword;
   final Set<String> rejectedEmails;
   final String demoDisplayName;
+
+  /// Lower-cased addresses with an account, seeded from `takenEmails`.
+  final Set<String> _register;
+
+  /// Every address with an account: the seeded ones and those this instance
+  /// has opened since. Exposed for assertions in tests.
+  Set<String> get registeredEmails => Set.unmodifiable(_register);
 
   @override
   Future<LoginResponseModel> login({
     required String email,
     required String password,
   }) async {
-    if (latency > Duration.zero) {
-      await Future<void>.delayed(latency);
-    }
+    await _roundTrip();
 
     if (rejectedEmails.contains(email.toLowerCase()) ||
         password != acceptedPassword) {
@@ -67,19 +86,55 @@ class FakeAuthRemoteDataSource implements AuthRemoteDataSource {
       );
     }
 
-    return LoginResponseModel(
-      user: UserModel(
+    return _session(
+      UserModel(
         id: demoUserId,
         email: email,
         displayName: demoDisplayName,
         avatarUrl: demoAvatarReference,
         createdAt: demoAccountCreatedAt,
       ),
-      tokens: AuthTokensModel(
-        accessToken: 'fake_access_token',
-        refreshToken: 'fake_refresh_token',
-        expiresAt: DateTime.now().add(sessionLifetime),
+    );
+  }
+
+  @override
+  Future<LoginResponseModel> register(Registration registration) async {
+    await _roundTrip();
+
+    final email = registration.email.toLowerCase();
+    if (_register.contains(email)) {
+      throw const ValidationException(
+        field: ValidationField.email,
+        validationCode: ValidationCode.emailAlreadyRegistered,
+        message: 'An account already exists for this email address',
+        statusCode: AuthRemoteDataSourceImpl.conflictStatusCode,
+      );
+    }
+    _register.add(email);
+
+    // A new applicant has no portrait yet: the avatar falls back to initials.
+    return _session(
+      UserModel(
+        id: '$applicantIdPrefix${_register.length}',
+        email: registration.email,
+        displayName: registration.displayName,
+        createdAt: DateTime.now(),
       ),
     );
   }
+
+  Future<void> _roundTrip() async {
+    if (latency > Duration.zero) {
+      await Future<void>.delayed(latency);
+    }
+  }
+
+  LoginResponseModel _session(UserModel user) => LoginResponseModel(
+    user: user,
+    tokens: AuthTokensModel(
+      accessToken: 'fake_access_token',
+      refreshToken: 'fake_refresh_token',
+      expiresAt: DateTime.now().add(sessionLifetime),
+    ),
+  );
 }

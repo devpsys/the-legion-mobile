@@ -9,6 +9,7 @@ import 'package:the_legion_mobile/features/auth/data/repositories/auth_repositor
 import 'package:the_legion_mobile/features/auth/domain/entities/sign_in_attempts.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/login.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/logout.dart';
+import 'package:the_legion_mobile/features/auth/domain/usecases/register.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:the_legion_mobile/features/auth/presentation/pages/login_page.dart';
@@ -50,6 +51,7 @@ void main() {
     cubit = AuthCubit(
       login: LoginUseCase(repository),
       logout: LogoutUseCase(repository),
+      register: RegisterUseCase(repository),
       restoreSession: RestoreSessionUseCase(repository),
       now: clock.call,
       cooldown: const Duration(seconds: 1),

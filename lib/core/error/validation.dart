@@ -3,7 +3,15 @@
 /// Lives in `core` so both the domain layer (which raises validation
 /// failures) and the presentation layer (which renders them) can agree on it
 /// without the domain depending on Flutter.
-enum ValidationField { email, password, generic }
+enum ValidationField {
+  email,
+  password,
+  firstName,
+  surname,
+  phone,
+  confirmPassword,
+  generic,
+}
 
 /// A machine readable reason why input was rejected.
 ///
@@ -13,6 +21,10 @@ enum ValidationCode {
   required,
   invalidEmail,
   passwordTooShort,
+  passwordNeedsLettersAndNumbers,
+  passwordMismatch,
+  invalidPhone,
+  emailAlreadyRegistered,
   invalidCredentials,
   invalidRequest,
 }

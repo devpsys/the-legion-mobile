@@ -11,6 +11,7 @@ import '../../features/admissions/presentation/pages/applications_page.dart';
 import '../../features/admissions/presentation/pages/programmes_page.dart';
 import '../../features/admissions/presentation/pages/verify_admission_page.dart';
 import '../../features/admissions/presentation/widgets/admissions_shell.dart';
+import '../../features/auth/presentation/pages/create_account_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
 import '../../features/home/presentation/pages/home_overview_page.dart';
@@ -35,11 +36,13 @@ import 'widgets/route_error_page.dart';
 /// | Session | Current location | Redirect |
 /// | --- | --- | --- |
 /// | unresolved | anything but `/` | `/` (splash) |
-/// | resolved, anonymous | anything but `/login`, the recovery flow and the public screens | `/login` |
-/// | resolved, authenticated | `/`, `/login` or the recovery flow | `/home` |
+/// | resolved, anonymous | anything but the entry screens and the public screens | `/login` |
+/// | resolved, authenticated | `/` or an entry screen | `/home` |
 ///
-/// The public screens (`Routes.publicPaths`) are left alone in both resolved
-/// states: letter verification is for whoever holds the letter.
+/// The entry screens (`Routes.entryPaths`) are sign-in, account creation and
+/// the recovery flow. The public screens (`Routes.publicPaths`) are left alone
+/// in both resolved states: letter verification is for whoever holds the
+/// letter.
 String? resolveRedirect({
   required AuthGuard authGuard,
   required String location,
@@ -51,20 +54,18 @@ String? resolveRedirect({
   }
 
   if (!authGuard.isAuthenticated) {
-    // Anonymous: the splash has done its job. Sign-in, the recovery flow and
-    // the public screens are the only reachable ones — recovery is exactly
-    // what a signed-out visitor needs, so it must not bounce back to sign-in.
-    final isPublicScreen =
-        location == Routes.login ||
-        Routes.recoveryPaths.contains(location) ||
+    // Anonymous: the splash has done its job. The entry screens and the
+    // public screens are the only reachable ones — recovery and account
+    // creation are exactly what a signed-out visitor needs, so they must not
+    // bounce back to sign-in.
+    final isReachable =
+        Routes.entryPaths.contains(location) ||
         Routes.publicPaths.contains(location);
-    return isPublicScreen ? null : Routes.login;
+    return isReachable ? null : Routes.login;
   }
 
-  // Authenticated: nothing left to do on the splash, the login screen or the
-  // recovery flow.
-  final isEntryScreen = location == Routes.splash || location == Routes.login;
-  if (isEntryScreen || Routes.recoveryPaths.contains(location)) {
+  // Authenticated: nothing left to do on the splash or any entry screen.
+  if (location == Routes.splash || Routes.entryPaths.contains(location)) {
     return Routes.home;
   }
   return null;
@@ -97,6 +98,13 @@ GoRouter createRouter({
         path: Routes.login,
         name: Routes.loginName,
         builder: (context, state) => const LoginPage(),
+      ),
+      // Opening an applicant account reads the same session cubit as
+      // sign-in: success is a session, and the redirect takes it from there.
+      GoRoute(
+        path: Routes.createAccount,
+        name: Routes.createAccountName,
+        builder: (context, state) => const CreateAccountPage(),
       ),
       // Public verification of an admission letter. Outside every shell: the
       // person holding the letter is not a candidate and has no portal to be

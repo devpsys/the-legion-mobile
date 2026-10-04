@@ -195,10 +195,19 @@ class LockedDeck extends StatelessWidget {
 
 /// Tinted sub-header row: title, subtitle and a leading icon chip.
 class CardHeader extends StatelessWidget {
-  const CardHeader({required this.title, required this.subtitle, super.key});
+  const CardHeader({
+    required this.title,
+    required this.subtitle,
+    this.icon = Icons.lock_outline,
+    super.key,
+  });
 
   final String title;
   final String subtitle;
+
+  /// The glyph in the chip: a lock for sign-in, a new person for
+  /// registration.
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -242,7 +251,7 @@ class CardHeader extends StatelessWidget {
               shape: BoxShape.circle,
             ),
             child: Icon(
-              Icons.lock_outline,
+              icon,
               size: AppDimensions.iconMedium,
               color: theme.colorScheme.primary,
             ),

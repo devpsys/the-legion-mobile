@@ -5,17 +5,67 @@ import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/responsive.dart';
 
+/// Plain text input — a name, a phone number. The label and helper live in
+/// [FieldCompartment]; this widget owns only the field itself, so every
+/// auth form's fields are the same field.
+class TextInputField extends StatelessWidget {
+  const TextInputField({
+    required this.controller,
+    required this.hint,
+    this.focusNode,
+    this.onSubmitted,
+    this.enabled = true,
+    this.keyboardType = TextInputType.text,
+    this.textInputAction = TextInputAction.next,
+    this.textCapitalization = TextCapitalization.words,
+    this.autofillHints,
+    super.key,
+  });
+
+  final TextEditingController controller;
+  final String hint;
+  final FocusNode? focusNode;
+  final ValueChanged<String>? onSubmitted;
+  final bool enabled;
+  final TextInputType keyboardType;
+  final TextInputAction textInputAction;
+  final TextCapitalization textCapitalization;
+  final Iterable<String>? autofillHints;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      focusNode: focusNode,
+      enabled: enabled,
+      onSubmitted: onSubmitted,
+      keyboardType: keyboardType,
+      textInputAction: textInputAction,
+      textCapitalization: textCapitalization,
+      autofillHints: autofillHints,
+      decoration: InputDecoration(hintText: hint),
+    );
+  }
+}
+
 /// Email input. The label and helper live in [FieldCompartment]; this widget
 /// owns only the field itself.
 class EmailTextField extends StatelessWidget {
   const EmailTextField({
     required this.controller,
+    this.hint,
+    this.focusNode,
     this.onSubmitted,
     this.enabled = true,
     super.key,
   });
 
   final TextEditingController controller;
+
+  /// The sign-in hint when omitted; registration shows an applicant's.
+  final String? hint;
+
+  final FocusNode? focusNode;
   final ValueChanged<String>? onSubmitted;
   final bool enabled;
 
@@ -23,6 +73,7 @@ class EmailTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+      focusNode: focusNode,
       enabled: enabled,
       onSubmitted: onSubmitted,
       keyboardType: TextInputType.emailAddress,
@@ -31,7 +82,7 @@ class EmailTextField extends StatelessWidget {
       autocorrect: false,
       inputFormatters: [FilteringTextInputFormatter.deny(RegExp(r'\s'))],
       decoration: InputDecoration(
-        hintText: context.l10n.loginEmailHint,
+        hintText: hint ?? context.l10n.loginEmailHint,
         suffixIcon: Icon(
           Icons.mail_outline,
           size: AppDimensions.iconMedium,
@@ -46,14 +97,28 @@ class EmailTextField extends StatelessWidget {
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
     required this.controller,
+    this.hint,
+    this.focusNode,
     this.onSubmitted,
     this.enabled = true,
+    this.textInputAction = TextInputAction.done,
+    this.isNewPassword = false,
     super.key,
   });
 
   final TextEditingController controller;
+
+  /// The sign-in hint when omitted.
+  final String? hint;
+
+  final FocusNode? focusNode;
   final ValueChanged<String>? onSubmitted;
   final bool enabled;
+  final TextInputAction textInputAction;
+
+  /// Tells the platform's password manager this is a password being chosen,
+  /// not one being recalled.
+  final bool isNewPassword;
 
   @override
   PasswordTextFieldState createState() => PasswordTextFieldState();
@@ -67,16 +132,21 @@ class PasswordTextFieldState extends State<PasswordTextField> {
     final outlineColor = context.colors.outline;
     return TextField(
       controller: widget.controller,
+      focusNode: widget.focusNode,
       enabled: widget.enabled,
       onSubmitted: widget.onSubmitted,
       obscureText: _isObscured,
       keyboardType: TextInputType.visiblePassword,
-      textInputAction: TextInputAction.done,
-      autofillHints: const [AutofillHints.password],
+      textInputAction: widget.textInputAction,
+      autofillHints: [
+        widget.isNewPassword
+            ? AutofillHints.newPassword
+            : AutofillHints.password,
+      ],
       autocorrect: false,
       enableSuggestions: false,
       decoration: InputDecoration(
-        hintText: context.l10n.loginPasswordHint,
+        hintText: widget.hint ?? context.l10n.loginPasswordHint,
         suffixIcon: IconButton(
           onPressed: () => setState(() => _isObscured = !_isObscured),
           tooltip: _isObscured

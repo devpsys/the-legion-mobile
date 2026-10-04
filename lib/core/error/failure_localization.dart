@@ -8,6 +8,12 @@ extension ValidationCodeLocalization on ValidationCode {
     ValidationCode.required => l10n.validationRequired,
     ValidationCode.invalidEmail => l10n.validationInvalidEmail,
     ValidationCode.passwordTooShort => l10n.validationPasswordTooShort,
+    ValidationCode.passwordNeedsLettersAndNumbers =>
+      l10n.validationPasswordNeedsLettersAndNumbers,
+    ValidationCode.passwordMismatch => l10n.validationPasswordMismatch,
+    ValidationCode.invalidPhone => l10n.validationInvalidPhone,
+    ValidationCode.emailAlreadyRegistered =>
+      l10n.validationEmailAlreadyRegistered,
     ValidationCode.invalidCredentials => l10n.validationInvalidCredentials,
     ValidationCode.invalidRequest => l10n.validationInvalidRequest,
   };

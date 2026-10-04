@@ -6,6 +6,7 @@ import 'package:the_legion_mobile/features/auth/domain/entities/sign_in_attempts
 import 'package:the_legion_mobile/features/auth/domain/entities/user.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/login.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/logout.dart';
+import 'package:the_legion_mobile/features/auth/domain/usecases/register.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_state.dart';
@@ -13,6 +14,8 @@ import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_state.dar
 class _MockLogin extends Mock implements LoginUseCase {}
 
 class _MockLogout extends Mock implements LogoutUseCase {}
+
+class _MockRegister extends Mock implements RegisterUseCase {}
 
 class _MockRestoreSession extends Mock implements RestoreSessionUseCase {}
 
@@ -35,6 +38,7 @@ class _FakeClock {
 void main() {
   late _MockLogin login;
   late _MockLogout logout;
+  late _MockRegister register;
   late _MockRestoreSession restoreSession;
   late _FakeClock clock;
 
@@ -47,6 +51,7 @@ void main() {
   setUp(() {
     login = _MockLogin();
     logout = _MockLogout();
+    register = _MockRegister();
     restoreSession = _MockRestoreSession();
     clock = _FakeClock();
 
@@ -57,6 +62,7 @@ void main() {
       AuthCubit(
         login: login,
         logout: logout,
+        register: register,
         restoreSession: restoreSession,
         now: clock.call,
         cooldown: cooldown,

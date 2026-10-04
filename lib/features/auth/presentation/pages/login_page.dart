@@ -130,7 +130,8 @@ class LoginPageState extends State<LoginPage> {
                                       context.l10n.loginActionCreateAccount,
                                   verifyLetterLabel:
                                       context.l10n.loginActionVerifyLetter,
-                                  onCreateAccount: _notAvailable,
+                                  onCreateAccount: () =>
+                                      context.goNamed(Routes.createAccountName),
                                   // Public: whoever holds a letter may check
                                   // it without an account.
                                   onVerifyLetter: () => context.goNamed(

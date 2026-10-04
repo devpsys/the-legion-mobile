@@ -202,6 +202,30 @@ abstract class AppLocalizations {
   /// **'Password must be at least 8 characters.'**
   String get validationPasswordTooShort;
 
+  /// No description provided for @validationPasswordNeedsLettersAndNumbers.
+  ///
+  /// In en, this message translates to:
+  /// **'Use both letters and numbers in your password.'**
+  String get validationPasswordNeedsLettersAndNumbers;
+
+  /// No description provided for @validationPasswordMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'The passwords do not match.'**
+  String get validationPasswordMismatch;
+
+  /// No description provided for @validationInvalidPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number.'**
+  String get validationInvalidPhone;
+
+  /// No description provided for @validationEmailAlreadyRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'An account already exists for this email address. Sign in instead.'**
+  String get validationEmailAlreadyRegistered;
+
   /// No description provided for @validationInvalidCredentials.
   ///
   /// In en, this message translates to:
@@ -345,6 +369,162 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Secure Institutional Verification © The Legion University'**
   String get loginCopyright;
+
+  /// No description provided for @createAccountBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to sign in'**
+  String get createAccountBackTooltip;
+
+  /// No description provided for @createAccountBrandCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'The Legion University Admissions'**
+  String get createAccountBrandCaption;
+
+  /// No description provided for @createAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an applicant account'**
+  String get createAccountTitle;
+
+  /// No description provided for @createAccountSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply for admission, claim your JAMB result and track your offer. Students and staff get their accounts from the university.'**
+  String get createAccountSubtitle;
+
+  /// No description provided for @fieldRequiredMarker.
+  ///
+  /// In en, this message translates to:
+  /// **'*'**
+  String get fieldRequiredMarker;
+
+  /// No description provided for @createAccountOptionalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'{label} (optional)'**
+  String createAccountOptionalLabel(Object label);
+
+  /// No description provided for @createAccountFirstName.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get createAccountFirstName;
+
+  /// No description provided for @createAccountFirstNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Oluwaseun'**
+  String get createAccountFirstNameHint;
+
+  /// No description provided for @createAccountSurname.
+  ///
+  /// In en, this message translates to:
+  /// **'Surname'**
+  String get createAccountSurname;
+
+  /// No description provided for @createAccountSurnameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Adeyemi'**
+  String get createAccountSurnameHint;
+
+  /// No description provided for @createAccountOtherNames.
+  ///
+  /// In en, this message translates to:
+  /// **'Other names'**
+  String get createAccountOtherNames;
+
+  /// No description provided for @createAccountOtherNamesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Michael'**
+  String get createAccountOtherNamesHint;
+
+  /// No description provided for @createAccountEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email address'**
+  String get createAccountEmail;
+
+  /// No description provided for @createAccountEmailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'candidate@example.com'**
+  String get createAccountEmailHint;
+
+  /// No description provided for @createAccountEmailHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'We\'ll send a link to confirm it.'**
+  String get createAccountEmailHelper;
+
+  /// No description provided for @createAccountPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number'**
+  String get createAccountPhone;
+
+  /// No description provided for @createAccountPhoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'+234 803 123 4567'**
+  String get createAccountPhoneHint;
+
+  /// No description provided for @createAccountPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get createAccountPassword;
+
+  /// No description provided for @createAccountPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter password'**
+  String get createAccountPasswordHint;
+
+  /// No description provided for @createAccountPasswordHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'8 or more characters, with letters and numbers.'**
+  String get createAccountPasswordHelper;
+
+  /// No description provided for @createAccountConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password'**
+  String get createAccountConfirmPassword;
+
+  /// No description provided for @createAccountConfirmPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat password'**
+  String get createAccountConfirmPasswordHint;
+
+  /// No description provided for @createAccountSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get createAccountSubmit;
+
+  /// No description provided for @createAccountSubmitting.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating account'**
+  String get createAccountSubmitting;
+
+  /// No description provided for @createAccountHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get createAccountHaveAccount;
+
+  /// No description provided for @createAccountSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get createAccountSignIn;
 
   /// No description provided for @rateLimitTitle.
   ///

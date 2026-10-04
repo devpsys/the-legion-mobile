@@ -1,9 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:the_legion_mobile/core/error/failures.dart';
+import 'package:the_legion_mobile/core/error/validation.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/fake_auth_remote_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/datasources/fake/in_memory_auth_local_data_source.dart';
 import 'package:the_legion_mobile/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/login.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/logout.dart';
+import 'package:the_legion_mobile/features/auth/domain/usecases/register.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_state.dart';
@@ -23,6 +26,7 @@ void main() {
     cubit = AuthCubit(
       login: LoginUseCase(repository),
       logout: LogoutUseCase(repository),
+      register: RegisterUseCase(repository),
       restoreSession: RestoreSessionUseCase(repository),
     );
   });
@@ -58,6 +62,7 @@ void main() {
     final restarted = AuthCubit(
       login: LoginUseCase(repository),
       logout: LogoutUseCase(repository),
+      register: RegisterUseCase(repository),
       restoreSession: RestoreSessionUseCase(repository),
     );
     addTearDown(restarted.close);
@@ -84,5 +89,78 @@ void main() {
 
     expect(cubit.state.status, AuthStatus.unauthenticated);
     expect(cubit.state.failure, isNotNull);
+  });
+
+  group('registration', () {
+    Future<void> register({String email = 'seun@example.com'}) =>
+        cubit.register(
+          firstName: 'Oluwaseun',
+          surname: 'Adeyemi',
+          email: email,
+          phone: '+234 803 123 4567',
+          password: 'legion123',
+          confirmPassword: 'legion123',
+        );
+
+    test('opens an account and signs the applicant straight in', () async {
+      await register();
+
+      expect(cubit.state.isAuthenticated, isTrue);
+      expect(cubit.state.user?.email, 'seun@example.com');
+      expect(cubit.state.user?.displayName, 'Oluwaseun Adeyemi');
+      expect(
+        cubit.state.user?.avatarUrl,
+        isNull,
+        reason: 'a new applicant has no portrait; the avatar shows initials',
+      );
+      expect(cubit.state.user?.initials, 'OA');
+      // The session is persisted like a sign-in, so a warm start restores it.
+      expect(local.cachedUser?.email, 'seun@example.com');
+      expect(await local.readTokens(), isNotNull);
+    });
+
+    test('rejects an address that already has an account', () async {
+      // The demo student's own address is on the register.
+      await register(email: email);
+
+      expect(cubit.state.status, AuthStatus.unauthenticated);
+      expect(
+        cubit.state.failure,
+        isA<ValidationFailure>()
+            .having((f) => f.field, 'field', ValidationField.email)
+            .having(
+              (f) => f.validationCode,
+              'code',
+              ValidationCode.emailAlreadyRegistered,
+            ),
+      );
+      expect(local.cachedUser, isNull);
+    });
+
+    test('remembers the accounts it has opened', () async {
+      await register();
+      await cubit.signOut();
+
+      await register(email: 'SEUN@example.com');
+
+      expect(
+        cubit.state.failure,
+        isA<ValidationFailure>().having(
+          (f) => f.validationCode,
+          'code',
+          ValidationCode.emailAlreadyRegistered,
+        ),
+        reason: 'the register is case-insensitive, like email itself',
+      );
+    });
+
+    test('a rejected form leaves the sign-in allowance untouched', () async {
+      await cubit.signIn(email: email, password: 'not-the-password');
+      expect(cubit.state.attempts.failedAttempts, 1);
+
+      await register(email: email);
+
+      expect(cubit.state.attempts.failedAttempts, 1);
+    });
   });
 }

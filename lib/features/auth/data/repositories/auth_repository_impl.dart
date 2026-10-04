@@ -1,4 +1,5 @@
 import '../../../../core/error/failure_translator.dart';
+import '../../domain/entities/registration.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/local/auth_local_data_source.dart';
@@ -20,6 +21,16 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<User> login({required String email, required String password}) {
     return translateToFailure(() async {
       final response = await _remote.login(email: email, password: password);
+      await _local.saveTokens(response.tokens);
+      await _local.cacheUser(response.user);
+      return response.user;
+    });
+  }
+
+  @override
+  Future<User> register(Registration registration) {
+    return translateToFailure(() async {
+      final response = await _remote.register(registration);
       await _local.saveTokens(response.tokens);
       await _local.cacheUser(response.user);
       return response.user;

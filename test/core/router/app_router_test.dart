@@ -21,8 +21,10 @@ import 'package:the_legion_mobile/features/auth/data/datasources/fake/in_memory_
 import 'package:the_legion_mobile/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/login.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/logout.dart';
+import 'package:the_legion_mobile/features/auth/domain/usecases/register.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
+import 'package:the_legion_mobile/features/auth/presentation/widgets/registration_card.dart';
 import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_cubit.dart';
 import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_state.dart';
 
@@ -219,6 +221,31 @@ void main() {
       );
     });
 
+    test('lets an anonymous visitor open an applicant account', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: false,
+      );
+
+      expect(
+        resolveRedirect(authGuard: guard, location: Routes.createAccount),
+        isNull,
+      );
+    });
+
+    test('bounces a signed-in visitor out of account creation', () {
+      final guard = _FakeAuthGuard(
+        isSessionResolved: true,
+        isAuthenticated: true,
+      );
+
+      expect(
+        resolveRedirect(authGuard: guard, location: Routes.createAccount),
+        Routes.home,
+        reason: 'somebody with a session already has an account',
+      );
+    });
+
     test('lets anyone, signed in or not, verify an admission letter', () {
       // The person holding a letter is a landlord or an employer, who has no
       // account; and a student scanning their own letter has one.
@@ -366,6 +393,7 @@ void main() {
       cubit = AuthCubit(
         login: LoginUseCase(repository),
         logout: LogoutUseCase(repository),
+        register: RegisterUseCase(repository),
         restoreSession: RestoreSessionUseCase(repository),
       );
     });
@@ -896,6 +924,100 @@ void main() {
       await tester.tap(find.text('Sign in to the portal'));
       await tester.pumpAndSettle();
       expect(find.text('Verify an admission letter'), findsOneWidget);
+    });
+
+    testWidgets('the sign-in screen leads to account creation and back', (
+      tester,
+    ) async {
+      tester.view
+        ..physicalSize = const Size(390, 844) * 2
+        ..devicePixelRatio = 2;
+      addTearDown(tester.view.reset);
+
+      await pumpApp(tester);
+      await tester.pump();
+      await tester.pump();
+
+      await tester.ensureVisible(find.text('Create an applicant account'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Create an applicant account'));
+      await tester.pumpAndSettle();
+
+      expect(find.byType(RegistrationCard), findsOneWidget);
+      expect(find.text('Create account'), findsOneWidget);
+
+      // Both ways back lead to sign-in: the chevron and the link.
+      await tester.tap(find.byTooltip('Back to sign in'));
+      await tester.pumpAndSettle();
+      expect(find.byType(RegistrationCard), findsNothing);
+      expect(find.text('Forgot password?'), findsOneWidget);
+
+      await tester.ensureVisible(find.text('Create an applicant account'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Create an applicant account'));
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(find.text('Sign in'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Sign in'));
+      await tester.pumpAndSettle();
+      expect(find.byType(RegistrationCard), findsNothing);
+      expect(find.text('Forgot password?'), findsOneWidget);
+    });
+
+    testWidgets('the system back gesture leaves account creation for sign-in', (
+      tester,
+    ) async {
+      await pumpApp(tester);
+      await tester.pump();
+      await tester.pump();
+
+      await tester.ensureVisible(find.text('Create an applicant account'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Create an applicant account'));
+      await tester.pumpAndSettle();
+      expect(find.byType(RegistrationCard), findsOneWidget);
+
+      await tester.binding.handlePopRoute();
+      await tester.pumpAndSettle();
+      expect(find.byType(RegistrationCard), findsNothing);
+      expect(find.text('Forgot password?'), findsOneWidget);
+    });
+
+    testWidgets('a new applicant is signed in and lands on the hub', (
+      tester,
+    ) async {
+      tester.view
+        ..physicalSize = const Size(390, 1600) * 2
+        ..devicePixelRatio = 2;
+      addTearDown(tester.view.reset);
+
+      await pumpApp(tester);
+      await tester.pump();
+      await tester.pump();
+
+      await tester.ensureVisible(find.text('Create an applicant account'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Create an applicant account'));
+      await tester.pumpAndSettle();
+
+      final fields = find.byType(TextField);
+      await tester.enterText(fields.at(0), 'Oluwaseun');
+      await tester.enterText(fields.at(1), 'Adeyemi');
+      await tester.enterText(fields.at(3), 'seun@example.com');
+      await tester.enterText(fields.at(5), 'legion123');
+      await tester.enterText(fields.at(6), 'legion123');
+      await tester.ensureVisible(find.text('Create account'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Create account'));
+      await tester.pumpAndSettle();
+
+      expect(cubit.state.isAuthenticated, isTrue);
+      expect(find.byType(RegistrationCard), findsNothing);
+      expect(
+        find.text('Pay your accommodation fee'),
+        findsOneWidget,
+        reason: 'success is a session, and the redirect takes it to the hub',
+      );
     });
 
     testWidgets('the system back gesture leaves verification for sign-in', (

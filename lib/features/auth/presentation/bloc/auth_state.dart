@@ -15,6 +15,9 @@ enum AuthStatus {
   /// A sign-in request is in flight.
   authenticating,
 
+  /// An applicant account is being opened.
+  registering,
+
   /// A sign-out request is in flight.
   signingOut,
 
@@ -74,6 +77,7 @@ class AuthState extends Equatable {
   bool get isBusy =>
       status == AuthStatus.restoringSession ||
       status == AuthStatus.authenticating ||
+      status == AuthStatus.registering ||
       status == AuthStatus.signingOut;
 
   /// Fraction of the cooldown still to elapse, for the progress meter.
