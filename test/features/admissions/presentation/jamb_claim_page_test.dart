@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:the_legion_mobile/core/l10n/gen/app_localizations.dart';
 import 'package:the_legion_mobile/core/notifications/notification_cubit.dart';
 import 'package:the_legion_mobile/core/notifications/notification_fixtures.dart';
+import 'package:the_legion_mobile/core/router/route_names.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_state.dart';
@@ -395,6 +397,88 @@ void main() {
         find.byType(AdmissionsTabBar),
       );
       expect(tabBar.jambBadge, isFalse);
+    });
+
+    testWidgets('moves on to the linked application after a pause', (
+      tester,
+    ) async {
+      const pause = Duration(seconds: 2);
+      tester.view
+        ..physicalSize = const Size(390, 1800) * 2
+        ..devicePixelRatio = 2;
+      addTearDown(tester.view.reset);
+
+      // A router with just two stops: this page, and a stand-in for the
+      // detail the page is expected to leave for.
+      final router = GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (_, _) =>
+                JambClaimPage(now: designDay, linkedPause: pause),
+          ),
+          GoRoute(
+            path: Routes.admissionsApplicationDetailTemplate,
+            name: Routes.admissionsApplicationDetailName,
+            builder: (_, state) => Text('detail:${state.pathParameters['id']}'),
+          ),
+        ],
+      );
+      addTearDown(router.dispose);
+
+      await tester.pumpWidget(
+        MultiBlocProvider(
+          providers: [
+            BlocProvider<AdmissionsCubit>.value(value: admissions),
+            BlocProvider<JambClaimCubit>.value(value: claim),
+            BlocProvider<AuthCubit>.value(value: auth),
+            BlocProvider<NotificationCubit>.value(
+              value: NotificationCubit(entries: NotificationFixtures.entries),
+            ),
+          ],
+          child: MaterialApp.router(
+            theme: AppTheme.light,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            routerConfig: router,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      await fillOwnFacts(tester);
+      await tapPrimary(tester, 'Find my result');
+      await tester.ensureVisible(find.text('Confirm and link result'));
+      await tester.pumpAndSettle();
+      // The pause starts at the tap, so the clock is read from here: one
+      // frame, not a settle, which would eat into it.
+      await tester.tap(find.text('Confirm and link result'));
+      await tester.pump();
+
+      // The linked record is left on screen to be read...
+      expect(find.text('Linked'), findsOneWidget);
+      await tester.pump(pause - const Duration(milliseconds: 200));
+      expect(find.text('Linked'), findsOneWidget);
+      expect(find.textContaining('detail:'), findsNothing);
+
+      // ...and then the page leaves for the draft it was linked to.
+      await tester.pump(const Duration(milliseconds: 300));
+      await tester.pumpAndSettle();
+      expect(find.text('detail:app-00057'), findsOneWidget);
+      expect(find.byType(JambRecordCard), findsNothing);
+    });
+
+    testWidgets('does not leave if the candidate already has', (tester) async {
+      await pumpPage(tester);
+      await fillOwnFacts(tester);
+      await tapPrimary(tester, 'Find my result');
+      await tapPrimary(tester, 'Confirm and link result');
+
+      // Replacing the page before the pause ends disposes it; the pending
+      // move must go with it rather than fire into a tree that has no router.
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump(JambClaimPage.defaultLinkedPause);
+
+      expect(tester.takeException(), isNull);
     });
 
     testWidgets('opens straight onto the record when already linked', (

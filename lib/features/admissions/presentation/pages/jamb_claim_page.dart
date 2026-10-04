@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -34,10 +36,21 @@ import '../widgets/jamb_claim_form.dart';
 /// result is linked to once the candidate confirms. The page forwards input
 /// to the first and the decision to the second; it validates nothing itself.
 class JambClaimPage extends StatefulWidget {
-  const JambClaimPage({this.now, super.key});
+  const JambClaimPage({
+    this.now,
+    this.linkedPause = defaultLinkedPause,
+    super.key,
+  });
 
   /// Injected so the date picker's bounds are deterministic.
   final DateTime? now;
+
+  /// How long the linked record stays on screen before the page moves on to
+  /// the application it was linked to. Long enough to read the "Linked" pill
+  /// and the notice under it; injected so a test need not wait it out.
+  final Duration linkedPause;
+
+  static const Duration defaultLinkedPause = Duration(seconds: 3);
 
   @override
   JambClaimPageState createState() => JambClaimPageState();
@@ -48,6 +61,10 @@ class JambClaimPage extends StatefulWidget {
 /// Public because private widget classes are banned.
 class JambClaimPageState extends State<JambClaimPage> {
   final _controllers = JambClaimControllers();
+
+  /// The pending move to the application, set by [_confirm]; cancelled if the
+  /// candidate leaves first.
+  Timer? _departure;
 
   /// The oldest birthday the picker offers. Nobody sitting the UTME was born
   /// before this; the bound keeps the year wheel short.
@@ -67,6 +84,7 @@ class JambClaimPageState extends State<JambClaimPage> {
 
   @override
   void dispose() {
+    _departure?.cancel();
     _controllers.dispose();
     super.dispose();
   }
@@ -95,11 +113,31 @@ class JambClaimPageState extends State<JambClaimPage> {
 
   /// Binds the matched record to the application — the one irreversible act
   /// on this screen, and the one the warning on the form is about.
+  ///
+  /// Then, after a pause, goes to that application: the score was claimed
+  /// for the sake of the draft, and its checklist is where the candidate
+  /// sees the row ticked and what is still left to do.
   void _confirm() {
     final result = context.read<JambClaimCubit>().state.result;
     if (result == null) return;
-    context.read<AdmissionsCubit>().linkJambResult(result);
+    final admissions = context.read<AdmissionsCubit>();
+    admissions.linkJambResult(result);
     context.showMessage(context.l10n.admissionsJambLinkedMessage);
+
+    final applicationId = admissions.state.jambLinkApplicationId;
+    // Only a record with a detail screen behind it is worth leaving for.
+    if (applicationId == null ||
+        admissions.state.detailFor(applicationId) == null) {
+      return;
+    }
+    _departure?.cancel();
+    _departure = Timer(widget.linkedPause, () {
+      if (!mounted) return;
+      context.goNamed(
+        Routes.admissionsApplicationDetailName,
+        pathParameters: {'id': applicationId},
+      );
+    });
   }
 
   void _help() => context.showMessage(context.l10n.commonComingSoon);

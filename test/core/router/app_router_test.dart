@@ -14,6 +14,7 @@ import 'package:the_legion_mobile/core/theme/app_theme.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admission_verification_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/jamb_claim_cubit.dart';
+import 'package:the_legion_mobile/features/admissions/presentation/pages/jamb_claim_page.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/admission_letter_document.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_shell.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/widgets/admissions_tab_bar.dart';
@@ -795,6 +796,20 @@ void main() {
         await tester.pumpAndSettle();
         expect(find.text('Linked'), findsOneWidget);
 
+        // After the pause the page moves on, by itself, to the draft the
+        // result was linked to — where the checklist row is now ticked.
+        await tester.pump(JambClaimPage.defaultLinkedPause);
+        await tester.pumpAndSettle();
+        expect(find.text('Before you submit'), findsOneWidget);
+        expect(find.text('4 of 9 complete'), findsOneWidget);
+        expect(find.textContaining('2026 UTME, aggregate 312'), findsOneWidget);
+        expect(find.byType(AdmissionsTabBar), findsNothing);
+
+        // Back from the detail is the record, as always.
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        expect(find.text('My applications'), findsOneWidget);
+
         // The overview no longer asks: the card is gone and the tab unbadged.
         await tester.tap(find.text('Overview'));
         await tester.pumpAndSettle();
@@ -809,19 +824,7 @@ void main() {
         );
         expect(jambTab.hasBadge, isFalse);
 
-        // ...and the draft's checklist row is ticked.
-        await tester.tap(find.text('Applications'));
-        await tester.pumpAndSettle();
-        await tester.ensureVisible(find.text('APP/2026/00057'));
-        await tester.pumpAndSettle();
-        await tester.tap(find.text('APP/2026/00057'));
-        await tester.pumpAndSettle();
-        expect(find.text('4 of 9 complete'), findsOneWidget);
-        expect(find.textContaining('2026 UTME, aggregate 312'), findsOneWidget);
-
         // Coming back to the tab shows the record, not the form.
-        await tester.binding.handlePopRoute();
-        await tester.pumpAndSettle();
         await tester.tap(find.text('JAMB'));
         await tester.pumpAndSettle();
         expect(find.text('Linked'), findsOneWidget);
