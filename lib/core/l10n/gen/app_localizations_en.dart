@@ -2021,4 +2021,352 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get feesCheckoutNothingToPay =>
       'There is nothing to pay on these invoices.';
+
+  @override
+  String get feesCardCheckoutTitle => 'Card checkout';
+
+  @override
+  String get feesCardCheckoutEyebrow => 'The Legion · Bursary gateway';
+
+  @override
+  String get feesCardCheckoutBackTooltip => 'Back to payment details';
+
+  @override
+  String get feesPciCompliant => 'PCI-DSS compliant';
+
+  @override
+  String get feesFeeBreakdown => 'Fee breakdown';
+
+  @override
+  String get feesItemisedSchedule => 'Itemised schedule';
+
+  @override
+  String get feesSecurePayment => 'Secure payment';
+
+  @override
+  String get feesTlsActive => 'TLS 1.3 active';
+
+  @override
+  String get feesSecurePaymentNote =>
+      '256-bit TLS encrypted sovereign bursary settlement.';
+
+  @override
+  String get feesSupportedNetworks => 'Supported networks';
+
+  @override
+  String get feesNetworkMastercard => 'Mastercard';
+
+  @override
+  String get feesNetworkVerve => 'Verve';
+
+  @override
+  String get feesNetworkVisa => 'Visa';
+
+  @override
+  String get feesCardInformation => 'Card information';
+
+  @override
+  String get feesCardInformationDetail =>
+      'Enter your debit or credit card details below to complete your academic fee settlement.';
+
+  @override
+  String get feesCardNumber => 'Card number';
+
+  @override
+  String get feesCardNumberHint => 'ACCT-000003';
+
+  @override
+  String get feesCardExpiry => 'Expiry date';
+
+  @override
+  String get feesCardExpiryHint => 'MM/YY';
+
+  @override
+  String get feesCardCvv => 'CVV / Security code';
+
+  @override
+  String get feesCardCvvHint => '123';
+
+  @override
+  String get feesCardCvvHelp => '3 digits';
+
+  @override
+  String get feesCardPin => 'Card PIN';
+
+  @override
+  String get feesCardPinHint => '••••';
+
+  @override
+  String get feesCardPinNote =>
+      'Required to authorise domestic debit cards via Interswitch / NIBSS before 3D-Secure verification.';
+
+  @override
+  String get feesSaveCard => 'Save card for future session payments';
+
+  @override
+  String get feesCardTokenNote =>
+      'Card details are encrypted and tokenised according to CBN regulatory standards.';
+
+  @override
+  String feesPayAmountAction(Object amount) {
+    return 'Pay $amount';
+  }
+
+  @override
+  String get feesPayRedirectNote =>
+      'You will be redirected to your bank\'s 3D-Secure authentication screen.';
+
+  @override
+  String get feesCancelToFees => 'Cancel and return to fees';
+
+  @override
+  String get feesCbnLicensed => 'Central Bank of Nigeria licensed PSP';
+
+  @override
+  String get feesEndToEndEncryption => 'End-to-end encryption';
+
+  @override
+  String feesTransactionReference(Object reference) {
+    return 'Transaction reference: $reference';
+  }
+
+  @override
+  String get feesGatewayReturnBackTooltip => 'Back to fees';
+
+  @override
+  String get feesGatewayReturnShareTooltip => 'Share receipt';
+
+  @override
+  String get feesGatewayStatusPending => 'Awaiting confirmation';
+
+  @override
+  String get feesGatewayStatusSucceeded => 'Payment successful';
+
+  @override
+  String get feesGatewayStatusFailed => 'Payment failed';
+
+  @override
+  String get feesGatewayStatusExpired => 'Payment expired';
+
+  @override
+  String get feesGatewayPendingDetail =>
+      'The gateway has not confirmed this payment yet. You can close this page. Your reference is kept below.';
+
+  @override
+  String feesGatewaySucceededDetail(Object date) {
+    return 'Remita settlement confirmed · $date';
+  }
+
+  @override
+  String get feesGatewayFailedDetail =>
+      'The gateway declined this attempt. No money was taken. Try again from your fees.';
+
+  @override
+  String get feesGatewayExpiredDetail =>
+      'This payment window closed before the gateway answered. No money was taken.';
+
+  @override
+  String get feesGatewayYouCanClose => 'You can close this page.';
+
+  @override
+  String get feesCoursePortalUnlocked => 'Course portal unlocked';
+
+  @override
+  String get feesCoursePortalActive => 'Active';
+
+  @override
+  String get feesCoursePortalDetail =>
+      'Harmattan semester registration clearance is now linked to your academic dossier.';
+
+  @override
+  String get feesRemitaRrr => 'Remita RRR';
+
+  @override
+  String get feesGatewayReference => 'Gateway reference';
+
+  @override
+  String get feesPaymentChannel => 'Payment channel';
+
+  @override
+  String get feesPaidFor => 'Paid for';
+
+  @override
+  String get feesViewOfficialReceipt => 'View official receipt';
+
+  @override
+  String get feesProceedToRegistration => 'Proceed to course registration';
+
+  @override
+  String get feesGatewayVerifiedStamp =>
+      'Cryptographically verified by The Legion Treasury';
+
+  @override
+  String get feesGatewaySupport =>
+      'Support inquiries: bursary@thelegion.edu.ng';
+
+  @override
+  String get feesGatewayReturnNotFound => 'No payment matches this reference.';
+
+  @override
+  String get feesReceiptBackTooltip => 'Back';
+
+  @override
+  String feesReceiptTitle(Object number) {
+    return 'Clearance receipt $number';
+  }
+
+  @override
+  String get feesReceiptVerifiedCleared => 'Verified & cleared';
+
+  @override
+  String get feesReceiptKeepNote =>
+      'Keep this receipt for your exam docket, hostel clearance and any bursary enquiry.';
+
+  @override
+  String get feesReceiptSavePdf => 'Print or save as PDF';
+
+  @override
+  String get feesReceiptShare => 'Share receipt';
+
+  @override
+  String get feesReceiptCopyCode => 'Copy verification code';
+
+  @override
+  String get feesReceiptCodeCopied => 'Verification code copied.';
+
+  @override
+  String get feesReceiptOffice => 'Office of the Bursar';
+
+  @override
+  String get feesReceiptUnit => 'FIS & Treasury verification unit';
+
+  @override
+  String get feesReceiptBadge => 'Official e-receipt';
+
+  @override
+  String get feesReceiptNumber => 'Receipt number';
+
+  @override
+  String get feesReceiptDate => 'Date';
+
+  @override
+  String get feesReceiptSession => 'Academic session';
+
+  @override
+  String get feesReceiptCentralRrr => 'Central RRR';
+
+  @override
+  String get feesReceiptStudentHeading => 'Student & payer';
+
+  @override
+  String feesReceiptFacultyProgram(Object department, Object faculty) {
+    return '$faculty · $department';
+  }
+
+  @override
+  String get feesReceiptItem => 'Item';
+
+  @override
+  String get feesReceiptFee => 'Fee';
+
+  @override
+  String get feesReceiptLineStatus => 'Status';
+
+  @override
+  String get feesReceiptLinePaid => 'Paid';
+
+  @override
+  String get feesReceiptTotalCleared => 'Total paid & cleared';
+
+  @override
+  String get feesReceiptSettled => 'Settled';
+
+  @override
+  String get feesReceiptToWallet => 'To wallet';
+
+  @override
+  String get feesReceiptChannel => 'Settlement channel';
+
+  @override
+  String get feesReceiptAuthCode => 'Authorisation code';
+
+  @override
+  String get feesReceiptClearingRef => 'Clearing reference';
+
+  @override
+  String get feesReceiptStamp => 'Electronically cleared & audited';
+
+  @override
+  String get feesReceiptSignatory => 'Alhaji Bello Danbatta';
+
+  @override
+  String get feesReceiptSignatoryTitle => 'University Bursar & CFO';
+
+  @override
+  String get feesReceiptVerifyUrl =>
+      'Verify at thelegion.edu.ng/verify/receipt';
+
+  @override
+  String get feesReceiptScanToVerify => 'Scan to verify payment';
+
+  @override
+  String get feesReceiptNotFound => 'No receipt matches this reference.';
+
+  @override
+  String get feesVerifyBrandCaption => 'Bursary receipt verification';
+
+  @override
+  String get feesVerifyTitle => 'Verify a receipt';
+
+  @override
+  String get feesVerifySubtitle =>
+      'Enter the verification code printed at the foot of the official bursary receipt.';
+
+  @override
+  String get feesVerifyOffice =>
+      'Office of the Registrar · Directorate of Bursary Services';
+
+  @override
+  String get feesVerifyCodeLabel => 'Receipt reference key';
+
+  @override
+  String get feesVerifyCodeHint => 'e.g. 9K8L-4M2P-TX77';
+
+  @override
+  String get feesVerifyAction => 'Verify receipt';
+
+  @override
+  String get feesVerifyGenuine => 'Genuine bursary receipt';
+
+  @override
+  String get feesVerifyReceiptNumber => 'Receipt number';
+
+  @override
+  String get feesVerifyAmount => 'Amount paid';
+
+  @override
+  String get feesVerifyPaidBy => 'Paid by';
+
+  @override
+  String get feesVerifyPaidFor => 'For';
+
+  @override
+  String get feesVerifyPaidOn => 'Payment date';
+
+  @override
+  String get feesVerifyNotFoundTitle => 'No receipt matches this code';
+
+  @override
+  String get feesVerifyNotFoundBody =>
+      'Check the code at the foot of the receipt and try again. If it still does not match, the receipt was not issued by the university.';
+
+  @override
+  String get feesVerifyPrivacyTitle => 'Privacy & redaction';
+
+  @override
+  String get feesVerifyPrivacyBody =>
+      'This page shows only what is confirmed on the official bursary ledger: receipt number, amount, payer name, purpose and date. It does not show email, phone, address, matric number, bank account or gateway references.';
+
+  @override
+  String get feesVerifySignIn => 'Sign in to the student portal';
 }

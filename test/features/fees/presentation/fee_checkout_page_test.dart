@@ -435,15 +435,63 @@ void main() {
   });
 
   group('the footer', () {
-    testWidgets('is docked, names the figure, and is not live yet', (
+    testWidgets('is docked, names the figure, and opens the card checkout', (
+      tester,
+    ) async {
+      setViewport(tester, const Size(390, 844));
+      final router = GoRouter(
+        initialLocation: Routes.feesCheckout,
+        routes: [
+          GoRoute(
+            path: Routes.fees,
+            name: Routes.feesName,
+            builder: (_, _) => const Text('fees tab'),
+            routes: [
+              GoRoute(
+                path: Routes.feesCheckoutSegment,
+                name: Routes.feesCheckoutName,
+                builder: (_, _) => const FeeCheckoutPage(invoiceIds: []),
+                routes: [
+                  GoRoute(
+                    path: Routes.feesCardCheckoutSegment,
+                    name: Routes.feesCardCheckoutName,
+                    builder: (_, _) => const Text('card checkout'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      );
+      addTearDown(router.dispose);
+
+      await tester.pumpWidget(
+        host(
+          MaterialApp.router(
+            theme: AppTheme.light,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            routerConfig: router,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Proceed to pay ₦66,350.00'), findsOneWidget);
+      expect(find.textContaining('Encrypted 256-bit TLS'), findsOneWidget);
+
+      await tester.tap(find.text('Proceed to pay ₦66,350.00'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('card checkout'), findsOneWidget);
+    });
+
+    testWidgets('bank branch still says the service is not live', (
       tester,
     ) async {
       await pumpCheckout(tester, size: const Size(390, 844));
 
-      // Docked: on the screen without scrolling, under the scrolling content.
-      expect(find.text('Proceed to pay ₦66,350.00'), findsOneWidget);
-      expect(find.textContaining('Encrypted 256-bit TLS'), findsOneWidget);
-
+      await tapText(tester, 'Bank branch via RRR invoice');
       await tester.tap(find.text('Proceed to pay ₦66,350.00'));
       await tester.pumpAndSettle();
 

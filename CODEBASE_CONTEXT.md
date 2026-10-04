@@ -166,7 +166,11 @@ intentional local UI state.
 | `/login` | sign-in | anonymous |
 | `/forgot-password` … `/success` | recovery, one cubit via `ShellRoute` | anonymous only |
 | `/home`, `/home/fees`, `/home/profile` | student shell (`StatefulShellRoute`), one branch per `HomeTab` | authenticated |
-| `/home/fees/checkout?invoices=a,b` | checkout, nested under the fees branch; `FeesCubit` shared through a branch `ShellRoute`, `FeeCheckoutCubit` per visit | authenticated |
+| `/home/fees/checkout?invoices=a,b` | university checkout; `FeesCubit` on the branch, `FeeCheckoutCubit` on a nested `ShellRoute` shared with card/return | authenticated |
+| `/home/fees/checkout/card` | card entry after Proceed (gateway method) | authenticated, full canvas |
+| `/home/fees/checkout/return?ref=` | gateway return; opens as awaiting confirmation | authenticated, full canvas |
+| `/home/fees/receipts/:id` | official e-receipt paper | authenticated, full canvas |
+| `/verify/receipt?code=` | public receipt check (five facts only) | `publicPaths` |
 | `/admissions`, `/programmes`, `/applications`, `/applications/:id` | candidate portal, one `AdmissionsCubit` | authenticated |
 
 `resolveRedirect` sends unresolved sessions to splash, anonymous users to
@@ -175,11 +179,11 @@ recovery onto `/home`. New portal paths must be covered by `Routes` or they
 bypass the session check. Back for the portal is `AdmissionsShell` /
 `admissionsBackTarget`, not a nested `PopScope`.
 
-The student shell hides its tab bar on `Routes.fullCanvasPaths` (the hub and
-the checkout). It reads the location from `state.uri.path`, not
-`state.matchedLocation`: a shell match keeps the location it was matched with,
-so after a nested route is popped `matchedLocation` is stale. The checkout is
-the only nested route in the shell today; `HomeTab` order is branch order.
+The student shell hides its tab bar on `Routes.fullCanvasPaths` (hub, checkout,
+card, gateway return) and on `Routes.isFeesReceiptPath`. It reads the location
+from `state.uri.path`, not `state.matchedLocation`: a shell match keeps the
+location it was matched with, so after a nested route is popped
+`matchedLocation` is stale. `HomeTab` order is branch order.
 
 There is no role model. Any signed-in user can open the student hub and the
 candidate portal.
@@ -202,9 +206,13 @@ candidate portal.
 | Submitted, under review, accepted, declined detail | UI only | History card only. `ApplicationOutcomeSections` says those designs do not exist yet. |
 | Admission letter, public verification (`/verify/admission`) | Mocked | Letter drawn from the record's `AdmissionLetter`; verification looks codes up in `AdmissionsFixtures.verificationRegister`, no session. |
 | Referee form | Not implemented | Design exists locally. |
-| Fees tab (`/home/fees`) | Mocked | `FeesCubit` serves `FeesFixtures.ledger` (injectable). Outstanding total, due date and the breakdown strip are derived in `FeesState` from the open invoices; invoice cards show a ledger + bar when part paid, one figure when unpaid; status labels follow the bursary vocabulary (Unpaid / Part paid / Settled / Cancelled, Successful / Awaiting confirmation). Every "pay" opens the checkout with the invoice ids in the query. Breakdown, View all and Receipt PDF are `commonComingSoon`. |
-| Fee checkout (`/home/fees/checkout`) | Mocked | `FeeCheckoutCubit.start` copies the open invoices and `PaymentTerms` from the fees state; full balance or a typed instalment (`parseNaira`, minimum / balance checks), three methods, copy of the RRR, read-only payer card. "Proceed to pay" is `commonComingSoon`: nothing says money moved until a gateway does. Gateway return, receipts, wallet and the remaining `ui-designs/fees/` screens are not built. |
-| Results, timetable, other hub modules | Not implemented | No Dart feature. |
+| Fees tab (`/home/fees`) | Mocked | `FeesCubit` serves `FeesFixtures.ledger`. Outstanding total and strip derived in `FeesState`; bursary status vocabulary. Pay opens checkout; history Receipt PDF opens `/home/fees/receipts/:id`. Breakdown and View all are `commonComingSoon`. |
+| Fee checkout (`/home/fees/checkout`) | Mocked | Amount/method selection. Gateway Proceed → card checkout; bank branch / virtual account stay `commonComingSoon`. |
+| Card checkout (`…/checkout/card`) | Mocked | Itemised schedule + card fields (UI state only, never persisted). Pay opens gateway return with a **pending** ref — nothing claims money moved. |
+| Gateway return (`…/checkout/return`) | Mocked | Four statuses (`pending` / `succeeded` / `failed` / `expired`). Pay lands on amber awaiting confirmation with a selectable reference and “You can close this page.” Success (fixture) unlocks View official receipt; registration CTA is coming soon. |
+| Official receipt (`/home/fees/receipts/:id`) | Mocked | Dark chrome around always-light paper (combined light+dark designs). Copy verification code works; Print/Share coming soon. |
+| Public receipt check (`/verify/receipt`) | Mocked | Like letter verify: no shell. Result model has only receipt number, amount, paid by, for, date — no matric/contact/gateway refs (README privacy override over the HTML mocks). |
+| Results, timetable, other hub modules | Not implemented | No Dart feature. Wallet top-up and refunds not built. |
 | Bursary officer | Not implemented | Not designed in this checkout. |
 
 Demo auth credentials are documented in README.md under "Working without an

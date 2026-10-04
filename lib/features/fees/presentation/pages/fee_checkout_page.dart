@@ -41,9 +41,14 @@ class FeeCheckoutPageState extends State<FeeCheckoutPage> {
     // The read is synchronous while the ledger is a fixture; a repository
     // version starts the visit from a listener on the fees cubit instead.
     final fees = context.read<FeesCubit>()..load();
+    final checkout = context.read<FeeCheckoutCubit>();
+    // The checkout shell keeps this cubit while the card and return screens
+    // sit above it: starting again on every rebuild would wipe the amount
+    // and method the student already chose.
+    if (checkout.state.isStarted) return;
     final terms = fees.state.terms;
     if (terms != null) {
-      context.read<FeeCheckoutCubit>().start(
+      checkout.start(
         invoices: fees.state.outstandingInvoicesFor(widget.invoiceIds),
         terms: terms,
       );

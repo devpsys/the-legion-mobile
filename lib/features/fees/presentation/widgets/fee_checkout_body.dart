@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:go_router/go_router.dart';
+
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/router/route_names.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/utils/money.dart';
 import '../../../../core/widgets/message_feedback.dart';
@@ -72,6 +75,17 @@ class FeeCheckoutBodyState extends State<FeeCheckoutBody> {
     context.showMessage(context.l10n.commonComingSoon);
   }
 
+  void _proceed(FeeCheckoutState state) {
+    if (!state.canProceed) return;
+    // Only the gateway has a card-entry screen today; bank branch and the
+    // virtual account stay on the coming-soon path until their flows land.
+    if (state.method != PaymentMethod.gateway) {
+      _notAvailable();
+      return;
+    }
+    context.goNamed(Routes.feesCardCheckoutName);
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
@@ -137,7 +151,7 @@ class FeeCheckoutBodyState extends State<FeeCheckoutBody> {
             CheckoutFooter(
               payableMinorUnits: state.payableMinorUnits,
               isEnabled: state.canProceed,
-              onProceed: _notAvailable,
+              onProceed: () => _proceed(state),
             ),
           ],
         );

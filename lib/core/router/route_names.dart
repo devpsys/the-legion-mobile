@@ -38,6 +38,42 @@ abstract final class Routes {
         if (id.trim().isNotEmpty) id.trim(),
   ];
 
+  /// Card entry nested under [feesCheckout].
+  static const String feesCardCheckoutSegment = 'card';
+
+  /// Card checkout location: `/home/fees/checkout/card`.
+  static const String feesCardCheckout =
+      '$feesCheckout/$feesCardCheckoutSegment';
+
+  /// Gateway return nested under [feesCheckout].
+  static const String feesGatewayReturnSegment = 'return';
+
+  /// Gateway return location: `/home/fees/checkout/return`.
+  static const String feesGatewayReturn =
+      '$feesCheckout/$feesGatewayReturnSegment';
+
+  /// Query parameter naming the gateway-return payment reference.
+  static const String feesGatewayReturnRefParam = 'ref';
+
+  /// Official receipt nested under [fees].
+  static const String feesReceiptSegment = 'receipts';
+
+  /// Path template of one official receipt; `:id` is the payment's id.
+  static const String feesReceiptTemplate = '$fees/$feesReceiptSegment/:id';
+
+  /// Concrete receipt location for [id].
+  static String feesReceipt(String id) =>
+      feesReceiptTemplate.replaceFirst(':id', id);
+
+  /// Public verification of a bursary receipt — for whoever is handed one.
+  ///
+  /// Outside every shell: no session, no tab bar, no bell. A code may arrive
+  /// in the query (`?code=…`), which is what the receipt's QR mark encodes.
+  static const String verifyReceipt = '/verify/receipt';
+
+  /// Name of the query parameter [verifyReceipt] reads a code from.
+  static const String verifyReceiptCodeParam = 'code';
+
   // Account recovery flow
   static const String forgotPassword = '/forgot-password';
   static const String verifyRecoveryCode = '/forgot-password/verify';
@@ -95,6 +131,10 @@ abstract final class Routes {
   static const String profileName = 'profile';
   static const String feesName = 'fees';
   static const String feesCheckoutName = 'feesCheckout';
+  static const String feesCardCheckoutName = 'feesCardCheckout';
+  static const String feesGatewayReturnName = 'feesGatewayReturn';
+  static const String feesReceiptName = 'feesReceipt';
+  static const String verifyReceiptName = 'verifyReceipt';
   static const String forgotPasswordName = 'forgotPassword';
   static const String verifyRecoveryCodeName = 'verifyRecoveryCode';
   static const String setNewPasswordName = 'setNewPassword';
@@ -109,6 +149,9 @@ abstract final class Routes {
       'admissionsAdmissionLetter';
   static const String verifyAdmissionName = 'verifyAdmission';
   static const String createAccountName = 'createAccount';
+
+  /// Path parameter name for [feesReceiptTemplate].
+  static const String feesReceiptIdParam = 'id';
 
   /// Every screen inside the candidate portal, as far as it is expressible as
   /// a literal path.
@@ -135,7 +178,19 @@ abstract final class Routes {
   /// checkout is a task with its own back chevron — a student choosing how
   /// to pay is not moving between sections. Every other screen in the shell
   /// keeps the bar.
-  static const Set<String> fullCanvasPaths = {home, feesCheckout};
+  static const Set<String> fullCanvasPaths = {
+    home,
+    feesCheckout,
+    feesCardCheckout,
+    feesGatewayReturn,
+    // Receipts share a prefix; the shell matches on `uri.path`, so any
+    // concrete `/home/fees/receipts/…` location is listed via the helper
+    // below rather than this set alone.
+  };
+
+  /// `true` when [location] is an official receipt under the fees tab.
+  static bool isFeesReceiptPath(String location) =>
+      location.startsWith('$fees/$feesReceiptSegment/');
 
   /// Reachable only while signed out — recovery is pointless once
   /// authenticated, so the redirect sends those deep links to the app shell.
@@ -160,5 +215,5 @@ abstract final class Routes {
   /// Distinct from [recoveryPaths]: verification is for a person who may
   /// never have an account, and a student scanning their own letter should
   /// not be bounced to the hub for having one.
-  static const Set<String> publicPaths = {verifyAdmission};
+  static const Set<String> publicPaths = {verifyAdmission, verifyReceipt};
 }

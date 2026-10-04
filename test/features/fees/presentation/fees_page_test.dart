@@ -82,6 +82,13 @@ void main() {
           name: Routes.homeName,
           builder: (_, _) => const Text('hub'),
         ),
+        GoRoute(
+          path: Routes.feesReceiptTemplate,
+          name: Routes.feesReceiptName,
+          builder: (_, state) => Text(
+            'receipt:${state.pathParameters[Routes.feesReceiptIdParam]}',
+          ),
+        ),
       ],
     );
     addTearDown(router.dispose);
@@ -152,7 +159,7 @@ void main() {
       expect(find.text('₦66,000.00'), findsOneWidget);
       // Once on the hero's pill, once under the unpaid levy.
       expect(find.text('Due 15 March 2027'), findsNWidgets(2));
-      expect(find.text('Pay outstanding balance (₦66,000.00)'), findsOneWidget);
+      expect(find.text('Pay outstanding (₦66,000.00)'), findsOneWidget);
       expect(find.textContaining('instant bursary clearance'), findsOneWidget);
     });
 
@@ -208,7 +215,7 @@ void main() {
 
       expect(find.text('₦0.00'), findsOneWidget);
       expect(find.text('Nothing is owed on your account.'), findsOneWidget);
-      expect(find.textContaining('Pay outstanding balance'), findsNothing);
+      expect(find.textContaining('Pay outstanding'), findsNothing);
       expect(find.byType(OutstandingBreakdownStrip), findsNothing);
       expect(find.text('All settled'), findsOneWidget);
       expect(find.text('Settled'), findsOneWidget);
@@ -248,7 +255,7 @@ void main() {
       expect(find.text('Remaining balance'), findsOneWidget);
       expect(find.text('Payment progress'), findsOneWidget);
       expect(find.text('70%'), findsOneWidget);
-      expect(find.text('Pay balance ₦50,000.00'), findsOneWidget);
+      expect(find.text('Pay ₦50,000.00'), findsOneWidget);
       expect(find.text('Breakdown'), findsOneWidget);
 
       final bar = tester.widget<LinearProgressIndicator>(
@@ -305,9 +312,9 @@ void main() {
 
       expect(find.text('Payment history & receipts'), findsOneWidget);
       expect(find.text('View all'), findsOneWidget);
-      expect(find.byType(PaymentRecordCard), findsNWidgets(2));
+      expect(find.byType(PaymentRecordCard), findsNWidgets(3));
       expect(find.text('REC-2026-04412'), findsOneWidget);
-      expect(find.text('Successful'), findsNWidgets(2));
+      expect(find.text('Successful'), findsNWidgets(3));
       expect(find.text('Tuition Instalment 1'), findsOneWidget);
       expect(
         find.text('12 Jan 2027 · Remita RRR 2401-9982-1102'),
@@ -317,13 +324,14 @@ void main() {
       expect(find.text('₦12,500.00'), findsOneWidget);
       expect(find.text('Departmental Dues (CSC)'), findsOneWidget);
       expect(find.text('15 Oct 2026 · Card'), findsOneWidget);
-      expect(find.text('Receipt PDF'), findsNWidgets(2));
+      expect(find.text('REC-2027-098812'), findsOneWidget);
+      expect(find.text('Receipt PDF'), findsNWidgets(3));
     });
 
-    testWidgets('the receipts and the full history are not live yet', (
+    testWidgets('View all is not live yet; a receipt opens its paper', (
       tester,
     ) async {
-      await pumpFees(tester);
+      await pumpFeesWithRouter(tester);
 
       await tapText(tester, 'View all');
       expect(
@@ -331,14 +339,19 @@ void main() {
         findsOneWidget,
       );
 
-      await tester.ensureVisible(find.text('Receipt PDF').first);
+      await tester.ensureVisible(find.text('REC-2027-098812'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Receipt PDF').first);
-      await tester.pumpAndSettle();
-      expect(
-        find.text('This service goes live with the next release.'),
-        findsOneWidget,
+      await tester.tap(
+        find.descendant(
+          of: find.ancestor(
+            of: find.text('REC-2027-098812'),
+            matching: find.byType(PaymentRecordCard),
+          ),
+          matching: find.text('Receipt PDF'),
+        ),
       );
+      await tester.pumpAndSettle();
+      expect(find.text('receipt:rec-098812'), findsOneWidget);
     });
   });
 
@@ -361,7 +374,7 @@ void main() {
     ) async {
       await pumpFeesWithRouter(tester);
 
-      await tapText(tester, 'Pay outstanding balance (₦66,000.00)');
+      await tapText(tester, 'Pay outstanding (₦66,000.00)');
 
       expect(
         find.text('checkout:'),
@@ -382,7 +395,7 @@ void main() {
     testWidgets('a part-paid card pays its balance', (tester) async {
       await pumpFeesWithRouter(tester);
 
-      await tapText(tester, 'Pay balance ₦50,000.00');
+      await tapText(tester, 'Pay ₦50,000.00');
       expect(find.text('checkout:invoices=inv-08821'), findsOneWidget);
     });
 

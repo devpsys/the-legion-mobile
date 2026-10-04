@@ -16,10 +16,18 @@ import '../../features/admissions/presentation/widgets/admissions_shell.dart';
 import '../../features/auth/presentation/pages/create_account_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
+import '../../features/fees/presentation/bloc/fee_card_checkout_cubit.dart';
 import '../../features/fees/presentation/bloc/fee_checkout_cubit.dart';
+import '../../features/fees/presentation/bloc/fee_gateway_return_cubit.dart';
+import '../../features/fees/presentation/bloc/fee_receipt_cubit.dart';
 import '../../features/fees/presentation/bloc/fees_cubit.dart';
+import '../../features/fees/presentation/bloc/receipt_verification_cubit.dart';
+import '../../features/fees/presentation/pages/fee_card_checkout_page.dart';
 import '../../features/fees/presentation/pages/fee_checkout_page.dart';
+import '../../features/fees/presentation/pages/fee_gateway_return_page.dart';
+import '../../features/fees/presentation/pages/fee_receipt_page.dart';
 import '../../features/fees/presentation/pages/fees_page.dart';
+import '../../features/fees/presentation/pages/verify_receipt_page.dart';
 import '../../features/home/presentation/pages/home_overview_page.dart';
 import '../../features/home/presentation/pages/home_shell_page.dart';
 import '../../features/password_recovery/presentation/bloc/password_recovery_cubit.dart';
@@ -127,6 +135,19 @@ GoRouter createRouter({
           ),
         ),
       ),
+      // Public verification of a bursary receipt — same privacy posture as
+      // the letter check: five facts, no session, no shell.
+      GoRoute(
+        path: Routes.verifyReceipt,
+        name: Routes.verifyReceiptName,
+        builder: (context, state) => BlocProvider<ReceiptVerificationCubit>(
+          create: (context) => sl<ReceiptVerificationCubit>(),
+          child: VerifyReceiptPage(
+            initialCode:
+                state.uri.queryParameters[Routes.verifyReceiptCodeParam],
+          ),
+        ),
+      ),
       // One cubit for the whole recovery flow: the identifier, the masked
       // destinations and the attempt counters survive step changes, and a new
       // entry into the flow starts clean.
@@ -196,21 +217,68 @@ GoRouter createRouter({
                     name: Routes.feesName,
                     builder: (context, state) => const FeesPage(),
                     routes: [
-                      // Nested, so the branch's navigator stacks it on the
-                      // tab and back pops to it. Its own cubit per visit for
-                      // the choices — a half-typed instalment is not worth
-                      // keeping — while the ledger stays on the branch.
-                      GoRoute(
-                        path: Routes.feesCheckoutSegment,
-                        name: Routes.feesCheckoutName,
-                        builder: (context, state) =>
+                      // Checkout + card + gateway return share one
+                      // FeeCheckoutCubit so Proceed can hand the chosen
+                      // invoices and amount to the card screen without
+                      // re-encoding them. The shell replaces the child as
+                      // the stack steps; back restores the previous child.
+                      ShellRoute(
+                        builder: (context, state, child) =>
                             BlocProvider<FeeCheckoutCubit>(
                               create: (context) => sl<FeeCheckoutCubit>(),
-                              child: FeeCheckoutPage(
-                                invoiceIds: Routes.feesCheckoutInvoicesFrom(
-                                  state.uri.queryParameters[Routes
-                                      .feesCheckoutInvoicesParam],
-                                ),
+                              child: child,
+                            ),
+                        routes: [
+                          GoRoute(
+                            path: Routes.feesCheckoutSegment,
+                            name: Routes.feesCheckoutName,
+                            builder: (context, state) => FeeCheckoutPage(
+                              invoiceIds: Routes.feesCheckoutInvoicesFrom(
+                                state.uri.queryParameters[Routes
+                                    .feesCheckoutInvoicesParam],
+                              ),
+                            ),
+                            routes: [
+                              GoRoute(
+                                path: Routes.feesCardCheckoutSegment,
+                                name: Routes.feesCardCheckoutName,
+                                builder: (context, state) =>
+                                    BlocProvider<FeeCardCheckoutCubit>(
+                                      create: (context) =>
+                                          sl<FeeCardCheckoutCubit>(),
+                                      child: const FeeCardCheckoutPage(),
+                                    ),
+                              ),
+                              GoRoute(
+                                path: Routes.feesGatewayReturnSegment,
+                                name: Routes.feesGatewayReturnName,
+                                builder: (context, state) =>
+                                    BlocProvider<FeeGatewayReturnCubit>(
+                                      create: (context) =>
+                                          sl<FeeGatewayReturnCubit>(),
+                                      child: FeeGatewayReturnPage(
+                                        reference:
+                                            state.uri.queryParameters[Routes
+                                                .feesGatewayReturnRefParam] ??
+                                            '',
+                                      ),
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      GoRoute(
+                        path: '${Routes.feesReceiptSegment}/:id',
+                        name: Routes.feesReceiptName,
+                        builder: (context, state) =>
+                            BlocProvider<FeeReceiptCubit>(
+                              create: (context) => sl<FeeReceiptCubit>(),
+                              child: FeeReceiptPage(
+                                receiptId:
+                                    state.pathParameters[Routes
+                                        .feesReceiptIdParam] ??
+                                    '',
                               ),
                             ),
                       ),

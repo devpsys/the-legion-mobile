@@ -47,7 +47,9 @@ class HomeShellPage extends StatelessWidget {
       // The hub and the checkout own the full canvas on phones: the hub
       // navigates through its own module directory, account panel and avatar
       // rather than a tab bar, and the checkout is a task with a back chevron.
-      showBottomNavigationBar: !Routes.fullCanvasPaths.contains(location),
+      showBottomNavigationBar:
+          !Routes.fullCanvasPaths.contains(location) &&
+          !Routes.isFeesReceiptPath(location),
       destinations: [
         for (final tab in _tabs)
           AdaptiveScaffoldDestination(

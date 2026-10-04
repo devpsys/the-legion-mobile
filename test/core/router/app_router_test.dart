@@ -28,8 +28,12 @@ import 'package:the_legion_mobile/features/auth/domain/usecases/register.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:the_legion_mobile/features/auth/presentation/widgets/registration_card.dart';
+import 'package:the_legion_mobile/features/fees/presentation/bloc/fee_card_checkout_cubit.dart';
 import 'package:the_legion_mobile/features/fees/presentation/bloc/fee_checkout_cubit.dart';
+import 'package:the_legion_mobile/features/fees/presentation/bloc/fee_gateway_return_cubit.dart';
+import 'package:the_legion_mobile/features/fees/presentation/bloc/fee_receipt_cubit.dart';
 import 'package:the_legion_mobile/features/fees/presentation/bloc/fees_cubit.dart';
+import 'package:the_legion_mobile/features/fees/presentation/bloc/receipt_verification_cubit.dart';
 import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_cubit.dart';
 import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_state.dart';
 
@@ -286,7 +290,13 @@ void main() {
         isAuthenticated: false,
       );
 
-      for (final path in [Routes.fees, Routes.feesCheckout]) {
+      for (final path in [
+        Routes.fees,
+        Routes.feesCheckout,
+        Routes.feesCardCheckout,
+        Routes.feesGatewayReturn,
+        Routes.feesReceipt('rec-098812'),
+      ]) {
         expect(
           resolveRedirect(authGuard: guard, location: path),
           Routes.login,
@@ -301,8 +311,27 @@ void main() {
         isAuthenticated: true,
       );
 
-      for (final path in [Routes.fees, Routes.feesCheckout]) {
+      for (final path in [
+        Routes.fees,
+        Routes.feesCheckout,
+        Routes.feesCardCheckout,
+        Routes.feesGatewayReturn,
+        Routes.feesReceipt('rec-098812'),
+      ]) {
         expect(resolveRedirect(authGuard: guard, location: path), isNull);
+      }
+    });
+
+    test('leaves the public receipt check alone for anyone', () {
+      for (final authenticated in [false, true]) {
+        final guard = _FakeAuthGuard(
+          isSessionResolved: true,
+          isAuthenticated: authenticated,
+        );
+        expect(
+          resolveRedirect(authGuard: guard, location: Routes.verifyReceipt),
+          isNull,
+        );
       }
     });
 
@@ -420,14 +449,22 @@ void main() {
     });
 
     test(
-      'give the hub and the checkout the whole canvas, and nothing else',
+      'give the hub and the payment tasks the whole canvas, and nothing else',
       () {
         expect(
           Routes.fullCanvasPaths,
-          containsAll([Routes.home, Routes.feesCheckout]),
+          containsAll([
+            Routes.home,
+            Routes.feesCheckout,
+            Routes.feesCardCheckout,
+            Routes.feesGatewayReturn,
+          ]),
         );
         expect(Routes.fullCanvasPaths, isNot(contains(Routes.fees)));
         expect(Routes.fullCanvasPaths, isNot(contains(Routes.profile)));
+        expect(Routes.isFeesReceiptPath(Routes.feesReceipt('rec-1')), isTrue);
+        expect(Routes.isFeesReceiptPath(Routes.fees), isFalse);
+        expect(Routes.publicPaths, contains(Routes.verifyReceipt));
       },
     );
   });
@@ -443,6 +480,12 @@ void main() {
       sl.registerFactory<JambClaimCubit>(JambClaimCubit.new);
       sl.registerFactory<FeesCubit>(FeesCubit.new);
       sl.registerFactory<FeeCheckoutCubit>(FeeCheckoutCubit.new);
+      sl.registerFactory<FeeCardCheckoutCubit>(FeeCardCheckoutCubit.new);
+      sl.registerFactory<FeeGatewayReturnCubit>(FeeGatewayReturnCubit.new);
+      sl.registerFactory<FeeReceiptCubit>(FeeReceiptCubit.new);
+      sl.registerFactory<ReceiptVerificationCubit>(
+        ReceiptVerificationCubit.new,
+      );
       sl.registerFactory<AdmissionVerificationCubit>(
         AdmissionVerificationCubit.new,
       );
@@ -1304,11 +1347,9 @@ void main() {
       );
 
       // Fees -> checkout, through the hero. A task: no tab bar under it.
-      await tester.ensureVisible(
-        find.text('Pay outstanding balance (₦66,000.00)'),
-      );
+      await tester.ensureVisible(find.text('Pay outstanding (₦66,000.00)'));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Pay outstanding balance (₦66,000.00)'));
+      await tester.tap(find.text('Pay outstanding (₦66,000.00)'));
       await tester.pumpAndSettle();
 
       expect(find.text('Make payment'), findsOneWidget);
@@ -1354,6 +1395,44 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Student fees'), findsOneWidget);
     });
+
+    testWidgets(
+      'Proceed opens card checkout; Pay opens awaiting confirmation',
+      (tester) async {
+        await signInAndReachHub(tester);
+
+        await tester.ensureVisible(find.text('Fees & Payments'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Fees & Payments'));
+        await tester.pumpAndSettle();
+
+        await tester.ensureVisible(find.text('Pay outstanding (₦66,000.00)'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Pay outstanding (₦66,000.00)'));
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.text('Proceed to pay ₦66,350.00'));
+        await tester.pumpAndSettle();
+        expect(find.text('Card checkout'), findsOneWidget);
+        expect(find.byType(NavigationBar), findsNothing);
+
+        final fields = find.byType(TextField);
+        await tester.enterText(fields.at(0), '5399123456784012');
+        await tester.enterText(fields.at(1), '1228');
+        await tester.enterText(fields.at(2), '123');
+        await tester.enterText(fields.at(3), '1234');
+        await tester.pumpAndSettle();
+
+        await tester.ensureVisible(find.text('Pay ₦66,350.00'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Pay ₦66,350.00'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('AWAITING CONFIRMATION'), findsOneWidget);
+        expect(find.text('Payment successful'), findsNothing);
+        expect(find.textContaining('You can close this page.'), findsWidgets);
+      },
+    );
 
     testWidgets('the fees tab and the profile tab reach each other through '
         'the bar', (tester) async {

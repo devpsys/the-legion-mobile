@@ -3482,6 +3482,648 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'There is nothing to pay on these invoices.'**
   String get feesCheckoutNothingToPay;
+
+  /// No description provided for @feesCardCheckoutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Card checkout'**
+  String get feesCardCheckoutTitle;
+
+  /// No description provided for @feesCardCheckoutEyebrow.
+  ///
+  /// In en, this message translates to:
+  /// **'The Legion · Bursary gateway'**
+  String get feesCardCheckoutEyebrow;
+
+  /// No description provided for @feesCardCheckoutBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to payment details'**
+  String get feesCardCheckoutBackTooltip;
+
+  /// No description provided for @feesPciCompliant.
+  ///
+  /// In en, this message translates to:
+  /// **'PCI-DSS compliant'**
+  String get feesPciCompliant;
+
+  /// No description provided for @feesFeeBreakdown.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee breakdown'**
+  String get feesFeeBreakdown;
+
+  /// No description provided for @feesItemisedSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Itemised schedule'**
+  String get feesItemisedSchedule;
+
+  /// No description provided for @feesSecurePayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure payment'**
+  String get feesSecurePayment;
+
+  /// No description provided for @feesTlsActive.
+  ///
+  /// In en, this message translates to:
+  /// **'TLS 1.3 active'**
+  String get feesTlsActive;
+
+  /// No description provided for @feesSecurePaymentNote.
+  ///
+  /// In en, this message translates to:
+  /// **'256-bit TLS encrypted sovereign bursary settlement.'**
+  String get feesSecurePaymentNote;
+
+  /// No description provided for @feesSupportedNetworks.
+  ///
+  /// In en, this message translates to:
+  /// **'Supported networks'**
+  String get feesSupportedNetworks;
+
+  /// No description provided for @feesNetworkMastercard.
+  ///
+  /// In en, this message translates to:
+  /// **'Mastercard'**
+  String get feesNetworkMastercard;
+
+  /// No description provided for @feesNetworkVerve.
+  ///
+  /// In en, this message translates to:
+  /// **'Verve'**
+  String get feesNetworkVerve;
+
+  /// No description provided for @feesNetworkVisa.
+  ///
+  /// In en, this message translates to:
+  /// **'Visa'**
+  String get feesNetworkVisa;
+
+  /// No description provided for @feesCardInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Card information'**
+  String get feesCardInformation;
+
+  /// No description provided for @feesCardInformationDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your debit or credit card details below to complete your academic fee settlement.'**
+  String get feesCardInformationDetail;
+
+  /// No description provided for @feesCardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get feesCardNumber;
+
+  /// No description provided for @feesCardNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'ACCT-000003'**
+  String get feesCardNumberHint;
+
+  /// No description provided for @feesCardExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry date'**
+  String get feesCardExpiry;
+
+  /// No description provided for @feesCardExpiryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'MM/YY'**
+  String get feesCardExpiryHint;
+
+  /// No description provided for @feesCardCvv.
+  ///
+  /// In en, this message translates to:
+  /// **'CVV / Security code'**
+  String get feesCardCvv;
+
+  /// No description provided for @feesCardCvvHint.
+  ///
+  /// In en, this message translates to:
+  /// **'123'**
+  String get feesCardCvvHint;
+
+  /// No description provided for @feesCardCvvHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'3 digits'**
+  String get feesCardCvvHelp;
+
+  /// No description provided for @feesCardPin.
+  ///
+  /// In en, this message translates to:
+  /// **'Card PIN'**
+  String get feesCardPin;
+
+  /// No description provided for @feesCardPinHint.
+  ///
+  /// In en, this message translates to:
+  /// **'••••'**
+  String get feesCardPinHint;
+
+  /// No description provided for @feesCardPinNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Required to authorise domestic debit cards via Interswitch / NIBSS before 3D-Secure verification.'**
+  String get feesCardPinNote;
+
+  /// No description provided for @feesSaveCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Save card for future session payments'**
+  String get feesSaveCard;
+
+  /// No description provided for @feesCardTokenNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Card details are encrypted and tokenised according to CBN regulatory standards.'**
+  String get feesCardTokenNote;
+
+  /// No description provided for @feesPayAmountAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount}'**
+  String feesPayAmountAction(Object amount);
+
+  /// No description provided for @feesPayRedirectNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be redirected to your bank\'s 3D-Secure authentication screen.'**
+  String get feesPayRedirectNote;
+
+  /// No description provided for @feesCancelToFees.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel and return to fees'**
+  String get feesCancelToFees;
+
+  /// No description provided for @feesCbnLicensed.
+  ///
+  /// In en, this message translates to:
+  /// **'Central Bank of Nigeria licensed PSP'**
+  String get feesCbnLicensed;
+
+  /// No description provided for @feesEndToEndEncryption.
+  ///
+  /// In en, this message translates to:
+  /// **'End-to-end encryption'**
+  String get feesEndToEndEncryption;
+
+  /// No description provided for @feesTransactionReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction reference: {reference}'**
+  String feesTransactionReference(Object reference);
+
+  /// No description provided for @feesGatewayReturnBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to fees'**
+  String get feesGatewayReturnBackTooltip;
+
+  /// No description provided for @feesGatewayReturnShareTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Share receipt'**
+  String get feesGatewayReturnShareTooltip;
+
+  /// No description provided for @feesGatewayStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting confirmation'**
+  String get feesGatewayStatusPending;
+
+  /// No description provided for @feesGatewayStatusSucceeded.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment successful'**
+  String get feesGatewayStatusSucceeded;
+
+  /// No description provided for @feesGatewayStatusFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment failed'**
+  String get feesGatewayStatusFailed;
+
+  /// No description provided for @feesGatewayStatusExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment expired'**
+  String get feesGatewayStatusExpired;
+
+  /// No description provided for @feesGatewayPendingDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'The gateway has not confirmed this payment yet. You can close this page. Your reference is kept below.'**
+  String get feesGatewayPendingDetail;
+
+  /// No description provided for @feesGatewaySucceededDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Remita settlement confirmed · {date}'**
+  String feesGatewaySucceededDetail(Object date);
+
+  /// No description provided for @feesGatewayFailedDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'The gateway declined this attempt. No money was taken. Try again from your fees.'**
+  String get feesGatewayFailedDetail;
+
+  /// No description provided for @feesGatewayExpiredDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'This payment window closed before the gateway answered. No money was taken.'**
+  String get feesGatewayExpiredDetail;
+
+  /// No description provided for @feesGatewayYouCanClose.
+  ///
+  /// In en, this message translates to:
+  /// **'You can close this page.'**
+  String get feesGatewayYouCanClose;
+
+  /// No description provided for @feesCoursePortalUnlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Course portal unlocked'**
+  String get feesCoursePortalUnlocked;
+
+  /// No description provided for @feesCoursePortalActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get feesCoursePortalActive;
+
+  /// No description provided for @feesCoursePortalDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Harmattan semester registration clearance is now linked to your academic dossier.'**
+  String get feesCoursePortalDetail;
+
+  /// No description provided for @feesRemitaRrr.
+  ///
+  /// In en, this message translates to:
+  /// **'Remita RRR'**
+  String get feesRemitaRrr;
+
+  /// No description provided for @feesGatewayReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Gateway reference'**
+  String get feesGatewayReference;
+
+  /// No description provided for @feesPaymentChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment channel'**
+  String get feesPaymentChannel;
+
+  /// No description provided for @feesPaidFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid for'**
+  String get feesPaidFor;
+
+  /// No description provided for @feesViewOfficialReceipt.
+  ///
+  /// In en, this message translates to:
+  /// **'View official receipt'**
+  String get feesViewOfficialReceipt;
+
+  /// No description provided for @feesProceedToRegistration.
+  ///
+  /// In en, this message translates to:
+  /// **'Proceed to course registration'**
+  String get feesProceedToRegistration;
+
+  /// No description provided for @feesGatewayVerifiedStamp.
+  ///
+  /// In en, this message translates to:
+  /// **'Cryptographically verified by The Legion Treasury'**
+  String get feesGatewayVerifiedStamp;
+
+  /// No description provided for @feesGatewaySupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Support inquiries: bursary@thelegion.edu.ng'**
+  String get feesGatewaySupport;
+
+  /// No description provided for @feesGatewayReturnNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No payment matches this reference.'**
+  String get feesGatewayReturnNotFound;
+
+  /// No description provided for @feesReceiptBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get feesReceiptBackTooltip;
+
+  /// No description provided for @feesReceiptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clearance receipt {number}'**
+  String feesReceiptTitle(Object number);
+
+  /// No description provided for @feesReceiptVerifiedCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Verified & cleared'**
+  String get feesReceiptVerifiedCleared;
+
+  /// No description provided for @feesReceiptKeepNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep this receipt for your exam docket, hostel clearance and any bursary enquiry.'**
+  String get feesReceiptKeepNote;
+
+  /// No description provided for @feesReceiptSavePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Print or save as PDF'**
+  String get feesReceiptSavePdf;
+
+  /// No description provided for @feesReceiptShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share receipt'**
+  String get feesReceiptShare;
+
+  /// No description provided for @feesReceiptCopyCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy verification code'**
+  String get feesReceiptCopyCode;
+
+  /// No description provided for @feesReceiptCodeCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code copied.'**
+  String get feesReceiptCodeCopied;
+
+  /// No description provided for @feesReceiptOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Office of the Bursar'**
+  String get feesReceiptOffice;
+
+  /// No description provided for @feesReceiptUnit.
+  ///
+  /// In en, this message translates to:
+  /// **'FIS & Treasury verification unit'**
+  String get feesReceiptUnit;
+
+  /// No description provided for @feesReceiptBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Official e-receipt'**
+  String get feesReceiptBadge;
+
+  /// No description provided for @feesReceiptNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt number'**
+  String get feesReceiptNumber;
+
+  /// No description provided for @feesReceiptDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get feesReceiptDate;
+
+  /// No description provided for @feesReceiptSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic session'**
+  String get feesReceiptSession;
+
+  /// No description provided for @feesReceiptCentralRrr.
+  ///
+  /// In en, this message translates to:
+  /// **'Central RRR'**
+  String get feesReceiptCentralRrr;
+
+  /// No description provided for @feesReceiptStudentHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Student & payer'**
+  String get feesReceiptStudentHeading;
+
+  /// No description provided for @feesReceiptFacultyProgram.
+  ///
+  /// In en, this message translates to:
+  /// **'{faculty} · {department}'**
+  String feesReceiptFacultyProgram(Object department, Object faculty);
+
+  /// No description provided for @feesReceiptItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Item'**
+  String get feesReceiptItem;
+
+  /// No description provided for @feesReceiptFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee'**
+  String get feesReceiptFee;
+
+  /// No description provided for @feesReceiptLineStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get feesReceiptLineStatus;
+
+  /// No description provided for @feesReceiptLinePaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get feesReceiptLinePaid;
+
+  /// No description provided for @feesReceiptTotalCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Total paid & cleared'**
+  String get feesReceiptTotalCleared;
+
+  /// No description provided for @feesReceiptSettled.
+  ///
+  /// In en, this message translates to:
+  /// **'Settled'**
+  String get feesReceiptSettled;
+
+  /// No description provided for @feesReceiptToWallet.
+  ///
+  /// In en, this message translates to:
+  /// **'To wallet'**
+  String get feesReceiptToWallet;
+
+  /// No description provided for @feesReceiptChannel.
+  ///
+  /// In en, this message translates to:
+  /// **'Settlement channel'**
+  String get feesReceiptChannel;
+
+  /// No description provided for @feesReceiptAuthCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Authorisation code'**
+  String get feesReceiptAuthCode;
+
+  /// No description provided for @feesReceiptClearingRef.
+  ///
+  /// In en, this message translates to:
+  /// **'Clearing reference'**
+  String get feesReceiptClearingRef;
+
+  /// No description provided for @feesReceiptStamp.
+  ///
+  /// In en, this message translates to:
+  /// **'Electronically cleared & audited'**
+  String get feesReceiptStamp;
+
+  /// No description provided for @feesReceiptSignatory.
+  ///
+  /// In en, this message translates to:
+  /// **'Alhaji Bello Danbatta'**
+  String get feesReceiptSignatory;
+
+  /// No description provided for @feesReceiptSignatoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'University Bursar & CFO'**
+  String get feesReceiptSignatoryTitle;
+
+  /// No description provided for @feesReceiptVerifyUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify at thelegion.edu.ng/verify/receipt'**
+  String get feesReceiptVerifyUrl;
+
+  /// No description provided for @feesReceiptScanToVerify.
+  ///
+  /// In en, this message translates to:
+  /// **'Scan to verify payment'**
+  String get feesReceiptScanToVerify;
+
+  /// No description provided for @feesReceiptNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No receipt matches this reference.'**
+  String get feesReceiptNotFound;
+
+  /// No description provided for @feesVerifyBrandCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Bursary receipt verification'**
+  String get feesVerifyBrandCaption;
+
+  /// No description provided for @feesVerifyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify a receipt'**
+  String get feesVerifyTitle;
+
+  /// No description provided for @feesVerifySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the verification code printed at the foot of the official bursary receipt.'**
+  String get feesVerifySubtitle;
+
+  /// No description provided for @feesVerifyOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Office of the Registrar · Directorate of Bursary Services'**
+  String get feesVerifyOffice;
+
+  /// No description provided for @feesVerifyCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt reference key'**
+  String get feesVerifyCodeLabel;
+
+  /// No description provided for @feesVerifyCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. 9K8L-4M2P-TX77'**
+  String get feesVerifyCodeHint;
+
+  /// No description provided for @feesVerifyAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify receipt'**
+  String get feesVerifyAction;
+
+  /// No description provided for @feesVerifyGenuine.
+  ///
+  /// In en, this message translates to:
+  /// **'Genuine bursary receipt'**
+  String get feesVerifyGenuine;
+
+  /// No description provided for @feesVerifyReceiptNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt number'**
+  String get feesVerifyReceiptNumber;
+
+  /// No description provided for @feesVerifyAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount paid'**
+  String get feesVerifyAmount;
+
+  /// No description provided for @feesVerifyPaidBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid by'**
+  String get feesVerifyPaidBy;
+
+  /// No description provided for @feesVerifyPaidFor.
+  ///
+  /// In en, this message translates to:
+  /// **'For'**
+  String get feesVerifyPaidFor;
+
+  /// No description provided for @feesVerifyPaidOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment date'**
+  String get feesVerifyPaidOn;
+
+  /// No description provided for @feesVerifyNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No receipt matches this code'**
+  String get feesVerifyNotFoundTitle;
+
+  /// No description provided for @feesVerifyNotFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the code at the foot of the receipt and try again. If it still does not match, the receipt was not issued by the university.'**
+  String get feesVerifyNotFoundBody;
+
+  /// No description provided for @feesVerifyPrivacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy & redaction'**
+  String get feesVerifyPrivacyTitle;
+
+  /// No description provided for @feesVerifyPrivacyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This page shows only what is confirmed on the official bursary ledger: receipt number, amount, payer name, purpose and date. It does not show email, phone, address, matric number, bank account or gateway references.'**
+  String get feesVerifyPrivacyBody;
+
+  /// No description provided for @feesVerifySignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to the student portal'**
+  String get feesVerifySignIn;
 }
 
 class _AppLocalizationsDelegate

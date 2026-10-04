@@ -72,7 +72,16 @@ class FeesBody extends StatelessWidget {
               PaymentHistorySection(
                 payments: state.payments,
                 onViewAll: () => _notAvailable(context),
-                onReceipt: (PaymentRecord _) => _notAvailable(context),
+                onReceipt: (payment) {
+                  if (payment.status != PaymentStatus.succeeded) {
+                    _notAvailable(context);
+                    return;
+                  }
+                  context.goNamed(
+                    Routes.feesReceiptName,
+                    pathParameters: {Routes.feesReceiptIdParam: payment.id},
+                  );
+                },
               ),
               AppSpacing.verticalGap(AppSpacing.xl),
               const BursaryNoticeCard(),
