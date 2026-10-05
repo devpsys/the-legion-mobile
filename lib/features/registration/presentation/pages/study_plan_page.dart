@@ -15,7 +15,7 @@ import '../widgets/registration_tab_bar.dart';
 import '../widgets/registration_task_bar.dart';
 import '../widgets/study_plan_body.dart';
 
-/// Study plan tab: degree progress, adviser note, term-by-term plan.
+/// Study plan tab: structured-audit ledger matching the registrar design.
 class StudyPlanPage extends StatefulWidget {
   const StudyPlanPage({super.key});
 

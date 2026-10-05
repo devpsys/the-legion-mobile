@@ -838,21 +838,63 @@
   "registrationViewForm": "View form {version}",
   "studyPlanTitle": "Study plan",
   "studyPlanUndergraduate": "Undergraduate degree",
-  "studyPlanActiveStatus": "Active status",
+  "studyPlanActiveStatus": "Active Status",
   "studyPlanUnitsPassed": "Units passed",
   "studyPlanUnitsPlanned": "Units planned",
   "studyPlanAwardUnits": "Awarded on",
   "studyPlanStillToPass": "Still to pass",
   "studyPlanStillToPassValue": "{count} courses",
+  "studyPlanUnitsEarnedHint": "earned",
+  "studyPlanUnitsCurrentTermHint": "current term",
+  "studyPlanUnitsHint": "units",
+  "studyPlanCoursesHint": "courses",
+  "studyPlanAwardCaption": "Degree plan requirement: {units} units",
+  "@studyPlanAwardCaption": {
+    "placeholders": { "units": { "type": "int" } }
+  },
+  "studyPlanStillToPassCaption": "Across remaining levels: {count} courses",
+  "@studyPlanStillToPassCaption": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "studyPlanProgrammeConclusion": "Programme conclusion:",
+  "studyPlanMatricLevelShort": "{matricNumber} · {level}L",
+  "@studyPlanMatricLevelShort": {
+    "placeholders": {
+      "matricNumber": { "type": "String" },
+      "level": { "type": "int" }
+    }
+  },
   "studyPlanWorthKnowing": "Worth knowing now",
+  "studyPlanAdvisoriesCount": "{count} Advisories",
+  "@studyPlanAdvisoriesCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
   "studyPlanAdviserSaid": "What your adviser said",
   "studyPlanAdviserByline": "{name} · {date}",
   "studyPlanTermByTerm": "Your plan, term by term",
+  "studyPlanTermsListed": "{count} Terms Listed",
+  "@studyPlanTermsListed": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "studyPlanNowBadge": "Now",
+  "studyPlanLedgerCourse": "Course",
+  "studyPlanLedgerTitle": "Title",
+  "studyPlanLedgerUnits": "Units",
   "studyPlanDegreeAsks": "What your degree asks of you",
+  "studyPlanDegreeAsksSubtitle": "Audit breakdown across all four academic levels.",
+  "studyPlanPassed": "Passed",
+  "studyPlanCurrentLevel": "Current Level",
+  "studyPlanTakingNow": "Taking now",
+  "studyPlanStillToTake": "Still to take",
   "studyPlanACourse": "Plan a course",
+  "studyPlanACourseSubtitle": "Select an unallocated course and assign it to a future session.",
+  "studyPlanCourseLabel": "Course",
+  "studyPlanTargetTermLabel": "Target term",
+  "studyPlanSelectCourse": "Select an outstanding course",
+  "studyPlanSelectTerm": "Select academic term",
   "studyPlanAddToPlan": "Add to plan",
   "studyPlanHowThisWorks": "How this works",
-  "studyPlanHowThisWorksBody": "A study plan is your intent across terms. It is not a registration. Your adviser can leave a note here; only Course registration submits a form to the registry.",
+  "studyPlanHowThisWorksBody": "Nothing on this page records what you have done. What is left is read from your degree plan and your results each time you open it, so clearing a carry-over changes it without you touching anything. What you store is only when you mean to take what remains.",
   "studyPlanComingSoon": "Planning a course into a future term goes live with the next release.",
   "courseFormTitle": "Course form {version}",
   "courseFormSavePdf": "Save PDF",

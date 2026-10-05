@@ -246,100 +246,166 @@ abstract final class RegistrationFixtures {
     unitsPlanned: 15,
     awardUnits: 180,
     coursesStillToPass: 7,
+    programmeConclusion: '2027/2028, Second semester',
+    warningsIntro:
+        'None of this stops you planning. It is what registration would say '
+        'if the terms below opened today.',
     warnings: const [
       StudyPlanWarning(
-        title: 'Required courses still unplanned',
         detail:
-            'CSC401 and CSC409 sit on your degree plan but are not on any '
-            'term yet.',
+            '2 courses you still have to pass are in no term yet: CSC305, '
+            'CSC409.',
+        emphasis: ['CSC305', 'CSC409'],
       ),
       StudyPlanWarning(
-        title: 'Next Harmattan is over the ceiling',
         detail:
-            'The 2027/2028 Harmattan term is planned for 27 units; the degree '
-            'plan allows 24.',
+            '2027/2028 First semester has 27 units planned. The most you may '
+            'register is 24, so something will have to move.',
+      ),
+      StudyPlanWarning(
+        detail:
+            'CSC401 is planned for 2027/2028 First semester, but CSC305, '
+            'which it needs, is in no term at all.',
+        emphasis: ['CSC401', 'CSC305'],
       ),
     ],
     adviserName: 'Dr Ibrahim Sani',
+    adviserRole: 'Academic Adviser',
     adviserNote:
-        'Keep the machine-learning elective this Harmattan and leave '
-        'compiler construction for after SIWES — the prerequisite clears then.',
-    adviserNotedOn: DateTime(2026, 9, 28),
-    terms: [
+        'CSC315 has no laboratory this semester, so keep CSC307 if you can. '
+        'It is the only 300-level project course before you go on industrial '
+        'training.',
+    adviserNotedOn: DateTime(2026, 9, 18),
+    terms: const [
       PlannedTerm(
         id: 'term-now',
-        label: '2026/2027 · First semester',
+        label: '2026/2027 First semester',
         eyebrow: 'Now',
         isCurrent: true,
-        courses: courses
-            .where((c) => c.status.countsTowardUnits)
-            .toList(growable: false),
+        courses: [
+          RegisteredCourse(
+            id: 'plan-csc301',
+            code: 'CSC301',
+            title: 'Structured Programming',
+            section: 'A',
+            units: 3,
+            status: CourseApprovalStatus.approved,
+            canDrop: false,
+          ),
+          RegisteredCourse(
+            id: 'plan-csc307',
+            code: 'CSC307',
+            title: 'Software Engineering',
+            section: 'A',
+            units: 3,
+            status: CourseApprovalStatus.approved,
+            canDrop: false,
+          ),
+          RegisteredCourse(
+            id: 'plan-csc311',
+            code: 'CSC311',
+            title: 'Operating Systems I',
+            section: 'A',
+            units: 3,
+            status: CourseApprovalStatus.approved,
+            canDrop: false,
+          ),
+          RegisteredCourse(
+            id: 'plan-csc315',
+            code: 'CSC315',
+            title: 'Database Design',
+            section: 'A',
+            units: 3,
+            status: CourseApprovalStatus.approved,
+            canDrop: false,
+          ),
+          RegisteredCourse(
+            id: 'plan-mth301',
+            code: 'MTH301',
+            title: 'Numerical Analysis I',
+            section: 'A',
+            units: 3,
+            status: CourseApprovalStatus.approved,
+            canDrop: false,
+          ),
+        ],
       ),
-      const PlannedTerm(
+      PlannedTerm(
         id: 'term-siwes',
-        label: '2026/2027 · SIWES',
-        eyebrow: 'Industrial training',
-        courses: [
-          RegisteredCourse(
-            id: 'plan-siwes',
-            code: 'CSC399',
-            title: 'Student Industrial Work Experience',
-            section: 'A',
-            units: 6,
-            status: CourseApprovalStatus.approved,
-            canDrop: false,
-          ),
-        ],
+        label: '2026/2027 Second semester',
+        eyebrow: '',
+        subtitle: 'SIWES / Industrial Training',
+        unitsOverride: 18,
+        courses: [],
       ),
-      const PlannedTerm(
+      PlannedTerm(
         id: 'term-next',
-        label: '2027/2028 · First semester',
-        eyebrow: 'Over ceiling',
-        note: '27 units planned against a 24-unit limit.',
-        courses: [
-          RegisteredCourse(
-            id: 'plan-csc401',
-            code: 'CSC401',
-            title: 'Compiler Construction',
-            section: 'A',
-            units: 3,
-            status: CourseApprovalStatus.approved,
-            canDrop: false,
-          ),
-          RegisteredCourse(
-            id: 'plan-csc409',
-            code: 'CSC409',
-            title: 'Distributed Systems',
-            section: 'A',
-            units: 3,
-            status: CourseApprovalStatus.approved,
-            canDrop: false,
-          ),
-        ],
+        label: '2027/2028 First semester',
+        eyebrow: '',
+        subtitle: 'Final year thesis and core electives',
+        unitsOverride: 27,
+        overLimit: true,
+        note: 'Over unit ceiling. 3 units must be reassigned.',
+        courses: [],
       ),
     ],
     auditRows: const [
       DegreeAuditRow(
         label: '100 Level',
-        detail: 'All required courses passed',
+        detail: 'All 11 courses completed',
         isComplete: true,
       ),
       DegreeAuditRow(
         label: '200 Level',
-        detail: 'All required courses passed',
+        detail: 'All 12 courses completed',
         isComplete: true,
       ),
       DegreeAuditRow(
         label: '300 Level',
-        detail: '2 required courses still open',
+        detail: '7 total courses registered or remaining',
         isComplete: false,
+        kind: DegreeAuditKind.current,
+        takingNow: ['CSC301', 'CSC307', 'CSC311', 'CSC315'],
+        stillToTake: ['CSC305', 'CSC321', 'CSC409'],
       ),
       DegreeAuditRow(
         label: 'Electives',
-        detail: '4 of 6 elective units planned',
+        detail: 'Departmental options requirement',
         isComplete: false,
+        kind: DegreeAuditKind.electives,
+        progressLabel: '6 of 9 units passed',
       ),
     ],
+    planOptions: const [
+      StudyPlanCourseOption(
+        code: 'CSC305',
+        title: 'Operating Systems II',
+        units: 3,
+      ),
+      StudyPlanCourseOption(
+        code: 'CSC321',
+        title: 'Artificial Intelligence Foundations',
+        units: 3,
+      ),
+      StudyPlanCourseOption(
+        code: 'CSC401',
+        title: 'Organisation of Programming Languages',
+        units: 3,
+      ),
+      StudyPlanCourseOption(
+        code: 'CSC409',
+        title: 'Research Methodology in Computing',
+        units: 2,
+      ),
+    ],
+    targetTerms: const [
+      '2026/2027 Second semester',
+      '2027/2028 First semester',
+      '2027/2028 Second semester',
+    ],
+    howThisWorksSecondary:
+        'Nothing here is a registration. When a term opens you still register '
+        'for the sections you want, and the rules are checked then.',
   );
 
   /// The default ledger the cubit serves: open window, cleared gate, courses

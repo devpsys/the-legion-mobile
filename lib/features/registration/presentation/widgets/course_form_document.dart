@@ -40,6 +40,9 @@ class CourseFormDocument extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.paper,
         borderRadius: AppRadii.blockRadius,
+      ),
+      foregroundDecoration: BoxDecoration(
+        borderRadius: AppRadii.blockRadius,
         border: Border.all(color: AppColors.paperStroke),
       ),
       child: Column(

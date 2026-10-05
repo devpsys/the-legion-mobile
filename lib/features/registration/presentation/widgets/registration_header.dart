@@ -7,6 +7,7 @@ import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/theme/app_tone.dart';
 import '../../../../core/utils/responsive.dart';
 import '../models/registration_models.dart';
+import 'registration_card.dart';
 import 'registration_labels.dart';
 
 /// Tabbed-ledger header: breadcrumb, title, formal student docket.
@@ -87,13 +88,7 @@ class RegistrationStudentDocket extends StatelessWidget {
     final theme = context.theme;
     final l10n = context.l10n;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: AppRadii.blockRadius,
-        border: Border.all(color: theme.colorScheme.outlineVariant),
-      ),
-      clipBehavior: Clip.antiAlias,
+    return RegistrationCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

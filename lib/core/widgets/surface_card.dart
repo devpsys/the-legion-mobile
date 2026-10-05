@@ -32,11 +32,16 @@ class SurfaceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
 
+    // Border is painted with [foregroundDecoration] so full-bleed children
+    // (and any future clipping) cannot cover the stroke at the corners.
     return Container(
       width: double.infinity,
       padding: padding,
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
+        borderRadius: borderRadius,
+      ),
+      foregroundDecoration: BoxDecoration(
         borderRadius: borderRadius,
         border: Border.all(color: theme.colorScheme.outlineVariant),
       ),

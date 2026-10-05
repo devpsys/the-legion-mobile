@@ -10,6 +10,7 @@ import '../../../../core/widgets/surface_card.dart';
 import '../../../admissions/presentation/widgets/tone_callout.dart';
 import '../bloc/registration_state.dart';
 import 'registered_course_card.dart';
+import 'registration_card.dart';
 
 /// Tabbed-ledger "Your Courses" table plus the units-minimum callout.
 class RegisteredCoursesSection extends StatelessWidget {
@@ -113,13 +114,7 @@ class RegisteredCoursesSection extends StatelessWidget {
             ),
           )
         else
-          Container(
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
-              borderRadius: AppRadii.blockRadius,
-              border: Border.all(color: theme.colorScheme.outlineVariant),
-            ),
-            clipBehavior: Clip.antiAlias,
+          RegistrationCard(
             child: Column(
               children: [
                 Container(

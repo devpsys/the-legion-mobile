@@ -8,6 +8,7 @@ import '../../../../core/theme/app_tone.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../models/registration_models.dart';
+import 'registration_card.dart';
 import 'registration_labels.dart';
 
 /// Segmented week: day pills Mon–Sat, detail for the selected day.
@@ -207,13 +208,10 @@ class WeekDaySegmentBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
 
-    return Container(
+    return RegistrationCard(
+      clip: false,
+      color: theme.colorScheme.surfaceContainerLowest,
       padding: const EdgeInsets.all(AppSpacing.xs),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainerLowest,
-        borderRadius: AppRadii.blockRadius,
-        border: Border.all(color: theme.colorScheme.outlineVariant),
-      ),
       child: Row(
         children: [
           for (var day = 1; day <= 6; day++) ...[

@@ -5,6 +5,7 @@ import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/utils/responsive.dart';
+import 'registration_card.dart';
 
 /// Which panel the tabbed-ledger body is showing.
 enum RegistrationViewTab {
@@ -28,16 +29,11 @@ class RegistrationViewTabs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = context.theme;
     final l10n = context.l10n;
 
-    return Container(
+    return RegistrationCard(
+      clip: false,
       padding: const EdgeInsets.all(AppSpacing.xs),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: AppRadii.blockRadius,
-        border: Border.all(color: theme.colorScheme.outlineVariant),
-      ),
       child: Row(
         children: [
           Expanded(

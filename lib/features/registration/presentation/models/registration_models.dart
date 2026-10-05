@@ -346,15 +346,23 @@ class CourseFormRecord extends Equatable {
   ];
 }
 
-/// A soft warning on the study plan.
+/// A soft advisory on the study plan ("Worth knowing now").
 class StudyPlanWarning extends Equatable {
-  const StudyPlanWarning({required this.title, required this.detail});
+  const StudyPlanWarning({
+    required this.detail,
+    this.title = '',
+    this.emphasis = const [],
+  });
 
+  /// Optional short heading; the structured-audit layout shows [detail] only.
   final String title;
   final String detail;
 
+  /// Substrings in [detail] to emphasise (typically course codes).
+  final List<String> emphasis;
+
   @override
-  List<Object?> get props => [title, detail];
+  List<Object?> get props => [title, detail, emphasis];
 }
 
 /// One term block on the study plan.
@@ -365,7 +373,10 @@ class PlannedTerm extends Equatable {
     required this.eyebrow,
     required this.courses,
     this.isCurrent = false,
+    this.subtitle,
+    this.unitsOverride,
     this.note,
+    this.overLimit = false,
   });
 
   final String id;
@@ -373,12 +384,42 @@ class PlannedTerm extends Equatable {
   final String eyebrow;
   final List<RegisteredCourse> courses;
   final bool isCurrent;
-  final String? note;
 
-  int get units => courses.fold(0, (sum, course) => sum + course.units);
+  /// Compact line under the term label (e.g. SIWES / Industrial Training).
+  final String? subtitle;
+
+  /// When set, used instead of summing [courses] (e.g. compact SIWES row).
+  final int? unitsOverride;
+  final String? note;
+  final bool overLimit;
+
+  int get units =>
+      unitsOverride ?? courses.fold(0, (sum, course) => sum + course.units);
 
   @override
-  List<Object?> get props => [id, label, eyebrow, courses, isCurrent, note];
+  List<Object?> get props => [
+    id,
+    label,
+    eyebrow,
+    courses,
+    isCurrent,
+    subtitle,
+    unitsOverride,
+    note,
+    overLimit,
+  ];
+}
+
+/// How a degree-audit row is drawn on the structured-audit study plan.
+enum DegreeAuditKind {
+  /// Completed level — compact 2-column card with Passed chip.
+  completed,
+
+  /// Current level — ledger with taking-now / still-to-take rows.
+  current,
+
+  /// Electives progress strip.
+  electives,
 }
 
 /// Degree-audit row on the study plan.
@@ -387,14 +428,50 @@ class DegreeAuditRow extends Equatable {
     required this.label,
     required this.detail,
     required this.isComplete,
+    this.kind = DegreeAuditKind.completed,
+    this.takingNow = const [],
+    this.stillToTake = const [],
+    this.progressLabel,
   });
 
   final String label;
   final String detail;
   final bool isComplete;
+  final DegreeAuditKind kind;
+  final List<String> takingNow;
+  final List<String> stillToTake;
+
+  /// Electives progress, e.g. `6 of 9 units passed`.
+  final String? progressLabel;
 
   @override
-  List<Object?> get props => [label, detail, isComplete];
+  List<Object?> get props => [
+    label,
+    detail,
+    isComplete,
+    kind,
+    takingNow,
+    stillToTake,
+    progressLabel,
+  ];
+}
+
+/// An outstanding course the student may assign to a future term.
+class StudyPlanCourseOption extends Equatable {
+  const StudyPlanCourseOption({
+    required this.code,
+    required this.title,
+    required this.units,
+  });
+
+  final String code;
+  final String title;
+  final int units;
+
+  String get label => '$code - $title ($units units)';
+
+  @override
+  List<Object?> get props => [code, title, units];
 }
 
 /// The student's study plan as the advising screens draw it.
@@ -410,6 +487,12 @@ class StudyPlan extends Equatable {
     required this.adviserNotedOn,
     required this.terms,
     required this.auditRows,
+    this.programmeConclusion = '',
+    this.warningsIntro = '',
+    this.adviserRole = '',
+    this.planOptions = const [],
+    this.targetTerms = const [],
+    this.howThisWorksSecondary = '',
     this.hasDegreePlan = true,
   });
 
@@ -423,6 +506,14 @@ class StudyPlan extends Equatable {
   final DateTime adviserNotedOn;
   final List<PlannedTerm> terms;
   final List<DegreeAuditRow> auditRows;
+
+  /// e.g. `2027/2028, Second semester`.
+  final String programmeConclusion;
+  final String warningsIntro;
+  final String adviserRole;
+  final List<StudyPlanCourseOption> planOptions;
+  final List<String> targetTerms;
+  final String howThisWorksSecondary;
   final bool hasDegreePlan;
 
   @override
@@ -437,6 +528,12 @@ class StudyPlan extends Equatable {
     adviserNotedOn,
     terms,
     auditRows,
+    programmeConclusion,
+    warningsIntro,
+    adviserRole,
+    planOptions,
+    targetTerms,
+    howThisWorksSecondary,
     hasDegreePlan,
   ];
 }

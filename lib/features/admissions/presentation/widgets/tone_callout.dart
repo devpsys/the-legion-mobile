@@ -43,6 +43,9 @@ class ToneCallout extends StatelessWidget {
       decoration: BoxDecoration(
         color: tone.surface(brightness),
         borderRadius: AppRadii.elementRadius,
+      ),
+      foregroundDecoration: BoxDecoration(
+        borderRadius: AppRadii.elementRadius,
         border: Border.all(color: tone.border(brightness)),
       ),
       child: Row(

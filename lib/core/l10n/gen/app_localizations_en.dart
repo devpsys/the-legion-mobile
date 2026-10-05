@@ -2781,7 +2781,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get studyPlanUndergraduate => 'Undergraduate degree';
 
   @override
-  String get studyPlanActiveStatus => 'Active status';
+  String get studyPlanActiveStatus => 'Active Status';
 
   @override
   String get studyPlanUnitsPassed => 'Units passed';
@@ -2801,7 +2801,42 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get studyPlanUnitsEarnedHint => 'earned';
+
+  @override
+  String get studyPlanUnitsCurrentTermHint => 'current term';
+
+  @override
+  String get studyPlanUnitsHint => 'units';
+
+  @override
+  String get studyPlanCoursesHint => 'courses';
+
+  @override
+  String studyPlanAwardCaption(int units) {
+    return 'Degree plan requirement: $units units';
+  }
+
+  @override
+  String studyPlanStillToPassCaption(int count) {
+    return 'Across remaining levels: $count courses';
+  }
+
+  @override
+  String get studyPlanProgrammeConclusion => 'Programme conclusion:';
+
+  @override
+  String studyPlanMatricLevelShort(String matricNumber, int level) {
+    return '$matricNumber · ${level}L';
+  }
+
+  @override
   String get studyPlanWorthKnowing => 'Worth knowing now';
+
+  @override
+  String studyPlanAdvisoriesCount(int count) {
+    return '$count Advisories';
+  }
 
   @override
   String get studyPlanAdviserSaid => 'What your adviser said';
@@ -2815,10 +2850,59 @@ class AppLocalizationsEn extends AppLocalizations {
   String get studyPlanTermByTerm => 'Your plan, term by term';
 
   @override
+  String studyPlanTermsListed(int count) {
+    return '$count Terms Listed';
+  }
+
+  @override
+  String get studyPlanNowBadge => 'Now';
+
+  @override
+  String get studyPlanLedgerCourse => 'Course';
+
+  @override
+  String get studyPlanLedgerTitle => 'Title';
+
+  @override
+  String get studyPlanLedgerUnits => 'Units';
+
+  @override
   String get studyPlanDegreeAsks => 'What your degree asks of you';
 
   @override
+  String get studyPlanDegreeAsksSubtitle =>
+      'Audit breakdown across all four academic levels.';
+
+  @override
+  String get studyPlanPassed => 'Passed';
+
+  @override
+  String get studyPlanCurrentLevel => 'Current Level';
+
+  @override
+  String get studyPlanTakingNow => 'Taking now';
+
+  @override
+  String get studyPlanStillToTake => 'Still to take';
+
+  @override
   String get studyPlanACourse => 'Plan a course';
+
+  @override
+  String get studyPlanACourseSubtitle =>
+      'Select an unallocated course and assign it to a future session.';
+
+  @override
+  String get studyPlanCourseLabel => 'Course';
+
+  @override
+  String get studyPlanTargetTermLabel => 'Target term';
+
+  @override
+  String get studyPlanSelectCourse => 'Select an outstanding course';
+
+  @override
+  String get studyPlanSelectTerm => 'Select academic term';
 
   @override
   String get studyPlanAddToPlan => 'Add to plan';
@@ -2828,7 +2912,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get studyPlanHowThisWorksBody =>
-      'A study plan is your intent across terms. It is not a registration. Your adviser can leave a note here; only Course registration submits a form to the registry.';
+      'Nothing on this page records what you have done. What is left is read from your degree plan and your results each time you open it, so clearing a carry-over changes it without you touching anything. What you store is only when you mean to take what remains.';
 
   @override
   String get studyPlanComingSoon =>

@@ -4794,7 +4794,7 @@ abstract class AppLocalizations {
   /// No description provided for @studyPlanActiveStatus.
   ///
   /// In en, this message translates to:
-  /// **'Active status'**
+  /// **'Active Status'**
   String get studyPlanActiveStatus;
 
   /// No description provided for @studyPlanUnitsPassed.
@@ -4827,11 +4827,65 @@ abstract class AppLocalizations {
   /// **'{count} courses'**
   String studyPlanStillToPassValue(Object count);
 
+  /// No description provided for @studyPlanUnitsEarnedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'earned'**
+  String get studyPlanUnitsEarnedHint;
+
+  /// No description provided for @studyPlanUnitsCurrentTermHint.
+  ///
+  /// In en, this message translates to:
+  /// **'current term'**
+  String get studyPlanUnitsCurrentTermHint;
+
+  /// No description provided for @studyPlanUnitsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'units'**
+  String get studyPlanUnitsHint;
+
+  /// No description provided for @studyPlanCoursesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'courses'**
+  String get studyPlanCoursesHint;
+
+  /// No description provided for @studyPlanAwardCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Degree plan requirement: {units} units'**
+  String studyPlanAwardCaption(int units);
+
+  /// No description provided for @studyPlanStillToPassCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Across remaining levels: {count} courses'**
+  String studyPlanStillToPassCaption(int count);
+
+  /// No description provided for @studyPlanProgrammeConclusion.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme conclusion:'**
+  String get studyPlanProgrammeConclusion;
+
+  /// No description provided for @studyPlanMatricLevelShort.
+  ///
+  /// In en, this message translates to:
+  /// **'{matricNumber} · {level}L'**
+  String studyPlanMatricLevelShort(String matricNumber, int level);
+
   /// No description provided for @studyPlanWorthKnowing.
   ///
   /// In en, this message translates to:
   /// **'Worth knowing now'**
   String get studyPlanWorthKnowing;
+
+  /// No description provided for @studyPlanAdvisoriesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Advisories'**
+  String studyPlanAdvisoriesCount(int count);
 
   /// No description provided for @studyPlanAdviserSaid.
   ///
@@ -4851,17 +4905,107 @@ abstract class AppLocalizations {
   /// **'Your plan, term by term'**
   String get studyPlanTermByTerm;
 
+  /// No description provided for @studyPlanTermsListed.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} Terms Listed'**
+  String studyPlanTermsListed(int count);
+
+  /// No description provided for @studyPlanNowBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get studyPlanNowBadge;
+
+  /// No description provided for @studyPlanLedgerCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Course'**
+  String get studyPlanLedgerCourse;
+
+  /// No description provided for @studyPlanLedgerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Title'**
+  String get studyPlanLedgerTitle;
+
+  /// No description provided for @studyPlanLedgerUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Units'**
+  String get studyPlanLedgerUnits;
+
   /// No description provided for @studyPlanDegreeAsks.
   ///
   /// In en, this message translates to:
   /// **'What your degree asks of you'**
   String get studyPlanDegreeAsks;
 
+  /// No description provided for @studyPlanDegreeAsksSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Audit breakdown across all four academic levels.'**
+  String get studyPlanDegreeAsksSubtitle;
+
+  /// No description provided for @studyPlanPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'Passed'**
+  String get studyPlanPassed;
+
+  /// No description provided for @studyPlanCurrentLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Current Level'**
+  String get studyPlanCurrentLevel;
+
+  /// No description provided for @studyPlanTakingNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Taking now'**
+  String get studyPlanTakingNow;
+
+  /// No description provided for @studyPlanStillToTake.
+  ///
+  /// In en, this message translates to:
+  /// **'Still to take'**
+  String get studyPlanStillToTake;
+
   /// No description provided for @studyPlanACourse.
   ///
   /// In en, this message translates to:
   /// **'Plan a course'**
   String get studyPlanACourse;
+
+  /// No description provided for @studyPlanACourseSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select an unallocated course and assign it to a future session.'**
+  String get studyPlanACourseSubtitle;
+
+  /// No description provided for @studyPlanCourseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Course'**
+  String get studyPlanCourseLabel;
+
+  /// No description provided for @studyPlanTargetTermLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Target term'**
+  String get studyPlanTargetTermLabel;
+
+  /// No description provided for @studyPlanSelectCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Select an outstanding course'**
+  String get studyPlanSelectCourse;
+
+  /// No description provided for @studyPlanSelectTerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Select academic term'**
+  String get studyPlanSelectTerm;
 
   /// No description provided for @studyPlanAddToPlan.
   ///
@@ -4878,7 +5022,7 @@ abstract class AppLocalizations {
   /// No description provided for @studyPlanHowThisWorksBody.
   ///
   /// In en, this message translates to:
-  /// **'A study plan is your intent across terms. It is not a registration. Your adviser can leave a note here; only Course registration submits a form to the registry.'**
+  /// **'Nothing on this page records what you have done. What is left is read from your degree plan and your results each time you open it, so clearing a carry-over changes it without you touching anything. What you store is only when you mean to take what remains.'**
   String get studyPlanHowThisWorksBody;
 
   /// No description provided for @studyPlanComingSoon.

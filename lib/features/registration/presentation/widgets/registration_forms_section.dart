@@ -9,6 +9,7 @@ import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../models/registration_models.dart';
+import 'registration_card.dart';
 
 /// Submitted course forms list, with a link into the Form tab.
 class RegistrationFormsSection extends StatelessWidget {
@@ -75,41 +76,38 @@ class CourseFormRecordRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
 
-    return Material(
-      color: theme.colorScheme.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: AppRadii.blockRadius,
-        side: BorderSide(color: theme.colorScheme.outlineVariant),
-      ),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.md),
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: theme.textTheme.titleSmall),
-                    AppSpacing.verticalGap(AppSpacing.xs),
-                    Text(
-                      subtitle,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
+    return RegistrationCard(
+      child: Material(
+        color: theme.colorScheme.surface.withValues(alpha: 0),
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title, style: theme.textTheme.titleSmall),
+                      AppSpacing.verticalGap(AppSpacing.xs),
+                      Text(
+                        subtitle,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              AppSpacing.horizontalGap(AppSpacing.sm),
-              Icon(
-                Icons.chevron_right,
-                size: AppDimensions.iconMedium,
-                color: theme.colorScheme.onSurfaceVariant,
-              ),
-            ],
+                AppSpacing.horizontalGap(AppSpacing.sm),
+                Icon(
+                  Icons.chevron_right,
+                  size: AppDimensions.iconMedium,
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ],
+            ),
           ),
         ),
       ),

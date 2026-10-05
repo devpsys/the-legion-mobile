@@ -8,6 +8,7 @@ import '../../../../core/theme/app_tone.dart';
 import '../../../../core/utils/responsive.dart';
 import '../bloc/registration_state.dart';
 import '../models/registration_models.dart';
+import 'registration_card.dart';
 import 'registration_labels.dart';
 
 /// Three-column micro-dashboard from the tabbed-ledger layout.
@@ -183,13 +184,9 @@ class _MetricTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
 
-    return Container(
+    return RegistrationCard(
+      clip: false,
       padding: const EdgeInsets.all(AppSpacing.md),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: AppRadii.blockRadius,
-        border: Border.all(color: theme.colorScheme.outlineVariant),
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
