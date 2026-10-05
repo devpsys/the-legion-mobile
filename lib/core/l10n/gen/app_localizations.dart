@@ -5037,11 +5037,23 @@ abstract class AppLocalizations {
   /// **'Course form {version}'**
   String courseFormTitle(Object version);
 
+  /// No description provided for @courseFormShortTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Course Form'**
+  String get courseFormShortTitle;
+
   /// No description provided for @courseFormSavePdf.
   ///
   /// In en, this message translates to:
   /// **'Save PDF'**
   String get courseFormSavePdf;
+
+  /// No description provided for @courseFormShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Share'**
+  String get courseFormShare;
 
   /// No description provided for @courseFormOffice.
   ///
@@ -5100,7 +5112,7 @@ abstract class AppLocalizations {
   /// No description provided for @courseFormFacultyDeptValue.
   ///
   /// In en, this message translates to:
-  /// **'{faculty} · {department}'**
+  /// **'{department}, {faculty}'**
   String courseFormFacultyDeptValue(Object department, Object faculty);
 
   /// No description provided for @courseFormSubmissionLog.
@@ -5108,6 +5120,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Submission log'**
   String get courseFormSubmissionLog;
+
+  /// No description provided for @courseFormSubmissionLogLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Submission Log: {version} · {submittedOn} WAT'**
+  String courseFormSubmissionLogLine(Object submittedOn, Object version);
 
   /// No description provided for @courseFormRegisteredCourses.
   ///
@@ -5121,6 +5139,30 @@ abstract class AppLocalizations {
   /// **'Total units'**
   String get courseFormTotalUnits;
 
+  /// No description provided for @courseFormTotalRegisteredUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Registered Units'**
+  String get courseFormTotalRegisteredUnits;
+
+  /// No description provided for @courseFormUnitsAbbrev.
+  ///
+  /// In en, this message translates to:
+  /// **'UNITS'**
+  String get courseFormUnitsAbbrev;
+
+  /// No description provided for @courseFormSectionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Section {section}'**
+  String courseFormSectionLabel(Object section);
+
+  /// No description provided for @courseFormUnitsStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units · {status}'**
+  String courseFormUnitsStatus(Object status, Object units);
+
   /// No description provided for @courseFormDeclarationHeading.
   ///
   /// In en, this message translates to:
@@ -5130,14 +5172,20 @@ abstract class AppLocalizations {
   /// No description provided for @courseFormDeclarationBody.
   ///
   /// In en, this message translates to:
-  /// **'I confirm that the courses listed are those I intend to take this term and that the particulars above are correct.'**
+  /// **'“I confirm these are the courses I will take this semester and that I have read the registration rules.”'**
   String get courseFormDeclarationBody;
 
   /// No description provided for @courseFormAuthDigital.
   ///
   /// In en, this message translates to:
-  /// **'Digital acceptance · Validated'**
+  /// **'Auth: Digital Acceptance'**
   String get courseFormAuthDigital;
+
+  /// No description provided for @courseFormStatusValidated.
+  ///
+  /// In en, this message translates to:
+  /// **'Status: Validated'**
+  String get courseFormStatusValidated;
 
   /// No description provided for @courseFormSignatures.
   ///
@@ -5150,6 +5198,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Verify authenticity with the document id below.'**
   String get courseFormVerifyFooter;
+
+  /// No description provided for @courseFormVerifyAuthenticity.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify authenticity'**
+  String get courseFormVerifyAuthenticity;
+
+  /// No description provided for @courseFormRegistrarArchive.
+  ///
+  /// In en, this message translates to:
+  /// **'Registrar secure archive'**
+  String get courseFormRegistrarArchive;
+
+  /// No description provided for @courseFormAcademicReg.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Reg.'**
+  String get courseFormAcademicReg;
+
+  /// No description provided for @courseFormPresentHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Present this stamped copy to the departmental officer if requested.'**
+  String get courseFormPresentHint;
 
   /// No description provided for @courseFormEmptyTitle.
   ///
@@ -5274,19 +5346,19 @@ abstract class AppLocalizations {
   /// No description provided for @courseFormStudentSignature.
   ///
   /// In en, this message translates to:
-  /// **'Student signature'**
+  /// **'Student Signature:'**
   String get courseFormStudentSignature;
 
   /// No description provided for @courseFormAdviserSignature.
   ///
   /// In en, this message translates to:
-  /// **'Level adviser'**
+  /// **'Level Adviser:'**
   String get courseFormAdviserSignature;
 
   /// No description provided for @courseFormHodSignature.
   ///
   /// In en, this message translates to:
-  /// **'Head of department'**
+  /// **'Head of Department:'**
   String get courseFormHodSignature;
 
   /// No description provided for @courseFormSignatureDate.
@@ -5295,10 +5367,16 @@ abstract class AppLocalizations {
   /// **'Date'**
   String get courseFormSignatureDate;
 
+  /// No description provided for @courseFormSignatureDateBlank.
+  ///
+  /// In en, this message translates to:
+  /// **'Date: ________________'**
+  String get courseFormSignatureDateBlank;
+
   /// No description provided for @courseFormSignaturePrintNote.
   ///
   /// In en, this message translates to:
-  /// **'Signature lines are for the printed copy.'**
+  /// **'* Signature lines are for the printed copy.'**
   String get courseFormSignaturePrintNote;
 
   /// No description provided for @courseFormDocId.
@@ -5322,7 +5400,7 @@ abstract class AppLocalizations {
   /// No description provided for @courseFormUnitsColumn.
   ///
   /// In en, this message translates to:
-  /// **'Units / status'**
+  /// **'Units / Status'**
   String get courseFormUnitsColumn;
 
   /// No description provided for @studyPlanSubtitle.

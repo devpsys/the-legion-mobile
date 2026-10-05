@@ -2924,7 +2924,13 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
+  String get courseFormShortTitle => 'Course Form';
+
+  @override
   String get courseFormSavePdf => 'Save PDF';
+
+  @override
+  String get courseFormShare => 'Share';
 
   @override
   String get courseFormOffice => 'Office of the Registrar · Academic Affairs';
@@ -2955,11 +2961,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String courseFormFacultyDeptValue(Object department, Object faculty) {
-    return '$faculty · $department';
+    return '$department, $faculty';
   }
 
   @override
   String get courseFormSubmissionLog => 'Submission log';
+
+  @override
+  String courseFormSubmissionLogLine(Object submittedOn, Object version) {
+    return 'Submission Log: $version · $submittedOn WAT';
+  }
 
   @override
   String get courseFormRegisteredCourses => 'Registered courses';
@@ -2968,14 +2979,33 @@ class AppLocalizationsEn extends AppLocalizations {
   String get courseFormTotalUnits => 'Total units';
 
   @override
+  String get courseFormTotalRegisteredUnits => 'Total Registered Units';
+
+  @override
+  String get courseFormUnitsAbbrev => 'UNITS';
+
+  @override
+  String courseFormSectionLabel(Object section) {
+    return 'Section $section';
+  }
+
+  @override
+  String courseFormUnitsStatus(Object status, Object units) {
+    return '$units units · $status';
+  }
+
+  @override
   String get courseFormDeclarationHeading => 'Student declaration';
 
   @override
   String get courseFormDeclarationBody =>
-      'I confirm that the courses listed are those I intend to take this term and that the particulars above are correct.';
+      '“I confirm these are the courses I will take this semester and that I have read the registration rules.”';
 
   @override
-  String get courseFormAuthDigital => 'Digital acceptance · Validated';
+  String get courseFormAuthDigital => 'Auth: Digital Acceptance';
+
+  @override
+  String get courseFormStatusValidated => 'Status: Validated';
 
   @override
   String get courseFormSignatures =>
@@ -2984,6 +3014,19 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get courseFormVerifyFooter =>
       'Verify authenticity with the document id below.';
+
+  @override
+  String get courseFormVerifyAuthenticity => 'Verify authenticity';
+
+  @override
+  String get courseFormRegistrarArchive => 'Registrar secure archive';
+
+  @override
+  String get courseFormAcademicReg => 'Academic Reg.';
+
+  @override
+  String get courseFormPresentHint =>
+      'Present this stamped copy to the departmental officer if requested.';
 
   @override
   String get courseFormEmptyTitle => 'No course form yet';
@@ -3057,20 +3100,23 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get courseFormStudentSignature => 'Student signature';
+  String get courseFormStudentSignature => 'Student Signature:';
 
   @override
-  String get courseFormAdviserSignature => 'Level adviser';
+  String get courseFormAdviserSignature => 'Level Adviser:';
 
   @override
-  String get courseFormHodSignature => 'Head of department';
+  String get courseFormHodSignature => 'Head of Department:';
 
   @override
   String get courseFormSignatureDate => 'Date';
 
   @override
+  String get courseFormSignatureDateBlank => 'Date: ________________';
+
+  @override
   String get courseFormSignaturePrintNote =>
-      'Signature lines are for the printed copy.';
+      '* Signature lines are for the printed copy.';
 
   @override
   String courseFormDocId(Object id) {
@@ -3086,7 +3132,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get courseFormSealed => 'Sealed & issued';
 
   @override
-  String get courseFormUnitsColumn => 'Units / status';
+  String get courseFormUnitsColumn => 'Units / Status';
 
   @override
   String get studyPlanSubtitle =>

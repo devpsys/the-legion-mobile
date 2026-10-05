@@ -231,7 +231,7 @@ abstract final class RegistrationFixtures {
 
   static final CourseFormRecord sampleForm = CourseFormRecord(
     id: 'form-v1',
-    versionLabel: 'v1.0',
+    versionLabel: 'v1',
     submittedOn: DateTime(2026, 10, 3, 14, 22),
     status: CourseFormStatus.submitted,
     courses: courses
@@ -428,7 +428,7 @@ abstract final class RegistrationFixtures {
   static RegistrationLedger afterSubmit(RegistrationLedger current) {
     final form = CourseFormRecord(
       id: 'form-v1',
-      versionLabel: 'v1.0',
+      versionLabel: 'v1',
       submittedOn: DateTime(2026, 10, 3, 14, 22),
       status: CourseFormStatus.submitted,
       courses: current.courses

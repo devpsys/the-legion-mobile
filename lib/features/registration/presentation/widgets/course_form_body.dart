@@ -3,7 +3,11 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/router/route_names.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_radii.dart';
 import '../../../../core/theme/app_spacing.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/dates.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../../core/widgets/message_feedback.dart';
 import '../../../../core/widgets/responsive_content.dart';
@@ -63,32 +67,40 @@ class CourseFormBody extends StatelessWidget {
       );
     }
 
+    final versionLine = l10n.courseFormVersionLine(
+      AppDateFormats.medium(l10n.localeName).format(form.submittedOn),
+      form.versionLabel,
+    );
+
     return SingleChildScrollView(
       child: ResponsiveContent(
         maxWidth: AppDimensions.maxContentWidth,
+        // Tighter than the default canvas gutter so modular pods can breathe.
+        padding: EdgeInsets.symmetric(
+          horizontal: context.isCompact ? AppSpacing.sm : AppSpacing.md,
+        ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: AppSpacing.xl),
+          padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      l10n.courseFormTitle(form.versionLabel),
-                      style: theme.textTheme.headlineSmall,
-                    ),
-                  ),
-                  AppSpacing.horizontalGap(AppSpacing.sm),
-                  CourseFormSavePdfButton(
-                    compact: context.isCompact,
-                    onPressed: () =>
-                        context.showMessage(context.l10n.commonComingSoon),
-                  ),
-                ],
+              CourseFormActionBar(
+                versionLine: versionLine,
+                onSavePdf: () =>
+                    context.showMessage(context.l10n.commonComingSoon),
+                onShare: () =>
+                    context.showMessage(context.l10n.commonComingSoon),
               ),
-              AppSpacing.verticalGap(AppSpacing.xl),
+              AppSpacing.verticalGap(AppSpacing.md),
               CourseFormDocument(student: student, window: window, form: form),
+              AppSpacing.verticalGap(AppSpacing.md),
+              Text(
+                l10n.courseFormPresentHint,
+                textAlign: TextAlign.center,
+                style: AppTextStyles.codeSmall.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
             ],
           ),
         ),
@@ -97,33 +109,90 @@ class CourseFormBody extends StatelessWidget {
   }
 }
 
-/// Save PDF control: icon-only on phones, labelled from medium upward.
-class CourseFormSavePdfButton extends StatelessWidget {
-  const CourseFormSavePdfButton({
-    required this.compact,
-    required this.onPressed,
+/// Compact utility bar above the document sheet (title, version, Save PDF).
+class CourseFormActionBar extends StatelessWidget {
+  const CourseFormActionBar({
+    required this.versionLine,
+    required this.onSavePdf,
+    required this.onShare,
     super.key,
   });
 
-  final bool compact;
-  final VoidCallback onPressed;
+  final String versionLine;
+  final VoidCallback onSavePdf;
+  final VoidCallback onShare;
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final theme = context.theme;
 
-    if (compact) {
-      return IconButton(
-        onPressed: onPressed,
-        tooltip: l10n.courseFormSavePdf,
-        icon: const Icon(Icons.picture_as_pdf_outlined),
-      );
-    }
-
-    return TextButton.icon(
-      onPressed: onPressed,
-      icon: const Icon(Icons.picture_as_pdf_outlined),
-      label: Text(l10n.courseFormSavePdf),
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.md,
+        vertical: AppSpacing.sm,
+      ),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface.withValues(alpha: 0.92),
+        borderRadius: AppRadii.blockRadius,
+        border: Border.all(
+          color: AppColors.stroke(theme.brightness).withValues(alpha: 0.8),
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.courseFormShortTitle,
+                  style: theme.textTheme.labelLarge?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: AppTextStyles.semiBold,
+                  ),
+                ),
+                AppSpacing.verticalGap(AppSpacing.xs),
+                Text(
+                  versionLine,
+                  style: AppTextStyles.codeSmall.copyWith(
+                    color: theme.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          FilledButton.icon(
+            onPressed: onSavePdf,
+            icon: Icon(Icons.print_outlined, size: AppDimensions.iconSmall),
+            label: Text(l10n.courseFormSavePdf),
+            style: FilledButton.styleFrom(
+              // Compact bar control — taller than a chip, softer than CTA radius.
+              minimumSize: Size.zero,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppSpacing.md,
+                vertical: AppSpacing.lg,
+              ),
+              shape: const RoundedRectangleBorder(
+                borderRadius: AppRadii.tagRadius,
+              ),
+              textStyle: AppTextStyles.codeSmall.copyWith(
+                fontWeight: AppTextStyles.semiBold,
+                color: theme.colorScheme.onPrimary,
+              ),
+              visualDensity: VisualDensity.compact,
+            ),
+          ),
+          AppSpacing.horizontalGap(AppSpacing.xs),
+          IconButton(
+            onPressed: onShare,
+            tooltip: l10n.courseFormShare,
+            visualDensity: VisualDensity.compact,
+            icon: Icon(Icons.share_outlined, size: AppDimensions.iconDense),
+          ),
+        ],
+      ),
     );
   }
 }
