@@ -107,6 +107,7 @@ abstract final class HubFixtures {
           id: 'registration',
           label: 'Registration & Records',
           icon: Icons.school_outlined,
+          routeName: Routes.registrationName,
         ),
       ],
     ),

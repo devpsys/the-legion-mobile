@@ -14,6 +14,7 @@ class SurfaceCard extends StatelessWidget {
   const SurfaceCard({
     required this.child,
     this.padding = AppSpacing.card,
+    this.borderRadius = AppRadii.cardRadius,
     super.key,
   });
 
@@ -22,6 +23,10 @@ class SurfaceCard extends StatelessWidget {
   /// Interior padding. Sections use the card default; a card that is the
   /// whole screen's statement breathes more, with [AppSpacing.sheet].
   final EdgeInsetsGeometry padding;
+
+  /// Corner radius. Defaults to [AppRadii.cardRadius]; features may pass a
+  /// tighter radius (e.g. [AppRadii.blockRadius]) to match a specific layout.
+  final BorderRadius borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +37,7 @@ class SurfaceCard extends StatelessWidget {
       padding: padding,
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        borderRadius: AppRadii.cardRadius,
+        borderRadius: borderRadius,
         border: Border.all(color: theme.colorScheme.outlineVariant),
       ),
       child: child,

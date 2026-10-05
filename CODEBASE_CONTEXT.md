@@ -9,9 +9,9 @@ review, including uncommitted admissions-outcome work that is not on `main`.
 
 The Legion is a multi-platform university portal (Android, iOS, Web). The
 app today covers sign-in, account recovery, a student landing hub, a thin
-profile tab, a candidate admissions portal, and the first two student fees
-screens (the fees tab and its checkout). Registration, two-factor sign-in,
-and most hub modules are not built.
+profile tab, a candidate admissions portal, student fees (tab through
+receipt/verify), and Registration & Records (course registration portal).
+Two-factor sign-in and most other hub modules are not built.
 
 | Concern | Choice |
 | --- | --- |
@@ -46,7 +46,8 @@ lib/
     ├── home/                    # presentation only; fixtures read in the scaffold
     ├── profile/                 # presentation only; renders AuthCubit.user
     ├── admissions/              # presentation only; cubit serves fixtures
-    └── fees/                    # presentation only; cubit serves a fixture ledger
+    ├── fees/                    # presentation only; cubit serves a fixture ledger
+    └── registration/            # presentation only; cubit serves a fixture ledger
 ```
 
 `main` calls `configureDependencies()` then `runApp(TheLegionApp)`.
@@ -172,12 +173,15 @@ intentional local UI state.
 | `/home/fees/receipts/:id` | official e-receipt paper | authenticated, full canvas |
 | `/verify/receipt?code=` | public receipt check (five facts only) | `publicPaths` |
 | `/admissions`, `/programmes`, `/applications`, `/applications/:id` | candidate portal, one `AdmissionsCubit` | authenticated |
+| `/registration`, `/registration/study-plan`, `/registration/form` | Registration & Records portal, one `RegistrationCubit` | authenticated |
 
 `resolveRedirect` sends unresolved sessions to splash, anonymous users to
 login (recovery stays public), and authenticated users off splash, login, and
 recovery onto `/home`. New portal paths must be covered by `Routes` or they
-bypass the session check. Back for the portal is `AdmissionsShell` /
-`admissionsBackTarget`, not a nested `PopScope`.
+bypass the session check. Back for Admissions is `AdmissionsShell` /
+`admissionsBackTarget`; for Registration & Records it is
+`RegistrationShell` / `registrationBackTarget`. Neither uses a nested
+`PopScope` inside each page.
 
 The student shell hides its tab bar on `Routes.fullCanvasPaths` (hub, checkout,
 card, gateway return) and on `Routes.isFeesReceiptPath`. It reads the location
@@ -196,7 +200,7 @@ candidate portal.
 | Remember me, create account, verify letter, registry contact | UI only | Buttons show `commonComingSoon`. |
 | Two-factor, email confirmation flows | Not implemented | Designed under `ui-designs/auth/`, no screens. |
 | Password recovery | Mocked | Four screens, real `PasswordPolicy`, fake code in `RecoveryRules`. No datasource. |
-| Student hub | Mocked | Timeline, directory, announcements from `HubFixtures`. Only Admissions, Fees & Payments, Profile and the Payments shortcut navigate. |
+| Student hub | Mocked | Timeline, directory, announcements from `HubFixtures`. Admissions, Registration & Records, Fees & Payments, Profile and the Payments shortcut navigate. |
 | Profile | Partially implemented | Session email, name, sign-out. Not a designed profile product. |
 | Notifications | Mocked | `NotificationCubit` singleton fed by `NotificationFixtures`. Mark-read is in memory. |
 | Admissions overview, programmes, applications | Mocked | Cubit + fixtures. Search, faculty, and cycle selection are local. A programme card offers "Apply" only while the cycle and the programme are open and the candidate has no live application of that `ProgrammeCategory` in the session (`AdmissionsState.applyAvailabilityFor`); tapping it has `AdmissionsCubit.startApplication` open a draft from `AdmissionsFixtures.startDraft` and goes to its detail. View details and bulletins are `commonComingSoon`; the claim card and the JAMB tab open the claim screen. |
@@ -212,6 +216,7 @@ candidate portal.
 | Gateway return (`…/checkout/return`) | Mocked | Four statuses (`pending` / `succeeded` / `failed` / `expired`). Pay lands on amber awaiting confirmation with a selectable reference and “You can close this page.” Success (fixture) unlocks View official receipt; registration CTA is coming soon. |
 | Official receipt (`/home/fees/receipts/:id`) | Mocked | Dark chrome around always-light paper (combined light+dark designs). Copy verification code works; Print/Share coming soon. |
 | Public receipt check (`/verify/receipt`) | Mocked | Like letter verify: no shell. Result model has only receipt number, amount, paid by, for, date — no matric/contact/gateway refs (README privacy override over the HTML mocks). |
+| Registration & Records (`/registration`) | Mocked | `RegistrationCubit` + `RegistrationFixtures`. Tabs: Registration (courses, week, catalogue, declaration/submit, clash/drop sheets), Study plan, Form (paper document or empty). Gate banners for not-tracked / fees-blocked; add/drop-only window banner. Waiver request and Save PDF are `commonComingSoon`. |
 | Results, timetable, other hub modules | Not implemented | No Dart feature. Wallet top-up and refunds not built. |
 | Bursary officer | Not implemented | Not designed in this checkout. |
 
@@ -266,8 +271,8 @@ and `com.example.theLegionMobile` (iOS).
   identity fields beyond what their design READMEs allow.
 - Widget tests inject `now` so dates stay deterministic. Follow that when a
   screen depends on the clock.
-- `AdmissionsCubit` and `PasswordRecoveryCubit` are factories. `AuthCubit` and
-  `NotificationCubit` are singletons.
+- `AdmissionsCubit`, `RegistrationCubit`, and `PasswordRecoveryCubit` are
+  factories. `AuthCubit` and `NotificationCubit` are singletons.
 
 ## Commands verified on this tree
 

@@ -2369,4 +2369,650 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get feesVerifySignIn => 'Sign in to the student portal';
+
+  @override
+  String get navRegistration => 'Registration';
+
+  @override
+  String get navStudyPlan => 'Study plan';
+
+  @override
+  String get navCourseForm => 'Form';
+
+  @override
+  String get registrationBackTooltip => 'Back to the hub';
+
+  @override
+  String get registrationTitle => 'Course registration';
+
+  @override
+  String get registrationBreadcrumbStudent => 'Student';
+
+  @override
+  String registrationSessionLine(Object session, Object term) {
+    return '$session · $term';
+  }
+
+  @override
+  String registrationSessionHeadline(Object session, Object term) {
+    return '$session session · $term';
+  }
+
+  @override
+  String registrationStudentProgramme(Object faculty, Object programme) {
+    return '$programme · $faculty';
+  }
+
+  @override
+  String registrationMatricLevel(Object level, Object matricNumber) {
+    return '$matricNumber · $level';
+  }
+
+  @override
+  String registrationMatricLevelSuffix(Object level, Object matricNumber) {
+    return '· $matricNumber · $level';
+  }
+
+  @override
+  String registrationLevel(Object level) {
+    return '$level Level';
+  }
+
+  @override
+  String get registrationUnitsRegisteredLabel => 'Units registered';
+
+  @override
+  String registrationCountingUnitsTitle(Object units) {
+    return 'Counting units: $units';
+  }
+
+  @override
+  String registrationCountingUnitsBody(Object minimum) {
+    return 'You are at your minimum of $minimum exactly. Dropping any course leaves you below minimum.';
+  }
+
+  @override
+  String registrationCatalogueTitleSection(Object section, Object title) {
+    return '$title · Section $section';
+  }
+
+  @override
+  String get registrationNoLecturesLab =>
+      'No lectures or lab sessions scheduled';
+
+  @override
+  String registrationMeetingCourseVenue(Object code, Object venue) {
+    return '$code · $venue';
+  }
+
+  @override
+  String registrationMeetingTime(Object end, Object start) {
+    return '$start - $end';
+  }
+
+  @override
+  String get registrationWindowOpen => 'Open';
+
+  @override
+  String get registrationWindowOpenForYou => 'Open for you';
+
+  @override
+  String get registrationWindowAddDropOnly => 'Add/drop only';
+
+  @override
+  String get registrationWindowUpcoming => 'Opens soon';
+
+  @override
+  String get registrationWindowClosed => 'Closed';
+
+  @override
+  String get registrationUnitsLabel => 'Units';
+
+  @override
+  String registrationUnitsValue(Object maximum, Object registered) {
+    return '$registered / $maximum';
+  }
+
+  @override
+  String registrationUnitsHint(Object minimum) {
+    return 'Min $minimum · Limit per plan';
+  }
+
+  @override
+  String get registrationApprovalLabel => 'Approval';
+
+  @override
+  String get registrationApprovalHint => 'Adviser review';
+
+  @override
+  String get registrationFormShortLabel => 'Form';
+
+  @override
+  String get registrationFormPendingSubmit => 'Pending submit';
+
+  @override
+  String get registrationPendingLabel => 'Awaiting approval';
+
+  @override
+  String get registrationPendingHint => 'Level adviser queue';
+
+  @override
+  String registrationPendingCoursesValue(Object count) {
+    return '$count';
+  }
+
+  @override
+  String get registrationPendingCoursesHint => 'courses';
+
+  @override
+  String get registrationFormLabel => 'Course form';
+
+  @override
+  String get registrationFormNotSubmitted => 'Not submitted';
+
+  @override
+  String get registrationFormDraft => 'Draft';
+
+  @override
+  String get registrationFormSubmitted => 'Submitted';
+
+  @override
+  String get registrationFormHint => 'Submit when complete';
+
+  @override
+  String get registrationTabSelected => 'Selected & Timetable';
+
+  @override
+  String get registrationTabCatalogue => 'Catalogue & Add';
+
+  @override
+  String get registrationLedgerCourseTitle => 'Course / Title';
+
+  @override
+  String get registrationLedgerUnits => 'Units';
+
+  @override
+  String get registrationLedgerAction => 'Action';
+
+  @override
+  String get registrationActionBlocked => 'Blocked';
+
+  @override
+  String get registrationActionArchived => 'Archived';
+
+  @override
+  String get registrationActionNone => '—';
+
+  @override
+  String registrationMatricBulletLevel(String matricNumber, String level) {
+    return '$matricNumber • $level';
+  }
+
+  @override
+  String registrationUnitsDegreePlan(int minimum) {
+    return 'Min $minimum · Degree plan';
+  }
+
+  @override
+  String get registrationDeckTitle => 'Registration Deck';
+
+  @override
+  String registrationUnitsCap(Object maximum) {
+    return '/ $maximum units';
+  }
+
+  @override
+  String registrationCoursesTotal(Object count) {
+    return '$count total';
+  }
+
+  @override
+  String registrationStandardLoad(Object maximum, Object minimum) {
+    return 'Standard load: $minimum-$maximum';
+  }
+
+  @override
+  String get registrationLectureLabSchedule => 'Lecture & Lab Timetable';
+
+  @override
+  String get registrationWeekdaySat => 'Sat';
+
+  @override
+  String get registrationWeekdaySaturday => 'Saturday';
+
+  @override
+  String registrationEventCountShort(Object count) {
+    return '$count ev';
+  }
+
+  @override
+  String registrationEventsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count events',
+      one: '1 event',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get registrationFree => 'Free';
+
+  @override
+  String get registrationActiveDay => 'Active day';
+
+  @override
+  String get registrationCatalogueSearchHint =>
+      'Search by course code, title, or department';
+
+  @override
+  String get registrationCatalogueDepartmental => 'Departmental Catalog';
+
+  @override
+  String registrationNeedsPrerequisite(String code) {
+    return 'Needs $code.';
+  }
+
+  @override
+  String registrationNotOpenDetail(int units) {
+    return 'No lecturer assigned · $units units';
+  }
+
+  @override
+  String registrationCatalogueFullDetail(String title, int units) {
+    return '$title · $units units';
+  }
+
+  @override
+  String get registrationGateNotTracked => 'Not tracked';
+
+  @override
+  String registrationYourCourses(Object count) {
+    return 'Your courses ($count)';
+  }
+
+  @override
+  String get registrationYourCoursesTitle => 'Your Courses';
+
+  @override
+  String registrationUnitsRegistered(Object units) {
+    return '$units units registered';
+  }
+
+  @override
+  String registrationMinUnitsNote(Object minimum) {
+    return 'Your degree plan asks for at least $minimum units this term.';
+  }
+
+  @override
+  String get registrationYourWeek => 'Your Week';
+
+  @override
+  String get registrationLectureSchedule => 'Lecture schedule';
+
+  @override
+  String get registrationNoLectures => 'No lectures scheduled';
+
+  @override
+  String get registrationWeekdayMon => 'Mon';
+
+  @override
+  String get registrationWeekdayTue => 'Tue';
+
+  @override
+  String get registrationWeekdayWed => 'Wed';
+
+  @override
+  String get registrationWeekdayThu => 'Thu';
+
+  @override
+  String get registrationWeekdayFri => 'Fri';
+
+  @override
+  String get registrationAddCourses => 'Add Courses';
+
+  @override
+  String get registrationSubmittedForms => 'Submitted forms';
+
+  @override
+  String get registrationNoForms =>
+      'No course form has been submitted for this window yet.';
+
+  @override
+  String get registrationHelpLine =>
+      'Registration closed? Ask for late registration or add/drop from Requests.';
+
+  @override
+  String get registrationDeclaration =>
+      'I confirm these courses conform to my degree structure and satisfy prerequisite conditions. Once submitted, changes require formal adviser clearance.';
+
+  @override
+  String get registrationSubmitForm => 'Submit course form';
+
+  @override
+  String get registrationSaveChanges => 'Save changes';
+
+  @override
+  String get registrationDrop => 'Drop';
+
+  @override
+  String get registrationAdd => 'Add';
+
+  @override
+  String get registrationAddAnyway => 'Add anyway';
+
+  @override
+  String get registrationRequestWaiver => 'Request it';
+
+  @override
+  String get registrationCancel => 'Cancel';
+
+  @override
+  String get registrationKeepIt => 'Keep it';
+
+  @override
+  String get registrationDropAnyway => 'Drop anyway';
+
+  @override
+  String get registrationStatusApproved => 'Approved';
+
+  @override
+  String get registrationStatusAwaiting => 'Awaiting approval';
+
+  @override
+  String get registrationStatusRejected => 'Rejected';
+
+  @override
+  String get registrationStatusDropped => 'Dropped';
+
+  @override
+  String get registrationStatusClashAccepted => 'Clash accepted';
+
+  @override
+  String get registrationCatalogueFull => 'Full';
+
+  @override
+  String get registrationCatalogueNotOpen => 'Not open yet';
+
+  @override
+  String get registrationCatalogueOutsidePlan => 'Outside your degree plan';
+
+  @override
+  String get registrationCatalogueClash => 'Timetable clash';
+
+  @override
+  String get registrationClashSheetTitle => 'Timetable clash';
+
+  @override
+  String registrationClashSheetBody(Object detail) {
+    return '$detail You can still add it if your adviser accepts the clash.';
+  }
+
+  @override
+  String registrationDropSheetTitle(Object code) {
+    return 'Drop $code?';
+  }
+
+  @override
+  String registrationDropSheetBody(Object minimum, Object units) {
+    return 'Dropping this course leaves you on $units units, below the $minimum-unit minimum for this term.';
+  }
+
+  @override
+  String registrationSectionUnits(Object section, Object units) {
+    return '$units units · Section $section';
+  }
+
+  @override
+  String registrationCourseUnits(Object units) {
+    return '$units units';
+  }
+
+  @override
+  String registrationViewForm(Object version) {
+    return 'View form $version';
+  }
+
+  @override
+  String get studyPlanTitle => 'Study plan';
+
+  @override
+  String get studyPlanUndergraduate => 'Undergraduate degree';
+
+  @override
+  String get studyPlanActiveStatus => 'Active status';
+
+  @override
+  String get studyPlanUnitsPassed => 'Units passed';
+
+  @override
+  String get studyPlanUnitsPlanned => 'Units planned';
+
+  @override
+  String get studyPlanAwardUnits => 'Awarded on';
+
+  @override
+  String get studyPlanStillToPass => 'Still to pass';
+
+  @override
+  String studyPlanStillToPassValue(Object count) {
+    return '$count courses';
+  }
+
+  @override
+  String get studyPlanWorthKnowing => 'Worth knowing now';
+
+  @override
+  String get studyPlanAdviserSaid => 'What your adviser said';
+
+  @override
+  String studyPlanAdviserByline(Object date, Object name) {
+    return '$name · $date';
+  }
+
+  @override
+  String get studyPlanTermByTerm => 'Your plan, term by term';
+
+  @override
+  String get studyPlanDegreeAsks => 'What your degree asks of you';
+
+  @override
+  String get studyPlanACourse => 'Plan a course';
+
+  @override
+  String get studyPlanAddToPlan => 'Add to plan';
+
+  @override
+  String get studyPlanHowThisWorks => 'How this works';
+
+  @override
+  String get studyPlanHowThisWorksBody =>
+      'A study plan is your intent across terms. It is not a registration. Your adviser can leave a note here; only Course registration submits a form to the registry.';
+
+  @override
+  String get studyPlanComingSoon =>
+      'Planning a course into a future term goes live with the next release.';
+
+  @override
+  String courseFormTitle(Object version) {
+    return 'Course form $version';
+  }
+
+  @override
+  String get courseFormSavePdf => 'Save PDF';
+
+  @override
+  String get courseFormOffice => 'Office of the Registrar · Academic Affairs';
+
+  @override
+  String get courseFormHeading => 'Course registration form';
+
+  @override
+  String get courseFormOfficialBadge => 'Official endorsed record';
+
+  @override
+  String get courseFormStudentHeading => 'Student identification';
+
+  @override
+  String get courseFormFullName => 'Full name';
+
+  @override
+  String get courseFormMatric => 'Matriculation number';
+
+  @override
+  String get courseFormLevel => 'Level';
+
+  @override
+  String get courseFormProgramme => 'Programme of study';
+
+  @override
+  String get courseFormFacultyDept => 'Faculty & department';
+
+  @override
+  String courseFormFacultyDeptValue(Object department, Object faculty) {
+    return '$faculty · $department';
+  }
+
+  @override
+  String get courseFormSubmissionLog => 'Submission log';
+
+  @override
+  String get courseFormRegisteredCourses => 'Registered courses';
+
+  @override
+  String get courseFormTotalUnits => 'Total units';
+
+  @override
+  String get courseFormDeclarationHeading => 'Student declaration';
+
+  @override
+  String get courseFormDeclarationBody =>
+      'I confirm that the courses listed are those I intend to take this term and that the particulars above are correct.';
+
+  @override
+  String get courseFormAuthDigital => 'Digital acceptance · Validated';
+
+  @override
+  String get courseFormSignatures =>
+      'Required physical signatures & endorsements';
+
+  @override
+  String get courseFormVerifyFooter =>
+      'Verify authenticity with the document id below.';
+
+  @override
+  String get courseFormEmptyTitle => 'No course form yet';
+
+  @override
+  String get courseFormEmptyBody =>
+      'Submit your course form from the Registration tab once your courses and the declaration are ready.';
+
+  @override
+  String registrationCountingUnits(Object minimum, Object units) {
+    return 'Counting units: $units. You are at your minimum of $minimum exactly. Dropping any course leaves you below minimum.';
+  }
+
+  @override
+  String get registrationYourWeekTitle => 'Your Week';
+
+  @override
+  String get registrationAddCoursesTitle => 'Add Courses';
+
+  @override
+  String get registrationAddDropBanner =>
+      'Students already registered for this semester can add or drop courses in this window.';
+
+  @override
+  String get registrationEmptyCoursesTitle => 'No courses yet';
+
+  @override
+  String get registrationEmptyCoursesBody =>
+      'Add the courses for this semester from the catalogue below.';
+
+  @override
+  String get registrationCatalogueTitle => 'Add Courses';
+
+  @override
+  String get registrationCatalogueSubtitle => 'Departmental Catalog';
+
+  @override
+  String get registrationMissingPrerequisite => 'Missing a prerequisite';
+
+  @override
+  String get registrationWeekdayMonday => 'Monday';
+
+  @override
+  String get registrationWeekdayTuesday => 'Tuesday';
+
+  @override
+  String get registrationWeekdayWednesday => 'Wednesday';
+
+  @override
+  String get registrationWeekdayThursday => 'Thursday';
+
+  @override
+  String get registrationWeekdayFriday => 'Friday';
+
+  @override
+  String registrationMeetingLine(Object end, Object start, Object venue) {
+    return '$start – $end · $venue';
+  }
+
+  @override
+  String get registrationFormSubmittedHint => 'On record with the registry';
+
+  @override
+  String courseFormVersionLine(Object submittedOn, Object version) {
+    return '$version · $submittedOn';
+  }
+
+  @override
+  String courseFormSessionLine(Object session, Object term) {
+    return 'Course registration form · $session, $term';
+  }
+
+  @override
+  String get courseFormStudentSignature => 'Student signature';
+
+  @override
+  String get courseFormAdviserSignature => 'Level adviser';
+
+  @override
+  String get courseFormHodSignature => 'Head of department';
+
+  @override
+  String get courseFormSignatureDate => 'Date';
+
+  @override
+  String get courseFormSignaturePrintNote =>
+      'Signature lines are for the printed copy.';
+
+  @override
+  String courseFormDocId(Object id) {
+    return 'DOC ID: $id';
+  }
+
+  @override
+  String courseFormFormId(Object id) {
+    return 'FORM ID: $id';
+  }
+
+  @override
+  String get courseFormSealed => 'Sealed & issued';
+
+  @override
+  String get courseFormUnitsColumn => 'Units / status';
+
+  @override
+  String get studyPlanSubtitle =>
+      'What is left of your degree, and when you mean to take it.';
+
+  @override
+  String studyPlanTermUnits(Object maximum, Object planned) {
+    return '$planned of $maximum units';
+  }
+
+  @override
+  String get studyPlanHowThisWorksTitle => 'How this works';
 }

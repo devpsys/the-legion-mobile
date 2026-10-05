@@ -4124,6 +4124,1080 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign in to the student portal'**
   String get feesVerifySignIn;
+
+  /// No description provided for @navRegistration.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration'**
+  String get navRegistration;
+
+  /// No description provided for @navStudyPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Study plan'**
+  String get navStudyPlan;
+
+  /// No description provided for @navCourseForm.
+  ///
+  /// In en, this message translates to:
+  /// **'Form'**
+  String get navCourseForm;
+
+  /// No description provided for @registrationBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to the hub'**
+  String get registrationBackTooltip;
+
+  /// No description provided for @registrationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Course registration'**
+  String get registrationTitle;
+
+  /// No description provided for @registrationBreadcrumbStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get registrationBreadcrumbStudent;
+
+  /// No description provided for @registrationSessionLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{session} · {term}'**
+  String registrationSessionLine(Object session, Object term);
+
+  /// No description provided for @registrationSessionHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'{session} session · {term}'**
+  String registrationSessionHeadline(Object session, Object term);
+
+  /// No description provided for @registrationStudentProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'{programme} · {faculty}'**
+  String registrationStudentProgramme(Object faculty, Object programme);
+
+  /// No description provided for @registrationMatricLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'{matricNumber} · {level}'**
+  String registrationMatricLevel(Object level, Object matricNumber);
+
+  /// No description provided for @registrationMatricLevelSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'· {matricNumber} · {level}'**
+  String registrationMatricLevelSuffix(Object level, Object matricNumber);
+
+  /// No description provided for @registrationLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'{level} Level'**
+  String registrationLevel(Object level);
+
+  /// No description provided for @registrationUnitsRegisteredLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Units registered'**
+  String get registrationUnitsRegisteredLabel;
+
+  /// No description provided for @registrationCountingUnitsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting units: {units}'**
+  String registrationCountingUnitsTitle(Object units);
+
+  /// No description provided for @registrationCountingUnitsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You are at your minimum of {minimum} exactly. Dropping any course leaves you below minimum.'**
+  String registrationCountingUnitsBody(Object minimum);
+
+  /// No description provided for @registrationCatalogueTitleSection.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} · Section {section}'**
+  String registrationCatalogueTitleSection(Object section, Object title);
+
+  /// No description provided for @registrationNoLecturesLab.
+  ///
+  /// In en, this message translates to:
+  /// **'No lectures or lab sessions scheduled'**
+  String get registrationNoLecturesLab;
+
+  /// No description provided for @registrationMeetingCourseVenue.
+  ///
+  /// In en, this message translates to:
+  /// **'{code} · {venue}'**
+  String registrationMeetingCourseVenue(Object code, Object venue);
+
+  /// No description provided for @registrationMeetingTime.
+  ///
+  /// In en, this message translates to:
+  /// **'{start} - {end}'**
+  String registrationMeetingTime(Object end, Object start);
+
+  /// No description provided for @registrationWindowOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get registrationWindowOpen;
+
+  /// No description provided for @registrationWindowOpenForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Open for you'**
+  String get registrationWindowOpenForYou;
+
+  /// No description provided for @registrationWindowAddDropOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Add/drop only'**
+  String get registrationWindowAddDropOnly;
+
+  /// No description provided for @registrationWindowUpcoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens soon'**
+  String get registrationWindowUpcoming;
+
+  /// No description provided for @registrationWindowClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get registrationWindowClosed;
+
+  /// No description provided for @registrationUnitsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Units'**
+  String get registrationUnitsLabel;
+
+  /// No description provided for @registrationUnitsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{registered} / {maximum}'**
+  String registrationUnitsValue(Object maximum, Object registered);
+
+  /// No description provided for @registrationUnitsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Min {minimum} · Limit per plan'**
+  String registrationUnitsHint(Object minimum);
+
+  /// No description provided for @registrationApprovalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Approval'**
+  String get registrationApprovalLabel;
+
+  /// No description provided for @registrationApprovalHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Adviser review'**
+  String get registrationApprovalHint;
+
+  /// No description provided for @registrationFormShortLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Form'**
+  String get registrationFormShortLabel;
+
+  /// No description provided for @registrationFormPendingSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending submit'**
+  String get registrationFormPendingSubmit;
+
+  /// No description provided for @registrationPendingLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting approval'**
+  String get registrationPendingLabel;
+
+  /// No description provided for @registrationPendingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Level adviser queue'**
+  String get registrationPendingHint;
+
+  /// No description provided for @registrationPendingCoursesValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}'**
+  String registrationPendingCoursesValue(Object count);
+
+  /// No description provided for @registrationPendingCoursesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'courses'**
+  String get registrationPendingCoursesHint;
+
+  /// No description provided for @registrationFormLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Course form'**
+  String get registrationFormLabel;
+
+  /// No description provided for @registrationFormNotSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Not submitted'**
+  String get registrationFormNotSubmitted;
+
+  /// No description provided for @registrationFormDraft.
+  ///
+  /// In en, this message translates to:
+  /// **'Draft'**
+  String get registrationFormDraft;
+
+  /// No description provided for @registrationFormSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted'**
+  String get registrationFormSubmitted;
+
+  /// No description provided for @registrationFormHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit when complete'**
+  String get registrationFormHint;
+
+  /// No description provided for @registrationTabSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Selected & Timetable'**
+  String get registrationTabSelected;
+
+  /// No description provided for @registrationTabCatalogue.
+  ///
+  /// In en, this message translates to:
+  /// **'Catalogue & Add'**
+  String get registrationTabCatalogue;
+
+  /// No description provided for @registrationLedgerCourseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Course / Title'**
+  String get registrationLedgerCourseTitle;
+
+  /// No description provided for @registrationLedgerUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Units'**
+  String get registrationLedgerUnits;
+
+  /// No description provided for @registrationLedgerAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Action'**
+  String get registrationLedgerAction;
+
+  /// No description provided for @registrationActionBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked'**
+  String get registrationActionBlocked;
+
+  /// No description provided for @registrationActionArchived.
+  ///
+  /// In en, this message translates to:
+  /// **'Archived'**
+  String get registrationActionArchived;
+
+  /// No description provided for @registrationActionNone.
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get registrationActionNone;
+
+  /// No description provided for @registrationMatricBulletLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'{matricNumber} • {level}'**
+  String registrationMatricBulletLevel(String matricNumber, String level);
+
+  /// No description provided for @registrationUnitsDegreePlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Min {minimum} · Degree plan'**
+  String registrationUnitsDegreePlan(int minimum);
+
+  /// No description provided for @registrationDeckTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration Deck'**
+  String get registrationDeckTitle;
+
+  /// No description provided for @registrationUnitsCap.
+  ///
+  /// In en, this message translates to:
+  /// **'/ {maximum} units'**
+  String registrationUnitsCap(Object maximum);
+
+  /// No description provided for @registrationCoursesTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} total'**
+  String registrationCoursesTotal(Object count);
+
+  /// No description provided for @registrationStandardLoad.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard load: {minimum}-{maximum}'**
+  String registrationStandardLoad(Object maximum, Object minimum);
+
+  /// No description provided for @registrationLectureLabSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture & Lab Timetable'**
+  String get registrationLectureLabSchedule;
+
+  /// No description provided for @registrationWeekdaySat.
+  ///
+  /// In en, this message translates to:
+  /// **'Sat'**
+  String get registrationWeekdaySat;
+
+  /// No description provided for @registrationWeekdaySaturday.
+  ///
+  /// In en, this message translates to:
+  /// **'Saturday'**
+  String get registrationWeekdaySaturday;
+
+  /// No description provided for @registrationEventCountShort.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} ev'**
+  String registrationEventCountShort(Object count);
+
+  /// No description provided for @registrationEventsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 event} other{{count} events}}'**
+  String registrationEventsCount(int count);
+
+  /// No description provided for @registrationFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get registrationFree;
+
+  /// No description provided for @registrationActiveDay.
+  ///
+  /// In en, this message translates to:
+  /// **'Active day'**
+  String get registrationActiveDay;
+
+  /// No description provided for @registrationCatalogueSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search by course code, title, or department'**
+  String get registrationCatalogueSearchHint;
+
+  /// No description provided for @registrationCatalogueDepartmental.
+  ///
+  /// In en, this message translates to:
+  /// **'Departmental Catalog'**
+  String get registrationCatalogueDepartmental;
+
+  /// No description provided for @registrationNeedsPrerequisite.
+  ///
+  /// In en, this message translates to:
+  /// **'Needs {code}.'**
+  String registrationNeedsPrerequisite(String code);
+
+  /// No description provided for @registrationNotOpenDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'No lecturer assigned · {units} units'**
+  String registrationNotOpenDetail(int units);
+
+  /// No description provided for @registrationCatalogueFullDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} · {units} units'**
+  String registrationCatalogueFullDetail(String title, int units);
+
+  /// No description provided for @registrationGateNotTracked.
+  ///
+  /// In en, this message translates to:
+  /// **'Not tracked'**
+  String get registrationGateNotTracked;
+
+  /// No description provided for @registrationYourCourses.
+  ///
+  /// In en, this message translates to:
+  /// **'Your courses ({count})'**
+  String registrationYourCourses(Object count);
+
+  /// No description provided for @registrationYourCoursesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Courses'**
+  String get registrationYourCoursesTitle;
+
+  /// No description provided for @registrationUnitsRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units registered'**
+  String registrationUnitsRegistered(Object units);
+
+  /// No description provided for @registrationMinUnitsNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your degree plan asks for at least {minimum} units this term.'**
+  String registrationMinUnitsNote(Object minimum);
+
+  /// No description provided for @registrationYourWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Week'**
+  String get registrationYourWeek;
+
+  /// No description provided for @registrationLectureSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Lecture schedule'**
+  String get registrationLectureSchedule;
+
+  /// No description provided for @registrationNoLectures.
+  ///
+  /// In en, this message translates to:
+  /// **'No lectures scheduled'**
+  String get registrationNoLectures;
+
+  /// No description provided for @registrationWeekdayMon.
+  ///
+  /// In en, this message translates to:
+  /// **'Mon'**
+  String get registrationWeekdayMon;
+
+  /// No description provided for @registrationWeekdayTue.
+  ///
+  /// In en, this message translates to:
+  /// **'Tue'**
+  String get registrationWeekdayTue;
+
+  /// No description provided for @registrationWeekdayWed.
+  ///
+  /// In en, this message translates to:
+  /// **'Wed'**
+  String get registrationWeekdayWed;
+
+  /// No description provided for @registrationWeekdayThu.
+  ///
+  /// In en, this message translates to:
+  /// **'Thu'**
+  String get registrationWeekdayThu;
+
+  /// No description provided for @registrationWeekdayFri.
+  ///
+  /// In en, this message translates to:
+  /// **'Fri'**
+  String get registrationWeekdayFri;
+
+  /// No description provided for @registrationAddCourses.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Courses'**
+  String get registrationAddCourses;
+
+  /// No description provided for @registrationSubmittedForms.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted forms'**
+  String get registrationSubmittedForms;
+
+  /// No description provided for @registrationNoForms.
+  ///
+  /// In en, this message translates to:
+  /// **'No course form has been submitted for this window yet.'**
+  String get registrationNoForms;
+
+  /// No description provided for @registrationHelpLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration closed? Ask for late registration or add/drop from Requests.'**
+  String get registrationHelpLine;
+
+  /// No description provided for @registrationDeclaration.
+  ///
+  /// In en, this message translates to:
+  /// **'I confirm these courses conform to my degree structure and satisfy prerequisite conditions. Once submitted, changes require formal adviser clearance.'**
+  String get registrationDeclaration;
+
+  /// No description provided for @registrationSubmitForm.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit course form'**
+  String get registrationSubmitForm;
+
+  /// No description provided for @registrationSaveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get registrationSaveChanges;
+
+  /// No description provided for @registrationDrop.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop'**
+  String get registrationDrop;
+
+  /// No description provided for @registrationAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get registrationAdd;
+
+  /// No description provided for @registrationAddAnyway.
+  ///
+  /// In en, this message translates to:
+  /// **'Add anyway'**
+  String get registrationAddAnyway;
+
+  /// No description provided for @registrationRequestWaiver.
+  ///
+  /// In en, this message translates to:
+  /// **'Request it'**
+  String get registrationRequestWaiver;
+
+  /// No description provided for @registrationCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get registrationCancel;
+
+  /// No description provided for @registrationKeepIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep it'**
+  String get registrationKeepIt;
+
+  /// No description provided for @registrationDropAnyway.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop anyway'**
+  String get registrationDropAnyway;
+
+  /// No description provided for @registrationStatusApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get registrationStatusApproved;
+
+  /// No description provided for @registrationStatusAwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting approval'**
+  String get registrationStatusAwaiting;
+
+  /// No description provided for @registrationStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get registrationStatusRejected;
+
+  /// No description provided for @registrationStatusDropped.
+  ///
+  /// In en, this message translates to:
+  /// **'Dropped'**
+  String get registrationStatusDropped;
+
+  /// No description provided for @registrationStatusClashAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Clash accepted'**
+  String get registrationStatusClashAccepted;
+
+  /// No description provided for @registrationCatalogueFull.
+  ///
+  /// In en, this message translates to:
+  /// **'Full'**
+  String get registrationCatalogueFull;
+
+  /// No description provided for @registrationCatalogueNotOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Not open yet'**
+  String get registrationCatalogueNotOpen;
+
+  /// No description provided for @registrationCatalogueOutsidePlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Outside your degree plan'**
+  String get registrationCatalogueOutsidePlan;
+
+  /// No description provided for @registrationCatalogueClash.
+  ///
+  /// In en, this message translates to:
+  /// **'Timetable clash'**
+  String get registrationCatalogueClash;
+
+  /// No description provided for @registrationClashSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Timetable clash'**
+  String get registrationClashSheetTitle;
+
+  /// No description provided for @registrationClashSheetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{detail} You can still add it if your adviser accepts the clash.'**
+  String registrationClashSheetBody(Object detail);
+
+  /// No description provided for @registrationDropSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop {code}?'**
+  String registrationDropSheetTitle(Object code);
+
+  /// No description provided for @registrationDropSheetBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Dropping this course leaves you on {units} units, below the {minimum}-unit minimum for this term.'**
+  String registrationDropSheetBody(Object minimum, Object units);
+
+  /// No description provided for @registrationSectionUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units · Section {section}'**
+  String registrationSectionUnits(Object section, Object units);
+
+  /// No description provided for @registrationCourseUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units'**
+  String registrationCourseUnits(Object units);
+
+  /// No description provided for @registrationViewForm.
+  ///
+  /// In en, this message translates to:
+  /// **'View form {version}'**
+  String registrationViewForm(Object version);
+
+  /// No description provided for @studyPlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Study plan'**
+  String get studyPlanTitle;
+
+  /// No description provided for @studyPlanUndergraduate.
+  ///
+  /// In en, this message translates to:
+  /// **'Undergraduate degree'**
+  String get studyPlanUndergraduate;
+
+  /// No description provided for @studyPlanActiveStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Active status'**
+  String get studyPlanActiveStatus;
+
+  /// No description provided for @studyPlanUnitsPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'Units passed'**
+  String get studyPlanUnitsPassed;
+
+  /// No description provided for @studyPlanUnitsPlanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Units planned'**
+  String get studyPlanUnitsPlanned;
+
+  /// No description provided for @studyPlanAwardUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Awarded on'**
+  String get studyPlanAwardUnits;
+
+  /// No description provided for @studyPlanStillToPass.
+  ///
+  /// In en, this message translates to:
+  /// **'Still to pass'**
+  String get studyPlanStillToPass;
+
+  /// No description provided for @studyPlanStillToPassValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} courses'**
+  String studyPlanStillToPassValue(Object count);
+
+  /// No description provided for @studyPlanWorthKnowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Worth knowing now'**
+  String get studyPlanWorthKnowing;
+
+  /// No description provided for @studyPlanAdviserSaid.
+  ///
+  /// In en, this message translates to:
+  /// **'What your adviser said'**
+  String get studyPlanAdviserSaid;
+
+  /// No description provided for @studyPlanAdviserByline.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} · {date}'**
+  String studyPlanAdviserByline(Object date, Object name);
+
+  /// No description provided for @studyPlanTermByTerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Your plan, term by term'**
+  String get studyPlanTermByTerm;
+
+  /// No description provided for @studyPlanDegreeAsks.
+  ///
+  /// In en, this message translates to:
+  /// **'What your degree asks of you'**
+  String get studyPlanDegreeAsks;
+
+  /// No description provided for @studyPlanACourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Plan a course'**
+  String get studyPlanACourse;
+
+  /// No description provided for @studyPlanAddToPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to plan'**
+  String get studyPlanAddToPlan;
+
+  /// No description provided for @studyPlanHowThisWorks.
+  ///
+  /// In en, this message translates to:
+  /// **'How this works'**
+  String get studyPlanHowThisWorks;
+
+  /// No description provided for @studyPlanHowThisWorksBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A study plan is your intent across terms. It is not a registration. Your adviser can leave a note here; only Course registration submits a form to the registry.'**
+  String get studyPlanHowThisWorksBody;
+
+  /// No description provided for @studyPlanComingSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Planning a course into a future term goes live with the next release.'**
+  String get studyPlanComingSoon;
+
+  /// No description provided for @courseFormTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Course form {version}'**
+  String courseFormTitle(Object version);
+
+  /// No description provided for @courseFormSavePdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Save PDF'**
+  String get courseFormSavePdf;
+
+  /// No description provided for @courseFormOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Office of the Registrar · Academic Affairs'**
+  String get courseFormOffice;
+
+  /// No description provided for @courseFormHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Course registration form'**
+  String get courseFormHeading;
+
+  /// No description provided for @courseFormOfficialBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Official endorsed record'**
+  String get courseFormOfficialBadge;
+
+  /// No description provided for @courseFormStudentHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Student identification'**
+  String get courseFormStudentHeading;
+
+  /// No description provided for @courseFormFullName.
+  ///
+  /// In en, this message translates to:
+  /// **'Full name'**
+  String get courseFormFullName;
+
+  /// No description provided for @courseFormMatric.
+  ///
+  /// In en, this message translates to:
+  /// **'Matriculation number'**
+  String get courseFormMatric;
+
+  /// No description provided for @courseFormLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level'**
+  String get courseFormLevel;
+
+  /// No description provided for @courseFormProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme of study'**
+  String get courseFormProgramme;
+
+  /// No description provided for @courseFormFacultyDept.
+  ///
+  /// In en, this message translates to:
+  /// **'Faculty & department'**
+  String get courseFormFacultyDept;
+
+  /// No description provided for @courseFormFacultyDeptValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{faculty} · {department}'**
+  String courseFormFacultyDeptValue(Object department, Object faculty);
+
+  /// No description provided for @courseFormSubmissionLog.
+  ///
+  /// In en, this message translates to:
+  /// **'Submission log'**
+  String get courseFormSubmissionLog;
+
+  /// No description provided for @courseFormRegisteredCourses.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered courses'**
+  String get courseFormRegisteredCourses;
+
+  /// No description provided for @courseFormTotalUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Total units'**
+  String get courseFormTotalUnits;
+
+  /// No description provided for @courseFormDeclarationHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Student declaration'**
+  String get courseFormDeclarationHeading;
+
+  /// No description provided for @courseFormDeclarationBody.
+  ///
+  /// In en, this message translates to:
+  /// **'I confirm that the courses listed are those I intend to take this term and that the particulars above are correct.'**
+  String get courseFormDeclarationBody;
+
+  /// No description provided for @courseFormAuthDigital.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital acceptance · Validated'**
+  String get courseFormAuthDigital;
+
+  /// No description provided for @courseFormSignatures.
+  ///
+  /// In en, this message translates to:
+  /// **'Required physical signatures & endorsements'**
+  String get courseFormSignatures;
+
+  /// No description provided for @courseFormVerifyFooter.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify authenticity with the document id below.'**
+  String get courseFormVerifyFooter;
+
+  /// No description provided for @courseFormEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No course form yet'**
+  String get courseFormEmptyTitle;
+
+  /// No description provided for @courseFormEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit your course form from the Registration tab once your courses and the declaration are ready.'**
+  String get courseFormEmptyBody;
+
+  /// No description provided for @registrationCountingUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting units: {units}. You are at your minimum of {minimum} exactly. Dropping any course leaves you below minimum.'**
+  String registrationCountingUnits(Object minimum, Object units);
+
+  /// No description provided for @registrationYourWeekTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Week'**
+  String get registrationYourWeekTitle;
+
+  /// No description provided for @registrationAddCoursesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Courses'**
+  String get registrationAddCoursesTitle;
+
+  /// No description provided for @registrationAddDropBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Students already registered for this semester can add or drop courses in this window.'**
+  String get registrationAddDropBanner;
+
+  /// No description provided for @registrationEmptyCoursesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No courses yet'**
+  String get registrationEmptyCoursesTitle;
+
+  /// No description provided for @registrationEmptyCoursesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add the courses for this semester from the catalogue below.'**
+  String get registrationEmptyCoursesBody;
+
+  /// No description provided for @registrationCatalogueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Courses'**
+  String get registrationCatalogueTitle;
+
+  /// No description provided for @registrationCatalogueSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Departmental Catalog'**
+  String get registrationCatalogueSubtitle;
+
+  /// No description provided for @registrationMissingPrerequisite.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing a prerequisite'**
+  String get registrationMissingPrerequisite;
+
+  /// No description provided for @registrationWeekdayMonday.
+  ///
+  /// In en, this message translates to:
+  /// **'Monday'**
+  String get registrationWeekdayMonday;
+
+  /// No description provided for @registrationWeekdayTuesday.
+  ///
+  /// In en, this message translates to:
+  /// **'Tuesday'**
+  String get registrationWeekdayTuesday;
+
+  /// No description provided for @registrationWeekdayWednesday.
+  ///
+  /// In en, this message translates to:
+  /// **'Wednesday'**
+  String get registrationWeekdayWednesday;
+
+  /// No description provided for @registrationWeekdayThursday.
+  ///
+  /// In en, this message translates to:
+  /// **'Thursday'**
+  String get registrationWeekdayThursday;
+
+  /// No description provided for @registrationWeekdayFriday.
+  ///
+  /// In en, this message translates to:
+  /// **'Friday'**
+  String get registrationWeekdayFriday;
+
+  /// No description provided for @registrationMeetingLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{start} – {end} · {venue}'**
+  String registrationMeetingLine(Object end, Object start, Object venue);
+
+  /// No description provided for @registrationFormSubmittedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'On record with the registry'**
+  String get registrationFormSubmittedHint;
+
+  /// No description provided for @courseFormVersionLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{version} · {submittedOn}'**
+  String courseFormVersionLine(Object submittedOn, Object version);
+
+  /// No description provided for @courseFormSessionLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Course registration form · {session}, {term}'**
+  String courseFormSessionLine(Object session, Object term);
+
+  /// No description provided for @courseFormStudentSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Student signature'**
+  String get courseFormStudentSignature;
+
+  /// No description provided for @courseFormAdviserSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Level adviser'**
+  String get courseFormAdviserSignature;
+
+  /// No description provided for @courseFormHodSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Head of department'**
+  String get courseFormHodSignature;
+
+  /// No description provided for @courseFormSignatureDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Date'**
+  String get courseFormSignatureDate;
+
+  /// No description provided for @courseFormSignaturePrintNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Signature lines are for the printed copy.'**
+  String get courseFormSignaturePrintNote;
+
+  /// No description provided for @courseFormDocId.
+  ///
+  /// In en, this message translates to:
+  /// **'DOC ID: {id}'**
+  String courseFormDocId(Object id);
+
+  /// No description provided for @courseFormFormId.
+  ///
+  /// In en, this message translates to:
+  /// **'FORM ID: {id}'**
+  String courseFormFormId(Object id);
+
+  /// No description provided for @courseFormSealed.
+  ///
+  /// In en, this message translates to:
+  /// **'Sealed & issued'**
+  String get courseFormSealed;
+
+  /// No description provided for @courseFormUnitsColumn.
+  ///
+  /// In en, this message translates to:
+  /// **'Units / status'**
+  String get courseFormUnitsColumn;
+
+  /// No description provided for @studyPlanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What is left of your degree, and when you mean to take it.'**
+  String get studyPlanSubtitle;
+
+  /// No description provided for @studyPlanTermUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'{planned} of {maximum} units'**
+  String studyPlanTermUnits(Object maximum, Object planned);
+
+  /// No description provided for @studyPlanHowThisWorksTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How this works'**
+  String get studyPlanHowThisWorksTitle;
 }
 
 class _AppLocalizationsDelegate

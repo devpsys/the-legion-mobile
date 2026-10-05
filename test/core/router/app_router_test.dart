@@ -36,6 +36,9 @@ import 'package:the_legion_mobile/features/fees/presentation/bloc/fees_cubit.dar
 import 'package:the_legion_mobile/features/fees/presentation/bloc/receipt_verification_cubit.dart';
 import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_cubit.dart';
 import 'package:the_legion_mobile/features/password_recovery/presentation/bloc/password_recovery_state.dart';
+import 'package:the_legion_mobile/features/registration/presentation/bloc/registration_cubit.dart';
+import 'package:the_legion_mobile/features/registration/presentation/widgets/registration_tab_bar.dart';
+import 'package:the_legion_mobile/features/registration/presentation/widgets/registration_task_bar.dart';
 
 /// Minimal stand-in for the cubit so the redirect rules can be checked without
 /// touching storage or the network.
@@ -134,7 +137,10 @@ void main() {
 
       // Over the whole set, so a new portal section cannot be added as a deep
       // link that anyone can reach without signing in.
-      for (final path in Routes.admissionsPaths) {
+      for (final path in [
+        ...Routes.admissionsPaths,
+        ...Routes.registrationPaths,
+      ]) {
         expect(
           resolveRedirect(authGuard: guard, location: path),
           Routes.login,
@@ -149,7 +155,10 @@ void main() {
         isAuthenticated: true,
       );
 
-      for (final path in Routes.admissionsPaths) {
+      for (final path in [
+        ...Routes.admissionsPaths,
+        ...Routes.registrationPaths,
+      ]) {
         expect(resolveRedirect(authGuard: guard, location: path), isNull);
       }
     });
@@ -478,6 +487,7 @@ void main() {
       sl.registerFactory<PasswordRecoveryCubit>(PasswordRecoveryCubit.new);
       sl.registerFactory<AdmissionsCubit>(AdmissionsCubit.new);
       sl.registerFactory<JambClaimCubit>(JambClaimCubit.new);
+      sl.registerFactory<RegistrationCubit>(RegistrationCubit.new);
       sl.registerFactory<FeesCubit>(FeesCubit.new);
       sl.registerFactory<FeeCheckoutCubit>(FeeCheckoutCubit.new);
       sl.registerFactory<FeeCardCheckoutCubit>(FeeCardCheckoutCubit.new);
@@ -1325,6 +1335,35 @@ void main() {
     Finder tabBarText(String label) => find.descendant(
       of: find.byType(NavigationBar),
       matching: find.text(label),
+    );
+
+    testWidgets(
+      'the directory opens Registration & Records under its own tab bar',
+      (tester) async {
+        await signInAndReachHub(tester);
+
+        await tester.ensureVisible(find.text('Registration & Records'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Registration & Records'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Course registration'), findsWidgets);
+        expect(find.byType(RegistrationTaskBar), findsOneWidget);
+        expect(find.byType(RegistrationTabBar), findsOneWidget);
+        expect(find.text('Amaka Bello'), findsOneWidget);
+
+        await tester.tap(find.text('Study plan'));
+        await tester.pumpAndSettle();
+        expect(find.text('Undergraduate degree'), findsOneWidget);
+
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        expect(find.text('Course registration'), findsWidgets);
+
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        expect(find.text('Registration & Records'), findsOneWidget);
+      },
     );
 
     testWidgets('the directory opens the fees tab, and the checkout owns the '

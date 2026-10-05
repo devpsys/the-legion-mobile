@@ -36,6 +36,11 @@ import '../../features/password_recovery/presentation/pages/request_recovery_cod
 import '../../features/password_recovery/presentation/pages/set_new_password_page.dart';
 import '../../features/password_recovery/presentation/pages/verify_recovery_code_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
+import '../../features/registration/presentation/bloc/registration_cubit.dart';
+import '../../features/registration/presentation/pages/course_form_page.dart';
+import '../../features/registration/presentation/pages/course_registration_page.dart';
+import '../../features/registration/presentation/pages/study_plan_page.dart';
+import '../../features/registration/presentation/widgets/registration_shell.dart';
 import '../di/injection.dart';
 import 'auth_guard.dart';
 import 'route_names.dart';
@@ -362,6 +367,35 @@ GoRouter createRouter({
             builder: (context, state) => AdmissionLetterPage(
               applicationId: state.pathParameters['id'] ?? '',
             ),
+          ),
+        ],
+      ),
+      // Registration & Records: enrolled-student academic portal. Outside the
+      // student shell so it can keep its own Registration / Study plan / Form
+      // tabs, the same way Admissions keeps Overview / Programmes / ….
+      ShellRoute(
+        builder: (context, state, child) => RegistrationShell(
+          location: state.matchedLocation,
+          child: BlocProvider<RegistrationCubit>(
+            create: (context) => sl<RegistrationCubit>(),
+            child: child,
+          ),
+        ),
+        routes: [
+          GoRoute(
+            path: Routes.registration,
+            name: Routes.registrationName,
+            builder: (context, state) => const CourseRegistrationPage(),
+          ),
+          GoRoute(
+            path: Routes.registrationStudyPlan,
+            name: Routes.registrationStudyPlanName,
+            builder: (context, state) => const StudyPlanPage(),
+          ),
+          GoRoute(
+            path: Routes.registrationForm,
+            name: Routes.registrationFormName,
+            builder: (context, state) => const CourseFormPage(),
           ),
         ],
       ),
