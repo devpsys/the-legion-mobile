@@ -32,4 +32,34 @@ void main() {
       expect(CourseApprovalStatus.clashAccepted.countsTowardUnits, isTrue);
     });
   });
+
+  group('IdCardRecord', () {
+    test('default fixture has an unpaid in-progress request', () {
+      final card = RegistrationFixtures.idCard;
+      expect(card.activeRequest?.status, IdCardStatus.requested);
+      expect(card.activeRequest?.feePayment, IdCardFeePayment.unpaid);
+      expect(card.canSubmitRequest, isFalse);
+      expect(card.submitLock, IdCardSubmitLock.activeRequest);
+    });
+
+    test('photo lock blocks submit until approved', () {
+      final card = RegistrationFixtures.idCardPhotoLocked.copyWith(
+        draftReason: IdCardReason.lostOrStolen,
+      );
+      expect(card.submitLock, IdCardSubmitLock.photo);
+      expect(card.canSubmitRequest, isFalse);
+    });
+
+    test('printed status is ready for collection', () {
+      final active = RegistrationFixtures.idCardReadyForCollection.activeRequest;
+      expect(active?.isReadyForCollection, isTrue);
+      expect(active?.status, IdCardStatus.printed);
+    });
+
+    test('first issue is free and submittable with a reason', () {
+      final card = RegistrationFixtures.idCardFirstIssue;
+      expect(card.isFirstIssue, isTrue);
+      expect(card.canSubmitRequest, isTrue);
+    });
+  });
 }

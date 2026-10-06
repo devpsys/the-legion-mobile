@@ -10,9 +10,10 @@ import '../../../../core/utils/responsive.dart';
 
 /// Tab bar of the Registration & Records portal.
 ///
-/// Three siblings — Registration, Study plan, Form — replacing the student
-/// hub's chrome while the student is here. The active tab carries an underline
-/// as well as the accent colour.
+/// Four siblings — Registration, Study plan, Form, Requests — replacing the
+/// student hub's chrome while the student is here. The active tab carries an
+/// underline as well as the accent colour. The ID card screen keeps Requests
+/// selected.
 class RegistrationTabBar extends StatelessWidget {
   const RegistrationTabBar({
     required this.selectedIndex,
@@ -61,7 +62,7 @@ class RegistrationTabBar extends StatelessWidget {
 }
 
 /// Which portal section a tab leads to.
-enum RegistrationDestination { registration, studyPlan, form }
+enum RegistrationDestination { registration, studyPlan, form, requests }
 
 /// One destination of [RegistrationTabBar].
 class RegistrationTab extends StatelessWidget {
@@ -124,12 +125,15 @@ class RegistrationTab extends StatelessWidget {
       isSelected ? Icons.account_tree : Icons.account_tree_outlined,
     RegistrationDestination.form =>
       isSelected ? Icons.description : Icons.description_outlined,
+    RegistrationDestination.requests =>
+      isSelected ? Icons.assignment : Icons.assignment_outlined,
   };
 
   String _label(AppLocalizations l10n) => switch (destination) {
     RegistrationDestination.registration => l10n.navRegistration,
     RegistrationDestination.studyPlan => l10n.navStudyPlan,
     RegistrationDestination.form => l10n.navCourseForm,
+    RegistrationDestination.requests => l10n.navRequests,
   };
 }
 
@@ -143,5 +147,7 @@ void selectRegistrationTab(BuildContext context, int index) {
       context.goNamed(Routes.registrationStudyPlanName);
     case RegistrationDestination.form:
       context.goNamed(Routes.registrationFormName);
+    case RegistrationDestination.requests:
+      context.goNamed(Routes.registrationRequestsName);
   }
 }

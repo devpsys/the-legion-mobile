@@ -5,13 +5,19 @@ import '../models/registration_models.dart';
 /// Loading status of the registration portal.
 enum RegistrationStatus { initial, loading, ready, failure }
 
-/// Why a drop or add needs a confirmation sheet.
+/// Why a drop, add, withdraw, or cancel needs a confirmation sheet.
 enum RegistrationSheet {
   /// Adding a course that clashes with the timetable.
   timetableClash,
 
   /// Dropping would leave the student under the minimum units.
   dropBelowMinimum,
+
+  /// Withdrawing a pending academic petition.
+  withdrawAcademicRequest,
+
+  /// Cancelling an in-progress ID card request.
+  cancelIdCardRequest,
 }
 
 /// State of the Registration & Records student portal.
@@ -29,6 +35,9 @@ class RegistrationState extends Equatable {
     this.formStatus = CourseFormStatus.notSubmitted,
     this.forms = const [],
     this.studyPlan,
+    this.idCard,
+    this.academicRequests = const [],
+    this.academicDraft = const AcademicRequestDraft(),
     this.declarationAccepted = false,
     this.sheet,
     this.sheetCourseId,
@@ -47,12 +56,15 @@ class RegistrationState extends Equatable {
   final CourseFormStatus formStatus;
   final List<CourseFormRecord> forms;
   final StudyPlan? studyPlan;
+  final IdCardRecord? idCard;
+  final List<AcademicRequest> academicRequests;
+  final AcademicRequestDraft academicDraft;
   final bool declarationAccepted;
 
   /// Open confirmation sheet, if any.
   final RegistrationSheet? sheet;
 
-  /// Course id the open sheet is about (registered or catalogue).
+  /// Course or academic-request id the open sheet is about.
   final String? sheetCourseId;
 
   final String? failureMessage;
@@ -94,6 +106,13 @@ class RegistrationState extends Equatable {
     return null;
   }
 
+  AcademicRequest? academicRequestById(String id) {
+    for (final request in academicRequests) {
+      if (request.id == id) return request;
+    }
+    return null;
+  }
+
   CourseFormRecord? get latestForm => forms.isEmpty ? null : forms.first;
 
   RegistrationState copyWith({
@@ -109,6 +128,9 @@ class RegistrationState extends Equatable {
     CourseFormStatus? formStatus,
     List<CourseFormRecord>? forms,
     StudyPlan? studyPlan,
+    IdCardRecord? idCard,
+    List<AcademicRequest>? academicRequests,
+    AcademicRequestDraft? academicDraft,
     bool? declarationAccepted,
     RegistrationSheet? sheet,
     String? sheetCourseId,
@@ -129,6 +151,9 @@ class RegistrationState extends Equatable {
       formStatus: formStatus ?? this.formStatus,
       forms: forms ?? this.forms,
       studyPlan: studyPlan ?? this.studyPlan,
+      idCard: idCard ?? this.idCard,
+      academicRequests: academicRequests ?? this.academicRequests,
+      academicDraft: academicDraft ?? this.academicDraft,
       declarationAccepted: declarationAccepted ?? this.declarationAccepted,
       sheet: clearSheet ? null : (sheet ?? this.sheet),
       sheetCourseId: clearSheet ? null : (sheetCourseId ?? this.sheetCourseId),
@@ -152,6 +177,9 @@ class RegistrationState extends Equatable {
     formStatus,
     forms,
     studyPlan,
+    idCard,
+    academicRequests,
+    academicDraft,
     declarationAccepted,
     sheet,
     sheetCourseId,

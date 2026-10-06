@@ -8,7 +8,8 @@ import '../../../../core/router/route_names.dart';
 /// Sits in the root navigator as the portal's shell. The portal is reached by
 /// `goNamed`, which replaces the stack, so nothing is beneath it to pop to:
 /// back is a destination. A section other than Registration unwinds to that
-/// tab; Registration itself leaves for the hub.
+/// tab; Registration itself leaves for the hub. The ID card screen unwinds to
+/// Requests.
 class RegistrationShell extends StatelessWidget {
   const RegistrationShell({
     required this.location,
@@ -40,5 +41,8 @@ class RegistrationShell extends StatelessWidget {
 /// widget tree.
 String registrationBackTarget(String location) {
   if (location == Routes.registration) return Routes.homeName;
+  if (location == Routes.registrationIdCard) {
+    return Routes.registrationRequestsName;
+  }
   return Routes.registrationName;
 }

@@ -408,8 +408,95 @@ abstract final class RegistrationFixtures {
         'for the sections you want, and the rules are checked then.',
   );
 
+  /// Replacement levy in kobo (₦5,000.00).
+  static const int idCardReplacementFeeMinorUnits = 500000;
+
+  /// Default ID card record: unpaid replacement in progress (Amaka).
+  static final IdCardRecord idCard = IdCardRecord(
+    photoStatus: IdCardPhotoStatus.approved,
+    replacementFeeMinorUnits: idCardReplacementFeeMinorUnits,
+    hasEverHeldCard: true,
+    activeRequest: IdCardActiveRequest(
+      serial: 'LG/ID/2026/00892',
+      status: IdCardStatus.requested,
+      reason: IdCardReason.lostOrStolen,
+      requestedOn: DateTime(2026, 9, 14),
+      feePayment: IdCardFeePayment.unpaid,
+      feeMinorUnits: idCardReplacementFeeMinorUnits,
+      canCancel: true,
+    ),
+    history: [
+      IdCardHistoryEntry(
+        serial: 'LG/ID/2025/00417',
+        status: IdCardHistoryStatus.collected,
+        reason: IdCardReason.lostOrStolen,
+        requestedOn: DateTime(2025, 10, 12),
+        expiresOn: DateTime(2029, 9, 1),
+      ),
+    ],
+  );
+
+  /// Photo not approved — request form locked.
+  static final IdCardRecord idCardPhotoLocked = IdCardRecord(
+    photoStatus: IdCardPhotoStatus.missing,
+    replacementFeeMinorUnits: idCardReplacementFeeMinorUnits,
+    hasEverHeldCard: true,
+    history: idCard.history,
+  );
+
+  /// Printed card waiting at the registry.
+  static final IdCardRecord idCardReadyForCollection = IdCardRecord(
+    photoStatus: IdCardPhotoStatus.approved,
+    replacementFeeMinorUnits: idCardReplacementFeeMinorUnits,
+    hasEverHeldCard: true,
+    activeRequest: IdCardActiveRequest(
+      serial: 'LG/ID/2026/00892',
+      status: IdCardStatus.printed,
+      reason: IdCardReason.lostOrStolen,
+      requestedOn: DateTime(2026, 9, 14),
+      feePayment: IdCardFeePayment.paid,
+      feeMinorUnits: idCardReplacementFeeMinorUnits,
+      collectionDeadline: DateTime(2027, 9, 14),
+    ),
+    history: idCard.history,
+  );
+
+  /// First-ever free card (Tunde-style empty history).
+  static const IdCardRecord idCardFirstIssue = IdCardRecord(
+    photoStatus: IdCardPhotoStatus.approved,
+    replacementFeeMinorUnits: idCardReplacementFeeMinorUnits,
+    hasEverHeldCard: false,
+    draftReason: IdCardReason.firstCard,
+    history: [],
+  );
+
+  static final List<AcademicRequest> academicRequests = [
+    AcademicRequest(
+      id: 'req-waive-csc405',
+      type: AcademicRequestType.waivePrerequisite,
+      title: 'Waive a prerequisite',
+      summary: 'Take CSC405 without CSC203',
+      filedOn: DateTime(2026, 10, 2),
+      status: AcademicRequestStatus.pending,
+      canWithdraw: true,
+      emphasis: const ['CSC405', 'CSC203'],
+    ),
+    AcademicRequest(
+      id: 'req-overload-30',
+      type: AcademicRequestType.overload,
+      title: 'Register more units than allowed',
+      summary: '30 units in 2026/2027 First semester (limit 24)',
+      filedOn: DateTime(2026, 9, 24),
+      status: AcademicRequestStatus.rejected,
+      decisionNote:
+          'Your level adviser has asked you to see the head of department. '
+          'Twenty-four units is already the ceiling for 300 Level.',
+      emphasis: const ['30', '24'],
+    ),
+  ];
+
   /// The default ledger the cubit serves: open window, cleared gate, courses
-  /// chosen but the form not yet submitted.
+  /// chosen but the form not yet submitted; ID card replacement unpaid.
   static final RegistrationLedger ledger = RegistrationLedger(
     student: student,
     window: window,
@@ -422,6 +509,8 @@ abstract final class RegistrationFixtures {
     formStatus: CourseFormStatus.notSubmitted,
     forms: const [],
     studyPlan: studyPlan,
+    idCard: idCard,
+    academicRequests: academicRequests,
   );
 
   /// After a successful mock submit: form on record, window still open.
@@ -449,6 +538,8 @@ abstract final class RegistrationFixtures {
       formStatus: CourseFormStatus.submitted,
       forms: [form, ...current.forms],
       studyPlan: current.studyPlan,
+      idCard: current.idCard,
+      academicRequests: current.academicRequests,
       declarationAccepted: true,
     );
   }

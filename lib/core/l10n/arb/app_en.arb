@@ -698,6 +698,7 @@
   "navRegistration": "Registration",
   "navStudyPlan": "Study plan",
   "navCourseForm": "Form",
+  "navRequests": "Requests",
   "registrationBackTooltip": "Back to the hub",
   "registrationTitle": "Course registration",
   "registrationBreadcrumbStudent": "Student",
@@ -960,5 +961,170 @@
   "courseFormUnitsColumn": "Units / Status",
   "studyPlanSubtitle": "What is left of your degree, and when you mean to take it.",
   "studyPlanTermUnits": "{planned} of {maximum} units",
-  "studyPlanHowThisWorksTitle": "How this works"
+  "studyPlanHowThisWorksTitle": "How this works",
+
+  "requestsTitle": "Requests",
+  "requestsBreadcrumb": "Requests",
+  "requestsSubtitle": "Ask for an exception to the registration rules or a change of programme.",
+  "requestsExistingTitle": "Existing requests",
+  "requestsExistingCount": "{count} recorded",
+  "@requestsExistingCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "requestsSubmittedTitle": "Submitted requests ({count})",
+  "@requestsSubmittedTitle": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "requestsSessionLabel": "Academic session {session}",
+  "@requestsSessionLabel": {
+    "placeholders": { "session": { "type": "String" } }
+  },
+  "requestsFiledOn": "filed {date}",
+  "@requestsFiledOn": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "requestsWithdraw": "Withdraw this request",
+  "requestsWithdrawTitle": "Withdraw this request?",
+  "requestsWithdrawBody": "The registry will stop reviewing “{title}”. You can file again later if you still need the exception.",
+  "@requestsWithdrawBody": {
+    "placeholders": { "title": { "type": "String" } }
+  },
+  "requestsWithdrawConfirm": "Withdraw",
+  "requestsDecisionNote": "Decision note: {note}",
+  "@requestsDecisionNote": {
+    "placeholders": { "note": { "type": "String" } }
+  },
+  "requestsStatusPending": "Pending",
+  "requestsStatusRejected": "Rejected",
+  "requestsStatusWithdrawn": "Withdrawn",
+  "requestsNewTitle": "New request",
+  "requestsNewSubtitle": "Submit a formal petition for departmental review.",
+  "requestsWhatDoYouNeed": "What do you need?",
+  "requestsCourseLabel": "Course",
+  "requestsPrerequisiteLabel": "Prerequisite to waive",
+  "requestsReasonsLabel": "Your reasons",
+  "requestsReasonsHint": "Explain your circumstances. Attach supporting documents under My account → Documents.",
+  "requestsWaiveNote": "Waiving a prerequisite does not change your result. It only lets you register for the course now.",
+  "requestsSend": "Send request",
+  "requestsSent": "Your request was sent for review.",
+  "requestsAboutTitle": "About requests",
+  "requestsAboutBody": "An approval moves a rule in the academic record system. It is read automatically when you register or when grades are computed.",
+  "requestsTypeLateRegistration": "Late registration",
+  "requestsTypeAddDropAfterDeadline": "Add or drop courses after the deadline",
+  "requestsTypeOverload": "Register more units than allowed",
+  "requestsTypeUnderload": "Register fewer units than the minimum",
+  "requestsTypeWaivePrerequisite": "Waive a prerequisite",
+  "requestsTypeChangeOfProgramme": "Change of programme",
+  "requestsTypeHintLateRegistration": "Lets the student register after the ordinary window has closed.",
+  "requestsTypeHintAddDropAfterDeadline": "Lets the student change courses after add/drop has closed.",
+  "requestsTypeHintOverload": "Lets the student register above the unit ceiling for their level.",
+  "requestsTypeHintUnderload": "Lets the student register below the unit minimum for their level.",
+  "requestsTypeHintWaivePrerequisite": "Lets the student register for the course without the prerequisite.",
+  "requestsTypeHintChangeOfProgramme": "Asks the faculty to move the student onto a different programme.",
+  "requestsIdCardEntryTitle": "Student ID card",
+  "requestsIdCardEntryBody": "Request a first card or a replacement, track printing, and collect from the registry.",
+  "requestsIdCardEntryAction": "Open ID card",
+  "requestsEmptyTitle": "No requests yet",
+  "requestsEmptyBody": "File a petition below when you need an exception to the registration rules.",
+  "requestsReasonsRequired": "Add your reasons before sending.",
+
+  "idCardTitle": "Student ID card",
+  "idCardBreadcrumb": "ID card",
+  "idCardActiveCredential": "Active credential",
+  "idCardRequestFormSubtitle": "Procure an updated physical student identity card.",
+  "idCardFirstIssueFormSubtitle": "Submit a request to have your first card printed.",
+  "idCardProgrammeLevel": "{programme} ({level})",
+  "@idCardProgrammeLevel": {
+    "placeholders": {
+      "programme": { "type": "String" },
+      "level": { "type": "String" }
+    }
+  },
+  "idCardStatusNone": "No active card",
+  "idCardStatusRequested": "Requested",
+  "idCardStatusReadyForCollection": "Ready for collection",
+  "idCardStatusCollected": "Collected",
+  "idCardStatusReplaced": "Replaced",
+  "idCardNoActiveBody": "You do not currently hold an active student ID card. Submit a request below to have your first card printed.",
+  "idCardPreviousLostBody": "Your previous card {serial} was reported lost or stolen. Request a replacement card below.",
+  "@idCardPreviousLostBody": {
+    "placeholders": { "serial": { "type": "String" } }
+  },
+  "idCardRequestedBody": "Requested {date} ({reason}). We'll notify you when it's printed.",
+  "@idCardRequestedBody": {
+    "placeholders": {
+      "date": { "type": "String" },
+      "reason": { "type": "String" }
+    }
+  },
+  "idCardReadyBody": "Your card is printed. Collect it from the registry with another form of identification.",
+  "idCardFeeUnpaidBody": "Replacement fee: {amount}. Pay it under Payments; the card is printed once it's paid.",
+  "@idCardFeeUnpaidBody": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "idCardFeePaid": "Replacement fee paid.",
+  "idCardFeeFree": "Your first card is free.",
+  "idCardCollectBy": "Collect it by {date}.",
+  "@idCardCollectBy": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "idCardVerificationPending": "Your verification code is issued when the card is printed.",
+  "idCardCancelRequest": "Cancel request",
+  "idCardCancelTitle": "Cancel this ID card request?",
+  "idCardCancelBody": "The registry will stop printing {serial}. You can request a card again later.",
+  "@idCardCancelBody": {
+    "placeholders": { "serial": { "type": "String" } }
+  },
+  "idCardCancelConfirm": "Cancel request",
+  "idCardRequestReplacement": "Request a replacement",
+  "idCardRequestYourCard": "Request your card",
+  "idCardPhotoHint": "Your card carries your passport photo. Upload a profile photo before requesting a replacement card.",
+  "idCardPhotoUpload": "Upload a profile photo",
+  "idCardReasonLabel": "Reason",
+  "idCardReasonFirstCard": "First card",
+  "idCardReasonLostOrStolen": "Lost or stolen",
+  "idCardReasonDamaged": "Damaged",
+  "idCardReasonNameOrProgramme": "Name or programme update",
+  "idCardReplacementFeeLine": "A replacement costs {amount}.",
+  "@idCardReplacementFeeLine": {
+    "placeholders": { "amount": { "type": "String" } }
+  },
+  "idCardFreeBadge": "Free",
+  "idCardRequestCard": "Request card",
+  "idCardRequestLockedActive": "Clear or cancel the pending request to submit anew.",
+  "idCardRequestLockedPhoto": "Action locked until profile photo is approved",
+  "idCardRequestLockedReason": "Choose a reason before requesting a card.",
+  "idCardRequestedSnack": "Your ID card request was sent.",
+  "idCardHistoryTitle": "Card history",
+  "idCardHistoryCount": "{count, plural, =0{0 records} =1{1 record} other{{count} records}}",
+  "@idCardHistoryCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "idCardHistoryEmptyTitle": "No cards yet",
+  "idCardHistoryEmptyBody": "Your first card is free.",
+  "idCardHistoryLine": "{reason} · requested {requested} · expires {expires}",
+  "@idCardHistoryLine": {
+    "placeholders": {
+      "reason": { "type": "String" },
+      "requested": { "type": "String" },
+      "expires": { "type": "String" }
+    }
+  },
+  "idCardHistoryLineExpired": "{reason} · requested {requested} · expired {expires}",
+  "@idCardHistoryLineExpired": {
+    "placeholders": {
+      "reason": { "type": "String" },
+      "requested": { "type": "String" },
+      "expires": { "type": "String" }
+    }
+  },
+  "idCardHistoryFirstCard": "First card · requested {requested} · expires {expires}",
+  "@idCardHistoryFirstCard": {
+    "placeholders": {
+      "requested": { "type": "String" },
+      "expires": { "type": "String" }
+    }
+  },
+  "idCardAboutTitle": "About ID cards",
+  "idCardAboutBody": "Your first card is free. Carry it on campus and to examinations. Printing a new card cancels the old one, so report a lost card straight away."
 }

@@ -8,6 +8,9 @@ library;
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/theme/app_tone.dart';
+import 'requests_models.dart';
+
+export 'requests_models.dart';
 
 /// Where the registration window stands for everyone.
 enum WindowState {
@@ -552,6 +555,8 @@ class RegistrationLedger extends Equatable {
     required this.formStatus,
     required this.forms,
     required this.studyPlan,
+    required this.idCard,
+    required this.academicRequests,
     this.declarationAccepted = false,
   });
 
@@ -566,6 +571,8 @@ class RegistrationLedger extends Equatable {
   final CourseFormStatus formStatus;
   final List<CourseFormRecord> forms;
   final StudyPlan studyPlan;
+  final IdCardRecord idCard;
+  final List<AcademicRequest> academicRequests;
   final bool declarationAccepted;
 
   int get registeredUnits => courses
@@ -597,6 +604,8 @@ class RegistrationLedger extends Equatable {
     formStatus,
     forms,
     studyPlan,
+    idCard,
+    academicRequests,
     declarationAccepted,
   ];
 }

@@ -124,9 +124,9 @@ abstract final class Routes {
   /// Name of the query parameter [verifyAdmission] reads a code from.
   static const String verifyAdmissionCodeParam = 'code';
 
-  /// Student Registration & Records portal — course registration, study plan
-  /// and the course form. Outside the student shell: own tab chrome, back to
-  /// the hub from the registration tab.
+  /// Student Registration & Records portal — course registration, study plan,
+  /// course form, and requests. Outside the student shell: own tab chrome,
+  /// back to the hub from the registration tab.
   static const String registration = '/registration';
 
   /// Study plan tab of the registration portal.
@@ -134,6 +134,12 @@ abstract final class Routes {
 
   /// Official course form document tab.
   static const String registrationForm = '/registration/form';
+
+  /// Academic requests tab of the registration portal.
+  static const String registrationRequests = '/registration/requests';
+
+  /// Student ID card request screen (sibling of Requests; not its own tab).
+  static const String registrationIdCard = '/registration/id-card';
 
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
@@ -163,6 +169,8 @@ abstract final class Routes {
   static const String registrationName = 'registration';
   static const String registrationStudyPlanName = 'registrationStudyPlan';
   static const String registrationFormName = 'registrationForm';
+  static const String registrationRequestsName = 'registrationRequests';
+  static const String registrationIdCardName = 'registrationIdCard';
 
   /// Path parameter name for [feesReceiptTemplate].
   static const String feesReceiptIdParam = 'id';
@@ -194,6 +202,8 @@ abstract final class Routes {
     registration,
     registrationStudyPlan,
     registrationForm,
+    registrationRequests,
+    registrationIdCard,
   };
 
   /// Screens of the student shell that own the whole canvas on phones: no

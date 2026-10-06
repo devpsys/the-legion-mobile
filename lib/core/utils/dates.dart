@@ -23,6 +23,9 @@ abstract final class AppDateFormats {
   /// `14 Sep 2026` — a date on a card or in a column.
   static DateFormat medium(String locale) => DateFormat('d MMM y', locale);
 
+  /// `Sep 2029` — a card expiry month on an ID history line.
+  static DateFormat monthYear(String locale) => DateFormat('MMM y', locale);
+
   /// `14 Sep` — a date on a timeline, where the year is understood.
   static DateFormat short(String locale) => DateFormat('d MMM', locale);
 

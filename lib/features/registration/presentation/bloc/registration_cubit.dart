@@ -102,26 +102,177 @@ class RegistrationCubit extends Cubit<RegistrationState> {
   /// Does not invent a gateway — the form is the registry's own document.
   bool submitForm() {
     if (!state.canSubmitForm) return false;
-    final next = RegistrationFixtures.afterSubmit(
-      RegistrationLedger(
-        student: state.student!,
-        window: state.window!,
-        gate: state.gate!,
-        minimumUnits: state.minimumUnits,
-        maximumUnits: state.maximumUnits,
-        courses: state.courses,
-        catalogue: state.catalogue,
-        week: state.week,
-        formStatus: state.formStatus,
-        forms: state.forms,
-        studyPlan: state.studyPlan!,
-        declarationAccepted: state.declarationAccepted,
-      ),
-    );
+    final next = RegistrationFixtures.afterSubmit(_snapshotLedger());
     _ledger = next;
     _emitLedger(next);
     return true;
   }
+
+  void setIdCardDraftReason(IdCardReason? reason) {
+    final card = state.idCard;
+    if (card == null) return;
+    emit(
+      state.copyWith(
+        idCard: reason == null
+            ? card.copyWith(clearDraftReason: true)
+            : card.copyWith(draftReason: reason),
+      ),
+    );
+  }
+
+  /// Submits a first-issue or replacement ID card request when unlocked.
+  bool submitIdCardRequest() {
+    final card = state.idCard;
+    if (card == null || !card.canSubmitRequest) return false;
+    final reason = card.draftReason!;
+    final serial =
+        'LG/ID/2026/${(8900 + card.history.length).toString().padLeft(5, '0')}';
+    final feeRequired = !card.isFirstIssue;
+    final next = card.copyWith(
+      hasEverHeldCard: true,
+      clearDraftReason: true,
+      activeRequest: IdCardActiveRequest(
+        serial: serial,
+        status: IdCardStatus.requested,
+        reason: reason,
+        requestedOn: DateTime(2026, 10, 6),
+        feePayment: feeRequired
+            ? IdCardFeePayment.unpaid
+            : IdCardFeePayment.notRequired,
+        feeMinorUnits: feeRequired ? card.replacementFeeMinorUnits : 0,
+        canCancel: true,
+      ),
+    );
+    emit(state.copyWith(idCard: next));
+    return true;
+  }
+
+  void requestCancelIdCard() {
+    final active = state.idCard?.activeRequest;
+    if (active == null || !active.canCancel) return;
+    emit(state.copyWith(sheet: RegistrationSheet.cancelIdCardRequest));
+  }
+
+  void confirmCancelIdCard() {
+    final card = state.idCard;
+    emit(state.copyWith(clearSheet: true));
+    if (card == null) return;
+    emit(state.copyWith(idCard: card.copyWith(clearActiveRequest: true)));
+  }
+
+  void setAcademicDraftType(AcademicRequestType type) {
+    emit(state.copyWith(academicDraft: state.academicDraft.copyWith(type: type)));
+  }
+
+  void setAcademicDraftCourse(String value) {
+    emit(
+      state.copyWith(academicDraft: state.academicDraft.copyWith(courseCode: value)),
+    );
+  }
+
+  void setAcademicDraftPrerequisite(String value) {
+    emit(
+      state.copyWith(
+        academicDraft: state.academicDraft.copyWith(prerequisiteCode: value),
+      ),
+    );
+  }
+
+  void setAcademicDraftReasons(String value) {
+    emit(
+      state.copyWith(academicDraft: state.academicDraft.copyWith(reasons: value)),
+    );
+  }
+
+  /// Files a new academic petition from the draft (mock).
+  bool submitAcademicRequest() {
+    final draft = state.academicDraft;
+    if (draft.reasons.trim().isEmpty) return false;
+    if (draft.type == AcademicRequestType.waivePrerequisite) {
+      if (draft.courseCode.trim().isEmpty ||
+          draft.prerequisiteCode.trim().isEmpty) {
+        return false;
+      }
+    }
+
+    final summary = switch (draft.type) {
+      AcademicRequestType.waivePrerequisite =>
+        'Take ${draft.courseCode.trim()} without ${draft.prerequisiteCode.trim()}',
+      AcademicRequestType.overload => draft.reasons.trim(),
+      AcademicRequestType.underload => draft.reasons.trim(),
+      AcademicRequestType.lateRegistration => draft.reasons.trim(),
+      AcademicRequestType.addDropAfterDeadline => draft.reasons.trim(),
+      AcademicRequestType.changeOfProgramme => draft.reasons.trim(),
+    };
+
+    final emphasis = <String>[
+      if (draft.courseCode.trim().isNotEmpty) draft.courseCode.trim(),
+      if (draft.prerequisiteCode.trim().isNotEmpty)
+        draft.prerequisiteCode.trim(),
+    ];
+
+    final request = AcademicRequest(
+      id: 'req-${DateTime(2026, 10, 6).millisecondsSinceEpoch}',
+      type: draft.type,
+      title: _academicTitle(draft.type),
+      summary: summary,
+      filedOn: DateTime(2026, 10, 6),
+      status: AcademicRequestStatus.pending,
+      canWithdraw: true,
+      emphasis: emphasis,
+    );
+
+    emit(
+      state.copyWith(
+        academicRequests: [request, ...state.academicRequests],
+        academicDraft: AcademicRequestDraft(type: draft.type),
+      ),
+    );
+    return true;
+  }
+
+  void requestWithdrawAcademic(String requestId) {
+    final request = state.academicRequestById(requestId);
+    if (request == null || !request.canWithdraw) return;
+    emit(
+      state.copyWith(
+        sheet: RegistrationSheet.withdrawAcademicRequest,
+        sheetCourseId: requestId,
+      ),
+    );
+  }
+
+  void confirmWithdrawAcademic() {
+    final id = state.sheetCourseId;
+    emit(state.copyWith(clearSheet: true));
+    if (id == null) return;
+    final updated = state.academicRequests
+        .map((request) {
+          if (request.id != id) return request;
+          return AcademicRequest(
+            id: request.id,
+            type: request.type,
+            title: request.title,
+            summary: request.summary,
+            filedOn: request.filedOn,
+            status: AcademicRequestStatus.withdrawn,
+            decisionNote: request.decisionNote,
+            emphasis: request.emphasis,
+          );
+        })
+        .toList(growable: false);
+    emit(state.copyWith(academicRequests: updated));
+  }
+
+  static String _academicTitle(AcademicRequestType type) => switch (type) {
+    AcademicRequestType.lateRegistration => 'Late registration',
+    AcademicRequestType.addDropAfterDeadline =>
+      'Add or drop courses after the deadline',
+    AcademicRequestType.overload => 'Register more units than allowed',
+    AcademicRequestType.underload => 'Register fewer units than the minimum',
+    AcademicRequestType.waivePrerequisite => 'Waive a prerequisite',
+    AcademicRequestType.changeOfProgramme => 'Change of programme',
+  };
 
   void _drop(String courseId) {
     final updated = state.courses
@@ -231,6 +382,25 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     );
   }
 
+  RegistrationLedger _snapshotLedger() {
+    return RegistrationLedger(
+      student: state.student!,
+      window: state.window!,
+      gate: state.gate!,
+      minimumUnits: state.minimumUnits,
+      maximumUnits: state.maximumUnits,
+      courses: state.courses,
+      catalogue: state.catalogue,
+      week: state.week,
+      formStatus: state.formStatus,
+      forms: state.forms,
+      studyPlan: state.studyPlan!,
+      idCard: state.idCard!,
+      academicRequests: state.academicRequests,
+      declarationAccepted: state.declarationAccepted,
+    );
+  }
+
   void _emitLedger(RegistrationLedger ledger) {
     emit(
       state.copyWith(
@@ -246,6 +416,8 @@ class RegistrationCubit extends Cubit<RegistrationState> {
         formStatus: ledger.formStatus,
         forms: ledger.forms,
         studyPlan: ledger.studyPlan,
+        idCard: ledger.idCard,
+        academicRequests: ledger.academicRequests,
         declarationAccepted: ledger.declarationAccepted,
         clearFailure: true,
         clearSheet: true,

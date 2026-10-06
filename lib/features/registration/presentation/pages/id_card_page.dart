@@ -11,22 +11,21 @@ import '../../../../core/widgets/state_views.dart';
 import '../../../auth/presentation/bloc/auth_cubit.dart';
 import '../bloc/registration_cubit.dart';
 import '../bloc/registration_state.dart';
-import '../widgets/clash_course_sheet.dart';
-import '../widgets/drop_minimum_sheet.dart';
-import '../widgets/registration_body.dart';
+import '../widgets/cancel_id_card_sheet.dart';
+import '../widgets/id_card_body.dart';
 import '../widgets/registration_tab_bar.dart';
 import '../widgets/registration_task_bar.dart';
 
-/// Course registration tab: units, courses, week, catalogue, submit.
-class CourseRegistrationPage extends StatefulWidget {
-  const CourseRegistrationPage({super.key});
+/// Student ID card request screen — sibling of Requests (tab stays selected).
+class IdCardPage extends StatefulWidget {
+  const IdCardPage({super.key});
 
   @override
-  CourseRegistrationPageState createState() => CourseRegistrationPageState();
+  IdCardPageState createState() => IdCardPageState();
 }
 
-/// State of [CourseRegistrationPage].
-class CourseRegistrationPageState extends State<CourseRegistrationPage> {
+/// State of [IdCardPage].
+class IdCardPageState extends State<IdCardPage> {
   @override
   void initState() {
     super.initState();
@@ -38,45 +37,19 @@ class CourseRegistrationPageState extends State<CourseRegistrationPage> {
     RegistrationState state,
   ) async {
     final cubit = context.read<RegistrationCubit>();
-    final sheet = state.sheet;
-    if (sheet == null) return;
+    if (state.sheet != RegistrationSheet.cancelIdCardRequest) return;
 
-    switch (sheet) {
-      case RegistrationSheet.timetableClash:
-        final offer = state.sheetCourseId == null
-            ? null
-            : state.catalogueById(state.sheetCourseId!);
-        if (offer == null) {
-          cubit.cancelSheet();
-          return;
-        }
-        await ClashCourseSheet.show(
-          context,
-          course: offer,
-          onConfirm: cubit.confirmAddAnyway,
-          onCancel: cubit.cancelSheet,
-        );
-      case RegistrationSheet.dropBelowMinimum:
-        final course = state.sheetCourseId == null
-            ? null
-            : state.registeredById(state.sheetCourseId!);
-        if (course == null) {
-          cubit.cancelSheet();
-          return;
-        }
-        await DropMinimumSheet.show(
-          context,
-          course: course,
-          nextUnits: state.registeredUnits - course.units,
-          minimumUnits: state.minimumUnits,
-          onConfirm: cubit.confirmDrop,
-          onCancel: cubit.cancelSheet,
-        );
-      case RegistrationSheet.withdrawAcademicRequest:
-      case RegistrationSheet.cancelIdCardRequest:
-        // Handled on Requests / ID card pages.
-        cubit.cancelSheet();
+    final serial = state.idCard?.activeRequest?.serial;
+    if (serial == null) {
+      cubit.cancelSheet();
+      return;
     }
+    await CancelIdCardSheet.show(
+      context,
+      serial: serial,
+      onConfirm: cubit.confirmCancelIdCard,
+      onCancel: cubit.cancelSheet,
+    );
   }
 
   @override
@@ -93,7 +66,7 @@ class CourseRegistrationPageState extends State<CourseRegistrationPage> {
       builder: (context, state) {
         final window = state.window;
         final sessionLabel = window == null
-            ? l10n.registrationTitle
+            ? l10n.idCardTitle
             : l10n.registrationSessionLine(window.session, window.termLabel);
         final cubit = context.read<RegistrationCubit>();
 
@@ -112,13 +85,13 @@ class CourseRegistrationPageState extends State<CourseRegistrationPage> {
               message: l10n.errorsServer,
               icon: Icons.cloud_off_outlined,
             ),
-            RegistrationStatus.ready => RegistrationBody(
+            RegistrationStatus.ready => IdCardBody(
               state: state,
               cubit: cubit,
             ),
           },
           bottomNavigationBar: RegistrationTabBar(
-            selectedIndex: 0,
+            selectedIndex: RegistrationDestination.requests.index,
             onDestinationSelected: (index) =>
                 selectRegistrationTab(context, index),
           ),

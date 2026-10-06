@@ -5,6 +5,29 @@ import 'package:the_legion_mobile/features/registration/presentation/bloc/regist
 import 'package:the_legion_mobile/features/registration/presentation/mock/registration_fixtures.dart';
 import 'package:the_legion_mobile/features/registration/presentation/models/registration_models.dart';
 
+RegistrationState _ready({
+  bool declarationAccepted = false,
+  IdCardRecord? idCard,
+  List<AcademicRequest>? academicRequests,
+}) {
+  return RegistrationState(
+    status: RegistrationStatus.ready,
+    student: RegistrationFixtures.student,
+    window: RegistrationFixtures.window,
+    gate: RegistrationFixtures.gate,
+    minimumUnits: RegistrationFixtures.minimumUnits,
+    maximumUnits: RegistrationFixtures.maximumUnits,
+    courses: RegistrationFixtures.courses,
+    catalogue: RegistrationFixtures.catalogue,
+    week: RegistrationFixtures.week,
+    studyPlan: RegistrationFixtures.studyPlan,
+    idCard: idCard ?? RegistrationFixtures.idCard,
+    academicRequests:
+        academicRequests ?? RegistrationFixtures.academicRequests,
+    declarationAccepted: declarationAccepted,
+  );
+}
+
 void main() {
   group('RegistrationCubit', () {
     test('starts with nothing loaded', () {
@@ -35,6 +58,8 @@ void main() {
           formStatus: CourseFormStatus.notSubmitted,
           forms: const [],
           studyPlan: RegistrationFixtures.studyPlan,
+          idCard: RegistrationFixtures.idCard,
+          academicRequests: RegistrationFixtures.academicRequests,
         ),
       ],
     );
@@ -42,18 +67,7 @@ void main() {
     blocTest<RegistrationCubit, RegistrationState>(
       'load is idempotent once ready',
       build: RegistrationCubit.new,
-      seed: () => RegistrationState(
-        status: RegistrationStatus.ready,
-        student: RegistrationFixtures.student,
-        window: RegistrationFixtures.window,
-        gate: RegistrationFixtures.gate,
-        minimumUnits: RegistrationFixtures.minimumUnits,
-        maximumUnits: RegistrationFixtures.maximumUnits,
-        courses: RegistrationFixtures.courses,
-        catalogue: RegistrationFixtures.catalogue,
-        week: RegistrationFixtures.week,
-        studyPlan: RegistrationFixtures.studyPlan,
-      ),
+      seed: _ready,
       act: (cubit) => cubit.load(),
       expect: () => <RegistrationState>[],
     );
@@ -61,18 +75,7 @@ void main() {
     blocTest<RegistrationCubit, RegistrationState>(
       'requestDrop opens the minimum sheet when at the floor',
       build: RegistrationCubit.new,
-      seed: () => RegistrationState(
-        status: RegistrationStatus.ready,
-        student: RegistrationFixtures.student,
-        window: RegistrationFixtures.window,
-        gate: RegistrationFixtures.gate,
-        minimumUnits: RegistrationFixtures.minimumUnits,
-        maximumUnits: RegistrationFixtures.maximumUnits,
-        courses: RegistrationFixtures.courses,
-        catalogue: RegistrationFixtures.catalogue,
-        week: RegistrationFixtures.week,
-        studyPlan: RegistrationFixtures.studyPlan,
-      ),
+      seed: _ready,
       act: (cubit) => cubit.requestDrop('reg-csc311'),
       expect: () => [
         isA<RegistrationState>()
@@ -84,18 +87,7 @@ void main() {
     blocTest<RegistrationCubit, RegistrationState>(
       'requestAdd opens the clash sheet for a clashing catalogue course',
       build: RegistrationCubit.new,
-      seed: () => RegistrationState(
-        status: RegistrationStatus.ready,
-        student: RegistrationFixtures.student,
-        window: RegistrationFixtures.window,
-        gate: RegistrationFixtures.gate,
-        minimumUnits: RegistrationFixtures.minimumUnits,
-        maximumUnits: RegistrationFixtures.maximumUnits,
-        courses: RegistrationFixtures.courses,
-        catalogue: RegistrationFixtures.catalogue,
-        week: RegistrationFixtures.week,
-        studyPlan: RegistrationFixtures.studyPlan,
-      ),
+      seed: _ready,
       act: (cubit) => cubit.requestAdd('cat-csc405a'),
       expect: () => [
         isA<RegistrationState>()
@@ -107,18 +99,7 @@ void main() {
     blocTest<RegistrationCubit, RegistrationState>(
       'requestReadd restores a dropped course to awaiting approval',
       build: RegistrationCubit.new,
-      seed: () => RegistrationState(
-        status: RegistrationStatus.ready,
-        student: RegistrationFixtures.student,
-        window: RegistrationFixtures.window,
-        gate: RegistrationFixtures.gate,
-        minimumUnits: RegistrationFixtures.minimumUnits,
-        maximumUnits: RegistrationFixtures.maximumUnits,
-        courses: RegistrationFixtures.courses,
-        catalogue: RegistrationFixtures.catalogue,
-        week: RegistrationFixtures.week,
-        studyPlan: RegistrationFixtures.studyPlan,
-      ),
+      seed: _ready,
       act: (cubit) => cubit.requestReadd('reg-csc305'),
       verify: (cubit) {
         final course = cubit.state.registeredById('reg-csc305');
@@ -134,18 +115,7 @@ void main() {
     blocTest<RegistrationCubit, RegistrationState>(
       'requestReadd ignores rejected courses',
       build: RegistrationCubit.new,
-      seed: () => RegistrationState(
-        status: RegistrationStatus.ready,
-        student: RegistrationFixtures.student,
-        window: RegistrationFixtures.window,
-        gate: RegistrationFixtures.gate,
-        minimumUnits: RegistrationFixtures.minimumUnits,
-        maximumUnits: RegistrationFixtures.maximumUnits,
-        courses: RegistrationFixtures.courses,
-        catalogue: RegistrationFixtures.catalogue,
-        week: RegistrationFixtures.week,
-        studyPlan: RegistrationFixtures.studyPlan,
-      ),
+      seed: _ready,
       act: (cubit) => cubit.requestReadd('reg-csc405'),
       expect: () => <RegistrationState>[],
     );
@@ -153,24 +123,72 @@ void main() {
     blocTest<RegistrationCubit, RegistrationState>(
       'submitForm records a course form when the declaration is accepted',
       build: RegistrationCubit.new,
-      seed: () => RegistrationState(
-        status: RegistrationStatus.ready,
-        student: RegistrationFixtures.student,
-        window: RegistrationFixtures.window,
-        gate: RegistrationFixtures.gate,
-        minimumUnits: RegistrationFixtures.minimumUnits,
-        maximumUnits: RegistrationFixtures.maximumUnits,
-        courses: RegistrationFixtures.courses,
-        catalogue: RegistrationFixtures.catalogue,
-        week: RegistrationFixtures.week,
-        studyPlan: RegistrationFixtures.studyPlan,
-        declarationAccepted: true,
-      ),
+      seed: () => _ready(declarationAccepted: true),
       act: (cubit) => cubit.submitForm(),
       verify: (cubit) {
         expect(cubit.state.formStatus, CourseFormStatus.submitted);
         expect(cubit.state.forms, isNotEmpty);
         expect(cubit.state.canSubmitForm, isFalse);
+      },
+    );
+
+    blocTest<RegistrationCubit, RegistrationState>(
+      'cancel ID card clears the active request after confirmation',
+      build: RegistrationCubit.new,
+      seed: _ready,
+      act: (cubit) {
+        cubit.requestCancelIdCard();
+        cubit.confirmCancelIdCard();
+      },
+      verify: (cubit) {
+        expect(cubit.state.idCard?.activeRequest, isNull);
+        expect(cubit.state.sheet, isNull);
+      },
+    );
+
+    blocTest<RegistrationCubit, RegistrationState>(
+      'submitIdCardRequest is locked while an active request exists',
+      build: RegistrationCubit.new,
+      seed: _ready,
+      act: (cubit) {
+        cubit.setIdCardDraftReason(IdCardReason.damaged);
+        cubit.submitIdCardRequest();
+      },
+      verify: (cubit) {
+        expect(cubit.state.idCard?.canSubmitRequest, isFalse);
+        expect(
+          cubit.state.idCard?.activeRequest?.serial,
+          'LG/ID/2026/00892',
+        );
+      },
+    );
+
+    blocTest<RegistrationCubit, RegistrationState>(
+      'submitIdCardRequest creates a first-issue request when unlocked',
+      build: RegistrationCubit.new,
+      seed: () => _ready(idCard: RegistrationFixtures.idCardFirstIssue),
+      act: (cubit) => cubit.submitIdCardRequest(),
+      verify: (cubit) {
+        final active = cubit.state.idCard?.activeRequest;
+        expect(active, isNotNull);
+        expect(active?.feePayment, IdCardFeePayment.notRequired);
+        expect(active?.reason, IdCardReason.firstCard);
+        expect(cubit.state.idCard?.canSubmitRequest, isFalse);
+      },
+    );
+
+    blocTest<RegistrationCubit, RegistrationState>(
+      'withdraw academic request marks it withdrawn',
+      build: RegistrationCubit.new,
+      seed: _ready,
+      act: (cubit) {
+        cubit.requestWithdrawAcademic('req-waive-csc405');
+        cubit.confirmWithdrawAcademic();
+      },
+      verify: (cubit) {
+        final request = cubit.state.academicRequestById('req-waive-csc405');
+        expect(request?.status, AcademicRequestStatus.withdrawn);
+        expect(request?.canWithdraw, isFalse);
       },
     );
   });

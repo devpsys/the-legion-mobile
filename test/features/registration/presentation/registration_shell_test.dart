@@ -17,6 +17,17 @@ void main() {
         registrationBackTarget(Routes.registrationForm),
         Routes.registrationName,
       );
+      expect(
+        registrationBackTarget(Routes.registrationRequests),
+        Routes.registrationName,
+      );
+    });
+
+    test('unwinds the ID card screen to Requests', () {
+      expect(
+        registrationBackTarget(Routes.registrationIdCard),
+        Routes.registrationRequestsName,
+      );
     });
   });
 }

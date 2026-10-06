@@ -39,6 +39,8 @@ import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/registration/presentation/bloc/registration_cubit.dart';
 import '../../features/registration/presentation/pages/course_form_page.dart';
 import '../../features/registration/presentation/pages/course_registration_page.dart';
+import '../../features/registration/presentation/pages/id_card_page.dart';
+import '../../features/registration/presentation/pages/requests_page.dart';
 import '../../features/registration/presentation/pages/study_plan_page.dart';
 import '../../features/registration/presentation/widgets/registration_shell.dart';
 import '../di/injection.dart';
@@ -371,8 +373,8 @@ GoRouter createRouter({
         ],
       ),
       // Registration & Records: enrolled-student academic portal. Outside the
-      // student shell so it can keep its own Registration / Study plan / Form
-      // tabs, the same way Admissions keeps Overview / Programmes / ….
+      // student shell so it can keep its own Registration / Study plan / Form /
+      // Requests tabs, the same way Admissions keeps Overview / Programmes / ….
       ShellRoute(
         builder: (context, state, child) => RegistrationShell(
           location: state.matchedLocation,
@@ -396,6 +398,16 @@ GoRouter createRouter({
             path: Routes.registrationForm,
             name: Routes.registrationFormName,
             builder: (context, state) => const CourseFormPage(),
+          ),
+          GoRoute(
+            path: Routes.registrationRequests,
+            name: Routes.registrationRequestsName,
+            builder: (context, state) => const RequestsPage(),
+          ),
+          GoRoute(
+            path: Routes.registrationIdCard,
+            name: Routes.registrationIdCardName,
+            builder: (context, state) => const IdCardPage(),
           ),
         ],
       ),

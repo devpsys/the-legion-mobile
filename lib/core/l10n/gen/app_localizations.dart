@@ -4143,6 +4143,12 @@ abstract class AppLocalizations {
   /// **'Form'**
   String get navCourseForm;
 
+  /// No description provided for @navRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests'**
+  String get navRequests;
+
   /// No description provided for @registrationBackTooltip.
   ///
   /// In en, this message translates to:
@@ -5420,6 +5426,580 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'How this works'**
   String get studyPlanHowThisWorksTitle;
+
+  /// No description provided for @requestsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests'**
+  String get requestsTitle;
+
+  /// No description provided for @requestsBreadcrumb.
+  ///
+  /// In en, this message translates to:
+  /// **'Requests'**
+  String get requestsBreadcrumb;
+
+  /// No description provided for @requestsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ask for an exception to the registration rules or a change of programme.'**
+  String get requestsSubtitle;
+
+  /// No description provided for @requestsExistingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Existing requests'**
+  String get requestsExistingTitle;
+
+  /// No description provided for @requestsExistingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} recorded'**
+  String requestsExistingCount(int count);
+
+  /// No description provided for @requestsSubmittedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted requests ({count})'**
+  String requestsSubmittedTitle(int count);
+
+  /// No description provided for @requestsSessionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic session {session}'**
+  String requestsSessionLabel(String session);
+
+  /// No description provided for @requestsFiledOn.
+  ///
+  /// In en, this message translates to:
+  /// **'filed {date}'**
+  String requestsFiledOn(String date);
+
+  /// No description provided for @requestsWithdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw this request'**
+  String get requestsWithdraw;
+
+  /// No description provided for @requestsWithdrawTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw this request?'**
+  String get requestsWithdrawTitle;
+
+  /// No description provided for @requestsWithdrawBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The registry will stop reviewing “{title}”. You can file again later if you still need the exception.'**
+  String requestsWithdrawBody(String title);
+
+  /// No description provided for @requestsWithdrawConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw'**
+  String get requestsWithdrawConfirm;
+
+  /// No description provided for @requestsDecisionNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision note: {note}'**
+  String requestsDecisionNote(String note);
+
+  /// No description provided for @requestsStatusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get requestsStatusPending;
+
+  /// No description provided for @requestsStatusRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected'**
+  String get requestsStatusRejected;
+
+  /// No description provided for @requestsStatusWithdrawn.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn'**
+  String get requestsStatusWithdrawn;
+
+  /// No description provided for @requestsNewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'New request'**
+  String get requestsNewTitle;
+
+  /// No description provided for @requestsNewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit a formal petition for departmental review.'**
+  String get requestsNewSubtitle;
+
+  /// No description provided for @requestsWhatDoYouNeed.
+  ///
+  /// In en, this message translates to:
+  /// **'What do you need?'**
+  String get requestsWhatDoYouNeed;
+
+  /// No description provided for @requestsCourseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Course'**
+  String get requestsCourseLabel;
+
+  /// No description provided for @requestsPrerequisiteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Prerequisite to waive'**
+  String get requestsPrerequisiteLabel;
+
+  /// No description provided for @requestsReasonsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your reasons'**
+  String get requestsReasonsLabel;
+
+  /// No description provided for @requestsReasonsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Explain your circumstances. Attach supporting documents under My account → Documents.'**
+  String get requestsReasonsHint;
+
+  /// No description provided for @requestsWaiveNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiving a prerequisite does not change your result. It only lets you register for the course now.'**
+  String get requestsWaiveNote;
+
+  /// No description provided for @requestsSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send request'**
+  String get requestsSend;
+
+  /// No description provided for @requestsSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Your request was sent for review.'**
+  String get requestsSent;
+
+  /// No description provided for @requestsAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About requests'**
+  String get requestsAboutTitle;
+
+  /// No description provided for @requestsAboutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'An approval moves a rule in the academic record system. It is read automatically when you register or when grades are computed.'**
+  String get requestsAboutBody;
+
+  /// No description provided for @requestsTypeLateRegistration.
+  ///
+  /// In en, this message translates to:
+  /// **'Late registration'**
+  String get requestsTypeLateRegistration;
+
+  /// No description provided for @requestsTypeAddDropAfterDeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Add or drop courses after the deadline'**
+  String get requestsTypeAddDropAfterDeadline;
+
+  /// No description provided for @requestsTypeOverload.
+  ///
+  /// In en, this message translates to:
+  /// **'Register more units than allowed'**
+  String get requestsTypeOverload;
+
+  /// No description provided for @requestsTypeUnderload.
+  ///
+  /// In en, this message translates to:
+  /// **'Register fewer units than the minimum'**
+  String get requestsTypeUnderload;
+
+  /// No description provided for @requestsTypeWaivePrerequisite.
+  ///
+  /// In en, this message translates to:
+  /// **'Waive a prerequisite'**
+  String get requestsTypeWaivePrerequisite;
+
+  /// No description provided for @requestsTypeChangeOfProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Change of programme'**
+  String get requestsTypeChangeOfProgramme;
+
+  /// No description provided for @requestsTypeHintLateRegistration.
+  ///
+  /// In en, this message translates to:
+  /// **'Lets the student register after the ordinary window has closed.'**
+  String get requestsTypeHintLateRegistration;
+
+  /// No description provided for @requestsTypeHintAddDropAfterDeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Lets the student change courses after add/drop has closed.'**
+  String get requestsTypeHintAddDropAfterDeadline;
+
+  /// No description provided for @requestsTypeHintOverload.
+  ///
+  /// In en, this message translates to:
+  /// **'Lets the student register above the unit ceiling for their level.'**
+  String get requestsTypeHintOverload;
+
+  /// No description provided for @requestsTypeHintUnderload.
+  ///
+  /// In en, this message translates to:
+  /// **'Lets the student register below the unit minimum for their level.'**
+  String get requestsTypeHintUnderload;
+
+  /// No description provided for @requestsTypeHintWaivePrerequisite.
+  ///
+  /// In en, this message translates to:
+  /// **'Lets the student register for the course without the prerequisite.'**
+  String get requestsTypeHintWaivePrerequisite;
+
+  /// No description provided for @requestsTypeHintChangeOfProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Asks the faculty to move the student onto a different programme.'**
+  String get requestsTypeHintChangeOfProgramme;
+
+  /// No description provided for @requestsIdCardEntryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student ID card'**
+  String get requestsIdCardEntryTitle;
+
+  /// No description provided for @requestsIdCardEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Request a first card or a replacement, track printing, and collect from the registry.'**
+  String get requestsIdCardEntryBody;
+
+  /// No description provided for @requestsIdCardEntryAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Open ID card'**
+  String get requestsIdCardEntryAction;
+
+  /// No description provided for @requestsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests yet'**
+  String get requestsEmptyTitle;
+
+  /// No description provided for @requestsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'File a petition below when you need an exception to the registration rules.'**
+  String get requestsEmptyBody;
+
+  /// No description provided for @requestsReasonsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Add your reasons before sending.'**
+  String get requestsReasonsRequired;
+
+  /// No description provided for @idCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student ID card'**
+  String get idCardTitle;
+
+  /// No description provided for @idCardBreadcrumb.
+  ///
+  /// In en, this message translates to:
+  /// **'ID card'**
+  String get idCardBreadcrumb;
+
+  /// No description provided for @idCardActiveCredential.
+  ///
+  /// In en, this message translates to:
+  /// **'Active credential'**
+  String get idCardActiveCredential;
+
+  /// No description provided for @idCardRequestFormSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Procure an updated physical student identity card.'**
+  String get idCardRequestFormSubtitle;
+
+  /// No description provided for @idCardFirstIssueFormSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit a request to have your first card printed.'**
+  String get idCardFirstIssueFormSubtitle;
+
+  /// No description provided for @idCardProgrammeLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'{programme} ({level})'**
+  String idCardProgrammeLevel(String programme, String level);
+
+  /// No description provided for @idCardStatusNone.
+  ///
+  /// In en, this message translates to:
+  /// **'No active card'**
+  String get idCardStatusNone;
+
+  /// No description provided for @idCardStatusRequested.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested'**
+  String get idCardStatusRequested;
+
+  /// No description provided for @idCardStatusReadyForCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready for collection'**
+  String get idCardStatusReadyForCollection;
+
+  /// No description provided for @idCardStatusCollected.
+  ///
+  /// In en, this message translates to:
+  /// **'Collected'**
+  String get idCardStatusCollected;
+
+  /// No description provided for @idCardStatusReplaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Replaced'**
+  String get idCardStatusReplaced;
+
+  /// No description provided for @idCardNoActiveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You do not currently hold an active student ID card. Submit a request below to have your first card printed.'**
+  String get idCardNoActiveBody;
+
+  /// No description provided for @idCardPreviousLostBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your previous card {serial} was reported lost or stolen. Request a replacement card below.'**
+  String idCardPreviousLostBody(String serial);
+
+  /// No description provided for @idCardRequestedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested {date} ({reason}). We\'ll notify you when it\'s printed.'**
+  String idCardRequestedBody(String date, String reason);
+
+  /// No description provided for @idCardReadyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your card is printed. Collect it from the registry with another form of identification.'**
+  String get idCardReadyBody;
+
+  /// No description provided for @idCardFeeUnpaidBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Replacement fee: {amount}. Pay it under Payments; the card is printed once it\'s paid.'**
+  String idCardFeeUnpaidBody(String amount);
+
+  /// No description provided for @idCardFeePaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Replacement fee paid.'**
+  String get idCardFeePaid;
+
+  /// No description provided for @idCardFeeFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Your first card is free.'**
+  String get idCardFeeFree;
+
+  /// No description provided for @idCardCollectBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Collect it by {date}.'**
+  String idCardCollectBy(String date);
+
+  /// No description provided for @idCardVerificationPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Your verification code is issued when the card is printed.'**
+  String get idCardVerificationPending;
+
+  /// No description provided for @idCardCancelRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel request'**
+  String get idCardCancelRequest;
+
+  /// No description provided for @idCardCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this ID card request?'**
+  String get idCardCancelTitle;
+
+  /// No description provided for @idCardCancelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The registry will stop printing {serial}. You can request a card again later.'**
+  String idCardCancelBody(String serial);
+
+  /// No description provided for @idCardCancelConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel request'**
+  String get idCardCancelConfirm;
+
+  /// No description provided for @idCardRequestReplacement.
+  ///
+  /// In en, this message translates to:
+  /// **'Request a replacement'**
+  String get idCardRequestReplacement;
+
+  /// No description provided for @idCardRequestYourCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Request your card'**
+  String get idCardRequestYourCard;
+
+  /// No description provided for @idCardPhotoHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your card carries your passport photo. Upload a profile photo before requesting a replacement card.'**
+  String get idCardPhotoHint;
+
+  /// No description provided for @idCardPhotoUpload.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload a profile photo'**
+  String get idCardPhotoUpload;
+
+  /// No description provided for @idCardReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get idCardReasonLabel;
+
+  /// No description provided for @idCardReasonFirstCard.
+  ///
+  /// In en, this message translates to:
+  /// **'First card'**
+  String get idCardReasonFirstCard;
+
+  /// No description provided for @idCardReasonLostOrStolen.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost or stolen'**
+  String get idCardReasonLostOrStolen;
+
+  /// No description provided for @idCardReasonDamaged.
+  ///
+  /// In en, this message translates to:
+  /// **'Damaged'**
+  String get idCardReasonDamaged;
+
+  /// No description provided for @idCardReasonNameOrProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Name or programme update'**
+  String get idCardReasonNameOrProgramme;
+
+  /// No description provided for @idCardReplacementFeeLine.
+  ///
+  /// In en, this message translates to:
+  /// **'A replacement costs {amount}.'**
+  String idCardReplacementFeeLine(String amount);
+
+  /// No description provided for @idCardFreeBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get idCardFreeBadge;
+
+  /// No description provided for @idCardRequestCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Request card'**
+  String get idCardRequestCard;
+
+  /// No description provided for @idCardRequestLockedActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear or cancel the pending request to submit anew.'**
+  String get idCardRequestLockedActive;
+
+  /// No description provided for @idCardRequestLockedPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Action locked until profile photo is approved'**
+  String get idCardRequestLockedPhoto;
+
+  /// No description provided for @idCardRequestLockedReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a reason before requesting a card.'**
+  String get idCardRequestLockedReason;
+
+  /// No description provided for @idCardRequestedSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Your ID card request was sent.'**
+  String get idCardRequestedSnack;
+
+  /// No description provided for @idCardHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Card history'**
+  String get idCardHistoryTitle;
+
+  /// No description provided for @idCardHistoryCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 records} =1{1 record} other{{count} records}}'**
+  String idCardHistoryCount(int count);
+
+  /// No description provided for @idCardHistoryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No cards yet'**
+  String get idCardHistoryEmptyTitle;
+
+  /// No description provided for @idCardHistoryEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your first card is free.'**
+  String get idCardHistoryEmptyBody;
+
+  /// No description provided for @idCardHistoryLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{reason} · requested {requested} · expires {expires}'**
+  String idCardHistoryLine(String reason, String requested, String expires);
+
+  /// No description provided for @idCardHistoryLineExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'{reason} · requested {requested} · expired {expires}'**
+  String idCardHistoryLineExpired(
+    String reason,
+    String requested,
+    String expires,
+  );
+
+  /// No description provided for @idCardHistoryFirstCard.
+  ///
+  /// In en, this message translates to:
+  /// **'First card · requested {requested} · expires {expires}'**
+  String idCardHistoryFirstCard(String requested, String expires);
+
+  /// No description provided for @idCardAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About ID cards'**
+  String get idCardAboutTitle;
+
+  /// No description provided for @idCardAboutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your first card is free. Carry it on campus and to examinations. Printing a new card cancels the old one, so report a lost card straight away.'**
+  String get idCardAboutBody;
 }
 
 class _AppLocalizationsDelegate

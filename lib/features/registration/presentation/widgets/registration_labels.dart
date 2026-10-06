@@ -1,10 +1,12 @@
 import '../../../../core/l10n/gen/app_localizations.dart';
+import '../../../../core/utils/money.dart';
 import '../models/registration_models.dart';
 
 /// Localised labels for registration enums.
 ///
 /// Kept next to the screens so status vocabulary stays in one place — the
-/// README's "Awaiting approval" / "Clash accepted" wording lives here.
+/// README's "Awaiting approval" / "Clash accepted" / "Ready for collection"
+/// wording lives here.
 abstract final class RegistrationLabels {
   static String windowState(AppLocalizations l10n, RegistrationWindow window) {
     if (window.isPersonalOverride && window.state == WindowState.open) {
@@ -74,5 +76,81 @@ abstract final class RegistrationLabels {
       6 => l10n.registrationWeekdaySaturday,
       _ => '',
     };
+  }
+
+  static String idCardStatus(AppLocalizations l10n, IdCardStatus status) {
+    return switch (status) {
+      IdCardStatus.none => l10n.idCardStatusNone,
+      IdCardStatus.requested => l10n.idCardStatusRequested,
+      IdCardStatus.printed => l10n.idCardStatusReadyForCollection,
+      IdCardStatus.collected => l10n.idCardStatusCollected,
+    };
+  }
+
+  static String idCardHistoryStatus(
+    AppLocalizations l10n,
+    IdCardHistoryStatus status,
+  ) {
+    return switch (status) {
+      IdCardHistoryStatus.collected => l10n.idCardStatusCollected,
+      IdCardHistoryStatus.replaced => l10n.idCardStatusReplaced,
+    };
+  }
+
+  static String idCardReason(AppLocalizations l10n, IdCardReason reason) {
+    return switch (reason) {
+      IdCardReason.firstCard => l10n.idCardReasonFirstCard,
+      IdCardReason.lostOrStolen => l10n.idCardReasonLostOrStolen,
+      IdCardReason.damaged => l10n.idCardReasonDamaged,
+      IdCardReason.nameOrProgrammeUpdate => l10n.idCardReasonNameOrProgramme,
+    };
+  }
+
+  static String academicRequestStatus(
+    AppLocalizations l10n,
+    AcademicRequestStatus status,
+  ) {
+    return switch (status) {
+      AcademicRequestStatus.pending => l10n.requestsStatusPending,
+      AcademicRequestStatus.rejected => l10n.requestsStatusRejected,
+      AcademicRequestStatus.withdrawn => l10n.requestsStatusWithdrawn,
+    };
+  }
+
+  static String academicRequestType(
+    AppLocalizations l10n,
+    AcademicRequestType type,
+  ) {
+    return switch (type) {
+      AcademicRequestType.lateRegistration => l10n.requestsTypeLateRegistration,
+      AcademicRequestType.addDropAfterDeadline =>
+        l10n.requestsTypeAddDropAfterDeadline,
+      AcademicRequestType.overload => l10n.requestsTypeOverload,
+      AcademicRequestType.underload => l10n.requestsTypeUnderload,
+      AcademicRequestType.waivePrerequisite => l10n.requestsTypeWaivePrerequisite,
+      AcademicRequestType.changeOfProgramme => l10n.requestsTypeChangeOfProgramme,
+    };
+  }
+
+  static String academicRequestTypeHint(
+    AppLocalizations l10n,
+    AcademicRequestType type,
+  ) {
+    return switch (type) {
+      AcademicRequestType.lateRegistration =>
+        l10n.requestsTypeHintLateRegistration,
+      AcademicRequestType.addDropAfterDeadline =>
+        l10n.requestsTypeHintAddDropAfterDeadline,
+      AcademicRequestType.overload => l10n.requestsTypeHintOverload,
+      AcademicRequestType.underload => l10n.requestsTypeHintUnderload,
+      AcademicRequestType.waivePrerequisite =>
+        l10n.requestsTypeHintWaivePrerequisite,
+      AcademicRequestType.changeOfProgramme =>
+        l10n.requestsTypeHintChangeOfProgramme,
+    };
+  }
+
+  static String idCardFeeLine(AppLocalizations l10n, int feeMinorUnits) {
+    return l10n.idCardReplacementFeeLine(formatNaira(feeMinorUnits));
   }
 }

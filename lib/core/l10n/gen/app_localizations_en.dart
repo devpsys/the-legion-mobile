@@ -2380,6 +2380,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navCourseForm => 'Form';
 
   @override
+  String get navRequests => 'Requests';
+
+  @override
   String get registrationBackTooltip => 'Back to the hub';
 
   @override
@@ -3145,4 +3148,358 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get studyPlanHowThisWorksTitle => 'How this works';
+
+  @override
+  String get requestsTitle => 'Requests';
+
+  @override
+  String get requestsBreadcrumb => 'Requests';
+
+  @override
+  String get requestsSubtitle =>
+      'Ask for an exception to the registration rules or a change of programme.';
+
+  @override
+  String get requestsExistingTitle => 'Existing requests';
+
+  @override
+  String requestsExistingCount(int count) {
+    return '$count recorded';
+  }
+
+  @override
+  String requestsSubmittedTitle(int count) {
+    return 'Submitted requests ($count)';
+  }
+
+  @override
+  String requestsSessionLabel(String session) {
+    return 'Academic session $session';
+  }
+
+  @override
+  String requestsFiledOn(String date) {
+    return 'filed $date';
+  }
+
+  @override
+  String get requestsWithdraw => 'Withdraw this request';
+
+  @override
+  String get requestsWithdrawTitle => 'Withdraw this request?';
+
+  @override
+  String requestsWithdrawBody(String title) {
+    return 'The registry will stop reviewing “$title”. You can file again later if you still need the exception.';
+  }
+
+  @override
+  String get requestsWithdrawConfirm => 'Withdraw';
+
+  @override
+  String requestsDecisionNote(String note) {
+    return 'Decision note: $note';
+  }
+
+  @override
+  String get requestsStatusPending => 'Pending';
+
+  @override
+  String get requestsStatusRejected => 'Rejected';
+
+  @override
+  String get requestsStatusWithdrawn => 'Withdrawn';
+
+  @override
+  String get requestsNewTitle => 'New request';
+
+  @override
+  String get requestsNewSubtitle =>
+      'Submit a formal petition for departmental review.';
+
+  @override
+  String get requestsWhatDoYouNeed => 'What do you need?';
+
+  @override
+  String get requestsCourseLabel => 'Course';
+
+  @override
+  String get requestsPrerequisiteLabel => 'Prerequisite to waive';
+
+  @override
+  String get requestsReasonsLabel => 'Your reasons';
+
+  @override
+  String get requestsReasonsHint =>
+      'Explain your circumstances. Attach supporting documents under My account → Documents.';
+
+  @override
+  String get requestsWaiveNote =>
+      'Waiving a prerequisite does not change your result. It only lets you register for the course now.';
+
+  @override
+  String get requestsSend => 'Send request';
+
+  @override
+  String get requestsSent => 'Your request was sent for review.';
+
+  @override
+  String get requestsAboutTitle => 'About requests';
+
+  @override
+  String get requestsAboutBody =>
+      'An approval moves a rule in the academic record system. It is read automatically when you register or when grades are computed.';
+
+  @override
+  String get requestsTypeLateRegistration => 'Late registration';
+
+  @override
+  String get requestsTypeAddDropAfterDeadline =>
+      'Add or drop courses after the deadline';
+
+  @override
+  String get requestsTypeOverload => 'Register more units than allowed';
+
+  @override
+  String get requestsTypeUnderload => 'Register fewer units than the minimum';
+
+  @override
+  String get requestsTypeWaivePrerequisite => 'Waive a prerequisite';
+
+  @override
+  String get requestsTypeChangeOfProgramme => 'Change of programme';
+
+  @override
+  String get requestsTypeHintLateRegistration =>
+      'Lets the student register after the ordinary window has closed.';
+
+  @override
+  String get requestsTypeHintAddDropAfterDeadline =>
+      'Lets the student change courses after add/drop has closed.';
+
+  @override
+  String get requestsTypeHintOverload =>
+      'Lets the student register above the unit ceiling for their level.';
+
+  @override
+  String get requestsTypeHintUnderload =>
+      'Lets the student register below the unit minimum for their level.';
+
+  @override
+  String get requestsTypeHintWaivePrerequisite =>
+      'Lets the student register for the course without the prerequisite.';
+
+  @override
+  String get requestsTypeHintChangeOfProgramme =>
+      'Asks the faculty to move the student onto a different programme.';
+
+  @override
+  String get requestsIdCardEntryTitle => 'Student ID card';
+
+  @override
+  String get requestsIdCardEntryBody =>
+      'Request a first card or a replacement, track printing, and collect from the registry.';
+
+  @override
+  String get requestsIdCardEntryAction => 'Open ID card';
+
+  @override
+  String get requestsEmptyTitle => 'No requests yet';
+
+  @override
+  String get requestsEmptyBody =>
+      'File a petition below when you need an exception to the registration rules.';
+
+  @override
+  String get requestsReasonsRequired => 'Add your reasons before sending.';
+
+  @override
+  String get idCardTitle => 'Student ID card';
+
+  @override
+  String get idCardBreadcrumb => 'ID card';
+
+  @override
+  String get idCardActiveCredential => 'Active credential';
+
+  @override
+  String get idCardRequestFormSubtitle =>
+      'Procure an updated physical student identity card.';
+
+  @override
+  String get idCardFirstIssueFormSubtitle =>
+      'Submit a request to have your first card printed.';
+
+  @override
+  String idCardProgrammeLevel(String programme, String level) {
+    return '$programme ($level)';
+  }
+
+  @override
+  String get idCardStatusNone => 'No active card';
+
+  @override
+  String get idCardStatusRequested => 'Requested';
+
+  @override
+  String get idCardStatusReadyForCollection => 'Ready for collection';
+
+  @override
+  String get idCardStatusCollected => 'Collected';
+
+  @override
+  String get idCardStatusReplaced => 'Replaced';
+
+  @override
+  String get idCardNoActiveBody =>
+      'You do not currently hold an active student ID card. Submit a request below to have your first card printed.';
+
+  @override
+  String idCardPreviousLostBody(String serial) {
+    return 'Your previous card $serial was reported lost or stolen. Request a replacement card below.';
+  }
+
+  @override
+  String idCardRequestedBody(String date, String reason) {
+    return 'Requested $date ($reason). We\'ll notify you when it\'s printed.';
+  }
+
+  @override
+  String get idCardReadyBody =>
+      'Your card is printed. Collect it from the registry with another form of identification.';
+
+  @override
+  String idCardFeeUnpaidBody(String amount) {
+    return 'Replacement fee: $amount. Pay it under Payments; the card is printed once it\'s paid.';
+  }
+
+  @override
+  String get idCardFeePaid => 'Replacement fee paid.';
+
+  @override
+  String get idCardFeeFree => 'Your first card is free.';
+
+  @override
+  String idCardCollectBy(String date) {
+    return 'Collect it by $date.';
+  }
+
+  @override
+  String get idCardVerificationPending =>
+      'Your verification code is issued when the card is printed.';
+
+  @override
+  String get idCardCancelRequest => 'Cancel request';
+
+  @override
+  String get idCardCancelTitle => 'Cancel this ID card request?';
+
+  @override
+  String idCardCancelBody(String serial) {
+    return 'The registry will stop printing $serial. You can request a card again later.';
+  }
+
+  @override
+  String get idCardCancelConfirm => 'Cancel request';
+
+  @override
+  String get idCardRequestReplacement => 'Request a replacement';
+
+  @override
+  String get idCardRequestYourCard => 'Request your card';
+
+  @override
+  String get idCardPhotoHint =>
+      'Your card carries your passport photo. Upload a profile photo before requesting a replacement card.';
+
+  @override
+  String get idCardPhotoUpload => 'Upload a profile photo';
+
+  @override
+  String get idCardReasonLabel => 'Reason';
+
+  @override
+  String get idCardReasonFirstCard => 'First card';
+
+  @override
+  String get idCardReasonLostOrStolen => 'Lost or stolen';
+
+  @override
+  String get idCardReasonDamaged => 'Damaged';
+
+  @override
+  String get idCardReasonNameOrProgramme => 'Name or programme update';
+
+  @override
+  String idCardReplacementFeeLine(String amount) {
+    return 'A replacement costs $amount.';
+  }
+
+  @override
+  String get idCardFreeBadge => 'Free';
+
+  @override
+  String get idCardRequestCard => 'Request card';
+
+  @override
+  String get idCardRequestLockedActive =>
+      'Clear or cancel the pending request to submit anew.';
+
+  @override
+  String get idCardRequestLockedPhoto =>
+      'Action locked until profile photo is approved';
+
+  @override
+  String get idCardRequestLockedReason =>
+      'Choose a reason before requesting a card.';
+
+  @override
+  String get idCardRequestedSnack => 'Your ID card request was sent.';
+
+  @override
+  String get idCardHistoryTitle => 'Card history';
+
+  @override
+  String idCardHistoryCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count records',
+      one: '1 record',
+      zero: '0 records',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get idCardHistoryEmptyTitle => 'No cards yet';
+
+  @override
+  String get idCardHistoryEmptyBody => 'Your first card is free.';
+
+  @override
+  String idCardHistoryLine(String reason, String requested, String expires) {
+    return '$reason · requested $requested · expires $expires';
+  }
+
+  @override
+  String idCardHistoryLineExpired(
+    String reason,
+    String requested,
+    String expires,
+  ) {
+    return '$reason · requested $requested · expired $expires';
+  }
+
+  @override
+  String idCardHistoryFirstCard(String requested, String expires) {
+    return 'First card · requested $requested · expires $expires';
+  }
+
+  @override
+  String get idCardAboutTitle => 'About ID cards';
+
+  @override
+  String get idCardAboutBody =>
+      'Your first card is free. Carry it on campus and to examinations. Printing a new card cancels the old one, so report a lost card straight away.';
 }
