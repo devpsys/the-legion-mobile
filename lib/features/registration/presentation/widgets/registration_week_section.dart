@@ -74,11 +74,9 @@ class RegistrationWeekSectionState extends State<RegistrationWeekSection> {
         termLabel: widget.termLabel,
       );
       if (!context.mounted) return;
+      // `unavailable` means the platform cannot report the user action — not
+      // that the share failed (common on Android). Only dismiss stays silent.
       if (result.status == ShareResultStatus.dismissed) return;
-      if (result.status == ShareResultStatus.unavailable) {
-        context.showErrorMessage(l10n.registrationCalendarShareFailed);
-        return;
-      }
       context.showMessage(l10n.registrationCalendarShared);
     } on Object {
       if (!context.mounted) return;
