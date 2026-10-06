@@ -128,22 +128,34 @@ class RegistrationStudentDocket extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Wrap(
-                        spacing: AppSpacing.sm,
-                        runSpacing: AppSpacing.xs,
-                        crossAxisAlignment: WrapCrossAlignment.center,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            student.name,
-                            style: AppTextStyles.codeMedium.copyWith(
-                              fontWeight: AppTextStyles.bold,
+                          Expanded(
+                            child: Text(
+                              student.name,
+                              style: AppTextStyles.codeMedium.copyWith(
+                                fontWeight: AppTextStyles.bold,
+                              ),
                             ),
                           ),
+                          AppSpacing.horizontalGap(AppSpacing.sm),
                           RegistrationWindowPill(
-                            label: RegistrationLabels.windowState(l10n, window),
+                            label: RegistrationLabels.windowState(
+                              l10n,
+                              window,
+                            ),
                             tone: window.state.tone,
                           ),
                         ],
+                      ),
+                      AppSpacing.verticalGap(AppSpacing.xs),
+                      Text(
+                        student.programme,
+                        style: AppTextStyles.codeSmall.copyWith(
+                          fontWeight: AppTextStyles.semiBold,
+                          color: theme.colorScheme.primary,
+                        ),
                       ),
                       AppSpacing.verticalGap(AppSpacing.xs),
                       Text(
@@ -156,15 +168,6 @@ class RegistrationStudentDocket extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                ),
-                AppSpacing.horizontalGap(AppSpacing.sm),
-                Text(
-                  student.programme,
-                  textAlign: TextAlign.right,
-                  style: AppTextStyles.codeSmall.copyWith(
-                    fontWeight: AppTextStyles.semiBold,
-                    color: theme.colorScheme.primary,
                   ),
                 ),
               ],

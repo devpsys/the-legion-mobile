@@ -2547,8 +2547,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registrationActionNone => '—';
 
   @override
-  String registrationMatricBulletLevel(String matricNumber, String level) {
-    return '$matricNumber • $level';
+  String registrationMatricBulletLevel(String level, String matricNumber) {
+    return '$level • $matricNumber';
   }
 
   @override
@@ -3517,4 +3517,338 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get idCardAboutBody =>
       'Your first card is free. Carry it on campus and to examinations. Printing a new card cancels the old one, so report a lost card straight away.';
+
+  @override
+  String get disciplineTitle => 'Disciplinary matters';
+
+  @override
+  String get disciplineBreadcrumb => 'Disciplinary matters';
+
+  @override
+  String get disciplineBreadcrumbRecord => 'Record';
+
+  @override
+  String get disciplineSubtitle =>
+      'Cases involving you, their outcome, and any sanctions.';
+
+  @override
+  String get disciplineEntryTitle => 'Disciplinary matters';
+
+  @override
+  String get disciplineEntryBody =>
+      'Cases involving you, their outcome, and any sanctions on your record.';
+
+  @override
+  String get disciplineEntryAction => 'Open discipline';
+
+  @override
+  String get disciplineCasesTitle => 'Cases';
+
+  @override
+  String disciplineCasesCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count recorded',
+      one: '1 recorded',
+      zero: '0 recorded',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get disciplineCasesSortedNewest => 'Sorted by newest';
+
+  @override
+  String get disciplineSanctionsTitle => 'Sanctions';
+
+  @override
+  String disciplineSanctionsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count recorded',
+      one: '1 recorded',
+      zero: '0 recorded',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String disciplineSanctionsActiveCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count active',
+      one: '1 active',
+      zero: '0 active',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get disciplineEmptyTitle => 'No disciplinary cases';
+
+  @override
+  String get disciplineEmptyBody => 'You have a clean record.';
+
+  @override
+  String get disciplineAboutTitle => 'About disciplinary records';
+
+  @override
+  String get disciplineAboutBody =>
+      'Cases and sanctions recorded under University Disciplinary Statutes remain part of your academic dossier. Active sanctions are enforced across portal functions.';
+
+  @override
+  String get disciplineStandingActive => 'Active';
+
+  @override
+  String get disciplineStandingSuspended => 'Suspended';
+
+  @override
+  String get disciplineStandingExpelled => 'Expelled';
+
+  @override
+  String get disciplineSuspendedBanner =>
+      'Your student status is Suspended, so you cannot register, request an ID card or file a request. Contact the registry.';
+
+  @override
+  String get disciplineCaseStatusUnderInvestigation => 'Under investigation';
+
+  @override
+  String get disciplineCaseStatusHearingScheduled => 'Hearing scheduled';
+
+  @override
+  String get disciplineCaseStatusDecided => 'Decided';
+
+  @override
+  String get disciplineCaseStatusUnderAppeal => 'Under appeal';
+
+  @override
+  String get disciplineSeverityMinor => 'Minor';
+
+  @override
+  String get disciplineSeverityMajor => 'Major';
+
+  @override
+  String get disciplineCategoryExamination => 'Examination misconduct';
+
+  @override
+  String get disciplineCategoryHarassment => 'Harassment';
+
+  @override
+  String get disciplineFindingLiable => 'Found liable';
+
+  @override
+  String get disciplineFindingNotLiable => 'Not liable';
+
+  @override
+  String get disciplineSanctionWarning => 'Warning';
+
+  @override
+  String get disciplineSanctionProbation => 'Probation';
+
+  @override
+  String get disciplineSanctionSuspension => 'Suspension';
+
+  @override
+  String get disciplineSanctionExpulsion => 'Expulsion';
+
+  @override
+  String get disciplineSanctionActive => 'Active';
+
+  @override
+  String get disciplineSanctionServed => 'Served';
+
+  @override
+  String get disciplineSanctionLifted => 'Lifted';
+
+  @override
+  String get disciplineEvidenceDocument => 'Document';
+
+  @override
+  String get disciplineEvidenceStatement => 'Written statement';
+
+  @override
+  String disciplineOpenedOn(String date) {
+    return 'opened $date';
+  }
+
+  @override
+  String disciplineCaseMeta(String severity, String category, String opened) {
+    return '$severity · $category · $opened';
+  }
+
+  @override
+  String disciplineCaseTitle(String reference) {
+    return 'Case $reference';
+  }
+
+  @override
+  String disciplineDecidedOn(String date) {
+    return 'decided $date';
+  }
+
+  @override
+  String get disciplineHearingScheduledTitle => 'Hearing scheduled';
+
+  @override
+  String get disciplineHearingHeldTitle => 'Hearing held';
+
+  @override
+  String get disciplineHearingSessionMandatory => 'Session mandatory';
+
+  @override
+  String disciplineHearingAtVenue(String venue) {
+    return 'at $venue';
+  }
+
+  @override
+  String get disciplineAllegationTitle => 'The allegation';
+
+  @override
+  String get disciplineAllegationCategory => 'Category';
+
+  @override
+  String get disciplineAllegationIncident => 'Incident';
+
+  @override
+  String get disciplineAllegationReportedBy => 'Reported by';
+
+  @override
+  String disciplineIncidentLine(String date, String venue, String session) {
+    return '$date · $venue, during $session';
+  }
+
+  @override
+  String disciplineReportedLine(String reporter, String date) {
+    return '$reporter, on $date';
+  }
+
+  @override
+  String get disciplineEvidenceTitle => 'Evidence on file';
+
+  @override
+  String disciplineEvidenceCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count items',
+      one: '1 item',
+      zero: '0 items',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get disciplineEvidenceInspectHint =>
+      'You may inspect the evidence at the disciplinary office before the hearing.';
+
+  @override
+  String get disciplineAppealTitle => 'Appeal this decision';
+
+  @override
+  String disciplineAppealUntil(String date) {
+    return 'You can appeal until $date.';
+  }
+
+  @override
+  String get disciplineAppealWindowDays => '14 days from the decision.';
+
+  @override
+  String get disciplineAppealGroundsLabel => 'Grounds of appeal';
+
+  @override
+  String get disciplineAppealGroundsHint =>
+      'Explain why the decision or sanction is wrong, including any new evidence.';
+
+  @override
+  String disciplineAppealGroundsRequired(int min) {
+    return 'Set out your grounds of appeal in at least $min characters.';
+  }
+
+  @override
+  String disciplineAppealGroundsCounter(int count, int min) {
+    return '$count/$min';
+  }
+
+  @override
+  String get disciplineAppealLodge => 'Lodge appeal';
+
+  @override
+  String get disciplineAppealOnceNote =>
+      'You can only appeal once. Once lodged, an appeal cannot be edited or withdrawn.';
+
+  @override
+  String get disciplineAppealClosedTitle => 'Closed';
+
+  @override
+  String disciplineAppealClosedBody(String date) {
+    return 'The appeal period ended on $date.';
+  }
+
+  @override
+  String disciplineAppealClosedDetail(String date) {
+    return 'The decision was made on $date. The appeal period is fourteen days from the decision.';
+  }
+
+  @override
+  String get disciplineAppealWrittenStill =>
+      'A written appeal may still be delivered to the disciplinary office.';
+
+  @override
+  String get disciplineAppealLiableOnly =>
+      'Only a decision finding you liable can be appealed.';
+
+  @override
+  String get disciplineAppealLodgedTitle => 'Your appeal';
+
+  @override
+  String disciplineAppealLodgedOn(String date) {
+    return 'Lodged $date';
+  }
+
+  @override
+  String get disciplineAppealAwaiting => 'Awaiting decision';
+
+  @override
+  String get disciplineAppealFiledBanner =>
+      'Appeal filed · Awaiting Disciplinary Appeals Committee review';
+
+  @override
+  String get disciplineAppealAbeyanceNote =>
+      'Sanctions held in abeyance pending appeal outcome under Statute 14(b). Academic participation remains fully active.';
+
+  @override
+  String get disciplineAppealReviewNote =>
+      'The appeal committee will review it. You will be notified of the outcome.';
+
+  @override
+  String get disciplineAppealConfirmTitle => 'Lodge this appeal?';
+
+  @override
+  String get disciplineAppealConfirmBody =>
+      'You can only appeal once. Once submitted, your grounds cannot be edited or withdrawn.';
+
+  @override
+  String get disciplineAppealConfirmAction => 'Lodge appeal';
+
+  @override
+  String get disciplineAppealLodgedSnack => 'Your appeal was lodged.';
+
+  @override
+  String get disciplineDecisionFinalized => 'Decision finalized';
+
+  @override
+  String disciplineDecisionFinalizedBody(String date) {
+    return 'Appeal window closed on $date. Sanction in effect under Statute 14.';
+  }
+
+  @override
+  String get disciplineCaseNotFound => 'This case is not on your record.';
+
+  @override
+  String disciplineSanctionCaseRef(String reference) {
+    return '$reference';
+  }
 }

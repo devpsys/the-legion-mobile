@@ -29,5 +29,21 @@ void main() {
         Routes.registrationRequestsName,
       );
     });
+
+    test('unwinds a disciplinary case to Discipline', () {
+      expect(
+        registrationBackTarget(
+          Routes.registrationDisciplineCase('case-dc-2026-00031'),
+        ),
+        Routes.registrationDisciplineName,
+      );
+    });
+
+    test('unwinds the Discipline list to Registration', () {
+      expect(
+        registrationBackTarget(Routes.registrationDiscipline),
+        Routes.registrationName,
+      );
+    });
   });
 }

@@ -39,6 +39,8 @@ import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/registration/presentation/bloc/registration_cubit.dart';
 import '../../features/registration/presentation/pages/course_form_page.dart';
 import '../../features/registration/presentation/pages/course_registration_page.dart';
+import '../../features/registration/presentation/pages/discipline_case_page.dart';
+import '../../features/registration/presentation/pages/discipline_page.dart';
 import '../../features/registration/presentation/pages/id_card_page.dart';
 import '../../features/registration/presentation/pages/requests_page.dart';
 import '../../features/registration/presentation/pages/study_plan_page.dart';
@@ -375,6 +377,7 @@ GoRouter createRouter({
       // Registration & Records: enrolled-student academic portal. Outside the
       // student shell so it can keep its own Registration / Study plan / Form /
       // Requests tabs, the same way Admissions keeps Overview / Programmes / ….
+      // Discipline and ID card are sibling screens nested under those tabs.
       ShellRoute(
         builder: (context, state, child) => RegistrationShell(
           location: state.matchedLocation,
@@ -408,6 +411,20 @@ GoRouter createRouter({
             path: Routes.registrationIdCard,
             name: Routes.registrationIdCardName,
             builder: (context, state) => const IdCardPage(),
+          ),
+          GoRoute(
+            path: Routes.registrationDiscipline,
+            name: Routes.registrationDisciplineName,
+            builder: (context, state) => const DisciplinePage(),
+          ),
+          GoRoute(
+            path: Routes.registrationDisciplineCaseTemplate,
+            name: Routes.registrationDisciplineCaseName,
+            builder: (context, state) => DisciplineCasePage(
+              caseId:
+                  state.pathParameters[Routes.registrationDisciplineCaseIdParam] ??
+                  '',
+            ),
           ),
         ],
       ),

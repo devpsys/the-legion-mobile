@@ -20,6 +20,10 @@ abstract final class AppDateFormats {
   static DateFormat longDateTime(String locale) =>
       DateFormat('d MMMM y, HH:mm', locale);
 
+  /// `Saturday 3 October 2026, 10:00` — a hearing appointment line.
+  static DateFormat weekdayLongDateTime(String locale) =>
+      DateFormat('EEEE d MMMM y, HH:mm', locale);
+
   /// `14 Sep 2026` — a date on a card or in a column.
   static DateFormat medium(String locale) => DateFormat('d MMM y', locale);
 

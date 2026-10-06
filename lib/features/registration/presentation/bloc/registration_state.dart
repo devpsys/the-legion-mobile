@@ -18,6 +18,9 @@ enum RegistrationSheet {
 
   /// Cancelling an in-progress ID card request.
   cancelIdCardRequest,
+
+  /// Confirming a disciplinary appeal before it is lodged.
+  lodgeDisciplineAppeal,
 }
 
 /// State of the Registration & Records student portal.
@@ -38,6 +41,7 @@ class RegistrationState extends Equatable {
     this.idCard,
     this.academicRequests = const [],
     this.academicDraft = const AcademicRequestDraft(),
+    this.discipline,
     this.declarationAccepted = false,
     this.sheet,
     this.sheetCourseId,
@@ -59,6 +63,7 @@ class RegistrationState extends Equatable {
   final IdCardRecord? idCard;
   final List<AcademicRequest> academicRequests;
   final AcademicRequestDraft academicDraft;
+  final DisciplineRecord? discipline;
   final bool declarationAccepted;
 
   /// Open confirmation sheet, if any.
@@ -113,6 +118,8 @@ class RegistrationState extends Equatable {
     return null;
   }
 
+  DisciplineCase? disciplineCaseById(String id) => discipline?.caseById(id);
+
   CourseFormRecord? get latestForm => forms.isEmpty ? null : forms.first;
 
   RegistrationState copyWith({
@@ -131,6 +138,7 @@ class RegistrationState extends Equatable {
     IdCardRecord? idCard,
     List<AcademicRequest>? academicRequests,
     AcademicRequestDraft? academicDraft,
+    DisciplineRecord? discipline,
     bool? declarationAccepted,
     RegistrationSheet? sheet,
     String? sheetCourseId,
@@ -154,6 +162,7 @@ class RegistrationState extends Equatable {
       idCard: idCard ?? this.idCard,
       academicRequests: academicRequests ?? this.academicRequests,
       academicDraft: academicDraft ?? this.academicDraft,
+      discipline: discipline ?? this.discipline,
       declarationAccepted: declarationAccepted ?? this.declarationAccepted,
       sheet: clearSheet ? null : (sheet ?? this.sheet),
       sheetCourseId: clearSheet ? null : (sheetCourseId ?? this.sheetCourseId),
@@ -180,6 +189,7 @@ class RegistrationState extends Equatable {
     idCard,
     academicRequests,
     academicDraft,
+    discipline,
     declarationAccepted,
     sheet,
     sheetCourseId,

@@ -4422,8 +4422,8 @@ abstract class AppLocalizations {
   /// No description provided for @registrationMatricBulletLevel.
   ///
   /// In en, this message translates to:
-  /// **'{matricNumber} • {level}'**
-  String registrationMatricBulletLevel(String matricNumber, String level);
+  /// **'{level} • {matricNumber}'**
+  String registrationMatricBulletLevel(String level, String matricNumber);
 
   /// No description provided for @registrationUnitsDegreePlan.
   ///
@@ -6024,6 +6024,516 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your first card is free. Carry it on campus and to examinations. Printing a new card cancels the old one, so report a lost card straight away.'**
   String get idCardAboutBody;
+
+  /// No description provided for @disciplineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Disciplinary matters'**
+  String get disciplineTitle;
+
+  /// No description provided for @disciplineBreadcrumb.
+  ///
+  /// In en, this message translates to:
+  /// **'Disciplinary matters'**
+  String get disciplineBreadcrumb;
+
+  /// No description provided for @disciplineBreadcrumbRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Record'**
+  String get disciplineBreadcrumbRecord;
+
+  /// No description provided for @disciplineSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cases involving you, their outcome, and any sanctions.'**
+  String get disciplineSubtitle;
+
+  /// No description provided for @disciplineEntryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Disciplinary matters'**
+  String get disciplineEntryTitle;
+
+  /// No description provided for @disciplineEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cases involving you, their outcome, and any sanctions on your record.'**
+  String get disciplineEntryBody;
+
+  /// No description provided for @disciplineEntryAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Open discipline'**
+  String get disciplineEntryAction;
+
+  /// No description provided for @disciplineCasesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cases'**
+  String get disciplineCasesTitle;
+
+  /// No description provided for @disciplineCasesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 recorded} =1{1 recorded} other{{count} recorded}}'**
+  String disciplineCasesCount(int count);
+
+  /// No description provided for @disciplineCasesSortedNewest.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorted by newest'**
+  String get disciplineCasesSortedNewest;
+
+  /// No description provided for @disciplineSanctionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sanctions'**
+  String get disciplineSanctionsTitle;
+
+  /// No description provided for @disciplineSanctionsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 recorded} =1{1 recorded} other{{count} recorded}}'**
+  String disciplineSanctionsCount(int count);
+
+  /// No description provided for @disciplineSanctionsActiveCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 active} =1{1 active} other{{count} active}}'**
+  String disciplineSanctionsActiveCount(int count);
+
+  /// No description provided for @disciplineEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No disciplinary cases'**
+  String get disciplineEmptyTitle;
+
+  /// No description provided for @disciplineEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You have a clean record.'**
+  String get disciplineEmptyBody;
+
+  /// No description provided for @disciplineAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About disciplinary records'**
+  String get disciplineAboutTitle;
+
+  /// No description provided for @disciplineAboutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cases and sanctions recorded under University Disciplinary Statutes remain part of your academic dossier. Active sanctions are enforced across portal functions.'**
+  String get disciplineAboutBody;
+
+  /// No description provided for @disciplineStandingActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get disciplineStandingActive;
+
+  /// No description provided for @disciplineStandingSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspended'**
+  String get disciplineStandingSuspended;
+
+  /// No description provided for @disciplineStandingExpelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Expelled'**
+  String get disciplineStandingExpelled;
+
+  /// No description provided for @disciplineSuspendedBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Your student status is Suspended, so you cannot register, request an ID card or file a request. Contact the registry.'**
+  String get disciplineSuspendedBanner;
+
+  /// No description provided for @disciplineCaseStatusUnderInvestigation.
+  ///
+  /// In en, this message translates to:
+  /// **'Under investigation'**
+  String get disciplineCaseStatusUnderInvestigation;
+
+  /// No description provided for @disciplineCaseStatusHearingScheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Hearing scheduled'**
+  String get disciplineCaseStatusHearingScheduled;
+
+  /// No description provided for @disciplineCaseStatusDecided.
+  ///
+  /// In en, this message translates to:
+  /// **'Decided'**
+  String get disciplineCaseStatusDecided;
+
+  /// No description provided for @disciplineCaseStatusUnderAppeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Under appeal'**
+  String get disciplineCaseStatusUnderAppeal;
+
+  /// No description provided for @disciplineSeverityMinor.
+  ///
+  /// In en, this message translates to:
+  /// **'Minor'**
+  String get disciplineSeverityMinor;
+
+  /// No description provided for @disciplineSeverityMajor.
+  ///
+  /// In en, this message translates to:
+  /// **'Major'**
+  String get disciplineSeverityMajor;
+
+  /// No description provided for @disciplineCategoryExamination.
+  ///
+  /// In en, this message translates to:
+  /// **'Examination misconduct'**
+  String get disciplineCategoryExamination;
+
+  /// No description provided for @disciplineCategoryHarassment.
+  ///
+  /// In en, this message translates to:
+  /// **'Harassment'**
+  String get disciplineCategoryHarassment;
+
+  /// No description provided for @disciplineFindingLiable.
+  ///
+  /// In en, this message translates to:
+  /// **'Found liable'**
+  String get disciplineFindingLiable;
+
+  /// No description provided for @disciplineFindingNotLiable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not liable'**
+  String get disciplineFindingNotLiable;
+
+  /// No description provided for @disciplineSanctionWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Warning'**
+  String get disciplineSanctionWarning;
+
+  /// No description provided for @disciplineSanctionProbation.
+  ///
+  /// In en, this message translates to:
+  /// **'Probation'**
+  String get disciplineSanctionProbation;
+
+  /// No description provided for @disciplineSanctionSuspension.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspension'**
+  String get disciplineSanctionSuspension;
+
+  /// No description provided for @disciplineSanctionExpulsion.
+  ///
+  /// In en, this message translates to:
+  /// **'Expulsion'**
+  String get disciplineSanctionExpulsion;
+
+  /// No description provided for @disciplineSanctionActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get disciplineSanctionActive;
+
+  /// No description provided for @disciplineSanctionServed.
+  ///
+  /// In en, this message translates to:
+  /// **'Served'**
+  String get disciplineSanctionServed;
+
+  /// No description provided for @disciplineSanctionLifted.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifted'**
+  String get disciplineSanctionLifted;
+
+  /// No description provided for @disciplineEvidenceDocument.
+  ///
+  /// In en, this message translates to:
+  /// **'Document'**
+  String get disciplineEvidenceDocument;
+
+  /// No description provided for @disciplineEvidenceStatement.
+  ///
+  /// In en, this message translates to:
+  /// **'Written statement'**
+  String get disciplineEvidenceStatement;
+
+  /// No description provided for @disciplineOpenedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'opened {date}'**
+  String disciplineOpenedOn(String date);
+
+  /// No description provided for @disciplineCaseMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'{severity} · {category} · {opened}'**
+  String disciplineCaseMeta(String severity, String category, String opened);
+
+  /// No description provided for @disciplineCaseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Case {reference}'**
+  String disciplineCaseTitle(String reference);
+
+  /// No description provided for @disciplineDecidedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'decided {date}'**
+  String disciplineDecidedOn(String date);
+
+  /// No description provided for @disciplineHearingScheduledTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hearing scheduled'**
+  String get disciplineHearingScheduledTitle;
+
+  /// No description provided for @disciplineHearingHeldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hearing held'**
+  String get disciplineHearingHeldTitle;
+
+  /// No description provided for @disciplineHearingSessionMandatory.
+  ///
+  /// In en, this message translates to:
+  /// **'Session mandatory'**
+  String get disciplineHearingSessionMandatory;
+
+  /// No description provided for @disciplineHearingAtVenue.
+  ///
+  /// In en, this message translates to:
+  /// **'at {venue}'**
+  String disciplineHearingAtVenue(String venue);
+
+  /// No description provided for @disciplineAllegationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The allegation'**
+  String get disciplineAllegationTitle;
+
+  /// No description provided for @disciplineAllegationCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get disciplineAllegationCategory;
+
+  /// No description provided for @disciplineAllegationIncident.
+  ///
+  /// In en, this message translates to:
+  /// **'Incident'**
+  String get disciplineAllegationIncident;
+
+  /// No description provided for @disciplineAllegationReportedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported by'**
+  String get disciplineAllegationReportedBy;
+
+  /// No description provided for @disciplineIncidentLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{date} · {venue}, during {session}'**
+  String disciplineIncidentLine(String date, String venue, String session);
+
+  /// No description provided for @disciplineReportedLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{reporter}, on {date}'**
+  String disciplineReportedLine(String reporter, String date);
+
+  /// No description provided for @disciplineEvidenceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Evidence on file'**
+  String get disciplineEvidenceTitle;
+
+  /// No description provided for @disciplineEvidenceCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{0 items} =1{1 item} other{{count} items}}'**
+  String disciplineEvidenceCount(int count);
+
+  /// No description provided for @disciplineEvidenceInspectHint.
+  ///
+  /// In en, this message translates to:
+  /// **'You may inspect the evidence at the disciplinary office before the hearing.'**
+  String get disciplineEvidenceInspectHint;
+
+  /// No description provided for @disciplineAppealTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Appeal this decision'**
+  String get disciplineAppealTitle;
+
+  /// No description provided for @disciplineAppealUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'You can appeal until {date}.'**
+  String disciplineAppealUntil(String date);
+
+  /// No description provided for @disciplineAppealWindowDays.
+  ///
+  /// In en, this message translates to:
+  /// **'14 days from the decision.'**
+  String get disciplineAppealWindowDays;
+
+  /// No description provided for @disciplineAppealGroundsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Grounds of appeal'**
+  String get disciplineAppealGroundsLabel;
+
+  /// No description provided for @disciplineAppealGroundsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Explain why the decision or sanction is wrong, including any new evidence.'**
+  String get disciplineAppealGroundsHint;
+
+  /// No description provided for @disciplineAppealGroundsRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Set out your grounds of appeal in at least {min} characters.'**
+  String disciplineAppealGroundsRequired(int min);
+
+  /// No description provided for @disciplineAppealGroundsCounter.
+  ///
+  /// In en, this message translates to:
+  /// **'{count}/{min}'**
+  String disciplineAppealGroundsCounter(int count, int min);
+
+  /// No description provided for @disciplineAppealLodge.
+  ///
+  /// In en, this message translates to:
+  /// **'Lodge appeal'**
+  String get disciplineAppealLodge;
+
+  /// No description provided for @disciplineAppealOnceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'You can only appeal once. Once lodged, an appeal cannot be edited or withdrawn.'**
+  String get disciplineAppealOnceNote;
+
+  /// No description provided for @disciplineAppealClosedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get disciplineAppealClosedTitle;
+
+  /// No description provided for @disciplineAppealClosedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The appeal period ended on {date}.'**
+  String disciplineAppealClosedBody(String date);
+
+  /// No description provided for @disciplineAppealClosedDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'The decision was made on {date}. The appeal period is fourteen days from the decision.'**
+  String disciplineAppealClosedDetail(String date);
+
+  /// No description provided for @disciplineAppealWrittenStill.
+  ///
+  /// In en, this message translates to:
+  /// **'A written appeal may still be delivered to the disciplinary office.'**
+  String get disciplineAppealWrittenStill;
+
+  /// No description provided for @disciplineAppealLiableOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Only a decision finding you liable can be appealed.'**
+  String get disciplineAppealLiableOnly;
+
+  /// No description provided for @disciplineAppealLodgedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your appeal'**
+  String get disciplineAppealLodgedTitle;
+
+  /// No description provided for @disciplineAppealLodgedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Lodged {date}'**
+  String disciplineAppealLodgedOn(String date);
+
+  /// No description provided for @disciplineAppealAwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting decision'**
+  String get disciplineAppealAwaiting;
+
+  /// No description provided for @disciplineAppealFiledBanner.
+  ///
+  /// In en, this message translates to:
+  /// **'Appeal filed · Awaiting Disciplinary Appeals Committee review'**
+  String get disciplineAppealFiledBanner;
+
+  /// No description provided for @disciplineAppealAbeyanceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Sanctions held in abeyance pending appeal outcome under Statute 14(b). Academic participation remains fully active.'**
+  String get disciplineAppealAbeyanceNote;
+
+  /// No description provided for @disciplineAppealReviewNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The appeal committee will review it. You will be notified of the outcome.'**
+  String get disciplineAppealReviewNote;
+
+  /// No description provided for @disciplineAppealConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lodge this appeal?'**
+  String get disciplineAppealConfirmTitle;
+
+  /// No description provided for @disciplineAppealConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You can only appeal once. Once submitted, your grounds cannot be edited or withdrawn.'**
+  String get disciplineAppealConfirmBody;
+
+  /// No description provided for @disciplineAppealConfirmAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Lodge appeal'**
+  String get disciplineAppealConfirmAction;
+
+  /// No description provided for @disciplineAppealLodgedSnack.
+  ///
+  /// In en, this message translates to:
+  /// **'Your appeal was lodged.'**
+  String get disciplineAppealLodgedSnack;
+
+  /// No description provided for @disciplineDecisionFinalized.
+  ///
+  /// In en, this message translates to:
+  /// **'Decision finalized'**
+  String get disciplineDecisionFinalized;
+
+  /// No description provided for @disciplineDecisionFinalizedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Appeal window closed on {date}. Sanction in effect under Statute 14.'**
+  String disciplineDecisionFinalizedBody(String date);
+
+  /// No description provided for @disciplineCaseNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'This case is not on your record.'**
+  String get disciplineCaseNotFound;
+
+  /// No description provided for @disciplineSanctionCaseRef.
+  ///
+  /// In en, this message translates to:
+  /// **'{reference}'**
+  String disciplineSanctionCaseRef(String reference);
 }
 
 class _AppLocalizationsDelegate

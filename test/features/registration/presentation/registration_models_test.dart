@@ -62,4 +62,35 @@ void main() {
       expect(card.canSubmitRequest, isTrue);
     });
   });
+
+  group('DisciplineRecord', () {
+    test('default Amaka fixture has two cases and active probation', () {
+      final record = RegistrationFixtures.discipline;
+      expect(record.cases, hasLength(2));
+      expect(record.activeSanctionCount, 1);
+      expect(record.standing, StudentStanding.active);
+      expect(
+        record.canAppeal(RegistrationFixtures.caseDecidedAppealOpen),
+        isTrue,
+      );
+    });
+
+    test('empty fixture is a clean record', () {
+      expect(RegistrationFixtures.disciplineEmpty.isEmpty, isTrue);
+    });
+
+    test('appeal window closed when asOf is after the close date', () {
+      final record = RegistrationFixtures.disciplineAppealWindowClosed;
+      final item = record.caseById('case-dc-2026-00031')!;
+      expect(record.canAppeal(item), isFalse);
+      expect(record.appealWindowClosed(item), isTrue);
+    });
+
+    test('suspended standing is not good standing', () {
+      expect(
+        RegistrationFixtures.disciplineSuspended.standing.isInGoodStanding,
+        isFalse,
+      );
+    });
+  });
 }

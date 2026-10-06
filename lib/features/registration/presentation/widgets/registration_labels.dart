@@ -153,4 +153,84 @@ abstract final class RegistrationLabels {
   static String idCardFeeLine(AppLocalizations l10n, int feeMinorUnits) {
     return l10n.idCardReplacementFeeLine(formatNaira(feeMinorUnits));
   }
+
+  static String studentStanding(AppLocalizations l10n, StudentStanding standing) {
+    return switch (standing) {
+      StudentStanding.active => l10n.disciplineStandingActive,
+      StudentStanding.suspended => l10n.disciplineStandingSuspended,
+      StudentStanding.expelled => l10n.disciplineStandingExpelled,
+    };
+  }
+
+  static String disciplineCaseStatus(
+    AppLocalizations l10n,
+    DisciplineCaseStatus status,
+  ) {
+    return switch (status) {
+      DisciplineCaseStatus.underInvestigation =>
+        l10n.disciplineCaseStatusUnderInvestigation,
+      DisciplineCaseStatus.hearingScheduled =>
+        l10n.disciplineCaseStatusHearingScheduled,
+      DisciplineCaseStatus.decided => l10n.disciplineCaseStatusDecided,
+      DisciplineCaseStatus.underAppeal => l10n.disciplineCaseStatusUnderAppeal,
+    };
+  }
+
+  static String disciplineSeverity(
+    AppLocalizations l10n,
+    DisciplineSeverity severity,
+  ) {
+    return switch (severity) {
+      DisciplineSeverity.minor => l10n.disciplineSeverityMinor,
+      DisciplineSeverity.major => l10n.disciplineSeverityMajor,
+    };
+  }
+
+  static String disciplineCategory(
+    AppLocalizations l10n,
+    DisciplineCategory category,
+  ) {
+    return switch (category) {
+      DisciplineCategory.examinationMisconduct =>
+        l10n.disciplineCategoryExamination,
+      DisciplineCategory.harassment => l10n.disciplineCategoryHarassment,
+    };
+  }
+
+  static String disciplineFinding(
+    AppLocalizations l10n,
+    DisciplineFinding finding,
+  ) {
+    return switch (finding) {
+      DisciplineFinding.foundLiable => l10n.disciplineFindingLiable,
+      DisciplineFinding.notLiable => l10n.disciplineFindingNotLiable,
+    };
+  }
+
+  static String sanctionType(AppLocalizations l10n, SanctionType type) {
+    return switch (type) {
+      SanctionType.warning => l10n.disciplineSanctionWarning,
+      SanctionType.probation => l10n.disciplineSanctionProbation,
+      SanctionType.suspension => l10n.disciplineSanctionSuspension,
+      SanctionType.expulsion => l10n.disciplineSanctionExpulsion,
+    };
+  }
+
+  static String sanctionLifecycle(
+    AppLocalizations l10n,
+    SanctionLifecycle lifecycle,
+  ) {
+    return switch (lifecycle) {
+      SanctionLifecycle.active => l10n.disciplineSanctionActive,
+      SanctionLifecycle.served => l10n.disciplineSanctionServed,
+      SanctionLifecycle.lifted => l10n.disciplineSanctionLifted,
+    };
+  }
+
+  static String evidenceKind(AppLocalizations l10n, EvidenceKind kind) {
+    return switch (kind) {
+      EvidenceKind.document => l10n.disciplineEvidenceDocument,
+      EvidenceKind.writtenStatement => l10n.disciplineEvidenceStatement,
+    };
+  }
 }

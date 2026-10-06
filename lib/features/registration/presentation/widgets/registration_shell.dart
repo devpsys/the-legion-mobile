@@ -9,7 +9,8 @@ import '../../../../core/router/route_names.dart';
 /// `goNamed`, which replaces the stack, so nothing is beneath it to pop to:
 /// back is a destination. A section other than Registration unwinds to that
 /// tab; Registration itself leaves for the hub. The ID card screen unwinds to
-/// Requests.
+/// Requests; a disciplinary case unwinds to the Discipline list; Discipline
+/// itself unwinds to Registration.
 class RegistrationShell extends StatelessWidget {
   const RegistrationShell({
     required this.location,
@@ -43,6 +44,9 @@ String registrationBackTarget(String location) {
   if (location == Routes.registration) return Routes.homeName;
   if (location == Routes.registrationIdCard) {
     return Routes.registrationRequestsName;
+  }
+  if (location.startsWith('${Routes.registrationDiscipline}/')) {
+    return Routes.registrationDisciplineName;
   }
   return Routes.registrationName;
 }

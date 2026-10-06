@@ -125,8 +125,8 @@ abstract final class Routes {
   static const String verifyAdmissionCodeParam = 'code';
 
   /// Student Registration & Records portal — course registration, study plan,
-  /// course form, and requests. Outside the student shell: own tab chrome,
-  /// back to the hub from the registration tab.
+  /// course form, requests, and discipline. Outside the student shell: own tab
+  /// chrome, back to the hub from the registration tab.
   static const String registration = '/registration';
 
   /// Study plan tab of the registration portal.
@@ -140,6 +140,20 @@ abstract final class Routes {
 
   /// Student ID card request screen (sibling of Requests; not its own tab).
   static const String registrationIdCard = '/registration/id-card';
+
+  /// Student discipline list (sibling of Registration; not its own tab).
+  static const String registrationDiscipline = '/registration/discipline';
+
+  /// Path template of one disciplinary case; `:caseId` is the case id.
+  static const String registrationDisciplineCaseTemplate =
+      '$registrationDiscipline/:caseId';
+
+  /// Concrete case location for [caseId].
+  static String registrationDisciplineCase(String caseId) =>
+      registrationDisciplineCaseTemplate.replaceFirst(':caseId', caseId);
+
+  /// Path parameter name for [registrationDisciplineCaseTemplate].
+  static const String registrationDisciplineCaseIdParam = 'caseId';
 
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
@@ -171,6 +185,9 @@ abstract final class Routes {
   static const String registrationFormName = 'registrationForm';
   static const String registrationRequestsName = 'registrationRequests';
   static const String registrationIdCardName = 'registrationIdCard';
+  static const String registrationDisciplineName = 'registrationDiscipline';
+  static const String registrationDisciplineCaseName =
+      'registrationDisciplineCase';
 
   /// Path parameter name for [feesReceiptTemplate].
   static const String feesReceiptIdParam = 'id';
@@ -204,6 +221,7 @@ abstract final class Routes {
     registrationForm,
     registrationRequests,
     registrationIdCard,
+    registrationDiscipline,
   };
 
   /// Screens of the student shell that own the whole canvas on phones: no

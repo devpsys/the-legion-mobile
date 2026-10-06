@@ -264,6 +264,55 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     emit(state.copyWith(academicRequests: updated));
   }
 
+  void setDisciplineAppealDraft(String value) {
+    final record = state.discipline;
+    if (record == null || record.appealDraft == value) return;
+    emit(state.copyWith(discipline: record.copyWith(appealDraft: value)));
+  }
+
+  /// Opens the lodge-appeal confirmation when grounds meet the minimum length.
+  bool requestLodgeAppeal(String caseId) {
+    final record = state.discipline;
+    if (record == null) return false;
+    final item = record.caseById(caseId);
+    if (item == null || !record.canAppeal(item)) return false;
+    final grounds = record.appealDraft.trim();
+    if (grounds.length < DisciplineCase.appealGroundsMinLength) return false;
+    emit(
+      state.copyWith(
+        sheet: RegistrationSheet.lodgeDisciplineAppeal,
+        sheetCourseId: caseId,
+      ),
+    );
+    return true;
+  }
+
+  /// Confirms lodging an appeal against [state.sheetCourseId].
+  bool confirmLodgeAppeal() {
+    final caseId = state.sheetCourseId;
+    final record = state.discipline;
+    emit(state.copyWith(clearSheet: true));
+    if (caseId == null || record == null) return false;
+    final item = record.caseById(caseId);
+    if (item == null || !record.canAppeal(item)) return false;
+    final grounds = record.appealDraft.trim();
+    if (grounds.length < DisciplineCase.appealGroundsMinLength) return false;
+
+    final updatedCase = item.copyWith(
+      status: DisciplineCaseStatus.underAppeal,
+      appeal: DisciplineAppeal(grounds: grounds, lodgedOn: record.asOf),
+    );
+    final cases = record.cases
+        .map((c) => c.id == caseId ? updatedCase : c)
+        .toList(growable: false);
+    emit(
+      state.copyWith(
+        discipline: record.copyWith(cases: cases, appealDraft: ''),
+      ),
+    );
+    return true;
+  }
+
   static String _academicTitle(AcademicRequestType type) => switch (type) {
     AcademicRequestType.lateRegistration => 'Late registration',
     AcademicRequestType.addDropAfterDeadline =>
@@ -397,6 +446,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
       studyPlan: state.studyPlan!,
       idCard: state.idCard!,
       academicRequests: state.academicRequests,
+      discipline: state.discipline!,
       declarationAccepted: state.declarationAccepted,
     );
   }
@@ -418,6 +468,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
         studyPlan: ledger.studyPlan,
         idCard: ledger.idCard,
         academicRequests: ledger.academicRequests,
+        discipline: ledger.discipline,
         declarationAccepted: ledger.declarationAccepted,
         clearFailure: true,
         clearSheet: true,

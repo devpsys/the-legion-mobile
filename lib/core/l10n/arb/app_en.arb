@@ -744,11 +744,11 @@
   "registrationActionBlocked": "Blocked",
   "registrationActionArchived": "Archived",
   "registrationActionNone": "—",
-  "registrationMatricBulletLevel": "{matricNumber} • {level}",
+  "registrationMatricBulletLevel": "{level} • {matricNumber}",
   "@registrationMatricBulletLevel": {
     "placeholders": {
-      "matricNumber": { "type": "String" },
-      "level": { "type": "String" }
+      "level": { "type": "String" },
+      "matricNumber": { "type": "String" }
     }
   },
   "registrationUnitsDegreePlan": "Min {minimum} · Degree plan",
@@ -1130,5 +1130,162 @@
     }
   },
   "idCardAboutTitle": "About ID cards",
-  "idCardAboutBody": "Your first card is free. Carry it on campus and to examinations. Printing a new card cancels the old one, so report a lost card straight away."
+  "idCardAboutBody": "Your first card is free. Carry it on campus and to examinations. Printing a new card cancels the old one, so report a lost card straight away.",
+
+  "disciplineTitle": "Disciplinary matters",
+  "disciplineBreadcrumb": "Disciplinary matters",
+  "disciplineBreadcrumbRecord": "Record",
+  "disciplineSubtitle": "Cases involving you, their outcome, and any sanctions.",
+  "disciplineEntryTitle": "Disciplinary matters",
+  "disciplineEntryBody": "Cases involving you, their outcome, and any sanctions on your record.",
+  "disciplineEntryAction": "Open discipline",
+  "disciplineCasesTitle": "Cases",
+  "disciplineCasesCount": "{count, plural, =0{0 recorded} =1{1 recorded} other{{count} recorded}}",
+  "@disciplineCasesCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "disciplineCasesSortedNewest": "Sorted by newest",
+  "disciplineSanctionsTitle": "Sanctions",
+  "disciplineSanctionsCount": "{count, plural, =0{0 recorded} =1{1 recorded} other{{count} recorded}}",
+  "@disciplineSanctionsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "disciplineSanctionsActiveCount": "{count, plural, =0{0 active} =1{1 active} other{{count} active}}",
+  "@disciplineSanctionsActiveCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "disciplineEmptyTitle": "No disciplinary cases",
+  "disciplineEmptyBody": "You have a clean record.",
+  "disciplineAboutTitle": "About disciplinary records",
+  "disciplineAboutBody": "Cases and sanctions recorded under University Disciplinary Statutes remain part of your academic dossier. Active sanctions are enforced across portal functions.",
+  "disciplineStandingActive": "Active",
+  "disciplineStandingSuspended": "Suspended",
+  "disciplineStandingExpelled": "Expelled",
+  "disciplineSuspendedBanner": "Your student status is Suspended, so you cannot register, request an ID card or file a request. Contact the registry.",
+  "disciplineCaseStatusUnderInvestigation": "Under investigation",
+  "disciplineCaseStatusHearingScheduled": "Hearing scheduled",
+  "disciplineCaseStatusDecided": "Decided",
+  "disciplineCaseStatusUnderAppeal": "Under appeal",
+  "disciplineSeverityMinor": "Minor",
+  "disciplineSeverityMajor": "Major",
+  "disciplineCategoryExamination": "Examination misconduct",
+  "disciplineCategoryHarassment": "Harassment",
+  "disciplineFindingLiable": "Found liable",
+  "disciplineFindingNotLiable": "Not liable",
+  "disciplineSanctionWarning": "Warning",
+  "disciplineSanctionProbation": "Probation",
+  "disciplineSanctionSuspension": "Suspension",
+  "disciplineSanctionExpulsion": "Expulsion",
+  "disciplineSanctionActive": "Active",
+  "disciplineSanctionServed": "Served",
+  "disciplineSanctionLifted": "Lifted",
+  "disciplineEvidenceDocument": "Document",
+  "disciplineEvidenceStatement": "Written statement",
+  "disciplineOpenedOn": "opened {date}",
+  "@disciplineOpenedOn": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "disciplineCaseMeta": "{severity} · {category} · {opened}",
+  "@disciplineCaseMeta": {
+    "placeholders": {
+      "severity": { "type": "String" },
+      "category": { "type": "String" },
+      "opened": { "type": "String" }
+    }
+  },
+  "disciplineCaseTitle": "Case {reference}",
+  "@disciplineCaseTitle": {
+    "placeholders": { "reference": { "type": "String" } }
+  },
+  "disciplineDecidedOn": "decided {date}",
+  "@disciplineDecidedOn": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "disciplineHearingScheduledTitle": "Hearing scheduled",
+  "disciplineHearingHeldTitle": "Hearing held",
+  "disciplineHearingSessionMandatory": "Session mandatory",
+  "disciplineHearingAtVenue": "at {venue}",
+  "@disciplineHearingAtVenue": {
+    "placeholders": { "venue": { "type": "String" } }
+  },
+  "disciplineAllegationTitle": "The allegation",
+  "disciplineAllegationCategory": "Category",
+  "disciplineAllegationIncident": "Incident",
+  "disciplineAllegationReportedBy": "Reported by",
+  "disciplineIncidentLine": "{date} · {venue}, during {session}",
+  "@disciplineIncidentLine": {
+    "placeholders": {
+      "date": { "type": "String" },
+      "venue": { "type": "String" },
+      "session": { "type": "String" }
+    }
+  },
+  "disciplineReportedLine": "{reporter}, on {date}",
+  "@disciplineReportedLine": {
+    "placeholders": {
+      "reporter": { "type": "String" },
+      "date": { "type": "String" }
+    }
+  },
+  "disciplineEvidenceTitle": "Evidence on file",
+  "disciplineEvidenceCount": "{count, plural, =0{0 items} =1{1 item} other{{count} items}}",
+  "@disciplineEvidenceCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "disciplineEvidenceInspectHint": "You may inspect the evidence at the disciplinary office before the hearing.",
+  "disciplineAppealTitle": "Appeal this decision",
+  "disciplineAppealUntil": "You can appeal until {date}.",
+  "@disciplineAppealUntil": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "disciplineAppealWindowDays": "14 days from the decision.",
+  "disciplineAppealGroundsLabel": "Grounds of appeal",
+  "disciplineAppealGroundsHint": "Explain why the decision or sanction is wrong, including any new evidence.",
+  "disciplineAppealGroundsRequired": "Set out your grounds of appeal in at least {min} characters.",
+  "@disciplineAppealGroundsRequired": {
+    "placeholders": { "min": { "type": "int" } }
+  },
+  "disciplineAppealGroundsCounter": "{count}/{min}",
+  "@disciplineAppealGroundsCounter": {
+    "placeholders": {
+      "count": { "type": "int" },
+      "min": { "type": "int" }
+    }
+  },
+  "disciplineAppealLodge": "Lodge appeal",
+  "disciplineAppealOnceNote": "You can only appeal once. Once lodged, an appeal cannot be edited or withdrawn.",
+  "disciplineAppealClosedTitle": "Closed",
+  "disciplineAppealClosedBody": "The appeal period ended on {date}.",
+  "@disciplineAppealClosedBody": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "disciplineAppealClosedDetail": "The decision was made on {date}. The appeal period is fourteen days from the decision.",
+  "@disciplineAppealClosedDetail": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "disciplineAppealWrittenStill": "A written appeal may still be delivered to the disciplinary office.",
+  "disciplineAppealLiableOnly": "Only a decision finding you liable can be appealed.",
+  "disciplineAppealLodgedTitle": "Your appeal",
+  "disciplineAppealLodgedOn": "Lodged {date}",
+  "@disciplineAppealLodgedOn": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "disciplineAppealAwaiting": "Awaiting decision",
+  "disciplineAppealFiledBanner": "Appeal filed · Awaiting Disciplinary Appeals Committee review",
+  "disciplineAppealAbeyanceNote": "Sanctions held in abeyance pending appeal outcome under Statute 14(b). Academic participation remains fully active.",
+  "disciplineAppealReviewNote": "The appeal committee will review it. You will be notified of the outcome.",
+  "disciplineAppealConfirmTitle": "Lodge this appeal?",
+  "disciplineAppealConfirmBody": "You can only appeal once. Once submitted, your grounds cannot be edited or withdrawn.",
+  "disciplineAppealConfirmAction": "Lodge appeal",
+  "disciplineAppealLodgedSnack": "Your appeal was lodged.",
+  "disciplineDecisionFinalized": "Decision finalized",
+  "disciplineDecisionFinalizedBody": "Appeal window closed on {date}. Sanction in effect under Statute 14.",
+  "@disciplineDecisionFinalizedBody": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "disciplineCaseNotFound": "This case is not on your record.",
+  "disciplineSanctionCaseRef": "{reference}",
+  "@disciplineSanctionCaseRef": {
+    "placeholders": { "reference": { "type": "String" } }
+  }
 }

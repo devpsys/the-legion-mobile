@@ -13,7 +13,7 @@ import '../../../../core/utils/responsive.dart';
 /// Four siblings — Registration, Study plan, Form, Requests — replacing the
 /// student hub's chrome while the student is here. The active tab carries an
 /// underline as well as the accent colour. The ID card screen keeps Requests
-/// selected.
+/// selected; Discipline (and case detail) keep Registration selected.
 class RegistrationTabBar extends StatelessWidget {
   const RegistrationTabBar({
     required this.selectedIndex,

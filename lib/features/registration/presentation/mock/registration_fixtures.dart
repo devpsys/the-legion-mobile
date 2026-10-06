@@ -495,6 +495,242 @@ abstract final class RegistrationFixtures {
     ),
   ];
 
+  /// Portal clock for discipline appeal windows (Amaka default visit).
+  static final DateTime disciplineAsOf = DateTime(2026, 10, 6);
+
+  static final DisciplineSanction sanctionProbation00031 = DisciplineSanction(
+    caseId: 'case-dc-2026-00031',
+    type: SanctionType.probation,
+    summary:
+        '2 semesters from 2026/2027 First semester, ends when 2026/2027 '
+        'Second semester begins',
+    lifecycle: SanctionLifecycle.active,
+    statusNote:
+        'Probation does not change your student status. You can register '
+        'and sit examinations as normal. Your result carries the probation '
+        'for that period.',
+  );
+
+  /// Open harassment case with a scheduled hearing (DC-2026-00044).
+  static final DisciplineCase caseUnderInvestigation = DisciplineCase(
+    id: 'case-dc-2026-00044',
+    reference: 'DC-2026-00044',
+    summary:
+        'Repeated messages to a fellow student after a rejected invitation',
+    status: DisciplineCaseStatus.underInvestigation,
+    severity: DisciplineSeverity.minor,
+    category: DisciplineCategory.harassment,
+    openedOn: DateTime(2026, 10, 12),
+    narrative:
+        'On three occasions between 2 and 9 October, the same student sent '
+        'messages to a fellow student in the Main Hostel after an invitation '
+        'to a group chat was declined. No further contact has been recorded '
+        'since 9 October.',
+    incidentOn: DateTime(2026, 10, 9),
+    incidentVenue: 'Main Hostel corridor',
+    sessionLabel: '2026/2027 First semester',
+    reportedBy: 'Student Affairs',
+    reportedOn: DateTime(2026, 10, 12),
+    evidence: const [
+      DisciplineEvidence(
+        title: 'Written statement',
+        kind: EvidenceKind.writtenStatement,
+        detail: 'Submitted 12 October 2026',
+      ),
+    ],
+    hearing: DisciplineHearing(
+      heldOn: DateTime(2026, 10, 17, 10),
+      venue: 'Disciplinary Office, Room 2',
+      note:
+          'You may bring a written statement and witnesses. Contact the '
+          'disciplinary office if you can\'t attend.',
+      scheduled: true,
+    ),
+    listDetail: 'Student Affairs Panel · Next session 24 Oct 2026',
+  );
+
+  /// Decided examination case with an open appeal window (DC-2026-00031).
+  static final DisciplineCase caseDecidedAppealOpen = DisciplineCase(
+    id: 'case-dc-2026-00031',
+    reference: 'DC-2026-00031',
+    summary:
+        'Alleged collusion with another candidate in the CSC301 examination',
+    status: DisciplineCaseStatus.decided,
+    severity: DisciplineSeverity.major,
+    category: DisciplineCategory.examinationMisconduct,
+    openedOn: DateTime(2026, 10, 1),
+    narrative:
+        'Two candidates were found to have signed the same attendance sheet '
+        'for the CSC301 practical. Neither has previously been reported.',
+    incidentOn: DateTime(2026, 9, 30),
+    incidentVenue: 'CBT Room 3, Lab One',
+    sessionLabel: '2026/2027 First semester',
+    reportedBy: 'Chidinma Eze, invigilator',
+    reportedOn: DateTime(2026, 10, 1),
+    evidence: const [
+      DisciplineEvidence(
+        title: 'Attendance sheet, 30 September',
+        kind: EvidenceKind.document,
+      ),
+      DisciplineEvidence(
+        title: 'Written statement from the invigilator',
+        kind: EvidenceKind.writtenStatement,
+      ),
+    ],
+    finding: DisciplineFinding.foundLiable,
+    decidedOn: DateTime(2026, 10, 5),
+    decisionReason:
+        'Your attendance was recorded for a practical you did not attend, '
+        'and the same sheet carried another candidate\'s signature. Collusion '
+        'in an examination is a grave matter under the undergraduate '
+        'regulations, but in mitigation your record before this examination '
+        'was clean.',
+    hearing: DisciplineHearing(
+      heldOn: DateTime(2026, 10, 3, 10),
+      venue: 'Disciplinary Office, Room 2',
+      note:
+          'Panel convened under Statute 14. Candidate and invigilator '
+          'statements received.',
+    ),
+    sanction: sanctionProbation00031,
+    appealWindowClosesOn: DateTime(2026, 10, 19),
+    listDetail: 'Finding: Found liable · Sanction: Probation (Active)',
+  );
+
+  /// Default Amaka discipline: open case + decided case with active probation.
+  static final DisciplineRecord discipline = DisciplineRecord(
+    standing: StudentStanding.active,
+    asOf: disciplineAsOf,
+    cases: [caseUnderInvestigation, caseDecidedAppealOpen],
+    sanctions: [sanctionProbation00031],
+  );
+
+  /// Clean record — empty list state.
+  static final DisciplineRecord disciplineEmpty = DisciplineRecord(
+    standing: StudentStanding.active,
+    asOf: disciplineAsOf,
+    cases: const [],
+    sanctions: const [],
+  );
+
+  /// Decided case after the appeal was lodged (status under appeal).
+  static final DisciplineCase caseAppealLodged = caseDecidedAppealOpen.copyWith(
+    status: DisciplineCaseStatus.underAppeal,
+    appeal: DisciplineAppeal(
+      grounds:
+          'The attendance sheet for the 6 October practical lists '
+          'twenty-eight names. Twenty-eight students signed in a room with '
+          'twenty-four seats, so somebody was recorded who was not there. I '
+          'did not know this until after the hearing and I have asked the '
+          'invigilator for the register. If another candidate was recorded '
+          'in my place, finding that out now matters more than what I did '
+          'or did not do.',
+      lodgedOn: DateTime(2026, 10, 18),
+    ),
+  );
+
+  static final DisciplineRecord disciplineAppealLodged = DisciplineRecord(
+    standing: StudentStanding.active,
+    asOf: DateTime(2026, 10, 18),
+    cases: [caseUnderInvestigation, caseAppealLodged],
+    sanctions: [sanctionProbation00031],
+  );
+
+  /// Decided case after the appeal window closed with no appeal.
+  static final DisciplineCase caseAppealWindowClosed =
+      caseDecidedAppealOpen.copyWith();
+
+  static final DisciplineRecord disciplineAppealWindowClosed = DisciplineRecord(
+    standing: StudentStanding.active,
+    asOf: DateTime(2026, 10, 20),
+    cases: [caseUnderInvestigation, caseAppealWindowClosed],
+    sanctions: [sanctionProbation00031],
+  );
+
+  /// Suspended student with an appealable major case (Fatima persona).
+  static final DisciplineSanction sanctionSuspension00038 = DisciplineSanction(
+    caseId: 'case-dc-2026-00038',
+    type: SanctionType.suspension,
+    summary: '2 semesters from 2026/2027 First semester',
+    lifecycle: SanctionLifecycle.active,
+    statusNote:
+        'Effective date: 4 October 2026. Student privileges, campus '
+        'residential tenancy, portal access, and statutory rights are '
+        'de-activated through 2026/2027 Academic Session Second Semester.',
+  );
+
+  static final DisciplineCase caseSuspendedAppealOpen = DisciplineCase(
+    id: 'case-dc-2026-00038',
+    reference: 'DC-2026-00038',
+    summary:
+        'Unauthorised possession of examination material in MTH302 hall',
+    status: DisciplineCaseStatus.decided,
+    severity: DisciplineSeverity.major,
+    category: DisciplineCategory.examinationMisconduct,
+    openedOn: DateTime(2026, 9, 28),
+    narrative:
+        'The candidate was reported by Chief Invigilator Dr. K. O. Adeleke '
+        'for possessing handwritten mathematical annotations and formulary '
+        'sheets concealed beneath standard test booklet answering script '
+        'during the continuous assessment session for Real Analysis II '
+        '(MTH302).',
+    incidentOn: DateTime(2026, 9, 28),
+    incidentVenue: 'Hall 4, Faculty of Science',
+    sessionLabel: '2025/2026',
+    reportedBy: 'Dr. K. O. Adeleke, chief invigilator',
+    reportedOn: DateTime(2026, 9, 28),
+    evidence: const [],
+    finding: DisciplineFinding.foundLiable,
+    decidedOn: DateTime(2026, 10, 5),
+    decisionReason:
+        'Unauthorised possession of examination material in MTH302 hall.',
+    hearing: DisciplineHearing(
+      heldOn: DateTime(2026, 10, 3, 10),
+      venue: 'Senate Disciplinary Panel',
+    ),
+    sanction: sanctionSuspension00038,
+    appealWindowClosesOn: DateTime(2026, 10, 19),
+  );
+
+  static final DisciplineRecord disciplineSuspended = DisciplineRecord(
+    standing: StudentStanding.suspended,
+    asOf: disciplineAsOf,
+    cases: [caseSuspendedAppealOpen],
+    sanctions: [sanctionSuspension00038],
+  );
+
+  /// Sanction list with expulsion (Ibrahim persona — sanctions section).
+  static final DisciplineRecord disciplineWithExpulsion = DisciplineRecord(
+    standing: StudentStanding.expelled,
+    asOf: disciplineAsOf,
+    cases: const [],
+    sanctions: [
+      DisciplineSanction(
+        caseId: 'case-dc-2026-00012',
+        type: SanctionType.expulsion,
+        summary: 'Permanent',
+        lifecycle: SanctionLifecycle.active,
+        statusNote:
+            'Expulsion is permanent. To return to the university you would '
+            'need a fresh admission.',
+      ),
+      DisciplineSanction(
+        caseId: 'case-dc-2026-00021',
+        type: SanctionType.suspension,
+        summary:
+            '2 semesters from 2025/2026 Second semester, ends when '
+            '2026/2027 First semester begins',
+        lifecycle: SanctionLifecycle.served,
+      ),
+      DisciplineSanction(
+        caseId: 'case-dc-2026-00044',
+        type: SanctionType.probation,
+        summary: '1 semester from 2026/2027 First semester',
+        lifecycle: SanctionLifecycle.lifted,
+      ),
+    ],
+  );
+
   /// The default ledger the cubit serves: open window, cleared gate, courses
   /// chosen but the form not yet submitted; ID card replacement unpaid.
   static final RegistrationLedger ledger = RegistrationLedger(
@@ -511,6 +747,7 @@ abstract final class RegistrationFixtures {
     studyPlan: studyPlan,
     idCard: idCard,
     academicRequests: academicRequests,
+    discipline: discipline,
   );
 
   /// After a successful mock submit: form on record, window still open.
@@ -540,6 +777,7 @@ abstract final class RegistrationFixtures {
       studyPlan: current.studyPlan,
       idCard: current.idCard,
       academicRequests: current.academicRequests,
+      discipline: current.discipline,
       declarationAccepted: true,
     );
   }

@@ -9,6 +9,7 @@ RegistrationState _ready({
   bool declarationAccepted = false,
   IdCardRecord? idCard,
   List<AcademicRequest>? academicRequests,
+  DisciplineRecord? discipline,
 }) {
   return RegistrationState(
     status: RegistrationStatus.ready,
@@ -24,6 +25,7 @@ RegistrationState _ready({
     idCard: idCard ?? RegistrationFixtures.idCard,
     academicRequests:
         academicRequests ?? RegistrationFixtures.academicRequests,
+    discipline: discipline ?? RegistrationFixtures.discipline,
     declarationAccepted: declarationAccepted,
   );
 }
@@ -60,6 +62,7 @@ void main() {
           studyPlan: RegistrationFixtures.studyPlan,
           idCard: RegistrationFixtures.idCard,
           academicRequests: RegistrationFixtures.academicRequests,
+          discipline: RegistrationFixtures.discipline,
         ),
       ],
     );
@@ -192,5 +195,42 @@ void main() {
       },
     );
 
+    blocTest<RegistrationCubit, RegistrationState>(
+      'requestLodgeAppeal opens the confirm sheet when grounds are long enough',
+      build: RegistrationCubit.new,
+      seed: _ready,
+      act: (cubit) {
+        cubit.setDisciplineAppealDraft(
+          'The attendance sheet listed more names than seats in the room, '
+          'so another candidate may have been recorded in my place.',
+        );
+        cubit.requestLodgeAppeal('case-dc-2026-00031');
+      },
+      verify: (cubit) {
+        expect(cubit.state.sheet, RegistrationSheet.lodgeDisciplineAppeal);
+        expect(cubit.state.sheetCourseId, 'case-dc-2026-00031');
+      },
+    );
+
+    blocTest<RegistrationCubit, RegistrationState>(
+      'confirmLodgeAppeal marks the case under appeal',
+      build: RegistrationCubit.new,
+      seed: _ready,
+      act: (cubit) {
+        cubit.setDisciplineAppealDraft(
+          'The attendance sheet listed more names than seats in the room, '
+          'so another candidate may have been recorded in my place.',
+        );
+        cubit.requestLodgeAppeal('case-dc-2026-00031');
+        cubit.confirmLodgeAppeal();
+      },
+      verify: (cubit) {
+        final item = cubit.state.disciplineCaseById('case-dc-2026-00031');
+        expect(item?.status, DisciplineCaseStatus.underAppeal);
+        expect(item?.hasAppealLodged, isTrue);
+        expect(cubit.state.discipline?.appealDraft, isEmpty);
+        expect(cubit.state.sheet, isNull);
+      },
+    );
   });
 }
