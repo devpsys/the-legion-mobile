@@ -49,7 +49,6 @@
   "loginAuditTitle": "Statutory Audit Protocol",
   "loginAuditBody": "Unauthorized access attempts to academic records or financial portfolios are monitored and reported under statutory federal frameworks.",
   "loginCopyright": "Secure Institutional Verification © The Legion University",
-
   "createAccountBackTooltip": "Back to sign in",
   "createAccountBrandCaption": "The Legion University Admissions",
   "createAccountTitle": "Create an applicant account",
@@ -286,13 +285,11 @@
   "admissionsStudyModeDirectEntry": "Direct Entry / Full-time",
   "admissionsStudyModeDiploma": "Full-time diploma",
   "admissionsFacultyFilterNamed": "{faculty} ({count})",
-
   "admissionsDetailTitle": "Application",
   "admissionsDetailCaption": "Application detail",
   "admissionsDetailBackTooltip": "Back to my applications",
   "admissionsDetailSubmitBy": "Submit by {date}, {time}",
   "admissionsDetailNotFound": "This application is no longer on your record.",
-
   "admissionsChecklistTitle": "Before you submit",
   "admissionsChecklistSubtitle": "Complete each item, then come back to submit.",
   "admissionsChecklistProgress": "Progress",
@@ -307,7 +304,6 @@
   "admissionsChecklistActionUpload": "Upload",
   "admissionsChecklistActionInvite": "Invite",
   "admissionsChecklistActionCheck": "Check",
-
   "admissionsChoicesTitle": "Programme choices",
   "admissionsChoicesFirstLabel": "First choice *",
   "admissionsChoicesSecondLabel": "Second choice",
@@ -315,7 +311,6 @@
   "admissionsChoicesNone": "None",
   "admissionsChoicesFee": "Form fee for your first choice:",
   "admissionsChoicesSave": "Save choices",
-
   "admissionsRefereesTitle": "Referees",
   "admissionsRefereesSubtitle": "At least 2 required. Each receives an emailed link to a short confidential form.",
   "admissionsRefereeAwaiting": "Awaiting",
@@ -332,23 +327,18 @@
   "admissionsRefereePhoneHint": "+234...",
   "admissionsRefereeOccupationHint": "e.g. Senior Lecturer, ABU Zaria",
   "admissionsRefereeSend": "Send invitation",
-
   "admissionsSubmitTitle": "Submit",
   "admissionsSubmitDeclaration": "I confirm that the information in my application and records is true and complete. I understand that false information will lead to my admission being withdrawn.",
   "admissionsSubmitAction": "Submit application",
   "admissionsSubmitBlocked": "{count, plural, =1{Complete the checklist first. 1 item is outstanding} other{Complete the checklist first. {count} items are outstanding}}",
   "admissionsSubmitNeedsDeclaration": "Tick the confirmation above to submit.",
-
   "admissionsHistoryTitle": "History",
   "admissionsHistorySubtitle": "Append-only record",
-
   "admissionsWithdrawAction": "Withdraw application",
   "admissionsWithdrawTitle": "Withdraw this application?",
   "admissionsWithdrawBody": "The application is closed for good and cannot be reopened. You can start another while the cycle is still open.",
-
   "admissionsDepartmentInFaculty": "{department}, Faculty of {faculty}",
-  "admissionsFacultyAndMode": "Faculty of {faculty} \u2022 {mode}",
-
+  "admissionsFacultyAndMode": "Faculty of {faculty} • {mode}",
   "admissionsOfferLetter": "Admission letter",
   "admissionsOfferEyebrow": "Admission offered",
   "admissionsOfferLevel": "Level",
@@ -364,19 +354,17 @@
   "admissionsOfferAccept": "Accept offer",
   "admissionsOfferReadLetter": "Read the admission letter first",
   "admissionsOfferDecline": "Decline offer",
-
-  "admissionsDecisionContext": "Candidate portal \u2022 Final decision",
+  "admissionsDecisionContext": "Candidate portal • Final decision",
   "admissionsDecisionCycleChip": "Cycle {session}",
   "admissionsDecisionUnsuccessful": "Admission unsuccessful",
   "admissionsDecisionProgrammeApplied": "Programme applied",
   "admissionsDecisionReference": "Reference",
   "admissionsDecisionSubmittedOn": "Submitted",
   "admissionsDecisionDecidedOn": "Decision date",
-  "admissionsDecisionDateTime": "{date} \u2022 {time}",
+  "admissionsDecisionDateTime": "{date} • {time}",
   "admissionsDecisionFindingTitle": "Official admissions committee finding",
   "admissionsDecisionFindingBody": "The Central Admissions Committee of The Legion, having evaluated all verified credentials for the {cycle} exercise, regrets to communicate that your application has not been recommended for matriculation.",
   "admissionsDecisionDeterminationLabel": "Primary determination",
-
   "admissionsAuditTitle": "Departmental metric audit",
   "admissionsAuditCaption": "Statutory minimums",
   "admissionsAuditSubmitted": "Submitted",
@@ -388,41 +376,33 @@
   "admissionsOutcomeBelowCutoff": "Below cutoff",
   "admissionsOutcomeDeficit": "Deficit",
   "admissionsOutcomeIncomplete": "Incomplete",
-
   "admissionsAttestationEyebrow": "Attestation and record",
   "admissionsAttestationOffice": "Office of the Registrar",
-  "admissionsAttestationDirectorate": "Admissions Directorate \u2022 The Legion",
+  "admissionsAttestationDirectorate": "Admissions Directorate • The Legion",
   "admissionsAttestationHash": "Verification hash",
   "admissionsAttestationImmutable": "Immutable",
   "admissionsAttestationConclusive": "Decisions pronounced by the Central Admissions Board are conclusive for the specified academic year. Re-evaluation within the {cycle} exercise is closed.",
-
   "admissionsNextCycleHeadline": "Applications are open",
   "admissionsNextCycleBody": "You may submit a fresh profile for the forthcoming academic session, explore alternative departments, or address credential requirements.",
   "admissionsStartNewApplication": "Start a new application",
   "admissionsDownloadDecisionNotice": "Download the decision notice (PDF)",
-
   "admissionsInquiriesTitle": "Administrative inquiries",
   "admissionsReturnToApplications": "Return to my applications",
   "admissionsHelpDesk": "Admissions help desk",
-
   "admissionsMatriculatedTitle": "You're matriculated",
   "admissionsMatriculatedUse": "Use it in all correspondence with the university.",
   "admissionsMatriculatedComplete": "Your admission is complete. Your student portal is open.",
   "admissionsMatriculatedDownloadLetter": "Download your admission letter",
-
   "admissionsExpiredTitle": "Offer expired",
   "admissionsExpiredBody": "The offer of {programme} expired on {date}.",
   "admissionsExpiredNote": "The place has been offered to somebody else. Your application and records stay on your account, and you can apply again in the next cycle.",
-
   "admissionsWithdrawnTitle": "Application withdrawn",
   "admissionsWithdrawnBody": "You withdrew this application on {date}.",
-  "admissionsWithdrawnReason": "\u201cReason: {reason}\u201d",
+  "admissionsWithdrawnReason": "“Reason: {reason}”",
   "admissionsWithdrawnNote": "You can start a new application in any open cycle.",
-
   "admissionsClosedRejectedTitle": "Application not successful",
   "admissionsClosedRejectedBody": "Your application to {programme} was not successful in this round.",
   "admissionsClosedRejectedNote": "You are welcome to apply again in the next cycle, and your records and documents stay on your account.",
-
   "admissionsLetterCaption": "Admission letter",
   "admissionsLetterBackTooltip": "Back to the application",
   "admissionsLetterSavePdf": "Save PDF",
@@ -449,7 +429,6 @@
   "admissionsLetterVerifyPrefix": "Verify this letter at",
   "admissionsLetterVerifyWithCode": "with code",
   "admissionsLetterVerifySuffix": ", or scan the QR code.",
-
   "admissionsVerifyBrandCaption": "Admissions verification",
   "admissionsVerifyTitle": "Verify an admission",
   "admissionsVerifySubtitle": "Enter the verification code printed at the foot of the admission letter.",
@@ -468,7 +447,6 @@
   "admissionsVerifyNotFoundBody": "Check the code at the foot of the letter and try again. If it still does not match, the letter was not issued by the university.",
   "admissionsVerifyPrivacyNote": "This page shows only what is printed on the letter.",
   "admissionsVerifySignIn": "Sign in to the portal",
-
   "admissionsJambEyebrow": "CAPS result import",
   "admissionsJambHeading": "Claim your JAMB result",
   "admissionsJambIntro": "The Legion University receives official examination results directly from the Joint Admissions and Matriculation Board (JAMB) Central Admissions Processing System (CAPS). Match your record to link your score to your application.",
@@ -747,14 +725,20 @@
   "registrationMatricBulletLevel": "{level} • {matricNumber}",
   "@registrationMatricBulletLevel": {
     "placeholders": {
-      "level": { "type": "String" },
-      "matricNumber": { "type": "String" }
+      "level": {
+        "type": "String"
+      },
+      "matricNumber": {
+        "type": "String"
+      }
     }
   },
   "registrationUnitsDegreePlan": "Min {minimum} · Degree plan",
   "@registrationUnitsDegreePlan": {
     "placeholders": {
-      "minimum": { "type": "int" }
+      "minimum": {
+        "type": "int"
+      }
     }
   },
   "registrationDeckTitle": "Registration Deck",
@@ -768,7 +752,9 @@
   "registrationEventsCount": "{count, plural, =1{1 event} other{{count} events}}",
   "@registrationEventsCount": {
     "placeholders": {
-      "count": { "type": "int" }
+      "count": {
+        "type": "int"
+      }
     }
   },
   "registrationFree": "Free",
@@ -778,20 +764,28 @@
   "registrationNeedsPrerequisite": "Needs {code}.",
   "@registrationNeedsPrerequisite": {
     "placeholders": {
-      "code": { "type": "String" }
+      "code": {
+        "type": "String"
+      }
     }
   },
   "registrationNotOpenDetail": "No lecturer assigned · {units} units",
   "@registrationNotOpenDetail": {
     "placeholders": {
-      "units": { "type": "int" }
+      "units": {
+        "type": "int"
+      }
     }
   },
   "registrationCatalogueFullDetail": "{title} · {units} units",
   "@registrationCatalogueFullDetail": {
     "placeholders": {
-      "title": { "type": "String" },
-      "units": { "type": "int" }
+      "title": {
+        "type": "String"
+      },
+      "units": {
+        "type": "int"
+      }
     }
   },
   "registrationGateNotTracked": "Not tracked",
@@ -851,31 +845,51 @@
   "studyPlanCoursesHint": "courses",
   "studyPlanAwardCaption": "Degree plan requirement: {units} units",
   "@studyPlanAwardCaption": {
-    "placeholders": { "units": { "type": "int" } }
+    "placeholders": {
+      "units": {
+        "type": "int"
+      }
+    }
   },
   "studyPlanStillToPassCaption": "Across remaining levels: {count} courses",
   "@studyPlanStillToPassCaption": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "studyPlanProgrammeConclusion": "Programme conclusion:",
   "studyPlanMatricLevelShort": "{matricNumber} · {level}L",
   "@studyPlanMatricLevelShort": {
     "placeholders": {
-      "matricNumber": { "type": "String" },
-      "level": { "type": "int" }
+      "matricNumber": {
+        "type": "String"
+      },
+      "level": {
+        "type": "int"
+      }
     }
   },
   "studyPlanWorthKnowing": "Worth knowing now",
   "studyPlanAdvisoriesCount": "{count} Advisories",
   "@studyPlanAdvisoriesCount": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "studyPlanAdviserSaid": "What your adviser said",
   "studyPlanAdviserByline": "{name} · {date}",
   "studyPlanTermByTerm": "Your plan, term by term",
   "studyPlanTermsListed": "{count} Terms Listed",
   "@studyPlanTermsListed": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "studyPlanNowBadge": "Now",
   "studyPlanLedgerCourse": "Course",
@@ -966,37 +980,60 @@
   "studyPlanSubtitle": "What is left of your degree, and when you mean to take it.",
   "studyPlanTermUnits": "{planned} of {maximum} units",
   "studyPlanHowThisWorksTitle": "How this works",
-
   "requestsTitle": "Requests",
   "requestsBreadcrumb": "Requests",
   "requestsSubtitle": "Ask for an exception to the registration rules or a change of programme.",
   "requestsExistingTitle": "Existing requests",
   "requestsExistingCount": "{count} recorded",
   "@requestsExistingCount": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "requestsSubmittedTitle": "Submitted requests ({count})",
   "@requestsSubmittedTitle": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "requestsSessionLabel": "Academic session {session}",
   "@requestsSessionLabel": {
-    "placeholders": { "session": { "type": "String" } }
+    "placeholders": {
+      "session": {
+        "type": "String"
+      }
+    }
   },
   "requestsFiledOn": "filed {date}",
   "@requestsFiledOn": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "requestsWithdraw": "Withdraw this request",
   "requestsWithdrawTitle": "Withdraw this request?",
   "requestsWithdrawBody": "The registry will stop reviewing “{title}”. You can file again later if you still need the exception.",
   "@requestsWithdrawBody": {
-    "placeholders": { "title": { "type": "String" } }
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
   },
   "requestsWithdrawConfirm": "Withdraw",
   "requestsDecisionNote": "Decision note: {note}",
   "@requestsDecisionNote": {
-    "placeholders": { "note": { "type": "String" } }
+    "placeholders": {
+      "note": {
+        "type": "String"
+      }
+    }
   },
   "requestsStatusPending": "Pending",
   "requestsStatusRejected": "Rejected",
@@ -1031,7 +1068,6 @@
   "requestsEmptyTitle": "No requests yet",
   "requestsEmptyBody": "File a petition below when you need an exception to the registration rules.",
   "requestsReasonsRequired": "Add your reasons before sending.",
-
   "idCardTitle": "Student ID card",
   "idCardBreadcrumb": "ID card",
   "idCardActiveCredential": "Active credential",
@@ -1040,8 +1076,12 @@
   "idCardProgrammeLevel": "{programme} ({level})",
   "@idCardProgrammeLevel": {
     "placeholders": {
-      "programme": { "type": "String" },
-      "level": { "type": "String" }
+      "programme": {
+        "type": "String"
+      },
+      "level": {
+        "type": "String"
+      }
     }
   },
   "idCardStatusNone": "No active card",
@@ -1052,32 +1092,52 @@
   "idCardNoActiveBody": "You do not currently hold an active student ID card. Submit a request below to have your first card printed.",
   "idCardPreviousLostBody": "Your previous card {serial} was reported lost or stolen. Request a replacement card below.",
   "@idCardPreviousLostBody": {
-    "placeholders": { "serial": { "type": "String" } }
+    "placeholders": {
+      "serial": {
+        "type": "String"
+      }
+    }
   },
   "idCardRequestedBody": "Requested {date} ({reason}). We'll notify you when it's printed.",
   "@idCardRequestedBody": {
     "placeholders": {
-      "date": { "type": "String" },
-      "reason": { "type": "String" }
+      "date": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
     }
   },
   "idCardReadyBody": "Your card is printed. Collect it from the registry with another form of identification.",
   "idCardFeeUnpaidBody": "Replacement fee: {amount}. Pay it under Payments; the card is printed once it's paid.",
   "@idCardFeeUnpaidBody": {
-    "placeholders": { "amount": { "type": "String" } }
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
   },
   "idCardFeePaid": "Replacement fee paid.",
   "idCardFeeFree": "Your first card is free.",
   "idCardCollectBy": "Collect it by {date}.",
   "@idCardCollectBy": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "idCardVerificationPending": "Your verification code is issued when the card is printed.",
   "idCardCancelRequest": "Cancel request",
   "idCardCancelTitle": "Cancel this ID card request?",
   "idCardCancelBody": "The registry will stop printing {serial}. You can request a card again later.",
   "@idCardCancelBody": {
-    "placeholders": { "serial": { "type": "String" } }
+    "placeholders": {
+      "serial": {
+        "type": "String"
+      }
+    }
   },
   "idCardCancelConfirm": "Cancel request",
   "idCardRequestReplacement": "Request a replacement",
@@ -1091,7 +1151,11 @@
   "idCardReasonNameOrProgramme": "Name or programme update",
   "idCardReplacementFeeLine": "A replacement costs {amount}.",
   "@idCardReplacementFeeLine": {
-    "placeholders": { "amount": { "type": "String" } }
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
   },
   "idCardFreeBadge": "Free",
   "idCardRequestCard": "Request card",
@@ -1102,36 +1166,55 @@
   "idCardHistoryTitle": "Card history",
   "idCardHistoryCount": "{count, plural, =0{0 records} =1{1 record} other{{count} records}}",
   "@idCardHistoryCount": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "idCardHistoryEmptyTitle": "No cards yet",
   "idCardHistoryEmptyBody": "Your first card is free.",
   "idCardHistoryLine": "{reason} · requested {requested} · expires {expires}",
   "@idCardHistoryLine": {
     "placeholders": {
-      "reason": { "type": "String" },
-      "requested": { "type": "String" },
-      "expires": { "type": "String" }
+      "reason": {
+        "type": "String"
+      },
+      "requested": {
+        "type": "String"
+      },
+      "expires": {
+        "type": "String"
+      }
     }
   },
   "idCardHistoryLineExpired": "{reason} · requested {requested} · expired {expires}",
   "@idCardHistoryLineExpired": {
     "placeholders": {
-      "reason": { "type": "String" },
-      "requested": { "type": "String" },
-      "expires": { "type": "String" }
+      "reason": {
+        "type": "String"
+      },
+      "requested": {
+        "type": "String"
+      },
+      "expires": {
+        "type": "String"
+      }
     }
   },
   "idCardHistoryFirstCard": "First card · requested {requested} · expires {expires}",
   "@idCardHistoryFirstCard": {
     "placeholders": {
-      "requested": { "type": "String" },
-      "expires": { "type": "String" }
+      "requested": {
+        "type": "String"
+      },
+      "expires": {
+        "type": "String"
+      }
     }
   },
   "idCardAboutTitle": "About ID cards",
   "idCardAboutBody": "Your first card is free. Carry it on campus and to examinations. Printing a new card cancels the old one, so report a lost card straight away.",
-
   "disciplineTitle": "Disciplinary matters",
   "disciplineBreadcrumb": "Disciplinary matters",
   "disciplineBreadcrumbRecord": "Record",
@@ -1142,17 +1225,29 @@
   "disciplineCasesTitle": "Cases",
   "disciplineCasesCount": "{count, plural, =0{0 recorded} =1{1 recorded} other{{count} recorded}}",
   "@disciplineCasesCount": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "disciplineCasesSortedNewest": "Sorted by newest",
   "disciplineSanctionsTitle": "Sanctions",
   "disciplineSanctionsCount": "{count, plural, =0{0 recorded} =1{1 recorded} other{{count} recorded}}",
   "@disciplineSanctionsCount": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "disciplineSanctionsActiveCount": "{count, plural, =0{0 active} =1{1 active} other{{count} active}}",
   "@disciplineSanctionsActiveCount": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "disciplineEmptyTitle": "No disciplinary cases",
   "disciplineEmptyBody": "You have a clean record.",
@@ -1183,30 +1278,52 @@
   "disciplineEvidenceStatement": "Written statement",
   "disciplineOpenedOn": "opened {date}",
   "@disciplineOpenedOn": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "disciplineCaseMeta": "{severity} · {category} · {opened}",
   "@disciplineCaseMeta": {
     "placeholders": {
-      "severity": { "type": "String" },
-      "category": { "type": "String" },
-      "opened": { "type": "String" }
+      "severity": {
+        "type": "String"
+      },
+      "category": {
+        "type": "String"
+      },
+      "opened": {
+        "type": "String"
+      }
     }
   },
   "disciplineCaseTitle": "Case {reference}",
   "@disciplineCaseTitle": {
-    "placeholders": { "reference": { "type": "String" } }
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
   },
   "disciplineDecidedOn": "decided {date}",
   "@disciplineDecidedOn": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "disciplineHearingScheduledTitle": "Hearing scheduled",
   "disciplineHearingHeldTitle": "Hearing held",
   "disciplineHearingSessionMandatory": "Session mandatory",
   "disciplineHearingAtVenue": "at {venue}",
   "@disciplineHearingAtVenue": {
-    "placeholders": { "venue": { "type": "String" } }
+    "placeholders": {
+      "venue": {
+        "type": "String"
+      }
+    }
   },
   "disciplineAllegationTitle": "The allegation",
   "disciplineAllegationCategory": "Category",
@@ -1215,41 +1332,67 @@
   "disciplineIncidentLine": "{date} · {venue}, during {session}",
   "@disciplineIncidentLine": {
     "placeholders": {
-      "date": { "type": "String" },
-      "venue": { "type": "String" },
-      "session": { "type": "String" }
+      "date": {
+        "type": "String"
+      },
+      "venue": {
+        "type": "String"
+      },
+      "session": {
+        "type": "String"
+      }
     }
   },
   "disciplineReportedLine": "{reporter}, on {date}",
   "@disciplineReportedLine": {
     "placeholders": {
-      "reporter": { "type": "String" },
-      "date": { "type": "String" }
+      "reporter": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
     }
   },
   "disciplineEvidenceTitle": "Evidence on file",
   "disciplineEvidenceCount": "{count, plural, =0{0 items} =1{1 item} other{{count} items}}",
   "@disciplineEvidenceCount": {
-    "placeholders": { "count": { "type": "int" } }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "disciplineEvidenceInspectHint": "You may inspect the evidence at the disciplinary office before the hearing.",
   "disciplineAppealTitle": "Appeal this decision",
   "disciplineAppealUntil": "You can appeal until {date}.",
   "@disciplineAppealUntil": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "disciplineAppealWindowDays": "14 days from the decision.",
   "disciplineAppealGroundsLabel": "Grounds of appeal",
   "disciplineAppealGroundsHint": "Explain why the decision or sanction is wrong, including any new evidence.",
   "disciplineAppealGroundsRequired": "Set out your grounds of appeal in at least {min} characters.",
   "@disciplineAppealGroundsRequired": {
-    "placeholders": { "min": { "type": "int" } }
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
   },
   "disciplineAppealGroundsCounter": "{count}/{min}",
   "@disciplineAppealGroundsCounter": {
     "placeholders": {
-      "count": { "type": "int" },
-      "min": { "type": "int" }
+      "count": {
+        "type": "int"
+      },
+      "min": {
+        "type": "int"
+      }
     }
   },
   "disciplineAppealLodge": "Lodge appeal",
@@ -1257,18 +1400,30 @@
   "disciplineAppealClosedTitle": "Closed",
   "disciplineAppealClosedBody": "The appeal period ended on {date}.",
   "@disciplineAppealClosedBody": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "disciplineAppealClosedDetail": "The decision was made on {date}. The appeal period is fourteen days from the decision.",
   "@disciplineAppealClosedDetail": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "disciplineAppealWrittenStill": "A written appeal may still be delivered to the disciplinary office.",
   "disciplineAppealLiableOnly": "Only a decision finding you liable can be appealed.",
   "disciplineAppealLodgedTitle": "Your appeal",
   "disciplineAppealLodgedOn": "Lodged {date}",
   "@disciplineAppealLodgedOn": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "disciplineAppealAwaiting": "Awaiting decision",
   "disciplineAppealFiledBanner": "Appeal filed · Awaiting Disciplinary Appeals Committee review",
@@ -1281,11 +1436,585 @@
   "disciplineDecisionFinalized": "Decision finalized",
   "disciplineDecisionFinalizedBody": "Appeal window closed on {date}. Sanction in effect under Statute 14.",
   "@disciplineDecisionFinalizedBody": {
-    "placeholders": { "date": { "type": "String" } }
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   },
   "disciplineCaseNotFound": "This case is not on your record.",
   "disciplineSanctionCaseRef": "{reference}",
   "@disciplineSanctionCaseRef": {
-    "placeholders": { "reference": { "type": "String" } }
+    "placeholders": {
+      "reference": {
+        "type": "String"
+      }
+    }
+  },
+  "requestsStatusApproved": "Approved",
+  "staffApprovalsTaskTitle": "Approvals",
+  "staffApprovalsTitle": "Registration approvals",
+  "staffApprovalsSubtitle": "Submitted course forms for this semester from the students you advise or oversee.",
+  "staffApprovalsBreadcrumb": "Course registrations",
+  "staffApprovalsBreadcrumbRoot": "Staff",
+  "staffApprovalsFilterAwaiting": "Awaiting approval",
+  "staffApprovalsFilterApproved": "Approved",
+  "staffApprovalsFilterAll": "All submissions",
+  "staffApprovalsQueueTitle": "Action queue",
+  "staffApprovalsQueueProcessed": "Processed",
+  "staffApprovalsEmptyTitle": "Nothing waiting",
+  "staffApprovalsEmptyBody": "There are no course forms in this filter right now.",
+  "staffApprovalsFlagAtMinimum": "At minimum",
+  "staffApprovalsFlagClash": "Clash acknowledged",
+  "staffApprovalsReviewForm": "Review form",
+  "staffApprovalsViewForm": "View form",
+  "staffApprovalsStudyPlan": "Study plan",
+  "staffApprovalsAboutTitle": "About approvals",
+  "staffApprovalsAboutBody": "Approve or reject pending courses on each student's form. Rejected lines need a reason the student will see.",
+  "staffApprovalsRequestsEntryTitle": "Student requests",
+  "staffApprovalsRequestsEntryBody": "Decide overload, waiver, late add/drop, and programme-change petitions.",
+  "staffApprovalsDecisionTaskTitle": "Course form",
+  "staffApprovalsDecisionTitle": "Course form review",
+  "staffApprovalsDirectTitle": "Department registers courses directly",
+  "staffApprovalsDirectBody": "This programme does not use the approval queue. Courses are already on the record.",
+  "staffApprovalsAtMinimumTitle": "At the unit minimum",
+  "staffApprovalsCoursesTitle": "Courses",
+  "staffApprovalsSelectAll": "Select all pending",
+  "staffApprovalsApproveSelected": "Approve selected",
+  "staffApprovalsRejectSelected": "Reject selected",
+  "staffApprovalsSelectFirst": "Select at least one pending course.",
+  "staffApprovalsRejectCoursesTitle": "Reject selected courses?",
+  "staffApprovalsRejectCoursesConfirm": "Reject courses",
+  "staffApprovalsRejectReasonLabel": "Note to the student",
+  "staffApprovalsRejectReasonHint": "Required. The student sees this word for word.",
+  "staffApprovalsRejectRequestTitle": "Reject this request?",
+  "staffApprovalsRejectRequestConfirm": "Reject request",
+  "staffApprovalsReasonRequired": "Add a note for the student before rejecting.",
+  "staffApprovalsRequestsTaskTitle": "Student requests",
+  "staffApprovalsRequestsTitle": "Student requests",
+  "staffApprovalsRequestsSubtitle": "Approving a request applies it straight away: see what each type does before deciding.",
+  "staffApprovalsRequestsBreadcrumb": "Student requests",
+  "staffApprovalsRequestsListTitle": "Pending and decided",
+  "staffApprovalsRequestsEmptyTitle": "No requests here",
+  "staffApprovalsRequestsEmptyBody": "Nothing matches this filter.",
+  "staffApprovalsRequestFilterAll": "All statuses",
+  "staffApprovalsRequestFilterPending": "Pending",
+  "staffApprovalsRequestFilterDecided": "Decided",
+  "staffApprovalsStudentNote": "Student's reasons",
+  "staffApprovalsRequestReasonLabel": "Note to the student (needed to reject)",
+  "staffApprovalsRequestReasonHint": "Required when rejecting.",
+  "staffApprovalsRequestApprove": "Approve",
+  "staffApprovalsRequestReject": "Reject",
+  "staffApprovalsAdvisingTaskTitle": "Study plan",
+  "staffApprovalsAdvisingTitle": "Study plan advising",
+  "staffApprovalsAdvisingSubtitle": "Their intent, not a registration. Advise against unit limits and prerequisites.",
+  "staffApprovalsAdvisingProgressTitle": "Progress",
+  "staffApprovalsAdvisingWarningsTitle": "What the plan would run into",
+  "staffApprovalsAdvisingTermsTitle": "What they mean to take",
+  "staffApprovalsAdviceLabel": "Your advice",
+  "staffApprovalsAdviceHint": "Notes the student and future advisers can read.",
+  "staffApprovalsAdviceSave": "Save advice",
+  "staffApprovalsAdviceSaved": "Advice saved.",
+  "staffApprovalsAdviceRequired": "Write advice before saving.",
+  "staffRegistryBreadcrumbRoot": "Registry",
+  "staffRegistryStudentsBreadcrumb": "Students",
+  "staffRegistryStudentsTaskTitle": "Students",
+  "staffRegistryStudentsTitle": "Students",
+  "staffRegistryStudentsSubtitle": "Matriculated students and their current academic standing across faculties.",
+  "staffRegistryStudentsListTitle": "Directory",
+  "staffRegistryStudentsEmptyTitle": "No students match",
+  "staffRegistryStudentsEmptyBody": "Clear the search or filters and try again.",
+  "staffRegistryIdCardsEntryTitle": "ID cards",
+  "staffRegistryStatMatriculated": "Matriculated",
+  "staffRegistryStatusActive": "Active",
+  "staffRegistryStatusSuspended": "Suspended",
+  "staffRegistryStatusWithdrawn": "Withdrawn",
+  "staffRegistryStatusExpelled": "Expelled",
+  "staffRegistryStatusGraduated": "Graduated",
+  "staffRegistryFilterAll": "Any status",
+  "staffRegistrySearchHint": "Search name, matric, email, or programme",
+  "staffRegistrySearchClear": "Clear search",
+  "staffRegistryPromoteAction": "Batch promote",
+  "staffRegistryPromoteTitle": "Move the selected students to this level?",
+  "staffRegistryPromoteLevelLabel": "New level",
+  "staffRegistryRecordTaskTitle": "Student record",
+  "staffRegistryRecordTitle": "Student record",
+  "staffRegistryRecordSubtitle": "Statutory record and registration history.",
+  "staffRegistryRecordDetails": "Statutory record",
+  "staffRegistryNoDegreePlanTitle": "No degree plan linked",
+  "staffRegistryNoDegreePlanBody": "Link a curriculum before advising or registering this student.",
+  "staffRegistryFeeOwingTitle": "Replacement fee unpaid",
+  "staffRegistryFeeOwingBody": "The student's ID card replacement cannot be printed until the fee is paid.",
+  "staffRegistryOpenStudyPlan": "Open study plan",
+  "staffRegistryTermsTitle": "Registration history",
+  "staffRegistryTermsEmptyTitle": "No registrations yet",
+  "staffRegistryTermsEmptyBody": "Course registrations will appear here once started.",
+  "staffRegistryTermConfirmed": "Confirmed",
+  "staffRegistryTermNotConfirmed": "Provisional",
+  "staffRegistryFieldEmail": "Email",
+  "staffRegistryFieldDepartment": "Department",
+  "staffRegistryFieldDegreePlan": "Degree plan",
+  "staffRegistryFieldDegreePlanNone": "None linked",
+  "staffRegistryFieldEntry": "Entry",
+  "staffRegistryFieldJamb": "JAMB number",
+  "staffRegistryFieldMatriculated": "Matriculated",
+  "staffRegistryFieldPhoto": "Photo",
+  "staffRegistryPhotoVerified": "Photo verified",
+  "staffRegistryPhotoMissing": "No photo on file",
+  "staffRegistryIdCardsBreadcrumb": "ID cards",
+  "staffRegistryIdCardsTaskTitle": "ID cards",
+  "staffRegistryIdCardsTitle": "ID cards",
+  "staffRegistryIdCardsSubtitle": "Print requested cards, then hand them over when students collect.",
+  "staffRegistryIdCardsListTitle": "Production queue",
+  "staffRegistryIdCardsEmptyTitle": "No cards here",
+  "staffRegistryIdCardsEmptyBody": "Nothing in this tab right now.",
+  "staffRegistryIdCardsAboutTitle": "About ID card production",
+  "staffRegistryIdCardsAboutBody": "A replacement cannot be marked printed while unpaid. Expiry and verification codes are issued only when you mark printed.",
+  "staffRegistryFeeNotRequired": "Free",
+  "staffRegistryFeeUnpaid": "Unpaid",
+  "staffRegistryFeePaid": "Paid",
+  "staffRegistryBlockedUnpaid": "The replacement fee isn't paid, so this card cannot be printed.",
+  "staffRegistryBlockedNoPhoto": "No photo on file, so this card cannot be printed.",
+  "staffRegistryMarkPrinted": "Mark printed",
+  "staffRegistryMarkCollected": "Collected",
+  "staffRegistryPreview": "View card",
+  "staffRegistryCancelCard": "Cancel",
+  "staffRegistryMarkPrintedBlocked": "Action locked until the fee is paid and a photo is on file.",
+  "staffRegistryCancelTitle": "Cancel this card request?",
+  "staffRegistryCancelConfirm": "Cancel request",
+  "staffRegistryCancelReasonLabel": "Reason",
+  "staffRegistryCancelReasonHint": "Required. Kept on the card history.",
+  "staffRegistryCancelReasonRequired": "Add a reason before cancelling.",
+  "staffRegistryPreviewTaskTitle": "Print preview",
+  "staffRegistryPreviewTitle": "Card preview",
+  "staffRegistryPreviewSubtitle": "Preview. Mark the card printed to issue its expiry date and verification QR code.",
+  "staffRegistryPreviewCardCaption": "Student identity card",
+  "staffRegistryPreviewNoExpiry": "Expires —",
+  "staffRegistryPreviewStatus": "Status",
+  "staffRegistryPreviewCode": "Verification code",
+  "staffRegistryPreviewNoPhotoTitle": "No photo on file",
+  "staffRegistryPreviewBlocked": "This card cannot be marked printed yet.",
+  "staffRegistryPreviewVerify": "Public verification uses the code issued after Mark printed.",
+  "verifyIdCardBrandCaption": "The Legion University",
+  "verifyIdCardOffice": "Student Registry",
+  "verifyIdCardTitle": "Student ID card check",
+  "verifyIdCardSubtitle": "The result of scanning the QR code on a student ID card.",
+  "verifyIdCardCodeLabel": "Verification code",
+  "verifyIdCardCodeHint": "16-character code from the card",
+  "verifyIdCardAction": "Check card",
+  "verifyIdCardSignIn": "Sign in to the portal",
+  "verifyIdCardValidTitle": "Valid card",
+  "verifyIdCardInvalidTitle": "This card is not valid",
+  "verifyIdCardInvalidBody": "The code matches a card that is no longer valid for the holder.",
+  "verifyIdCardNotFoundTitle": "No card matches this code",
+  "verifyIdCardNotFoundBody": "Check the code on the card and try again.",
+  "verifyIdCardFieldName": "Name",
+  "verifyIdCardFieldMatric": "Matric number",
+  "verifyIdCardFieldProgramme": "Programme",
+  "verifyIdCardFieldSerial": "Card",
+  "verifyIdCardFieldExpires": "Expires",
+  "verifyIdCardPrivacyTitle": "Privacy",
+  "verifyIdCardPrivacyBody": "This page shows only name, matric number, programme, card number and expiry. It does not show a photograph, email, phone, level, department, case, sanction or fee.",
+  "staffApprovalsSummaryTitle": "{count} forms waiting",
+  "@staffApprovalsSummaryTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsSummaryBody": "{count} courses awaiting approval.",
+  "@staffApprovalsSummaryBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsQueueCount": "{count} students",
+  "@staffApprovalsQueueCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsQueuePending": "{count} courses",
+  "@staffApprovalsQueuePending": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsQueueMeta": "{matricNumber} · {programmeCode} · {level}",
+  "@staffApprovalsQueueMeta": {
+    "placeholders": {
+      "matricNumber": {
+        "type": "String"
+      },
+      "programmeCode": {
+        "type": "String"
+      },
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "staffApprovalsDecisionSubtitle": "{session}",
+  "@staffApprovalsDecisionSubtitle": {
+    "placeholders": {
+      "session": {
+        "type": "String"
+      }
+    }
+  },
+  "staffApprovalsAtMinimumBody": "This student is at the minimum of {minimum} units. Rejecting courses may leave them under the floor.",
+  "@staffApprovalsAtMinimumBody": {
+    "placeholders": {
+      "minimum": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsCoursesCount": "{count} courses",
+  "@staffApprovalsCoursesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsCourseMeta": "Section {section} · {units} units",
+  "@staffApprovalsCourseMeta": {
+    "placeholders": {
+      "section": {
+        "type": "String"
+      },
+      "units": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsDecidedBy": "{name}, {date}",
+  "@staffApprovalsDecidedBy": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "staffApprovalsSelectedCount": "{count} selected",
+  "@staffApprovalsSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsApprovedMessage": "{count} courses approved.",
+  "@staffApprovalsApprovedMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsRejectedMessage": "{count} courses rejected.",
+  "@staffApprovalsRejectedMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsRejectCoursesBody": "Reject {count} courses for {name}? The student will see your note.",
+  "@staffApprovalsRejectCoursesBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "staffApprovalsRejectRequestBody": "Reject the request from {name}? The student will see your note.",
+  "@staffApprovalsRejectRequestBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "staffApprovalsRequestsCount": "{count} requests",
+  "@staffApprovalsRequestsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsRequestApprovedMessage": "Approved for {name}.",
+  "@staffApprovalsRequestApprovedMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "staffApprovalsRequestRejectedMessage": "Rejected for {name}.",
+  "@staffApprovalsRequestRejectedMessage": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "staffApprovalsAdvisingProgressValue": "{passed} of {threshold} units toward the award",
+  "@staffApprovalsAdvisingProgressValue": {
+    "placeholders": {
+      "passed": {
+        "type": "int"
+      },
+      "threshold": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsAdvisingPlanned": "{planned} units planned · {remaining} courses still to pass",
+  "@staffApprovalsAdvisingPlanned": {
+    "placeholders": {
+      "planned": {
+        "type": "int"
+      },
+      "remaining": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsAdvisingWarningsCount": "{count} warnings",
+  "@staffApprovalsAdvisingWarningsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsAdvisingTermsCount": "{count} terms",
+  "@staffApprovalsAdvisingTermsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsAdvisingTermUnits": "{planned} of {maximum}",
+  "@staffApprovalsAdvisingTermUnits": {
+    "placeholders": {
+      "planned": {
+        "type": "int"
+      },
+      "maximum": {
+        "type": "int"
+      }
+    }
+  },
+  "staffApprovalsAdvisingOverCeiling": "Over the unit ceiling of {maximum}. Something must move.",
+  "@staffApprovalsAdvisingOverCeiling": {
+    "placeholders": {
+      "maximum": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryIdCardsEntryBody": "{count} cards in production.",
+  "@staffRegistryIdCardsEntryBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistrySelectedCount": "{count} selected",
+  "@staffRegistrySelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryStudentsCount": "{count} students",
+  "@staffRegistryStudentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryStudentMeta": "{matricNumber} · {programmeCode} · {detail}",
+  "@staffRegistryStudentMeta": {
+    "placeholders": {
+      "matricNumber": {
+        "type": "String"
+      },
+      "programmeCode": {
+        "type": "String"
+      },
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "staffRegistryPromoteBody": "Move {count} students to a new level?",
+  "@staffRegistryPromoteBody": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryPromoteConfirm": "Promote to {level} Level",
+  "@staffRegistryPromoteConfirm": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryPromotedMessage": "Moved {count} students to {level} Level.",
+  "@staffRegistryPromotedMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryTermsCount": "{count} terms",
+  "@staffRegistryTermsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryTermMeta": "{level} · {units} units",
+  "@staffRegistryTermMeta": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      },
+      "units": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryCourseLine": "{code} Section {section} · {units} units",
+  "@staffRegistryCourseLine": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "section": {
+        "type": "String"
+      },
+      "units": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryIdCardsCount": "{count} cards",
+  "@staffRegistryIdCardsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryTabRequested": "Requested ({count})",
+  "@staffRegistryTabRequested": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryTabReadyForCollection": "Ready for collection ({count})",
+  "@staffRegistryTabReadyForCollection": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryTabCollected": "Collected ({count})",
+  "@staffRegistryTabCollected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "staffRegistryRequestedOn": "Requested {date}",
+  "@staffRegistryRequestedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "staffRegistryPrintedOn": "Printed {date}",
+  "@staffRegistryPrintedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "staffRegistryPrintedMessage": "{serial} marked ready for collection.",
+  "@staffRegistryPrintedMessage": {
+    "placeholders": {
+      "serial": {
+        "type": "String"
+      }
+    }
+  },
+  "staffRegistryCollectedMessage": "{serial} marked collected.",
+  "@staffRegistryCollectedMessage": {
+    "placeholders": {
+      "serial": {
+        "type": "String"
+      }
+    }
+  },
+  "staffRegistryCancelBody": "Cancel the request for {serial}?",
+  "@staffRegistryCancelBody": {
+    "placeholders": {
+      "serial": {
+        "type": "String"
+      }
+    }
+  },
+  "staffRegistryCancelledMessage": "Cancelled {serial}.",
+  "@staffRegistryCancelledMessage": {
+    "placeholders": {
+      "serial": {
+        "type": "String"
+      }
+    }
+  },
+  "staffRegistryPreviewExpires": "Expires {date}",
+  "@staffRegistryPreviewExpires": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
   }
 }

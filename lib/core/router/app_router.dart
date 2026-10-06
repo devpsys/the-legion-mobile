@@ -37,14 +37,27 @@ import '../../features/password_recovery/presentation/pages/set_new_password_pag
 import '../../features/password_recovery/presentation/pages/verify_recovery_code_page.dart';
 import '../../features/profile/presentation/pages/profile_page.dart';
 import '../../features/registration/presentation/bloc/registration_cubit.dart';
+import '../../features/registration/presentation/bloc/staff/id_card_verification_cubit.dart';
+import '../../features/registration/presentation/bloc/staff/registry_cubit.dart';
+import '../../features/registration/presentation/bloc/staff/staff_approvals_cubit.dart';
 import '../../features/registration/presentation/pages/course_form_page.dart';
 import '../../features/registration/presentation/pages/course_registration_page.dart';
 import '../../features/registration/presentation/pages/discipline_case_page.dart';
 import '../../features/registration/presentation/pages/discipline_page.dart';
 import '../../features/registration/presentation/pages/id_card_page.dart';
 import '../../features/registration/presentation/pages/requests_page.dart';
+import '../../features/registration/presentation/pages/staff/approvals/registration_approvals_page.dart';
+import '../../features/registration/presentation/pages/staff/approvals/student_registration_decision_page.dart';
+import '../../features/registration/presentation/pages/staff/approvals/student_requests_decision_page.dart';
+import '../../features/registration/presentation/pages/staff/approvals/study_plan_advising_page.dart';
+import '../../features/registration/presentation/pages/staff/registry/id_card_print_preview_page.dart';
+import '../../features/registration/presentation/pages/staff/registry/id_card_production_page.dart';
+import '../../features/registration/presentation/pages/staff/registry/student_record_page.dart';
+import '../../features/registration/presentation/pages/staff/registry/students_directory_page.dart';
+import '../../features/registration/presentation/pages/staff/registry/verify_id_card_page.dart';
 import '../../features/registration/presentation/pages/study_plan_page.dart';
 import '../../features/registration/presentation/widgets/registration_shell.dart';
+import '../../features/registration/presentation/widgets/staff/staff_shell.dart';
 import '../di/injection.dart';
 import 'auth_guard.dart';
 import 'route_names.dart';
@@ -154,6 +167,19 @@ GoRouter createRouter({
           child: VerifyReceiptPage(
             initialCode:
                 state.uri.queryParameters[Routes.verifyReceiptCodeParam],
+          ),
+        ),
+      ),
+      // Public verification of a student ID card — five facts, no session,
+      // no shell. Same privacy posture as the letter and receipt checks.
+      GoRoute(
+        path: Routes.verifyIdCard,
+        name: Routes.verifyIdCardName,
+        builder: (context, state) => BlocProvider<IdCardVerificationCubit>(
+          create: (context) => sl<IdCardVerificationCubit>(),
+          child: VerifyIdCardPage(
+            initialCode:
+                state.uri.queryParameters[Routes.verifyIdCardCodeParam],
           ),
         ),
       ),
@@ -424,6 +450,82 @@ GoRouter createRouter({
               caseId:
                   state.pathParameters[Routes.registrationDisciplineCaseIdParam] ??
                   '',
+            ),
+          ),
+        ],
+      ),
+      // Staff Registration & Records (HoD approvals + registry). Authenticated
+      // and in the same feature tree, but not linked from the student hub —
+      // reserved for the staff portal when that phase begins.
+      ShellRoute(
+        builder: (context, state, child) => StaffRegistrationShell(
+          location: state.matchedLocation,
+          child: MultiBlocProvider(
+            providers: [
+              BlocProvider<StaffApprovalsCubit>(
+                create: (context) => sl<StaffApprovalsCubit>(),
+              ),
+              BlocProvider<RegistryCubit>(
+                create: (context) => sl<RegistryCubit>(),
+              ),
+            ],
+            child: child,
+          ),
+        ),
+        routes: [
+          GoRoute(
+            path: Routes.staffRegistrationApprovals,
+            name: Routes.staffRegistrationApprovalsName,
+            builder: (context, state) => const RegistrationApprovalsPage(),
+          ),
+          GoRoute(
+            path: Routes.staffRegistrationDecisionTemplate,
+            name: Routes.staffRegistrationDecisionName,
+            builder: (context, state) => StudentRegistrationDecisionPage(
+              studentId:
+                  state.pathParameters[Routes.staffRegistrationStudentIdParam] ??
+                  '',
+            ),
+          ),
+          GoRoute(
+            path: Routes.staffStudentRequests,
+            name: Routes.staffStudentRequestsName,
+            builder: (context, state) => const StudentRequestsDecisionPage(),
+          ),
+          GoRoute(
+            path: Routes.staffStudyPlanAdvisingTemplate,
+            name: Routes.staffStudyPlanAdvisingName,
+            builder: (context, state) => StudyPlanAdvisingPage(
+              studentId:
+                  state.pathParameters[Routes.staffRegistrationStudentIdParam] ??
+                  '',
+            ),
+          ),
+          GoRoute(
+            path: Routes.staffStudents,
+            name: Routes.staffStudentsName,
+            builder: (context, state) => const StudentsDirectoryPage(),
+          ),
+          GoRoute(
+            path: Routes.staffStudentRecordTemplate,
+            name: Routes.staffStudentRecordName,
+            builder: (context, state) => StudentRecordPage(
+              studentId:
+                  state.pathParameters[Routes.staffRegistrationStudentIdParam] ??
+                  '',
+            ),
+          ),
+          GoRoute(
+            path: Routes.staffIdCards,
+            name: Routes.staffIdCardsName,
+            builder: (context, state) => const IdCardProductionPage(),
+          ),
+          GoRoute(
+            path: Routes.staffIdCardPreviewTemplate,
+            name: Routes.staffIdCardPreviewName,
+            builder: (context, state) => IdCardPrintPreviewPage(
+              serial:
+                  state.pathParameters[Routes.staffIdCardSerialParam] ?? '',
             ),
           ),
         ],

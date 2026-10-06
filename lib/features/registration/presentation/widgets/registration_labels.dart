@@ -112,6 +112,7 @@ abstract final class RegistrationLabels {
   ) {
     return switch (status) {
       AcademicRequestStatus.pending => l10n.requestsStatusPending,
+      AcademicRequestStatus.approved => l10n.requestsStatusApproved,
       AcademicRequestStatus.rejected => l10n.requestsStatusRejected,
       AcademicRequestStatus.withdrawn => l10n.requestsStatusWithdrawn,
     };

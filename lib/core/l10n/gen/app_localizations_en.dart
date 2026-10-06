@@ -3851,4 +3851,764 @@ class AppLocalizationsEn extends AppLocalizations {
   String disciplineSanctionCaseRef(String reference) {
     return '$reference';
   }
+
+  @override
+  String get requestsStatusApproved => 'Approved';
+
+  @override
+  String get staffApprovalsTaskTitle => 'Approvals';
+
+  @override
+  String get staffApprovalsTitle => 'Registration approvals';
+
+  @override
+  String get staffApprovalsSubtitle =>
+      'Submitted course forms for this semester from the students you advise or oversee.';
+
+  @override
+  String get staffApprovalsBreadcrumb => 'Course registrations';
+
+  @override
+  String get staffApprovalsBreadcrumbRoot => 'Staff';
+
+  @override
+  String get staffApprovalsFilterAwaiting => 'Awaiting approval';
+
+  @override
+  String get staffApprovalsFilterApproved => 'Approved';
+
+  @override
+  String get staffApprovalsFilterAll => 'All submissions';
+
+  @override
+  String get staffApprovalsQueueTitle => 'Action queue';
+
+  @override
+  String get staffApprovalsQueueProcessed => 'Processed';
+
+  @override
+  String get staffApprovalsEmptyTitle => 'Nothing waiting';
+
+  @override
+  String get staffApprovalsEmptyBody =>
+      'There are no course forms in this filter right now.';
+
+  @override
+  String get staffApprovalsFlagAtMinimum => 'At minimum';
+
+  @override
+  String get staffApprovalsFlagClash => 'Clash acknowledged';
+
+  @override
+  String get staffApprovalsReviewForm => 'Review form';
+
+  @override
+  String get staffApprovalsViewForm => 'View form';
+
+  @override
+  String get staffApprovalsStudyPlan => 'Study plan';
+
+  @override
+  String get staffApprovalsAboutTitle => 'About approvals';
+
+  @override
+  String get staffApprovalsAboutBody =>
+      'Approve or reject pending courses on each student\'s form. Rejected lines need a reason the student will see.';
+
+  @override
+  String get staffApprovalsRequestsEntryTitle => 'Student requests';
+
+  @override
+  String get staffApprovalsRequestsEntryBody =>
+      'Decide overload, waiver, late add/drop, and programme-change petitions.';
+
+  @override
+  String get staffApprovalsDecisionTaskTitle => 'Course form';
+
+  @override
+  String get staffApprovalsDecisionTitle => 'Course form review';
+
+  @override
+  String get staffApprovalsDirectTitle =>
+      'Department registers courses directly';
+
+  @override
+  String get staffApprovalsDirectBody =>
+      'This programme does not use the approval queue. Courses are already on the record.';
+
+  @override
+  String get staffApprovalsAtMinimumTitle => 'At the unit minimum';
+
+  @override
+  String get staffApprovalsCoursesTitle => 'Courses';
+
+  @override
+  String get staffApprovalsSelectAll => 'Select all pending';
+
+  @override
+  String get staffApprovalsApproveSelected => 'Approve selected';
+
+  @override
+  String get staffApprovalsRejectSelected => 'Reject selected';
+
+  @override
+  String get staffApprovalsSelectFirst => 'Select at least one pending course.';
+
+  @override
+  String get staffApprovalsRejectCoursesTitle => 'Reject selected courses?';
+
+  @override
+  String get staffApprovalsRejectCoursesConfirm => 'Reject courses';
+
+  @override
+  String get staffApprovalsRejectReasonLabel => 'Note to the student';
+
+  @override
+  String get staffApprovalsRejectReasonHint =>
+      'Required. The student sees this word for word.';
+
+  @override
+  String get staffApprovalsRejectRequestTitle => 'Reject this request?';
+
+  @override
+  String get staffApprovalsRejectRequestConfirm => 'Reject request';
+
+  @override
+  String get staffApprovalsReasonRequired =>
+      'Add a note for the student before rejecting.';
+
+  @override
+  String get staffApprovalsRequestsTaskTitle => 'Student requests';
+
+  @override
+  String get staffApprovalsRequestsTitle => 'Student requests';
+
+  @override
+  String get staffApprovalsRequestsSubtitle =>
+      'Approving a request applies it straight away: see what each type does before deciding.';
+
+  @override
+  String get staffApprovalsRequestsBreadcrumb => 'Student requests';
+
+  @override
+  String get staffApprovalsRequestsListTitle => 'Pending and decided';
+
+  @override
+  String get staffApprovalsRequestsEmptyTitle => 'No requests here';
+
+  @override
+  String get staffApprovalsRequestsEmptyBody => 'Nothing matches this filter.';
+
+  @override
+  String get staffApprovalsRequestFilterAll => 'All statuses';
+
+  @override
+  String get staffApprovalsRequestFilterPending => 'Pending';
+
+  @override
+  String get staffApprovalsRequestFilterDecided => 'Decided';
+
+  @override
+  String get staffApprovalsStudentNote => 'Student\'s reasons';
+
+  @override
+  String get staffApprovalsRequestReasonLabel =>
+      'Note to the student (needed to reject)';
+
+  @override
+  String get staffApprovalsRequestReasonHint => 'Required when rejecting.';
+
+  @override
+  String get staffApprovalsRequestApprove => 'Approve';
+
+  @override
+  String get staffApprovalsRequestReject => 'Reject';
+
+  @override
+  String get staffApprovalsAdvisingTaskTitle => 'Study plan';
+
+  @override
+  String get staffApprovalsAdvisingTitle => 'Study plan advising';
+
+  @override
+  String get staffApprovalsAdvisingSubtitle =>
+      'Their intent, not a registration. Advise against unit limits and prerequisites.';
+
+  @override
+  String get staffApprovalsAdvisingProgressTitle => 'Progress';
+
+  @override
+  String get staffApprovalsAdvisingWarningsTitle =>
+      'What the plan would run into';
+
+  @override
+  String get staffApprovalsAdvisingTermsTitle => 'What they mean to take';
+
+  @override
+  String get staffApprovalsAdviceLabel => 'Your advice';
+
+  @override
+  String get staffApprovalsAdviceHint =>
+      'Notes the student and future advisers can read.';
+
+  @override
+  String get staffApprovalsAdviceSave => 'Save advice';
+
+  @override
+  String get staffApprovalsAdviceSaved => 'Advice saved.';
+
+  @override
+  String get staffApprovalsAdviceRequired => 'Write advice before saving.';
+
+  @override
+  String get staffRegistryBreadcrumbRoot => 'Registry';
+
+  @override
+  String get staffRegistryStudentsBreadcrumb => 'Students';
+
+  @override
+  String get staffRegistryStudentsTaskTitle => 'Students';
+
+  @override
+  String get staffRegistryStudentsTitle => 'Students';
+
+  @override
+  String get staffRegistryStudentsSubtitle =>
+      'Matriculated students and their current academic standing across faculties.';
+
+  @override
+  String get staffRegistryStudentsListTitle => 'Directory';
+
+  @override
+  String get staffRegistryStudentsEmptyTitle => 'No students match';
+
+  @override
+  String get staffRegistryStudentsEmptyBody =>
+      'Clear the search or filters and try again.';
+
+  @override
+  String get staffRegistryIdCardsEntryTitle => 'ID cards';
+
+  @override
+  String get staffRegistryStatMatriculated => 'Matriculated';
+
+  @override
+  String get staffRegistryStatusActive => 'Active';
+
+  @override
+  String get staffRegistryStatusSuspended => 'Suspended';
+
+  @override
+  String get staffRegistryStatusWithdrawn => 'Withdrawn';
+
+  @override
+  String get staffRegistryStatusExpelled => 'Expelled';
+
+  @override
+  String get staffRegistryStatusGraduated => 'Graduated';
+
+  @override
+  String get staffRegistryFilterAll => 'Any status';
+
+  @override
+  String get staffRegistrySearchHint =>
+      'Search name, matric, email, or programme';
+
+  @override
+  String get staffRegistrySearchClear => 'Clear search';
+
+  @override
+  String get staffRegistryPromoteAction => 'Batch promote';
+
+  @override
+  String get staffRegistryPromoteTitle =>
+      'Move the selected students to this level?';
+
+  @override
+  String get staffRegistryPromoteLevelLabel => 'New level';
+
+  @override
+  String get staffRegistryRecordTaskTitle => 'Student record';
+
+  @override
+  String get staffRegistryRecordTitle => 'Student record';
+
+  @override
+  String get staffRegistryRecordSubtitle =>
+      'Statutory record and registration history.';
+
+  @override
+  String get staffRegistryRecordDetails => 'Statutory record';
+
+  @override
+  String get staffRegistryNoDegreePlanTitle => 'No degree plan linked';
+
+  @override
+  String get staffRegistryNoDegreePlanBody =>
+      'Link a curriculum before advising or registering this student.';
+
+  @override
+  String get staffRegistryFeeOwingTitle => 'Replacement fee unpaid';
+
+  @override
+  String get staffRegistryFeeOwingBody =>
+      'The student\'s ID card replacement cannot be printed until the fee is paid.';
+
+  @override
+  String get staffRegistryOpenStudyPlan => 'Open study plan';
+
+  @override
+  String get staffRegistryTermsTitle => 'Registration history';
+
+  @override
+  String get staffRegistryTermsEmptyTitle => 'No registrations yet';
+
+  @override
+  String get staffRegistryTermsEmptyBody =>
+      'Course registrations will appear here once started.';
+
+  @override
+  String get staffRegistryTermConfirmed => 'Confirmed';
+
+  @override
+  String get staffRegistryTermNotConfirmed => 'Provisional';
+
+  @override
+  String get staffRegistryFieldEmail => 'Email';
+
+  @override
+  String get staffRegistryFieldDepartment => 'Department';
+
+  @override
+  String get staffRegistryFieldDegreePlan => 'Degree plan';
+
+  @override
+  String get staffRegistryFieldDegreePlanNone => 'None linked';
+
+  @override
+  String get staffRegistryFieldEntry => 'Entry';
+
+  @override
+  String get staffRegistryFieldJamb => 'JAMB number';
+
+  @override
+  String get staffRegistryFieldMatriculated => 'Matriculated';
+
+  @override
+  String get staffRegistryFieldPhoto => 'Photo';
+
+  @override
+  String get staffRegistryPhotoVerified => 'Photo verified';
+
+  @override
+  String get staffRegistryPhotoMissing => 'No photo on file';
+
+  @override
+  String get staffRegistryIdCardsBreadcrumb => 'ID cards';
+
+  @override
+  String get staffRegistryIdCardsTaskTitle => 'ID cards';
+
+  @override
+  String get staffRegistryIdCardsTitle => 'ID cards';
+
+  @override
+  String get staffRegistryIdCardsSubtitle =>
+      'Print requested cards, then hand them over when students collect.';
+
+  @override
+  String get staffRegistryIdCardsListTitle => 'Production queue';
+
+  @override
+  String get staffRegistryIdCardsEmptyTitle => 'No cards here';
+
+  @override
+  String get staffRegistryIdCardsEmptyBody => 'Nothing in this tab right now.';
+
+  @override
+  String get staffRegistryIdCardsAboutTitle => 'About ID card production';
+
+  @override
+  String get staffRegistryIdCardsAboutBody =>
+      'A replacement cannot be marked printed while unpaid. Expiry and verification codes are issued only when you mark printed.';
+
+  @override
+  String get staffRegistryFeeNotRequired => 'Free';
+
+  @override
+  String get staffRegistryFeeUnpaid => 'Unpaid';
+
+  @override
+  String get staffRegistryFeePaid => 'Paid';
+
+  @override
+  String get staffRegistryBlockedUnpaid =>
+      'The replacement fee isn\'t paid, so this card cannot be printed.';
+
+  @override
+  String get staffRegistryBlockedNoPhoto =>
+      'No photo on file, so this card cannot be printed.';
+
+  @override
+  String get staffRegistryMarkPrinted => 'Mark printed';
+
+  @override
+  String get staffRegistryMarkCollected => 'Collected';
+
+  @override
+  String get staffRegistryPreview => 'View card';
+
+  @override
+  String get staffRegistryCancelCard => 'Cancel';
+
+  @override
+  String get staffRegistryMarkPrintedBlocked =>
+      'Action locked until the fee is paid and a photo is on file.';
+
+  @override
+  String get staffRegistryCancelTitle => 'Cancel this card request?';
+
+  @override
+  String get staffRegistryCancelConfirm => 'Cancel request';
+
+  @override
+  String get staffRegistryCancelReasonLabel => 'Reason';
+
+  @override
+  String get staffRegistryCancelReasonHint =>
+      'Required. Kept on the card history.';
+
+  @override
+  String get staffRegistryCancelReasonRequired =>
+      'Add a reason before cancelling.';
+
+  @override
+  String get staffRegistryPreviewTaskTitle => 'Print preview';
+
+  @override
+  String get staffRegistryPreviewTitle => 'Card preview';
+
+  @override
+  String get staffRegistryPreviewSubtitle =>
+      'Preview. Mark the card printed to issue its expiry date and verification QR code.';
+
+  @override
+  String get staffRegistryPreviewCardCaption => 'Student identity card';
+
+  @override
+  String get staffRegistryPreviewNoExpiry => 'Expires —';
+
+  @override
+  String get staffRegistryPreviewStatus => 'Status';
+
+  @override
+  String get staffRegistryPreviewCode => 'Verification code';
+
+  @override
+  String get staffRegistryPreviewNoPhotoTitle => 'No photo on file';
+
+  @override
+  String get staffRegistryPreviewBlocked =>
+      'This card cannot be marked printed yet.';
+
+  @override
+  String get staffRegistryPreviewVerify =>
+      'Public verification uses the code issued after Mark printed.';
+
+  @override
+  String get verifyIdCardBrandCaption => 'The Legion University';
+
+  @override
+  String get verifyIdCardOffice => 'Student Registry';
+
+  @override
+  String get verifyIdCardTitle => 'Student ID card check';
+
+  @override
+  String get verifyIdCardSubtitle =>
+      'The result of scanning the QR code on a student ID card.';
+
+  @override
+  String get verifyIdCardCodeLabel => 'Verification code';
+
+  @override
+  String get verifyIdCardCodeHint => '16-character code from the card';
+
+  @override
+  String get verifyIdCardAction => 'Check card';
+
+  @override
+  String get verifyIdCardSignIn => 'Sign in to the portal';
+
+  @override
+  String get verifyIdCardValidTitle => 'Valid card';
+
+  @override
+  String get verifyIdCardInvalidTitle => 'This card is not valid';
+
+  @override
+  String get verifyIdCardInvalidBody =>
+      'The code matches a card that is no longer valid for the holder.';
+
+  @override
+  String get verifyIdCardNotFoundTitle => 'No card matches this code';
+
+  @override
+  String get verifyIdCardNotFoundBody =>
+      'Check the code on the card and try again.';
+
+  @override
+  String get verifyIdCardFieldName => 'Name';
+
+  @override
+  String get verifyIdCardFieldMatric => 'Matric number';
+
+  @override
+  String get verifyIdCardFieldProgramme => 'Programme';
+
+  @override
+  String get verifyIdCardFieldSerial => 'Card';
+
+  @override
+  String get verifyIdCardFieldExpires => 'Expires';
+
+  @override
+  String get verifyIdCardPrivacyTitle => 'Privacy';
+
+  @override
+  String get verifyIdCardPrivacyBody =>
+      'This page shows only name, matric number, programme, card number and expiry. It does not show a photograph, email, phone, level, department, case, sanction or fee.';
+
+  @override
+  String staffApprovalsSummaryTitle(int count) {
+    return '$count forms waiting';
+  }
+
+  @override
+  String staffApprovalsSummaryBody(int count) {
+    return '$count courses awaiting approval.';
+  }
+
+  @override
+  String staffApprovalsQueueCount(int count) {
+    return '$count students';
+  }
+
+  @override
+  String staffApprovalsQueuePending(int count) {
+    return '$count courses';
+  }
+
+  @override
+  String staffApprovalsQueueMeta(
+    String matricNumber,
+    String programmeCode,
+    String level,
+  ) {
+    return '$matricNumber · $programmeCode · $level';
+  }
+
+  @override
+  String staffApprovalsDecisionSubtitle(String session) {
+    return '$session';
+  }
+
+  @override
+  String staffApprovalsAtMinimumBody(int minimum) {
+    return 'This student is at the minimum of $minimum units. Rejecting courses may leave them under the floor.';
+  }
+
+  @override
+  String staffApprovalsCoursesCount(int count) {
+    return '$count courses';
+  }
+
+  @override
+  String staffApprovalsCourseMeta(String section, int units) {
+    return 'Section $section · $units units';
+  }
+
+  @override
+  String staffApprovalsDecidedBy(String name, String date) {
+    return '$name, $date';
+  }
+
+  @override
+  String staffApprovalsSelectedCount(int count) {
+    return '$count selected';
+  }
+
+  @override
+  String staffApprovalsApprovedMessage(int count) {
+    return '$count courses approved.';
+  }
+
+  @override
+  String staffApprovalsRejectedMessage(int count) {
+    return '$count courses rejected.';
+  }
+
+  @override
+  String staffApprovalsRejectCoursesBody(int count, String name) {
+    return 'Reject $count courses for $name? The student will see your note.';
+  }
+
+  @override
+  String staffApprovalsRejectRequestBody(String name) {
+    return 'Reject the request from $name? The student will see your note.';
+  }
+
+  @override
+  String staffApprovalsRequestsCount(int count) {
+    return '$count requests';
+  }
+
+  @override
+  String staffApprovalsRequestApprovedMessage(String name) {
+    return 'Approved for $name.';
+  }
+
+  @override
+  String staffApprovalsRequestRejectedMessage(String name) {
+    return 'Rejected for $name.';
+  }
+
+  @override
+  String staffApprovalsAdvisingProgressValue(int passed, int threshold) {
+    return '$passed of $threshold units toward the award';
+  }
+
+  @override
+  String staffApprovalsAdvisingPlanned(int planned, int remaining) {
+    return '$planned units planned · $remaining courses still to pass';
+  }
+
+  @override
+  String staffApprovalsAdvisingWarningsCount(int count) {
+    return '$count warnings';
+  }
+
+  @override
+  String staffApprovalsAdvisingTermsCount(int count) {
+    return '$count terms';
+  }
+
+  @override
+  String staffApprovalsAdvisingTermUnits(int planned, int maximum) {
+    return '$planned of $maximum';
+  }
+
+  @override
+  String staffApprovalsAdvisingOverCeiling(int maximum) {
+    return 'Over the unit ceiling of $maximum. Something must move.';
+  }
+
+  @override
+  String staffRegistryIdCardsEntryBody(int count) {
+    return '$count cards in production.';
+  }
+
+  @override
+  String staffRegistrySelectedCount(int count) {
+    return '$count selected';
+  }
+
+  @override
+  String staffRegistryStudentsCount(int count) {
+    return '$count students';
+  }
+
+  @override
+  String staffRegistryStudentMeta(
+    String matricNumber,
+    String programmeCode,
+    String detail,
+  ) {
+    return '$matricNumber · $programmeCode · $detail';
+  }
+
+  @override
+  String staffRegistryPromoteBody(int count) {
+    return 'Move $count students to a new level?';
+  }
+
+  @override
+  String staffRegistryPromoteConfirm(int level) {
+    return 'Promote to $level Level';
+  }
+
+  @override
+  String staffRegistryPromotedMessage(int count, int level) {
+    return 'Moved $count students to $level Level.';
+  }
+
+  @override
+  String staffRegistryTermsCount(int count) {
+    return '$count terms';
+  }
+
+  @override
+  String staffRegistryTermMeta(String level, int units) {
+    return '$level · $units units';
+  }
+
+  @override
+  String staffRegistryCourseLine(String code, String section, int units) {
+    return '$code Section $section · $units units';
+  }
+
+  @override
+  String staffRegistryIdCardsCount(int count) {
+    return '$count cards';
+  }
+
+  @override
+  String staffRegistryTabRequested(int count) {
+    return 'Requested ($count)';
+  }
+
+  @override
+  String staffRegistryTabReadyForCollection(int count) {
+    return 'Ready for collection ($count)';
+  }
+
+  @override
+  String staffRegistryTabCollected(int count) {
+    return 'Collected ($count)';
+  }
+
+  @override
+  String staffRegistryRequestedOn(String date) {
+    return 'Requested $date';
+  }
+
+  @override
+  String staffRegistryPrintedOn(String date) {
+    return 'Printed $date';
+  }
+
+  @override
+  String staffRegistryPrintedMessage(String serial) {
+    return '$serial marked ready for collection.';
+  }
+
+  @override
+  String staffRegistryCollectedMessage(String serial) {
+    return '$serial marked collected.';
+  }
+
+  @override
+  String staffRegistryCancelBody(String serial) {
+    return 'Cancel the request for $serial?';
+  }
+
+  @override
+  String staffRegistryCancelledMessage(String serial) {
+    return 'Cancelled $serial.';
+  }
+
+  @override
+  String staffRegistryPreviewExpires(String date) {
+    return 'Expires $date';
+  }
 }

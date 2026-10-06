@@ -41,7 +41,7 @@ enum AcademicRequestType {
 }
 
 /// Approval state of an academic petition.
-enum AcademicRequestStatus { pending, rejected, withdrawn }
+enum AcademicRequestStatus { pending, approved, rejected, withdrawn }
 
 extension IdCardStatusX on IdCardStatus {
   AppTone get tone => switch (this) {
@@ -55,6 +55,7 @@ extension IdCardStatusX on IdCardStatus {
 extension AcademicRequestStatusX on AcademicRequestStatus {
   AppTone get tone => switch (this) {
     AcademicRequestStatus.pending => AppTone.warning,
+    AcademicRequestStatus.approved => AppTone.success,
     AcademicRequestStatus.rejected => AppTone.danger,
     AcademicRequestStatus.withdrawn => AppTone.neutral,
   };

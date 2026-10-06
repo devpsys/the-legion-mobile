@@ -331,7 +331,7 @@ void main() {
       }
     });
 
-    test('leaves the public receipt check alone for anyone', () {
+    test('leaves the public receipt and ID card checks alone for anyone', () {
       for (final authenticated in [false, true]) {
         final guard = _FakeAuthGuard(
           isSessionResolved: true,
@@ -339,6 +339,10 @@ void main() {
         );
         expect(
           resolveRedirect(authGuard: guard, location: Routes.verifyReceipt),
+          isNull,
+        );
+        expect(
+          resolveRedirect(authGuard: guard, location: Routes.verifyIdCard),
           isNull,
         );
       }
@@ -474,6 +478,7 @@ void main() {
         expect(Routes.isFeesReceiptPath(Routes.feesReceipt('rec-1')), isTrue);
         expect(Routes.isFeesReceiptPath(Routes.fees), isFalse);
         expect(Routes.publicPaths, contains(Routes.verifyReceipt));
+        expect(Routes.publicPaths, contains(Routes.verifyIdCard));
       },
     );
   });
@@ -1354,7 +1359,7 @@ void main() {
 
         await tester.tap(find.text('Study plan'));
         await tester.pumpAndSettle();
-        expect(find.text('Undergraduate degree'), findsOneWidget);
+        expect(find.text('UNDERGRADUATE DEGREE'), findsOneWidget);
 
         await tester.binding.handlePopRoute();
         await tester.pumpAndSettle();

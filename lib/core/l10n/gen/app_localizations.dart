@@ -6534,6 +6534,1268 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{reference}'**
   String disciplineSanctionCaseRef(String reference);
+
+  /// No description provided for @requestsStatusApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get requestsStatusApproved;
+
+  /// No description provided for @staffApprovalsTaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Approvals'**
+  String get staffApprovalsTaskTitle;
+
+  /// No description provided for @staffApprovalsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration approvals'**
+  String get staffApprovalsTitle;
+
+  /// No description provided for @staffApprovalsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted course forms for this semester from the students you advise or oversee.'**
+  String get staffApprovalsSubtitle;
+
+  /// No description provided for @staffApprovalsBreadcrumb.
+  ///
+  /// In en, this message translates to:
+  /// **'Course registrations'**
+  String get staffApprovalsBreadcrumb;
+
+  /// No description provided for @staffApprovalsBreadcrumbRoot.
+  ///
+  /// In en, this message translates to:
+  /// **'Staff'**
+  String get staffApprovalsBreadcrumbRoot;
+
+  /// No description provided for @staffApprovalsFilterAwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting approval'**
+  String get staffApprovalsFilterAwaiting;
+
+  /// No description provided for @staffApprovalsFilterApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved'**
+  String get staffApprovalsFilterApproved;
+
+  /// No description provided for @staffApprovalsFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All submissions'**
+  String get staffApprovalsFilterAll;
+
+  /// No description provided for @staffApprovalsQueueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Action queue'**
+  String get staffApprovalsQueueTitle;
+
+  /// No description provided for @staffApprovalsQueueProcessed.
+  ///
+  /// In en, this message translates to:
+  /// **'Processed'**
+  String get staffApprovalsQueueProcessed;
+
+  /// No description provided for @staffApprovalsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing waiting'**
+  String get staffApprovalsEmptyTitle;
+
+  /// No description provided for @staffApprovalsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no course forms in this filter right now.'**
+  String get staffApprovalsEmptyBody;
+
+  /// No description provided for @staffApprovalsFlagAtMinimum.
+  ///
+  /// In en, this message translates to:
+  /// **'At minimum'**
+  String get staffApprovalsFlagAtMinimum;
+
+  /// No description provided for @staffApprovalsFlagClash.
+  ///
+  /// In en, this message translates to:
+  /// **'Clash acknowledged'**
+  String get staffApprovalsFlagClash;
+
+  /// No description provided for @staffApprovalsReviewForm.
+  ///
+  /// In en, this message translates to:
+  /// **'Review form'**
+  String get staffApprovalsReviewForm;
+
+  /// No description provided for @staffApprovalsViewForm.
+  ///
+  /// In en, this message translates to:
+  /// **'View form'**
+  String get staffApprovalsViewForm;
+
+  /// No description provided for @staffApprovalsStudyPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Study plan'**
+  String get staffApprovalsStudyPlan;
+
+  /// No description provided for @staffApprovalsAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About approvals'**
+  String get staffApprovalsAboutTitle;
+
+  /// No description provided for @staffApprovalsAboutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve or reject pending courses on each student\'s form. Rejected lines need a reason the student will see.'**
+  String get staffApprovalsAboutBody;
+
+  /// No description provided for @staffApprovalsRequestsEntryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student requests'**
+  String get staffApprovalsRequestsEntryTitle;
+
+  /// No description provided for @staffApprovalsRequestsEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Decide overload, waiver, late add/drop, and programme-change petitions.'**
+  String get staffApprovalsRequestsEntryBody;
+
+  /// No description provided for @staffApprovalsDecisionTaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Course form'**
+  String get staffApprovalsDecisionTaskTitle;
+
+  /// No description provided for @staffApprovalsDecisionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Course form review'**
+  String get staffApprovalsDecisionTitle;
+
+  /// No description provided for @staffApprovalsDirectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Department registers courses directly'**
+  String get staffApprovalsDirectTitle;
+
+  /// No description provided for @staffApprovalsDirectBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This programme does not use the approval queue. Courses are already on the record.'**
+  String get staffApprovalsDirectBody;
+
+  /// No description provided for @staffApprovalsAtMinimumTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'At the unit minimum'**
+  String get staffApprovalsAtMinimumTitle;
+
+  /// No description provided for @staffApprovalsCoursesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Courses'**
+  String get staffApprovalsCoursesTitle;
+
+  /// No description provided for @staffApprovalsSelectAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Select all pending'**
+  String get staffApprovalsSelectAll;
+
+  /// No description provided for @staffApprovalsApproveSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve selected'**
+  String get staffApprovalsApproveSelected;
+
+  /// No description provided for @staffApprovalsRejectSelected.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject selected'**
+  String get staffApprovalsRejectSelected;
+
+  /// No description provided for @staffApprovalsSelectFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Select at least one pending course.'**
+  String get staffApprovalsSelectFirst;
+
+  /// No description provided for @staffApprovalsRejectCoursesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject selected courses?'**
+  String get staffApprovalsRejectCoursesTitle;
+
+  /// No description provided for @staffApprovalsRejectCoursesConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject courses'**
+  String get staffApprovalsRejectCoursesConfirm;
+
+  /// No description provided for @staffApprovalsRejectReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Note to the student'**
+  String get staffApprovalsRejectReasonLabel;
+
+  /// No description provided for @staffApprovalsRejectReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Required. The student sees this word for word.'**
+  String get staffApprovalsRejectReasonHint;
+
+  /// No description provided for @staffApprovalsRejectRequestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject this request?'**
+  String get staffApprovalsRejectRequestTitle;
+
+  /// No description provided for @staffApprovalsRejectRequestConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject request'**
+  String get staffApprovalsRejectRequestConfirm;
+
+  /// No description provided for @staffApprovalsReasonRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a note for the student before rejecting.'**
+  String get staffApprovalsReasonRequired;
+
+  /// No description provided for @staffApprovalsRequestsTaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student requests'**
+  String get staffApprovalsRequestsTaskTitle;
+
+  /// No description provided for @staffApprovalsRequestsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student requests'**
+  String get staffApprovalsRequestsTitle;
+
+  /// No description provided for @staffApprovalsRequestsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Approving a request applies it straight away: see what each type does before deciding.'**
+  String get staffApprovalsRequestsSubtitle;
+
+  /// No description provided for @staffApprovalsRequestsBreadcrumb.
+  ///
+  /// In en, this message translates to:
+  /// **'Student requests'**
+  String get staffApprovalsRequestsBreadcrumb;
+
+  /// No description provided for @staffApprovalsRequestsListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending and decided'**
+  String get staffApprovalsRequestsListTitle;
+
+  /// No description provided for @staffApprovalsRequestsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No requests here'**
+  String get staffApprovalsRequestsEmptyTitle;
+
+  /// No description provided for @staffApprovalsRequestsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches this filter.'**
+  String get staffApprovalsRequestsEmptyBody;
+
+  /// No description provided for @staffApprovalsRequestFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All statuses'**
+  String get staffApprovalsRequestFilterAll;
+
+  /// No description provided for @staffApprovalsRequestFilterPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get staffApprovalsRequestFilterPending;
+
+  /// No description provided for @staffApprovalsRequestFilterDecided.
+  ///
+  /// In en, this message translates to:
+  /// **'Decided'**
+  String get staffApprovalsRequestFilterDecided;
+
+  /// No description provided for @staffApprovalsStudentNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Student\'s reasons'**
+  String get staffApprovalsStudentNote;
+
+  /// No description provided for @staffApprovalsRequestReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Note to the student (needed to reject)'**
+  String get staffApprovalsRequestReasonLabel;
+
+  /// No description provided for @staffApprovalsRequestReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Required when rejecting.'**
+  String get staffApprovalsRequestReasonHint;
+
+  /// No description provided for @staffApprovalsRequestApprove.
+  ///
+  /// In en, this message translates to:
+  /// **'Approve'**
+  String get staffApprovalsRequestApprove;
+
+  /// No description provided for @staffApprovalsRequestReject.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject'**
+  String get staffApprovalsRequestReject;
+
+  /// No description provided for @staffApprovalsAdvisingTaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Study plan'**
+  String get staffApprovalsAdvisingTaskTitle;
+
+  /// No description provided for @staffApprovalsAdvisingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Study plan advising'**
+  String get staffApprovalsAdvisingTitle;
+
+  /// No description provided for @staffApprovalsAdvisingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Their intent, not a registration. Advise against unit limits and prerequisites.'**
+  String get staffApprovalsAdvisingSubtitle;
+
+  /// No description provided for @staffApprovalsAdvisingProgressTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get staffApprovalsAdvisingProgressTitle;
+
+  /// No description provided for @staffApprovalsAdvisingWarningsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What the plan would run into'**
+  String get staffApprovalsAdvisingWarningsTitle;
+
+  /// No description provided for @staffApprovalsAdvisingTermsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What they mean to take'**
+  String get staffApprovalsAdvisingTermsTitle;
+
+  /// No description provided for @staffApprovalsAdviceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your advice'**
+  String get staffApprovalsAdviceLabel;
+
+  /// No description provided for @staffApprovalsAdviceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes the student and future advisers can read.'**
+  String get staffApprovalsAdviceHint;
+
+  /// No description provided for @staffApprovalsAdviceSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save advice'**
+  String get staffApprovalsAdviceSave;
+
+  /// No description provided for @staffApprovalsAdviceSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Advice saved.'**
+  String get staffApprovalsAdviceSaved;
+
+  /// No description provided for @staffApprovalsAdviceRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Write advice before saving.'**
+  String get staffApprovalsAdviceRequired;
+
+  /// No description provided for @staffRegistryBreadcrumbRoot.
+  ///
+  /// In en, this message translates to:
+  /// **'Registry'**
+  String get staffRegistryBreadcrumbRoot;
+
+  /// No description provided for @staffRegistryStudentsBreadcrumb.
+  ///
+  /// In en, this message translates to:
+  /// **'Students'**
+  String get staffRegistryStudentsBreadcrumb;
+
+  /// No description provided for @staffRegistryStudentsTaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Students'**
+  String get staffRegistryStudentsTaskTitle;
+
+  /// No description provided for @staffRegistryStudentsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Students'**
+  String get staffRegistryStudentsTitle;
+
+  /// No description provided for @staffRegistryStudentsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Matriculated students and their current academic standing across faculties.'**
+  String get staffRegistryStudentsSubtitle;
+
+  /// No description provided for @staffRegistryStudentsListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Directory'**
+  String get staffRegistryStudentsListTitle;
+
+  /// No description provided for @staffRegistryStudentsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No students match'**
+  String get staffRegistryStudentsEmptyTitle;
+
+  /// No description provided for @staffRegistryStudentsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear the search or filters and try again.'**
+  String get staffRegistryStudentsEmptyBody;
+
+  /// No description provided for @staffRegistryIdCardsEntryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ID cards'**
+  String get staffRegistryIdCardsEntryTitle;
+
+  /// No description provided for @staffRegistryStatMatriculated.
+  ///
+  /// In en, this message translates to:
+  /// **'Matriculated'**
+  String get staffRegistryStatMatriculated;
+
+  /// No description provided for @staffRegistryStatusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get staffRegistryStatusActive;
+
+  /// No description provided for @staffRegistryStatusSuspended.
+  ///
+  /// In en, this message translates to:
+  /// **'Suspended'**
+  String get staffRegistryStatusSuspended;
+
+  /// No description provided for @staffRegistryStatusWithdrawn.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn'**
+  String get staffRegistryStatusWithdrawn;
+
+  /// No description provided for @staffRegistryStatusExpelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Expelled'**
+  String get staffRegistryStatusExpelled;
+
+  /// No description provided for @staffRegistryStatusGraduated.
+  ///
+  /// In en, this message translates to:
+  /// **'Graduated'**
+  String get staffRegistryStatusGraduated;
+
+  /// No description provided for @staffRegistryFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Any status'**
+  String get staffRegistryFilterAll;
+
+  /// No description provided for @staffRegistrySearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search name, matric, email, or programme'**
+  String get staffRegistrySearchHint;
+
+  /// No description provided for @staffRegistrySearchClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear search'**
+  String get staffRegistrySearchClear;
+
+  /// No description provided for @staffRegistryPromoteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Batch promote'**
+  String get staffRegistryPromoteAction;
+
+  /// No description provided for @staffRegistryPromoteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Move the selected students to this level?'**
+  String get staffRegistryPromoteTitle;
+
+  /// No description provided for @staffRegistryPromoteLevelLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'New level'**
+  String get staffRegistryPromoteLevelLabel;
+
+  /// No description provided for @staffRegistryRecordTaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student record'**
+  String get staffRegistryRecordTaskTitle;
+
+  /// No description provided for @staffRegistryRecordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student record'**
+  String get staffRegistryRecordTitle;
+
+  /// No description provided for @staffRegistryRecordSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Statutory record and registration history.'**
+  String get staffRegistryRecordSubtitle;
+
+  /// No description provided for @staffRegistryRecordDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Statutory record'**
+  String get staffRegistryRecordDetails;
+
+  /// No description provided for @staffRegistryNoDegreePlanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No degree plan linked'**
+  String get staffRegistryNoDegreePlanTitle;
+
+  /// No description provided for @staffRegistryNoDegreePlanBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Link a curriculum before advising or registering this student.'**
+  String get staffRegistryNoDegreePlanBody;
+
+  /// No description provided for @staffRegistryFeeOwingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Replacement fee unpaid'**
+  String get staffRegistryFeeOwingTitle;
+
+  /// No description provided for @staffRegistryFeeOwingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The student\'s ID card replacement cannot be printed until the fee is paid.'**
+  String get staffRegistryFeeOwingBody;
+
+  /// No description provided for @staffRegistryOpenStudyPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Open study plan'**
+  String get staffRegistryOpenStudyPlan;
+
+  /// No description provided for @staffRegistryTermsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration history'**
+  String get staffRegistryTermsTitle;
+
+  /// No description provided for @staffRegistryTermsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No registrations yet'**
+  String get staffRegistryTermsEmptyTitle;
+
+  /// No description provided for @staffRegistryTermsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Course registrations will appear here once started.'**
+  String get staffRegistryTermsEmptyBody;
+
+  /// No description provided for @staffRegistryTermConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get staffRegistryTermConfirmed;
+
+  /// No description provided for @staffRegistryTermNotConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Provisional'**
+  String get staffRegistryTermNotConfirmed;
+
+  /// No description provided for @staffRegistryFieldEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get staffRegistryFieldEmail;
+
+  /// No description provided for @staffRegistryFieldDepartment.
+  ///
+  /// In en, this message translates to:
+  /// **'Department'**
+  String get staffRegistryFieldDepartment;
+
+  /// No description provided for @staffRegistryFieldDegreePlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Degree plan'**
+  String get staffRegistryFieldDegreePlan;
+
+  /// No description provided for @staffRegistryFieldDegreePlanNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None linked'**
+  String get staffRegistryFieldDegreePlanNone;
+
+  /// No description provided for @staffRegistryFieldEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Entry'**
+  String get staffRegistryFieldEntry;
+
+  /// No description provided for @staffRegistryFieldJamb.
+  ///
+  /// In en, this message translates to:
+  /// **'JAMB number'**
+  String get staffRegistryFieldJamb;
+
+  /// No description provided for @staffRegistryFieldMatriculated.
+  ///
+  /// In en, this message translates to:
+  /// **'Matriculated'**
+  String get staffRegistryFieldMatriculated;
+
+  /// No description provided for @staffRegistryFieldPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo'**
+  String get staffRegistryFieldPhoto;
+
+  /// No description provided for @staffRegistryPhotoVerified.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo verified'**
+  String get staffRegistryPhotoVerified;
+
+  /// No description provided for @staffRegistryPhotoMissing.
+  ///
+  /// In en, this message translates to:
+  /// **'No photo on file'**
+  String get staffRegistryPhotoMissing;
+
+  /// No description provided for @staffRegistryIdCardsBreadcrumb.
+  ///
+  /// In en, this message translates to:
+  /// **'ID cards'**
+  String get staffRegistryIdCardsBreadcrumb;
+
+  /// No description provided for @staffRegistryIdCardsTaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ID cards'**
+  String get staffRegistryIdCardsTaskTitle;
+
+  /// No description provided for @staffRegistryIdCardsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ID cards'**
+  String get staffRegistryIdCardsTitle;
+
+  /// No description provided for @staffRegistryIdCardsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Print requested cards, then hand them over when students collect.'**
+  String get staffRegistryIdCardsSubtitle;
+
+  /// No description provided for @staffRegistryIdCardsListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Production queue'**
+  String get staffRegistryIdCardsListTitle;
+
+  /// No description provided for @staffRegistryIdCardsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No cards here'**
+  String get staffRegistryIdCardsEmptyTitle;
+
+  /// No description provided for @staffRegistryIdCardsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing in this tab right now.'**
+  String get staffRegistryIdCardsEmptyBody;
+
+  /// No description provided for @staffRegistryIdCardsAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About ID card production'**
+  String get staffRegistryIdCardsAboutTitle;
+
+  /// No description provided for @staffRegistryIdCardsAboutBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A replacement cannot be marked printed while unpaid. Expiry and verification codes are issued only when you mark printed.'**
+  String get staffRegistryIdCardsAboutBody;
+
+  /// No description provided for @staffRegistryFeeNotRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get staffRegistryFeeNotRequired;
+
+  /// No description provided for @staffRegistryFeeUnpaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid'**
+  String get staffRegistryFeeUnpaid;
+
+  /// No description provided for @staffRegistryFeePaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get staffRegistryFeePaid;
+
+  /// No description provided for @staffRegistryBlockedUnpaid.
+  ///
+  /// In en, this message translates to:
+  /// **'The replacement fee isn\'t paid, so this card cannot be printed.'**
+  String get staffRegistryBlockedUnpaid;
+
+  /// No description provided for @staffRegistryBlockedNoPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'No photo on file, so this card cannot be printed.'**
+  String get staffRegistryBlockedNoPhoto;
+
+  /// No description provided for @staffRegistryMarkPrinted.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark printed'**
+  String get staffRegistryMarkPrinted;
+
+  /// No description provided for @staffRegistryMarkCollected.
+  ///
+  /// In en, this message translates to:
+  /// **'Collected'**
+  String get staffRegistryMarkCollected;
+
+  /// No description provided for @staffRegistryPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'View card'**
+  String get staffRegistryPreview;
+
+  /// No description provided for @staffRegistryCancelCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get staffRegistryCancelCard;
+
+  /// No description provided for @staffRegistryMarkPrintedBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Action locked until the fee is paid and a photo is on file.'**
+  String get staffRegistryMarkPrintedBlocked;
+
+  /// No description provided for @staffRegistryCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this card request?'**
+  String get staffRegistryCancelTitle;
+
+  /// No description provided for @staffRegistryCancelConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel request'**
+  String get staffRegistryCancelConfirm;
+
+  /// No description provided for @staffRegistryCancelReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get staffRegistryCancelReasonLabel;
+
+  /// No description provided for @staffRegistryCancelReasonHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Required. Kept on the card history.'**
+  String get staffRegistryCancelReasonHint;
+
+  /// No description provided for @staffRegistryCancelReasonRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a reason before cancelling.'**
+  String get staffRegistryCancelReasonRequired;
+
+  /// No description provided for @staffRegistryPreviewTaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Print preview'**
+  String get staffRegistryPreviewTaskTitle;
+
+  /// No description provided for @staffRegistryPreviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Card preview'**
+  String get staffRegistryPreviewTitle;
+
+  /// No description provided for @staffRegistryPreviewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview. Mark the card printed to issue its expiry date and verification QR code.'**
+  String get staffRegistryPreviewSubtitle;
+
+  /// No description provided for @staffRegistryPreviewCardCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Student identity card'**
+  String get staffRegistryPreviewCardCaption;
+
+  /// No description provided for @staffRegistryPreviewNoExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Expires —'**
+  String get staffRegistryPreviewNoExpiry;
+
+  /// No description provided for @staffRegistryPreviewStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get staffRegistryPreviewStatus;
+
+  /// No description provided for @staffRegistryPreviewCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code'**
+  String get staffRegistryPreviewCode;
+
+  /// No description provided for @staffRegistryPreviewNoPhotoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No photo on file'**
+  String get staffRegistryPreviewNoPhotoTitle;
+
+  /// No description provided for @staffRegistryPreviewBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'This card cannot be marked printed yet.'**
+  String get staffRegistryPreviewBlocked;
+
+  /// No description provided for @staffRegistryPreviewVerify.
+  ///
+  /// In en, this message translates to:
+  /// **'Public verification uses the code issued after Mark printed.'**
+  String get staffRegistryPreviewVerify;
+
+  /// No description provided for @verifyIdCardBrandCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'The Legion University'**
+  String get verifyIdCardBrandCaption;
+
+  /// No description provided for @verifyIdCardOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Student Registry'**
+  String get verifyIdCardOffice;
+
+  /// No description provided for @verifyIdCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student ID card check'**
+  String get verifyIdCardTitle;
+
+  /// No description provided for @verifyIdCardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The result of scanning the QR code on a student ID card.'**
+  String get verifyIdCardSubtitle;
+
+  /// No description provided for @verifyIdCardCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification code'**
+  String get verifyIdCardCodeLabel;
+
+  /// No description provided for @verifyIdCardCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'16-character code from the card'**
+  String get verifyIdCardCodeHint;
+
+  /// No description provided for @verifyIdCardAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Check card'**
+  String get verifyIdCardAction;
+
+  /// No description provided for @verifyIdCardSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to the portal'**
+  String get verifyIdCardSignIn;
+
+  /// No description provided for @verifyIdCardValidTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid card'**
+  String get verifyIdCardValidTitle;
+
+  /// No description provided for @verifyIdCardInvalidTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This card is not valid'**
+  String get verifyIdCardInvalidTitle;
+
+  /// No description provided for @verifyIdCardInvalidBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The code matches a card that is no longer valid for the holder.'**
+  String get verifyIdCardInvalidBody;
+
+  /// No description provided for @verifyIdCardNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No card matches this code'**
+  String get verifyIdCardNotFoundTitle;
+
+  /// No description provided for @verifyIdCardNotFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Check the code on the card and try again.'**
+  String get verifyIdCardNotFoundBody;
+
+  /// No description provided for @verifyIdCardFieldName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get verifyIdCardFieldName;
+
+  /// No description provided for @verifyIdCardFieldMatric.
+  ///
+  /// In en, this message translates to:
+  /// **'Matric number'**
+  String get verifyIdCardFieldMatric;
+
+  /// No description provided for @verifyIdCardFieldProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme'**
+  String get verifyIdCardFieldProgramme;
+
+  /// No description provided for @verifyIdCardFieldSerial.
+  ///
+  /// In en, this message translates to:
+  /// **'Card'**
+  String get verifyIdCardFieldSerial;
+
+  /// No description provided for @verifyIdCardFieldExpires.
+  ///
+  /// In en, this message translates to:
+  /// **'Expires'**
+  String get verifyIdCardFieldExpires;
+
+  /// No description provided for @verifyIdCardPrivacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy'**
+  String get verifyIdCardPrivacyTitle;
+
+  /// No description provided for @verifyIdCardPrivacyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This page shows only name, matric number, programme, card number and expiry. It does not show a photograph, email, phone, level, department, case, sanction or fee.'**
+  String get verifyIdCardPrivacyBody;
+
+  /// No description provided for @staffApprovalsSummaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} forms waiting'**
+  String staffApprovalsSummaryTitle(int count);
+
+  /// No description provided for @staffApprovalsSummaryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} courses awaiting approval.'**
+  String staffApprovalsSummaryBody(int count);
+
+  /// No description provided for @staffApprovalsQueueCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} students'**
+  String staffApprovalsQueueCount(int count);
+
+  /// No description provided for @staffApprovalsQueuePending.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} courses'**
+  String staffApprovalsQueuePending(int count);
+
+  /// No description provided for @staffApprovalsQueueMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'{matricNumber} · {programmeCode} · {level}'**
+  String staffApprovalsQueueMeta(
+    String matricNumber,
+    String programmeCode,
+    String level,
+  );
+
+  /// No description provided for @staffApprovalsDecisionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{session}'**
+  String staffApprovalsDecisionSubtitle(String session);
+
+  /// No description provided for @staffApprovalsAtMinimumBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This student is at the minimum of {minimum} units. Rejecting courses may leave them under the floor.'**
+  String staffApprovalsAtMinimumBody(int minimum);
+
+  /// No description provided for @staffApprovalsCoursesCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} courses'**
+  String staffApprovalsCoursesCount(int count);
+
+  /// No description provided for @staffApprovalsCourseMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'Section {section} · {units} units'**
+  String staffApprovalsCourseMeta(String section, int units);
+
+  /// No description provided for @staffApprovalsDecidedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'{name}, {date}'**
+  String staffApprovalsDecidedBy(String name, String date);
+
+  /// No description provided for @staffApprovalsSelectedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} selected'**
+  String staffApprovalsSelectedCount(int count);
+
+  /// No description provided for @staffApprovalsApprovedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} courses approved.'**
+  String staffApprovalsApprovedMessage(int count);
+
+  /// No description provided for @staffApprovalsRejectedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} courses rejected.'**
+  String staffApprovalsRejectedMessage(int count);
+
+  /// No description provided for @staffApprovalsRejectCoursesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject {count} courses for {name}? The student will see your note.'**
+  String staffApprovalsRejectCoursesBody(int count, String name);
+
+  /// No description provided for @staffApprovalsRejectRequestBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Reject the request from {name}? The student will see your note.'**
+  String staffApprovalsRejectRequestBody(String name);
+
+  /// No description provided for @staffApprovalsRequestsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} requests'**
+  String staffApprovalsRequestsCount(int count);
+
+  /// No description provided for @staffApprovalsRequestApprovedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Approved for {name}.'**
+  String staffApprovalsRequestApprovedMessage(String name);
+
+  /// No description provided for @staffApprovalsRequestRejectedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Rejected for {name}.'**
+  String staffApprovalsRequestRejectedMessage(String name);
+
+  /// No description provided for @staffApprovalsAdvisingProgressValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{passed} of {threshold} units toward the award'**
+  String staffApprovalsAdvisingProgressValue(int passed, int threshold);
+
+  /// No description provided for @staffApprovalsAdvisingPlanned.
+  ///
+  /// In en, this message translates to:
+  /// **'{planned} units planned · {remaining} courses still to pass'**
+  String staffApprovalsAdvisingPlanned(int planned, int remaining);
+
+  /// No description provided for @staffApprovalsAdvisingWarningsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} warnings'**
+  String staffApprovalsAdvisingWarningsCount(int count);
+
+  /// No description provided for @staffApprovalsAdvisingTermsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} terms'**
+  String staffApprovalsAdvisingTermsCount(int count);
+
+  /// No description provided for @staffApprovalsAdvisingTermUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'{planned} of {maximum}'**
+  String staffApprovalsAdvisingTermUnits(int planned, int maximum);
+
+  /// No description provided for @staffApprovalsAdvisingOverCeiling.
+  ///
+  /// In en, this message translates to:
+  /// **'Over the unit ceiling of {maximum}. Something must move.'**
+  String staffApprovalsAdvisingOverCeiling(int maximum);
+
+  /// No description provided for @staffRegistryIdCardsEntryBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cards in production.'**
+  String staffRegistryIdCardsEntryBody(int count);
+
+  /// No description provided for @staffRegistrySelectedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} selected'**
+  String staffRegistrySelectedCount(int count);
+
+  /// No description provided for @staffRegistryStudentsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} students'**
+  String staffRegistryStudentsCount(int count);
+
+  /// No description provided for @staffRegistryStudentMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'{matricNumber} · {programmeCode} · {detail}'**
+  String staffRegistryStudentMeta(
+    String matricNumber,
+    String programmeCode,
+    String detail,
+  );
+
+  /// No description provided for @staffRegistryPromoteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Move {count} students to a new level?'**
+  String staffRegistryPromoteBody(int count);
+
+  /// No description provided for @staffRegistryPromoteConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Promote to {level} Level'**
+  String staffRegistryPromoteConfirm(int level);
+
+  /// No description provided for @staffRegistryPromotedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Moved {count} students to {level} Level.'**
+  String staffRegistryPromotedMessage(int count, int level);
+
+  /// No description provided for @staffRegistryTermsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} terms'**
+  String staffRegistryTermsCount(int count);
+
+  /// No description provided for @staffRegistryTermMeta.
+  ///
+  /// In en, this message translates to:
+  /// **'{level} · {units} units'**
+  String staffRegistryTermMeta(String level, int units);
+
+  /// No description provided for @staffRegistryCourseLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{code} Section {section} · {units} units'**
+  String staffRegistryCourseLine(String code, String section, int units);
+
+  /// No description provided for @staffRegistryIdCardsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} cards'**
+  String staffRegistryIdCardsCount(int count);
+
+  /// No description provided for @staffRegistryTabRequested.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested ({count})'**
+  String staffRegistryTabRequested(int count);
+
+  /// No description provided for @staffRegistryTabReadyForCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready for collection ({count})'**
+  String staffRegistryTabReadyForCollection(int count);
+
+  /// No description provided for @staffRegistryTabCollected.
+  ///
+  /// In en, this message translates to:
+  /// **'Collected ({count})'**
+  String staffRegistryTabCollected(int count);
+
+  /// No description provided for @staffRegistryRequestedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Requested {date}'**
+  String staffRegistryRequestedOn(String date);
+
+  /// No description provided for @staffRegistryPrintedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Printed {date}'**
+  String staffRegistryPrintedOn(String date);
+
+  /// No description provided for @staffRegistryPrintedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{serial} marked ready for collection.'**
+  String staffRegistryPrintedMessage(String serial);
+
+  /// No description provided for @staffRegistryCollectedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{serial} marked collected.'**
+  String staffRegistryCollectedMessage(String serial);
+
+  /// No description provided for @staffRegistryCancelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel the request for {serial}?'**
+  String staffRegistryCancelBody(String serial);
+
+  /// No description provided for @staffRegistryCancelledMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled {serial}.'**
+  String staffRegistryCancelledMessage(String serial);
+
+  /// No description provided for @staffRegistryPreviewExpires.
+  ///
+  /// In en, this message translates to:
+  /// **'Expires {date}'**
+  String staffRegistryPreviewExpires(String date);
 }
 
 class _AppLocalizationsDelegate

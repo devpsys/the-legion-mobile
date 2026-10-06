@@ -155,6 +155,60 @@ abstract final class Routes {
   /// Path parameter name for [registrationDisciplineCaseTemplate].
   static const String registrationDisciplineCaseIdParam = 'caseId';
 
+  /// Staff Registration & Records root (HoD approvals + registry). Authenticated
+  /// but not linked from the student hub — reserved for the staff portal.
+  static const String staffRegistration = '/registration/staff';
+
+  /// HoD course-registration approvals queue.
+  static const String staffRegistrationApprovals =
+      '$staffRegistration/approvals';
+
+  /// Path template of one student's course form under review.
+  static const String staffRegistrationDecisionTemplate =
+      '$staffRegistrationApprovals/:studentId';
+
+  static String staffRegistrationDecision(String studentId) =>
+      staffRegistrationDecisionTemplate.replaceFirst(':studentId', studentId);
+
+  static const String staffRegistrationStudentIdParam = 'studentId';
+
+  /// HoD student-requests decision queue.
+  static const String staffStudentRequests = '$staffRegistration/requests';
+
+  /// Path template of study-plan advising for one student.
+  static const String staffStudyPlanAdvisingTemplate =
+      '$staffRegistration/study-plan/:studentId';
+
+  static String staffStudyPlanAdvising(String studentId) =>
+      staffStudyPlanAdvisingTemplate.replaceFirst(':studentId', studentId);
+
+  /// Registry students directory.
+  static const String staffStudents = '$staffRegistration/students';
+
+  /// Path template of one registry student record.
+  static const String staffStudentRecordTemplate =
+      '$staffStudents/:studentId';
+
+  static String staffStudentRecord(String studentId) =>
+      staffStudentRecordTemplate.replaceFirst(':studentId', studentId);
+
+  /// Registry ID card production queue.
+  static const String staffIdCards = '$staffRegistration/id-cards';
+
+  /// Path template of one ID card print preview.
+  static const String staffIdCardPreviewTemplate = '$staffIdCards/:serial';
+
+  static String staffIdCardPreview(String serial) =>
+      staffIdCardPreviewTemplate.replaceFirst(':serial', Uri.encodeComponent(serial));
+
+  static const String staffIdCardSerialParam = 'serial';
+
+  /// Public verification of a student ID card (QR / code). Outside every shell.
+  static const String verifyIdCard = '/verify/id-card';
+
+  /// Query parameter [verifyIdCard] reads a code from.
+  static const String verifyIdCardCodeParam = 'code';
+
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
   static const String loginName = 'login';
@@ -188,6 +242,17 @@ abstract final class Routes {
   static const String registrationDisciplineName = 'registrationDiscipline';
   static const String registrationDisciplineCaseName =
       'registrationDisciplineCase';
+  static const String staffRegistrationApprovalsName =
+      'staffRegistrationApprovals';
+  static const String staffRegistrationDecisionName =
+      'staffRegistrationDecision';
+  static const String staffStudentRequestsName = 'staffStudentRequests';
+  static const String staffStudyPlanAdvisingName = 'staffStudyPlanAdvising';
+  static const String staffStudentsName = 'staffStudents';
+  static const String staffStudentRecordName = 'staffStudentRecord';
+  static const String staffIdCardsName = 'staffIdCards';
+  static const String staffIdCardPreviewName = 'staffIdCardPreview';
+  static const String verifyIdCardName = 'verifyIdCard';
 
   /// Path parameter name for [feesReceiptTemplate].
   static const String feesReceiptIdParam = 'id';
@@ -222,6 +287,10 @@ abstract final class Routes {
     registrationRequests,
     registrationIdCard,
     registrationDiscipline,
+    staffRegistrationApprovals,
+    staffStudentRequests,
+    staffStudents,
+    staffIdCards,
   };
 
   /// Screens of the student shell that own the whole canvas on phones: no
@@ -268,5 +337,9 @@ abstract final class Routes {
   /// Distinct from [recoveryPaths]: verification is for a person who may
   /// never have an account, and a student scanning their own letter should
   /// not be bounced to the hub for having one.
-  static const Set<String> publicPaths = {verifyAdmission, verifyReceipt};
+  static const Set<String> publicPaths = {
+    verifyAdmission,
+    verifyReceipt,
+    verifyIdCard,
+  };
 }
