@@ -3047,6 +3047,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registrationYourWeekTitle => 'Your Week';
 
   @override
+  String get registrationAddToCalendar => 'Add to calendar';
+
+  @override
+  String get registrationCalendarShared =>
+      'Week schedule ready to add to your calendar.';
+
+  @override
+  String get registrationCalendarShareFailed =>
+      'Could not share the week schedule.';
+
+  @override
+  String get registrationCalendarEmpty =>
+      'There are no lectures this week to add.';
+
+  @override
   String get registrationAddCoursesTitle => 'Add Courses';
 
   @override

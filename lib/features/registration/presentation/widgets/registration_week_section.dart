@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/theme/app_radii.dart';
@@ -6,16 +7,25 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/theme/app_tone.dart';
 import '../../../../core/utils/responsive.dart';
+import '../../../../core/widgets/message_feedback.dart';
 import '../../../../core/widgets/surface_card.dart';
 import '../models/registration_models.dart';
+import '../utils/week_schedule_calendar_share.dart';
 import 'registration_card.dart';
 import 'registration_labels.dart';
 
 /// Segmented week: day pills Mon–Sat, detail for the selected day.
 class RegistrationWeekSection extends StatefulWidget {
-  const RegistrationWeekSection({required this.meetings, super.key});
+  const RegistrationWeekSection({
+    required this.meetings,
+    required this.session,
+    required this.termLabel,
+    super.key,
+  });
 
   final List<WeekMeeting> meetings;
+  final String session;
+  final String termLabel;
 
   @override
   RegistrationWeekSectionState createState() => RegistrationWeekSectionState();
@@ -50,12 +60,39 @@ class RegistrationWeekSectionState extends State<RegistrationWeekSection> {
   List<WeekMeeting> _forDay(int day) =>
       widget.meetings.where((m) => m.weekday == day).toList(growable: false);
 
+  Future<void> _shareToCalendar(BuildContext context) async {
+    final l10n = context.l10n;
+    if (widget.meetings.isEmpty) {
+      context.showMessage(l10n.registrationCalendarEmpty);
+      return;
+    }
+
+    try {
+      final result = await WeekScheduleCalendarShare.share(
+        meetings: widget.meetings,
+        session: widget.session,
+        termLabel: widget.termLabel,
+      );
+      if (!context.mounted) return;
+      if (result.status == ShareResultStatus.dismissed) return;
+      if (result.status == ShareResultStatus.unavailable) {
+        context.showErrorMessage(l10n.registrationCalendarShareFailed);
+        return;
+      }
+      context.showMessage(l10n.registrationCalendarShared);
+    } on Object {
+      if (!context.mounted) return;
+      context.showErrorMessage(l10n.registrationCalendarShareFailed);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final theme = context.theme;
     final selectedMeetings = _forDay(_selectedWeekday);
     final showActiveDay = _selectedWeekday == 1;
+    final canShare = widget.meetings.isNotEmpty;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -72,10 +109,28 @@ class RegistrationWeekSectionState extends State<RegistrationWeekSection> {
                 ),
               ),
             ),
-            Text(
-              l10n.registrationLectureLabSchedule,
-              style: AppTextStyles.codeSmall.copyWith(
-                color: theme.colorScheme.onSurfaceVariant,
+            TextButton.icon(
+              onPressed: canShare ? () => _shareToCalendar(context) : null,
+              style: TextButton.styleFrom(
+                foregroundColor: theme.colorScheme.primary,
+                disabledForegroundColor: theme.colorScheme.onSurfaceVariant,
+                padding: const EdgeInsets.symmetric(horizontal: AppSpacing.sm),
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                visualDensity: VisualDensity.compact,
+              ),
+              icon: Icon(
+                Icons.calendar_month_outlined,
+                size: AppDimensions.iconDense,
+              ),
+              label: Text(
+                l10n.registrationAddToCalendar,
+                style: AppTextStyles.codeSmall.copyWith(
+                  fontWeight: AppTextStyles.semiBold,
+                  color: canShare
+                      ? theme.colorScheme.primary
+                      : theme.colorScheme.onSurfaceVariant,
+                ),
               ),
             ),
           ],

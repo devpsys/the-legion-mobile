@@ -90,7 +90,11 @@ class RegistrationBodyState extends State<RegistrationBody> {
                   onReadd: cubit.requestReadd,
                 ),
                 AppSpacing.verticalGap(AppSpacing.xl),
-                RegistrationWeekSection(meetings: state.week),
+                RegistrationWeekSection(
+                  meetings: state.week,
+                  session: window.session,
+                  termLabel: window.termLabel,
+                ),
               ] else
                 CatalogueSection(
                   catalogue: state.catalogue,

@@ -186,10 +186,11 @@ abstract final class AppTheme {
 
       snackBarTheme: SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
-        backgroundColor: AppColors.card(brightness),
+        backgroundColor: scheme.inverseSurface,
         contentTextStyle: textTheme.bodyMedium?.copyWith(
-          color: AppColors.textPrimary(brightness),
+          color: scheme.onInverseSurface,
         ),
+        actionTextColor: scheme.onInverseSurface,
         elevation: 0,
         shape: const RoundedRectangleBorder(
           borderRadius: AppRadii.elementRadius,

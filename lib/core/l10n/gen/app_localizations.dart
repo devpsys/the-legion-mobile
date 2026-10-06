@@ -5253,6 +5253,30 @@ abstract class AppLocalizations {
   /// **'Your Week'**
   String get registrationYourWeekTitle;
 
+  /// No description provided for @registrationAddToCalendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to calendar'**
+  String get registrationAddToCalendar;
+
+  /// No description provided for @registrationCalendarShared.
+  ///
+  /// In en, this message translates to:
+  /// **'Week schedule ready to add to your calendar.'**
+  String get registrationCalendarShared;
+
+  /// No description provided for @registrationCalendarShareFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not share the week schedule.'**
+  String get registrationCalendarShareFailed;
+
+  /// No description provided for @registrationCalendarEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'There are no lectures this week to add.'**
+  String get registrationCalendarEmpty;
+
   /// No description provided for @registrationAddCoursesTitle.
   ///
   /// In en, this message translates to:
