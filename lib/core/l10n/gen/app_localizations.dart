@@ -7796,6 +7796,3111 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Expires {date}'**
   String staffRegistryPreviewExpires(String date);
+
+  /// No description provided for @navAccommodation.
+  ///
+  /// In en, this message translates to:
+  /// **'Accommodation'**
+  String get navAccommodation;
+
+  /// No description provided for @navAccommodationHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get navAccommodationHistory;
+
+  /// No description provided for @accommodationBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get accommodationBackTooltip;
+
+  /// No description provided for @accommodationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accommodation'**
+  String get accommodationTitle;
+
+  /// No description provided for @accommodationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostel accommodation for {term}.'**
+  String accommodationSubtitle(Object term);
+
+  /// No description provided for @accommodationBreadcrumbStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get accommodationBreadcrumbStudent;
+
+  /// No description provided for @accommodationMatricLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'{matricNumber} · {level} Level'**
+  String accommodationMatricLevel(Object level, Object matricNumber);
+
+  /// No description provided for @accommodationBookFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Book for'**
+  String get accommodationBookFor;
+
+  /// No description provided for @accommodationEverythingBelow.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything below is for {term}.'**
+  String accommodationEverythingBelow(Object term);
+
+  /// No description provided for @accommodationRoomBed.
+  ///
+  /// In en, this message translates to:
+  /// **'Room {room} · Bed {bed}'**
+  String accommodationRoomBed(Object bed, Object room);
+
+  /// No description provided for @accommodationBedFull.
+  ///
+  /// In en, this message translates to:
+  /// **'{hostelBlock} · Room {room} · Bed {bed}'**
+  String accommodationBedFull(Object bed, Object hostelBlock, Object room);
+
+  /// No description provided for @accommodationRoomOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'{hostelBlock} · Room {room}'**
+  String accommodationRoomOnly(Object hostelBlock, Object room);
+
+  /// No description provided for @accommodationBlockRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'{block} · Room {room}'**
+  String accommodationBlockRoom(Object block, Object room);
+
+  /// No description provided for @accommodationRoomLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{hostelBlock} · Room {room}'**
+  String accommodationRoomLine(Object hostelBlock, Object room);
+
+  /// No description provided for @accommodationDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours} hours and {minutes} minutes'**
+  String accommodationDuration(Object hours, Object minutes);
+
+  /// No description provided for @accommodationStatusNotScheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Not scheduled'**
+  String get accommodationStatusNotScheduled;
+
+  /// No description provided for @accommodationStatusNeedsTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms to accept'**
+  String get accommodationStatusNeedsTerms;
+
+  /// No description provided for @accommodationStatusBookingOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking open'**
+  String get accommodationStatusBookingOpen;
+
+  /// No description provided for @accommodationStatusHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Reserved, awaiting payment'**
+  String get accommodationStatusHeld;
+
+  /// No description provided for @accommodationStatusOffered.
+  ///
+  /// In en, this message translates to:
+  /// **'Offered, awaiting the student'**
+  String get accommodationStatusOffered;
+
+  /// No description provided for @accommodationStatusConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get accommodationStatusConfirmed;
+
+  /// No description provided for @accommodationStatusCheckedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked in'**
+  String get accommodationStatusCheckedIn;
+
+  /// No description provided for @accommodationNotScheduledTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking for {term} hasn\'t been scheduled.'**
+  String accommodationNotScheduledTitle(Object term);
+
+  /// No description provided for @accommodationNotScheduledBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It is normally published in September. Check back, or ask the housing office.'**
+  String get accommodationNotScheduledBody;
+
+  /// No description provided for @accommodationCalendarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{term} housing calendar'**
+  String accommodationCalendarTitle(Object term);
+
+  /// No description provided for @accommodationCalendarBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking hasn\'t opened, so these rooms cannot be booked yet.'**
+  String get accommodationCalendarBody;
+
+  /// No description provided for @accommodationNeedsTermsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept the accommodation terms'**
+  String get accommodationNeedsTermsTitle;
+
+  /// No description provided for @accommodationNeedsTermsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking for {term} opens once you accept version {version} of the accommodation terms.'**
+  String accommodationNeedsTermsBody(Object term, Object version);
+
+  /// No description provided for @accommodationNeedsTermsAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Read and accept the terms'**
+  String get accommodationNeedsTermsAction;
+
+  /// No description provided for @accommodationRoomsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rooms you can book'**
+  String get accommodationRoomsTitle;
+
+  /// No description provided for @accommodationRoomsVisible.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} rooms visible'**
+  String accommodationRoomsVisible(Object count);
+
+  /// No description provided for @accommodationRoomsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds are held for you until the fee is paid. You get the first free bed in the room.'**
+  String get accommodationRoomsIntro;
+
+  /// No description provided for @accommodationRoomsSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search hostel, block or room'**
+  String get accommodationRoomsSearchHint;
+
+  /// No description provided for @accommodationRoomsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No rooms to show'**
+  String get accommodationRoomsEmptyTitle;
+
+  /// No description provided for @accommodationRoomsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'No room matches, or every room is full. Check back, or ask the housing office about the waitlist.'**
+  String get accommodationRoomsEmptyBody;
+
+  /// No description provided for @accommodationRoomsFilterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostels are filtered for you'**
+  String get accommodationRoomsFilterTitle;
+
+  /// No description provided for @accommodationRoomsFilterBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostels that are not open to your gender, programme or level are left out automatically.'**
+  String get accommodationRoomsFilterBody;
+
+  /// No description provided for @accommodationRoomsPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rooms'**
+  String get accommodationRoomsPageTitle;
+
+  /// No description provided for @accommodationRoomsClosedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rooms are not open for booking'**
+  String get accommodationRoomsClosedTitle;
+
+  /// No description provided for @accommodationRoomsClosedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{term} is not open for booking, so there are no rooms to choose from.'**
+  String accommodationRoomsClosedBody(Object term);
+
+  /// No description provided for @accommodationRoomsBackToHub.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to accommodation'**
+  String get accommodationRoomsBackToHub;
+
+  /// No description provided for @accommodationFreeBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} free'**
+  String accommodationFreeBeds(Object count);
+
+  /// No description provided for @accommodationOfBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'of {total} beds'**
+  String accommodationOfBeds(Object total);
+
+  /// No description provided for @accommodationPerTerm.
+  ///
+  /// In en, this message translates to:
+  /// **'/ term'**
+  String get accommodationPerTerm;
+
+  /// No description provided for @accommodationSingleSlotNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Single remaining slot. Roommate pairing is unavailable.'**
+  String get accommodationSingleSlotNote;
+
+  /// No description provided for @accommodationBookRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Book room'**
+  String get accommodationBookRoom;
+
+  /// No description provided for @accommodationRoomOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get accommodationRoomOpen;
+
+  /// No description provided for @accommodationRoomSingleSlot.
+  ///
+  /// In en, this message translates to:
+  /// **'Last bed'**
+  String get accommodationRoomSingleSlot;
+
+  /// No description provided for @accommodationRoomUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable'**
+  String get accommodationRoomUnavailable;
+
+  /// No description provided for @accommodationRoomMaintenance.
+  ///
+  /// In en, this message translates to:
+  /// **'Maintenance'**
+  String get accommodationRoomMaintenance;
+
+  /// No description provided for @accommodationHoldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm room hold'**
+  String get accommodationHoldTitle;
+
+  /// No description provided for @accommodationHoldSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Term'**
+  String get accommodationHoldSession;
+
+  /// No description provided for @accommodationHoldFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed fee'**
+  String get accommodationHoldFee;
+
+  /// No description provided for @accommodationHoldExpiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold expires'**
+  String get accommodationHoldExpiry;
+
+  /// No description provided for @accommodationHoldMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'{minutes} minutes after issue'**
+  String accommodationHoldMinutes(Object minutes);
+
+  /// No description provided for @accommodationHoldBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Continuing raises an invoice in your payments ledger straight away. The bed stays held for you while payment is confirmed.'**
+  String get accommodationHoldBody;
+
+  /// No description provided for @accommodationHoldConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Raise invoice and hold bed'**
+  String get accommodationHoldConfirm;
+
+  /// No description provided for @accommodationHoldCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel selection'**
+  String get accommodationHoldCancel;
+
+  /// No description provided for @accommodationPortalLock.
+  ///
+  /// In en, this message translates to:
+  /// **'Portal lock'**
+  String get accommodationPortalLock;
+
+  /// No description provided for @accommodationLeftToPay.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} left to pay'**
+  String accommodationLeftToPay(Object duration);
+
+  /// No description provided for @accommodationLeftToAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'{duration} left to answer'**
+  String accommodationLeftToAnswer(Object duration);
+
+  /// No description provided for @accommodationLockLapses.
+  ///
+  /// In en, this message translates to:
+  /// **'The hold lapses automatically at the deadline.'**
+  String get accommodationLockLapses;
+
+  /// No description provided for @accommodationTotalFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Total allocation fee'**
+  String get accommodationTotalFee;
+
+  /// No description provided for @accommodationSessionFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Total session fee'**
+  String get accommodationSessionFee;
+
+  /// No description provided for @accommodationPayBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount} by {date}.'**
+  String accommodationPayBy(Object amount, Object date);
+
+  /// No description provided for @accommodationGraceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grace period clause'**
+  String get accommodationGraceTitle;
+
+  /// No description provided for @accommodationGraceBody.
+  ///
+  /// In en, this message translates to:
+  /// **'If it is late, the bed is still kept until {date} and then released. A fee paid during that grace still confirms the bed.'**
+  String accommodationGraceBody(Object date);
+
+  /// No description provided for @accommodationInvoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice {reference}'**
+  String accommodationInvoice(Object reference);
+
+  /// No description provided for @accommodationOpenPayments.
+  ///
+  /// In en, this message translates to:
+  /// **'Open in Payments'**
+  String get accommodationOpenPayments;
+
+  /// No description provided for @accommodationPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount}'**
+  String accommodationPay(Object amount);
+
+  /// No description provided for @accommodationCancelBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel booking'**
+  String get accommodationCancelBooking;
+
+  /// No description provided for @accommodationCancelWalletNote.
+  ///
+  /// In en, this message translates to:
+  /// **'If you cancel, anything you have paid goes to your wallet — it is not refunded to your card.'**
+  String get accommodationCancelWalletNote;
+
+  /// No description provided for @accommodationCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this booking?'**
+  String get accommodationCancelTitle;
+
+  /// No description provided for @accommodationCancelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelling releases {bed} straight away and it goes to the next student. Anything you have paid goes to your wallet.'**
+  String accommodationCancelBody(Object bed);
+
+  /// No description provided for @accommodationCancelConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel booking'**
+  String get accommodationCancelConfirm;
+
+  /// No description provided for @accommodationCancelKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep my allocation'**
+  String get accommodationCancelKeep;
+
+  /// No description provided for @accommodationCancelConfirmedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this booking and release the bed?'**
+  String get accommodationCancelConfirmedTitle;
+
+  /// No description provided for @accommodationCancelFreeBody.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no fee to refund. You lose the bed and it goes to the next student.'**
+  String get accommodationCancelFreeBody;
+
+  /// No description provided for @accommodationCancelPaidBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You lose the bed and it goes to the next student. What you paid goes to your wallet, less any cancellation charge.'**
+  String get accommodationCancelPaidBody;
+
+  /// No description provided for @accommodationCancelForfeit.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm forfeiture'**
+  String get accommodationCancelForfeit;
+
+  /// No description provided for @accommodationCancelKeepBed.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep bed'**
+  String get accommodationCancelKeepBed;
+
+  /// No description provided for @accommodationSessionCoverTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Session booking'**
+  String get accommodationSessionCoverTitle;
+
+  /// No description provided for @accommodationSessionCoverBody.
+  ///
+  /// In en, this message translates to:
+  /// **'One booking covers {first} and {second}: the same bed throughout, invoiced once.'**
+  String accommodationSessionCoverBody(Object first, Object second);
+
+  /// No description provided for @accommodationWaitlistOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'Waitlist allocation'**
+  String get accommodationWaitlistOffer;
+
+  /// No description provided for @accommodationOfferReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer #{reference}'**
+  String accommodationOfferReference(Object reference);
+
+  /// No description provided for @accommodationAnswerOnce.
+  ///
+  /// In en, this message translates to:
+  /// **'You can only answer this once. If you do nothing, it is offered to the next student.'**
+  String get accommodationAnswerOnce;
+
+  /// No description provided for @accommodationOfferBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This bed is offered to you from the waitlist. It is not yours, and nothing is charged, until you accept. Answer by {date} or it goes to the next student.'**
+  String accommodationOfferBody(Object date);
+
+  /// No description provided for @accommodationOtherTermUnaffected.
+  ///
+  /// In en, this message translates to:
+  /// **'Your bed in {term} is not affected by this.'**
+  String accommodationOtherTermUnaffected(Object term);
+
+  /// No description provided for @accommodationAcceptRaises.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepting raises an invoice of {amount}.'**
+  String accommodationAcceptRaises(Object amount);
+
+  /// No description provided for @accommodationAcceptBed.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept the bed'**
+  String get accommodationAcceptBed;
+
+  /// No description provided for @accommodationDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get accommodationDecline;
+
+  /// No description provided for @accommodationDeclineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline this bed?'**
+  String get accommodationDeclineTitle;
+
+  /// No description provided for @accommodationDeclineBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You leave the waitlist and it goes to the next student. This cannot be reversed.'**
+  String get accommodationDeclineBody;
+
+  /// No description provided for @accommodationDeclineConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm decline'**
+  String get accommodationDeclineConfirm;
+
+  /// No description provided for @accommodationDeclineKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep my offer'**
+  String get accommodationDeclineKeep;
+
+  /// No description provided for @accommodationOtherOffersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How other offers work'**
+  String get accommodationOtherOffersTitle;
+
+  /// No description provided for @accommodationOtherOffersRoommate.
+  ///
+  /// In en, this message translates to:
+  /// **'Roommate named you: a bed reserved by an approved room buddy. You must confirm, or it is released.'**
+  String get accommodationOtherOffersRoommate;
+
+  /// No description provided for @accommodationOtherOffersRetain.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeping your bed from last term: a priority booking window before booking opens to everybody, or it is released.'**
+  String get accommodationOtherOffersRetain;
+
+  /// No description provided for @accommodationScholarshipQuota.
+  ///
+  /// In en, this message translates to:
+  /// **'Scholarship quota'**
+  String get accommodationScholarshipQuota;
+
+  /// No description provided for @accommodationYoursFor.
+  ///
+  /// In en, this message translates to:
+  /// **'{bed} is yours for {term}.'**
+  String accommodationYoursFor(Object bed, Object term);
+
+  /// No description provided for @accommodationSlipCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Slip code'**
+  String get accommodationSlipCode;
+
+  /// No description provided for @accommodationSlipCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy slip code'**
+  String get accommodationSlipCopy;
+
+  /// No description provided for @accommodationSlipCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Slip code copied.'**
+  String get accommodationSlipCopied;
+
+  /// No description provided for @accommodationSlipHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Bring your slip and your ID card to the hall office when you check in.'**
+  String get accommodationSlipHint;
+
+  /// No description provided for @accommodationSlipDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocation slip'**
+  String get accommodationSlipDownload;
+
+  /// No description provided for @accommodationSlipDownloadPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Download allocation slip (PDF)'**
+  String get accommodationSlipDownloadPdf;
+
+  /// No description provided for @accommodationPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get accommodationPrice;
+
+  /// No description provided for @accommodationPriceFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get accommodationPriceFree;
+
+  /// No description provided for @accommodationFreeNote.
+  ///
+  /// In en, this message translates to:
+  /// **'A scholarship exemption applies. No fee is due.'**
+  String get accommodationFreeNote;
+
+  /// No description provided for @accommodationOfficialResident.
+  ///
+  /// In en, this message translates to:
+  /// **'Official resident'**
+  String get accommodationOfficialResident;
+
+  /// No description provided for @accommodationResidentDesignated.
+  ///
+  /// In en, this message translates to:
+  /// **'Your official designated room is {bed}.'**
+  String accommodationResidentDesignated(Object bed);
+
+  /// No description provided for @accommodationCheckedInLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked in {date}. Your official designated room is {bed}.'**
+  String accommodationCheckedInLine(Object bed, Object date);
+
+  /// No description provided for @accommodationClearanceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Present this slip code or your student ID card at the porter lodge or the gate when asked.'**
+  String get accommodationClearanceHint;
+
+  /// No description provided for @accommodationResidenceRecord.
+  ///
+  /// In en, this message translates to:
+  /// **'Residence record'**
+  String get accommodationResidenceRecord;
+
+  /// No description provided for @accommodationCheckInDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Check-in'**
+  String get accommodationCheckInDate;
+
+  /// No description provided for @accommodationTenancyTerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Tenancy term'**
+  String get accommodationTenancyTerm;
+
+  /// No description provided for @accommodationValidUntil.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid until {date}'**
+  String accommodationValidUntil(Object date);
+
+  /// No description provided for @accommodationKeyTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Key tag'**
+  String get accommodationKeyTag;
+
+  /// No description provided for @accommodationLocker.
+  ///
+  /// In en, this message translates to:
+  /// **'Locker'**
+  String get accommodationLocker;
+
+  /// No description provided for @accommodationPorterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{hostel} porter lodge'**
+  String accommodationPorterTitle(Object hostel);
+
+  /// No description provided for @accommodationPorterDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Campus ext. #41'**
+  String get accommodationPorterDetail;
+
+  /// No description provided for @accommodationPorterBody.
+  ///
+  /// In en, this message translates to:
+  /// **'For maintenance requests, plumbing checks or a replacement key, tell the porter on duty or call the extension.'**
+  String get accommodationPorterBody;
+
+  /// No description provided for @accommodationNextTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What happens next'**
+  String get accommodationNextTitle;
+
+  /// No description provided for @accommodationNextStage.
+  ///
+  /// In en, this message translates to:
+  /// **'Stage {stage} of {total}'**
+  String accommodationNextStage(Object stage, Object total);
+
+  /// No description provided for @accommodationStepBooked.
+  ///
+  /// In en, this message translates to:
+  /// **'Booked'**
+  String get accommodationStepBooked;
+
+  /// No description provided for @accommodationStepBookedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The bed is reserved for you in the hostel inventory.'**
+  String get accommodationStepBookedBody;
+
+  /// No description provided for @accommodationStepPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay the fee'**
+  String get accommodationStepPay;
+
+  /// No description provided for @accommodationStepPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee paid'**
+  String get accommodationStepPaid;
+
+  /// No description provided for @accommodationStepCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get accommodationStepCleared;
+
+  /// No description provided for @accommodationStepBy.
+  ///
+  /// In en, this message translates to:
+  /// **'By {date}'**
+  String accommodationStepBy(Object date);
+
+  /// No description provided for @accommodationStepFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From {date}'**
+  String accommodationStepFrom(Object date);
+
+  /// No description provided for @accommodationStepPayBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Paying the fee confirms your bed and issues your allocation slip.'**
+  String get accommodationStepPayBody;
+
+  /// No description provided for @accommodationStepClearedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleared straight away by your scholarship exemption.'**
+  String get accommodationStepClearedBody;
+
+  /// No description provided for @accommodationStepCheckIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Check in at the hall office'**
+  String get accommodationStepCheckIn;
+
+  /// No description provided for @accommodationStepCheckInBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Collect your key from the hall warden with your slip and ID card.'**
+  String get accommodationStepCheckInBody;
+
+  /// No description provided for @accommodationSwapIncoming.
+  ///
+  /// In en, this message translates to:
+  /// **'Incoming proposal'**
+  String get accommodationSwapIncoming;
+
+  /// No description provided for @accommodationSwapExpires.
+  ///
+  /// In en, this message translates to:
+  /// **'Exp: {date}'**
+  String accommodationSwapExpires(Object date);
+
+  /// No description provided for @accommodationSwapBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The student in {bed} has asked to swap beds with you. Swap beds? Any difference in price is invoiced or credited to your wallet.'**
+  String accommodationSwapBody(Object bed);
+
+  /// No description provided for @accommodationSwapAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap'**
+  String get accommodationSwapAccept;
+
+  /// No description provided for @accommodationSwapDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get accommodationSwapDecline;
+
+  /// No description provided for @accommodationSwapTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap beds with another student'**
+  String get accommodationSwapTitle;
+
+  /// No description provided for @accommodationSwapIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the matric number of the student you want to swap with. Both of you must hold a reserved or confirmed bed in the same term.'**
+  String get accommodationSwapIntro;
+
+  /// No description provided for @accommodationSwapMatricLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Their matric number'**
+  String get accommodationSwapMatricLabel;
+
+  /// No description provided for @accommodationSwapMatricHint.
+  ///
+  /// In en, this message translates to:
+  /// **'25/CSC/0202'**
+  String get accommodationSwapMatricHint;
+
+  /// No description provided for @accommodationSwapVerify.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify'**
+  String get accommodationSwapVerify;
+
+  /// No description provided for @accommodationSwapNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No student with a bed this term has that matric number.'**
+  String get accommodationSwapNotFound;
+
+  /// No description provided for @accommodationSwapFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Found student: {name}'**
+  String accommodationSwapFound(Object name);
+
+  /// No description provided for @accommodationSwapPropose.
+  ///
+  /// In en, this message translates to:
+  /// **'Propose swap'**
+  String get accommodationSwapPropose;
+
+  /// No description provided for @accommodationTermsPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accommodation terms'**
+  String get accommodationTermsPageTitle;
+
+  /// No description provided for @accommodationTermsGovernance.
+  ///
+  /// In en, this message translates to:
+  /// **'Residential code and tenancy'**
+  String get accommodationTermsGovernance;
+
+  /// No description provided for @accommodationTermsHeadline.
+  ///
+  /// In en, this message translates to:
+  /// **'Accommodation terms'**
+  String get accommodationTermsHeadline;
+
+  /// No description provided for @accommodationTermsGate.
+  ///
+  /// In en, this message translates to:
+  /// **'You must accept these terms before you can book a room.'**
+  String get accommodationTermsGate;
+
+  /// No description provided for @accommodationTermsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The agreement'**
+  String get accommodationTermsTitle;
+
+  /// No description provided for @accommodationTermsVersion.
+  ///
+  /// In en, this message translates to:
+  /// **'v{version}'**
+  String accommodationTermsVersion(Object version);
+
+  /// No description provided for @accommodationTermsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version}. Accept them to book a room for {term}.'**
+  String accommodationTermsIntro(Object term, Object version);
+
+  /// No description provided for @accommodationTermsCheckbox.
+  ///
+  /// In en, this message translates to:
+  /// **'I have read and accept the accommodation terms.'**
+  String get accommodationTermsCheckbox;
+
+  /// No description provided for @accommodationTermsTickError.
+  ///
+  /// In en, this message translates to:
+  /// **'Tick the box to accept the accommodation terms.'**
+  String get accommodationTermsTickError;
+
+  /// No description provided for @accommodationTermsAccept.
+  ///
+  /// In en, this message translates to:
+  /// **'Accept terms'**
+  String get accommodationTermsAccept;
+
+  /// No description provided for @accommodationTermsAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'You have accepted version {version} of the accommodation terms.'**
+  String accommodationTermsAccepted(Object version);
+
+  /// No description provided for @accommodationTermsRecordNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Accepting records this version and the date against your account.'**
+  String get accommodationTermsRecordNote;
+
+  /// No description provided for @accommodationTermsSeal.
+  ///
+  /// In en, this message translates to:
+  /// **'Deanery of Student Affairs · {reference}'**
+  String accommodationTermsSeal(Object reference);
+
+  /// No description provided for @accommodationClauseLoadBearing.
+  ///
+  /// In en, this message translates to:
+  /// **'If the fee is late, the bed is released.'**
+  String get accommodationClauseLoadBearing;
+
+  /// No description provided for @accommodationHistoryLinkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accommodation history'**
+  String get accommodationHistoryLinkTitle;
+
+  /// No description provided for @accommodationHistoryLinkBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Rooms and beds you held in earlier terms.'**
+  String get accommodationHistoryLinkBody;
+
+  /// No description provided for @accommodationHistoryNoCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'No current allocation'**
+  String get accommodationHistoryNoCurrent;
+
+  /// No description provided for @accommodationHistoryNoBed.
+  ///
+  /// In en, this message translates to:
+  /// **'No bed allocated for {term}'**
+  String accommodationHistoryNoBed(Object term);
+
+  /// No description provided for @accommodationHistoryNoBedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The allocation window may be closed, or you have not applied for a bed. When a waitlist offer or a booking window opens, it will appear here.'**
+  String get accommodationHistoryNoBedBody;
+
+  /// No description provided for @accommodationHistoryCurrentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This is your bed for the selected term.'**
+  String get accommodationHistoryCurrentBody;
+
+  /// No description provided for @accommodationHistoryOpenings.
+  ///
+  /// In en, this message translates to:
+  /// **'View housing openings and notices'**
+  String get accommodationHistoryOpenings;
+
+  /// No description provided for @accommodationHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accommodation history'**
+  String get accommodationHistoryTitle;
+
+  /// No description provided for @accommodationHistoryCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} records'**
+  String accommodationHistoryCount(Object count);
+
+  /// No description provided for @accommodationHistoryIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'Rooms and beds you held in earlier terms. Use this record for clearance or proof of earlier residence.'**
+  String get accommodationHistoryIntro;
+
+  /// No description provided for @accommodationHistoryBed.
+  ///
+  /// In en, this message translates to:
+  /// **'{hostelBlock} / Room {room} · Bed {bed}'**
+  String accommodationHistoryBed(Object bed, Object hostelBlock, Object room);
+
+  /// No description provided for @accommodationHistorySession.
+  ///
+  /// In en, this message translates to:
+  /// **'Session {label}'**
+  String accommodationHistorySession(Object label);
+
+  /// No description provided for @accommodationHistoryCheckedOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked out'**
+  String get accommodationHistoryCheckedOut;
+
+  /// No description provided for @accommodationHistoryCancelledCharge.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled with a charge'**
+  String get accommodationHistoryCancelledCharge;
+
+  /// No description provided for @accommodationHistoryCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get accommodationHistoryCancelled;
+
+  /// No description provided for @accommodationHistoryExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Expired'**
+  String get accommodationHistoryExpired;
+
+  /// No description provided for @accommodationHistoryEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No previous accommodation'**
+  String get accommodationHistoryEmptyTitle;
+
+  /// No description provided for @accommodationHistoryEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'You have not held a bed in a hostel before.'**
+  String get accommodationHistoryEmptyBody;
+
+  /// No description provided for @accommodationHistoryExport.
+  ///
+  /// In en, this message translates to:
+  /// **'Export accommodation history'**
+  String get accommodationHistoryExport;
+
+  /// No description provided for @accommodationHistoryDisplaying.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing all {count} past records.'**
+  String accommodationHistoryDisplaying(Object count);
+
+  /// No description provided for @accommodationSupportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student welfare and housing directorate'**
+  String get accommodationSupportTitle;
+
+  /// No description provided for @accommodationSupportExtension.
+  ///
+  /// In en, this message translates to:
+  /// **'Ext. #41'**
+  String get accommodationSupportExtension;
+
+  /// No description provided for @accommodationSupportCall.
+  ///
+  /// In en, this message translates to:
+  /// **'Call the directorate'**
+  String get accommodationSupportCall;
+
+  /// No description provided for @accommodationNoticeTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms accepted. Booking is open.'**
+  String get accommodationNoticeTerms;
+
+  /// No description provided for @accommodationNoticeHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed held. Pay before the deadline to confirm it.'**
+  String get accommodationNoticeHeld;
+
+  /// No description provided for @accommodationNoticeCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking cancelled and the bed released.'**
+  String get accommodationNoticeCancelled;
+
+  /// No description provided for @accommodationNoticeAccepted.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer accepted. An invoice has been raised.'**
+  String get accommodationNoticeAccepted;
+
+  /// No description provided for @accommodationNoticeDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer declined. You have left the waitlist.'**
+  String get accommodationNoticeDeclined;
+
+  /// No description provided for @accommodationNoticeSwapDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds swapped.'**
+  String get accommodationNoticeSwapDone;
+
+  /// No description provided for @accommodationNoticeSwapDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap declined.'**
+  String get accommodationNoticeSwapDeclined;
+
+  /// No description provided for @accommodationNoticeSwapSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap proposal sent.'**
+  String get accommodationNoticeSwapSent;
+
+  /// No description provided for @housingTaskBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Housing Directorate'**
+  String get housingTaskBarTitle;
+
+  /// No description provided for @housingTaskBarSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Staff · Accommodation'**
+  String get housingTaskBarSubtitle;
+
+  /// No description provided for @housingBreadcrumbRoot.
+  ///
+  /// In en, this message translates to:
+  /// **'Housing'**
+  String get housingBreadcrumbRoot;
+
+  /// No description provided for @housingSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save changes'**
+  String get housingSave;
+
+  /// No description provided for @housingNone.
+  ///
+  /// In en, this message translates to:
+  /// **'None'**
+  String get housingNone;
+
+  /// No description provided for @housingConfirmKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep as it is'**
+  String get housingConfirmKeep;
+
+  /// No description provided for @housingDaysSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **'days'**
+  String get housingDaysSuffix;
+
+  /// No description provided for @housingPercentSign.
+  ///
+  /// In en, this message translates to:
+  /// **'%'**
+  String get housingPercentSign;
+
+  /// No description provided for @housingHours.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} hours'**
+  String housingHours(Object count);
+
+  /// No description provided for @housingDays.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days'**
+  String housingDays(Object count);
+
+  /// No description provided for @housingBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} beds'**
+  String housingBeds(Object count);
+
+  /// No description provided for @housingPercent.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}%'**
+  String housingPercent(Object percent);
+
+  /// No description provided for @housingFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get housingFilterAll;
+
+  /// No description provided for @housingStateHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Held'**
+  String get housingStateHeld;
+
+  /// No description provided for @housingStateOffered.
+  ///
+  /// In en, this message translates to:
+  /// **'Offered'**
+  String get housingStateOffered;
+
+  /// No description provided for @housingStateConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get housingStateConfirmed;
+
+  /// No description provided for @housingStateCheckedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked in'**
+  String get housingStateCheckedIn;
+
+  /// No description provided for @housingStateCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get housingStateCancelled;
+
+  /// No description provided for @housingMethodStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Booked by student'**
+  String get housingMethodStudent;
+
+  /// No description provided for @housingMethodByHand.
+  ///
+  /// In en, this message translates to:
+  /// **'By hand'**
+  String get housingMethodByHand;
+
+  /// No description provided for @housingMethodSpreadsheet.
+  ///
+  /// In en, this message translates to:
+  /// **'Spreadsheet'**
+  String get housingMethodSpreadsheet;
+
+  /// No description provided for @housingMethodAutomatic.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic'**
+  String get housingMethodAutomatic;
+
+  /// No description provided for @housingMethodDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get housingMethodDraw;
+
+  /// No description provided for @housingMethodKeepMyRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep my room'**
+  String get housingMethodKeepMyRoom;
+
+  /// No description provided for @housingGenderFemale.
+  ///
+  /// In en, this message translates to:
+  /// **'Female hostel'**
+  String get housingGenderFemale;
+
+  /// No description provided for @housingGenderMale.
+  ///
+  /// In en, this message translates to:
+  /// **'Male hostel'**
+  String get housingGenderMale;
+
+  /// No description provided for @housingGenderMixed.
+  ///
+  /// In en, this message translates to:
+  /// **'Mixed hostel'**
+  String get housingGenderMixed;
+
+  /// No description provided for @housingBedFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get housingBedFree;
+
+  /// No description provided for @housingBedHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Held'**
+  String get housingBedHeld;
+
+  /// No description provided for @housingBedTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken'**
+  String get housingBedTaken;
+
+  /// No description provided for @housingBedBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Not bookable'**
+  String get housingBedBlocked;
+
+  /// No description provided for @housingBedSemantics.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed {number}, {state}'**
+  String housingBedSemantics(Object number, Object state);
+
+  /// No description provided for @housingBedSemanticsOccupied.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed {number}, {state}, {occupant}'**
+  String housingBedSemanticsOccupied(
+    Object number,
+    Object occupant,
+    Object state,
+  );
+
+  /// No description provided for @housingRoomOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get housingRoomOpen;
+
+  /// No description provided for @housingRoomMaintenance.
+  ///
+  /// In en, this message translates to:
+  /// **'Maintenance'**
+  String get housingRoomMaintenance;
+
+  /// No description provided for @housingRoomClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get housingRoomClosed;
+
+  /// No description provided for @housingBookingFirstCome.
+  ///
+  /// In en, this message translates to:
+  /// **'First come'**
+  String get housingBookingFirstCome;
+
+  /// No description provided for @housingBookingDraw.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get housingBookingDraw;
+
+  /// No description provided for @housingBookingPriority.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get housingBookingPriority;
+
+  /// No description provided for @housingOpeningScheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Scheduled'**
+  String get housingOpeningScheduled;
+
+  /// No description provided for @housingOpeningOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get housingOpeningOpen;
+
+  /// No description provided for @housingOpeningClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get housingOpeningClosed;
+
+  /// No description provided for @housingIssueBedUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'No such bed in the hostel inventory.'**
+  String get housingIssueBedUnknown;
+
+  /// No description provided for @housingIssueMatricUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'No student has this matric number.'**
+  String get housingIssueMatricUnknown;
+
+  /// No description provided for @housingIssueBedTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'This bed is already allocated.'**
+  String get housingIssueBedTaken;
+
+  /// No description provided for @housingIssueDuplicate.
+  ///
+  /// In en, this message translates to:
+  /// **'This student appears on more than one row.'**
+  String get housingIssueDuplicate;
+
+  /// No description provided for @housingIssueGender.
+  ///
+  /// In en, this message translates to:
+  /// **'The hostel is not open to this student\'s gender.'**
+  String get housingIssueGender;
+
+  /// No description provided for @housingNoticeOfferMade.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer made'**
+  String get housingNoticeOfferMade;
+
+  /// No description provided for @housingNoticeDeadlineNear.
+  ///
+  /// In en, this message translates to:
+  /// **'Deadline near'**
+  String get housingNoticeDeadlineNear;
+
+  /// No description provided for @housingNoticeBedReleased.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed released'**
+  String get housingNoticeBedReleased;
+
+  /// No description provided for @housingNoticeWelcome.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome'**
+  String get housingNoticeWelcome;
+
+  /// No description provided for @housingSkipBanned.
+  ///
+  /// In en, this message translates to:
+  /// **'Banned from housing'**
+  String get housingSkipBanned;
+
+  /// No description provided for @housingSkipUnpaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Unpaid fees'**
+  String get housingSkipUnpaid;
+
+  /// No description provided for @housingSkipRoomClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Room is closed'**
+  String get housingSkipRoomClosed;
+
+  /// No description provided for @housingDrawBallot.
+  ///
+  /// In en, this message translates to:
+  /// **'Ballot'**
+  String get housingDrawBallot;
+
+  /// No description provided for @housingDrawPriority.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority'**
+  String get housingDrawPriority;
+
+  /// No description provided for @housingNoticeCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocation cancelled and the bed freed.'**
+  String get housingNoticeCancelled;
+
+  /// No description provided for @housingNoticeRoomSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Room settings saved.'**
+  String get housingNoticeRoomSaved;
+
+  /// No description provided for @housingNoticeRoomsAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Rooms added to the block.'**
+  String get housingNoticeRoomsAdded;
+
+  /// No description provided for @housingNoticePublished.
+  ///
+  /// In en, this message translates to:
+  /// **'New agreement version published.'**
+  String get housingNoticePublished;
+
+  /// No description provided for @housingNoticeWordingSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Notice wording saved.'**
+  String get housingNoticeWordingSaved;
+
+  /// No description provided for @housingNoticeCategorySaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Category added.'**
+  String get housingNoticeCategorySaved;
+
+  /// No description provided for @housingNoticeCategoryRemoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Category removed.'**
+  String get housingNoticeCategoryRemoved;
+
+  /// No description provided for @housingNoticeBanAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Student banned from booking.'**
+  String get housingNoticeBanAdded;
+
+  /// No description provided for @housingNoticeBanLifted.
+  ///
+  /// In en, this message translates to:
+  /// **'Ban lifted.'**
+  String get housingNoticeBanLifted;
+
+  /// No description provided for @housingNoticeRefundSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund rules saved.'**
+  String get housingNoticeRefundSaved;
+
+  /// No description provided for @housingNoticePriceSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Price saved.'**
+  String get housingNoticePriceSaved;
+
+  /// No description provided for @housingNoticeOpeningSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking method saved.'**
+  String get housingNoticeOpeningSaved;
+
+  /// No description provided for @housingNoticeDrawRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw complete.'**
+  String get housingNoticeDrawRun;
+
+  /// No description provided for @housingNoticeAutoRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic allocation complete.'**
+  String get housingNoticeAutoRun;
+
+  /// No description provided for @housingNoticeKeepSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep-my-room offers sent.'**
+  String get housingNoticeKeepSent;
+
+  /// No description provided for @housingNoticeUploadDone.
+  ///
+  /// In en, this message translates to:
+  /// **'Spreadsheet applied as one batch.'**
+  String get housingNoticeUploadDone;
+
+  /// No description provided for @housingToolsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tools'**
+  String get housingToolsTitle;
+
+  /// No description provided for @housingQueueTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocations'**
+  String get housingQueueTitle;
+
+  /// No description provided for @housingQueueSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Every bed given out, by state, and the tools to give out more.'**
+  String get housingQueueSubtitle;
+
+  /// No description provided for @housingQueueSummaryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get housingQueueSummaryTitle;
+
+  /// No description provided for @housingMetricAllocations.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocations'**
+  String get housingMetricAllocations;
+
+  /// No description provided for @housingMetricFreeBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Free beds'**
+  String get housingMetricFreeBeds;
+
+  /// No description provided for @housingMetricWaitlist.
+  ///
+  /// In en, this message translates to:
+  /// **'Waitlist'**
+  String get housingMetricWaitlist;
+
+  /// No description provided for @housingMetricBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds'**
+  String get housingMetricBeds;
+
+  /// No description provided for @housingMetricTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Taken'**
+  String get housingMetricTaken;
+
+  /// No description provided for @housingMetricFree.
+  ///
+  /// In en, this message translates to:
+  /// **'Free'**
+  String get housingMetricFree;
+
+  /// No description provided for @housingMetricApplicants.
+  ///
+  /// In en, this message translates to:
+  /// **'Applicants'**
+  String get housingMetricApplicants;
+
+  /// No description provided for @housingMetricEligible.
+  ///
+  /// In en, this message translates to:
+  /// **'Eligible residents'**
+  String get housingMetricEligible;
+
+  /// No description provided for @housingQueueEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No allocations here'**
+  String get housingQueueEmptyTitle;
+
+  /// No description provided for @housingQueueEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches this filter. Pick another state, or give out beds with one of the tools.'**
+  String get housingQueueEmptyBody;
+
+  /// No description provided for @housingToolHostelsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostels and rooms'**
+  String get housingToolHostelsTitle;
+
+  /// No description provided for @housingToolHostelsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds block by block, room settings and occupants.'**
+  String get housingToolHostelsBody;
+
+  /// No description provided for @housingToolOpeningsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Openings and prices'**
+  String get housingToolOpeningsTitle;
+
+  /// No description provided for @housingToolOpeningsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'When each term books, how, and what a bed costs.'**
+  String get housingToolOpeningsBody;
+
+  /// No description provided for @housingToolUploadTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocate from a spreadsheet'**
+  String get housingToolUploadTitle;
+
+  /// No description provided for @housingToolUploadBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload a sheet of students and beds as one batch.'**
+  String get housingToolUploadBody;
+
+  /// No description provided for @housingToolAllocateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocate by hand'**
+  String get housingToolAllocateTitle;
+
+  /// No description provided for @housingToolAllocateBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Give one student one bed.'**
+  String get housingToolAllocateBody;
+
+  /// No description provided for @housingToolAutoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic allocation'**
+  String get housingToolAutoTitle;
+
+  /// No description provided for @housingToolAutoBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Place the {count} students on the waitlist.'**
+  String housingToolAutoBody(Object count);
+
+  /// No description provided for @housingToolDrawTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The draw'**
+  String get housingToolDrawTitle;
+
+  /// No description provided for @housingToolDrawBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick winners for {count} applicants.'**
+  String housingToolDrawBody(Object count);
+
+  /// No description provided for @housingToolKeepTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep my room'**
+  String get housingToolKeepTitle;
+
+  /// No description provided for @housingToolKeepBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer {count} residents their own beds back.'**
+  String housingToolKeepBody(Object count);
+
+  /// No description provided for @housingToolAgreementTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Accommodation agreement'**
+  String get housingToolAgreementTitle;
+
+  /// No description provided for @housingToolAgreementBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish a new version students must accept.'**
+  String get housingToolAgreementBody;
+
+  /// No description provided for @housingToolNoticesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Housing notices'**
+  String get housingToolNoticesTitle;
+
+  /// No description provided for @housingToolNoticesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Reword the messages students receive.'**
+  String get housingToolNoticesBody;
+
+  /// No description provided for @housingToolCategoriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Housing categories'**
+  String get housingToolCategoriesTitle;
+
+  /// No description provided for @housingToolCategoriesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Who counts for more in a priority draw.'**
+  String get housingToolCategoriesBody;
+
+  /// No description provided for @housingToolBansTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Housing bans'**
+  String get housingToolBansTitle;
+
+  /// No description provided for @housingToolBansBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} students barred from booking.'**
+  String housingToolBansBody(Object count);
+
+  /// No description provided for @housingToolRefundsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancellation refunds'**
+  String get housingToolRefundsTitle;
+
+  /// No description provided for @housingToolRefundsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Students get {percent}% back when they cancel in time.'**
+  String housingToolRefundsBody(Object percent);
+
+  /// No description provided for @housingDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocation'**
+  String get housingDetailTitle;
+
+  /// No description provided for @housingDetailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The student, the bed, the fee and how it was made.'**
+  String get housingDetailSubtitle;
+
+  /// No description provided for @housingDetailMissingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocation not found'**
+  String get housingDetailMissingTitle;
+
+  /// No description provided for @housingDetailMissingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It may have been removed. Go back to the queue and pick another.'**
+  String get housingDetailMissingBody;
+
+  /// No description provided for @housingDetailProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme'**
+  String get housingDetailProgramme;
+
+  /// No description provided for @housingDetailBedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed'**
+  String get housingDetailBedTitle;
+
+  /// No description provided for @housingDetailHostel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostel'**
+  String get housingDetailHostel;
+
+  /// No description provided for @housingDetailRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Room'**
+  String get housingDetailRoom;
+
+  /// No description provided for @housingDetailRoomType.
+  ///
+  /// In en, this message translates to:
+  /// **'Room type'**
+  String get housingDetailRoomType;
+
+  /// No description provided for @housingDetailTerm.
+  ///
+  /// In en, this message translates to:
+  /// **'Term'**
+  String get housingDetailTerm;
+
+  /// No description provided for @housingDetailRecordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Record'**
+  String get housingDetailRecordTitle;
+
+  /// No description provided for @housingDetailFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee'**
+  String get housingDetailFee;
+
+  /// No description provided for @housingDetailInvoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice'**
+  String get housingDetailInvoice;
+
+  /// No description provided for @housingDetailMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Made by'**
+  String get housingDetailMethod;
+
+  /// No description provided for @housingDetailCreated.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get housingDetailCreated;
+
+  /// No description provided for @housingCancelAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this allocation'**
+  String get housingCancelAction;
+
+  /// No description provided for @housingCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel this allocation?'**
+  String get housingCancelTitle;
+
+  /// No description provided for @housingCancelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} loses the bed and it becomes free for the next student. Any fee paid goes to their wallet.'**
+  String housingCancelBody(Object name);
+
+  /// No description provided for @housingCancelConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel allocation'**
+  String get housingCancelConfirm;
+
+  /// No description provided for @housingHostelsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Every hostel, with how many beds are free.'**
+  String get housingHostelsSubtitle;
+
+  /// No description provided for @housingHostelsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No hostels yet'**
+  String get housingHostelsEmptyTitle;
+
+  /// No description provided for @housingHostelsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostels appear here once they are added to the inventory.'**
+  String get housingHostelsEmptyBody;
+
+  /// No description provided for @housingHostelSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'{blocks} blocks · {rooms} rooms · {free} of {total} beds free'**
+  String housingHostelSummary(
+    Object blocks,
+    Object free,
+    Object rooms,
+    Object total,
+  );
+
+  /// No description provided for @housingHostelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostel'**
+  String get housingHostelTitle;
+
+  /// No description provided for @housingHostelSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds block by block. Tap a room to change its settings.'**
+  String get housingHostelSubtitle;
+
+  /// No description provided for @housingHostelMissingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostel not found'**
+  String get housingHostelMissingTitle;
+
+  /// No description provided for @housingHostelMissingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It may have been removed. Go back to the list and pick another.'**
+  String get housingHostelMissingBody;
+
+  /// No description provided for @housingOccupantsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Occupants'**
+  String get housingOccupantsTitle;
+
+  /// No description provided for @housingOccupantsEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} students living here.'**
+  String housingOccupantsEntry(Object count);
+
+  /// No description provided for @housingOccupantsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Who holds a bed in this hostel.'**
+  String get housingOccupantsSubtitle;
+
+  /// No description provided for @housingOccupantsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} occupants'**
+  String housingOccupantsCount(Object count);
+
+  /// No description provided for @housingOccupantsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody lives here yet'**
+  String get housingOccupantsEmptyTitle;
+
+  /// No description provided for @housingOccupantsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{hostel} has no occupants. They appear once a bed is held or confirmed.'**
+  String housingOccupantsEmptyBody(Object hostel);
+
+  /// No description provided for @housingOccupantBed.
+  ///
+  /// In en, this message translates to:
+  /// **'{room} · Bed {bed}'**
+  String housingOccupantBed(Object bed, Object room);
+
+  /// No description provided for @housingBlockAddRooms.
+  ///
+  /// In en, this message translates to:
+  /// **'Add rooms'**
+  String get housingBlockAddRooms;
+
+  /// No description provided for @housingBlockEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No rooms in this block'**
+  String get housingBlockEmptyTitle;
+
+  /// No description provided for @housingBlockEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a run of rooms to start giving out beds here.'**
+  String get housingBlockEmptyBody;
+
+  /// No description provided for @housingRoomHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Room {number} · {type}'**
+  String housingRoomHeading(Object number, Object type);
+
+  /// No description provided for @housingRoomTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Room settings'**
+  String get housingRoomTitle;
+
+  /// No description provided for @housingRoomSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Whether the room can be booked, and what type it is.'**
+  String get housingRoomSubtitle;
+
+  /// No description provided for @housingRoomMissingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Room not found'**
+  String get housingRoomMissingTitle;
+
+  /// No description provided for @housingRoomMissingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It may have been removed. Go back to the hostel and pick another.'**
+  String get housingRoomMissingBody;
+
+  /// No description provided for @housingRoomFloor.
+  ///
+  /// In en, this message translates to:
+  /// **'Floor'**
+  String get housingRoomFloor;
+
+  /// No description provided for @housingRoomStatusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking status'**
+  String get housingRoomStatusTitle;
+
+  /// No description provided for @housingRoomStatusBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A room under maintenance or closed shows no free beds to students.'**
+  String get housingRoomStatusBody;
+
+  /// No description provided for @housingRoomTypeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Room type'**
+  String get housingRoomTypeTitle;
+
+  /// No description provided for @housingRoomTypeNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The type decides the price a student is invoiced.'**
+  String get housingRoomTypeNote;
+
+  /// No description provided for @housingBlockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add rooms to a block'**
+  String get housingBlockTitle;
+
+  /// No description provided for @housingBlockSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a run of rooms in one go.'**
+  String get housingBlockSubtitle;
+
+  /// No description provided for @housingBlockCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'{hostel} · {count} rooms now'**
+  String housingBlockCurrent(Object count, Object hostel);
+
+  /// No description provided for @housingBlockFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'First room number'**
+  String get housingBlockFrom;
+
+  /// No description provided for @housingBlockTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Last room number'**
+  String get housingBlockTo;
+
+  /// No description provided for @housingBlockRangeError.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter two numbers, the second not smaller than the first.'**
+  String get housingBlockRangeError;
+
+  /// No description provided for @housingBlockBeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds per room'**
+  String get housingBlockBeds;
+
+  /// No description provided for @housingBlockPreview.
+  ///
+  /// In en, this message translates to:
+  /// **'This adds {rooms} rooms and {beds} beds. Room numbers already in the block are skipped.'**
+  String housingBlockPreview(Object beds, Object rooms);
+
+  /// No description provided for @housingBlockAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add rooms'**
+  String get housingBlockAdd;
+
+  /// No description provided for @housingOpeningsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'When each term books, how beds are given out, and what they cost.'**
+  String get housingOpeningsSubtitle;
+
+  /// No description provided for @housingTabOpenings.
+  ///
+  /// In en, this message translates to:
+  /// **'Openings'**
+  String get housingTabOpenings;
+
+  /// No description provided for @housingTabPrices.
+  ///
+  /// In en, this message translates to:
+  /// **'Prices'**
+  String get housingTabPrices;
+
+  /// No description provided for @housingTabRefunds.
+  ///
+  /// In en, this message translates to:
+  /// **'Refunds'**
+  String get housingTabRefunds;
+
+  /// No description provided for @housingOpeningsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No openings scheduled'**
+  String get housingOpeningsEmptyTitle;
+
+  /// No description provided for @housingOpeningsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule a term\'s booking window before students can book.'**
+  String get housingOpeningsEmptyBody;
+
+  /// No description provided for @housingOpeningWindow.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking from {opens} to {closes}'**
+  String housingOpeningWindow(Object closes, Object opens);
+
+  /// No description provided for @housingOpeningMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'How beds are given out'**
+  String get housingOpeningMethod;
+
+  /// No description provided for @housingOpeningHold.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold time for payment'**
+  String get housingOpeningHold;
+
+  /// No description provided for @housingOpeningGrace.
+  ///
+  /// In en, this message translates to:
+  /// **'Grace after the deadline'**
+  String get housingOpeningGrace;
+
+  /// No description provided for @housingOpeningQuota.
+  ///
+  /// In en, this message translates to:
+  /// **'Free scholarship beds'**
+  String get housingOpeningQuota;
+
+  /// No description provided for @housingOpeningClosedDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed days'**
+  String get housingOpeningClosedDays;
+
+  /// No description provided for @housingPricesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed price by room type'**
+  String get housingPricesTitle;
+
+  /// No description provided for @housingPricesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Per term, in naira. A change applies to beds booked from now on.'**
+  String get housingPricesBody;
+
+  /// No description provided for @housingPriceInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount such as 75,000.00.'**
+  String get housingPriceInvalid;
+
+  /// No description provided for @housingRefundsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancellation refunds'**
+  String get housingRefundsTitle;
+
+  /// No description provided for @housingRefundsIntro.
+  ///
+  /// In en, this message translates to:
+  /// **'What share of a paid fee goes back to the wallet when a student cancels early enough.'**
+  String get housingRefundsIntro;
+
+  /// No description provided for @housingRefundsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set the refund share and test it on a sample cancellation.'**
+  String get housingRefundsSubtitle;
+
+  /// No description provided for @housingRefundShare.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund share'**
+  String get housingRefundShare;
+
+  /// No description provided for @housingRefundWindow.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel at least this long before check-in'**
+  String get housingRefundWindow;
+
+  /// No description provided for @housingRefundsOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the refund simulator'**
+  String get housingRefundsOpen;
+
+  /// No description provided for @housingSimulateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate a cancellation'**
+  String get housingSimulateTitle;
+
+  /// No description provided for @housingSimulateBody.
+  ///
+  /// In en, this message translates to:
+  /// **'See what one cancellation would hand back under the rules above.'**
+  String get housingSimulateBody;
+
+  /// No description provided for @housingSimulatePaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee paid'**
+  String get housingSimulatePaid;
+
+  /// No description provided for @housingSimulateDays.
+  ///
+  /// In en, this message translates to:
+  /// **'Days before check-in'**
+  String get housingSimulateDays;
+
+  /// No description provided for @housingSimulateRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Simulate'**
+  String get housingSimulateRun;
+
+  /// No description provided for @housingSimulateRefund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refunded to wallet'**
+  String get housingSimulateRefund;
+
+  /// No description provided for @housingSimulateCharge.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancellation charge'**
+  String get housingSimulateCharge;
+
+  /// No description provided for @housingSimulateWithin.
+  ///
+  /// In en, this message translates to:
+  /// **'This is at least {days} days before check-in, so the refund share applies.'**
+  String housingSimulateWithin(Object days);
+
+  /// No description provided for @housingSimulateOutside.
+  ///
+  /// In en, this message translates to:
+  /// **'This is less than {days} days before check-in, so nothing is refunded.'**
+  String housingSimulateOutside(Object days);
+
+  /// No description provided for @housingUploadSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Give out many beds at once from a spreadsheet.'**
+  String get housingUploadSubtitle;
+
+  /// No description provided for @housingUploadFormTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a spreadsheet'**
+  String get housingUploadFormTitle;
+
+  /// No description provided for @housingUploadFormBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The whole sheet is applied together, or not at all. Any row problem leaves everything untouched.'**
+  String get housingUploadFormBody;
+
+  /// No description provided for @housingUploadColumns.
+  ///
+  /// In en, this message translates to:
+  /// **'Columns'**
+  String get housingUploadColumns;
+
+  /// No description provided for @housingUploadColumnList.
+  ///
+  /// In en, this message translates to:
+  /// **'matric_number, hostel, block, room, bed'**
+  String get housingUploadColumnList;
+
+  /// No description provided for @housingUploadSampleValid.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a correct sample sheet'**
+  String get housingUploadSampleValid;
+
+  /// No description provided for @housingUploadSampleHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a sheet with a missing column'**
+  String get housingUploadSampleHeader;
+
+  /// No description provided for @housingUploadSampleRows.
+  ///
+  /// In en, this message translates to:
+  /// **'Use a sheet with row problems'**
+  String get housingUploadSampleRows;
+
+  /// No description provided for @housingUploadAnother.
+  ///
+  /// In en, this message translates to:
+  /// **'Try another file'**
+  String get housingUploadAnother;
+
+  /// No description provided for @housingUploadHeaderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{file} cannot be read'**
+  String housingUploadHeaderTitle(Object file);
+
+  /// No description provided for @housingUploadHeaderBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The sheet has no \"{column}\" column. Add it to the first row and upload again.'**
+  String housingUploadHeaderBody(Object column);
+
+  /// No description provided for @housingUploadRowsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{issues} of {rows} rows have problems'**
+  String housingUploadRowsTitle(Object issues, Object rows);
+
+  /// No description provided for @housingUploadRowsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing was applied. Fix these rows in the sheet and upload it again.'**
+  String get housingUploadRowsBody;
+
+  /// No description provided for @housingUploadRow.
+  ///
+  /// In en, this message translates to:
+  /// **'Row {row}'**
+  String housingUploadRow(Object row);
+
+  /// No description provided for @housingUploadSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Batch applied'**
+  String get housingUploadSuccessTitle;
+
+  /// No description provided for @housingUploadSuccessBody.
+  ///
+  /// In en, this message translates to:
+  /// **'All {rows} rows were applied. Each student has been told.'**
+  String housingUploadSuccessBody(Object rows);
+
+  /// No description provided for @housingUploadBatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Batch'**
+  String get housingUploadBatch;
+
+  /// No description provided for @housingUploadFile.
+  ///
+  /// In en, this message translates to:
+  /// **'File'**
+  String get housingUploadFile;
+
+  /// No description provided for @housingAllocateSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Give one student one bed. They are told straight away.'**
+  String get housingAllocateSubtitle;
+
+  /// No description provided for @housingAllocateStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get housingAllocateStudent;
+
+  /// No description provided for @housingAllocateMatric.
+  ///
+  /// In en, this message translates to:
+  /// **'Matric number'**
+  String get housingAllocateMatric;
+
+  /// No description provided for @housingAllocateBed.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed'**
+  String get housingAllocateBed;
+
+  /// No description provided for @housingAllocateHostel.
+  ///
+  /// In en, this message translates to:
+  /// **'Hostel'**
+  String get housingAllocateHostel;
+
+  /// No description provided for @housingAllocateRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Room'**
+  String get housingAllocateRoom;
+
+  /// No description provided for @housingAllocateRoomChoice.
+  ///
+  /// In en, this message translates to:
+  /// **'{block} · {number}'**
+  String housingAllocateRoomChoice(Object block, Object number);
+
+  /// No description provided for @housingAllocateBedNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed number'**
+  String get housingAllocateBedNumber;
+
+  /// No description provided for @housingAllocateSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Allocate bed'**
+  String get housingAllocateSubmit;
+
+  /// No description provided for @housingAllocateDoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Bed allocated'**
+  String get housingAllocateDoneTitle;
+
+  /// No description provided for @housingAllocateDoneBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} now holds {bed}.'**
+  String housingAllocateDoneBody(Object bed, Object name);
+
+  /// No description provided for @housingAllocateUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'No student has this matric number.'**
+  String get housingAllocateUnknown;
+
+  /// No description provided for @housingAllocateTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'That bed is no longer free, so {name} was not allocated.'**
+  String housingAllocateTaken(Object name);
+
+  /// No description provided for @housingAllocateBanned.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} is barred from housing and cannot be allocated a bed.'**
+  String housingAllocateBanned(Object name);
+
+  /// No description provided for @housingAutoSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Place the waitlist into the free beds.'**
+  String get housingAutoSubtitle;
+
+  /// No description provided for @housingAutoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic allocation'**
+  String get housingAutoTitle;
+
+  /// No description provided for @housingAutoBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Students on the waitlist are placed in order of when they joined, into beds that match their hostel\'s gender and level.'**
+  String get housingAutoBody;
+
+  /// No description provided for @housingAutoRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Banned students are skipped. Anyone left over stays on the waitlist.'**
+  String get housingAutoRules;
+
+  /// No description provided for @housingAutoRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Run allocation'**
+  String get housingAutoRun;
+
+  /// No description provided for @housingAutoConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Run automatic allocation?'**
+  String get housingAutoConfirmTitle;
+
+  /// No description provided for @housingAutoConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This places up to {waitlist} students into {free} free beds. Each student is told.'**
+  String housingAutoConfirmBody(Object free, Object waitlist);
+
+  /// No description provided for @housingAutoResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Result'**
+  String get housingAutoResultTitle;
+
+  /// No description provided for @housingAutoPlaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Placed'**
+  String get housingAutoPlaced;
+
+  /// No description provided for @housingAutoUnplaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Still waiting'**
+  String get housingAutoUnplaced;
+
+  /// No description provided for @housingAutoLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds left'**
+  String get housingAutoLeft;
+
+  /// No description provided for @housingDrawSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick who gets a bed when there are more applicants than beds.'**
+  String get housingDrawSubtitle;
+
+  /// No description provided for @housingDrawTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The draw'**
+  String get housingDrawTitle;
+
+  /// No description provided for @housingDrawBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A ballot picks at random. A priority draw weighs each applicant by their housing category.'**
+  String get housingDrawBody;
+
+  /// No description provided for @housingDrawBallotNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Every applicant has the same chance.'**
+  String get housingDrawBallotNote;
+
+  /// No description provided for @housingDrawPriorityNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Applicants in heavier categories are drawn first. Set the weights under housing categories.'**
+  String get housingDrawPriorityNote;
+
+  /// No description provided for @housingDrawSeats.
+  ///
+  /// In en, this message translates to:
+  /// **'Beds to give out'**
+  String get housingDrawSeats;
+
+  /// No description provided for @housingDrawRun.
+  ///
+  /// In en, this message translates to:
+  /// **'Run the draw'**
+  String get housingDrawRun;
+
+  /// No description provided for @housingDrawConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Run the draw?'**
+  String get housingDrawConfirmTitle;
+
+  /// No description provided for @housingDrawConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This gives out {seats} beds among {applicants} applicants. It cannot be run again for the same applicants.'**
+  String housingDrawConfirmBody(Object applicants, Object seats);
+
+  /// No description provided for @housingDrawResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw result'**
+  String get housingDrawResultTitle;
+
+  /// No description provided for @housingDrawReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw'**
+  String get housingDrawReference;
+
+  /// No description provided for @housingDrawMethodLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Method'**
+  String get housingDrawMethodLabel;
+
+  /// No description provided for @housingDrawWinners.
+  ///
+  /// In en, this message translates to:
+  /// **'Winners'**
+  String get housingDrawWinners;
+
+  /// No description provided for @housingDrawWinnersValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{winners} of {applicants}'**
+  String housingDrawWinnersValue(Object applicants, Object winners);
+
+  /// No description provided for @housingDrawWaitlisted.
+  ///
+  /// In en, this message translates to:
+  /// **'Moved to the waitlist'**
+  String get housingDrawWaitlisted;
+
+  /// No description provided for @housingKeepSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer last term\'s residents the beds they already have.'**
+  String get housingKeepSubtitle;
+
+  /// No description provided for @housingKeepTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep my room'**
+  String get housingKeepTitle;
+
+  /// No description provided for @housingKeepBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Residents who qualify get their own bed offered back for a window, before booking opens to everyone else.'**
+  String get housingKeepBody;
+
+  /// No description provided for @housingKeepWindow.
+  ///
+  /// In en, this message translates to:
+  /// **'Offer lasts'**
+  String get housingKeepWindow;
+
+  /// No description provided for @housingKeepNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Each resident is sent an offer. They answer once; an unanswered offer releases the bed.'**
+  String get housingKeepNote;
+
+  /// No description provided for @housingKeepSend.
+  ///
+  /// In en, this message translates to:
+  /// **'Send offers'**
+  String get housingKeepSend;
+
+  /// No description provided for @housingKeepConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send keep-my-room offers?'**
+  String get housingKeepConfirmTitle;
+
+  /// No description provided for @housingKeepConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} residents will be offered their beds for {days} days.'**
+  String housingKeepConfirmBody(Object count, Object days);
+
+  /// No description provided for @housingKeepResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Offers sent'**
+  String get housingKeepResultTitle;
+
+  /// No description provided for @housingKeepResultBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{offered} residents were offered their beds for {days} days.'**
+  String housingKeepResultBody(Object days, Object offered);
+
+  /// No description provided for @housingKeepSkippedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} residents were skipped'**
+  String housingKeepSkippedTitle(Object count);
+
+  /// No description provided for @housingAgreementSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish a new version of the accommodation terms.'**
+  String get housingAgreementSubtitle;
+
+  /// No description provided for @housingAgreementCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Version in force'**
+  String get housingAgreementCurrent;
+
+  /// No description provided for @housingAgreementPublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Version {version}, published {date}.'**
+  String housingAgreementPublished(Object date, Object version);
+
+  /// No description provided for @housingAgreementPublishTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish version {version}'**
+  String housingAgreementPublishTitle(Object version);
+
+  /// No description provided for @housingAgreementPublishBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Say in a few sentences what changed.'**
+  String get housingAgreementPublishBody;
+
+  /// No description provided for @housingAgreementSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'What changed'**
+  String get housingAgreementSummary;
+
+  /// No description provided for @housingAgreementWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Every student has to accept the new version before they can book a bed again.'**
+  String get housingAgreementWarning;
+
+  /// No description provided for @housingAgreementPublish.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish version'**
+  String get housingAgreementPublish;
+
+  /// No description provided for @housingAgreementConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Publish version {version}?'**
+  String housingAgreementConfirmTitle(Object version);
+
+  /// No description provided for @housingAgreementConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'It replaces the version in force straight away. Students accept it the next time they book.'**
+  String get housingAgreementConfirmBody;
+
+  /// No description provided for @housingAgreementHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Earlier versions'**
+  String get housingAgreementHistory;
+
+  /// No description provided for @housingAgreementLive.
+  ///
+  /// In en, this message translates to:
+  /// **'In force'**
+  String get housingAgreementLive;
+
+  /// No description provided for @housingNoticesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reword the messages students receive about their beds.'**
+  String get housingNoticesSubtitle;
+
+  /// No description provided for @housingNoticeWording.
+  ///
+  /// In en, this message translates to:
+  /// **'Wording'**
+  String get housingNoticeWording;
+
+  /// No description provided for @housingCategoriesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The weight of each category when a draw is by priority.'**
+  String get housingCategoriesSubtitle;
+
+  /// No description provided for @housingCategoriesEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No categories'**
+  String get housingCategoriesEmptyTitle;
+
+  /// No description provided for @housingCategoriesEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a category to give some students priority in a draw.'**
+  String get housingCategoriesEmptyBody;
+
+  /// No description provided for @housingCategoryLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight {weight} · {count} students'**
+  String housingCategoryLine(Object count, Object weight);
+
+  /// No description provided for @housingCategoryRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove category'**
+  String get housingCategoryRemove;
+
+  /// No description provided for @housingCategoryRemoveTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove {name}?'**
+  String housingCategoryRemoveTitle(Object name);
+
+  /// No description provided for @housingCategoryRemoveBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Students in it lose the priority it gave them in the next draw.'**
+  String get housingCategoryRemoveBody;
+
+  /// No description provided for @housingCategoryAddTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a category'**
+  String get housingCategoryAddTitle;
+
+  /// No description provided for @housingCategoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Category name'**
+  String get housingCategoryName;
+
+  /// No description provided for @housingCategoryWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight'**
+  String get housingCategoryWeight;
+
+  /// No description provided for @housingCategoryAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add category'**
+  String get housingCategoryAdd;
+
+  /// No description provided for @housingBansSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Students barred from booking a bed.'**
+  String get housingBansSubtitle;
+
+  /// No description provided for @housingBansEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nobody is banned'**
+  String get housingBansEmptyTitle;
+
+  /// No description provided for @housingBansEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Bar a student here and they cannot book, be offered or be allocated a bed.'**
+  String get housingBansEmptyBody;
+
+  /// No description provided for @housingBanSince.
+  ///
+  /// In en, this message translates to:
+  /// **'{matric} · since {date}'**
+  String housingBanSince(Object date, Object matric);
+
+  /// No description provided for @housingBanLift.
+  ///
+  /// In en, this message translates to:
+  /// **'Lift ban'**
+  String get housingBanLift;
+
+  /// No description provided for @housingBanLiftTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Lift the ban on {name}?'**
+  String housingBanLiftTitle(Object name);
+
+  /// No description provided for @housingBanLiftBody.
+  ///
+  /// In en, this message translates to:
+  /// **'They can book beds again from now on.'**
+  String get housingBanLiftBody;
+
+  /// No description provided for @housingBanAddTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ban a student'**
+  String get housingBanAddTitle;
+
+  /// No description provided for @housingBanAddBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The student cannot book, be offered or be allocated a bed until you lift the ban.'**
+  String get housingBanAddBody;
+
+  /// No description provided for @housingBanReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get housingBanReason;
+
+  /// No description provided for @housingBanRejected.
+  ///
+  /// In en, this message translates to:
+  /// **'No student with that matric number, or they are already banned.'**
+  String get housingBanRejected;
+
+  /// No description provided for @housingBanAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Ban student'**
+  String get housingBanAdd;
+
+  /// No description provided for @accommodationPreviewAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview states'**
+  String get accommodationPreviewAction;
+
+  /// No description provided for @accommodationPreviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student accommodation states'**
+  String get accommodationPreviewTitle;
+
+  /// No description provided for @accommodationPreviewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Debug only. Loads a fixture ledger so you can walk every student screen. Use the History tab for past beds; Terms and Rooms open from the matching states.'**
+  String get accommodationPreviewSubtitle;
+
+  /// No description provided for @accommodationPreviewHeldAndOffer.
+  ///
+  /// In en, this message translates to:
+  /// **'Held bed + waitlist offer'**
+  String get accommodationPreviewHeldAndOffer;
+
+  /// No description provided for @accommodationPreviewHeldAndOfferHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Term 1 held with a swap proposal; switch to Term 2 for the offer.'**
+  String get accommodationPreviewHeldAndOfferHint;
+
+  /// No description provided for @accommodationPreviewNotScheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Not scheduled'**
+  String get accommodationPreviewNotScheduled;
+
+  /// No description provided for @accommodationPreviewNotScheduledHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking has not been published for either term.'**
+  String get accommodationPreviewNotScheduledHint;
+
+  /// No description provided for @accommodationPreviewNeedsTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms to accept'**
+  String get accommodationPreviewNeedsTerms;
+
+  /// No description provided for @accommodationPreviewNeedsTermsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens the agreement gate, then booking.'**
+  String get accommodationPreviewNeedsTermsHint;
+
+  /// No description provided for @accommodationPreviewRoomList.
+  ///
+  /// In en, this message translates to:
+  /// **'Room list'**
+  String get accommodationPreviewRoomList;
+
+  /// No description provided for @accommodationPreviewRoomListHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking open — choose a room.'**
+  String get accommodationPreviewRoomListHint;
+
+  /// No description provided for @accommodationPreviewConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed bed'**
+  String get accommodationPreviewConfirmed;
+
+  /// No description provided for @accommodationPreviewConfirmedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid and confirmed, not yet checked in.'**
+  String get accommodationPreviewConfirmedHint;
+
+  /// No description provided for @accommodationPreviewFreeBed.
+  ///
+  /// In en, this message translates to:
+  /// **'Free / scholarship bed'**
+  String get accommodationPreviewFreeBed;
+
+  /// No description provided for @accommodationPreviewFreeBedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed with no fee due.'**
+  String get accommodationPreviewFreeBedHint;
+
+  /// No description provided for @accommodationPreviewCheckedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Checked in'**
+  String get accommodationPreviewCheckedIn;
+
+  /// No description provided for @accommodationPreviewCheckedInHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Official resident with slip and hall details.'**
+  String get accommodationPreviewCheckedInHint;
+
+  /// No description provided for @accommodationPreviewSessionHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Session booking (held)'**
+  String get accommodationPreviewSessionHeld;
+
+  /// No description provided for @accommodationPreviewSessionHeldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'One fee covers both terms of the session.'**
+  String get accommodationPreviewSessionHeldHint;
+
+  /// No description provided for @accommodationPreviewNoHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'History empty'**
+  String get accommodationPreviewNoHistory;
+
+  /// No description provided for @accommodationPreviewNoHistoryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens History with no past beds.'**
+  String get accommodationPreviewNoHistoryHint;
 }
 
 class _AppLocalizationsDelegate

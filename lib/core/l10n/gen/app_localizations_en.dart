@@ -4611,4 +4611,1852 @@ class AppLocalizationsEn extends AppLocalizations {
   String staffRegistryPreviewExpires(String date) {
     return 'Expires $date';
   }
+
+  @override
+  String get navAccommodation => 'Accommodation';
+
+  @override
+  String get navAccommodationHistory => 'History';
+
+  @override
+  String get accommodationBackTooltip => 'Back';
+
+  @override
+  String get accommodationTitle => 'Accommodation';
+
+  @override
+  String accommodationSubtitle(Object term) {
+    return 'Hostel accommodation for $term.';
+  }
+
+  @override
+  String get accommodationBreadcrumbStudent => 'Student';
+
+  @override
+  String accommodationMatricLevel(Object level, Object matricNumber) {
+    return '$matricNumber · $level Level';
+  }
+
+  @override
+  String get accommodationBookFor => 'Book for';
+
+  @override
+  String accommodationEverythingBelow(Object term) {
+    return 'Everything below is for $term.';
+  }
+
+  @override
+  String accommodationRoomBed(Object bed, Object room) {
+    return 'Room $room · Bed $bed';
+  }
+
+  @override
+  String accommodationBedFull(Object bed, Object hostelBlock, Object room) {
+    return '$hostelBlock · Room $room · Bed $bed';
+  }
+
+  @override
+  String accommodationRoomOnly(Object hostelBlock, Object room) {
+    return '$hostelBlock · Room $room';
+  }
+
+  @override
+  String accommodationBlockRoom(Object block, Object room) {
+    return '$block · Room $room';
+  }
+
+  @override
+  String accommodationRoomLine(Object hostelBlock, Object room) {
+    return '$hostelBlock · Room $room';
+  }
+
+  @override
+  String accommodationDuration(Object hours, Object minutes) {
+    return '$hours hours and $minutes minutes';
+  }
+
+  @override
+  String get accommodationStatusNotScheduled => 'Not scheduled';
+
+  @override
+  String get accommodationStatusNeedsTerms => 'Terms to accept';
+
+  @override
+  String get accommodationStatusBookingOpen => 'Booking open';
+
+  @override
+  String get accommodationStatusHeld => 'Reserved, awaiting payment';
+
+  @override
+  String get accommodationStatusOffered => 'Offered, awaiting the student';
+
+  @override
+  String get accommodationStatusConfirmed => 'Confirmed';
+
+  @override
+  String get accommodationStatusCheckedIn => 'Checked in';
+
+  @override
+  String accommodationNotScheduledTitle(Object term) {
+    return 'Booking for $term hasn\'t been scheduled.';
+  }
+
+  @override
+  String get accommodationNotScheduledBody =>
+      'It is normally published in September. Check back, or ask the housing office.';
+
+  @override
+  String accommodationCalendarTitle(Object term) {
+    return '$term housing calendar';
+  }
+
+  @override
+  String get accommodationCalendarBody =>
+      'Booking hasn\'t opened, so these rooms cannot be booked yet.';
+
+  @override
+  String get accommodationNeedsTermsTitle => 'Accept the accommodation terms';
+
+  @override
+  String accommodationNeedsTermsBody(Object term, Object version) {
+    return 'Booking for $term opens once you accept version $version of the accommodation terms.';
+  }
+
+  @override
+  String get accommodationNeedsTermsAction => 'Read and accept the terms';
+
+  @override
+  String get accommodationRoomsTitle => 'Rooms you can book';
+
+  @override
+  String accommodationRoomsVisible(Object count) {
+    return '$count rooms visible';
+  }
+
+  @override
+  String get accommodationRoomsIntro =>
+      'Beds are held for you until the fee is paid. You get the first free bed in the room.';
+
+  @override
+  String get accommodationRoomsSearchHint => 'Search hostel, block or room';
+
+  @override
+  String get accommodationRoomsEmptyTitle => 'No rooms to show';
+
+  @override
+  String get accommodationRoomsEmptyBody =>
+      'No room matches, or every room is full. Check back, or ask the housing office about the waitlist.';
+
+  @override
+  String get accommodationRoomsFilterTitle => 'Hostels are filtered for you';
+
+  @override
+  String get accommodationRoomsFilterBody =>
+      'Hostels that are not open to your gender, programme or level are left out automatically.';
+
+  @override
+  String get accommodationRoomsPageTitle => 'Rooms';
+
+  @override
+  String get accommodationRoomsClosedTitle => 'Rooms are not open for booking';
+
+  @override
+  String accommodationRoomsClosedBody(Object term) {
+    return '$term is not open for booking, so there are no rooms to choose from.';
+  }
+
+  @override
+  String get accommodationRoomsBackToHub => 'Back to accommodation';
+
+  @override
+  String accommodationFreeBeds(Object count) {
+    return '$count free';
+  }
+
+  @override
+  String accommodationOfBeds(Object total) {
+    return 'of $total beds';
+  }
+
+  @override
+  String get accommodationPerTerm => '/ term';
+
+  @override
+  String get accommodationSingleSlotNote =>
+      'Single remaining slot. Roommate pairing is unavailable.';
+
+  @override
+  String get accommodationBookRoom => 'Book room';
+
+  @override
+  String get accommodationRoomOpen => 'Open';
+
+  @override
+  String get accommodationRoomSingleSlot => 'Last bed';
+
+  @override
+  String get accommodationRoomUnavailable => 'Unavailable';
+
+  @override
+  String get accommodationRoomMaintenance => 'Maintenance';
+
+  @override
+  String get accommodationHoldTitle => 'Confirm room hold';
+
+  @override
+  String get accommodationHoldSession => 'Term';
+
+  @override
+  String get accommodationHoldFee => 'Bed fee';
+
+  @override
+  String get accommodationHoldExpiry => 'Hold expires';
+
+  @override
+  String accommodationHoldMinutes(Object minutes) {
+    return '$minutes minutes after issue';
+  }
+
+  @override
+  String get accommodationHoldBody =>
+      'Continuing raises an invoice in your payments ledger straight away. The bed stays held for you while payment is confirmed.';
+
+  @override
+  String get accommodationHoldConfirm => 'Raise invoice and hold bed';
+
+  @override
+  String get accommodationHoldCancel => 'Cancel selection';
+
+  @override
+  String get accommodationPortalLock => 'Portal lock';
+
+  @override
+  String accommodationLeftToPay(Object duration) {
+    return '$duration left to pay';
+  }
+
+  @override
+  String accommodationLeftToAnswer(Object duration) {
+    return '$duration left to answer';
+  }
+
+  @override
+  String get accommodationLockLapses =>
+      'The hold lapses automatically at the deadline.';
+
+  @override
+  String get accommodationTotalFee => 'Total allocation fee';
+
+  @override
+  String get accommodationSessionFee => 'Total session fee';
+
+  @override
+  String accommodationPayBy(Object amount, Object date) {
+    return 'Pay $amount by $date.';
+  }
+
+  @override
+  String get accommodationGraceTitle => 'Grace period clause';
+
+  @override
+  String accommodationGraceBody(Object date) {
+    return 'If it is late, the bed is still kept until $date and then released. A fee paid during that grace still confirms the bed.';
+  }
+
+  @override
+  String accommodationInvoice(Object reference) {
+    return 'Invoice $reference';
+  }
+
+  @override
+  String get accommodationOpenPayments => 'Open in Payments';
+
+  @override
+  String accommodationPay(Object amount) {
+    return 'Pay $amount';
+  }
+
+  @override
+  String get accommodationCancelBooking => 'Cancel booking';
+
+  @override
+  String get accommodationCancelWalletNote =>
+      'If you cancel, anything you have paid goes to your wallet — it is not refunded to your card.';
+
+  @override
+  String get accommodationCancelTitle => 'Cancel this booking?';
+
+  @override
+  String accommodationCancelBody(Object bed) {
+    return 'Cancelling releases $bed straight away and it goes to the next student. Anything you have paid goes to your wallet.';
+  }
+
+  @override
+  String get accommodationCancelConfirm => 'Cancel booking';
+
+  @override
+  String get accommodationCancelKeep => 'Keep my allocation';
+
+  @override
+  String get accommodationCancelConfirmedTitle =>
+      'Cancel this booking and release the bed?';
+
+  @override
+  String get accommodationCancelFreeBody =>
+      'There is no fee to refund. You lose the bed and it goes to the next student.';
+
+  @override
+  String get accommodationCancelPaidBody =>
+      'You lose the bed and it goes to the next student. What you paid goes to your wallet, less any cancellation charge.';
+
+  @override
+  String get accommodationCancelForfeit => 'Confirm forfeiture';
+
+  @override
+  String get accommodationCancelKeepBed => 'Keep bed';
+
+  @override
+  String get accommodationSessionCoverTitle => 'Session booking';
+
+  @override
+  String accommodationSessionCoverBody(Object first, Object second) {
+    return 'One booking covers $first and $second: the same bed throughout, invoiced once.';
+  }
+
+  @override
+  String get accommodationWaitlistOffer => 'Waitlist allocation';
+
+  @override
+  String accommodationOfferReference(Object reference) {
+    return 'Offer #$reference';
+  }
+
+  @override
+  String get accommodationAnswerOnce =>
+      'You can only answer this once. If you do nothing, it is offered to the next student.';
+
+  @override
+  String accommodationOfferBody(Object date) {
+    return 'This bed is offered to you from the waitlist. It is not yours, and nothing is charged, until you accept. Answer by $date or it goes to the next student.';
+  }
+
+  @override
+  String accommodationOtherTermUnaffected(Object term) {
+    return 'Your bed in $term is not affected by this.';
+  }
+
+  @override
+  String accommodationAcceptRaises(Object amount) {
+    return 'Accepting raises an invoice of $amount.';
+  }
+
+  @override
+  String get accommodationAcceptBed => 'Accept the bed';
+
+  @override
+  String get accommodationDecline => 'Decline';
+
+  @override
+  String get accommodationDeclineTitle => 'Decline this bed?';
+
+  @override
+  String get accommodationDeclineBody =>
+      'You leave the waitlist and it goes to the next student. This cannot be reversed.';
+
+  @override
+  String get accommodationDeclineConfirm => 'Confirm decline';
+
+  @override
+  String get accommodationDeclineKeep => 'Keep my offer';
+
+  @override
+  String get accommodationOtherOffersTitle => 'How other offers work';
+
+  @override
+  String get accommodationOtherOffersRoommate =>
+      'Roommate named you: a bed reserved by an approved room buddy. You must confirm, or it is released.';
+
+  @override
+  String get accommodationOtherOffersRetain =>
+      'Keeping your bed from last term: a priority booking window before booking opens to everybody, or it is released.';
+
+  @override
+  String get accommodationScholarshipQuota => 'Scholarship quota';
+
+  @override
+  String accommodationYoursFor(Object bed, Object term) {
+    return '$bed is yours for $term.';
+  }
+
+  @override
+  String get accommodationSlipCode => 'Slip code';
+
+  @override
+  String get accommodationSlipCopy => 'Copy slip code';
+
+  @override
+  String get accommodationSlipCopied => 'Slip code copied.';
+
+  @override
+  String get accommodationSlipHint =>
+      'Bring your slip and your ID card to the hall office when you check in.';
+
+  @override
+  String get accommodationSlipDownload => 'Allocation slip';
+
+  @override
+  String get accommodationSlipDownloadPdf => 'Download allocation slip (PDF)';
+
+  @override
+  String get accommodationPrice => 'Price';
+
+  @override
+  String get accommodationPriceFree => 'Free';
+
+  @override
+  String get accommodationFreeNote =>
+      'A scholarship exemption applies. No fee is due.';
+
+  @override
+  String get accommodationOfficialResident => 'Official resident';
+
+  @override
+  String accommodationResidentDesignated(Object bed) {
+    return 'Your official designated room is $bed.';
+  }
+
+  @override
+  String accommodationCheckedInLine(Object bed, Object date) {
+    return 'Checked in $date. Your official designated room is $bed.';
+  }
+
+  @override
+  String get accommodationClearanceHint =>
+      'Present this slip code or your student ID card at the porter lodge or the gate when asked.';
+
+  @override
+  String get accommodationResidenceRecord => 'Residence record';
+
+  @override
+  String get accommodationCheckInDate => 'Check-in';
+
+  @override
+  String get accommodationTenancyTerm => 'Tenancy term';
+
+  @override
+  String accommodationValidUntil(Object date) {
+    return 'Valid until $date';
+  }
+
+  @override
+  String get accommodationKeyTag => 'Key tag';
+
+  @override
+  String get accommodationLocker => 'Locker';
+
+  @override
+  String accommodationPorterTitle(Object hostel) {
+    return '$hostel porter lodge';
+  }
+
+  @override
+  String get accommodationPorterDetail => 'Campus ext. #41';
+
+  @override
+  String get accommodationPorterBody =>
+      'For maintenance requests, plumbing checks or a replacement key, tell the porter on duty or call the extension.';
+
+  @override
+  String get accommodationNextTitle => 'What happens next';
+
+  @override
+  String accommodationNextStage(Object stage, Object total) {
+    return 'Stage $stage of $total';
+  }
+
+  @override
+  String get accommodationStepBooked => 'Booked';
+
+  @override
+  String get accommodationStepBookedBody =>
+      'The bed is reserved for you in the hostel inventory.';
+
+  @override
+  String get accommodationStepPay => 'Pay the fee';
+
+  @override
+  String get accommodationStepPaid => 'Fee paid';
+
+  @override
+  String get accommodationStepCleared => 'Confirmed';
+
+  @override
+  String accommodationStepBy(Object date) {
+    return 'By $date';
+  }
+
+  @override
+  String accommodationStepFrom(Object date) {
+    return 'From $date';
+  }
+
+  @override
+  String get accommodationStepPayBody =>
+      'Paying the fee confirms your bed and issues your allocation slip.';
+
+  @override
+  String get accommodationStepClearedBody =>
+      'Cleared straight away by your scholarship exemption.';
+
+  @override
+  String get accommodationStepCheckIn => 'Check in at the hall office';
+
+  @override
+  String get accommodationStepCheckInBody =>
+      'Collect your key from the hall warden with your slip and ID card.';
+
+  @override
+  String get accommodationSwapIncoming => 'Incoming proposal';
+
+  @override
+  String accommodationSwapExpires(Object date) {
+    return 'Exp: $date';
+  }
+
+  @override
+  String accommodationSwapBody(Object bed) {
+    return 'The student in $bed has asked to swap beds with you. Swap beds? Any difference in price is invoiced or credited to your wallet.';
+  }
+
+  @override
+  String get accommodationSwapAccept => 'Swap';
+
+  @override
+  String get accommodationSwapDecline => 'Decline';
+
+  @override
+  String get accommodationSwapTitle => 'Swap beds with another student';
+
+  @override
+  String get accommodationSwapIntro =>
+      'Enter the matric number of the student you want to swap with. Both of you must hold a reserved or confirmed bed in the same term.';
+
+  @override
+  String get accommodationSwapMatricLabel => 'Their matric number';
+
+  @override
+  String get accommodationSwapMatricHint => '25/CSC/0202';
+
+  @override
+  String get accommodationSwapVerify => 'Verify';
+
+  @override
+  String get accommodationSwapNotFound =>
+      'No student with a bed this term has that matric number.';
+
+  @override
+  String accommodationSwapFound(Object name) {
+    return 'Found student: $name';
+  }
+
+  @override
+  String get accommodationSwapPropose => 'Propose swap';
+
+  @override
+  String get accommodationTermsPageTitle => 'Accommodation terms';
+
+  @override
+  String get accommodationTermsGovernance => 'Residential code and tenancy';
+
+  @override
+  String get accommodationTermsHeadline => 'Accommodation terms';
+
+  @override
+  String get accommodationTermsGate =>
+      'You must accept these terms before you can book a room.';
+
+  @override
+  String get accommodationTermsTitle => 'The agreement';
+
+  @override
+  String accommodationTermsVersion(Object version) {
+    return 'v$version';
+  }
+
+  @override
+  String accommodationTermsIntro(Object term, Object version) {
+    return 'Version $version. Accept them to book a room for $term.';
+  }
+
+  @override
+  String get accommodationTermsCheckbox =>
+      'I have read and accept the accommodation terms.';
+
+  @override
+  String get accommodationTermsTickError =>
+      'Tick the box to accept the accommodation terms.';
+
+  @override
+  String get accommodationTermsAccept => 'Accept terms';
+
+  @override
+  String accommodationTermsAccepted(Object version) {
+    return 'You have accepted version $version of the accommodation terms.';
+  }
+
+  @override
+  String get accommodationTermsRecordNote =>
+      'Accepting records this version and the date against your account.';
+
+  @override
+  String accommodationTermsSeal(Object reference) {
+    return 'Deanery of Student Affairs · $reference';
+  }
+
+  @override
+  String get accommodationClauseLoadBearing =>
+      'If the fee is late, the bed is released.';
+
+  @override
+  String get accommodationHistoryLinkTitle => 'Accommodation history';
+
+  @override
+  String get accommodationHistoryLinkBody =>
+      'Rooms and beds you held in earlier terms.';
+
+  @override
+  String get accommodationHistoryNoCurrent => 'No current allocation';
+
+  @override
+  String accommodationHistoryNoBed(Object term) {
+    return 'No bed allocated for $term';
+  }
+
+  @override
+  String get accommodationHistoryNoBedBody =>
+      'The allocation window may be closed, or you have not applied for a bed. When a waitlist offer or a booking window opens, it will appear here.';
+
+  @override
+  String get accommodationHistoryCurrentBody =>
+      'This is your bed for the selected term.';
+
+  @override
+  String get accommodationHistoryOpenings =>
+      'View housing openings and notices';
+
+  @override
+  String get accommodationHistoryTitle => 'Accommodation history';
+
+  @override
+  String accommodationHistoryCount(Object count) {
+    return '$count records';
+  }
+
+  @override
+  String get accommodationHistoryIntro =>
+      'Rooms and beds you held in earlier terms. Use this record for clearance or proof of earlier residence.';
+
+  @override
+  String accommodationHistoryBed(Object bed, Object hostelBlock, Object room) {
+    return '$hostelBlock / Room $room · Bed $bed';
+  }
+
+  @override
+  String accommodationHistorySession(Object label) {
+    return 'Session $label';
+  }
+
+  @override
+  String get accommodationHistoryCheckedOut => 'Checked out';
+
+  @override
+  String get accommodationHistoryCancelledCharge => 'Cancelled with a charge';
+
+  @override
+  String get accommodationHistoryCancelled => 'Cancelled';
+
+  @override
+  String get accommodationHistoryExpired => 'Expired';
+
+  @override
+  String get accommodationHistoryEmptyTitle => 'No previous accommodation';
+
+  @override
+  String get accommodationHistoryEmptyBody =>
+      'You have not held a bed in a hostel before.';
+
+  @override
+  String get accommodationHistoryExport => 'Export accommodation history';
+
+  @override
+  String accommodationHistoryDisplaying(Object count) {
+    return 'Showing all $count past records.';
+  }
+
+  @override
+  String get accommodationSupportTitle =>
+      'Student welfare and housing directorate';
+
+  @override
+  String get accommodationSupportExtension => 'Ext. #41';
+
+  @override
+  String get accommodationSupportCall => 'Call the directorate';
+
+  @override
+  String get accommodationNoticeTerms => 'Terms accepted. Booking is open.';
+
+  @override
+  String get accommodationNoticeHeld =>
+      'Bed held. Pay before the deadline to confirm it.';
+
+  @override
+  String get accommodationNoticeCancelled =>
+      'Booking cancelled and the bed released.';
+
+  @override
+  String get accommodationNoticeAccepted =>
+      'Offer accepted. An invoice has been raised.';
+
+  @override
+  String get accommodationNoticeDeclined =>
+      'Offer declined. You have left the waitlist.';
+
+  @override
+  String get accommodationNoticeSwapDone => 'Beds swapped.';
+
+  @override
+  String get accommodationNoticeSwapDeclined => 'Swap declined.';
+
+  @override
+  String get accommodationNoticeSwapSent => 'Swap proposal sent.';
+
+  @override
+  String get housingTaskBarTitle => 'Housing Directorate';
+
+  @override
+  String get housingTaskBarSubtitle => 'Staff · Accommodation';
+
+  @override
+  String get housingBreadcrumbRoot => 'Housing';
+
+  @override
+  String get housingSave => 'Save changes';
+
+  @override
+  String get housingNone => 'None';
+
+  @override
+  String get housingConfirmKeep => 'Keep as it is';
+
+  @override
+  String get housingDaysSuffix => 'days';
+
+  @override
+  String get housingPercentSign => '%';
+
+  @override
+  String housingHours(Object count) {
+    return '$count hours';
+  }
+
+  @override
+  String housingDays(Object count) {
+    return '$count days';
+  }
+
+  @override
+  String housingBeds(Object count) {
+    return '$count beds';
+  }
+
+  @override
+  String housingPercent(Object percent) {
+    return '$percent%';
+  }
+
+  @override
+  String get housingFilterAll => 'All';
+
+  @override
+  String get housingStateHeld => 'Held';
+
+  @override
+  String get housingStateOffered => 'Offered';
+
+  @override
+  String get housingStateConfirmed => 'Confirmed';
+
+  @override
+  String get housingStateCheckedIn => 'Checked in';
+
+  @override
+  String get housingStateCancelled => 'Cancelled';
+
+  @override
+  String get housingMethodStudent => 'Booked by student';
+
+  @override
+  String get housingMethodByHand => 'By hand';
+
+  @override
+  String get housingMethodSpreadsheet => 'Spreadsheet';
+
+  @override
+  String get housingMethodAutomatic => 'Automatic';
+
+  @override
+  String get housingMethodDraw => 'Draw';
+
+  @override
+  String get housingMethodKeepMyRoom => 'Keep my room';
+
+  @override
+  String get housingGenderFemale => 'Female hostel';
+
+  @override
+  String get housingGenderMale => 'Male hostel';
+
+  @override
+  String get housingGenderMixed => 'Mixed hostel';
+
+  @override
+  String get housingBedFree => 'Free';
+
+  @override
+  String get housingBedHeld => 'Held';
+
+  @override
+  String get housingBedTaken => 'Taken';
+
+  @override
+  String get housingBedBlocked => 'Not bookable';
+
+  @override
+  String housingBedSemantics(Object number, Object state) {
+    return 'Bed $number, $state';
+  }
+
+  @override
+  String housingBedSemanticsOccupied(
+    Object number,
+    Object occupant,
+    Object state,
+  ) {
+    return 'Bed $number, $state, $occupant';
+  }
+
+  @override
+  String get housingRoomOpen => 'Open';
+
+  @override
+  String get housingRoomMaintenance => 'Maintenance';
+
+  @override
+  String get housingRoomClosed => 'Closed';
+
+  @override
+  String get housingBookingFirstCome => 'First come';
+
+  @override
+  String get housingBookingDraw => 'Draw';
+
+  @override
+  String get housingBookingPriority => 'Priority';
+
+  @override
+  String get housingOpeningScheduled => 'Scheduled';
+
+  @override
+  String get housingOpeningOpen => 'Open';
+
+  @override
+  String get housingOpeningClosed => 'Closed';
+
+  @override
+  String get housingIssueBedUnknown => 'No such bed in the hostel inventory.';
+
+  @override
+  String get housingIssueMatricUnknown => 'No student has this matric number.';
+
+  @override
+  String get housingIssueBedTaken => 'This bed is already allocated.';
+
+  @override
+  String get housingIssueDuplicate =>
+      'This student appears on more than one row.';
+
+  @override
+  String get housingIssueGender =>
+      'The hostel is not open to this student\'s gender.';
+
+  @override
+  String get housingNoticeOfferMade => 'Offer made';
+
+  @override
+  String get housingNoticeDeadlineNear => 'Deadline near';
+
+  @override
+  String get housingNoticeBedReleased => 'Bed released';
+
+  @override
+  String get housingNoticeWelcome => 'Welcome';
+
+  @override
+  String get housingSkipBanned => 'Banned from housing';
+
+  @override
+  String get housingSkipUnpaid => 'Unpaid fees';
+
+  @override
+  String get housingSkipRoomClosed => 'Room is closed';
+
+  @override
+  String get housingDrawBallot => 'Ballot';
+
+  @override
+  String get housingDrawPriority => 'Priority';
+
+  @override
+  String get housingNoticeCancelled =>
+      'Allocation cancelled and the bed freed.';
+
+  @override
+  String get housingNoticeRoomSaved => 'Room settings saved.';
+
+  @override
+  String get housingNoticeRoomsAdded => 'Rooms added to the block.';
+
+  @override
+  String get housingNoticePublished => 'New agreement version published.';
+
+  @override
+  String get housingNoticeWordingSaved => 'Notice wording saved.';
+
+  @override
+  String get housingNoticeCategorySaved => 'Category added.';
+
+  @override
+  String get housingNoticeCategoryRemoved => 'Category removed.';
+
+  @override
+  String get housingNoticeBanAdded => 'Student banned from booking.';
+
+  @override
+  String get housingNoticeBanLifted => 'Ban lifted.';
+
+  @override
+  String get housingNoticeRefundSaved => 'Refund rules saved.';
+
+  @override
+  String get housingNoticePriceSaved => 'Price saved.';
+
+  @override
+  String get housingNoticeOpeningSaved => 'Booking method saved.';
+
+  @override
+  String get housingNoticeDrawRun => 'Draw complete.';
+
+  @override
+  String get housingNoticeAutoRun => 'Automatic allocation complete.';
+
+  @override
+  String get housingNoticeKeepSent => 'Keep-my-room offers sent.';
+
+  @override
+  String get housingNoticeUploadDone => 'Spreadsheet applied as one batch.';
+
+  @override
+  String get housingToolsTitle => 'Tools';
+
+  @override
+  String get housingQueueTitle => 'Allocations';
+
+  @override
+  String get housingQueueSubtitle =>
+      'Every bed given out, by state, and the tools to give out more.';
+
+  @override
+  String get housingQueueSummaryTitle => 'Today';
+
+  @override
+  String get housingMetricAllocations => 'Allocations';
+
+  @override
+  String get housingMetricFreeBeds => 'Free beds';
+
+  @override
+  String get housingMetricWaitlist => 'Waitlist';
+
+  @override
+  String get housingMetricBeds => 'Beds';
+
+  @override
+  String get housingMetricTaken => 'Taken';
+
+  @override
+  String get housingMetricFree => 'Free';
+
+  @override
+  String get housingMetricApplicants => 'Applicants';
+
+  @override
+  String get housingMetricEligible => 'Eligible residents';
+
+  @override
+  String get housingQueueEmptyTitle => 'No allocations here';
+
+  @override
+  String get housingQueueEmptyBody =>
+      'Nothing matches this filter. Pick another state, or give out beds with one of the tools.';
+
+  @override
+  String get housingToolHostelsTitle => 'Hostels and rooms';
+
+  @override
+  String get housingToolHostelsBody =>
+      'Beds block by block, room settings and occupants.';
+
+  @override
+  String get housingToolOpeningsTitle => 'Openings and prices';
+
+  @override
+  String get housingToolOpeningsBody =>
+      'When each term books, how, and what a bed costs.';
+
+  @override
+  String get housingToolUploadTitle => 'Allocate from a spreadsheet';
+
+  @override
+  String get housingToolUploadBody =>
+      'Upload a sheet of students and beds as one batch.';
+
+  @override
+  String get housingToolAllocateTitle => 'Allocate by hand';
+
+  @override
+  String get housingToolAllocateBody => 'Give one student one bed.';
+
+  @override
+  String get housingToolAutoTitle => 'Automatic allocation';
+
+  @override
+  String housingToolAutoBody(Object count) {
+    return 'Place the $count students on the waitlist.';
+  }
+
+  @override
+  String get housingToolDrawTitle => 'The draw';
+
+  @override
+  String housingToolDrawBody(Object count) {
+    return 'Pick winners for $count applicants.';
+  }
+
+  @override
+  String get housingToolKeepTitle => 'Keep my room';
+
+  @override
+  String housingToolKeepBody(Object count) {
+    return 'Offer $count residents their own beds back.';
+  }
+
+  @override
+  String get housingToolAgreementTitle => 'Accommodation agreement';
+
+  @override
+  String get housingToolAgreementBody =>
+      'Publish a new version students must accept.';
+
+  @override
+  String get housingToolNoticesTitle => 'Housing notices';
+
+  @override
+  String get housingToolNoticesBody => 'Reword the messages students receive.';
+
+  @override
+  String get housingToolCategoriesTitle => 'Housing categories';
+
+  @override
+  String get housingToolCategoriesBody =>
+      'Who counts for more in a priority draw.';
+
+  @override
+  String get housingToolBansTitle => 'Housing bans';
+
+  @override
+  String housingToolBansBody(Object count) {
+    return '$count students barred from booking.';
+  }
+
+  @override
+  String get housingToolRefundsTitle => 'Cancellation refunds';
+
+  @override
+  String housingToolRefundsBody(Object percent) {
+    return 'Students get $percent% back when they cancel in time.';
+  }
+
+  @override
+  String get housingDetailTitle => 'Allocation';
+
+  @override
+  String get housingDetailSubtitle =>
+      'The student, the bed, the fee and how it was made.';
+
+  @override
+  String get housingDetailMissingTitle => 'Allocation not found';
+
+  @override
+  String get housingDetailMissingBody =>
+      'It may have been removed. Go back to the queue and pick another.';
+
+  @override
+  String get housingDetailProgramme => 'Programme';
+
+  @override
+  String get housingDetailBedTitle => 'Bed';
+
+  @override
+  String get housingDetailHostel => 'Hostel';
+
+  @override
+  String get housingDetailRoom => 'Room';
+
+  @override
+  String get housingDetailRoomType => 'Room type';
+
+  @override
+  String get housingDetailTerm => 'Term';
+
+  @override
+  String get housingDetailRecordTitle => 'Record';
+
+  @override
+  String get housingDetailFee => 'Fee';
+
+  @override
+  String get housingDetailInvoice => 'Invoice';
+
+  @override
+  String get housingDetailMethod => 'Made by';
+
+  @override
+  String get housingDetailCreated => 'Created';
+
+  @override
+  String get housingCancelAction => 'Cancel this allocation';
+
+  @override
+  String get housingCancelTitle => 'Cancel this allocation?';
+
+  @override
+  String housingCancelBody(Object name) {
+    return '$name loses the bed and it becomes free for the next student. Any fee paid goes to their wallet.';
+  }
+
+  @override
+  String get housingCancelConfirm => 'Cancel allocation';
+
+  @override
+  String get housingHostelsSubtitle =>
+      'Every hostel, with how many beds are free.';
+
+  @override
+  String get housingHostelsEmptyTitle => 'No hostels yet';
+
+  @override
+  String get housingHostelsEmptyBody =>
+      'Hostels appear here once they are added to the inventory.';
+
+  @override
+  String housingHostelSummary(
+    Object blocks,
+    Object free,
+    Object rooms,
+    Object total,
+  ) {
+    return '$blocks blocks · $rooms rooms · $free of $total beds free';
+  }
+
+  @override
+  String get housingHostelTitle => 'Hostel';
+
+  @override
+  String get housingHostelSubtitle =>
+      'Beds block by block. Tap a room to change its settings.';
+
+  @override
+  String get housingHostelMissingTitle => 'Hostel not found';
+
+  @override
+  String get housingHostelMissingBody =>
+      'It may have been removed. Go back to the list and pick another.';
+
+  @override
+  String get housingOccupantsTitle => 'Occupants';
+
+  @override
+  String housingOccupantsEntry(Object count) {
+    return '$count students living here.';
+  }
+
+  @override
+  String get housingOccupantsSubtitle => 'Who holds a bed in this hostel.';
+
+  @override
+  String housingOccupantsCount(Object count) {
+    return '$count occupants';
+  }
+
+  @override
+  String get housingOccupantsEmptyTitle => 'Nobody lives here yet';
+
+  @override
+  String housingOccupantsEmptyBody(Object hostel) {
+    return '$hostel has no occupants. They appear once a bed is held or confirmed.';
+  }
+
+  @override
+  String housingOccupantBed(Object bed, Object room) {
+    return '$room · Bed $bed';
+  }
+
+  @override
+  String get housingBlockAddRooms => 'Add rooms';
+
+  @override
+  String get housingBlockEmptyTitle => 'No rooms in this block';
+
+  @override
+  String get housingBlockEmptyBody =>
+      'Add a run of rooms to start giving out beds here.';
+
+  @override
+  String housingRoomHeading(Object number, Object type) {
+    return 'Room $number · $type';
+  }
+
+  @override
+  String get housingRoomTitle => 'Room settings';
+
+  @override
+  String get housingRoomSubtitle =>
+      'Whether the room can be booked, and what type it is.';
+
+  @override
+  String get housingRoomMissingTitle => 'Room not found';
+
+  @override
+  String get housingRoomMissingBody =>
+      'It may have been removed. Go back to the hostel and pick another.';
+
+  @override
+  String get housingRoomFloor => 'Floor';
+
+  @override
+  String get housingRoomStatusTitle => 'Booking status';
+
+  @override
+  String get housingRoomStatusBody =>
+      'A room under maintenance or closed shows no free beds to students.';
+
+  @override
+  String get housingRoomTypeTitle => 'Room type';
+
+  @override
+  String get housingRoomTypeNote =>
+      'The type decides the price a student is invoiced.';
+
+  @override
+  String get housingBlockTitle => 'Add rooms to a block';
+
+  @override
+  String get housingBlockSubtitle => 'Create a run of rooms in one go.';
+
+  @override
+  String housingBlockCurrent(Object count, Object hostel) {
+    return '$hostel · $count rooms now';
+  }
+
+  @override
+  String get housingBlockFrom => 'First room number';
+
+  @override
+  String get housingBlockTo => 'Last room number';
+
+  @override
+  String get housingBlockRangeError =>
+      'Enter two numbers, the second not smaller than the first.';
+
+  @override
+  String get housingBlockBeds => 'Beds per room';
+
+  @override
+  String housingBlockPreview(Object beds, Object rooms) {
+    return 'This adds $rooms rooms and $beds beds. Room numbers already in the block are skipped.';
+  }
+
+  @override
+  String get housingBlockAdd => 'Add rooms';
+
+  @override
+  String get housingOpeningsSubtitle =>
+      'When each term books, how beds are given out, and what they cost.';
+
+  @override
+  String get housingTabOpenings => 'Openings';
+
+  @override
+  String get housingTabPrices => 'Prices';
+
+  @override
+  String get housingTabRefunds => 'Refunds';
+
+  @override
+  String get housingOpeningsEmptyTitle => 'No openings scheduled';
+
+  @override
+  String get housingOpeningsEmptyBody =>
+      'Schedule a term\'s booking window before students can book.';
+
+  @override
+  String housingOpeningWindow(Object closes, Object opens) {
+    return 'Booking from $opens to $closes';
+  }
+
+  @override
+  String get housingOpeningMethod => 'How beds are given out';
+
+  @override
+  String get housingOpeningHold => 'Hold time for payment';
+
+  @override
+  String get housingOpeningGrace => 'Grace after the deadline';
+
+  @override
+  String get housingOpeningQuota => 'Free scholarship beds';
+
+  @override
+  String get housingOpeningClosedDays => 'Closed days';
+
+  @override
+  String get housingPricesTitle => 'Bed price by room type';
+
+  @override
+  String get housingPricesBody =>
+      'Per term, in naira. A change applies to beds booked from now on.';
+
+  @override
+  String get housingPriceInvalid => 'Enter an amount such as 75,000.00.';
+
+  @override
+  String get housingRefundsTitle => 'Cancellation refunds';
+
+  @override
+  String get housingRefundsIntro =>
+      'What share of a paid fee goes back to the wallet when a student cancels early enough.';
+
+  @override
+  String get housingRefundsSubtitle =>
+      'Set the refund share and test it on a sample cancellation.';
+
+  @override
+  String get housingRefundShare => 'Refund share';
+
+  @override
+  String get housingRefundWindow => 'Cancel at least this long before check-in';
+
+  @override
+  String get housingRefundsOpen => 'Open the refund simulator';
+
+  @override
+  String get housingSimulateTitle => 'Simulate a cancellation';
+
+  @override
+  String get housingSimulateBody =>
+      'See what one cancellation would hand back under the rules above.';
+
+  @override
+  String get housingSimulatePaid => 'Fee paid';
+
+  @override
+  String get housingSimulateDays => 'Days before check-in';
+
+  @override
+  String get housingSimulateRun => 'Simulate';
+
+  @override
+  String get housingSimulateRefund => 'Refunded to wallet';
+
+  @override
+  String get housingSimulateCharge => 'Cancellation charge';
+
+  @override
+  String housingSimulateWithin(Object days) {
+    return 'This is at least $days days before check-in, so the refund share applies.';
+  }
+
+  @override
+  String housingSimulateOutside(Object days) {
+    return 'This is less than $days days before check-in, so nothing is refunded.';
+  }
+
+  @override
+  String get housingUploadSubtitle =>
+      'Give out many beds at once from a spreadsheet.';
+
+  @override
+  String get housingUploadFormTitle => 'Choose a spreadsheet';
+
+  @override
+  String get housingUploadFormBody =>
+      'The whole sheet is applied together, or not at all. Any row problem leaves everything untouched.';
+
+  @override
+  String get housingUploadColumns => 'Columns';
+
+  @override
+  String get housingUploadColumnList =>
+      'matric_number, hostel, block, room, bed';
+
+  @override
+  String get housingUploadSampleValid => 'Use a correct sample sheet';
+
+  @override
+  String get housingUploadSampleHeader => 'Use a sheet with a missing column';
+
+  @override
+  String get housingUploadSampleRows => 'Use a sheet with row problems';
+
+  @override
+  String get housingUploadAnother => 'Try another file';
+
+  @override
+  String housingUploadHeaderTitle(Object file) {
+    return '$file cannot be read';
+  }
+
+  @override
+  String housingUploadHeaderBody(Object column) {
+    return 'The sheet has no \"$column\" column. Add it to the first row and upload again.';
+  }
+
+  @override
+  String housingUploadRowsTitle(Object issues, Object rows) {
+    return '$issues of $rows rows have problems';
+  }
+
+  @override
+  String get housingUploadRowsBody =>
+      'Nothing was applied. Fix these rows in the sheet and upload it again.';
+
+  @override
+  String housingUploadRow(Object row) {
+    return 'Row $row';
+  }
+
+  @override
+  String get housingUploadSuccessTitle => 'Batch applied';
+
+  @override
+  String housingUploadSuccessBody(Object rows) {
+    return 'All $rows rows were applied. Each student has been told.';
+  }
+
+  @override
+  String get housingUploadBatch => 'Batch';
+
+  @override
+  String get housingUploadFile => 'File';
+
+  @override
+  String get housingAllocateSubtitle =>
+      'Give one student one bed. They are told straight away.';
+
+  @override
+  String get housingAllocateStudent => 'Student';
+
+  @override
+  String get housingAllocateMatric => 'Matric number';
+
+  @override
+  String get housingAllocateBed => 'Bed';
+
+  @override
+  String get housingAllocateHostel => 'Hostel';
+
+  @override
+  String get housingAllocateRoom => 'Room';
+
+  @override
+  String housingAllocateRoomChoice(Object block, Object number) {
+    return '$block · $number';
+  }
+
+  @override
+  String get housingAllocateBedNumber => 'Bed number';
+
+  @override
+  String get housingAllocateSubmit => 'Allocate bed';
+
+  @override
+  String get housingAllocateDoneTitle => 'Bed allocated';
+
+  @override
+  String housingAllocateDoneBody(Object bed, Object name) {
+    return '$name now holds $bed.';
+  }
+
+  @override
+  String get housingAllocateUnknown => 'No student has this matric number.';
+
+  @override
+  String housingAllocateTaken(Object name) {
+    return 'That bed is no longer free, so $name was not allocated.';
+  }
+
+  @override
+  String housingAllocateBanned(Object name) {
+    return '$name is barred from housing and cannot be allocated a bed.';
+  }
+
+  @override
+  String get housingAutoSubtitle => 'Place the waitlist into the free beds.';
+
+  @override
+  String get housingAutoTitle => 'Automatic allocation';
+
+  @override
+  String get housingAutoBody =>
+      'Students on the waitlist are placed in order of when they joined, into beds that match their hostel\'s gender and level.';
+
+  @override
+  String get housingAutoRules =>
+      'Banned students are skipped. Anyone left over stays on the waitlist.';
+
+  @override
+  String get housingAutoRun => 'Run allocation';
+
+  @override
+  String get housingAutoConfirmTitle => 'Run automatic allocation?';
+
+  @override
+  String housingAutoConfirmBody(Object free, Object waitlist) {
+    return 'This places up to $waitlist students into $free free beds. Each student is told.';
+  }
+
+  @override
+  String get housingAutoResultTitle => 'Result';
+
+  @override
+  String get housingAutoPlaced => 'Placed';
+
+  @override
+  String get housingAutoUnplaced => 'Still waiting';
+
+  @override
+  String get housingAutoLeft => 'Beds left';
+
+  @override
+  String get housingDrawSubtitle =>
+      'Pick who gets a bed when there are more applicants than beds.';
+
+  @override
+  String get housingDrawTitle => 'The draw';
+
+  @override
+  String get housingDrawBody =>
+      'A ballot picks at random. A priority draw weighs each applicant by their housing category.';
+
+  @override
+  String get housingDrawBallotNote => 'Every applicant has the same chance.';
+
+  @override
+  String get housingDrawPriorityNote =>
+      'Applicants in heavier categories are drawn first. Set the weights under housing categories.';
+
+  @override
+  String get housingDrawSeats => 'Beds to give out';
+
+  @override
+  String get housingDrawRun => 'Run the draw';
+
+  @override
+  String get housingDrawConfirmTitle => 'Run the draw?';
+
+  @override
+  String housingDrawConfirmBody(Object applicants, Object seats) {
+    return 'This gives out $seats beds among $applicants applicants. It cannot be run again for the same applicants.';
+  }
+
+  @override
+  String get housingDrawResultTitle => 'Draw result';
+
+  @override
+  String get housingDrawReference => 'Draw';
+
+  @override
+  String get housingDrawMethodLabel => 'Method';
+
+  @override
+  String get housingDrawWinners => 'Winners';
+
+  @override
+  String housingDrawWinnersValue(Object applicants, Object winners) {
+    return '$winners of $applicants';
+  }
+
+  @override
+  String get housingDrawWaitlisted => 'Moved to the waitlist';
+
+  @override
+  String get housingKeepSubtitle =>
+      'Offer last term\'s residents the beds they already have.';
+
+  @override
+  String get housingKeepTitle => 'Keep my room';
+
+  @override
+  String get housingKeepBody =>
+      'Residents who qualify get their own bed offered back for a window, before booking opens to everyone else.';
+
+  @override
+  String get housingKeepWindow => 'Offer lasts';
+
+  @override
+  String get housingKeepNote =>
+      'Each resident is sent an offer. They answer once; an unanswered offer releases the bed.';
+
+  @override
+  String get housingKeepSend => 'Send offers';
+
+  @override
+  String get housingKeepConfirmTitle => 'Send keep-my-room offers?';
+
+  @override
+  String housingKeepConfirmBody(Object count, Object days) {
+    return '$count residents will be offered their beds for $days days.';
+  }
+
+  @override
+  String get housingKeepResultTitle => 'Offers sent';
+
+  @override
+  String housingKeepResultBody(Object days, Object offered) {
+    return '$offered residents were offered their beds for $days days.';
+  }
+
+  @override
+  String housingKeepSkippedTitle(Object count) {
+    return '$count residents were skipped';
+  }
+
+  @override
+  String get housingAgreementSubtitle =>
+      'Publish a new version of the accommodation terms.';
+
+  @override
+  String get housingAgreementCurrent => 'Version in force';
+
+  @override
+  String housingAgreementPublished(Object date, Object version) {
+    return 'Version $version, published $date.';
+  }
+
+  @override
+  String housingAgreementPublishTitle(Object version) {
+    return 'Publish version $version';
+  }
+
+  @override
+  String get housingAgreementPublishBody =>
+      'Say in a few sentences what changed.';
+
+  @override
+  String get housingAgreementSummary => 'What changed';
+
+  @override
+  String get housingAgreementWarning =>
+      'Every student has to accept the new version before they can book a bed again.';
+
+  @override
+  String get housingAgreementPublish => 'Publish version';
+
+  @override
+  String housingAgreementConfirmTitle(Object version) {
+    return 'Publish version $version?';
+  }
+
+  @override
+  String get housingAgreementConfirmBody =>
+      'It replaces the version in force straight away. Students accept it the next time they book.';
+
+  @override
+  String get housingAgreementHistory => 'Earlier versions';
+
+  @override
+  String get housingAgreementLive => 'In force';
+
+  @override
+  String get housingNoticesSubtitle =>
+      'Reword the messages students receive about their beds.';
+
+  @override
+  String get housingNoticeWording => 'Wording';
+
+  @override
+  String get housingCategoriesSubtitle =>
+      'The weight of each category when a draw is by priority.';
+
+  @override
+  String get housingCategoriesEmptyTitle => 'No categories';
+
+  @override
+  String get housingCategoriesEmptyBody =>
+      'Add a category to give some students priority in a draw.';
+
+  @override
+  String housingCategoryLine(Object count, Object weight) {
+    return 'Weight $weight · $count students';
+  }
+
+  @override
+  String get housingCategoryRemove => 'Remove category';
+
+  @override
+  String housingCategoryRemoveTitle(Object name) {
+    return 'Remove $name?';
+  }
+
+  @override
+  String get housingCategoryRemoveBody =>
+      'Students in it lose the priority it gave them in the next draw.';
+
+  @override
+  String get housingCategoryAddTitle => 'Add a category';
+
+  @override
+  String get housingCategoryName => 'Category name';
+
+  @override
+  String get housingCategoryWeight => 'Weight';
+
+  @override
+  String get housingCategoryAdd => 'Add category';
+
+  @override
+  String get housingBansSubtitle => 'Students barred from booking a bed.';
+
+  @override
+  String get housingBansEmptyTitle => 'Nobody is banned';
+
+  @override
+  String get housingBansEmptyBody =>
+      'Bar a student here and they cannot book, be offered or be allocated a bed.';
+
+  @override
+  String housingBanSince(Object date, Object matric) {
+    return '$matric · since $date';
+  }
+
+  @override
+  String get housingBanLift => 'Lift ban';
+
+  @override
+  String housingBanLiftTitle(Object name) {
+    return 'Lift the ban on $name?';
+  }
+
+  @override
+  String get housingBanLiftBody => 'They can book beds again from now on.';
+
+  @override
+  String get housingBanAddTitle => 'Ban a student';
+
+  @override
+  String get housingBanAddBody =>
+      'The student cannot book, be offered or be allocated a bed until you lift the ban.';
+
+  @override
+  String get housingBanReason => 'Reason';
+
+  @override
+  String get housingBanRejected =>
+      'No student with that matric number, or they are already banned.';
+
+  @override
+  String get housingBanAdd => 'Ban student';
+
+  @override
+  String get accommodationPreviewAction => 'Preview states';
+
+  @override
+  String get accommodationPreviewTitle => 'Student accommodation states';
+
+  @override
+  String get accommodationPreviewSubtitle =>
+      'Debug only. Loads a fixture ledger so you can walk every student screen. Use the History tab for past beds; Terms and Rooms open from the matching states.';
+
+  @override
+  String get accommodationPreviewHeldAndOffer => 'Held bed + waitlist offer';
+
+  @override
+  String get accommodationPreviewHeldAndOfferHint =>
+      'Term 1 held with a swap proposal; switch to Term 2 for the offer.';
+
+  @override
+  String get accommodationPreviewNotScheduled => 'Not scheduled';
+
+  @override
+  String get accommodationPreviewNotScheduledHint =>
+      'Booking has not been published for either term.';
+
+  @override
+  String get accommodationPreviewNeedsTerms => 'Terms to accept';
+
+  @override
+  String get accommodationPreviewNeedsTermsHint =>
+      'Opens the agreement gate, then booking.';
+
+  @override
+  String get accommodationPreviewRoomList => 'Room list';
+
+  @override
+  String get accommodationPreviewRoomListHint =>
+      'Booking open — choose a room.';
+
+  @override
+  String get accommodationPreviewConfirmed => 'Confirmed bed';
+
+  @override
+  String get accommodationPreviewConfirmedHint =>
+      'Paid and confirmed, not yet checked in.';
+
+  @override
+  String get accommodationPreviewFreeBed => 'Free / scholarship bed';
+
+  @override
+  String get accommodationPreviewFreeBedHint => 'Confirmed with no fee due.';
+
+  @override
+  String get accommodationPreviewCheckedIn => 'Checked in';
+
+  @override
+  String get accommodationPreviewCheckedInHint =>
+      'Official resident with slip and hall details.';
+
+  @override
+  String get accommodationPreviewSessionHeld => 'Session booking (held)';
+
+  @override
+  String get accommodationPreviewSessionHeldHint =>
+      'One fee covers both terms of the session.';
+
+  @override
+  String get accommodationPreviewNoHistory => 'History empty';
+
+  @override
+  String get accommodationPreviewNoHistoryHint =>
+      'Opens History with no past beds.';
 }

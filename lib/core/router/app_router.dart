@@ -2,6 +2,32 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/accommodation/presentation/bloc/accommodation_cubit.dart';
+import '../../features/accommodation/presentation/bloc/staff/housing_cubit.dart';
+import '../../features/accommodation/presentation/pages/accommodation_history_page.dart';
+import '../../features/accommodation/presentation/pages/accommodation_page.dart';
+import '../../features/accommodation/presentation/pages/accommodation_rooms_page.dart';
+import '../../features/accommodation/presentation/pages/accommodation_terms_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_agreement_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_allocate_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_allocation_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_allocations_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_auto_allocation_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_bans_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_block_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_categories_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_draw_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_hostel_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_hostels_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_keep_my_room_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_notices_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_occupants_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_openings_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_refunds_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_room_page.dart';
+import '../../features/accommodation/presentation/pages/staff/housing_upload_page.dart';
+import '../../features/accommodation/presentation/widgets/accommodation_shell.dart';
+import '../../features/accommodation/presentation/widgets/staff/housing_shell.dart';
 import '../../features/admissions/presentation/bloc/admission_verification_cubit.dart';
 import '../../features/admissions/presentation/bloc/admissions_cubit.dart';
 import '../../features/admissions/presentation/bloc/jamb_claim_cubit.dart';
@@ -448,9 +474,163 @@ GoRouter createRouter({
             name: Routes.registrationDisciplineCaseName,
             builder: (context, state) => DisciplineCasePage(
               caseId:
-                  state.pathParameters[Routes.registrationDisciplineCaseIdParam] ??
+                  state.pathParameters[Routes
+                      .registrationDisciplineCaseIdParam] ??
                   '',
             ),
+          ),
+        ],
+      ),
+      // Accommodation: the student's bed, per term. Outside the student shell
+      // with its own task bar, the way Registration & Records is. One cubit
+      // across hub, terms, rooms and history so the selected term and any
+      // booking carry from screen to screen.
+      ShellRoute(
+        builder: (context, state, child) => AccommodationShell(
+          location: state.matchedLocation,
+          child: BlocProvider<AccommodationCubit>(
+            create: (context) => sl<AccommodationCubit>(),
+            child: child,
+          ),
+        ),
+        routes: [
+          GoRoute(
+            path: Routes.accommodation,
+            name: Routes.accommodationName,
+            builder: (context, state) => const AccommodationPage(),
+          ),
+          GoRoute(
+            path: Routes.accommodationTerms,
+            name: Routes.accommodationTermsName,
+            builder: (context, state) => const AccommodationTermsPage(),
+          ),
+          GoRoute(
+            path: Routes.accommodationRooms,
+            name: Routes.accommodationRoomsName,
+            builder: (context, state) => const AccommodationRoomsPage(),
+          ),
+          GoRoute(
+            path: Routes.accommodationHistory,
+            name: Routes.accommodationHistoryName,
+            builder: (context, state) => const AccommodationHistoryPage(),
+          ),
+        ],
+      ),
+      // Housing Directorate (staff). Authenticated like the rest of the portal
+      // but never linked from the student hub or the student accommodation
+      // screens; one cubit across the queue and every tool so an allocation
+      // made by hand shows on the queue and in the hostel grid.
+      ShellRoute(
+        builder: (context, state, child) => HousingShell(
+          location: state.matchedLocation,
+          child: BlocProvider<HousingCubit>(
+            create: (context) => sl<HousingCubit>(),
+            child: child,
+          ),
+        ),
+        routes: [
+          GoRoute(
+            path: Routes.staffAllocations,
+            name: Routes.staffAllocationsName,
+            builder: (context, state) => const HousingAllocationsPage(),
+          ),
+          GoRoute(
+            path: Routes.staffAllocationTemplate,
+            name: Routes.staffAllocationName,
+            builder: (context, state) => HousingAllocationPage(
+              allocationId:
+                  state.pathParameters[Routes.staffAllocationIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.staffHostels,
+            name: Routes.staffHostelsName,
+            builder: (context, state) => const HousingHostelsPage(),
+          ),
+          GoRoute(
+            path: Routes.staffHostelTemplate,
+            name: Routes.staffHostelName,
+            builder: (context, state) => HousingHostelPage(
+              hostelId: state.pathParameters[Routes.staffHostelIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.staffOccupantsTemplate,
+            name: Routes.staffOccupantsName,
+            builder: (context, state) => HousingOccupantsPage(
+              hostelId: state.pathParameters[Routes.staffHostelIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.staffRoomTemplate,
+            name: Routes.staffRoomName,
+            builder: (context, state) => HousingRoomPage(
+              hostelId: state.pathParameters[Routes.staffHostelIdParam]!,
+              roomId: state.pathParameters[Routes.staffRoomIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.staffBlockTemplate,
+            name: Routes.staffBlockName,
+            builder: (context, state) => HousingBlockPage(
+              hostelId: state.pathParameters[Routes.staffHostelIdParam]!,
+              blockId: state.pathParameters[Routes.staffBlockIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.staffOpenings,
+            name: Routes.staffOpeningsName,
+            builder: (context, state) => const HousingOpeningsPage(),
+          ),
+          GoRoute(
+            path: Routes.staffUpload,
+            name: Routes.staffUploadName,
+            builder: (context, state) => const HousingUploadPage(),
+          ),
+          GoRoute(
+            path: Routes.staffAllocate,
+            name: Routes.staffAllocateName,
+            builder: (context, state) => const HousingAllocatePage(),
+          ),
+          GoRoute(
+            path: Routes.staffAutoAllocation,
+            name: Routes.staffAutoAllocationName,
+            builder: (context, state) => const HousingAutoAllocationPage(),
+          ),
+          GoRoute(
+            path: Routes.staffDraw,
+            name: Routes.staffDrawName,
+            builder: (context, state) => const HousingDrawPage(),
+          ),
+          GoRoute(
+            path: Routes.staffKeepMyRoom,
+            name: Routes.staffKeepMyRoomName,
+            builder: (context, state) => const HousingKeepMyRoomPage(),
+          ),
+          GoRoute(
+            path: Routes.staffAgreement,
+            name: Routes.staffAgreementName,
+            builder: (context, state) => const HousingAgreementPage(),
+          ),
+          GoRoute(
+            path: Routes.staffNotices,
+            name: Routes.staffNoticesName,
+            builder: (context, state) => const HousingNoticesPage(),
+          ),
+          GoRoute(
+            path: Routes.staffCategories,
+            name: Routes.staffCategoriesName,
+            builder: (context, state) => const HousingCategoriesPage(),
+          ),
+          GoRoute(
+            path: Routes.staffBans,
+            name: Routes.staffBansName,
+            builder: (context, state) => const HousingBansPage(),
+          ),
+          GoRoute(
+            path: Routes.staffRefunds,
+            name: Routes.staffRefundsName,
+            builder: (context, state) => const HousingRefundsPage(),
           ),
         ],
       ),
@@ -483,7 +663,8 @@ GoRouter createRouter({
             name: Routes.staffRegistrationDecisionName,
             builder: (context, state) => StudentRegistrationDecisionPage(
               studentId:
-                  state.pathParameters[Routes.staffRegistrationStudentIdParam] ??
+                  state.pathParameters[Routes
+                      .staffRegistrationStudentIdParam] ??
                   '',
             ),
           ),
@@ -497,7 +678,8 @@ GoRouter createRouter({
             name: Routes.staffStudyPlanAdvisingName,
             builder: (context, state) => StudyPlanAdvisingPage(
               studentId:
-                  state.pathParameters[Routes.staffRegistrationStudentIdParam] ??
+                  state.pathParameters[Routes
+                      .staffRegistrationStudentIdParam] ??
                   '',
             ),
           ),
@@ -511,7 +693,8 @@ GoRouter createRouter({
             name: Routes.staffStudentRecordName,
             builder: (context, state) => StudentRecordPage(
               studentId:
-                  state.pathParameters[Routes.staffRegistrationStudentIdParam] ??
+                  state.pathParameters[Routes
+                      .staffRegistrationStudentIdParam] ??
                   '',
             ),
           ),
@@ -524,8 +707,7 @@ GoRouter createRouter({
             path: Routes.staffIdCardPreviewTemplate,
             name: Routes.staffIdCardPreviewName,
             builder: (context, state) => IdCardPrintPreviewPage(
-              serial:
-                  state.pathParameters[Routes.staffIdCardSerialParam] ?? '',
+              serial: state.pathParameters[Routes.staffIdCardSerialParam] ?? '',
             ),
           ),
         ],

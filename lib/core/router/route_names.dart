@@ -186,8 +186,7 @@ abstract final class Routes {
   static const String staffStudents = '$staffRegistration/students';
 
   /// Path template of one registry student record.
-  static const String staffStudentRecordTemplate =
-      '$staffStudents/:studentId';
+  static const String staffStudentRecordTemplate = '$staffStudents/:studentId';
 
   static String staffStudentRecord(String studentId) =>
       staffStudentRecordTemplate.replaceFirst(':studentId', studentId);
@@ -198,8 +197,8 @@ abstract final class Routes {
   /// Path template of one ID card print preview.
   static const String staffIdCardPreviewTemplate = '$staffIdCards/:serial';
 
-  static String staffIdCardPreview(String serial) =>
-      staffIdCardPreviewTemplate.replaceFirst(':serial', Uri.encodeComponent(serial));
+  static String staffIdCardPreview(String serial) => staffIdCardPreviewTemplate
+      .replaceFirst(':serial', Uri.encodeComponent(serial));
 
   static const String staffIdCardSerialParam = 'serial';
 
@@ -208,6 +207,106 @@ abstract final class Routes {
 
   /// Query parameter [verifyIdCard] reads a code from.
   static const String verifyIdCardCodeParam = 'code';
+
+  /// Student Accommodation hub — term selector, the held / offered / confirmed
+  /// bed, and the booking entry points. Outside the student shell with its own
+  /// task bar; back leads to the hub.
+  static const String accommodation = '/accommodation';
+
+  /// Accept the accommodation agreement before booking.
+  static const String accommodationTerms = '/accommodation/terms';
+
+  /// Bookable rooms for the selected term.
+  static const String accommodationRooms = '/accommodation/rooms';
+
+  /// Past bed records.
+  static const String accommodationHistory = '/accommodation/history';
+
+  /// Housing Directorate root. Authenticated but not linked from the student
+  /// hub — reserved for the staff portal.
+  static const String staffAccommodation = '/accommodation/staff';
+
+  /// Allocations queue and tool entries.
+  static const String staffAllocations = '$staffAccommodation/allocations';
+
+  /// Path template of one allocation; `:allocationId` is the record id.
+  static const String staffAllocationTemplate =
+      '$staffAllocations/:allocationId';
+
+  static String staffAllocation(String allocationId) =>
+      staffAllocationTemplate.replaceFirst(':allocationId', allocationId);
+
+  static const String staffAllocationIdParam = 'allocationId';
+
+  /// Hostels and rooms directory.
+  static const String staffHostels = '$staffAccommodation/hostels';
+
+  /// Path template of one hostel's bed grid.
+  static const String staffHostelTemplate = '$staffHostels/:hostelId';
+
+  static String staffHostel(String hostelId) =>
+      staffHostelTemplate.replaceFirst(':hostelId', hostelId);
+
+  static const String staffHostelIdParam = 'hostelId';
+
+  /// Occupant list of one hostel.
+  static const String staffOccupantsTemplate = '$staffHostelTemplate/occupants';
+
+  static String staffOccupants(String hostelId) =>
+      staffOccupantsTemplate.replaceFirst(':hostelId', hostelId);
+
+  /// Room settings of one room in one hostel.
+  static const String staffRoomTemplate = '$staffHostelTemplate/rooms/:roomId';
+
+  static String staffRoom(String hostelId, String roomId) => staffRoomTemplate
+      .replaceFirst(':hostelId', hostelId)
+      .replaceFirst(':roomId', roomId);
+
+  static const String staffRoomIdParam = 'roomId';
+
+  /// Block settings and bulk add of rooms.
+  static const String staffBlockTemplate =
+      '$staffHostelTemplate/blocks/:blockId';
+
+  static String staffBlock(String hostelId, String blockId) =>
+      staffBlockTemplate
+          .replaceFirst(':hostelId', hostelId)
+          .replaceFirst(':blockId', blockId);
+
+  static const String staffBlockIdParam = 'blockId';
+
+  /// Openings, prices, quotas, methods, deadlines, refunds and closed days.
+  static const String staffOpenings = '$staffAccommodation/openings';
+
+  /// Allocate from a spreadsheet.
+  static const String staffUpload = '$staffAccommodation/upload';
+
+  /// Allocate one student by hand.
+  static const String staffAllocate = '$staffAccommodation/allocate';
+
+  /// Automatic allocation.
+  static const String staffAutoAllocation = '$staffAccommodation/auto';
+
+  /// The draw (ballot or priority).
+  static const String staffDraw = '$staffAccommodation/draw';
+
+  /// Offer last term's residents their own beds.
+  static const String staffKeepMyRoom = '$staffAccommodation/keep-my-room';
+
+  /// Publish a version of the accommodation agreement.
+  static const String staffAgreement = '$staffAccommodation/agreement';
+
+  /// Housing notices wording.
+  static const String staffNotices = '$staffAccommodation/notices';
+
+  /// Housing categories and their weights.
+  static const String staffCategories = '$staffAccommodation/categories';
+
+  /// Housing bans.
+  static const String staffBans = '$staffAccommodation/bans';
+
+  /// Cancellation refund share.
+  static const String staffRefunds = '$staffAccommodation/refunds';
 
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
@@ -253,6 +352,28 @@ abstract final class Routes {
   static const String staffIdCardsName = 'staffIdCards';
   static const String staffIdCardPreviewName = 'staffIdCardPreview';
   static const String verifyIdCardName = 'verifyIdCard';
+  static const String accommodationName = 'accommodation';
+  static const String accommodationTermsName = 'accommodationTerms';
+  static const String accommodationRoomsName = 'accommodationRooms';
+  static const String accommodationHistoryName = 'accommodationHistory';
+  static const String staffAllocationsName = 'staffAllocations';
+  static const String staffAllocationName = 'staffAllocation';
+  static const String staffHostelsName = 'staffHostels';
+  static const String staffHostelName = 'staffHostel';
+  static const String staffOccupantsName = 'staffOccupants';
+  static const String staffRoomName = 'staffRoom';
+  static const String staffBlockName = 'staffBlock';
+  static const String staffOpeningsName = 'staffOpenings';
+  static const String staffUploadName = 'staffUpload';
+  static const String staffAllocateName = 'staffAllocate';
+  static const String staffAutoAllocationName = 'staffAutoAllocation';
+  static const String staffDrawName = 'staffDraw';
+  static const String staffKeepMyRoomName = 'staffKeepMyRoom';
+  static const String staffAgreementName = 'staffAgreement';
+  static const String staffNoticesName = 'staffNotices';
+  static const String staffCategoriesName = 'staffCategories';
+  static const String staffBansName = 'staffBans';
+  static const String staffRefundsName = 'staffRefunds';
 
   /// Path parameter name for [feesReceiptTemplate].
   static const String feesReceiptIdParam = 'id';
@@ -291,6 +412,31 @@ abstract final class Routes {
     staffStudentRequests,
     staffStudents,
     staffIdCards,
+  };
+
+  /// Every screen inside the Accommodation portal, as a literal path.
+  ///
+  /// Same contract as [registrationPaths]: listed here so anonymous deep links
+  /// bounce to sign-in. Parameterised staff screens inherit the protection
+  /// from the shared prefix.
+  static const Set<String> accommodationPaths = {
+    accommodation,
+    accommodationTerms,
+    accommodationRooms,
+    accommodationHistory,
+    staffAllocations,
+    staffHostels,
+    staffOpenings,
+    staffUpload,
+    staffAllocate,
+    staffAutoAllocation,
+    staffDraw,
+    staffKeepMyRoom,
+    staffAgreement,
+    staffNotices,
+    staffCategories,
+    staffBans,
+    staffRefunds,
   };
 
   /// Screens of the student shell that own the whole canvas on phones: no

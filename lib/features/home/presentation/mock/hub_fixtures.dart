@@ -119,6 +119,7 @@ abstract final class HubFixtures {
           id: 'accommodation',
           label: 'Accommodation',
           icon: Icons.home_outlined,
+          routeName: Routes.accommodationName,
         ),
         PortalModule(
           id: 'library',

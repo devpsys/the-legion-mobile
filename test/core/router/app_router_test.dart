@@ -11,6 +11,10 @@ import 'package:the_legion_mobile/core/router/app_router.dart';
 import 'package:the_legion_mobile/core/router/auth_guard.dart';
 import 'package:the_legion_mobile/core/router/route_names.dart';
 import 'package:the_legion_mobile/core/theme/app_theme.dart';
+import 'package:the_legion_mobile/features/accommodation/presentation/bloc/accommodation_cubit.dart';
+import 'package:the_legion_mobile/features/accommodation/presentation/bloc/staff/housing_cubit.dart';
+import 'package:the_legion_mobile/features/accommodation/presentation/widgets/accommodation_tab_bar.dart';
+import 'package:the_legion_mobile/features/accommodation/presentation/widgets/accommodation_task_bar.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admission_verification_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/admissions_cubit.dart';
 import 'package:the_legion_mobile/features/admissions/presentation/bloc/jamb_claim_cubit.dart';
@@ -140,6 +144,7 @@ void main() {
       for (final path in [
         ...Routes.admissionsPaths,
         ...Routes.registrationPaths,
+        ...Routes.accommodationPaths,
       ]) {
         expect(
           resolveRedirect(authGuard: guard, location: path),
@@ -158,6 +163,7 @@ void main() {
       for (final path in [
         ...Routes.admissionsPaths,
         ...Routes.registrationPaths,
+        ...Routes.accommodationPaths,
       ]) {
         expect(resolveRedirect(authGuard: guard, location: path), isNull);
       }
@@ -493,6 +499,8 @@ void main() {
       sl.registerFactory<AdmissionsCubit>(AdmissionsCubit.new);
       sl.registerFactory<JambClaimCubit>(JambClaimCubit.new);
       sl.registerFactory<RegistrationCubit>(RegistrationCubit.new);
+      sl.registerFactory<AccommodationCubit>(AccommodationCubit.new);
+      sl.registerFactory<HousingCubit>(HousingCubit.new);
       sl.registerFactory<FeesCubit>(FeesCubit.new);
       sl.registerFactory<FeeCheckoutCubit>(FeeCheckoutCubit.new);
       sl.registerFactory<FeeCardCheckoutCubit>(FeeCardCheckoutCubit.new);
@@ -1368,6 +1376,41 @@ void main() {
         await tester.binding.handlePopRoute();
         await tester.pumpAndSettle();
         expect(find.text('Registration & Records'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'the directory opens Accommodation, and back unwinds through its hub',
+      (tester) async {
+        await signInAndReachHub(tester);
+
+        await tester.ensureVisible(find.text('Accommodation'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Accommodation'));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(AccommodationTaskBar), findsOneWidget);
+        expect(find.byType(AccommodationTabBar), findsOneWidget);
+        expect(find.text('Amina Hall · Block A'), findsWidgets);
+
+        await tester.tap(find.text('History'));
+        await tester.pumpAndSettle();
+        expect(
+          find.textContaining('Use this record for clearance'),
+          findsOneWidget,
+        );
+
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        expect(find.byType(AccommodationTabBar), findsOneWidget);
+        expect(
+          find.textContaining('Use this record for clearance'),
+          findsNothing,
+        );
+
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        expect(find.byType(AccommodationTaskBar), findsNothing);
       },
     );
 
