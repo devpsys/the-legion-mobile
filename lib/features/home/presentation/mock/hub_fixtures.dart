@@ -102,6 +102,7 @@ abstract final class HubFixtures {
           id: 'examinations',
           label: 'Examinations & Results',
           icon: Icons.military_tech_outlined,
+          routeName: Routes.examinationsName,
         ),
         PortalModule(
           id: 'registration',

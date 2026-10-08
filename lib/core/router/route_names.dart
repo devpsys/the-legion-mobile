@@ -308,6 +308,101 @@ abstract final class Routes {
   /// Cancellation refund share.
   static const String staffRefunds = '$staffAccommodation/refunds';
 
+  /// Student Examinations & Results hub — the results tab. Outside the student
+  /// shell with its own task bar; back from this tab leads to the hub.
+  static const String examinations = '/examinations';
+
+  /// The student's examination card (a tab beside results and resits).
+  static const String examinationsCard = '/examinations/card';
+
+  /// Resit registration (a tab beside results and card).
+  static const String examinationsResits = '/examinations/resits';
+
+  /// Public hall-door check of an examination card. Outside every shell.
+  static const String verifyExamCard = '/verify/exam-card';
+
+  /// Query parameter [verifyExamCard] reads a code from.
+  static const String verifyExamCardCodeParam = 'code';
+
+  /// Examinations office root (staff). Authenticated but never linked from the
+  /// student hub or the student examination screens.
+  static const String examOffice = '/examinations/staff';
+
+  /// Results queue: the courses a lecturer marks.
+  static const String examOfficeResults = '$examOffice/results';
+
+  static const String examOfficeResultsCourseTemplate =
+      '$examOfficeResults/:batchId';
+
+  static String examOfficeResultsCourse(String batchId) =>
+      examOfficeResultsCourseTemplate.replaceFirst(':batchId', batchId);
+
+  static const String examOfficeBatchIdParam = 'batchId';
+
+  /// Examination sessions list.
+  static const String examOfficeSessions = '$examOffice/sessions';
+
+  static const String examOfficeSessionTemplate =
+      '$examOfficeSessions/:sessionId';
+
+  static String examOfficeSession(String sessionId) =>
+      examOfficeSessionTemplate.replaceFirst(':sessionId', sessionId);
+
+  static const String examOfficeSessionIdParam = 'sessionId';
+
+  static const String examOfficePaperTemplate =
+      '$examOfficeSessionTemplate/papers/:paperId';
+
+  static String examOfficePaper(String sessionId, String paperId) =>
+      examOfficePaperTemplate
+          .replaceFirst(':sessionId', sessionId)
+          .replaceFirst(':paperId', paperId);
+
+  static const String examOfficePaperIdParam = 'paperId';
+
+  /// Grading scales and standing thresholds.
+  static const String examOfficeGrading = '$examOffice/grading';
+
+  static const String examOfficeGradingScaleTemplate =
+      '$examOfficeGrading/:scaleId';
+
+  static String examOfficeGradingScale(String scaleId) =>
+      examOfficeGradingScaleTemplate.replaceFirst(':scaleId', scaleId);
+
+  static const String examOfficeScaleIdParam = 'scaleId';
+
+  /// Examination incidents.
+  static const String examOfficeIncidents = '$examOffice/incidents';
+
+  /// Batch import of incidents with a dry run. A literal, registered before
+  /// [examOfficeIncidentTemplate] so the router does not read it as an id.
+  static const String examOfficeIncidentImport = '$examOfficeIncidents/import';
+
+  static const String examOfficeIncidentTemplate =
+      '$examOfficeIncidents/:incidentId';
+
+  static String examOfficeIncident(String incidentId) =>
+      examOfficeIncidentTemplate.replaceFirst(':incidentId', incidentId);
+
+  static const String examOfficeIncidentIdParam = 'incidentId';
+
+  /// Resit windows.
+  static const String examOfficeResits = '$examOffice/resits';
+
+  /// Open-window form.
+  static const String examOfficeResitsOpen = '$examOfficeResits/open';
+
+  /// Broadsheet: course score ledger.
+  static const String examOfficeBroadsheets = '$examOffice/broadsheets';
+
+  static const String examOfficeDossierTemplate =
+      '$examOfficeBroadsheets/students/:matric';
+
+  static String examOfficeDossier(String matric) => examOfficeDossierTemplate
+      .replaceFirst(':matric', Uri.encodeComponent(matric));
+
+  static const String examOfficeMatricParam = 'matric';
+
   // Route names, used for navigation so paths can change freely.
   static const String splashName = 'splash';
   static const String loginName = 'login';
@@ -374,6 +469,24 @@ abstract final class Routes {
   static const String staffCategoriesName = 'staffCategories';
   static const String staffBansName = 'staffBans';
   static const String staffRefundsName = 'staffRefunds';
+  static const String examinationsName = 'examinations';
+  static const String examinationsCardName = 'examinationsCard';
+  static const String examinationsResitsName = 'examinationsResits';
+  static const String verifyExamCardName = 'verifyExamCard';
+  static const String examOfficeResultsName = 'examOfficeResults';
+  static const String examOfficeResultsCourseName = 'examOfficeResultsCourse';
+  static const String examOfficeSessionsName = 'examOfficeSessions';
+  static const String examOfficeSessionName = 'examOfficeSession';
+  static const String examOfficePaperName = 'examOfficePaper';
+  static const String examOfficeGradingName = 'examOfficeGrading';
+  static const String examOfficeGradingScaleName = 'examOfficeGradingScale';
+  static const String examOfficeIncidentsName = 'examOfficeIncidents';
+  static const String examOfficeIncidentImportName = 'examOfficeIncidentImport';
+  static const String examOfficeIncidentName = 'examOfficeIncident';
+  static const String examOfficeResitsName = 'examOfficeResits';
+  static const String examOfficeResitsOpenName = 'examOfficeResitsOpen';
+  static const String examOfficeBroadsheetsName = 'examOfficeBroadsheets';
+  static const String examOfficeDossierName = 'examOfficeDossier';
 
   /// Path parameter name for [feesReceiptTemplate].
   static const String feesReceiptIdParam = 'id';
@@ -439,6 +552,26 @@ abstract final class Routes {
     staffRefunds,
   };
 
+  /// Every screen inside the Examinations & Results portal, as a literal
+  /// path: the three student tabs and the examinations office lists.
+  ///
+  /// Same contract as [accommodationPaths]: listed here so anonymous deep
+  /// links bounce to sign-in. Parameterised staff screens inherit the
+  /// protection from the shared prefix.
+  static const Set<String> examinationsPaths = {
+    examinations,
+    examinationsCard,
+    examinationsResits,
+    examOfficeResults,
+    examOfficeSessions,
+    examOfficeGrading,
+    examOfficeIncidents,
+    examOfficeIncidentImport,
+    examOfficeResits,
+    examOfficeResitsOpen,
+    examOfficeBroadsheets,
+  };
+
   /// Screens of the student shell that own the whole canvas on phones: no
   /// tab bar under them.
   ///
@@ -487,5 +620,6 @@ abstract final class Routes {
     verifyAdmission,
     verifyReceipt,
     verifyIdCard,
+    verifyExamCard,
   };
 }

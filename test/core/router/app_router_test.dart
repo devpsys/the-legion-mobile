@@ -32,6 +32,11 @@ import 'package:the_legion_mobile/features/auth/domain/usecases/register.dart';
 import 'package:the_legion_mobile/features/auth/domain/usecases/restore_session.dart';
 import 'package:the_legion_mobile/features/auth/presentation/bloc/auth_cubit.dart';
 import 'package:the_legion_mobile/features/auth/presentation/widgets/registration_card.dart';
+import 'package:the_legion_mobile/features/examinations/presentation/bloc/exam_card_verification_cubit.dart';
+import 'package:the_legion_mobile/features/examinations/presentation/bloc/examinations_cubit.dart';
+import 'package:the_legion_mobile/features/examinations/presentation/bloc/staff/exam_office_cubit.dart';
+import 'package:the_legion_mobile/features/examinations/presentation/widgets/examinations_tab_bar.dart';
+import 'package:the_legion_mobile/features/examinations/presentation/widgets/examinations_task_bar.dart';
 import 'package:the_legion_mobile/features/fees/presentation/bloc/fee_card_checkout_cubit.dart';
 import 'package:the_legion_mobile/features/fees/presentation/bloc/fee_checkout_cubit.dart';
 import 'package:the_legion_mobile/features/fees/presentation/bloc/fee_gateway_return_cubit.dart';
@@ -145,6 +150,7 @@ void main() {
         ...Routes.admissionsPaths,
         ...Routes.registrationPaths,
         ...Routes.accommodationPaths,
+        ...Routes.examinationsPaths,
       ]) {
         expect(
           resolveRedirect(authGuard: guard, location: path),
@@ -164,6 +170,7 @@ void main() {
         ...Routes.admissionsPaths,
         ...Routes.registrationPaths,
         ...Routes.accommodationPaths,
+        ...Routes.examinationsPaths,
       ]) {
         expect(resolveRedirect(authGuard: guard, location: path), isNull);
       }
@@ -501,6 +508,11 @@ void main() {
       sl.registerFactory<RegistrationCubit>(RegistrationCubit.new);
       sl.registerFactory<AccommodationCubit>(AccommodationCubit.new);
       sl.registerFactory<HousingCubit>(HousingCubit.new);
+      sl.registerFactory<ExaminationsCubit>(ExaminationsCubit.new);
+      sl.registerFactory<ExamOfficeCubit>(ExamOfficeCubit.new);
+      sl.registerFactory<ExamCardVerificationCubit>(
+        ExamCardVerificationCubit.new,
+      );
       sl.registerFactory<FeesCubit>(FeesCubit.new);
       sl.registerFactory<FeeCheckoutCubit>(FeeCheckoutCubit.new);
       sl.registerFactory<FeeCardCheckoutCubit>(FeeCardCheckoutCubit.new);
@@ -1411,6 +1423,37 @@ void main() {
         await tester.binding.handlePopRoute();
         await tester.pumpAndSettle();
         expect(find.byType(AccommodationTaskBar), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'the directory opens Examinations & Results, and back unwinds through '
+      'its tabs to the hub',
+      (tester) async {
+        await signInAndReachHub(tester);
+
+        await tester.ensureVisible(find.text('Examinations & Results'));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Examinations & Results'));
+        await tester.pumpAndSettle();
+
+        expect(find.byType(ExaminationsTaskBar), findsOneWidget);
+        expect(find.byType(ExaminationsTabBar), findsOneWidget);
+        expect(find.text('Structured Programming'), findsOneWidget);
+
+        await tester.tap(find.text('Resits'));
+        await tester.pumpAndSettle();
+        expect(find.text('Both count'), findsOneWidget);
+
+        // Back from a sibling tab unwinds to results, not to the hub.
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        expect(find.byType(ExaminationsTabBar), findsOneWidget);
+        expect(find.text('Structured Programming'), findsOneWidget);
+
+        await tester.binding.handlePopRoute();
+        await tester.pumpAndSettle();
+        expect(find.byType(ExaminationsTaskBar), findsNothing);
       },
     );
 

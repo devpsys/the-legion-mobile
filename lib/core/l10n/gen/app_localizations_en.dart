@@ -6459,4 +6459,1907 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get accommodationPreviewNoHistoryHint =>
       'Opens History with no past beds.';
+
+  @override
+  String get examCardTitle => 'Examination card';
+
+  @override
+  String get examCardSubtitle =>
+      'Show this at the hall door. It lists every paper you sit and where you sit it.';
+
+  @override
+  String get examCardStatusNotIssued => 'Not issued';
+
+  @override
+  String get examCardStatusIssued => 'Issued';
+
+  @override
+  String get examCardStatusRevoked => 'Revoked';
+
+  @override
+  String examCardGateOf(int current, int count) {
+    return 'Gate $current of $count';
+  }
+
+  @override
+  String get examCardNotIssuedTitle => 'You don\'t have a card yet';
+
+  @override
+  String get examCardNotIssuedBody =>
+      'Statutory examination clearance requires unhindered satisfaction of all five institutional prerequisites.';
+
+  @override
+  String get examCardBlockingTitle => 'Blocking issue';
+
+  @override
+  String examCardGateMark(int position, String title) {
+    return 'Gate $position • $title';
+  }
+
+  @override
+  String examCardIdentityLine(String programme, String department) {
+    return '$programme • $department';
+  }
+
+  @override
+  String examCardLevel(int level) {
+    return 'Level $level';
+  }
+
+  @override
+  String examCardFeesBlocking(Object amount) {
+    return 'Pay at least $amount of this term\'s fees before your examination card can be issued.';
+  }
+
+  @override
+  String get examCardPayUnder => 'Pay under Fees.';
+
+  @override
+  String get examCardMinimumToPay => 'Minimum statutory threshold';
+
+  @override
+  String get examCardOutstanding => 'Outstanding total';
+
+  @override
+  String examCardPayAction(Object amount) {
+    return 'Pay $amount';
+  }
+
+  @override
+  String get examGatesTitle => 'All clearance gates';
+
+  @override
+  String get examGatesBody =>
+      'Complete review of verification requirements for this assessment cycle.';
+
+  @override
+  String get examCardAuditLedger => 'Audit ledger';
+
+  @override
+  String get examCardPolicyTitle => 'Institutional policy note';
+
+  @override
+  String get examCardPolicyBody =>
+      'In accordance with Senate regulations, physical printouts of examination admission passes are strictly barred from issuance until financial reconciliations are cleared through the bursary ledger. Invigilators will invalidate unverified entry credentials at examination centre entry points.';
+
+  @override
+  String examGatePosition(Object position) {
+    return '$position.';
+  }
+
+  @override
+  String get examGateFees => 'Bursary fee obligations';
+
+  @override
+  String get examGateFeesDetail => 'Financial clearance threshold';
+
+  @override
+  String get examGateStanding => 'Student matriculation status';
+
+  @override
+  String get examGateStandingDetail => 'Registrar administrative standing';
+
+  @override
+  String get examGatePapers => 'Examination paper registration';
+
+  @override
+  String get examGatePapersDetail => 'Senate approved paper roster';
+
+  @override
+  String get examGateSchedule => 'Card issuance schedule';
+
+  @override
+  String get examGateScheduleDetail => 'Central examinations time window';
+
+  @override
+  String get examGateSeats => 'Final seat allotment and pass';
+
+  @override
+  String get examGateSeatsDetail => 'Physical desk allocation';
+
+  @override
+  String get examGatePassed => 'Passed';
+
+  @override
+  String get examGateBlocked => 'Blocked';
+
+  @override
+  String get examGateWaiting => 'Waiting';
+
+  @override
+  String get examGateFeesHint =>
+      'Pay the minimum of this term\'s fees under Fees.';
+
+  @override
+  String get examGateStandingHint =>
+      'Cards are only issued to active students. Speak to your level adviser.';
+
+  @override
+  String get examGatePapersHint =>
+      'You have no approved courses with papers in this session. Check your registered courses.';
+
+  @override
+  String get examGateScheduleHint =>
+      'Cards are not open yet. Check back nearer the examinations.';
+
+  @override
+  String get examGateSeatsHint =>
+      'Your seat is allotted once the first four checks pass.';
+
+  @override
+  String get examCardInstitution => 'The Legion University';
+
+  @override
+  String get examCardOfficial => 'Official';
+
+  @override
+  String examCardSession(Object session) {
+    return 'Session $session';
+  }
+
+  @override
+  String get examCardCandidate => 'Candidate';
+
+  @override
+  String get examCardMatric => 'Matric number';
+
+  @override
+  String get examCardProgramme => 'Programme';
+
+  @override
+  String get examCardNumberLabel => 'Card number';
+
+  @override
+  String get examCardCheckCodeLabel => 'Check code';
+
+  @override
+  String examCardIssuedOn(Object date) {
+    return 'Issued on $date.';
+  }
+
+  @override
+  String get examCardPapersTitle => 'Timetabled papers';
+
+  @override
+  String examCardPapersCount(Object count) {
+    return '$count sittings';
+  }
+
+  @override
+  String examCardPaperWhen(Object date, Object time) {
+    return '$date, $time';
+  }
+
+  @override
+  String examCardSeat(Object seat) {
+    return 'Seat $seat';
+  }
+
+  @override
+  String get examCardVenueToBeAnnounced => 'To be announced';
+
+  @override
+  String get examCardPersonalNote =>
+      'This card is personal and cannot be transferred. Bring it and your student ID card to every paper. An invigilator may check the card number against the examinations office record.';
+
+  @override
+  String get examCardPrint => 'Print card';
+
+  @override
+  String get examRevokedTitle => 'This card was withdrawn';
+
+  @override
+  String get examRevokedBody =>
+      'A withdrawn card cannot be reprinted. If this is wrong, the examinations office can issue a new one.';
+
+  @override
+  String get examRevokedReasonLabel => 'Withdrawn reason';
+
+  @override
+  String get examRevokedSpeakOffice => 'Speak to the examinations office.';
+
+  @override
+  String get examRevokedCredentialId => 'Credential ID';
+
+  @override
+  String get examRevokedExaminations => 'Examinations';
+
+  @override
+  String get examRevokedFeeReversed => 'Fee reversed';
+
+  @override
+  String get examRevokedSessionLabel => 'Term';
+
+  @override
+  String get examRevokedStudentLabel => 'Student';
+
+  @override
+  String examRevokedStudent(Object matric, Object name) {
+    return '$name ($matric)';
+  }
+
+  @override
+  String get examRevokedHallNote =>
+      'Withdrawn cards are logged at all entrance scanners. Presenting this card at a hall doorway will flag an invalid credential.';
+
+  @override
+  String get examRevokedViewFees => 'View fees ledger';
+
+  @override
+  String get examRevokedContact => 'Contact examinations office';
+
+  @override
+  String get navExamResults => 'Results';
+
+  @override
+  String get navExamResits => 'Resits';
+
+  @override
+  String get navExamCard => 'Card';
+
+  @override
+  String get examTitle => 'Examinations and results';
+
+  @override
+  String get examNoticeResitRegistered =>
+      'You are registered for the resit. The fee is invoiced now.';
+
+  @override
+  String get examNoticeResitClosed =>
+      'The resit window is closed, so you can\'t register.';
+
+  @override
+  String get examNoticeResitOverBudget =>
+      'That resit would take you over your unit allowance for the semester.';
+
+  @override
+  String get examPreviewAction => 'Preview states';
+
+  @override
+  String get examPreviewTitle => 'Preview examinations states';
+
+  @override
+  String get examPreviewSubtitle =>
+      'Debug builds only. Loads a fixture ledger and opens the tab that shows it.';
+
+  @override
+  String get examPreviewPublishedGood => 'Results published, good standing';
+
+  @override
+  String get examPreviewPublishedGoodHint =>
+      'CGPA 3.62, one term, a resit and a held-back mark.';
+
+  @override
+  String get examPreviewUnpublished => 'No results published';
+
+  @override
+  String get examPreviewUnpublishedHint => 'The empty results hub.';
+
+  @override
+  String get examPreviewProbation => 'Probation';
+
+  @override
+  String get examPreviewProbationHint =>
+      'CGPA 1.84 with the adviser and the warning.';
+
+  @override
+  String get examPreviewCardNotIssued => 'Card not issued';
+
+  @override
+  String get examPreviewCardNotIssuedHint =>
+      'Fees owing block the card; five clearances.';
+
+  @override
+  String get examPreviewCardIssued => 'Card issued';
+
+  @override
+  String get examPreviewCardIssuedHint =>
+      'The card with its timetable of papers.';
+
+  @override
+  String get examPreviewCardRevoked => 'Card revoked';
+
+  @override
+  String get examPreviewCardRevokedHint =>
+      'Withdrawn because the fee was reversed.';
+
+  @override
+  String get examPreviewResitsOpen => 'Resits open';
+
+  @override
+  String get examPreviewResitsOpenHint =>
+      'Unit allowance, failed courses and the confirm sheet.';
+
+  @override
+  String get examPreviewResitsClosed => 'Resits closed';
+
+  @override
+  String get examPreviewResitsClosedHint => 'Failures listed as not open.';
+
+  @override
+  String get examOfficeBroadsheetsTitle => 'Broadsheets';
+
+  @override
+  String get examOfficeBroadsheetsSubtitle =>
+      'Published scores by course, and each student\'s semester.';
+
+  @override
+  String get examOfficeBroadsheetEmptyTitle => 'No published results';
+
+  @override
+  String get examOfficeBroadsheetEmptyBody =>
+      'A course appears here once its results are published.';
+
+  @override
+  String get examOfficeBroadsheetEnrolled => 'Enrolled';
+
+  @override
+  String get examOfficeBroadsheetMean => 'Mean';
+
+  @override
+  String get examOfficeBroadsheetPassRate => 'Pass rate';
+
+  @override
+  String examOfficePercent(Object value) {
+    return '$value%';
+  }
+
+  @override
+  String examOfficeScoreGrade(Object grade, Object score) {
+    return '$score $grade';
+  }
+
+  @override
+  String get examOfficeDossierTitle => 'Student dossier';
+
+  @override
+  String get examOfficeDossierSubtitle =>
+      'One student\'s semester, course by course.';
+
+  @override
+  String get examOfficeDossierNotFound => 'That student has no dossier.';
+
+  @override
+  String examOfficeDossierLine(Object matric, Object programme) {
+    return '$matric - $programme';
+  }
+
+  @override
+  String get examOfficeDossierCgpa => 'CGPA';
+
+  @override
+  String get examOfficeDossierUnits => 'Units passed';
+
+  @override
+  String get examOfficeDossierClassification => 'Class';
+
+  @override
+  String examOfficeUnitsOf(Object passed, Object taken) {
+    return '$passed of $taken';
+  }
+
+  @override
+  String get examOfficeProvisionalTitle => 'Provisional result';
+
+  @override
+  String examOfficeProvisionalBody(Object course) {
+    return 'The $course mark is held back, so this semester\'s standing may change.';
+  }
+
+  @override
+  String examOfficeDossierCourses(Object term) {
+    return 'Courses, $term';
+  }
+
+  @override
+  String examOfficeDossierNoScore(Object units) {
+    return 'No score, $units units';
+  }
+
+  @override
+  String examOfficeDossierScore(Object grade, Object score, Object units) {
+    return '$score $grade, $units units';
+  }
+
+  @override
+  String get examOfficeBackTooltip => 'Back';
+
+  @override
+  String get examOfficeTaskBarTitle => 'Examinations office';
+
+  @override
+  String get examOfficeTaskBarSubtitle => 'Staff portal';
+
+  @override
+  String get examOfficeBreadcrumbRoot => 'Examinations';
+
+  @override
+  String get examOfficeSectionResults => 'Results';
+
+  @override
+  String get examOfficeSectionSessions => 'Sessions';
+
+  @override
+  String get examOfficeSectionGrading => 'Grading';
+
+  @override
+  String get examOfficeSectionIncidents => 'Incidents';
+
+  @override
+  String get examOfficeSectionResits => 'Resits';
+
+  @override
+  String get examOfficeSectionBroadsheets => 'Broadsheets';
+
+  @override
+  String get examOfficeNoticeSent =>
+      'Sent for approval. The marks are fixed now.';
+
+  @override
+  String get examOfficeNoticeSendBlocked =>
+      'Some students have no mark. Enter every mark, or hold it back with a reason.';
+
+  @override
+  String get examOfficeNoticeHeld => 'The mark is held back.';
+
+  @override
+  String get examOfficeNoticeReleased => 'The hold is released.';
+
+  @override
+  String get examOfficeNoticeSessionOpened =>
+      'Session opened. Timetable its papers next.';
+
+  @override
+  String get examOfficeNoticeCardWithdrawn =>
+      'Card withdrawn. The public check fails from now on.';
+
+  @override
+  String get examOfficeNoticeCardReasonRequired =>
+      'Say why the card is withdrawn.';
+
+  @override
+  String get examOfficeNoticeRoomAdded =>
+      'Room added. The remaining candidates are seated.';
+
+  @override
+  String get examOfficeNoticePaperUpdated => 'Paper updated.';
+
+  @override
+  String get examOfficeNoticeCancelLocked =>
+      'A paper that has been sat cannot be cancelled.';
+
+  @override
+  String get examOfficeNoticeCancelReasonRequired =>
+      'Say why the paper is cancelled.';
+
+  @override
+  String get examOfficeNoticeThresholdsSaved => 'Standing thresholds updated.';
+
+  @override
+  String get examOfficeNoticeThresholdsInvalid =>
+      'The withdrawal CGPA must be above 0 and under the probation CGPA.';
+
+  @override
+  String get examOfficeNoticeImported => 'Incidents imported.';
+
+  @override
+  String get examOfficeNoticeIncidentClosed =>
+      'Incident closed. Any mark it held is released.';
+
+  @override
+  String get examOfficeNoticeIncidentReferred =>
+      'Referred to discipline. The mark stays held.';
+
+  @override
+  String get examOfficeNoticeReleaseLocked =>
+      'These results are with the approvers, so the mark cannot be released. Speak to the head of department.';
+
+  @override
+  String get examOfficeNoticeWindowOpened => 'Resit window opened.';
+
+  @override
+  String get examOfficeNoticeRegistrationCancelled =>
+      'Registration cancelled. Any fee paid goes to the student\'s wallet.';
+
+  @override
+  String get examOfficeConfirmKeep => 'Keep as it is';
+
+  @override
+  String get examOfficeGradingTitle => 'Grading scales';
+
+  @override
+  String get examOfficeGradingSubtitle =>
+      'How marks become letters, and what puts a student on probation.';
+
+  @override
+  String examOfficeScaleBody(Object applies, Object count) {
+    return '$applies - $count bands';
+  }
+
+  @override
+  String get examOfficeScaleDefault => 'Default';
+
+  @override
+  String get examOfficeScaleBroken => 'Has a gap';
+
+  @override
+  String get examOfficeScaleDetailTitle => 'Grading scale';
+
+  @override
+  String get examOfficeScaleDetailSubtitle => 'The bands marks fall into.';
+
+  @override
+  String get examOfficeScaleNotFound => 'That scale is not on the list.';
+
+  @override
+  String get examOfficeScaleGapTitle => 'Some marks have no grade';
+
+  @override
+  String examOfficeScaleGapBody(Object start, Object top) {
+    return 'Marks 0 to $top fall under every band, because the lowest band starts at $start. A student scoring there would have no grade.';
+  }
+
+  @override
+  String examOfficeScaleAppliesTo(Object programmes) {
+    return 'Applies to $programmes';
+  }
+
+  @override
+  String examOfficeBandFrom(Object mark) {
+    return 'From $mark';
+  }
+
+  @override
+  String examOfficeBandPoints(Object points) {
+    return '$points points';
+  }
+
+  @override
+  String get examOfficeBandFail => 'Fail';
+
+  @override
+  String get examOfficeDegreeClassesTitle => 'Degree classes';
+
+  @override
+  String examOfficeDegreeFrom(Object cgpa) {
+    return 'From $cgpa';
+  }
+
+  @override
+  String get examOfficeStandingRulesTitle => 'Standing rules';
+
+  @override
+  String get examOfficeStandingRulesBody =>
+      'Below the probation CGPA a student is on probation. Below the withdrawal CGPA the office advises withdrawal.';
+
+  @override
+  String get examOfficeProbationLabel => 'Probation below CGPA';
+
+  @override
+  String get examOfficeWithdrawalLabel => 'Withdrawal advised below CGPA';
+
+  @override
+  String get examOfficeStandingRulesSave => 'Save thresholds';
+
+  @override
+  String get examOfficeIncidentsTitle => 'Incidents';
+
+  @override
+  String get examOfficeIncidentsSubtitle =>
+      'What the halls reported, and which marks it is holding back.';
+
+  @override
+  String examOfficeIncidentsHolding(Object count) {
+    return '$count open incidents are holding a mark back.';
+  }
+
+  @override
+  String get examOfficeIncidentsEmptyTitle => 'No incidents';
+
+  @override
+  String get examOfficeIncidentsEmptyBody => 'Nothing matches these filters.';
+
+  @override
+  String get examOfficeImportAction => 'Import a batch';
+
+  @override
+  String examOfficeIncidentLine(Object course, Object kind) {
+    return '$kind - $course';
+  }
+
+  @override
+  String examOfficeIncidentBody(Object id, Object student) {
+    return '$id - $student';
+  }
+
+  @override
+  String get examOfficeIncidentNoStudent => 'No student attached';
+
+  @override
+  String get examOfficeIncidentHoldsMark => 'Holds a mark';
+
+  @override
+  String get examOfficeIncidentDetailTitle => 'Incident';
+
+  @override
+  String get examOfficeIncidentDetailSubtitle =>
+      'What was reported and how it is being settled.';
+
+  @override
+  String get examOfficeIncidentNotFound => 'That incident is not on the list.';
+
+  @override
+  String get examOfficeIncidentFieldReference => 'Reference';
+
+  @override
+  String get examOfficeIncidentFieldStudent => 'Student';
+
+  @override
+  String get examOfficeIncidentFieldCourse => 'Course';
+
+  @override
+  String get examOfficeIncidentFieldSitting => 'Sitting';
+
+  @override
+  String get examOfficeIncidentFieldHall => 'Hall';
+
+  @override
+  String get examOfficeIncidentFieldDiscipline => 'Discipline case';
+
+  @override
+  String get examOfficeIncidentFieldHearing => 'Hearing';
+
+  @override
+  String get examOfficeHoldingTitle => 'A mark is held back';
+
+  @override
+  String examOfficeHoldingBody(Object course) {
+    return 'The student\'s $course mark stays out of the results until this incident is closed.';
+  }
+
+  @override
+  String get examOfficeIncidentRefer => 'Refer to discipline';
+
+  @override
+  String get examOfficeIncidentClose => 'Close incident';
+
+  @override
+  String examOfficeCloseTitle(Object id) {
+    return 'Close $id?';
+  }
+
+  @override
+  String get examOfficeCloseBody =>
+      'The incident is settled and leaves the open list.';
+
+  @override
+  String get examOfficeCloseBodyHolding =>
+      'The incident is settled and the mark it holds is released.';
+
+  @override
+  String get examOfficeCloseConfirm => 'Close incident';
+
+  @override
+  String get examOfficeImportTitle => 'Import incidents';
+
+  @override
+  String get examOfficeImportSubtitle =>
+      'Check an invigilator\'s file before anything is written.';
+
+  @override
+  String examOfficeImportIdle(Object count) {
+    return '$count rows are ready to check. Run a dry run first: nothing is written until you import.';
+  }
+
+  @override
+  String get examOfficeImportDryRunTitle => 'Dry run - nothing is written yet';
+
+  @override
+  String get examOfficeImportDryRunBody =>
+      'This is what the import would do with each row. Rows left out are not written.';
+
+  @override
+  String examOfficeImportDone(Object count) {
+    return '$count incidents imported.';
+  }
+
+  @override
+  String get examOfficeImportRunDry => 'Run a dry run';
+
+  @override
+  String examOfficeImportCommit(Object count) {
+    return 'Import $count incidents';
+  }
+
+  @override
+  String get examOfficeImportStartOver => 'Start over';
+
+  @override
+  String get examOfficeImportBackToIncidents => 'Back to incidents';
+
+  @override
+  String examOfficeImportRowLine(Object course, Object subject) {
+    return '$course - $subject';
+  }
+
+  @override
+  String examOfficeImportRowKind(Object kind, Object time) {
+    return '$kind, $time';
+  }
+
+  @override
+  String get examOfficeStageBeingMarked => 'Being marked';
+
+  @override
+  String get examOfficeStageSentBack => 'Sent back';
+
+  @override
+  String get examOfficeStageWithApprovers => 'With approvers';
+
+  @override
+  String get examOfficeStagePublished => 'Published';
+
+  @override
+  String get examOfficeFilterAll => 'All';
+
+  @override
+  String get examOfficeFilterUnmarked => 'Unmarked';
+
+  @override
+  String get examOfficeFilterHeld => 'Held back';
+
+  @override
+  String get examOfficeFilterMarked => 'Marked';
+
+  @override
+  String get examOfficeSessionScheduled => 'Scheduled';
+
+  @override
+  String get examOfficeSessionLive => 'Live';
+
+  @override
+  String get examOfficeSessionClosed => 'Closed';
+
+  @override
+  String get examOfficePaperScheduled => 'Scheduled';
+
+  @override
+  String get examOfficePaperInProgress => 'In progress';
+
+  @override
+  String get examOfficePaperSat => 'Sat';
+
+  @override
+  String get examOfficePaperCancelled => 'Cancelled';
+
+  @override
+  String get examOfficeSeatingNone => 'Not seated';
+
+  @override
+  String get examOfficeSeatingPartial => 'Partly seated';
+
+  @override
+  String get examOfficeSeatingFull => 'Seated';
+
+  @override
+  String get examOfficeKindMalpractice => 'Malpractice';
+
+  @override
+  String get examOfficeKindAbsence => 'Absence';
+
+  @override
+  String get examOfficeKindIllness => 'Illness';
+
+  @override
+  String get examOfficeKindDisruption => 'Disruption';
+
+  @override
+  String get examOfficeKindOther => 'Other';
+
+  @override
+  String get examOfficeIncidentReported => 'Reported';
+
+  @override
+  String get examOfficeIncidentUnderReview => 'Under review';
+
+  @override
+  String get examOfficeIncidentReferredStatus => 'Referred';
+
+  @override
+  String get examOfficeIncidentClosedStatus => 'Closed';
+
+  @override
+  String get examOfficeImportActionImport => 'Import';
+
+  @override
+  String get examOfficeImportActionUnattached => 'Import unattached';
+
+  @override
+  String get examOfficeImportActionLeave => 'Leave out';
+
+  @override
+  String get examOfficeImportReasonReady => 'Ready to import.';
+
+  @override
+  String get examOfficeImportReasonMissingDescription =>
+      'There is no description.';
+
+  @override
+  String get examOfficeImportReasonUnknownKind =>
+      'The kind is not one the office uses.';
+
+  @override
+  String get examOfficeImportReasonDuplicate =>
+      'Repeats an earlier row in this file.';
+
+  @override
+  String get examOfficeImportReasonAlreadyImported => 'Already imported.';
+
+  @override
+  String get examOfficeImportReasonNoPaper =>
+      'No paper is timetabled for this course.';
+
+  @override
+  String get examOfficeImportReasonNoStudent =>
+      'No student named. Imported for someone to attach.';
+
+  @override
+  String get examOfficeImportReasonNotFound =>
+      'The student is not on the roll. Imported for someone to attach.';
+
+  @override
+  String get examOfficeVerdictCleared => 'Cleared';
+
+  @override
+  String get examOfficeVerdictHeld => 'Held back';
+
+  @override
+  String get examOfficeVerdictNotPass => 'Not a pass';
+
+  @override
+  String get examOfficeVerdictMarginal => 'Marginal';
+
+  @override
+  String get examOfficePaperTitle => 'Paper';
+
+  @override
+  String get examOfficePaperSubtitle => 'Seating and running one paper.';
+
+  @override
+  String get examOfficePaperNotFound => 'That paper is not in this session.';
+
+  @override
+  String examOfficePaperWhen(Object end, Object start) {
+    return '$start to $end';
+  }
+
+  @override
+  String examOfficePaperEnrolled(Object count) {
+    return '$count registered';
+  }
+
+  @override
+  String get examOfficeSeatingHeading => 'Seating';
+
+  @override
+  String examOfficeSeatingCount(Object enrolled, Object seated) {
+    return '$seated of $enrolled seated';
+  }
+
+  @override
+  String examOfficeRoomSeated(Object count) {
+    return '$count seated';
+  }
+
+  @override
+  String examOfficeUnseatedTitle(Object count) {
+    return '$count candidates have no seat';
+  }
+
+  @override
+  String get examOfficeUnseatedBody =>
+      'Add a room to seat the rest. Nobody already seated is moved.';
+
+  @override
+  String examOfficeAddRoom(Object capacity, Object room) {
+    return 'Add $room ($capacity seats)';
+  }
+
+  @override
+  String get examOfficeRunningHeading => 'Running the paper';
+
+  @override
+  String get examOfficeRunningStatus => 'Status';
+
+  @override
+  String get examOfficeStartPaper => 'Start the paper';
+
+  @override
+  String get examOfficeMarkSat => 'Mark as sat';
+
+  @override
+  String get examOfficeCancelPaper => 'Cancel the paper';
+
+  @override
+  String get examOfficeCancelLockedNote =>
+      'This paper has been sat, so it can no longer be cancelled.';
+
+  @override
+  String examOfficeCancelTitle(Object course) {
+    return 'Cancel $course?';
+  }
+
+  @override
+  String get examOfficeCancelBody =>
+      'Students are told the paper is off. Say why.';
+
+  @override
+  String get examOfficeCancelConfirm => 'Cancel the paper';
+
+  @override
+  String get examOfficeResitsTitle => 'Resit windows';
+
+  @override
+  String get examOfficeResitsSubtitle =>
+      'When students may register to retake a failed course, and what it costs.';
+
+  @override
+  String get examOfficeWindowOpenAction => 'Open a window';
+
+  @override
+  String get examOfficeWindowsEmptyTitle => 'No resit windows';
+
+  @override
+  String get examOfficeWindowsEmptyBody =>
+      'Open a window to let students register for resits.';
+
+  @override
+  String get examOfficeWindowOpen => 'Open';
+
+  @override
+  String get examOfficeWindowClosed => 'Closed';
+
+  @override
+  String examOfficeWindowFee(Object cap, Object fee) {
+    return '$fee per unit, unit cap $cap';
+  }
+
+  @override
+  String get examOfficeWindowNoCap => 'none';
+
+  @override
+  String examOfficeWindowRegistered(Object count) {
+    return '$count registered';
+  }
+
+  @override
+  String examOfficeSignupsHeading(Object window) {
+    return 'Registrations in $window';
+  }
+
+  @override
+  String get examOfficeSignupAwaiting => 'Awaiting payment';
+
+  @override
+  String get examOfficeSignupPaid => 'Paid';
+
+  @override
+  String examOfficeSignupLine(Object fee, Object matric, Object units) {
+    return '$matric - $units units - $fee';
+  }
+
+  @override
+  String get examOfficeSignupCancel => 'Cancel registration';
+
+  @override
+  String examOfficeSignupCancelTitle(Object matric) {
+    return 'Cancel $matric\'s registration?';
+  }
+
+  @override
+  String get examOfficeSignupCancelBody =>
+      'The student can register again while the window is open. Any fee paid goes to their wallet.';
+
+  @override
+  String get examOfficeSignupCancelConfirm => 'Cancel registration';
+
+  @override
+  String get examOfficeWindowFormTitle => 'Open a resit window';
+
+  @override
+  String get examOfficeWindowFormSubtitle =>
+      'Set the dates, the fee and how many units one student can register.';
+
+  @override
+  String get examOfficeWindowFormBody =>
+      'Students see the window on their resits tab as soon as it opens.';
+
+  @override
+  String get examOfficeWindowNameLabel => 'Window name';
+
+  @override
+  String get examOfficeWindowNameRequired => 'Give the window a name.';
+
+  @override
+  String get examOfficeWindowOpensLabel => 'Opens';
+
+  @override
+  String get examOfficeWindowClosesLabel => 'Closes';
+
+  @override
+  String get examOfficeWindowCloseBeforeOpen =>
+      'The window must close after it opens.';
+
+  @override
+  String get examOfficeWindowFeeLabel => 'Fee per unit';
+
+  @override
+  String get examOfficeWindowFeeInvalid =>
+      'Enter an amount like 2000 or 2,000.50.';
+
+  @override
+  String get examOfficeWindowCapLabel => 'Unit cap per student';
+
+  @override
+  String get examOfficeReasonLabel => 'Reason';
+
+  @override
+  String get examOfficeReasonRequired => 'Say why.';
+
+  @override
+  String get examOfficeDatePlaceholder => 'Choose a date';
+
+  @override
+  String get examOfficeNoValue => '-';
+
+  @override
+  String get examOfficeResultsTitle => 'Results';
+
+  @override
+  String get examOfficeResultsSubtitle =>
+      'Every course\'s marks, from first entry to publication.';
+
+  @override
+  String get examOfficeResultsEmptyTitle => 'No courses to mark';
+
+  @override
+  String get examOfficeResultsEmptyBody =>
+      'Courses appear here once a semester\'s marking opens.';
+
+  @override
+  String examOfficeCourseLine(Object code, Object title) {
+    return '$code - $title';
+  }
+
+  @override
+  String examOfficeResultsBatchBody(
+    Object enrolled,
+    Object marked,
+    Object units,
+  ) {
+    return '$marked of $enrolled marked, $units units';
+  }
+
+  @override
+  String get examOfficeCourseSheetTitle => 'Marking sheet';
+
+  @override
+  String get examOfficeCourseSheetSubtitle =>
+      'Enter the coursework and examination marks, then send the course for approval.';
+
+  @override
+  String get examOfficeCourseNotFound => 'That course is not on the queue.';
+
+  @override
+  String examOfficeMarkCoursework(Object max) {
+    return 'Coursework (max $max)';
+  }
+
+  @override
+  String examOfficeMarkExam(Object max) {
+    return 'Exam (max $max)';
+  }
+
+  @override
+  String get examOfficeMarkOutOfRange => 'A mark is outside its range.';
+
+  @override
+  String get examOfficeMarkHold => 'Hold back';
+
+  @override
+  String get examOfficeMarkRelease => 'Release';
+
+  @override
+  String examOfficeMarkHeldReason(Object reason) {
+    return 'Held back: $reason';
+  }
+
+  @override
+  String get examOfficeMarkFlagged => 'Flagged';
+
+  @override
+  String examOfficeMarkPreviously(Object total) {
+    return 'Was $total';
+  }
+
+  @override
+  String get examOfficeMarkEmpty => 'No students match this filter.';
+
+  @override
+  String get examOfficeHoldDialogTitle => 'Hold this mark back';
+
+  @override
+  String get examOfficeHoldDialogBody =>
+      'The mark stays out of the results until you release it. The course can still be sent.';
+
+  @override
+  String get examOfficeHoldConfirm => 'Hold back';
+
+  @override
+  String get examOfficeSendButton => 'Send for approval';
+
+  @override
+  String examOfficeSendConfirmTitle(Object course) {
+    return 'Send $course for approval?';
+  }
+
+  @override
+  String get examOfficeSendConfirmBody =>
+      'The marks are fixed once sent. Only the head of department can send them back.';
+
+  @override
+  String get examOfficeSendConfirmAction => 'Send';
+
+  @override
+  String examOfficeSendBlockedTitle(Object count) {
+    return '$count students have no mark';
+  }
+
+  @override
+  String examOfficeSendBlockedBody(Object names) {
+    return 'Enter a mark for each, or hold it back with a reason, then send again: $names.';
+  }
+
+  @override
+  String get examOfficeStageNoteMarking =>
+      'Marks are saved as you type. Send the course when every student has a mark or a hold.';
+
+  @override
+  String examOfficeHodNoteTitle(Object author, Object date) {
+    return '$author sent this back on $date';
+  }
+
+  @override
+  String examOfficeHodNoteBody(Object count, Object note) {
+    return '$note ($count flagged marks to revise.)';
+  }
+
+  @override
+  String examOfficeFlaggedCount(Object count) {
+    return '$count flagged marks to revise.';
+  }
+
+  @override
+  String examOfficeLockedApprovers(Object date, Object desk) {
+    return 'With $desk, due $date. The marks are locked.';
+  }
+
+  @override
+  String examOfficePublishedNote(Object date, Object ref) {
+    return 'Published on $date. Gazette $ref.';
+  }
+
+  @override
+  String get examOfficeSessionsTitle => 'Examination sessions';
+
+  @override
+  String get examOfficeSessionsSubtitle =>
+      'The periods papers are sat in, semester by semester.';
+
+  @override
+  String examOfficeSessionsEmptyTitle(Object term) {
+    return 'No session for $term';
+  }
+
+  @override
+  String get examOfficeSessionsEmptyBody =>
+      'Open a session to timetable papers and let students collect their cards.';
+
+  @override
+  String get examOfficeOpenSession => 'Open a session';
+
+  @override
+  String examOfficeOpenSessionTitle(Object term) {
+    return 'Open a session for $term';
+  }
+
+  @override
+  String get examOfficeSessionNameLabel => 'Session name';
+
+  @override
+  String get examOfficeSessionNameRequired => 'Give the session a name.';
+
+  @override
+  String get examOfficeSessionStarts => 'First paper';
+
+  @override
+  String get examOfficeSessionEnds => 'Last paper';
+
+  @override
+  String get examOfficeSessionCardsOpen => 'Cards open';
+
+  @override
+  String get examOfficeDateRequired => 'Choose a date.';
+
+  @override
+  String get examOfficeSessionEndBeforeStart =>
+      'The last paper must come after the first.';
+
+  @override
+  String get examOfficeSessionCardsAfterStart =>
+      'Cards must open on or before the first paper.';
+
+  @override
+  String examOfficeSessionBody(Object count, Object end, Object start) {
+    return '$start to $end, $count papers';
+  }
+
+  @override
+  String get examOfficeSessionDetailTitle => 'Session';
+
+  @override
+  String get examOfficeSessionDetailSubtitle =>
+      'Papers, clashes and issued cards for one examination period.';
+
+  @override
+  String get examOfficeSessionNotFound => 'That session is not on the list.';
+
+  @override
+  String examOfficeSessionDates(Object end, Object start) {
+    return '$start to $end';
+  }
+
+  @override
+  String examOfficeSessionCardsFrom(Object date) {
+    return 'Cards open on $date';
+  }
+
+  @override
+  String get examOfficeSessionMetricPapers => 'Papers';
+
+  @override
+  String get examOfficeSessionMetricClashes => 'Clashes';
+
+  @override
+  String get examOfficeSessionMetricCards => 'Cards issued';
+
+  @override
+  String get examOfficeClashesHeading => 'Clashes';
+
+  @override
+  String examOfficeClashTitle(Object first, Object second) {
+    return '$first and $second at the same time';
+  }
+
+  @override
+  String examOfficeClashBody(Object matric) {
+    return '$matric is registered for both papers.';
+  }
+
+  @override
+  String examOfficeClashResolve(Object course) {
+    return 'Move $course';
+  }
+
+  @override
+  String get examOfficePapersHeading => 'Papers';
+
+  @override
+  String examOfficePaperBody(Object enrolled, Object seated, Object when) {
+    return '$when, $seated of $enrolled seated';
+  }
+
+  @override
+  String get examOfficeCardsHeading => 'Issued cards';
+
+  @override
+  String examOfficeIssuedCardLine(Object card, Object matric) {
+    return '$matric - $card';
+  }
+
+  @override
+  String get examOfficeCardValidTag => 'Valid';
+
+  @override
+  String get examOfficeCardWithdrawnTag => 'Withdrawn';
+
+  @override
+  String examOfficeCardWithdrawnReason(Object reason) {
+    return 'Withdrawn: $reason';
+  }
+
+  @override
+  String get examOfficeWithdrawAction => 'Withdraw card';
+
+  @override
+  String examOfficeWithdrawTitle(Object name) {
+    return 'Withdraw $name\'s card';
+  }
+
+  @override
+  String get examOfficeWithdrawBody =>
+      'The public check fails from now on and the student cannot sit.';
+
+  @override
+  String get examOfficeWithdrawConfirm => 'Withdraw';
+
+  @override
+  String get examResitsTitle => 'Resits';
+
+  @override
+  String examResitsSubtitle(Object matric) {
+    return 'Matric number $matric';
+  }
+
+  @override
+  String get examResitPolicyTitle => 'Both attempts count';
+
+  @override
+  String get examResitPolicyBody =>
+      'Courses you failed and have not since passed. Taking one again does not replace the old mark - both attempts count towards your CGPA.';
+
+  @override
+  String get examResitWorkedExample =>
+      'You failed CSC 201 with 22 in 25/26 • 1st Sem. If you resit it and score 61, both 22 and 61 count towards your CGPA.';
+
+  @override
+  String get examResitAttemptPrevious => 'Attempt 1 (previous)';
+
+  @override
+  String get examResitAttemptResit => 'Attempt 2 (resit)';
+
+  @override
+  String get examResitExamplePreviousMark => 'CSC 201: 22';
+
+  @override
+  String get examResitExampleResitMark => 'Score: 61';
+
+  @override
+  String get examResitExampleFailed => 'Failed';
+
+  @override
+  String get examResitBothCount => 'Both count';
+
+  @override
+  String examResitWindowOpen(Object label) {
+    return 'Resit window $label is open';
+  }
+
+  @override
+  String examResitWindowClosed(Object label) {
+    return 'Resit window $label is closed';
+  }
+
+  @override
+  String examResitWindowCloses(Object date) {
+    return 'Closes $date';
+  }
+
+  @override
+  String examResitWindowClosedOn(Object date) {
+    return 'Closed $date';
+  }
+
+  @override
+  String get examResitTagOpen => 'Open';
+
+  @override
+  String get examResitTagClosed => 'Closed';
+
+  @override
+  String get examResitBudgetTitle => 'Unit allowance';
+
+  @override
+  String examResitBudgetUsed(Object cap, Object used) {
+    return '$used of $cap units used';
+  }
+
+  @override
+  String examResitBudgetLeft(Object count) {
+    return '$count units left this semester.';
+  }
+
+  @override
+  String examResitCapCapacity(int percent) {
+    return '$percent% cap capacity';
+  }
+
+  @override
+  String examResitBudgetRatio(int used, int cap) {
+    return '$used/$cap';
+  }
+
+  @override
+  String get examResitFailuresTitle => 'Outstanding failures';
+
+  @override
+  String examResitFailuresCount(Object count) {
+    return '$count pending';
+  }
+
+  @override
+  String get examResitFailuresNote =>
+      'A course leaves this list once you pass it.';
+
+  @override
+  String get examResitFailuresEmpty => 'You have no failed courses to resit.';
+
+  @override
+  String examResitFailedIn(Object score, Object term) {
+    return 'Failed with $score in $term';
+  }
+
+  @override
+  String get examResitNotOpen => 'Not open';
+
+  @override
+  String examResitUsesLastUnits(Object count) {
+    return 'This would use your last $count units.';
+  }
+
+  @override
+  String get examResitOverBudget =>
+      'This is over your unit allowance for the semester.';
+
+  @override
+  String get examResitRegister => 'Register';
+
+  @override
+  String get examResitObligation => 'Estimated total';
+
+  @override
+  String get examResitClosedHelp =>
+      'Registration is closed. Ask the examinations office if this affects you.';
+
+  @override
+  String get examResitRegisteredTitle => 'What you have registered';
+
+  @override
+  String examResitRegisteredCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count invoiced courses',
+      one: '1 invoiced course',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String examResitRegisteredLine(Object term, Object units) {
+    return '$units units · $term';
+  }
+
+  @override
+  String get examResitRegisteredTag => 'Registered';
+
+  @override
+  String get examResitAwaitingPayment => 'Awaiting payment';
+
+  @override
+  String get examResitPaid => 'Paid';
+
+  @override
+  String get examResitReceiptDocket => 'Receipt docket';
+
+  @override
+  String examResitInvoice(Object reference) {
+    return 'Inv: #$reference';
+  }
+
+  @override
+  String examResitSemester(String term) {
+    return 'Semester: $term';
+  }
+
+  @override
+  String get examResitPaymentRequired => 'Payment action required';
+
+  @override
+  String get examResitBursaryClearance => 'Bursary clearance';
+
+  @override
+  String get examResitSettleLedger => 'Settle resit ledger item';
+
+  @override
+  String get examResitPayFees => 'Pay fees';
+
+  @override
+  String get examResitHowTitle => 'How a resit works';
+
+  @override
+  String get examResitRuleFailedOnly =>
+      'You may only register for a course you failed and have not since passed.';
+
+  @override
+  String examResitRuleCap(Object cap) {
+    return 'You may resit up to $cap units in a semester.';
+  }
+
+  @override
+  String examResitRuleFee(Object fee) {
+    return 'The fee is $fee per unit, invoiced when you register.';
+  }
+
+  @override
+  String get examResitRuleBoth =>
+      'Both the old attempt and the new one count towards your CGPA.';
+
+  @override
+  String get examResitRuleWithdraw =>
+      'To withdraw from a resit, ask the examinations office. Any fee paid is credited back to your wallet.';
+
+  @override
+  String examResitConfirmTitle(Object code) {
+    return 'Register for $code?';
+  }
+
+  @override
+  String examResitConfirmSubtitle(Object title, Object window) {
+    return '$title · $window resit';
+  }
+
+  @override
+  String get examResitConfirmPrevious => 'Previous attempt';
+
+  @override
+  String examResitConfirmTag(String window) {
+    return '$window resit';
+  }
+
+  @override
+  String get examResitConfirmUnits => 'Unit assessment breakdown';
+
+  @override
+  String examResitConfirmRate(Object rate, Object units) {
+    return '$units units · $rate per unit';
+  }
+
+  @override
+  String get examResitConfirmTotal => 'Total payable';
+
+  @override
+  String examResitConfirmTotalValue(String amount) {
+    return 'Total $amount';
+  }
+
+  @override
+  String get examResitConfirmBothTitle => 'Statutory academic policy';
+
+  @override
+  String examResitConfirmBothBody(Object score, Object term) {
+    return 'Both attempts count towards your CGPA. This mark will not replace your previous $score in $term.';
+  }
+
+  @override
+  String get examResitConfirmInvoiceNote =>
+      'The fee is invoiced when you register.';
+
+  @override
+  String get examResitConfirmWithdraw =>
+      'You are registering now. To withdraw later, ask the examinations office.';
+
+  @override
+  String get examResitConfirmAction => 'Register';
+
+  @override
+  String get examResitConfirmDecline => 'Not yet';
+
+  @override
+  String get examResultsTitle => 'My results';
+
+  @override
+  String get examResultsSubtitle =>
+      'Each semester\'s marks, and where you stand overall.';
+
+  @override
+  String get examResultsResitNote =>
+      'Both attempts at a resit count towards your CGPA.';
+
+  @override
+  String get examResultsDownloadSlip => 'Download official grade slip (PDF)';
+
+  @override
+  String get examResultsBreadcrumb => 'Student';
+
+  @override
+  String get examResultsMatriculated => 'Matriculated';
+
+  @override
+  String get examResultsSenateApproved => 'Senate approved';
+
+  @override
+  String get examResultsCumulativeLabel => 'Cumulative grade point';
+
+  @override
+  String get examResultsSemesterGpaLabel => 'Semester GPA';
+
+  @override
+  String get examResultsCumulativeCgpa => 'Cumulative CGPA';
+
+  @override
+  String get examResultsViewPrevious => 'View previous semesters';
+
+  @override
+  String get examResultsHidePrevious => 'Hide previous semesters';
+
+  @override
+  String get examResultsNoEarlier => 'No earlier semester has been published.';
+
+  @override
+  String get examResultsLedgerStatus => 'Status: Final ratified ledger';
+
+  @override
+  String get examResultsSenateSection => 'Senate Sec. 14';
+
+  @override
+  String examCourseResitWhen(String term) {
+    return 'resit, $term';
+  }
+
+  @override
+  String examStudentLine(Object level, Object programme) {
+    return '$level level · $programme';
+  }
+
+  @override
+  String examCgpaValue(Object value) {
+    return 'CGPA $value';
+  }
+
+  @override
+  String get examCgpaNote => 'Counted from published results only.';
+
+  @override
+  String get examResultsEmptyTitle => 'No results published yet';
+
+  @override
+  String examResultsEmptyBody(Object session) {
+    return 'Your marks for $session appear here once the registry has approved and published them.';
+  }
+
+  @override
+  String get examResultsStepLecturer => 'Your lecturer marks the papers.';
+
+  @override
+  String get examResultsStepDepartment =>
+      'The head of department approves the marks.';
+
+  @override
+  String get examResultsStepRegistry => 'The registry publishes them.';
+
+  @override
+  String get examStandingGood => 'Good standing';
+
+  @override
+  String get examStandingProbation => 'On probation';
+
+  @override
+  String get examStandingWithdrawal => 'Advised to withdraw';
+
+  @override
+  String get examStandingTitle => 'Where you stand';
+
+  @override
+  String examStandingOutOf(Object max) {
+    return 'CGPA · of $max';
+  }
+
+  @override
+  String examStandingThresholds(Object probation, Object withdrawal) {
+    return 'Probation under $probation. Withdrawal under $withdrawal.';
+  }
+
+  @override
+  String examStandingUnits(Object passed, Object taken) {
+    return '$passed of $taken units passed';
+  }
+
+  @override
+  String examStandingOnCourse(Object classification) {
+    return 'On course for $classification';
+  }
+
+  @override
+  String get examAdvisoryProbationTitle =>
+      'Speak to your level adviser about how to bring your CGPA up.';
+
+  @override
+  String get examAdvisoryStatute => 'Academic Board Resolution · Stat. 14(B)';
+
+  @override
+  String get examAdvisoryProbationContinue =>
+      'You are below the CGPA this course needs to continue.';
+
+  @override
+  String get examAdvisoryProbationSemester =>
+      'This semester counts towards it too.';
+
+  @override
+  String get examAdvisoryProbationFinal =>
+      'Nothing here is final. Raising your CGPA next semester changes it.';
+
+  @override
+  String examAdvisoryAdviserRole(String programme) {
+    return 'Level adviser ($programme)';
+  }
+
+  @override
+  String get examAdvisoryBook => 'Book urgent advising session';
+
+  @override
+  String get examAdvisoryWithdrawalTitle => 'You are advised to withdraw';
+
+  @override
+  String get examAdvisoryWithdrawalBody =>
+      'Your CGPA is under the withdrawal threshold. Speak to your level adviser about your options before the senate appeal window closes.';
+
+  @override
+  String examAdvisoryAdviser(Object office) {
+    return 'Level adviser · $office';
+  }
+
+  @override
+  String get examScaleTitle => 'Degree classification scale';
+
+  @override
+  String examScaleRange(Object from, Object to) {
+    return '$from – $to';
+  }
+
+  @override
+  String examTermGpa(Object value) {
+    return 'GPA $value';
+  }
+
+  @override
+  String get examTermUnitsTaken => 'Units taken';
+
+  @override
+  String get examTermUnitsPassed => 'Units passed';
+
+  @override
+  String examUnitsValue(Object count) {
+    return '$count units';
+  }
+
+  @override
+  String get examCourseResit => 'Resit';
+
+  @override
+  String get examCourseHeldBack => 'Held back';
+
+  @override
+  String get examCourseOutOf => 'of 100';
+
+  @override
+  String get examCourseNoGrade => '—';
+
+  @override
+  String get examCourseNoMark => '—';
+
+  @override
+  String examCourseResitNote(Object score, Object term) {
+    return 'Earlier attempt: $score in $term. Both attempts count towards your CGPA.';
+  }
+
+  @override
+  String get examCourseHeldBackNote =>
+      'Your mark for this course is being held back. Speak to the examinations office.';
+
+  @override
+  String get examCourseNotMarked => 'Not marked yet.';
+
+  @override
+  String get examVerifyBrandCaption => 'Examination card check';
+
+  @override
+  String get examVerifyTitle => 'Check an examination card';
+
+  @override
+  String get examVerifySubtitle =>
+      'Type the check code printed on the card, or scan its QR mark.';
+
+  @override
+  String get examVerifyCodeLabel => 'Check code';
+
+  @override
+  String get examVerifyCodeHint => 'K7Q2M4XB9PTR';
+
+  @override
+  String examVerifyCodeHelper(Object count) {
+    return 'Codes are $count characters.';
+  }
+
+  @override
+  String get examVerifyAction => 'Check card';
+
+  @override
+  String get examVerifyValidTitle => 'Valid card';
+
+  @override
+  String get examVerifyValidBody => 'Cleared for hall entry.';
+
+  @override
+  String get examVerifyName => 'Name';
+
+  @override
+  String get examVerifyMatric => 'Matric number';
+
+  @override
+  String get examVerifyProgramme => 'Programme';
+
+  @override
+  String get examVerifyCard => 'Card number';
+
+  @override
+  String get examVerifyPapers => 'Eligible papers';
+
+  @override
+  String examVerifyPapersValue(Object count, Object session) {
+    return '$count · session $session';
+  }
+
+  @override
+  String get examVerifyInvalidTitle => 'This card is not valid';
+
+  @override
+  String get examVerifyWithdrawnBody => 'The card was withdrawn.';
+
+  @override
+  String examVerifyWithdrawnWhy(Object reason) {
+    return 'The card was withdrawn: $reason.';
+  }
+
+  @override
+  String get examVerifyStandingBody =>
+      'The holder is not currently a student in good standing. Tell the student to see the examinations office.';
+
+  @override
+  String get examVerifyNotFoundTitle => 'No card matches this code.';
+
+  @override
+  String examVerifyNotFoundBody(Object count) {
+    return 'Codes are $count characters. Check it was copied correctly.';
+  }
+
+  @override
+  String get examVerifyPrivacyTitle => 'Student privacy';
+
+  @override
+  String get examVerifyPrivacyBody =>
+      'A valid card shows five facts and no photo. Nothing else about the student is disclosed.';
+
+  @override
+  String get examVerifySignIn => 'Sign in to the portal';
 }

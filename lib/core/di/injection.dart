@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import '../../features/accommodation/di/accommodation_module.dart';
 import '../../features/admissions/di/admissions_module.dart';
 import '../../features/auth/di/auth_module.dart';
+import '../../features/examinations/di/examinations_module.dart';
 import '../../features/fees/di/fees_module.dart';
 import '../../features/password_recovery/di/password_recovery_module.dart';
 import '../../features/registration/di/registration_module.dart';
@@ -37,6 +38,7 @@ Future<void> configureDependencies({AppConfig? config}) async {
   registerFeesModule(sl);
   registerRegistrationModule(sl);
   registerAccommodationModule(sl);
+  registerExaminationsModule(sl);
   registerPasswordRecoveryModule(sl);
   registerRouterModule(sl);
   configureLogging(sl);

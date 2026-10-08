@@ -10901,6 +10901,3136 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Opens History with no past beds.'**
   String get accommodationPreviewNoHistoryHint;
+
+  /// No description provided for @examCardTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Examination card'**
+  String get examCardTitle;
+
+  /// No description provided for @examCardSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Show this at the hall door. It lists every paper you sit and where you sit it.'**
+  String get examCardSubtitle;
+
+  /// No description provided for @examCardStatusNotIssued.
+  ///
+  /// In en, this message translates to:
+  /// **'Not issued'**
+  String get examCardStatusNotIssued;
+
+  /// No description provided for @examCardStatusIssued.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued'**
+  String get examCardStatusIssued;
+
+  /// No description provided for @examCardStatusRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Revoked'**
+  String get examCardStatusRevoked;
+
+  /// No description provided for @examCardGateOf.
+  ///
+  /// In en, this message translates to:
+  /// **'Gate {current} of {count}'**
+  String examCardGateOf(int current, int count);
+
+  /// No description provided for @examCardNotIssuedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You don\'t have a card yet'**
+  String get examCardNotIssuedTitle;
+
+  /// No description provided for @examCardNotIssuedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Statutory examination clearance requires unhindered satisfaction of all five institutional prerequisites.'**
+  String get examCardNotIssuedBody;
+
+  /// No description provided for @examCardBlockingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocking issue'**
+  String get examCardBlockingTitle;
+
+  /// No description provided for @examCardGateMark.
+  ///
+  /// In en, this message translates to:
+  /// **'Gate {position} • {title}'**
+  String examCardGateMark(int position, String title);
+
+  /// No description provided for @examCardIdentityLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{programme} • {department}'**
+  String examCardIdentityLine(String programme, String department);
+
+  /// No description provided for @examCardLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level {level}'**
+  String examCardLevel(int level);
+
+  /// No description provided for @examCardFeesBlocking.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay at least {amount} of this term\'s fees before your examination card can be issued.'**
+  String examCardFeesBlocking(Object amount);
+
+  /// No description provided for @examCardPayUnder.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay under Fees.'**
+  String get examCardPayUnder;
+
+  /// No description provided for @examCardMinimumToPay.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum statutory threshold'**
+  String get examCardMinimumToPay;
+
+  /// No description provided for @examCardOutstanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Outstanding total'**
+  String get examCardOutstanding;
+
+  /// No description provided for @examCardPayAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay {amount}'**
+  String examCardPayAction(Object amount);
+
+  /// No description provided for @examGatesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All clearance gates'**
+  String get examGatesTitle;
+
+  /// No description provided for @examGatesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete review of verification requirements for this assessment cycle.'**
+  String get examGatesBody;
+
+  /// No description provided for @examCardAuditLedger.
+  ///
+  /// In en, this message translates to:
+  /// **'Audit ledger'**
+  String get examCardAuditLedger;
+
+  /// No description provided for @examCardPolicyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional policy note'**
+  String get examCardPolicyTitle;
+
+  /// No description provided for @examCardPolicyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'In accordance with Senate regulations, physical printouts of examination admission passes are strictly barred from issuance until financial reconciliations are cleared through the bursary ledger. Invigilators will invalidate unverified entry credentials at examination centre entry points.'**
+  String get examCardPolicyBody;
+
+  /// No description provided for @examGatePosition.
+  ///
+  /// In en, this message translates to:
+  /// **'{position}.'**
+  String examGatePosition(Object position);
+
+  /// No description provided for @examGateFees.
+  ///
+  /// In en, this message translates to:
+  /// **'Bursary fee obligations'**
+  String get examGateFees;
+
+  /// No description provided for @examGateFeesDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial clearance threshold'**
+  String get examGateFeesDetail;
+
+  /// No description provided for @examGateStanding.
+  ///
+  /// In en, this message translates to:
+  /// **'Student matriculation status'**
+  String get examGateStanding;
+
+  /// No description provided for @examGateStandingDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Registrar administrative standing'**
+  String get examGateStandingDetail;
+
+  /// No description provided for @examGatePapers.
+  ///
+  /// In en, this message translates to:
+  /// **'Examination paper registration'**
+  String get examGatePapers;
+
+  /// No description provided for @examGatePapersDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Senate approved paper roster'**
+  String get examGatePapersDetail;
+
+  /// No description provided for @examGateSchedule.
+  ///
+  /// In en, this message translates to:
+  /// **'Card issuance schedule'**
+  String get examGateSchedule;
+
+  /// No description provided for @examGateScheduleDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Central examinations time window'**
+  String get examGateScheduleDetail;
+
+  /// No description provided for @examGateSeats.
+  ///
+  /// In en, this message translates to:
+  /// **'Final seat allotment and pass'**
+  String get examGateSeats;
+
+  /// No description provided for @examGateSeatsDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'Physical desk allocation'**
+  String get examGateSeatsDetail;
+
+  /// No description provided for @examGatePassed.
+  ///
+  /// In en, this message translates to:
+  /// **'Passed'**
+  String get examGatePassed;
+
+  /// No description provided for @examGateBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked'**
+  String get examGateBlocked;
+
+  /// No description provided for @examGateWaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting'**
+  String get examGateWaiting;
+
+  /// No description provided for @examGateFeesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay the minimum of this term\'s fees under Fees.'**
+  String get examGateFeesHint;
+
+  /// No description provided for @examGateStandingHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards are only issued to active students. Speak to your level adviser.'**
+  String get examGateStandingHint;
+
+  /// No description provided for @examGatePapersHint.
+  ///
+  /// In en, this message translates to:
+  /// **'You have no approved courses with papers in this session. Check your registered courses.'**
+  String get examGatePapersHint;
+
+  /// No description provided for @examGateScheduleHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards are not open yet. Check back nearer the examinations.'**
+  String get examGateScheduleHint;
+
+  /// No description provided for @examGateSeatsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Your seat is allotted once the first four checks pass.'**
+  String get examGateSeatsHint;
+
+  /// No description provided for @examCardInstitution.
+  ///
+  /// In en, this message translates to:
+  /// **'The Legion University'**
+  String get examCardInstitution;
+
+  /// No description provided for @examCardOfficial.
+  ///
+  /// In en, this message translates to:
+  /// **'Official'**
+  String get examCardOfficial;
+
+  /// No description provided for @examCardSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Session {session}'**
+  String examCardSession(Object session);
+
+  /// No description provided for @examCardCandidate.
+  ///
+  /// In en, this message translates to:
+  /// **'Candidate'**
+  String get examCardCandidate;
+
+  /// No description provided for @examCardMatric.
+  ///
+  /// In en, this message translates to:
+  /// **'Matric number'**
+  String get examCardMatric;
+
+  /// No description provided for @examCardProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme'**
+  String get examCardProgramme;
+
+  /// No description provided for @examCardNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get examCardNumberLabel;
+
+  /// No description provided for @examCardCheckCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Check code'**
+  String get examCardCheckCodeLabel;
+
+  /// No description provided for @examCardIssuedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued on {date}.'**
+  String examCardIssuedOn(Object date);
+
+  /// No description provided for @examCardPapersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Timetabled papers'**
+  String get examCardPapersTitle;
+
+  /// No description provided for @examCardPapersCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} sittings'**
+  String examCardPapersCount(Object count);
+
+  /// No description provided for @examCardPaperWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'{date}, {time}'**
+  String examCardPaperWhen(Object date, Object time);
+
+  /// No description provided for @examCardSeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Seat {seat}'**
+  String examCardSeat(Object seat);
+
+  /// No description provided for @examCardVenueToBeAnnounced.
+  ///
+  /// In en, this message translates to:
+  /// **'To be announced'**
+  String get examCardVenueToBeAnnounced;
+
+  /// No description provided for @examCardPersonalNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This card is personal and cannot be transferred. Bring it and your student ID card to every paper. An invigilator may check the card number against the examinations office record.'**
+  String get examCardPersonalNote;
+
+  /// No description provided for @examCardPrint.
+  ///
+  /// In en, this message translates to:
+  /// **'Print card'**
+  String get examCardPrint;
+
+  /// No description provided for @examRevokedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This card was withdrawn'**
+  String get examRevokedTitle;
+
+  /// No description provided for @examRevokedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A withdrawn card cannot be reprinted. If this is wrong, the examinations office can issue a new one.'**
+  String get examRevokedBody;
+
+  /// No description provided for @examRevokedReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn reason'**
+  String get examRevokedReasonLabel;
+
+  /// No description provided for @examRevokedSpeakOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Speak to the examinations office.'**
+  String get examRevokedSpeakOffice;
+
+  /// No description provided for @examRevokedCredentialId.
+  ///
+  /// In en, this message translates to:
+  /// **'Credential ID'**
+  String get examRevokedCredentialId;
+
+  /// No description provided for @examRevokedExaminations.
+  ///
+  /// In en, this message translates to:
+  /// **'Examinations'**
+  String get examRevokedExaminations;
+
+  /// No description provided for @examRevokedFeeReversed.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee reversed'**
+  String get examRevokedFeeReversed;
+
+  /// No description provided for @examRevokedSessionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Term'**
+  String get examRevokedSessionLabel;
+
+  /// No description provided for @examRevokedStudentLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get examRevokedStudentLabel;
+
+  /// No description provided for @examRevokedStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} ({matric})'**
+  String examRevokedStudent(Object matric, Object name);
+
+  /// No description provided for @examRevokedHallNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn cards are logged at all entrance scanners. Presenting this card at a hall doorway will flag an invalid credential.'**
+  String get examRevokedHallNote;
+
+  /// No description provided for @examRevokedViewFees.
+  ///
+  /// In en, this message translates to:
+  /// **'View fees ledger'**
+  String get examRevokedViewFees;
+
+  /// No description provided for @examRevokedContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact examinations office'**
+  String get examRevokedContact;
+
+  /// No description provided for @navExamResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get navExamResults;
+
+  /// No description provided for @navExamResits.
+  ///
+  /// In en, this message translates to:
+  /// **'Resits'**
+  String get navExamResits;
+
+  /// No description provided for @navExamCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Card'**
+  String get navExamCard;
+
+  /// No description provided for @examTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Examinations and results'**
+  String get examTitle;
+
+  /// No description provided for @examNoticeResitRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'You are registered for the resit. The fee is invoiced now.'**
+  String get examNoticeResitRegistered;
+
+  /// No description provided for @examNoticeResitClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'The resit window is closed, so you can\'t register.'**
+  String get examNoticeResitClosed;
+
+  /// No description provided for @examNoticeResitOverBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'That resit would take you over your unit allowance for the semester.'**
+  String get examNoticeResitOverBudget;
+
+  /// No description provided for @examPreviewAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview states'**
+  String get examPreviewAction;
+
+  /// No description provided for @examPreviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview examinations states'**
+  String get examPreviewTitle;
+
+  /// No description provided for @examPreviewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Debug builds only. Loads a fixture ledger and opens the tab that shows it.'**
+  String get examPreviewSubtitle;
+
+  /// No description provided for @examPreviewPublishedGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Results published, good standing'**
+  String get examPreviewPublishedGood;
+
+  /// No description provided for @examPreviewPublishedGoodHint.
+  ///
+  /// In en, this message translates to:
+  /// **'CGPA 3.62, one term, a resit and a held-back mark.'**
+  String get examPreviewPublishedGoodHint;
+
+  /// No description provided for @examPreviewUnpublished.
+  ///
+  /// In en, this message translates to:
+  /// **'No results published'**
+  String get examPreviewUnpublished;
+
+  /// No description provided for @examPreviewUnpublishedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The empty results hub.'**
+  String get examPreviewUnpublishedHint;
+
+  /// No description provided for @examPreviewProbation.
+  ///
+  /// In en, this message translates to:
+  /// **'Probation'**
+  String get examPreviewProbation;
+
+  /// No description provided for @examPreviewProbationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'CGPA 1.84 with the adviser and the warning.'**
+  String get examPreviewProbationHint;
+
+  /// No description provided for @examPreviewCardNotIssued.
+  ///
+  /// In en, this message translates to:
+  /// **'Card not issued'**
+  String get examPreviewCardNotIssued;
+
+  /// No description provided for @examPreviewCardNotIssuedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Fees owing block the card; five clearances.'**
+  String get examPreviewCardNotIssuedHint;
+
+  /// No description provided for @examPreviewCardIssued.
+  ///
+  /// In en, this message translates to:
+  /// **'Card issued'**
+  String get examPreviewCardIssued;
+
+  /// No description provided for @examPreviewCardIssuedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'The card with its timetable of papers.'**
+  String get examPreviewCardIssuedHint;
+
+  /// No description provided for @examPreviewCardRevoked.
+  ///
+  /// In en, this message translates to:
+  /// **'Card revoked'**
+  String get examPreviewCardRevoked;
+
+  /// No description provided for @examPreviewCardRevokedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn because the fee was reversed.'**
+  String get examPreviewCardRevokedHint;
+
+  /// No description provided for @examPreviewResitsOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Resits open'**
+  String get examPreviewResitsOpen;
+
+  /// No description provided for @examPreviewResitsOpenHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit allowance, failed courses and the confirm sheet.'**
+  String get examPreviewResitsOpenHint;
+
+  /// No description provided for @examPreviewResitsClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Resits closed'**
+  String get examPreviewResitsClosed;
+
+  /// No description provided for @examPreviewResitsClosedHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Failures listed as not open.'**
+  String get examPreviewResitsClosedHint;
+
+  /// No description provided for @examOfficeBroadsheetsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Broadsheets'**
+  String get examOfficeBroadsheetsTitle;
+
+  /// No description provided for @examOfficeBroadsheetsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Published scores by course, and each student\'s semester.'**
+  String get examOfficeBroadsheetsSubtitle;
+
+  /// No description provided for @examOfficeBroadsheetEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No published results'**
+  String get examOfficeBroadsheetEmptyTitle;
+
+  /// No description provided for @examOfficeBroadsheetEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A course appears here once its results are published.'**
+  String get examOfficeBroadsheetEmptyBody;
+
+  /// No description provided for @examOfficeBroadsheetEnrolled.
+  ///
+  /// In en, this message translates to:
+  /// **'Enrolled'**
+  String get examOfficeBroadsheetEnrolled;
+
+  /// No description provided for @examOfficeBroadsheetMean.
+  ///
+  /// In en, this message translates to:
+  /// **'Mean'**
+  String get examOfficeBroadsheetMean;
+
+  /// No description provided for @examOfficeBroadsheetPassRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Pass rate'**
+  String get examOfficeBroadsheetPassRate;
+
+  /// No description provided for @examOfficePercent.
+  ///
+  /// In en, this message translates to:
+  /// **'{value}%'**
+  String examOfficePercent(Object value);
+
+  /// No description provided for @examOfficeScoreGrade.
+  ///
+  /// In en, this message translates to:
+  /// **'{score} {grade}'**
+  String examOfficeScoreGrade(Object grade, Object score);
+
+  /// No description provided for @examOfficeDossierTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student dossier'**
+  String get examOfficeDossierTitle;
+
+  /// No description provided for @examOfficeDossierSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'One student\'s semester, course by course.'**
+  String get examOfficeDossierSubtitle;
+
+  /// No description provided for @examOfficeDossierNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'That student has no dossier.'**
+  String get examOfficeDossierNotFound;
+
+  /// No description provided for @examOfficeDossierLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{matric} - {programme}'**
+  String examOfficeDossierLine(Object matric, Object programme);
+
+  /// No description provided for @examOfficeDossierCgpa.
+  ///
+  /// In en, this message translates to:
+  /// **'CGPA'**
+  String get examOfficeDossierCgpa;
+
+  /// No description provided for @examOfficeDossierUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Units passed'**
+  String get examOfficeDossierUnits;
+
+  /// No description provided for @examOfficeDossierClassification.
+  ///
+  /// In en, this message translates to:
+  /// **'Class'**
+  String get examOfficeDossierClassification;
+
+  /// No description provided for @examOfficeUnitsOf.
+  ///
+  /// In en, this message translates to:
+  /// **'{passed} of {taken}'**
+  String examOfficeUnitsOf(Object passed, Object taken);
+
+  /// No description provided for @examOfficeProvisionalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Provisional result'**
+  String get examOfficeProvisionalTitle;
+
+  /// No description provided for @examOfficeProvisionalBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The {course} mark is held back, so this semester\'s standing may change.'**
+  String examOfficeProvisionalBody(Object course);
+
+  /// No description provided for @examOfficeDossierCourses.
+  ///
+  /// In en, this message translates to:
+  /// **'Courses, {term}'**
+  String examOfficeDossierCourses(Object term);
+
+  /// No description provided for @examOfficeDossierNoScore.
+  ///
+  /// In en, this message translates to:
+  /// **'No score, {units} units'**
+  String examOfficeDossierNoScore(Object units);
+
+  /// No description provided for @examOfficeDossierScore.
+  ///
+  /// In en, this message translates to:
+  /// **'{score} {grade}, {units} units'**
+  String examOfficeDossierScore(Object grade, Object score, Object units);
+
+  /// No description provided for @examOfficeBackTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get examOfficeBackTooltip;
+
+  /// No description provided for @examOfficeTaskBarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Examinations office'**
+  String get examOfficeTaskBarTitle;
+
+  /// No description provided for @examOfficeTaskBarSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Staff portal'**
+  String get examOfficeTaskBarSubtitle;
+
+  /// No description provided for @examOfficeBreadcrumbRoot.
+  ///
+  /// In en, this message translates to:
+  /// **'Examinations'**
+  String get examOfficeBreadcrumbRoot;
+
+  /// No description provided for @examOfficeSectionResults.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get examOfficeSectionResults;
+
+  /// No description provided for @examOfficeSectionSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions'**
+  String get examOfficeSectionSessions;
+
+  /// No description provided for @examOfficeSectionGrading.
+  ///
+  /// In en, this message translates to:
+  /// **'Grading'**
+  String get examOfficeSectionGrading;
+
+  /// No description provided for @examOfficeSectionIncidents.
+  ///
+  /// In en, this message translates to:
+  /// **'Incidents'**
+  String get examOfficeSectionIncidents;
+
+  /// No description provided for @examOfficeSectionResits.
+  ///
+  /// In en, this message translates to:
+  /// **'Resits'**
+  String get examOfficeSectionResits;
+
+  /// No description provided for @examOfficeSectionBroadsheets.
+  ///
+  /// In en, this message translates to:
+  /// **'Broadsheets'**
+  String get examOfficeSectionBroadsheets;
+
+  /// No description provided for @examOfficeNoticeSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent for approval. The marks are fixed now.'**
+  String get examOfficeNoticeSent;
+
+  /// No description provided for @examOfficeNoticeSendBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Some students have no mark. Enter every mark, or hold it back with a reason.'**
+  String get examOfficeNoticeSendBlocked;
+
+  /// No description provided for @examOfficeNoticeHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'The mark is held back.'**
+  String get examOfficeNoticeHeld;
+
+  /// No description provided for @examOfficeNoticeReleased.
+  ///
+  /// In en, this message translates to:
+  /// **'The hold is released.'**
+  String get examOfficeNoticeReleased;
+
+  /// No description provided for @examOfficeNoticeSessionOpened.
+  ///
+  /// In en, this message translates to:
+  /// **'Session opened. Timetable its papers next.'**
+  String get examOfficeNoticeSessionOpened;
+
+  /// No description provided for @examOfficeNoticeCardWithdrawn.
+  ///
+  /// In en, this message translates to:
+  /// **'Card withdrawn. The public check fails from now on.'**
+  String get examOfficeNoticeCardWithdrawn;
+
+  /// No description provided for @examOfficeNoticeCardReasonRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Say why the card is withdrawn.'**
+  String get examOfficeNoticeCardReasonRequired;
+
+  /// No description provided for @examOfficeNoticeRoomAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Room added. The remaining candidates are seated.'**
+  String get examOfficeNoticeRoomAdded;
+
+  /// No description provided for @examOfficeNoticePaperUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Paper updated.'**
+  String get examOfficeNoticePaperUpdated;
+
+  /// No description provided for @examOfficeNoticeCancelLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'A paper that has been sat cannot be cancelled.'**
+  String get examOfficeNoticeCancelLocked;
+
+  /// No description provided for @examOfficeNoticeCancelReasonRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Say why the paper is cancelled.'**
+  String get examOfficeNoticeCancelReasonRequired;
+
+  /// No description provided for @examOfficeNoticeThresholdsSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Standing thresholds updated.'**
+  String get examOfficeNoticeThresholdsSaved;
+
+  /// No description provided for @examOfficeNoticeThresholdsInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'The withdrawal CGPA must be above 0 and under the probation CGPA.'**
+  String get examOfficeNoticeThresholdsInvalid;
+
+  /// No description provided for @examOfficeNoticeImported.
+  ///
+  /// In en, this message translates to:
+  /// **'Incidents imported.'**
+  String get examOfficeNoticeImported;
+
+  /// No description provided for @examOfficeNoticeIncidentClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Incident closed. Any mark it held is released.'**
+  String get examOfficeNoticeIncidentClosed;
+
+  /// No description provided for @examOfficeNoticeIncidentReferred.
+  ///
+  /// In en, this message translates to:
+  /// **'Referred to discipline. The mark stays held.'**
+  String get examOfficeNoticeIncidentReferred;
+
+  /// No description provided for @examOfficeNoticeReleaseLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'These results are with the approvers, so the mark cannot be released. Speak to the head of department.'**
+  String get examOfficeNoticeReleaseLocked;
+
+  /// No description provided for @examOfficeNoticeWindowOpened.
+  ///
+  /// In en, this message translates to:
+  /// **'Resit window opened.'**
+  String get examOfficeNoticeWindowOpened;
+
+  /// No description provided for @examOfficeNoticeRegistrationCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration cancelled. Any fee paid goes to the student\'s wallet.'**
+  String get examOfficeNoticeRegistrationCancelled;
+
+  /// No description provided for @examOfficeConfirmKeep.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep as it is'**
+  String get examOfficeConfirmKeep;
+
+  /// No description provided for @examOfficeGradingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grading scales'**
+  String get examOfficeGradingTitle;
+
+  /// No description provided for @examOfficeGradingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How marks become letters, and what puts a student on probation.'**
+  String get examOfficeGradingSubtitle;
+
+  /// No description provided for @examOfficeScaleBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{applies} - {count} bands'**
+  String examOfficeScaleBody(Object applies, Object count);
+
+  /// No description provided for @examOfficeScaleDefault.
+  ///
+  /// In en, this message translates to:
+  /// **'Default'**
+  String get examOfficeScaleDefault;
+
+  /// No description provided for @examOfficeScaleBroken.
+  ///
+  /// In en, this message translates to:
+  /// **'Has a gap'**
+  String get examOfficeScaleBroken;
+
+  /// No description provided for @examOfficeScaleDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grading scale'**
+  String get examOfficeScaleDetailTitle;
+
+  /// No description provided for @examOfficeScaleDetailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The bands marks fall into.'**
+  String get examOfficeScaleDetailSubtitle;
+
+  /// No description provided for @examOfficeScaleNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'That scale is not on the list.'**
+  String get examOfficeScaleNotFound;
+
+  /// No description provided for @examOfficeScaleGapTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Some marks have no grade'**
+  String get examOfficeScaleGapTitle;
+
+  /// No description provided for @examOfficeScaleGapBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Marks 0 to {top} fall under every band, because the lowest band starts at {start}. A student scoring there would have no grade.'**
+  String examOfficeScaleGapBody(Object start, Object top);
+
+  /// No description provided for @examOfficeScaleAppliesTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Applies to {programmes}'**
+  String examOfficeScaleAppliesTo(Object programmes);
+
+  /// No description provided for @examOfficeBandFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From {mark}'**
+  String examOfficeBandFrom(Object mark);
+
+  /// No description provided for @examOfficeBandPoints.
+  ///
+  /// In en, this message translates to:
+  /// **'{points} points'**
+  String examOfficeBandPoints(Object points);
+
+  /// No description provided for @examOfficeBandFail.
+  ///
+  /// In en, this message translates to:
+  /// **'Fail'**
+  String get examOfficeBandFail;
+
+  /// No description provided for @examOfficeDegreeClassesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Degree classes'**
+  String get examOfficeDegreeClassesTitle;
+
+  /// No description provided for @examOfficeDegreeFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'From {cgpa}'**
+  String examOfficeDegreeFrom(Object cgpa);
+
+  /// No description provided for @examOfficeStandingRulesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Standing rules'**
+  String get examOfficeStandingRulesTitle;
+
+  /// No description provided for @examOfficeStandingRulesBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Below the probation CGPA a student is on probation. Below the withdrawal CGPA the office advises withdrawal.'**
+  String get examOfficeStandingRulesBody;
+
+  /// No description provided for @examOfficeProbationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Probation below CGPA'**
+  String get examOfficeProbationLabel;
+
+  /// No description provided for @examOfficeWithdrawalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawal advised below CGPA'**
+  String get examOfficeWithdrawalLabel;
+
+  /// No description provided for @examOfficeStandingRulesSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save thresholds'**
+  String get examOfficeStandingRulesSave;
+
+  /// No description provided for @examOfficeIncidentsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Incidents'**
+  String get examOfficeIncidentsTitle;
+
+  /// No description provided for @examOfficeIncidentsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What the halls reported, and which marks it is holding back.'**
+  String get examOfficeIncidentsSubtitle;
+
+  /// No description provided for @examOfficeIncidentsHolding.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} open incidents are holding a mark back.'**
+  String examOfficeIncidentsHolding(Object count);
+
+  /// No description provided for @examOfficeIncidentsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No incidents'**
+  String get examOfficeIncidentsEmptyTitle;
+
+  /// No description provided for @examOfficeIncidentsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing matches these filters.'**
+  String get examOfficeIncidentsEmptyBody;
+
+  /// No description provided for @examOfficeImportAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Import a batch'**
+  String get examOfficeImportAction;
+
+  /// No description provided for @examOfficeIncidentLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{kind} - {course}'**
+  String examOfficeIncidentLine(Object course, Object kind);
+
+  /// No description provided for @examOfficeIncidentBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{id} - {student}'**
+  String examOfficeIncidentBody(Object id, Object student);
+
+  /// No description provided for @examOfficeIncidentNoStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'No student attached'**
+  String get examOfficeIncidentNoStudent;
+
+  /// No description provided for @examOfficeIncidentHoldsMark.
+  ///
+  /// In en, this message translates to:
+  /// **'Holds a mark'**
+  String get examOfficeIncidentHoldsMark;
+
+  /// No description provided for @examOfficeIncidentDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Incident'**
+  String get examOfficeIncidentDetailTitle;
+
+  /// No description provided for @examOfficeIncidentDetailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What was reported and how it is being settled.'**
+  String get examOfficeIncidentDetailSubtitle;
+
+  /// No description provided for @examOfficeIncidentNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'That incident is not on the list.'**
+  String get examOfficeIncidentNotFound;
+
+  /// No description provided for @examOfficeIncidentFieldReference.
+  ///
+  /// In en, this message translates to:
+  /// **'Reference'**
+  String get examOfficeIncidentFieldReference;
+
+  /// No description provided for @examOfficeIncidentFieldStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get examOfficeIncidentFieldStudent;
+
+  /// No description provided for @examOfficeIncidentFieldCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'Course'**
+  String get examOfficeIncidentFieldCourse;
+
+  /// No description provided for @examOfficeIncidentFieldSitting.
+  ///
+  /// In en, this message translates to:
+  /// **'Sitting'**
+  String get examOfficeIncidentFieldSitting;
+
+  /// No description provided for @examOfficeIncidentFieldHall.
+  ///
+  /// In en, this message translates to:
+  /// **'Hall'**
+  String get examOfficeIncidentFieldHall;
+
+  /// No description provided for @examOfficeIncidentFieldDiscipline.
+  ///
+  /// In en, this message translates to:
+  /// **'Discipline case'**
+  String get examOfficeIncidentFieldDiscipline;
+
+  /// No description provided for @examOfficeIncidentFieldHearing.
+  ///
+  /// In en, this message translates to:
+  /// **'Hearing'**
+  String get examOfficeIncidentFieldHearing;
+
+  /// No description provided for @examOfficeHoldingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A mark is held back'**
+  String get examOfficeHoldingTitle;
+
+  /// No description provided for @examOfficeHoldingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The student\'s {course} mark stays out of the results until this incident is closed.'**
+  String examOfficeHoldingBody(Object course);
+
+  /// No description provided for @examOfficeIncidentRefer.
+  ///
+  /// In en, this message translates to:
+  /// **'Refer to discipline'**
+  String get examOfficeIncidentRefer;
+
+  /// No description provided for @examOfficeIncidentClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close incident'**
+  String get examOfficeIncidentClose;
+
+  /// No description provided for @examOfficeCloseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Close {id}?'**
+  String examOfficeCloseTitle(Object id);
+
+  /// No description provided for @examOfficeCloseBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The incident is settled and leaves the open list.'**
+  String get examOfficeCloseBody;
+
+  /// No description provided for @examOfficeCloseBodyHolding.
+  ///
+  /// In en, this message translates to:
+  /// **'The incident is settled and the mark it holds is released.'**
+  String get examOfficeCloseBodyHolding;
+
+  /// No description provided for @examOfficeCloseConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Close incident'**
+  String get examOfficeCloseConfirm;
+
+  /// No description provided for @examOfficeImportTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Import incidents'**
+  String get examOfficeImportTitle;
+
+  /// No description provided for @examOfficeImportSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Check an invigilator\'s file before anything is written.'**
+  String get examOfficeImportSubtitle;
+
+  /// No description provided for @examOfficeImportIdle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} rows are ready to check. Run a dry run first: nothing is written until you import.'**
+  String examOfficeImportIdle(Object count);
+
+  /// No description provided for @examOfficeImportDryRunTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dry run - nothing is written yet'**
+  String get examOfficeImportDryRunTitle;
+
+  /// No description provided for @examOfficeImportDryRunBody.
+  ///
+  /// In en, this message translates to:
+  /// **'This is what the import would do with each row. Rows left out are not written.'**
+  String get examOfficeImportDryRunBody;
+
+  /// No description provided for @examOfficeImportDone.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} incidents imported.'**
+  String examOfficeImportDone(Object count);
+
+  /// No description provided for @examOfficeImportRunDry.
+  ///
+  /// In en, this message translates to:
+  /// **'Run a dry run'**
+  String get examOfficeImportRunDry;
+
+  /// No description provided for @examOfficeImportCommit.
+  ///
+  /// In en, this message translates to:
+  /// **'Import {count} incidents'**
+  String examOfficeImportCommit(Object count);
+
+  /// No description provided for @examOfficeImportStartOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Start over'**
+  String get examOfficeImportStartOver;
+
+  /// No description provided for @examOfficeImportBackToIncidents.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to incidents'**
+  String get examOfficeImportBackToIncidents;
+
+  /// No description provided for @examOfficeImportRowLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{course} - {subject}'**
+  String examOfficeImportRowLine(Object course, Object subject);
+
+  /// No description provided for @examOfficeImportRowKind.
+  ///
+  /// In en, this message translates to:
+  /// **'{kind}, {time}'**
+  String examOfficeImportRowKind(Object kind, Object time);
+
+  /// No description provided for @examOfficeStageBeingMarked.
+  ///
+  /// In en, this message translates to:
+  /// **'Being marked'**
+  String get examOfficeStageBeingMarked;
+
+  /// No description provided for @examOfficeStageSentBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent back'**
+  String get examOfficeStageSentBack;
+
+  /// No description provided for @examOfficeStageWithApprovers.
+  ///
+  /// In en, this message translates to:
+  /// **'With approvers'**
+  String get examOfficeStageWithApprovers;
+
+  /// No description provided for @examOfficeStagePublished.
+  ///
+  /// In en, this message translates to:
+  /// **'Published'**
+  String get examOfficeStagePublished;
+
+  /// No description provided for @examOfficeFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get examOfficeFilterAll;
+
+  /// No description provided for @examOfficeFilterUnmarked.
+  ///
+  /// In en, this message translates to:
+  /// **'Unmarked'**
+  String get examOfficeFilterUnmarked;
+
+  /// No description provided for @examOfficeFilterHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Held back'**
+  String get examOfficeFilterHeld;
+
+  /// No description provided for @examOfficeFilterMarked.
+  ///
+  /// In en, this message translates to:
+  /// **'Marked'**
+  String get examOfficeFilterMarked;
+
+  /// No description provided for @examOfficeSessionScheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Scheduled'**
+  String get examOfficeSessionScheduled;
+
+  /// No description provided for @examOfficeSessionLive.
+  ///
+  /// In en, this message translates to:
+  /// **'Live'**
+  String get examOfficeSessionLive;
+
+  /// No description provided for @examOfficeSessionClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get examOfficeSessionClosed;
+
+  /// No description provided for @examOfficePaperScheduled.
+  ///
+  /// In en, this message translates to:
+  /// **'Scheduled'**
+  String get examOfficePaperScheduled;
+
+  /// No description provided for @examOfficePaperInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'In progress'**
+  String get examOfficePaperInProgress;
+
+  /// No description provided for @examOfficePaperSat.
+  ///
+  /// In en, this message translates to:
+  /// **'Sat'**
+  String get examOfficePaperSat;
+
+  /// No description provided for @examOfficePaperCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get examOfficePaperCancelled;
+
+  /// No description provided for @examOfficeSeatingNone.
+  ///
+  /// In en, this message translates to:
+  /// **'Not seated'**
+  String get examOfficeSeatingNone;
+
+  /// No description provided for @examOfficeSeatingPartial.
+  ///
+  /// In en, this message translates to:
+  /// **'Partly seated'**
+  String get examOfficeSeatingPartial;
+
+  /// No description provided for @examOfficeSeatingFull.
+  ///
+  /// In en, this message translates to:
+  /// **'Seated'**
+  String get examOfficeSeatingFull;
+
+  /// No description provided for @examOfficeKindMalpractice.
+  ///
+  /// In en, this message translates to:
+  /// **'Malpractice'**
+  String get examOfficeKindMalpractice;
+
+  /// No description provided for @examOfficeKindAbsence.
+  ///
+  /// In en, this message translates to:
+  /// **'Absence'**
+  String get examOfficeKindAbsence;
+
+  /// No description provided for @examOfficeKindIllness.
+  ///
+  /// In en, this message translates to:
+  /// **'Illness'**
+  String get examOfficeKindIllness;
+
+  /// No description provided for @examOfficeKindDisruption.
+  ///
+  /// In en, this message translates to:
+  /// **'Disruption'**
+  String get examOfficeKindDisruption;
+
+  /// No description provided for @examOfficeKindOther.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get examOfficeKindOther;
+
+  /// No description provided for @examOfficeIncidentReported.
+  ///
+  /// In en, this message translates to:
+  /// **'Reported'**
+  String get examOfficeIncidentReported;
+
+  /// No description provided for @examOfficeIncidentUnderReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Under review'**
+  String get examOfficeIncidentUnderReview;
+
+  /// No description provided for @examOfficeIncidentReferredStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Referred'**
+  String get examOfficeIncidentReferredStatus;
+
+  /// No description provided for @examOfficeIncidentClosedStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get examOfficeIncidentClosedStatus;
+
+  /// No description provided for @examOfficeImportActionImport.
+  ///
+  /// In en, this message translates to:
+  /// **'Import'**
+  String get examOfficeImportActionImport;
+
+  /// No description provided for @examOfficeImportActionUnattached.
+  ///
+  /// In en, this message translates to:
+  /// **'Import unattached'**
+  String get examOfficeImportActionUnattached;
+
+  /// No description provided for @examOfficeImportActionLeave.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave out'**
+  String get examOfficeImportActionLeave;
+
+  /// No description provided for @examOfficeImportReasonReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to import.'**
+  String get examOfficeImportReasonReady;
+
+  /// No description provided for @examOfficeImportReasonMissingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no description.'**
+  String get examOfficeImportReasonMissingDescription;
+
+  /// No description provided for @examOfficeImportReasonUnknownKind.
+  ///
+  /// In en, this message translates to:
+  /// **'The kind is not one the office uses.'**
+  String get examOfficeImportReasonUnknownKind;
+
+  /// No description provided for @examOfficeImportReasonDuplicate.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeats an earlier row in this file.'**
+  String get examOfficeImportReasonDuplicate;
+
+  /// No description provided for @examOfficeImportReasonAlreadyImported.
+  ///
+  /// In en, this message translates to:
+  /// **'Already imported.'**
+  String get examOfficeImportReasonAlreadyImported;
+
+  /// No description provided for @examOfficeImportReasonNoPaper.
+  ///
+  /// In en, this message translates to:
+  /// **'No paper is timetabled for this course.'**
+  String get examOfficeImportReasonNoPaper;
+
+  /// No description provided for @examOfficeImportReasonNoStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'No student named. Imported for someone to attach.'**
+  String get examOfficeImportReasonNoStudent;
+
+  /// No description provided for @examOfficeImportReasonNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'The student is not on the roll. Imported for someone to attach.'**
+  String get examOfficeImportReasonNotFound;
+
+  /// No description provided for @examOfficeVerdictCleared.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleared'**
+  String get examOfficeVerdictCleared;
+
+  /// No description provided for @examOfficeVerdictHeld.
+  ///
+  /// In en, this message translates to:
+  /// **'Held back'**
+  String get examOfficeVerdictHeld;
+
+  /// No description provided for @examOfficeVerdictNotPass.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a pass'**
+  String get examOfficeVerdictNotPass;
+
+  /// No description provided for @examOfficeVerdictMarginal.
+  ///
+  /// In en, this message translates to:
+  /// **'Marginal'**
+  String get examOfficeVerdictMarginal;
+
+  /// No description provided for @examOfficePaperTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Paper'**
+  String get examOfficePaperTitle;
+
+  /// No description provided for @examOfficePaperSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Seating and running one paper.'**
+  String get examOfficePaperSubtitle;
+
+  /// No description provided for @examOfficePaperNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'That paper is not in this session.'**
+  String get examOfficePaperNotFound;
+
+  /// No description provided for @examOfficePaperWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'{start} to {end}'**
+  String examOfficePaperWhen(Object end, Object start);
+
+  /// No description provided for @examOfficePaperEnrolled.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} registered'**
+  String examOfficePaperEnrolled(Object count);
+
+  /// No description provided for @examOfficeSeatingHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Seating'**
+  String get examOfficeSeatingHeading;
+
+  /// No description provided for @examOfficeSeatingCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{seated} of {enrolled} seated'**
+  String examOfficeSeatingCount(Object enrolled, Object seated);
+
+  /// No description provided for @examOfficeRoomSeated.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} seated'**
+  String examOfficeRoomSeated(Object count);
+
+  /// No description provided for @examOfficeUnseatedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} candidates have no seat'**
+  String examOfficeUnseatedTitle(Object count);
+
+  /// No description provided for @examOfficeUnseatedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a room to seat the rest. Nobody already seated is moved.'**
+  String get examOfficeUnseatedBody;
+
+  /// No description provided for @examOfficeAddRoom.
+  ///
+  /// In en, this message translates to:
+  /// **'Add {room} ({capacity} seats)'**
+  String examOfficeAddRoom(Object capacity, Object room);
+
+  /// No description provided for @examOfficeRunningHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Running the paper'**
+  String get examOfficeRunningHeading;
+
+  /// No description provided for @examOfficeRunningStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get examOfficeRunningStatus;
+
+  /// No description provided for @examOfficeStartPaper.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the paper'**
+  String get examOfficeStartPaper;
+
+  /// No description provided for @examOfficeMarkSat.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as sat'**
+  String get examOfficeMarkSat;
+
+  /// No description provided for @examOfficeCancelPaper.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel the paper'**
+  String get examOfficeCancelPaper;
+
+  /// No description provided for @examOfficeCancelLockedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'This paper has been sat, so it can no longer be cancelled.'**
+  String get examOfficeCancelLockedNote;
+
+  /// No description provided for @examOfficeCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel {course}?'**
+  String examOfficeCancelTitle(Object course);
+
+  /// No description provided for @examOfficeCancelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Students are told the paper is off. Say why.'**
+  String get examOfficeCancelBody;
+
+  /// No description provided for @examOfficeCancelConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel the paper'**
+  String get examOfficeCancelConfirm;
+
+  /// No description provided for @examOfficeResitsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Resit windows'**
+  String get examOfficeResitsTitle;
+
+  /// No description provided for @examOfficeResitsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'When students may register to retake a failed course, and what it costs.'**
+  String get examOfficeResitsSubtitle;
+
+  /// No description provided for @examOfficeWindowOpenAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a window'**
+  String get examOfficeWindowOpenAction;
+
+  /// No description provided for @examOfficeWindowsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No resit windows'**
+  String get examOfficeWindowsEmptyTitle;
+
+  /// No description provided for @examOfficeWindowsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a window to let students register for resits.'**
+  String get examOfficeWindowsEmptyBody;
+
+  /// No description provided for @examOfficeWindowOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get examOfficeWindowOpen;
+
+  /// No description provided for @examOfficeWindowClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get examOfficeWindowClosed;
+
+  /// No description provided for @examOfficeWindowFee.
+  ///
+  /// In en, this message translates to:
+  /// **'{fee} per unit, unit cap {cap}'**
+  String examOfficeWindowFee(Object cap, Object fee);
+
+  /// No description provided for @examOfficeWindowNoCap.
+  ///
+  /// In en, this message translates to:
+  /// **'none'**
+  String get examOfficeWindowNoCap;
+
+  /// No description provided for @examOfficeWindowRegistered.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} registered'**
+  String examOfficeWindowRegistered(Object count);
+
+  /// No description provided for @examOfficeSignupsHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Registrations in {window}'**
+  String examOfficeSignupsHeading(Object window);
+
+  /// No description provided for @examOfficeSignupAwaiting.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting payment'**
+  String get examOfficeSignupAwaiting;
+
+  /// No description provided for @examOfficeSignupPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get examOfficeSignupPaid;
+
+  /// No description provided for @examOfficeSignupLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{matric} - {units} units - {fee}'**
+  String examOfficeSignupLine(Object fee, Object matric, Object units);
+
+  /// No description provided for @examOfficeSignupCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel registration'**
+  String get examOfficeSignupCancel;
+
+  /// No description provided for @examOfficeSignupCancelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel {matric}\'s registration?'**
+  String examOfficeSignupCancelTitle(Object matric);
+
+  /// No description provided for @examOfficeSignupCancelBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The student can register again while the window is open. Any fee paid goes to their wallet.'**
+  String get examOfficeSignupCancelBody;
+
+  /// No description provided for @examOfficeSignupCancelConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel registration'**
+  String get examOfficeSignupCancelConfirm;
+
+  /// No description provided for @examOfficeWindowFormTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a resit window'**
+  String get examOfficeWindowFormTitle;
+
+  /// No description provided for @examOfficeWindowFormSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set the dates, the fee and how many units one student can register.'**
+  String get examOfficeWindowFormSubtitle;
+
+  /// No description provided for @examOfficeWindowFormBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Students see the window on their resits tab as soon as it opens.'**
+  String get examOfficeWindowFormBody;
+
+  /// No description provided for @examOfficeWindowNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Window name'**
+  String get examOfficeWindowNameLabel;
+
+  /// No description provided for @examOfficeWindowNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Give the window a name.'**
+  String get examOfficeWindowNameRequired;
+
+  /// No description provided for @examOfficeWindowOpensLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Opens'**
+  String get examOfficeWindowOpensLabel;
+
+  /// No description provided for @examOfficeWindowClosesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Closes'**
+  String get examOfficeWindowClosesLabel;
+
+  /// No description provided for @examOfficeWindowCloseBeforeOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'The window must close after it opens.'**
+  String get examOfficeWindowCloseBeforeOpen;
+
+  /// No description provided for @examOfficeWindowFeeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Fee per unit'**
+  String get examOfficeWindowFeeLabel;
+
+  /// No description provided for @examOfficeWindowFeeInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter an amount like 2000 or 2,000.50.'**
+  String get examOfficeWindowFeeInvalid;
+
+  /// No description provided for @examOfficeWindowCapLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit cap per student'**
+  String get examOfficeWindowCapLabel;
+
+  /// No description provided for @examOfficeReasonLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Reason'**
+  String get examOfficeReasonLabel;
+
+  /// No description provided for @examOfficeReasonRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Say why.'**
+  String get examOfficeReasonRequired;
+
+  /// No description provided for @examOfficeDatePlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a date'**
+  String get examOfficeDatePlaceholder;
+
+  /// No description provided for @examOfficeNoValue.
+  ///
+  /// In en, this message translates to:
+  /// **'-'**
+  String get examOfficeNoValue;
+
+  /// No description provided for @examOfficeResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Results'**
+  String get examOfficeResultsTitle;
+
+  /// No description provided for @examOfficeResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Every course\'s marks, from first entry to publication.'**
+  String get examOfficeResultsSubtitle;
+
+  /// No description provided for @examOfficeResultsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No courses to mark'**
+  String get examOfficeResultsEmptyTitle;
+
+  /// No description provided for @examOfficeResultsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Courses appear here once a semester\'s marking opens.'**
+  String get examOfficeResultsEmptyBody;
+
+  /// No description provided for @examOfficeCourseLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{code} - {title}'**
+  String examOfficeCourseLine(Object code, Object title);
+
+  /// No description provided for @examOfficeResultsBatchBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{marked} of {enrolled} marked, {units} units'**
+  String examOfficeResultsBatchBody(
+    Object enrolled,
+    Object marked,
+    Object units,
+  );
+
+  /// No description provided for @examOfficeCourseSheetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Marking sheet'**
+  String get examOfficeCourseSheetTitle;
+
+  /// No description provided for @examOfficeCourseSheetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the coursework and examination marks, then send the course for approval.'**
+  String get examOfficeCourseSheetSubtitle;
+
+  /// No description provided for @examOfficeCourseNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'That course is not on the queue.'**
+  String get examOfficeCourseNotFound;
+
+  /// No description provided for @examOfficeMarkCoursework.
+  ///
+  /// In en, this message translates to:
+  /// **'Coursework (max {max})'**
+  String examOfficeMarkCoursework(Object max);
+
+  /// No description provided for @examOfficeMarkExam.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam (max {max})'**
+  String examOfficeMarkExam(Object max);
+
+  /// No description provided for @examOfficeMarkOutOfRange.
+  ///
+  /// In en, this message translates to:
+  /// **'A mark is outside its range.'**
+  String get examOfficeMarkOutOfRange;
+
+  /// No description provided for @examOfficeMarkHold.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold back'**
+  String get examOfficeMarkHold;
+
+  /// No description provided for @examOfficeMarkRelease.
+  ///
+  /// In en, this message translates to:
+  /// **'Release'**
+  String get examOfficeMarkRelease;
+
+  /// No description provided for @examOfficeMarkHeldReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Held back: {reason}'**
+  String examOfficeMarkHeldReason(Object reason);
+
+  /// No description provided for @examOfficeMarkFlagged.
+  ///
+  /// In en, this message translates to:
+  /// **'Flagged'**
+  String get examOfficeMarkFlagged;
+
+  /// No description provided for @examOfficeMarkPreviously.
+  ///
+  /// In en, this message translates to:
+  /// **'Was {total}'**
+  String examOfficeMarkPreviously(Object total);
+
+  /// No description provided for @examOfficeMarkEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No students match this filter.'**
+  String get examOfficeMarkEmpty;
+
+  /// No description provided for @examOfficeHoldDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold this mark back'**
+  String get examOfficeHoldDialogTitle;
+
+  /// No description provided for @examOfficeHoldDialogBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The mark stays out of the results until you release it. The course can still be sent.'**
+  String get examOfficeHoldDialogBody;
+
+  /// No description provided for @examOfficeHoldConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold back'**
+  String get examOfficeHoldConfirm;
+
+  /// No description provided for @examOfficeSendButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Send for approval'**
+  String get examOfficeSendButton;
+
+  /// No description provided for @examOfficeSendConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Send {course} for approval?'**
+  String examOfficeSendConfirmTitle(Object course);
+
+  /// No description provided for @examOfficeSendConfirmBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The marks are fixed once sent. Only the head of department can send them back.'**
+  String get examOfficeSendConfirmBody;
+
+  /// No description provided for @examOfficeSendConfirmAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get examOfficeSendConfirmAction;
+
+  /// No description provided for @examOfficeSendBlockedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} students have no mark'**
+  String examOfficeSendBlockedTitle(Object count);
+
+  /// No description provided for @examOfficeSendBlockedBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a mark for each, or hold it back with a reason, then send again: {names}.'**
+  String examOfficeSendBlockedBody(Object names);
+
+  /// No description provided for @examOfficeStageNoteMarking.
+  ///
+  /// In en, this message translates to:
+  /// **'Marks are saved as you type. Send the course when every student has a mark or a hold.'**
+  String get examOfficeStageNoteMarking;
+
+  /// No description provided for @examOfficeHodNoteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{author} sent this back on {date}'**
+  String examOfficeHodNoteTitle(Object author, Object date);
+
+  /// No description provided for @examOfficeHodNoteBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{note} ({count} flagged marks to revise.)'**
+  String examOfficeHodNoteBody(Object count, Object note);
+
+  /// No description provided for @examOfficeFlaggedCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} flagged marks to revise.'**
+  String examOfficeFlaggedCount(Object count);
+
+  /// No description provided for @examOfficeLockedApprovers.
+  ///
+  /// In en, this message translates to:
+  /// **'With {desk}, due {date}. The marks are locked.'**
+  String examOfficeLockedApprovers(Object date, Object desk);
+
+  /// No description provided for @examOfficePublishedNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Published on {date}. Gazette {ref}.'**
+  String examOfficePublishedNote(Object date, Object ref);
+
+  /// No description provided for @examOfficeSessionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Examination sessions'**
+  String get examOfficeSessionsTitle;
+
+  /// No description provided for @examOfficeSessionsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'The periods papers are sat in, semester by semester.'**
+  String get examOfficeSessionsSubtitle;
+
+  /// No description provided for @examOfficeSessionsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No session for {term}'**
+  String examOfficeSessionsEmptyTitle(Object term);
+
+  /// No description provided for @examOfficeSessionsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a session to timetable papers and let students collect their cards.'**
+  String get examOfficeSessionsEmptyBody;
+
+  /// No description provided for @examOfficeOpenSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a session'**
+  String get examOfficeOpenSession;
+
+  /// No description provided for @examOfficeOpenSessionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Open a session for {term}'**
+  String examOfficeOpenSessionTitle(Object term);
+
+  /// No description provided for @examOfficeSessionNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Session name'**
+  String get examOfficeSessionNameLabel;
+
+  /// No description provided for @examOfficeSessionNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Give the session a name.'**
+  String get examOfficeSessionNameRequired;
+
+  /// No description provided for @examOfficeSessionStarts.
+  ///
+  /// In en, this message translates to:
+  /// **'First paper'**
+  String get examOfficeSessionStarts;
+
+  /// No description provided for @examOfficeSessionEnds.
+  ///
+  /// In en, this message translates to:
+  /// **'Last paper'**
+  String get examOfficeSessionEnds;
+
+  /// No description provided for @examOfficeSessionCardsOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards open'**
+  String get examOfficeSessionCardsOpen;
+
+  /// No description provided for @examOfficeDateRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a date.'**
+  String get examOfficeDateRequired;
+
+  /// No description provided for @examOfficeSessionEndBeforeStart.
+  ///
+  /// In en, this message translates to:
+  /// **'The last paper must come after the first.'**
+  String get examOfficeSessionEndBeforeStart;
+
+  /// No description provided for @examOfficeSessionCardsAfterStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards must open on or before the first paper.'**
+  String get examOfficeSessionCardsAfterStart;
+
+  /// No description provided for @examOfficeSessionBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{start} to {end}, {count} papers'**
+  String examOfficeSessionBody(Object count, Object end, Object start);
+
+  /// No description provided for @examOfficeSessionDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Session'**
+  String get examOfficeSessionDetailTitle;
+
+  /// No description provided for @examOfficeSessionDetailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Papers, clashes and issued cards for one examination period.'**
+  String get examOfficeSessionDetailSubtitle;
+
+  /// No description provided for @examOfficeSessionNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'That session is not on the list.'**
+  String get examOfficeSessionNotFound;
+
+  /// No description provided for @examOfficeSessionDates.
+  ///
+  /// In en, this message translates to:
+  /// **'{start} to {end}'**
+  String examOfficeSessionDates(Object end, Object start);
+
+  /// No description provided for @examOfficeSessionCardsFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards open on {date}'**
+  String examOfficeSessionCardsFrom(Object date);
+
+  /// No description provided for @examOfficeSessionMetricPapers.
+  ///
+  /// In en, this message translates to:
+  /// **'Papers'**
+  String get examOfficeSessionMetricPapers;
+
+  /// No description provided for @examOfficeSessionMetricClashes.
+  ///
+  /// In en, this message translates to:
+  /// **'Clashes'**
+  String get examOfficeSessionMetricClashes;
+
+  /// No description provided for @examOfficeSessionMetricCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards issued'**
+  String get examOfficeSessionMetricCards;
+
+  /// No description provided for @examOfficeClashesHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Clashes'**
+  String get examOfficeClashesHeading;
+
+  /// No description provided for @examOfficeClashTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{first} and {second} at the same time'**
+  String examOfficeClashTitle(Object first, Object second);
+
+  /// No description provided for @examOfficeClashBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{matric} is registered for both papers.'**
+  String examOfficeClashBody(Object matric);
+
+  /// No description provided for @examOfficeClashResolve.
+  ///
+  /// In en, this message translates to:
+  /// **'Move {course}'**
+  String examOfficeClashResolve(Object course);
+
+  /// No description provided for @examOfficePapersHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Papers'**
+  String get examOfficePapersHeading;
+
+  /// No description provided for @examOfficePaperBody.
+  ///
+  /// In en, this message translates to:
+  /// **'{when}, {seated} of {enrolled} seated'**
+  String examOfficePaperBody(Object enrolled, Object seated, Object when);
+
+  /// No description provided for @examOfficeCardsHeading.
+  ///
+  /// In en, this message translates to:
+  /// **'Issued cards'**
+  String get examOfficeCardsHeading;
+
+  /// No description provided for @examOfficeIssuedCardLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{matric} - {card}'**
+  String examOfficeIssuedCardLine(Object card, Object matric);
+
+  /// No description provided for @examOfficeCardValidTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid'**
+  String get examOfficeCardValidTag;
+
+  /// No description provided for @examOfficeCardWithdrawnTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn'**
+  String get examOfficeCardWithdrawnTag;
+
+  /// No description provided for @examOfficeCardWithdrawnReason.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdrawn: {reason}'**
+  String examOfficeCardWithdrawnReason(Object reason);
+
+  /// No description provided for @examOfficeWithdrawAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw card'**
+  String get examOfficeWithdrawAction;
+
+  /// No description provided for @examOfficeWithdrawTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw {name}\'s card'**
+  String examOfficeWithdrawTitle(Object name);
+
+  /// No description provided for @examOfficeWithdrawBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The public check fails from now on and the student cannot sit.'**
+  String get examOfficeWithdrawBody;
+
+  /// No description provided for @examOfficeWithdrawConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Withdraw'**
+  String get examOfficeWithdrawConfirm;
+
+  /// No description provided for @examResitsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Resits'**
+  String get examResitsTitle;
+
+  /// No description provided for @examResitsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Matric number {matric}'**
+  String examResitsSubtitle(Object matric);
+
+  /// No description provided for @examResitPolicyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Both attempts count'**
+  String get examResitPolicyTitle;
+
+  /// No description provided for @examResitPolicyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Courses you failed and have not since passed. Taking one again does not replace the old mark - both attempts count towards your CGPA.'**
+  String get examResitPolicyBody;
+
+  /// No description provided for @examResitWorkedExample.
+  ///
+  /// In en, this message translates to:
+  /// **'You failed CSC 201 with 22 in 25/26 • 1st Sem. If you resit it and score 61, both 22 and 61 count towards your CGPA.'**
+  String get examResitWorkedExample;
+
+  /// No description provided for @examResitAttemptPrevious.
+  ///
+  /// In en, this message translates to:
+  /// **'Attempt 1 (previous)'**
+  String get examResitAttemptPrevious;
+
+  /// No description provided for @examResitAttemptResit.
+  ///
+  /// In en, this message translates to:
+  /// **'Attempt 2 (resit)'**
+  String get examResitAttemptResit;
+
+  /// No description provided for @examResitExamplePreviousMark.
+  ///
+  /// In en, this message translates to:
+  /// **'CSC 201: 22'**
+  String get examResitExamplePreviousMark;
+
+  /// No description provided for @examResitExampleResitMark.
+  ///
+  /// In en, this message translates to:
+  /// **'Score: 61'**
+  String get examResitExampleResitMark;
+
+  /// No description provided for @examResitExampleFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get examResitExampleFailed;
+
+  /// No description provided for @examResitBothCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Both count'**
+  String get examResitBothCount;
+
+  /// No description provided for @examResitWindowOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Resit window {label} is open'**
+  String examResitWindowOpen(Object label);
+
+  /// No description provided for @examResitWindowClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Resit window {label} is closed'**
+  String examResitWindowClosed(Object label);
+
+  /// No description provided for @examResitWindowCloses.
+  ///
+  /// In en, this message translates to:
+  /// **'Closes {date}'**
+  String examResitWindowCloses(Object date);
+
+  /// No description provided for @examResitWindowClosedOn.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed {date}'**
+  String examResitWindowClosedOn(Object date);
+
+  /// No description provided for @examResitTagOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Open'**
+  String get examResitTagOpen;
+
+  /// No description provided for @examResitTagClosed.
+  ///
+  /// In en, this message translates to:
+  /// **'Closed'**
+  String get examResitTagClosed;
+
+  /// No description provided for @examResitBudgetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit allowance'**
+  String get examResitBudgetTitle;
+
+  /// No description provided for @examResitBudgetUsed.
+  ///
+  /// In en, this message translates to:
+  /// **'{used} of {cap} units used'**
+  String examResitBudgetUsed(Object cap, Object used);
+
+  /// No description provided for @examResitBudgetLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} units left this semester.'**
+  String examResitBudgetLeft(Object count);
+
+  /// No description provided for @examResitCapCapacity.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% cap capacity'**
+  String examResitCapCapacity(int percent);
+
+  /// No description provided for @examResitBudgetRatio.
+  ///
+  /// In en, this message translates to:
+  /// **'{used}/{cap}'**
+  String examResitBudgetRatio(int used, int cap);
+
+  /// No description provided for @examResitFailuresTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Outstanding failures'**
+  String get examResitFailuresTitle;
+
+  /// No description provided for @examResitFailuresCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} pending'**
+  String examResitFailuresCount(Object count);
+
+  /// No description provided for @examResitFailuresNote.
+  ///
+  /// In en, this message translates to:
+  /// **'A course leaves this list once you pass it.'**
+  String get examResitFailuresNote;
+
+  /// No description provided for @examResitFailuresEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'You have no failed courses to resit.'**
+  String get examResitFailuresEmpty;
+
+  /// No description provided for @examResitFailedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed with {score} in {term}'**
+  String examResitFailedIn(Object score, Object term);
+
+  /// No description provided for @examResitNotOpen.
+  ///
+  /// In en, this message translates to:
+  /// **'Not open'**
+  String get examResitNotOpen;
+
+  /// No description provided for @examResitUsesLastUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'This would use your last {count} units.'**
+  String examResitUsesLastUnits(Object count);
+
+  /// No description provided for @examResitOverBudget.
+  ///
+  /// In en, this message translates to:
+  /// **'This is over your unit allowance for the semester.'**
+  String get examResitOverBudget;
+
+  /// No description provided for @examResitRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get examResitRegister;
+
+  /// No description provided for @examResitObligation.
+  ///
+  /// In en, this message translates to:
+  /// **'Estimated total'**
+  String get examResitObligation;
+
+  /// No description provided for @examResitClosedHelp.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration is closed. Ask the examinations office if this affects you.'**
+  String get examResitClosedHelp;
+
+  /// No description provided for @examResitRegisteredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What you have registered'**
+  String get examResitRegisteredTitle;
+
+  /// No description provided for @examResitRegisteredCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =1{1 invoiced course} other{{count} invoiced courses}}'**
+  String examResitRegisteredCount(int count);
+
+  /// No description provided for @examResitRegisteredLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units · {term}'**
+  String examResitRegisteredLine(Object term, Object units);
+
+  /// No description provided for @examResitRegisteredTag.
+  ///
+  /// In en, this message translates to:
+  /// **'Registered'**
+  String get examResitRegisteredTag;
+
+  /// No description provided for @examResitAwaitingPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Awaiting payment'**
+  String get examResitAwaitingPayment;
+
+  /// No description provided for @examResitPaid.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid'**
+  String get examResitPaid;
+
+  /// No description provided for @examResitReceiptDocket.
+  ///
+  /// In en, this message translates to:
+  /// **'Receipt docket'**
+  String get examResitReceiptDocket;
+
+  /// No description provided for @examResitInvoice.
+  ///
+  /// In en, this message translates to:
+  /// **'Inv: #{reference}'**
+  String examResitInvoice(Object reference);
+
+  /// No description provided for @examResitSemester.
+  ///
+  /// In en, this message translates to:
+  /// **'Semester: {term}'**
+  String examResitSemester(String term);
+
+  /// No description provided for @examResitPaymentRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment action required'**
+  String get examResitPaymentRequired;
+
+  /// No description provided for @examResitBursaryClearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Bursary clearance'**
+  String get examResitBursaryClearance;
+
+  /// No description provided for @examResitSettleLedger.
+  ///
+  /// In en, this message translates to:
+  /// **'Settle resit ledger item'**
+  String get examResitSettleLedger;
+
+  /// No description provided for @examResitPayFees.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay fees'**
+  String get examResitPayFees;
+
+  /// No description provided for @examResitHowTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How a resit works'**
+  String get examResitHowTitle;
+
+  /// No description provided for @examResitRuleFailedOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'You may only register for a course you failed and have not since passed.'**
+  String get examResitRuleFailedOnly;
+
+  /// No description provided for @examResitRuleCap.
+  ///
+  /// In en, this message translates to:
+  /// **'You may resit up to {cap} units in a semester.'**
+  String examResitRuleCap(Object cap);
+
+  /// No description provided for @examResitRuleFee.
+  ///
+  /// In en, this message translates to:
+  /// **'The fee is {fee} per unit, invoiced when you register.'**
+  String examResitRuleFee(Object fee);
+
+  /// No description provided for @examResitRuleBoth.
+  ///
+  /// In en, this message translates to:
+  /// **'Both the old attempt and the new one count towards your CGPA.'**
+  String get examResitRuleBoth;
+
+  /// No description provided for @examResitRuleWithdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'To withdraw from a resit, ask the examinations office. Any fee paid is credited back to your wallet.'**
+  String get examResitRuleWithdraw;
+
+  /// No description provided for @examResitConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Register for {code}?'**
+  String examResitConfirmTitle(Object code);
+
+  /// No description provided for @examResitConfirmSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'{title} · {window} resit'**
+  String examResitConfirmSubtitle(Object title, Object window);
+
+  /// No description provided for @examResitConfirmPrevious.
+  ///
+  /// In en, this message translates to:
+  /// **'Previous attempt'**
+  String get examResitConfirmPrevious;
+
+  /// No description provided for @examResitConfirmTag.
+  ///
+  /// In en, this message translates to:
+  /// **'{window} resit'**
+  String examResitConfirmTag(String window);
+
+  /// No description provided for @examResitConfirmUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit assessment breakdown'**
+  String get examResitConfirmUnits;
+
+  /// No description provided for @examResitConfirmRate.
+  ///
+  /// In en, this message translates to:
+  /// **'{units} units · {rate} per unit'**
+  String examResitConfirmRate(Object rate, Object units);
+
+  /// No description provided for @examResitConfirmTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total payable'**
+  String get examResitConfirmTotal;
+
+  /// No description provided for @examResitConfirmTotalValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Total {amount}'**
+  String examResitConfirmTotalValue(String amount);
+
+  /// No description provided for @examResitConfirmBothTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Statutory academic policy'**
+  String get examResitConfirmBothTitle;
+
+  /// No description provided for @examResitConfirmBothBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Both attempts count towards your CGPA. This mark will not replace your previous {score} in {term}.'**
+  String examResitConfirmBothBody(Object score, Object term);
+
+  /// No description provided for @examResitConfirmInvoiceNote.
+  ///
+  /// In en, this message translates to:
+  /// **'The fee is invoiced when you register.'**
+  String get examResitConfirmInvoiceNote;
+
+  /// No description provided for @examResitConfirmWithdraw.
+  ///
+  /// In en, this message translates to:
+  /// **'You are registering now. To withdraw later, ask the examinations office.'**
+  String get examResitConfirmWithdraw;
+
+  /// No description provided for @examResitConfirmAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get examResitConfirmAction;
+
+  /// No description provided for @examResitConfirmDecline.
+  ///
+  /// In en, this message translates to:
+  /// **'Not yet'**
+  String get examResitConfirmDecline;
+
+  /// No description provided for @examResultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'My results'**
+  String get examResultsTitle;
+
+  /// No description provided for @examResultsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Each semester\'s marks, and where you stand overall.'**
+  String get examResultsSubtitle;
+
+  /// No description provided for @examResultsResitNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Both attempts at a resit count towards your CGPA.'**
+  String get examResultsResitNote;
+
+  /// No description provided for @examResultsDownloadSlip.
+  ///
+  /// In en, this message translates to:
+  /// **'Download official grade slip (PDF)'**
+  String get examResultsDownloadSlip;
+
+  /// No description provided for @examResultsBreadcrumb.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get examResultsBreadcrumb;
+
+  /// No description provided for @examResultsMatriculated.
+  ///
+  /// In en, this message translates to:
+  /// **'Matriculated'**
+  String get examResultsMatriculated;
+
+  /// No description provided for @examResultsSenateApproved.
+  ///
+  /// In en, this message translates to:
+  /// **'Senate approved'**
+  String get examResultsSenateApproved;
+
+  /// No description provided for @examResultsCumulativeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cumulative grade point'**
+  String get examResultsCumulativeLabel;
+
+  /// No description provided for @examResultsSemesterGpaLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Semester GPA'**
+  String get examResultsSemesterGpaLabel;
+
+  /// No description provided for @examResultsCumulativeCgpa.
+  ///
+  /// In en, this message translates to:
+  /// **'Cumulative CGPA'**
+  String get examResultsCumulativeCgpa;
+
+  /// No description provided for @examResultsViewPrevious.
+  ///
+  /// In en, this message translates to:
+  /// **'View previous semesters'**
+  String get examResultsViewPrevious;
+
+  /// No description provided for @examResultsHidePrevious.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide previous semesters'**
+  String get examResultsHidePrevious;
+
+  /// No description provided for @examResultsNoEarlier.
+  ///
+  /// In en, this message translates to:
+  /// **'No earlier semester has been published.'**
+  String get examResultsNoEarlier;
+
+  /// No description provided for @examResultsLedgerStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status: Final ratified ledger'**
+  String get examResultsLedgerStatus;
+
+  /// No description provided for @examResultsSenateSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Senate Sec. 14'**
+  String get examResultsSenateSection;
+
+  /// No description provided for @examCourseResitWhen.
+  ///
+  /// In en, this message translates to:
+  /// **'resit, {term}'**
+  String examCourseResitWhen(String term);
+
+  /// No description provided for @examStudentLine.
+  ///
+  /// In en, this message translates to:
+  /// **'{level} level · {programme}'**
+  String examStudentLine(Object level, Object programme);
+
+  /// No description provided for @examCgpaValue.
+  ///
+  /// In en, this message translates to:
+  /// **'CGPA {value}'**
+  String examCgpaValue(Object value);
+
+  /// No description provided for @examCgpaNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Counted from published results only.'**
+  String get examCgpaNote;
+
+  /// No description provided for @examResultsEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No results published yet'**
+  String get examResultsEmptyTitle;
+
+  /// No description provided for @examResultsEmptyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your marks for {session} appear here once the registry has approved and published them.'**
+  String examResultsEmptyBody(Object session);
+
+  /// No description provided for @examResultsStepLecturer.
+  ///
+  /// In en, this message translates to:
+  /// **'Your lecturer marks the papers.'**
+  String get examResultsStepLecturer;
+
+  /// No description provided for @examResultsStepDepartment.
+  ///
+  /// In en, this message translates to:
+  /// **'The head of department approves the marks.'**
+  String get examResultsStepDepartment;
+
+  /// No description provided for @examResultsStepRegistry.
+  ///
+  /// In en, this message translates to:
+  /// **'The registry publishes them.'**
+  String get examResultsStepRegistry;
+
+  /// No description provided for @examStandingGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good standing'**
+  String get examStandingGood;
+
+  /// No description provided for @examStandingProbation.
+  ///
+  /// In en, this message translates to:
+  /// **'On probation'**
+  String get examStandingProbation;
+
+  /// No description provided for @examStandingWithdrawal.
+  ///
+  /// In en, this message translates to:
+  /// **'Advised to withdraw'**
+  String get examStandingWithdrawal;
+
+  /// No description provided for @examStandingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Where you stand'**
+  String get examStandingTitle;
+
+  /// No description provided for @examStandingOutOf.
+  ///
+  /// In en, this message translates to:
+  /// **'CGPA · of {max}'**
+  String examStandingOutOf(Object max);
+
+  /// No description provided for @examStandingThresholds.
+  ///
+  /// In en, this message translates to:
+  /// **'Probation under {probation}. Withdrawal under {withdrawal}.'**
+  String examStandingThresholds(Object probation, Object withdrawal);
+
+  /// No description provided for @examStandingUnits.
+  ///
+  /// In en, this message translates to:
+  /// **'{passed} of {taken} units passed'**
+  String examStandingUnits(Object passed, Object taken);
+
+  /// No description provided for @examStandingOnCourse.
+  ///
+  /// In en, this message translates to:
+  /// **'On course for {classification}'**
+  String examStandingOnCourse(Object classification);
+
+  /// No description provided for @examAdvisoryProbationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Speak to your level adviser about how to bring your CGPA up.'**
+  String get examAdvisoryProbationTitle;
+
+  /// No description provided for @examAdvisoryStatute.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Board Resolution · Stat. 14(B)'**
+  String get examAdvisoryStatute;
+
+  /// No description provided for @examAdvisoryProbationContinue.
+  ///
+  /// In en, this message translates to:
+  /// **'You are below the CGPA this course needs to continue.'**
+  String get examAdvisoryProbationContinue;
+
+  /// No description provided for @examAdvisoryProbationSemester.
+  ///
+  /// In en, this message translates to:
+  /// **'This semester counts towards it too.'**
+  String get examAdvisoryProbationSemester;
+
+  /// No description provided for @examAdvisoryProbationFinal.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing here is final. Raising your CGPA next semester changes it.'**
+  String get examAdvisoryProbationFinal;
+
+  /// No description provided for @examAdvisoryAdviserRole.
+  ///
+  /// In en, this message translates to:
+  /// **'Level adviser ({programme})'**
+  String examAdvisoryAdviserRole(String programme);
+
+  /// No description provided for @examAdvisoryBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Book urgent advising session'**
+  String get examAdvisoryBook;
+
+  /// No description provided for @examAdvisoryWithdrawalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You are advised to withdraw'**
+  String get examAdvisoryWithdrawalTitle;
+
+  /// No description provided for @examAdvisoryWithdrawalBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Your CGPA is under the withdrawal threshold. Speak to your level adviser about your options before the senate appeal window closes.'**
+  String get examAdvisoryWithdrawalBody;
+
+  /// No description provided for @examAdvisoryAdviser.
+  ///
+  /// In en, this message translates to:
+  /// **'Level adviser · {office}'**
+  String examAdvisoryAdviser(Object office);
+
+  /// No description provided for @examScaleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Degree classification scale'**
+  String get examScaleTitle;
+
+  /// No description provided for @examScaleRange.
+  ///
+  /// In en, this message translates to:
+  /// **'{from} – {to}'**
+  String examScaleRange(Object from, Object to);
+
+  /// No description provided for @examTermGpa.
+  ///
+  /// In en, this message translates to:
+  /// **'GPA {value}'**
+  String examTermGpa(Object value);
+
+  /// No description provided for @examTermUnitsTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'Units taken'**
+  String get examTermUnitsTaken;
+
+  /// No description provided for @examTermUnitsPassed.
+  ///
+  /// In en, this message translates to:
+  /// **'Units passed'**
+  String get examTermUnitsPassed;
+
+  /// No description provided for @examUnitsValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} units'**
+  String examUnitsValue(Object count);
+
+  /// No description provided for @examCourseResit.
+  ///
+  /// In en, this message translates to:
+  /// **'Resit'**
+  String get examCourseResit;
+
+  /// No description provided for @examCourseHeldBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Held back'**
+  String get examCourseHeldBack;
+
+  /// No description provided for @examCourseOutOf.
+  ///
+  /// In en, this message translates to:
+  /// **'of 100'**
+  String get examCourseOutOf;
+
+  /// No description provided for @examCourseNoGrade.
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get examCourseNoGrade;
+
+  /// No description provided for @examCourseNoMark.
+  ///
+  /// In en, this message translates to:
+  /// **'—'**
+  String get examCourseNoMark;
+
+  /// No description provided for @examCourseResitNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Earlier attempt: {score} in {term}. Both attempts count towards your CGPA.'**
+  String examCourseResitNote(Object score, Object term);
+
+  /// No description provided for @examCourseHeldBackNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Your mark for this course is being held back. Speak to the examinations office.'**
+  String get examCourseHeldBackNote;
+
+  /// No description provided for @examCourseNotMarked.
+  ///
+  /// In en, this message translates to:
+  /// **'Not marked yet.'**
+  String get examCourseNotMarked;
+
+  /// No description provided for @examVerifyBrandCaption.
+  ///
+  /// In en, this message translates to:
+  /// **'Examination card check'**
+  String get examVerifyBrandCaption;
+
+  /// No description provided for @examVerifyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Check an examination card'**
+  String get examVerifyTitle;
+
+  /// No description provided for @examVerifySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Type the check code printed on the card, or scan its QR mark.'**
+  String get examVerifySubtitle;
+
+  /// No description provided for @examVerifyCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Check code'**
+  String get examVerifyCodeLabel;
+
+  /// No description provided for @examVerifyCodeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'K7Q2M4XB9PTR'**
+  String get examVerifyCodeHint;
+
+  /// No description provided for @examVerifyCodeHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'Codes are {count} characters.'**
+  String examVerifyCodeHelper(Object count);
+
+  /// No description provided for @examVerifyAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Check card'**
+  String get examVerifyAction;
+
+  /// No description provided for @examVerifyValidTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Valid card'**
+  String get examVerifyValidTitle;
+
+  /// No description provided for @examVerifyValidBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Cleared for hall entry.'**
+  String get examVerifyValidBody;
+
+  /// No description provided for @examVerifyName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get examVerifyName;
+
+  /// No description provided for @examVerifyMatric.
+  ///
+  /// In en, this message translates to:
+  /// **'Matric number'**
+  String get examVerifyMatric;
+
+  /// No description provided for @examVerifyProgramme.
+  ///
+  /// In en, this message translates to:
+  /// **'Programme'**
+  String get examVerifyProgramme;
+
+  /// No description provided for @examVerifyCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Card number'**
+  String get examVerifyCard;
+
+  /// No description provided for @examVerifyPapers.
+  ///
+  /// In en, this message translates to:
+  /// **'Eligible papers'**
+  String get examVerifyPapers;
+
+  /// No description provided for @examVerifyPapersValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} · session {session}'**
+  String examVerifyPapersValue(Object count, Object session);
+
+  /// No description provided for @examVerifyInvalidTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This card is not valid'**
+  String get examVerifyInvalidTitle;
+
+  /// No description provided for @examVerifyWithdrawnBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The card was withdrawn.'**
+  String get examVerifyWithdrawnBody;
+
+  /// No description provided for @examVerifyWithdrawnWhy.
+  ///
+  /// In en, this message translates to:
+  /// **'The card was withdrawn: {reason}.'**
+  String examVerifyWithdrawnWhy(Object reason);
+
+  /// No description provided for @examVerifyStandingBody.
+  ///
+  /// In en, this message translates to:
+  /// **'The holder is not currently a student in good standing. Tell the student to see the examinations office.'**
+  String get examVerifyStandingBody;
+
+  /// No description provided for @examVerifyNotFoundTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No card matches this code.'**
+  String get examVerifyNotFoundTitle;
+
+  /// No description provided for @examVerifyNotFoundBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Codes are {count} characters. Check it was copied correctly.'**
+  String examVerifyNotFoundBody(Object count);
+
+  /// No description provided for @examVerifyPrivacyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Student privacy'**
+  String get examVerifyPrivacyTitle;
+
+  /// No description provided for @examVerifyPrivacyBody.
+  ///
+  /// In en, this message translates to:
+  /// **'A valid card shows five facts and no photo. Nothing else about the student is disclosed.'**
+  String get examVerifyPrivacyBody;
+
+  /// No description provided for @examVerifySignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to the portal'**
+  String get examVerifySignIn;
 }
 
 class _AppLocalizationsDelegate

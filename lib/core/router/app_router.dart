@@ -42,6 +42,29 @@ import '../../features/admissions/presentation/widgets/admissions_shell.dart';
 import '../../features/auth/presentation/pages/create_account_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/splash_page.dart';
+import '../../features/examinations/presentation/bloc/exam_card_verification_cubit.dart';
+import '../../features/examinations/presentation/bloc/examinations_cubit.dart';
+import '../../features/examinations/presentation/bloc/staff/exam_office_cubit.dart';
+import '../../features/examinations/presentation/pages/examination_card_page.dart';
+import '../../features/examinations/presentation/pages/resits_page.dart';
+import '../../features/examinations/presentation/pages/results_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_broadsheets_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_course_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_dossier_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_grading_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_incident_import_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_incident_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_incidents_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_open_resit_window_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_paper_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_resits_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_results_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_scale_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_session_page.dart';
+import '../../features/examinations/presentation/pages/staff/exam_office_sessions_page.dart';
+import '../../features/examinations/presentation/pages/verify_exam_card_page.dart';
+import '../../features/examinations/presentation/widgets/examinations_shell.dart';
+import '../../features/examinations/presentation/widgets/staff/exam_office_shell.dart';
 import '../../features/fees/presentation/bloc/fee_card_checkout_cubit.dart';
 import '../../features/fees/presentation/bloc/fee_checkout_cubit.dart';
 import '../../features/fees/presentation/bloc/fee_gateway_return_cubit.dart';
@@ -206,6 +229,19 @@ GoRouter createRouter({
           child: VerifyIdCardPage(
             initialCode:
                 state.uri.queryParameters[Routes.verifyIdCardCodeParam],
+          ),
+        ),
+      ),
+      // Public verification of an examination card — five facts, no photo, no
+      // session, no shell. Same privacy posture as the ID card check above.
+      GoRoute(
+        path: Routes.verifyExamCard,
+        name: Routes.verifyExamCardName,
+        builder: (context, state) => BlocProvider<ExamCardVerificationCubit>(
+          create: (context) => sl<ExamCardVerificationCubit>(),
+          child: VerifyExamCardPage(
+            initialCode:
+                state.uri.queryParameters[Routes.verifyExamCardCodeParam],
           ),
         ),
       ),
@@ -631,6 +667,136 @@ GoRouter createRouter({
             path: Routes.staffRefunds,
             name: Routes.staffRefundsName,
             builder: (context, state) => const HousingRefundsPage(),
+          ),
+        ],
+      ),
+      // Examinations & Results: the student's results, examination card and
+      // resits. Outside the student shell with its own task bar. One cubit
+      // across the three tabs so a registered resit shows in the budget.
+      ShellRoute(
+        builder: (context, state, child) => ExaminationsShell(
+          location: state.matchedLocation,
+          child: BlocProvider<ExaminationsCubit>(
+            create: (context) => sl<ExaminationsCubit>(),
+            child: child,
+          ),
+        ),
+        routes: [
+          GoRoute(
+            path: Routes.examinations,
+            name: Routes.examinationsName,
+            builder: (context, state) => const ResultsPage(),
+          ),
+          GoRoute(
+            path: Routes.examinationsCard,
+            name: Routes.examinationsCardName,
+            builder: (context, state) => const ExaminationCardPage(),
+          ),
+          GoRoute(
+            path: Routes.examinationsResits,
+            name: Routes.examinationsResitsName,
+            builder: (context, state) => const ResitsPage(),
+          ),
+        ],
+      ),
+      // Examinations office (staff). Authenticated like the rest of the portal
+      // but never linked from the student hub or the student examination
+      // screens; one cubit across the queue and every tool so marks sent for
+      // approval show on the queue and in the broadsheet.
+      ShellRoute(
+        builder: (context, state, child) => ExamOfficeShell(
+          location: state.matchedLocation,
+          child: BlocProvider<ExamOfficeCubit>(
+            create: (context) => sl<ExamOfficeCubit>(),
+            child: child,
+          ),
+        ),
+        routes: [
+          GoRoute(
+            path: Routes.examOfficeResults,
+            name: Routes.examOfficeResultsName,
+            builder: (context, state) => const ExamOfficeResultsPage(),
+          ),
+          GoRoute(
+            path: Routes.examOfficeResultsCourseTemplate,
+            name: Routes.examOfficeResultsCourseName,
+            builder: (context, state) => ExamOfficeCoursePage(
+              batchId: state.pathParameters[Routes.examOfficeBatchIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.examOfficeSessions,
+            name: Routes.examOfficeSessionsName,
+            builder: (context, state) => const ExamOfficeSessionsPage(),
+          ),
+          GoRoute(
+            path: Routes.examOfficeSessionTemplate,
+            name: Routes.examOfficeSessionName,
+            builder: (context, state) => ExamOfficeSessionPage(
+              sessionId: state.pathParameters[Routes.examOfficeSessionIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.examOfficePaperTemplate,
+            name: Routes.examOfficePaperName,
+            builder: (context, state) => ExamOfficePaperPage(
+              sessionId: state.pathParameters[Routes.examOfficeSessionIdParam]!,
+              paperId: state.pathParameters[Routes.examOfficePaperIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.examOfficeGrading,
+            name: Routes.examOfficeGradingName,
+            builder: (context, state) => const ExamOfficeGradingPage(),
+          ),
+          GoRoute(
+            path: Routes.examOfficeGradingScaleTemplate,
+            name: Routes.examOfficeGradingScaleName,
+            builder: (context, state) => ExamOfficeScalePage(
+              scaleId: state.pathParameters[Routes.examOfficeScaleIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.examOfficeIncidents,
+            name: Routes.examOfficeIncidentsName,
+            builder: (context, state) => const ExamOfficeIncidentsPage(),
+          ),
+          // The literal import path must come before the incident template, or
+          // `import` would match as an incident id.
+          GoRoute(
+            path: Routes.examOfficeIncidentImport,
+            name: Routes.examOfficeIncidentImportName,
+            builder: (context, state) => const ExamOfficeIncidentImportPage(),
+          ),
+          GoRoute(
+            path: Routes.examOfficeIncidentTemplate,
+            name: Routes.examOfficeIncidentName,
+            builder: (context, state) => ExamOfficeIncidentPage(
+              incidentId:
+                  state.pathParameters[Routes.examOfficeIncidentIdParam]!,
+            ),
+          ),
+          GoRoute(
+            path: Routes.examOfficeResits,
+            name: Routes.examOfficeResitsName,
+            builder: (context, state) => const ExamOfficeResitsPage(),
+          ),
+          GoRoute(
+            path: Routes.examOfficeResitsOpen,
+            name: Routes.examOfficeResitsOpenName,
+            builder: (context, state) => const ExamOfficeOpenResitWindowPage(),
+          ),
+          GoRoute(
+            path: Routes.examOfficeBroadsheets,
+            name: Routes.examOfficeBroadsheetsName,
+            builder: (context, state) => const ExamOfficeBroadsheetsPage(),
+          ),
+          GoRoute(
+            path: Routes.examOfficeDossierTemplate,
+            name: Routes.examOfficeDossierName,
+            builder: (context, state) => ExamOfficeDossierPage(
+              matric: state.pathParameters[Routes.examOfficeMatricParam]!,
+            ),
           ),
         ],
       ),
